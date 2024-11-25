@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.sparrowwallet'
+version = '0.9'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://code.sparrowwallet.com/api/packages/sparrowwallet/maven' }
+}
+
+java {
+    withSourcesJar()
+}
+
+dependencies {
+    implementation('org.hid4java:hid4java:0.8.0')
+    implementation('com.fazecast:jSerialComm:2.11.0')
+    implementation('org.usb4java:usb4java:1.3.0')
+    implementation('co.nstant.in:cbor:0.9')
+    implementation('com.fasterxml.jackson.core:jackson-databind:2.17.2')
+    implementation('org.apache.commons:commons-lang3:3.7')
+    implementation('com.google.guava:guava:33.0.0-jre')
+    implementation('com.google.protobuf:protobuf-java:4.28.3')
+    implementation('commons-codec:commons-codec:1.17.1')
+    implementation('org.jcommander:jcommander:2.0')
+    implementation('org.slf4j:slf4j-api:2.0.12')
+    implementation('com.sparrowwallet:tern:1.0.2')
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation('org.junit.jupiter:junit-jupiter')
+}
+
+test {
+    useJUnitPlatform()
+}

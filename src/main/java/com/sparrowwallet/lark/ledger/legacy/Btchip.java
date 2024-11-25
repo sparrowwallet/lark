@@ -5,7 +5,7 @@ import com.sparrowwallet.drongo.Utils;
 import com.sparrowwallet.drongo.crypto.ChildNumber;
 import com.sparrowwallet.drongo.protocol.*;
 import com.sparrowwallet.lark.DeviceException;
-import com.sparrowwallet.lark.Version;
+import com.sparrowwallet.drongo.Version;
 import com.sparrowwallet.lark.ledger.APDUCommand;
 import com.sparrowwallet.lark.ledger.LedgerDevice;
 import com.sparrowwallet.lark.ledger.LedgerTransportException;

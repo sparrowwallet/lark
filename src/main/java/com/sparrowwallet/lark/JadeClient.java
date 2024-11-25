@@ -1,10 +1,7 @@
 package com.sparrowwallet.lark;
 
 import com.fazecast.jSerialComm.SerialPort;
-import com.sparrowwallet.drongo.ExtendedKey;
-import com.sparrowwallet.drongo.Network;
-import com.sparrowwallet.drongo.OutputDescriptor;
-import com.sparrowwallet.drongo.Utils;
+import com.sparrowwallet.drongo.*;
 import com.sparrowwallet.drongo.protocol.ScriptType;
 import com.sparrowwallet.drongo.psbt.PSBT;
 import com.sparrowwallet.drongo.psbt.PSBTParseException;

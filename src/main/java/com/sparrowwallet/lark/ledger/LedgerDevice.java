@@ -7,10 +7,9 @@ import com.sparrowwallet.drongo.protocol.TransactionSignature;
 import com.sparrowwallet.drongo.protocol.VarInt;
 import com.sparrowwallet.drongo.psbt.PSBT;
 import com.sparrowwallet.lark.DeviceException;
-import com.sparrowwallet.lark.Version;
+import com.sparrowwallet.drongo.Version;
 import com.sparrowwallet.lark.ledger.command.CommandBuilder;
 import com.sparrowwallet.lark.ledger.command.DefaultInsType;
-import com.sparrowwallet.lark.ledger.wallet.MultisigWalletPolicy;
 import com.sparrowwallet.lark.ledger.wallet.WalletPolicy;
 
 import java.io.Closeable;

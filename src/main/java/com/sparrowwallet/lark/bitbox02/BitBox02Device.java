@@ -6,7 +6,7 @@ import com.sparrowwallet.drongo.crypto.ECDSASignature;
 import com.sparrowwallet.drongo.crypto.Secp256r1Key;
 import com.sparrowwallet.drongo.protocol.Sha256Hash;
 import com.sparrowwallet.lark.DeviceException;
-import com.sparrowwallet.lark.Version;
+import com.sparrowwallet.drongo.Version;
 import com.sparrowwallet.lark.bitbox02.generated.Bitbox02System;
 import com.sparrowwallet.lark.bitbox02.generated.Btc;
 import com.sparrowwallet.lark.bitbox02.generated.Hww;

@@ -14,7 +14,7 @@ import com.sparrowwallet.drongo.protocol.SigHash;
 import com.sparrowwallet.drongo.protocol.TransactionSignature;
 import com.sparrowwallet.lark.DeviceException;
 import com.sparrowwallet.lark.UserRefusedException;
-import com.sparrowwallet.lark.Version;
+import com.sparrowwallet.drongo.Version;
 import com.sparrowwallet.lark.trezor.generated.TrezorMessage;
 import com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin;
 import com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon;

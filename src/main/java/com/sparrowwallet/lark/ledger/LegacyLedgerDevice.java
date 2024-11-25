@@ -11,7 +11,7 @@ import com.sparrowwallet.drongo.psbt.PSBT;
 import com.sparrowwallet.drongo.psbt.PSBTInput;
 import com.sparrowwallet.drongo.psbt.PSBTOutput;
 import com.sparrowwallet.lark.DeviceException;
-import com.sparrowwallet.lark.Version;
+import com.sparrowwallet.drongo.Version;
 import com.sparrowwallet.lark.ledger.legacy.Btchip;
 import com.sparrowwallet.lark.ledger.wallet.WalletPolicy;
 

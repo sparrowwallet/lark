@@ -2,7 +2,7 @@ package com.sparrowwallet.lark.trezor;
 
 import com.sparrowwallet.drongo.wallet.WalletModel;
 import com.sparrowwallet.lark.DeviceId;
-import com.sparrowwallet.lark.Version;
+import com.sparrowwallet.drongo.Version;
 
 import java.util.List;
 

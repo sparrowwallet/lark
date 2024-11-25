@@ -7,7 +7,7 @@ The following hardware wallets (for all models) are supported:
 - Coldcard
 - Trezor
 - Ledger
-- Bitbox02
+- BitBox02
 - Jade
 - Keepkey
 

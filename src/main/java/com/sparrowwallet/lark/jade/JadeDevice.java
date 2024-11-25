@@ -17,11 +17,10 @@ import com.sparrowwallet.drongo.crypto.ChildNumber;
 import com.sparrowwallet.drongo.protocol.ScriptType;
 import com.sparrowwallet.lark.DeviceException;
 import com.sparrowwallet.lark.DeviceProtocolException;
-import com.sparrowwallet.lark.Lark;
-import com.sparrowwallet.lark.net.HttpClientService;
-import com.sparrowwallet.lark.net.http.client.AsyncUtil;
-import com.sparrowwallet.lark.net.http.client.HttpUsage;
-import com.sparrowwallet.lark.net.http.client.IHttpClient;
+import com.sparrowwallet.tern.http.client.AsyncUtil;
+import com.sparrowwallet.tern.http.client.HttpClientService;
+import com.sparrowwallet.tern.http.client.HttpUsage;
+import com.sparrowwallet.tern.http.client.IHttpClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,11 +34,13 @@ public class JadeDevice implements Closeable {
     private static final Logger log = LoggerFactory.getLogger(JadeDevice.class);
 
     private SerialPort serialPort;
+    private HttpClientService httpClientService;
     private final SecureRandom secureRandom = new SecureRandom();
     private final ObjectMapper mapper = new ObjectMapper();
 
-    public JadeDevice(SerialPort serialPort) throws DeviceException {
+    public JadeDevice(SerialPort serialPort, HttpClientService httpClientService) throws DeviceException {
         this.serialPort = serialPort;
+        this.httpClientService = httpClientService;
         connect();
     }
 
@@ -457,10 +458,9 @@ public class JadeDevice implements Closeable {
     }
 
     @SuppressWarnings("unchecked")
-    private static class HttpRequest implements RpcCallback {
+    private class HttpRequest implements RpcCallback {
         @Override
         public Map<String, Object> call(Map<?, ?> params) {
-            HttpClientService httpClientService = Lark.getHttpClientService();
             boolean torProxy = httpClientService.getHttpProxySupplier().getHttpProxy(HttpUsage.DEFAULT).isPresent();
 
             List<String> urls = (List<String>)params.get("urls");

@@ -11,6 +11,7 @@ import com.sparrowwallet.drongo.psbt.PSBTParseException;
 import com.sparrowwallet.drongo.wallet.WalletModel;
 import com.sparrowwallet.lark.jade.JadeDevice;
 import com.sparrowwallet.lark.jade.JadeVersion;
+import com.sparrowwallet.tern.http.client.HttpClientService;
 
 import java.util.List;
 
@@ -21,11 +22,13 @@ public class JadeClient extends HardwareClient {
     private static final Version MIN_SUPPORTED_VERSION = new Version("0.1.47");
 
     private final SerialPort serialPort;
+    private final HttpClientService httpClientService;
     private String masterFingerprint;
 
-    public JadeClient(SerialPort serialPort) throws DeviceException {
+    public JadeClient(SerialPort serialPort, HttpClientService httpClientService) throws DeviceException {
         if(JADE_DEVICE_IDS.stream().anyMatch(deviceId -> deviceId.matches(serialPort))) {
             this.serialPort = serialPort;
+            this.httpClientService = httpClientService;
         } else {
             throw new DeviceException("Not a Jade");
         }
@@ -33,7 +36,7 @@ public class JadeClient extends HardwareClient {
 
     @Override
     void initializeMasterFingerprint() throws DeviceException {
-        try(JadeDevice jadeDevice = new JadeDevice(serialPort)) {
+        try(JadeDevice jadeDevice = new JadeDevice(serialPort, httpClientService)) {
             initialize(jadeDevice);
             this.masterFingerprint = Utils.bytesToHex(jadeDevice.getXpub(Network.get(), "m/0h").getParentFingerprint());
         }
@@ -41,7 +44,7 @@ public class JadeClient extends HardwareClient {
 
     @Override
     ExtendedKey getPubKeyAtPath(String path) throws DeviceException {
-        try(JadeDevice jadeDevice = new JadeDevice(serialPort)) {
+        try(JadeDevice jadeDevice = new JadeDevice(serialPort, httpClientService)) {
             initialize(jadeDevice);
             return jadeDevice.getXpub(Network.get(), path);
         }
@@ -49,7 +52,7 @@ public class JadeClient extends HardwareClient {
 
     @Override
     PSBT signTransaction(PSBT psbt) throws DeviceException {
-        try(JadeDevice jadeDevice = new JadeDevice(serialPort)) {
+        try(JadeDevice jadeDevice = new JadeDevice(serialPort, httpClientService)) {
             initialize(jadeDevice);
             byte[] psbtBytes = psbt.serialize();
             byte[] signedPsbtBytes = jadeDevice.signTransaction(Network.get(), psbtBytes);
@@ -61,7 +64,7 @@ public class JadeClient extends HardwareClient {
 
     @Override
     String signMessage(String message, String path) throws DeviceException {
-        try(JadeDevice jadeDevice = new JadeDevice(serialPort)) {
+        try(JadeDevice jadeDevice = new JadeDevice(serialPort, httpClientService)) {
             initialize(jadeDevice);
             return jadeDevice.signMessage(message, path);
         }
@@ -69,7 +72,7 @@ public class JadeClient extends HardwareClient {
 
     @Override
     String displaySinglesigAddress(String path, ScriptType scriptType) throws DeviceException {
-        try(JadeDevice jadeDevice = new JadeDevice(serialPort)) {
+        try(JadeDevice jadeDevice = new JadeDevice(serialPort, httpClientService)) {
             initialize(jadeDevice);
             return jadeDevice.displaySinglesigAddress(Network.get(), path, scriptType);
         }
@@ -77,7 +80,7 @@ public class JadeClient extends HardwareClient {
 
     @Override
     String displayMultisigAddress(OutputDescriptor outputDescriptor) throws DeviceException {
-        try(JadeDevice jadeDevice = new JadeDevice(serialPort)) {
+        try(JadeDevice jadeDevice = new JadeDevice(serialPort, httpClientService)) {
             initialize(jadeDevice);
             String name = getWalletNameOrDefault(outputDescriptor);
             jadeDevice.registerMultisig(Network.get(), name, outputDescriptor);

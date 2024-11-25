@@ -1,6 +1,7 @@
 package com.sparrowwallet.lark;
 
 import com.fazecast.jSerialComm.SerialPort;
+import com.sparrowwallet.tern.http.client.HttpClientService;
 import org.hid4java.HidDevice;
 import org.usb4java.Device;
 import org.usb4java.DeviceDescriptor;
@@ -14,8 +15,8 @@ public enum HardwareType {
     },
     JADE("jade") {
         @Override
-        public HardwareClient createClient(SerialPort serialPort) throws DeviceException {
-            return new JadeClient(serialPort);
+        public HardwareClient createClient(SerialPort serialPort, HttpClientService httpClientService) throws DeviceException {
+            return new JadeClient(serialPort, httpClientService);
         }
     },
     BITBOX_02("bitbox02") {
@@ -61,7 +62,7 @@ public enum HardwareType {
         throw new DeviceException("Not an HID hardware type");
     }
 
-    public HardwareClient createClient(SerialPort serialPort) throws DeviceException {
+    public HardwareClient createClient(SerialPort serialPort, HttpClientService httpClientService) throws DeviceException {
         throw new DeviceException("Not a serial hardware type");
     }
 
@@ -81,10 +82,10 @@ public enum HardwareType {
         throw new DeviceNotFoundException("No HID hardware type for vendor id: " + hidDevice.getVendorId() + ", product id: " + hidDevice.getProductId());
     }
 
-    public static HardwareClient fromSerialPort(SerialPort serialPort) throws DeviceException {
+    public static HardwareClient fromSerialPort(SerialPort serialPort, HttpClientService httpClientService) throws DeviceException {
         for(HardwareType type : values()) {
             try {
-                return type.createClient(serialPort);
+                return type.createClient(serialPort, httpClientService);
             } catch(DeviceException e) {
                 //ignore
             }

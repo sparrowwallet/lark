@@ -36,10 +36,10 @@ public class Lark {
 
     private static final Logger log = LoggerFactory.getLogger(Lark.class);
 
-    private static final HttpClientService httpClientService = new HttpClientService(null);
     private static final Object lock = new Object();
     private static boolean consoleOutput;
 
+    private final HttpClientService httpClientService;
     private String passphrase;
     private BitBoxNoiseConfig bitBoxNoiseConfig;
     private final Map<OutputDescriptor, String> walletNames = new HashMap<>();
@@ -48,6 +48,14 @@ public class Lark {
     static {
         LibUsb.init(null);
         Runtime.getRuntime().addShutdownHook(new Thread(() -> LibUsb.exit(null)));
+    }
+
+    public Lark() {
+        this(new HttpClientService());
+    }
+
+    public Lark(HttpClientService httpClientService) {
+        this.httpClientService = httpClientService;
     }
 
     /**
@@ -133,7 +141,7 @@ public class Lark {
         for(SerialPort serialPort : serialPorts) {
             HardwareClient hardwareClient = null;
             try {
-                hardwareClient = HardwareType.fromSerialPort(serialPort);
+                hardwareClient = HardwareType.fromSerialPort(serialPort, httpClientService);
                 hardwareClient.setWalletNames(walletNames);
                 if(foundClients.add(hardwareClient) && initializeMasterFingerprint) {
                     hardwareClient.initializeMasterFingerprint();
@@ -658,10 +666,6 @@ public class Lark {
             HardwareClient hardwareClient = getHardwareClient(fingerprint);
             return hardwareClient.togglePassphrase();
         }
-    }
-
-    public static HttpClientService getHttpClientService() {
-        return httpClientService;
     }
 
     public static boolean isConsoleOutput() {

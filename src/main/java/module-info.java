@@ -1,4 +1,4 @@
-module com.sparrowwallet.lark {
+open module com.sparrowwallet.lark {
     requires co.nstant.in.cbor;
     requires com.fazecast.jSerialComm;
     requires com.google.protobuf;

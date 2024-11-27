@@ -513,7 +513,7 @@ public class TrezorDevice implements Closeable {
      * Release the interface and close this device.
      */
     public void close() {
-        if(this.deviceHandle != null) {
+        if(deviceHandle != null && deviceHandle.getPointer() != 0) {
             int result = LibUsb.releaseInterface(deviceHandle, TREZOR_INTERFACE);
             if(result != LibUsb.SUCCESS) {
                 log.error("Unable to release interface, returned " + result);

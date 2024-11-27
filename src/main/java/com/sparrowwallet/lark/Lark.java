@@ -71,15 +71,17 @@ public class Lark {
      * @return a list of all connected devices
      */
     public List<HardwareClient> enumerate() {
-        return enumerate(true);
+        try(LarkContext context = new LarkContext()) {
+            return enumerate(context, true);
+        }
     }
 
-    private List<HardwareClient> enumerate(boolean initializeMasterFingerprint) {
+    private List<HardwareClient> enumerate(LarkContext context, boolean initializeMasterFingerprint) {
         synchronized(lock) {
             List<HardwareClient> foundClients = new ArrayList<>();
             foundClients.addAll(enumerateHidClients(initializeMasterFingerprint));
             foundClients.addAll(enumerateSerialClients(initializeMasterFingerprint));
-            foundClients.addAll(enumerateWebusbClients(initializeMasterFingerprint));
+            foundClients.addAll(enumerateWebusbClients(context, initializeMasterFingerprint));
             return foundClients;
         }
     }
@@ -145,14 +147,11 @@ public class Lark {
         return foundClients;
     }
 
-    private Collection<HardwareClient> enumerateWebusbClients(boolean initializeMasterFingerprint) {
-        Context context = new Context();
-        LibUsb.init(context);
-
+    private Collection<HardwareClient> enumerateWebusbClients(LarkContext larkContext, boolean initializeMasterFingerprint) {
         Set<HardwareClient> foundClients = new LinkedHashSet<>();
 
         DeviceList webUsbDevices = new DeviceList();
-        int result = LibUsb.getDeviceList(context, webUsbDevices);
+        int result = LibUsb.getDeviceList(larkContext.getContext(), webUsbDevices);
         if(result < 0) {
             log.error("Unable to list webusb devices, operation returned " + result);
         }
@@ -187,14 +186,13 @@ public class Lark {
             }
         } finally {
             LibUsb.freeDeviceList(webUsbDevices, true);
-            LibUsb.exit(context);
         }
 
         return foundClients;
     }
 
-    private HardwareClient getHardwareClient(String deviceType) throws DeviceNotFoundException {
-        List<HardwareClient> clients = enumerate(false);
+    private HardwareClient getHardwareClient(LarkContext context, String deviceType) throws DeviceNotFoundException {
+        List<HardwareClient> clients = enumerate(context, false);
         for(HardwareClient client : clients) {
             if(client.getType().equals(deviceType)) {
                 return client;
@@ -204,8 +202,8 @@ public class Lark {
         throw new DeviceNotFoundException("Could not find hardware client with type " + deviceType);
     }
 
-    private HardwareClient getHardwareClient(String deviceType, String devicePath) throws DeviceNotFoundException {
-        List<HardwareClient> clients = enumerate(false);
+    private HardwareClient getHardwareClient(LarkContext context, String deviceType, String devicePath) throws DeviceNotFoundException {
+        List<HardwareClient> clients = enumerate(context, false);
         for(HardwareClient client : clients) {
             if(client.getType().equals(deviceType) && client.getPath().equals(devicePath)) {
                 return client;
@@ -215,8 +213,8 @@ public class Lark {
         throw new DeviceNotFoundException("Could not find hardware client with type " + deviceType + " at path " + devicePath);
     }
 
-    private HardwareClient getHardwareClient(byte[] fingerprint) throws DeviceNotFoundException {
-        List<HardwareClient> clients = enumerate(true);
+    private HardwareClient getHardwareClient(LarkContext context, byte[] fingerprint) throws DeviceNotFoundException {
+        List<HardwareClient> clients = enumerate(context, true);
         for(HardwareClient client : clients) {
             if(client.fingerprint().equals(Utils.bytesToHex(fingerprint))) {
                 return client;
@@ -236,8 +234,10 @@ public class Lark {
      */
     public ExtendedKey getPubKeyAtPath(String deviceType, String path) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(deviceType);
-            return hardwareClient.getPubKeyAtPath(path);
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, deviceType);
+                return hardwareClient.getPubKeyAtPath(path);
+            }
         }
     }
 
@@ -252,8 +252,10 @@ public class Lark {
      */
     public ExtendedKey getPubKeyAtPath(String deviceType, String devicePath, String path) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(deviceType, devicePath);
-            return hardwareClient.getPubKeyAtPath(path);
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, deviceType, devicePath);
+                return hardwareClient.getPubKeyAtPath(path);
+            }
         }
     }
 
@@ -267,8 +269,10 @@ public class Lark {
      */
     public ExtendedKey getPubKeyAtPath(byte[] fingerprint, String path) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(fingerprint);
-            return hardwareClient.getPubKeyAtPath(path);
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, fingerprint);
+                return hardwareClient.getPubKeyAtPath(path);
+            }
         }
     }
 
@@ -282,8 +286,10 @@ public class Lark {
      */
     public PSBT signTransaction(String deviceType, PSBT psbt) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(deviceType);
-            return hardwareClient.signTransaction(psbt);
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, deviceType);
+                return hardwareClient.signTransaction(psbt);
+            }
         }
     }
 
@@ -298,8 +304,10 @@ public class Lark {
      */
     public PSBT signTransaction(String deviceType, String devicePath, PSBT psbt) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(deviceType, devicePath);
-            return hardwareClient.signTransaction(psbt);
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, deviceType, devicePath);
+                return hardwareClient.signTransaction(psbt);
+            }
         }
     }
 
@@ -313,8 +321,10 @@ public class Lark {
      */
     public PSBT signTransaction(byte[] fingerprint, PSBT psbt) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(fingerprint);
-            return hardwareClient.signTransaction(psbt);
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, fingerprint);
+                return hardwareClient.signTransaction(psbt);
+            }
         }
     }
 
@@ -330,8 +340,10 @@ public class Lark {
      */
     public String signMessage(String deviceType, String message, String path) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(deviceType);
-            return hardwareClient.signMessage(message, path);
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, deviceType);
+                return hardwareClient.signMessage(message, path);
+            }
         }
     }
 
@@ -348,8 +360,10 @@ public class Lark {
      */
     public String signMessage(String deviceType, String devicePath, String message, String path) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(deviceType, devicePath);
-            return hardwareClient.signMessage(message, path);
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, deviceType, devicePath);
+                return hardwareClient.signMessage(message, path);
+            }
         }
     }
 
@@ -365,8 +379,10 @@ public class Lark {
      */
     public String signMessage(byte[] fingerprint, String message, String path) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(fingerprint);
-            return hardwareClient.signMessage(message, path);
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, fingerprint);
+                return hardwareClient.signMessage(message, path);
+            }
         }
     }
 
@@ -457,8 +473,10 @@ public class Lark {
      */
     public String displaySinglesigAddress(String deviceType, String path, ScriptType scriptType) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(deviceType);
-            return hardwareClient.displaySinglesigAddress(path, scriptType);
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, deviceType);
+                return hardwareClient.displaySinglesigAddress(path, scriptType);
+            }
         }
     }
 
@@ -474,8 +492,10 @@ public class Lark {
      */
     public String displaySinglesigAddress(String deviceType, String devicePath, String path, ScriptType scriptType) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(deviceType, devicePath);
-            return hardwareClient.displaySinglesigAddress(path, scriptType);
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, deviceType, devicePath);
+                return hardwareClient.displaySinglesigAddress(path, scriptType);
+            }
         }
     }
 
@@ -490,29 +510,37 @@ public class Lark {
      */
     public String displaySinglesigAddress(byte[] fingerprint, String path, ScriptType scriptType) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(fingerprint);
-            return hardwareClient.displaySinglesigAddress(path, scriptType);
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, fingerprint);
+                return hardwareClient.displaySinglesigAddress(path, scriptType);
+            }
         }
     }
 
     private String displayMultisigAddress(String deviceType, OutputDescriptor outputDescriptor) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(deviceType);
-            return hardwareClient.displayMultisigAddress(outputDescriptor);
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, deviceType);
+                return hardwareClient.displayMultisigAddress(outputDescriptor);
+            }
         }
     }
 
     private String displayMultisigAddress(String deviceType, String devicePath, OutputDescriptor outputDescriptor) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(deviceType, devicePath);
-            return hardwareClient.displayMultisigAddress(outputDescriptor);
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, deviceType, devicePath);
+                return hardwareClient.displayMultisigAddress(outputDescriptor);
+            }
         }
     }
 
     private String displayMultisigAddress(byte[] fingerprint, OutputDescriptor outputDescriptor) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(fingerprint);
-            return hardwareClient.displayMultisigAddress(outputDescriptor);
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, fingerprint);
+                return hardwareClient.displayMultisigAddress(outputDescriptor);
+            }
         }
     }
 
@@ -526,8 +554,10 @@ public class Lark {
      */
     public synchronized boolean promptPin(String deviceType) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(deviceType);
-            return hardwareClient.promptPin();
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, deviceType);
+                return hardwareClient.promptPin();
+            }
         }
     }
 
@@ -542,8 +572,10 @@ public class Lark {
      */
     public synchronized boolean promptPin(String deviceType, String devicePath) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(deviceType, devicePath);
-            return hardwareClient.promptPin();
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, deviceType, devicePath);
+                return hardwareClient.promptPin();
+            }
         }
     }
 
@@ -557,8 +589,10 @@ public class Lark {
      */
     public synchronized boolean promptPin(byte[] fingerprint) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(fingerprint);
-            return hardwareClient.promptPin();
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, fingerprint);
+                return hardwareClient.promptPin();
+            }
         }
     }
 
@@ -573,8 +607,10 @@ public class Lark {
      */
     public synchronized boolean sendPin(String deviceType, String pin) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(deviceType);
-            return hardwareClient.sendPin(pin);
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, deviceType);
+                return hardwareClient.sendPin(pin);
+            }
         }
     }
 
@@ -590,8 +626,10 @@ public class Lark {
      */
     public synchronized boolean sendPin(String deviceType, String devicePath, String pin) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(deviceType, devicePath);
-            return hardwareClient.sendPin(pin);
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, deviceType, devicePath);
+                return hardwareClient.sendPin(pin);
+            }
         }
     }
 
@@ -606,8 +644,10 @@ public class Lark {
      */
     public synchronized boolean sendPin(byte[] fingerprint, String pin) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(fingerprint);
-            return hardwareClient.sendPin(pin);
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, fingerprint);
+                return hardwareClient.sendPin(pin);
+            }
         }
     }
 
@@ -621,8 +661,10 @@ public class Lark {
      */
     public synchronized boolean togglePassphrase(String deviceType) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(deviceType);
-            return hardwareClient.togglePassphrase();
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, deviceType);
+                return hardwareClient.togglePassphrase();
+            }
         }
     }
 
@@ -637,8 +679,10 @@ public class Lark {
      */
     public synchronized boolean togglePassphrase(String deviceType, String devicePath) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(deviceType, devicePath);
-            return hardwareClient.togglePassphrase();
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, deviceType, devicePath);
+                return hardwareClient.togglePassphrase();
+            }
         }
     }
 
@@ -652,8 +696,10 @@ public class Lark {
      */
     public synchronized boolean togglePassphrase(byte[] fingerprint) throws DeviceException {
         synchronized(lock) {
-            HardwareClient hardwareClient = getHardwareClient(fingerprint);
-            return hardwareClient.togglePassphrase();
+            try(LarkContext context = new LarkContext()) {
+                HardwareClient hardwareClient = getHardwareClient(context, fingerprint);
+                return hardwareClient.togglePassphrase();
+            }
         }
     }
 

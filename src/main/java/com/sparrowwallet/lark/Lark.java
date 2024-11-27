@@ -28,18 +28,11 @@ public class Lark {
     private static final Object lock = new Object();
     private static boolean consoleOutput;
 
-    private static final Context context = new Context();
-
     private final HttpClientService httpClientService;
     private String passphrase;
     private BitBoxNoiseConfig bitBoxNoiseConfig;
     private final Map<OutputDescriptor, String> walletNames = new HashMap<>();
     private final Map<OutputDescriptor, byte[]> walletRegistrations = new HashMap<>();
-
-    static {
-        LibUsb.init(context);
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> LibUsb.exit(context)));
-    }
 
     public Lark() {
         this(new HttpClientService());
@@ -153,6 +146,9 @@ public class Lark {
     }
 
     private Collection<HardwareClient> enumerateWebusbClients(boolean initializeMasterFingerprint) {
+        Context context = new Context();
+        LibUsb.init(context);
+
         Set<HardwareClient> foundClients = new LinkedHashSet<>();
 
         DeviceList webUsbDevices = new DeviceList();
@@ -191,6 +187,7 @@ public class Lark {
             }
         } finally {
             LibUsb.freeDeviceList(webUsbDevices, true);
+            LibUsb.exit(context);
         }
 
         return foundClients;

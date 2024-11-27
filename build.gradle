@@ -22,7 +22,7 @@ java {
 
 dependencies {
     implementation(project(':drongo'))
-    implementation('org.hid4java:hid4java:0.8.0')
+    implementation('com.sparrowwallet:hid4java:0.8.0')
     implementation('com.fazecast:jSerialComm:2.11.0')
     implementation('com.sparrowwallet:usb4java:1.3.0')
     implementation('co.nstant.in:cbor:0.9')
@@ -48,7 +48,7 @@ extraJavaModuleInfo {
         exports('co.nstant.in.cbor.model')
         exports('co.nstant.in.cbor.builder')
     }
-    module('org.hid4java:hid4java', 'org.hid4java') {
+    module('com.sparrowwallet:hid4java', 'org.hid4java') {
         requires('com.sun.jna')
         exports('org.hid4java')
         exports('org.hid4java.jna')

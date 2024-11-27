@@ -15,10 +15,7 @@ import org.hid4java.HidServicesSpecification;
 import org.hid4java.jna.HidApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.usb4java.Device;
-import org.usb4java.DeviceDescriptor;
-import org.usb4java.DeviceList;
-import org.usb4java.LibUsb;
+import org.usb4java.*;
 
 import java.util.*;
 
@@ -31,6 +28,8 @@ public class Lark {
     private static final Object lock = new Object();
     private static boolean consoleOutput;
 
+    private static final Context context = new Context();
+
     private final HttpClientService httpClientService;
     private String passphrase;
     private BitBoxNoiseConfig bitBoxNoiseConfig;
@@ -38,8 +37,8 @@ public class Lark {
     private final Map<OutputDescriptor, byte[]> walletRegistrations = new HashMap<>();
 
     static {
-        LibUsb.init(null);
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> LibUsb.exit(null)));
+        LibUsb.init(context);
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> LibUsb.exit(context)));
     }
 
     public Lark() {
@@ -157,7 +156,7 @@ public class Lark {
         Set<HardwareClient> foundClients = new LinkedHashSet<>();
 
         DeviceList webUsbDevices = new DeviceList();
-        int result = LibUsb.getDeviceList(null, webUsbDevices);
+        int result = LibUsb.getDeviceList(context, webUsbDevices);
         if(result < 0) {
             log.error("Unable to list webusb devices, operation returned " + result);
         }

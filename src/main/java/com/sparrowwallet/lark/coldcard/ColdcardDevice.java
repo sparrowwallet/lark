@@ -51,23 +51,27 @@ public class ColdcardDevice implements Closeable {
     }
 
     public void resync() throws DeviceException {
-        while(true) {
-            int read = hidDevice.read(new byte[64], 1);
-            if(read <= 0) {
-                break;
+        try {
+            while(true) {
+                int read = hidDevice.read(new byte[64], 1);
+                if(read <= 0) {
+                    break;
+                }
             }
-        }
 
-        byte[] zeroLengthPacket = new byte[64];
-        Arrays.fill(zeroLengthPacket, (byte) 0xFF);
-        zeroLengthPacket[0] = (byte)0x80;
-        hidDevice.write(zeroLengthPacket, zeroLengthPacket.length, (byte)0);
+            byte[] zeroLengthPacket = new byte[64];
+            Arrays.fill(zeroLengthPacket, (byte) 0xFF);
+            zeroLengthPacket[0] = (byte)0x80;
+            hidDevice.write(zeroLengthPacket, zeroLengthPacket.length, (byte)0);
 
-        while(true) {
-            int read = hidDevice.read(new byte[64], 1);
-            if(read <= 0) {
-                break;
+            while(true) {
+                int read = hidDevice.read(new byte[64], 1);
+                if(read <= 0) {
+                    break;
+                }
             }
+        } catch(Exception e) {
+            throw new DeviceException(e.getMessage(), e);
         }
 
         String lastError = hidDevice.getLastErrorMessage();

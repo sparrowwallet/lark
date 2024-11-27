@@ -35,9 +35,13 @@ public class LedgerClient extends HardwareClient {
     }
 
     private LedgerDevice getLedgerDevice(HidDevice hidDevice) throws DeviceException {
-        NewLedgerDevice newLedgerDevice = new NewLedgerDevice(new HIDTransport(hidDevice));
-        LedgerDevice.LedgerVersion ledgerVersion = newLedgerDevice.getVersion();
-        return ledgerVersion.isLegacy() ? new LegacyLedgerDevice(new HIDTransport(hidDevice), ledgerVersion) : newLedgerDevice;
+        try {
+            NewLedgerDevice newLedgerDevice = new NewLedgerDevice(new HIDTransport(hidDevice));
+            LedgerDevice.LedgerVersion ledgerVersion = newLedgerDevice.getVersion();
+            return ledgerVersion.isLegacy() ? new LegacyLedgerDevice(new HIDTransport(hidDevice), ledgerVersion) : newLedgerDevice;
+        } catch(Exception e) {
+            throw new DeviceException(e.getMessage(), e);
+        }
     }
 
     @Override

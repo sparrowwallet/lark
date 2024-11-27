@@ -65,20 +65,24 @@ public class BitBox02Device implements Closeable {
                 this.bitBoxProtocol = new BitBoxProtocolV1(transportLayer);
             }
 
-            if(version.compareTo(new Version("2.0.0")) >= 0) {
-                bitBoxNoiseConfig.attestationCheck(performAttestation());
-                bitBoxProtocol.unlockQuery();
-            }
+            try {
+                if(version.compareTo(new Version("2.0.0")) >= 0) {
+                    bitBoxNoiseConfig.attestationCheck(performAttestation());
+                    bitBoxProtocol.unlockQuery();
+                }
 
-            bitBoxProtocol.noiseConnect(bitBoxNoiseConfig);
+                bitBoxProtocol.noiseConnect(bitBoxNoiseConfig);
 
-            DeviceInfo deviceInfo = getDeviceInfo();
-            if(!deviceInfo.initialized()) {
-                throw new DeviceException("The BitBox02 must be initialized first");
-            }
+                DeviceInfo deviceInfo = getDeviceInfo();
+                if(!deviceInfo.initialized()) {
+                    throw new DeviceException("The BitBox02 must be initialized first");
+                }
 
-            if(deviceInfo.getVersion().compareTo(new Version("9.0.0")) < 0) {
-                throw new DeviceException("The BitBox02 firmware must be updated to at least version 9.0.0");
+                if(deviceInfo.getVersion().compareTo(new Version("9.0.0")) < 0) {
+                    throw new DeviceException("The BitBox02 firmware must be updated to at least version 9.0.0");
+                }
+            } catch(Exception e) {
+                throw new DeviceException(e.getMessage(), e);
             }
         } else {
             throw new DeviceException("Could not parse version from " + serialNumber);

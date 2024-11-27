@@ -741,7 +741,7 @@ public class TrezorClient extends HardwareClient {
 
     @Override
     public String getProductModel() {
-        return "trezor_" + trezorModel.getName().replace(" ", "_").toLowerCase(Locale.ROOT);
+        return trezorModel == null ? "trezor" : "trezor_" + trezorModel.getName().replace(" ", "_").toLowerCase(Locale.ROOT);
     }
 
     public void setPassphrase(String passphrase) {

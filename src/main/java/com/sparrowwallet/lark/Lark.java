@@ -71,17 +71,17 @@ public class Lark {
      * @return a list of all connected devices
      */
     public List<HardwareClient> enumerate() {
-        try(LarkContext context = new LarkContext()) {
-            return enumerate(context, true);
-        }
+        return enumerate(true);
     }
 
-    private List<HardwareClient> enumerate(LarkContext context, boolean initializeMasterFingerprint) {
+    private List<HardwareClient> enumerate(boolean initializeMasterFingerprint) {
         synchronized(lock) {
             List<HardwareClient> foundClients = new ArrayList<>();
+            try(LarkContext context = new LarkContext()) {
+                foundClients.addAll(enumerateWebusbClients(context, initializeMasterFingerprint));
+            }
             foundClients.addAll(enumerateHidClients(initializeMasterFingerprint));
             foundClients.addAll(enumerateSerialClients(initializeMasterFingerprint));
-            foundClients.addAll(enumerateWebusbClients(context, initializeMasterFingerprint));
             return foundClients;
         }
     }
@@ -192,7 +192,7 @@ public class Lark {
     }
 
     private HardwareClient getHardwareClient(LarkContext context, String deviceType) throws DeviceNotFoundException {
-        List<HardwareClient> clients = enumerate(context, false);
+        List<HardwareClient> clients = enumerate(false);
         for(HardwareClient client : clients) {
             if(client.getType().equals(deviceType)) {
                 return client;
@@ -203,7 +203,7 @@ public class Lark {
     }
 
     private HardwareClient getHardwareClient(LarkContext context, String deviceType, String devicePath) throws DeviceNotFoundException {
-        List<HardwareClient> clients = enumerate(context, false);
+        List<HardwareClient> clients = enumerate(false);
         for(HardwareClient client : clients) {
             if(client.getType().equals(deviceType) && client.getPath().equals(devicePath)) {
                 return client;
@@ -214,7 +214,7 @@ public class Lark {
     }
 
     private HardwareClient getHardwareClient(LarkContext context, byte[] fingerprint) throws DeviceNotFoundException {
-        List<HardwareClient> clients = enumerate(context, true);
+        List<HardwareClient> clients = enumerate(true);
         for(HardwareClient client : clients) {
             if(client.fingerprint().equals(Utils.bytesToHex(fingerprint))) {
                 return client;

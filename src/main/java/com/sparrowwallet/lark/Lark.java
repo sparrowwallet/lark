@@ -12,7 +12,6 @@ import org.hid4java.HidDevice;
 import org.hid4java.HidManager;
 import org.hid4java.HidServices;
 import org.hid4java.HidServicesSpecification;
-import org.hid4java.jna.HidApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.usb4java.*;
@@ -95,7 +94,6 @@ public class Lark {
     }
 
     private void enumerateHidClients(ClientOperation clientOperation) throws DeviceException {
-        HidApi.useLibUsbVariant = true;
         HidServicesSpecification hidServicesSpecification = new HidServicesSpecification();
         hidServicesSpecification.setAutoStart(false);
         hidServicesSpecification.setAutoShutdown(false);

@@ -75,13 +75,18 @@ public class BitBoxFileNoiseConfig implements BitBoxNoiseConfig {
             String json = Files.readString(config.toPath(), StandardCharsets.UTF_8);
             return mapper.readValue(json, NoiseFileConfig.class);
         } catch(Exception e) {
-            log.error("Could not read " + config.getAbsolutePath(), e);
+            log.info("Could not read " + config.getAbsolutePath() + ", device pairing required", e);
             return new NoiseFileConfig();
         }
     }
 
     private void write(NoiseFileConfig noiseConfig) {
         try {
+            if(!config.exists()) {
+                config.getParentFile().mkdirs();
+                config.createNewFile();
+            }
+
             mapper.writeValue(config, noiseConfig);
         } catch(Exception e) {
             log.error("Could not write " + config.getAbsolutePath(), e);

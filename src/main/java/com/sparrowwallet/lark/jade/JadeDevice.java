@@ -184,24 +184,19 @@ public class JadeDevice implements Closeable {
     }
 
     private Object rpc(String method, Map<String, Object> params, String inputId, RpcCallback rpcCallback, boolean longTimeout) throws DeviceException {
-        try {
-            Map<String, Object> request = buildRequest(inputId, method, params);
-            Map<String, Object> reply = makeRpcCall(request, longTimeout);
-            Object result = getResultOrThrow(reply);
+        Map<String, Object> request = buildRequest(inputId, method, params);
+        Map<String, Object> reply = makeRpcCall(request, longTimeout);
+        Object result = getResultOrThrow(reply);
 
-            if(result instanceof Map<?,?> map && map.get("http_request") instanceof Map<?,?> httpRequestMap && httpRequestMap.get("params") instanceof Map<?, ?> paramsMap) {
-                RpcCallback httpRequestCallback = rpcCallback == null ? new HttpRequest() : rpcCallback;
-                Map<String, Object> response = httpRequestCallback.call(paramsMap);
-                if(response != null) {
-                    return rpc((String)httpRequestMap.get("on-reply"), response, httpRequestCallback, longTimeout);
-                }
+        if(result instanceof Map<?,?> map && map.get("http_request") instanceof Map<?,?> httpRequestMap && httpRequestMap.get("params") instanceof Map<?, ?> paramsMap) {
+            RpcCallback httpRequestCallback = rpcCallback == null ? new HttpRequest() : rpcCallback;
+            Map<String, Object> response = httpRequestCallback.call(paramsMap);
+            if(response != null) {
+                return rpc((String)httpRequestMap.get("on-reply"), response, httpRequestCallback, longTimeout);
             }
-
-            return result;
-        } catch(JadeResponseException e) {
-            log.error("Jade returned an error response", e);
-            throw e;
         }
+
+        return result;
     }
 
     private Object getResultOrThrow(Map<String, Object> reply) throws DeviceException {

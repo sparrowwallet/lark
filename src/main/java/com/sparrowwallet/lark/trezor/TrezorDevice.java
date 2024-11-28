@@ -55,6 +55,7 @@ public class TrezorDevice implements Closeable {
     private TrezorModel model;
     private Version version;
     private TrezorMessageManagement.Features features;
+    private boolean outdatedFirmware;
 
     public TrezorDevice(Device device, TrezorUI trezorUI) throws DeviceException {
         this.trezorUI = trezorUI;
@@ -112,6 +113,7 @@ public class TrezorDevice implements Closeable {
 
     private void checkFirmwareVersion(boolean warnOnly) throws DeviceException {
         if(isOutdated()) {
+            this.outdatedFirmware = true;
             if(warnOnly) {
                 log.warn("Trezor firmware is outdated, please update to the latest version");
             } else {
@@ -138,6 +140,10 @@ public class TrezorDevice implements Closeable {
 
     public TrezorUI getUI() {
         return trezorUI;
+    }
+
+    public boolean isOutdatedFirmware() {
+        return outdatedFirmware;
     }
 
     public void ensureUnlocked() throws DeviceException {

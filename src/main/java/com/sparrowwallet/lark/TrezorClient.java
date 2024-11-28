@@ -110,6 +110,9 @@ public class TrezorClient extends HardwareClient {
         } else {
             throw new DeviceNotReadyException(getHardwareType().getDisplayName() + " is not initialized.");
         }
+        if(trezorDevice.isOutdatedFirmware()) {
+            this.warnings.add("Trezor firmware is outdated, please update to the latest version");
+        }
     }
 
     private void checkUnlocked(TrezorDevice trezorDevice) throws DeviceException {

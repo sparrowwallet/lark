@@ -302,7 +302,7 @@ public class BitBox02Client extends HardwareClient {
             OutputDescriptor walletDescriptor = new OutputDescriptor(scriptType, m, psbt.getExtendedPublicKeys());
             return getWalletName(walletDescriptor);
         } catch(Exception e) {
-            log.warn("Unable to determine wallet descriptor", e);
+            log.info("Unable to determine wallet name, will require BitBox02 to create one", e);
         }
 
         return null;

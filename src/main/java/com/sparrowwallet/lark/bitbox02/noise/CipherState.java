@@ -2,14 +2,11 @@ package com.sparrowwallet.lark.bitbox02.noise;
 
 import com.sparrowwallet.lark.bitbox02.noise.component.NoiseCipher;
 
-import javax.annotation.Nullable;
-import javax.annotation.concurrent.NotThreadSafe;
 import javax.crypto.AEADBadTagException;
 import javax.crypto.ShortBufferException;
 import java.nio.ByteBuffer;
 import java.security.Key;
 
-@NotThreadSafe
 class CipherState {
 
   private Key key;
@@ -39,7 +36,7 @@ class CipherState {
     return this.key != null;
   }
 
-  public ByteBuffer decrypt(@Nullable final byte[] associatedData, final ByteBuffer ciphertext)
+  public ByteBuffer decrypt(final byte[] associatedData, final ByteBuffer ciphertext)
       throws AEADBadTagException {
 
     final ByteBuffer plaintext = ByteBuffer.allocate(getPlaintextLength(ciphertext.remaining()));
@@ -54,7 +51,7 @@ class CipherState {
     return plaintext.flip();
   }
 
-  public int decrypt(@Nullable final byte[] associatedData, final ByteBuffer ciphertext, final ByteBuffer plaintext)
+  public int decrypt(final byte[] associatedData, final ByteBuffer ciphertext, final ByteBuffer plaintext)
       throws AEADBadTagException, ShortBufferException {
 
     if (hasKey()) {
@@ -70,7 +67,7 @@ class CipherState {
     }
   }
 
-  public byte[] decrypt(@Nullable final byte[] associatedData, final byte[] ciphertext) throws AEADBadTagException {
+  public byte[] decrypt(final byte[] associatedData, final byte[] ciphertext) throws AEADBadTagException {
     final byte[] plaintext = new byte[getPlaintextLength(ciphertext.length)];
 
     try {
@@ -88,7 +85,7 @@ class CipherState {
     return plaintext;
   }
 
-  public int decrypt(@Nullable final byte[] associatedData,
+  public int decrypt(final byte[] associatedData,
                      final byte[] ciphertext,
                      final int ciphertextOffset,
                      final int ciphertextLength,
@@ -113,7 +110,7 @@ class CipherState {
     }
   }
 
-  public ByteBuffer encrypt(@Nullable final byte[] associatedData, final ByteBuffer plaintext) {
+  public ByteBuffer encrypt(final byte[] associatedData, final ByteBuffer plaintext) {
     final ByteBuffer ciphertext = ByteBuffer.allocate(getCiphertextLength(plaintext.remaining()));
 
     try {
@@ -126,7 +123,7 @@ class CipherState {
     return ciphertext.flip();
   }
 
-  public int encrypt(@Nullable final byte[] associatedData, final ByteBuffer plaintext, final ByteBuffer ciphertext) throws ShortBufferException {
+  public int encrypt(final byte[] associatedData, final ByteBuffer plaintext, final ByteBuffer ciphertext) throws ShortBufferException {
     if (hasKey()) {
       final int ciphertextLength = cipher.encrypt(key, nonce, associatedData, plaintext, ciphertext);
       nonce += 1;
@@ -140,7 +137,7 @@ class CipherState {
     }
   }
 
-  public byte[] encrypt(@Nullable final byte[] associatedData, final byte[] plaintext) {
+  public byte[] encrypt(final byte[] associatedData, final byte[] plaintext) {
     final byte[] ciphertext = new byte[getCiphertextLength(plaintext.length)];
 
     try {
@@ -158,7 +155,7 @@ class CipherState {
     return ciphertext;
   }
 
-  public int encrypt(@Nullable final byte[] associatedData,
+  public int encrypt(final byte[] associatedData,
                        final byte[] plaintext,
                        final int plaintextOffset,
                        final int plaintextLength,

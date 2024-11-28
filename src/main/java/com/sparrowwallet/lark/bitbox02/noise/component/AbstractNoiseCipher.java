@@ -1,6 +1,5 @@
 package com.sparrowwallet.lark.bitbox02.noise.component;
 
-import javax.annotation.Nullable;
 import javax.crypto.*;
 import java.nio.ByteBuffer;
 import java.security.InvalidAlgorithmParameterException;
@@ -26,7 +25,7 @@ abstract class AbstractNoiseCipher implements NoiseCipher {
   @Override
   public int encrypt(final Key key,
                      final long nonce,
-                     @Nullable final byte[] associatedData,
+                     final byte[] associatedData,
                      final ByteBuffer plaintext,
                      final ByteBuffer ciphertext) throws ShortBufferException {
 
@@ -42,7 +41,7 @@ abstract class AbstractNoiseCipher implements NoiseCipher {
   @Override
   public int encrypt(final Key key,
                      final long nonce,
-                     @Nullable final byte[] associatedData,
+                     final byte[] associatedData,
                      final byte[] plaintext,
                      final int plaintextOffset,
                      final int plaintextLength,
@@ -62,7 +61,7 @@ abstract class AbstractNoiseCipher implements NoiseCipher {
   @Override
   public int decrypt(final Key key,
                      final long nonce,
-                     @Nullable final byte[] associatedData,
+                     final byte[] associatedData,
                      final ByteBuffer ciphertext,
                      final ByteBuffer plaintext) throws AEADBadTagException, ShortBufferException {
 
@@ -78,7 +77,7 @@ abstract class AbstractNoiseCipher implements NoiseCipher {
   @Override
   public int decrypt(final Key key,
                      final long nonce,
-                     @Nullable final byte[] associatedData,
+                     final byte[] associatedData,
                      final byte[] ciphertext,
                      final int ciphertextOffset,
                      final int ciphertextLength,

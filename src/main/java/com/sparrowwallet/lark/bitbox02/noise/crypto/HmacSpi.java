@@ -1,6 +1,5 @@
 package com.sparrowwallet.lark.bitbox02.noise.crypto;
 
-import javax.annotation.Nullable;
 import javax.crypto.MacSpi;
 import java.security.*;
 import java.security.spec.AlgorithmParameterSpec;
@@ -32,7 +31,7 @@ abstract class HmacSpi extends MacSpi {
   }
 
   @Override
-  protected void engineInit(final Key key, @Nullable final AlgorithmParameterSpec params) throws InvalidKeyException, InvalidAlgorithmParameterException {
+  protected void engineInit(final Key key, final AlgorithmParameterSpec params) throws InvalidKeyException, InvalidAlgorithmParameterException {
     if (!key.getAlgorithm().equals(KEY_ALGORITHM)) {
       throw new InvalidKeyException("HMAC only supports RAW keys");
     }

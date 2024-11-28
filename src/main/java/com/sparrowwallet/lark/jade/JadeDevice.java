@@ -11,7 +11,6 @@ import co.nstant.in.cbor.model.Number;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortTimeoutException;
-import com.google.common.base.CharMatcher;
 import com.sparrowwallet.drongo.*;
 import com.sparrowwallet.drongo.crypto.ChildNumber;
 import com.sparrowwallet.drongo.protocol.ScriptType;
@@ -394,7 +393,7 @@ public class JadeDevice implements Closeable {
             }
         } catch(CborException e) {
             String recieved = new String(cborMsg, StandardCharsets.UTF_8);
-            if(CharMatcher.ascii().matchesAllOf(recieved)) {
+            if(recieved.chars().allMatch(ch -> ch >= 0 && ch <= 127)) {
                 throw new DeviceException("Error decoding response from device, recieved " + new String(cborMsg, StandardCharsets.UTF_8), e);
             } else {
                 throw new DeviceException("Error decoding response from device, recieved " + cborMsg.length + " bytes of " + Utils.bytesToHex(cborMsg), e);

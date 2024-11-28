@@ -1,6 +1,5 @@
 package com.sparrowwallet.lark.bitbox02.noise.crypto;
 
-import javax.annotation.Nullable;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.security.MessageDigestSpi;
@@ -41,7 +40,7 @@ class Blake2sMessageDigestSpi extends MessageDigestSpi {
     this(hashLength, null);
   }
 
-  public Blake2sMessageDigestSpi(final int hashLength, @Nullable final byte[] key) {
+  public Blake2sMessageDigestSpi(final int hashLength, final byte[] key) {
     if (hashLength < 1 || hashLength > 32) {
       throw new IllegalArgumentException("Hash length must be between 1 and 32 bytes");
     }

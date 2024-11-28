@@ -28,11 +28,10 @@ dependencies {
     implementation('co.nstant.in:cbor:0.9')
     implementation('com.fasterxml.jackson.core:jackson-databind:2.17.2')
     implementation('org.apache.commons:commons-lang3:3.7')
-    implementation('com.google.guava:guava:33.0.0-jre')
     implementation('com.google.protobuf:protobuf-java:4.28.3')
     implementation('commons-codec:commons-codec:1.17.1')
     implementation('org.slf4j:slf4j-api:2.0.12')
-    implementation('com.sparrowwallet:tern:1.0.5')
+    implementation('com.sparrowwallet:tern:1.0.6')
     implementation('io.reactivex.rxjava2:rxjava:2.2.15')
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation('org.junit.jupiter:junit-jupiter')
@@ -56,7 +55,5 @@ extraJavaModuleInfo {
     module('com.sparrowwallet:usb4java', 'org.usb4java') {
         exports('org.usb4java')
     }
-    module('com.google.guava:listenablefuture|empty-to-avoid-conflict-with-guava', 'com.google.guava.listenablefuture')
     module('com.google.code.findbugs:jsr305', 'com.google.code.findbugs.jsr305')
-    module('j2objc-annotations-2.8.jar', 'com.google.j2objc.j2objc.annotations', '2.8')
 }

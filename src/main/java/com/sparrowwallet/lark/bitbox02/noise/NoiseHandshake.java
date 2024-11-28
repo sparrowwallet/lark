@@ -4,7 +4,6 @@ import com.sparrowwallet.lark.bitbox02.noise.component.NoiseCipher;
 import com.sparrowwallet.lark.bitbox02.noise.component.NoiseHash;
 import com.sparrowwallet.lark.bitbox02.noise.component.NoiseKeyAgreement;
 
-import javax.annotation.Nullable;
 import javax.crypto.AEADBadTagException;
 import javax.crypto.ShortBufferException;
 import java.nio.ByteBuffer;
@@ -147,19 +146,14 @@ public class NoiseHandshake {
 
   private final byte[] prologue;
 
-  @Nullable
   private KeyPair localEphemeralKeyPair;
 
-  @Nullable
   private PublicKey remoteEphemeralPublicKey;
 
-  @Nullable
   private final KeyPair localStaticKeyPair;
 
-  @Nullable
   private PublicKey remoteStaticPublicKey;
 
-  @Nullable
   private final List<byte[]> preSharedKeys;
 
   private int currentPreSharedKey;
@@ -189,12 +183,12 @@ public class NoiseHandshake {
                  final NoiseKeyAgreement keyAgreement,
                  final NoiseCipher noiseCipher,
                  final NoiseHash noiseHash,
-                 @Nullable final byte[] prologue,
-                 @Nullable final KeyPair localStaticKeyPair,
-                 @Nullable final KeyPair localEphemeralKeyPair,
-                 @Nullable final PublicKey remoteStaticPublicKey,
-                 @Nullable final PublicKey remoteEphemeralPublicKey,
-                 @Nullable final List<byte[]> preSharedKeys) {
+                 final byte[] prologue,
+                 final KeyPair localStaticKeyPair,
+                 final KeyPair localEphemeralKeyPair,
+                 final PublicKey remoteStaticPublicKey,
+                 final PublicKey remoteEphemeralPublicKey,
+                 final List<byte[]> preSharedKeys) {
 
     this.handshakePattern = handshakePattern;
     this.role = role;
@@ -661,7 +655,7 @@ public class NoiseHandshake {
    * @see #isExpectingWrite()
    * @see <a href="https://noiseprotocol.org/noise.html#payload-security-properties">The Noise Protocol Framework - Payload security properties</a>
    */
-  public byte[] writeMessage(@Nullable final byte[] payload) {
+  public byte[] writeMessage(final byte[] payload) {
     final int payloadLength = payload != null ? payload.length : 0;
     checkOutboundMessageSize(payloadLength);
 
@@ -706,7 +700,7 @@ public class NoiseHandshake {
    * @see <a href="https://noiseprotocol.org/noise.html#payload-security-properties">The Noise Protocol Framework -
    * Payload security properties</a>
    */
-  public int writeMessage(@Nullable final byte[] payload,
+  public int writeMessage(final byte[] payload,
                           final int payloadOffset,
                           final int payloadLength,
                           final byte[] message,
@@ -797,7 +791,7 @@ public class NoiseHandshake {
    * @see #isExpectingWrite()
    * @see <a href="https://noiseprotocol.org/noise.html#payload-security-properties">The Noise Protocol Framework - Payload security properties</a>
    */
-  public ByteBuffer writeMessage(@Nullable final ByteBuffer payload) {
+  public ByteBuffer writeMessage(final ByteBuffer payload) {
     final int payloadLength = payload != null ? payload.remaining() : 0;
     checkOutboundMessageSize(payloadLength);
 
@@ -843,7 +837,7 @@ public class NoiseHandshake {
    * @see <a href="https://noiseprotocol.org/noise.html#payload-security-properties">The Noise Protocol Framework -
    * Payload security properties</a>
    */
-  public int writeMessage(@Nullable final ByteBuffer payload,
+  public int writeMessage(final ByteBuffer payload,
                           final ByteBuffer message) throws ShortBufferException {
 
     final int payloadLength = payload != null ? payload.remaining() : 0;
@@ -1282,7 +1276,7 @@ public class NoiseHandshake {
    *
    * @see HandshakePattern#isFallbackPattern()
    */
-  public NoiseHandshake fallbackTo(final String handshakePatternName, @Nullable final List<byte[]> preSharedKeys) throws NoSuchPatternException {
+  public NoiseHandshake fallbackTo(final String handshakePatternName, final List<byte[]> preSharedKeys) throws NoSuchPatternException {
     if (hasFallenBack) {
       throw new IllegalStateException("Handshake has already fallen back to another pattern");
     }
@@ -1293,7 +1287,7 @@ public class NoiseHandshake {
       throw new IllegalArgumentException(handshakePatternName + " is not a valid fallback pattern name");
     }
 
-    @Nullable final KeyPair fallbackLocalStaticKeyPair;
+    final KeyPair fallbackLocalStaticKeyPair;
 
     if (fallbackPattern.requiresLocalStaticKeyPair(role)) {
       if (localStaticKeyPair != null) {
@@ -1305,7 +1299,7 @@ public class NoiseHandshake {
       fallbackLocalStaticKeyPair = null;
     }
 
-    @Nullable final PublicKey fallbackRemoteStaticPublicKey;
+    final PublicKey fallbackRemoteStaticPublicKey;
 
     if (fallbackPattern.requiresRemoteStaticPublicKey(role)) {
       if (remoteStaticPublicKey != null) {
@@ -1317,7 +1311,7 @@ public class NoiseHandshake {
       fallbackRemoteStaticPublicKey = null;
     }
 
-    @Nullable final PublicKey fallbackRemoteEphemeralPublicKey;
+    final PublicKey fallbackRemoteEphemeralPublicKey;
 
     if (fallbackPattern.requiresRemoteEphemeralPublicKey(role)) {
       if (remoteEphemeralPublicKey != null) {
@@ -1462,7 +1456,6 @@ public class NoiseHandshake {
     return hash;
   }
 
-    @Nullable
     public PublicKey getRemoteStaticPublicKey() {
         return remoteStaticPublicKey;
     }

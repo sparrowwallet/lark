@@ -1,6 +1,5 @@
 package com.sparrowwallet.lark.bitbox02.noise.component;
 
-import javax.annotation.Nullable;
 import javax.crypto.AEADBadTagException;
 import javax.crypto.ShortBufferException;
 import java.nio.ByteBuffer;
@@ -77,7 +76,7 @@ public interface NoiseCipher {
    */
   default ByteBuffer encrypt(final Key key,
                              final long nonce,
-                             @Nullable final byte[] associatedData,
+                             final byte[] associatedData,
                              final ByteBuffer plaintext) {
 
     final ByteBuffer ciphertext = ByteBuffer.allocate(getCiphertextLength(plaintext.remaining()));
@@ -121,7 +120,7 @@ public interface NoiseCipher {
    */
   int encrypt(final Key key,
               final long nonce,
-              @Nullable final byte[] associatedData,
+              final byte[] associatedData,
               final ByteBuffer plaintext,
               final ByteBuffer ciphertext)
       throws ShortBufferException;
@@ -141,7 +140,7 @@ public interface NoiseCipher {
    */
   default byte[] encrypt(final Key key,
                          final long nonce,
-                         @Nullable final byte[] associatedData,
+                         final byte[] associatedData,
                          final byte[] plaintext) {
 
     final byte[] ciphertext = new byte[getCiphertextLength(plaintext.length)];
@@ -191,7 +190,7 @@ public interface NoiseCipher {
    */
   int encrypt(final Key key,
               final long nonce,
-              @Nullable final byte[] associatedData,
+              final byte[] associatedData,
               final byte[] plaintext,
               final int plaintextOffset,
               final int plaintextLength,
@@ -221,7 +220,7 @@ public interface NoiseCipher {
    */
   default ByteBuffer decrypt(final Key key,
                              final long nonce,
-                             @Nullable final byte[] associatedData,
+                             final byte[] associatedData,
                              final ByteBuffer ciphertext) throws AEADBadTagException {
 
     final ByteBuffer plaintext = ByteBuffer.allocate(getPlaintextLength(ciphertext.remaining()));
@@ -264,7 +263,7 @@ public interface NoiseCipher {
    */
   int decrypt(final Key key,
               final long nonce,
-              @Nullable final byte[] associatedData,
+              final byte[] associatedData,
               final ByteBuffer ciphertext,
               final ByteBuffer plaintext)
       throws AEADBadTagException, ShortBufferException;
@@ -287,7 +286,7 @@ public interface NoiseCipher {
    */
   default byte[] decrypt(final Key key,
                          final long nonce,
-                         @Nullable final byte[] associatedData,
+                         final byte[] associatedData,
                          final byte[] ciphertext) throws AEADBadTagException {
 
     final byte[] plaintext = new byte[getPlaintextLength(ciphertext.length)];
@@ -338,7 +337,7 @@ public interface NoiseCipher {
    */
   int decrypt(final Key key,
               final long nonce,
-              @Nullable final byte[] associatedData,
+              final byte[] associatedData,
               final byte[] ciphertext,
               final int ciphertextOffset,
               final int ciphertextLength,

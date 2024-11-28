@@ -1,6 +1,5 @@
 package com.sparrowwallet.lark.bitbox02.noise;
 
-import javax.annotation.Nullable;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
@@ -422,11 +421,11 @@ class HandshakePattern {
       return FUNDAMENTAL_PATTERNS_BY_NAME.get(name);
     }
 
-    @Nullable final HandshakePattern derivedPattern = DERIVED_PATTERNS_BY_NAME.computeIfAbsent(name, n -> {
+    final HandshakePattern derivedPattern = DERIVED_PATTERNS_BY_NAME.computeIfAbsent(name, n -> {
       try {
         final String fundamentalPatternName = getFundamentalPatternName(name);
 
-        @Nullable HandshakePattern handshakePattern;
+        HandshakePattern handshakePattern;
 
         if (FUNDAMENTAL_PATTERNS_BY_NAME.containsKey(fundamentalPatternName)) {
           handshakePattern = FUNDAMENTAL_PATTERNS_BY_NAME.get(fundamentalPatternName);

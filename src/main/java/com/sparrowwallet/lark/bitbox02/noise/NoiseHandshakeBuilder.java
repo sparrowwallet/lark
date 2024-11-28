@@ -2,7 +2,6 @@ package com.sparrowwallet.lark.bitbox02.noise;
 
 import com.sparrowwallet.lark.bitbox02.noise.component.*;
 
-import javax.annotation.Nullable;
 import java.security.KeyPair;
 import java.security.NoSuchAlgorithmException;
 import java.security.PublicKey;
@@ -31,21 +30,21 @@ public class NoiseHandshakeBuilder {
   private final NoiseHandshake.Role role;
   private final HandshakePattern handshakePattern;
 
-  @Nullable private final KeyPair localStaticKeyPair;
-  @Nullable private final PublicKey remoteStaticPublicKey;
-  @Nullable private final byte[] preSharedKey;
+  private final KeyPair localStaticKeyPair;
+  private final PublicKey remoteStaticPublicKey;
+  private final byte[] preSharedKey;
 
-  @Nullable private byte[] prologue;
+  private byte[] prologue;
 
-  @Nullable private NoiseCipher cipher;
-  @Nullable private NoiseHash hash;
-  @Nullable private NoiseKeyAgreement keyAgreement;
+  private NoiseCipher cipher;
+  private NoiseHash hash;
+  private NoiseKeyAgreement keyAgreement;
 
   private NoiseHandshakeBuilder(final NoiseHandshake.Role role,
                                 final HandshakePattern handshakePattern,
-                                @Nullable final KeyPair localStaticKeyPair,
-                                @Nullable final PublicKey remoteStaticPublicKey,
-                                @Nullable final byte[] preSharedKey) {
+                                final KeyPair localStaticKeyPair,
+                                final PublicKey remoteStaticPublicKey,
+                                final byte[] preSharedKey) {
 
     this.role = role;
     this.handshakePattern = handshakePattern;
@@ -66,7 +65,7 @@ public class NoiseHandshakeBuilder {
    *
    * @return a reference to this handshake builder
    */
-  public NoiseHandshakeBuilder setPrologue(@Nullable final byte[] prologue) {
+  public NoiseHandshakeBuilder setPrologue(final byte[] prologue) {
     this.prologue = prologue;
     return this;
   }

@@ -2,7 +2,6 @@ package com.sparrowwallet.lark.bitbox02.noise;
 
 import com.sparrowwallet.lark.bitbox02.noise.component.*;
 
-import javax.annotation.Nullable;
 import java.security.KeyPair;
 import java.security.NoSuchAlgorithmException;
 import java.security.PublicKey;
@@ -47,12 +46,12 @@ public class NamedProtocolHandshakeBuilder {
 
   private final NoiseHandshake.Role role;
 
-  @Nullable private KeyPair localEphemeralKeyPair;
-  @Nullable private KeyPair localStaticKeyPair;
-  @Nullable private PublicKey remoteStaticPublicKey;
-  @Nullable private List<byte[]> preSharedKeys;
+  private KeyPair localEphemeralKeyPair;
+  private KeyPair localStaticKeyPair;
+  private PublicKey remoteStaticPublicKey;
+  private List<byte[]> preSharedKeys;
 
-  @Nullable private byte[] prologue;
+  private byte[] prologue;
 
   /**
    * Constructs a new Noise handshake for the given Noise protocol name and role.
@@ -92,12 +91,12 @@ public class NamedProtocolHandshakeBuilder {
    *
    * @return a reference to this handshake builder
    */
-  public NamedProtocolHandshakeBuilder setPrologue(@Nullable final byte[] prologue) {
+  public NamedProtocolHandshakeBuilder setPrologue(final byte[] prologue) {
     this.prologue = prologue;
     return this;
   }
 
-  NamedProtocolHandshakeBuilder setLocalEphemeralKeyPair(@Nullable final KeyPair localEphemeralKeyPair) {
+  NamedProtocolHandshakeBuilder setLocalEphemeralKeyPair(final KeyPair localEphemeralKeyPair) {
     this.localEphemeralKeyPair = localEphemeralKeyPair;
     return this;
   }

@@ -57,9 +57,10 @@ public class TrezorDevice implements Closeable {
     private TrezorMessageManagement.Features features;
     private boolean outdatedFirmware;
 
-    public TrezorDevice(Device device, TrezorUI trezorUI) throws DeviceException {
+    public TrezorDevice(Device device, TrezorUI trezorUI, TrezorModel trezorModel) throws DeviceException {
         this.trezorUI = trezorUI;
         this.deviceHandle = new DeviceHandle();
+        this.model = trezorModel;
         int result = LibUsb.open(device, deviceHandle);
         if(result != LibUsb.SUCCESS) {
             throw new DeviceException("Could not open Trezor at " + deviceHandle + ", returned " + result);
@@ -545,7 +546,11 @@ public class TrezorDevice implements Closeable {
             msgName = "TxAck";
         }
         int messageType = TrezorMessage.MessageType.valueOf("MessageType_" + msgName).getNumber();
-        messageWrite(messageType, message.toByteArray());
+        byte[] messageBytes = message.toByteArray();
+        if(log.isDebugEnabled()) {
+            log.debug("Type " + messageType + " (" + messageBytes.length + " bytes):" + Utils.bytesToHex(messageBytes));
+        }
+        messageWrite(messageType, messageBytes);
     }
 
     private void messageWrite(int messageType, byte[] messageData) throws DeviceException {
@@ -739,6 +744,9 @@ public class TrezorDevice implements Closeable {
             if(log.isDebugEnabled()) {
                 String msgName = message.getClass().getSimpleName();
                 log.debug("< " + msgName);
+            }
+            if(log.isDebugEnabled()) {
+                log.debug("Type " + messageType.getNumber() + " (" + msgData.length + " bytes):" + Utils.bytesToHex(msgData));
             }
             return message;
         } catch(Exception ex) {

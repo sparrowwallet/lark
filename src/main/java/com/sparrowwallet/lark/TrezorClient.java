@@ -64,14 +64,15 @@ public class TrezorClient extends HardwareClient {
     private final List<String> warnings = new ArrayList<>();
 
     public TrezorClient(Device device, DeviceDescriptor deviceDescriptor) throws DeviceException {
-        this(TREZOR_DEVICE_IDS, device, deviceDescriptor);
+        this(TREZOR_DEVICE_IDS, device, deviceDescriptor, null);
     }
 
-    protected TrezorClient(List<DeviceId> deviceIds, Device device, DeviceDescriptor deviceDescriptor) throws DeviceException {
+    protected TrezorClient(List<DeviceId> deviceIds, Device device, DeviceDescriptor deviceDescriptor, TrezorModel trezorModel) throws DeviceException {
         if(deviceIds.stream().anyMatch(deviceId -> deviceId.matches(deviceDescriptor))) {
             this.device = device;
             this.busNumber = LibUsb.getBusNumber(device);
             LibUsb.getPortNumbers(device, portNumbers);
+            this.trezorModel = trezorModel;
         } else {
             throw new DeviceException("Not a " + getHardwareType().getDisplayName());
         }
@@ -130,13 +131,16 @@ public class TrezorClient extends HardwareClient {
     }
 
     private String getMasterFingerprint(TrezorDevice trezorDevice) throws DeviceException {
-        TrezorMessageBitcoin.PublicKey masterKey = trezorDevice.getPublicNode(Network.MAINNET, List.of(ChildNumber.ONE_HARDENED));
-        return Integer.toHexString(masterKey.getRootFingerprint());
+        TrezorMessageBitcoin.PublicKey masterKey = trezorDevice.getPublicNode(Network.MAINNET, List.of(ChildNumber.ZERO_HARDENED));
+        if(masterKey.getRootFingerprint() != 0) {
+            return Integer.toHexString(masterKey.getRootFingerprint());
+        }
+        return Utils.bytesToHex(Arrays.copyOfRange(Base58.decode(masterKey.getXpub()), 5, 9));
     }
 
     @Override
     void initializeMasterFingerprint() throws DeviceException {
-        try(TrezorDevice trezorDevice = new TrezorDevice(device, new PassphraseUI(passphrase))) {
+        try(TrezorDevice trezorDevice = new TrezorDevice(device, new PassphraseUI(passphrase), trezorModel)) {
             prepareDevice(trezorDevice);
         }
     }
@@ -147,7 +151,7 @@ public class TrezorClient extends HardwareClient {
 
     @Override
     ExtendedKey getPubKeyAtPath(String path) throws DeviceException {
-        try(TrezorDevice trezorDevice = new TrezorDevice(device, new PassphraseUI(passphrase))) {
+        try(TrezorDevice trezorDevice = new TrezorDevice(device, new PassphraseUI(passphrase), trezorModel)) {
             checkUnlocked(trezorDevice);
             TrezorMessageBitcoin.PublicKey publicKey = trezorDevice.getPublicNode(Network.get(), KeyDerivation.parsePath(path));
             return ExtendedKey.fromDescriptor(publicKey.getXpub());
@@ -167,7 +171,7 @@ public class TrezorClient extends HardwareClient {
      */
     @Override
     PSBT signTransaction(PSBT psbt) throws DeviceException {
-        try(TrezorDevice trezorDevice = new TrezorDevice(device, new PassphraseUI(passphrase))) {
+        try(TrezorDevice trezorDevice = new TrezorDevice(device, new PassphraseUI(passphrase), trezorModel)) {
             checkUnlocked(trezorDevice);
 
             int passes = 1;
@@ -518,7 +522,7 @@ public class TrezorClient extends HardwareClient {
 
     @Override
     String signMessage(String message, String path) throws DeviceException {
-        try(TrezorDevice trezorDevice = new TrezorDevice(device, new PassphraseUI(passphrase))) {
+        try(TrezorDevice trezorDevice = new TrezorDevice(device, new PassphraseUI(passphrase), trezorModel)) {
             checkUnlocked(trezorDevice);
 
             TrezorMessageBitcoin.InputScriptType scriptType = TrezorMessageBitcoin.InputScriptType.SPENDADDRESS;
@@ -536,7 +540,7 @@ public class TrezorClient extends HardwareClient {
 
     @Override
     String displaySinglesigAddress(String path, ScriptType scriptType) throws DeviceException {
-        try(TrezorDevice trezorDevice = new TrezorDevice(device, new PassphraseUI(passphrase))) {
+        try(TrezorDevice trezorDevice = new TrezorDevice(device, new PassphraseUI(passphrase), trezorModel)) {
             checkUnlocked(trezorDevice);
 
             TrezorMessageBitcoin.InputScriptType inputScriptType = switch(scriptType) {
@@ -558,7 +562,7 @@ public class TrezorClient extends HardwareClient {
 
     @Override
     String displayMultisigAddress(OutputDescriptor outputDescriptor) throws DeviceException {
-        try(TrezorDevice trezorDevice = new TrezorDevice(device, new PassphraseUI(passphrase))) {
+        try(TrezorDevice trezorDevice = new TrezorDevice(device, new PassphraseUI(passphrase), trezorModel)) {
             checkUnlocked(trezorDevice);
 
             List<TrezorMessageBitcoin.MultisigRedeemScriptType.HDNodePathType> pubkeys = new ArrayList<>();
@@ -606,7 +610,7 @@ public class TrezorClient extends HardwareClient {
 
     @Override
     public boolean promptPin() throws DeviceException {
-        try(TrezorDevice trezorDevice = new TrezorDevice(device, new PassphraseUI(passphrase))) {
+        try(TrezorDevice trezorDevice = new TrezorDevice(device, new PassphraseUI(passphrase), trezorModel)) {
             try {
                 prepareDevice(trezorDevice);
             } catch(DeviceNotReadyException e) {
@@ -642,7 +646,7 @@ public class TrezorClient extends HardwareClient {
             throw new IllegalArgumentException("Non-numeric PIN provided");
         }
 
-        try(TrezorDevice trezorDevice = new TrezorDevice(device, new PassphraseUI(passphrase))) {
+        try(TrezorDevice trezorDevice = new TrezorDevice(device, new PassphraseUI(passphrase), trezorModel)) {
             Message message = trezorDevice.callRaw(TrezorMessageCommon.PinMatrixAck.newBuilder().setPin(pin).build());
             if(message instanceof TrezorMessageCommon.Failure) {
                 TrezorMessageManagement.Features features = trezorDevice.refreshFeatures();
@@ -669,7 +673,7 @@ public class TrezorClient extends HardwareClient {
 
     @Override
     public boolean togglePassphrase() throws DeviceException {
-        try(TrezorDevice trezorDevice = new TrezorDevice(device, new PassphraseUI(passphrase))) {
+        try(TrezorDevice trezorDevice = new TrezorDevice(device, new PassphraseUI(passphrase), trezorModel)) {
             checkUnlocked(trezorDevice);
 
             try {
@@ -744,7 +748,7 @@ public class TrezorClient extends HardwareClient {
 
     @Override
     public String getProductModel() {
-        return trezorModel == null ? "trezor" : "trezor_" + trezorModel.getName().replace(" ", "_").toLowerCase(Locale.ROOT);
+        return trezorModel == null ? "trezor_1" : "trezor_" + trezorModel.getName().replace(" ", "_").toLowerCase(Locale.ROOT);
     }
 
     public void setPassphrase(String passphrase) {

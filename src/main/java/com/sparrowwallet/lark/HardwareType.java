@@ -7,37 +7,37 @@ import org.usb4java.Device;
 import org.usb4java.DeviceDescriptor;
 
 public enum HardwareType {
-    COLDCARD("coldcard") {
+    COLDCARD("coldcard", Interface.HID) {
         @Override
         public HardwareClient createClient(HidDevice hidDevice) throws DeviceException {
             return new ColdcardClient(hidDevice);
         }
     },
-    JADE("jade") {
+    JADE("jade", Interface.SERIAL) {
         @Override
         public HardwareClient createClient(SerialPort serialPort, HttpClientService httpClientService) throws DeviceException {
             return new JadeClient(serialPort, httpClientService);
         }
     },
-    BITBOX_02("bitbox02") {
+    BITBOX_02("bitbox02", Interface.HID) {
         @Override
         public HardwareClient createClient(HidDevice hidDevice) throws DeviceException {
             return new BitBox02Client(hidDevice);
         }
     },
-    TREZOR("trezor") {
+    TREZOR("trezor", Interface.WEBUSB) {
         @Override
         public HardwareClient createClient(Device device, DeviceDescriptor deviceDescriptor) throws DeviceException {
             return new TrezorClient(device, deviceDescriptor);
         }
     },
-    KEEPKEY("keepkey") {
+    KEEPKEY("keepkey", Interface.WEBUSB) {
         @Override
         public HardwareClient createClient(Device device, DeviceDescriptor deviceDescriptor) throws DeviceException {
             return new KeepkeyClient(device, deviceDescriptor);
         }
     },
-    LEDGER("ledger") {
+    LEDGER("ledger", Interface.HID) {
         @Override
         public HardwareClient createClient(HidDevice hidDevice) throws DeviceException {
             return new LedgerClient(hidDevice);
@@ -45,9 +45,11 @@ public enum HardwareType {
     };
 
     private final String name;
+    private final Interface interfaceType;
 
-    HardwareType(String name) {
+    HardwareType(String name, Interface interfaceType) {
         this.name = name;
+        this.interfaceType = interfaceType;
     }
 
     public String getName() {
@@ -68,6 +70,10 @@ public enum HardwareType {
 
     public HardwareClient createClient(Device device, DeviceDescriptor descriptor) throws DeviceException {
         throw new DeviceException("Not a WebUSB hardware type");
+    }
+
+    public boolean uses(Interface interfaceType) {
+        return this.interfaceType == interfaceType;
     }
 
     public static HardwareClient fromHidDevice(HidDevice hidDevice) throws DeviceException {
@@ -104,5 +110,15 @@ public enum HardwareType {
         }
 
         throw new DeviceNotFoundException("No WebUSB type for vendor id: " + deviceDescriptor.idVendor() + ", product id: " + deviceDescriptor.idProduct());
+    }
+
+    public static HardwareType fromString(String name) {
+        for(HardwareType type : values()) {
+            if(type.name.equals(name)) {
+                return type;
+            }
+        }
+
+        return null;
     }
 }

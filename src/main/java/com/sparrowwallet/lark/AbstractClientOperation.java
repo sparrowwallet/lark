@@ -26,6 +26,18 @@ public abstract class AbstractClientOperation implements ClientOperation {
     }
 
     @Override
+    public boolean requires(Interface interfaceType) {
+        if(deviceType != null) {
+            HardwareType hardwareType = HardwareType.fromString(deviceType);
+            if(hardwareType != null) {
+                return hardwareType.uses(interfaceType);
+            }
+        }
+
+        return true;
+    }
+
+    @Override
     public boolean matches(HardwareClient client) {
         if(deviceType != null && devicePath != null) {
             return client.getType().equals(deviceType) && client.getPath().equals(devicePath);

@@ -200,7 +200,11 @@ public class NewLedgerDevice extends LedgerDevice {
             }
 
             byte[] commandResponse = clientInterpreter.execute(response.data());
-            response = transport.apduExchange(CommandBuilder.continueInterrupted(commandResponse));
+            try {
+                response = transport.apduExchange(CommandBuilder.continueInterrupted(commandResponse));
+            } catch(LedgerTransportException e) {
+                response = e.getResponse();
+            }
         }
 
         return response;

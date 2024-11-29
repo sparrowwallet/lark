@@ -7,6 +7,11 @@ public class EnumerateOperation implements ClientOperation {
     private final List<HardwareClient> clients = new ArrayList<>();
 
     @Override
+    public boolean requires(Interface interfaceType) {
+        return true;
+    }
+
+    @Override
     public boolean matches(HardwareClient hardwareClient) {
         return true;
     }

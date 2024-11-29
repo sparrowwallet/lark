@@ -94,6 +94,10 @@ public class Lark {
     }
 
     private void enumerateHidClients(ClientOperation clientOperation) throws DeviceException {
+        if(!clientOperation.requires(Interface.HID)) {
+            return;
+        }
+
         HidServicesSpecification hidServicesSpecification = new HidServicesSpecification();
         hidServicesSpecification.setAutoStart(false);
         hidServicesSpecification.setAutoShutdown(false);
@@ -132,6 +136,10 @@ public class Lark {
     }
 
     private void enumerateSerialClients(ClientOperation clientOperation) throws DeviceException {
+        if(!clientOperation.requires(Interface.SERIAL)) {
+            return;
+        }
+
         Set<HardwareClient> foundClients = new LinkedHashSet<>();
 
         SerialPort[] serialPorts = SerialPort.getCommPorts();
@@ -157,6 +165,10 @@ public class Lark {
     }
 
     private void enumerateWebusbClients(ClientOperation clientOperation) throws DeviceException {
+        if(!clientOperation.requires(Interface.WEBUSB)) {
+            return;
+        }
+
         Context context = new Context();
         LibUsb.init(context);
 

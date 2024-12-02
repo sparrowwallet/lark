@@ -624,8 +624,8 @@ public class TrezorClient extends HardwareClient {
                 throw new DeviceException("The PIN has already been sent to this device");
             }
             if(Lark.isConsoleOutput()) {
-                System.out.println("Use 'sendpin' to provide the number positions for the PIN as displayed on your device's screen");
-                System.out.println(PIN_MATRIX_DESCRIPTION);
+                System.err.println("Use 'sendpin' to provide the number positions for the PIN as displayed on your device's screen");
+                System.err.println(PIN_MATRIX_DESCRIPTION);
             }
 
             TrezorMessageBitcoin.GetPublicKey getPublicKey = TrezorMessageBitcoin.GetPublicKey.newBuilder()
@@ -681,9 +681,9 @@ public class TrezorClient extends HardwareClient {
                         null, null, null, null, null, null);
             } catch(DeviceException e) {
                 if(Lark.isConsoleOutput() && trezorDevice.getModel() == TrezorModel.KEEPKEY) {
-                    System.out.println("Confirm the action by entering your PIN");
-                    System.out.println("Use 'sendpin' to provide the number positions for the PIN as displayed on your device's screen");
-                    System.out.println(PIN_MATRIX_DESCRIPTION);
+                    System.err.println("Confirm the action by entering your PIN");
+                    System.err.println("Use 'sendpin' to provide the number positions for the PIN as displayed on your device's screen");
+                    System.err.println(PIN_MATRIX_DESCRIPTION);
                 }
             }
 

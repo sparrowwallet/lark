@@ -20,7 +20,7 @@ public class PassphraseUI implements TrezorUI {
     @Override
     public void buttonRequest(Integer code) {
         if(Lark.isConsoleOutput() && !promptShown) {
-            System.out.println("Please confirm action on your Trezor device");
+            System.err.println("Please confirm action on your Trezor device");
         }
         if(!alwaysPrompt) {
             promptShown = true;

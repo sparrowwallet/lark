@@ -68,7 +68,11 @@ public class LegacyLedgerDevice extends LedgerDevice {
         }
 
         Transaction transaction = psbt.getTransaction();
-        byte[] transactionBytes = transaction.bitcoinSerialize(true);
+        for(TransactionOutput out : transaction.getOutputs()) {
+            if(ScriptType.P2TR.isScriptType(out.getScript())) {
+                throw new DeviceException("The legacy firmware on this Ledger does not support sending to Taproot addresses. Upgrade your firmware to do this.");
+            }
+        }
 
         String masterFingerprint = getMasterFingerprint();
         boolean useTrustedSegwit = version.version().compareTo(new Version("1.4.0")) >= 0;

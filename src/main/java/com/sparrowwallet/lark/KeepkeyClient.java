@@ -1,5 +1,9 @@
 package com.sparrowwallet.lark;
 
+import com.sparrowwallet.drongo.protocol.ScriptType;
+import com.sparrowwallet.drongo.protocol.TransactionOutput;
+import com.sparrowwallet.drongo.psbt.PSBT;
+import com.sparrowwallet.drongo.psbt.PSBTOutput;
 import com.sparrowwallet.drongo.wallet.WalletModel;
 import com.sparrowwallet.lark.trezor.TrezorDevice;
 import com.sparrowwallet.lark.trezor.TrezorModel;
@@ -16,6 +20,17 @@ public class KeepkeyClient extends TrezorClient {
     }
 
     @Override
+    PSBT signTransaction(PSBT psbt) throws DeviceException {
+        for(TransactionOutput out : psbt.getTransaction().getOutputs()) {
+            if(ScriptType.P2TR.isScriptType(out.getScript())) {
+                throw new DeviceException("The Keepkey does not support sending to Taproot addresses");
+            }
+        }
+
+        return super.signTransaction(psbt);
+    }
+
+    @Override
     public HardwareType getHardwareType() {
         return HardwareType.KEEPKEY;
     }
@@ -23,6 +38,11 @@ public class KeepkeyClient extends TrezorClient {
     @Override
     public WalletModel getModel() {
         return WalletModel.KEEPKEY;
+    }
+
+    @Override
+    public String getProductModel() {
+        return "keepkey";
     }
 
     @Override

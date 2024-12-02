@@ -363,8 +363,6 @@ public class TrezorClient extends HardwareClient {
                             if(ScriptType.P2PKH.isScriptType(out.getScript())) {
                                 txOutput.addAllAddressN(keypath.getDerivation().stream().map(ChildNumber::i).toList());
                                 txOutput.clearAddress();
-                                outputs.add(txOutput.build());
-                                break;
                             } else if(optWitnessType.isPresent()) {
                                 txOutput.setScriptType(TrezorMessageBitcoin.OutputScriptType.PAYTOWITNESS);
                                 txOutput.addAllAddressN(keypath.getDerivation().stream().map(ChildNumber::i).toList());

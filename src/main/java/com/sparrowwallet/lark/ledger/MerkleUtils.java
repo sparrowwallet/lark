@@ -263,7 +263,7 @@ public class MerkleUtils {
                     return idx;
                 }
             }
-            throw new IllegalArgumentException("Leaf not found");
+            return -1;
         }
 
         public List<byte[]> proveLeaf(int index) {

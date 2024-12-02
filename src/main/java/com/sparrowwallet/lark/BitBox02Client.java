@@ -42,6 +42,8 @@ public class BitBox02Client extends HardwareClient {
     private final ChildNumber PURPOSE_P2WPKH = ScriptType.P2WPKH.getDefaultDerivation().get(0);
     private final ChildNumber PURPOSE_P2WPKH_P2SH = ScriptType.P2SH_P2WPKH.getDefaultDerivation().get(0);
 
+    private final List<ScriptType> SUPPORTED_PUB_KEY_PATHS = List.of(ScriptType.P2SH_P2WPKH, ScriptType.P2WPKH, ScriptType.P2TR, ScriptType.P2SH_P2WSH, ScriptType.P2WSH);
+
     public BitBox02Client(HidDevice hidDevice) throws DeviceException {
         if(BITBOX02_ID.matches(hidDevice) && (hidDevice.getUsagePage() == 0xFFFF || hidDevice.getInterfaceNumber() == 0) &&
                 (BitBox02Edition.fromProductString(hidDevice.getProduct()) != null)) {
@@ -97,6 +99,10 @@ public class BitBox02Client extends HardwareClient {
      */
     @Override
     ExtendedKey getPubKeyAtPath(String path) throws DeviceException {
+        if(!isValidPath(path)) {
+            throw new DeviceException("The BitBox02 does not support retrieving an xpub at " + path + ". Only standard segwit paths are supported.");
+        }
+
         try(BitBox02Device bitBox02Device = new BitBox02Device(hidDevice, new U2FHid(new HidPhysicalLayer(hidDevice)), noiseConfig)) {
             Hww.Request.Builder request = Hww.Request.newBuilder();
             request.setBtcPub(Btc.BTCPubRequest.newBuilder().setCoin(getCoin()).addAllKeypath(KeyDerivation.parsePath(path).stream().map(ChildNumber::i).toList())
@@ -104,6 +110,17 @@ public class BitBox02Client extends HardwareClient {
             Hww.Response hwwResponse = bitBox02Device.msgQuery(request.build(), null);
             return ExtendedKey.fromDescriptor(hwwResponse.getPub().getPub());
         }
+    }
+
+    private boolean isValidPath(String path) {
+        for(ScriptType scriptType : SUPPORTED_PUB_KEY_PATHS) {
+            int account = scriptType.getAccount(path);
+            if(account >= 0 && account < 100) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -535,7 +552,7 @@ public class BitBox02Client extends HardwareClient {
             return Btc.BTCScriptConfigWithKeypath.newBuilder().setScriptConfig(Btc.BTCScriptConfig.newBuilder()
                     .setSimpleType(Btc.BTCScriptConfig.SimpleType.P2WPKH)).addAllKeypath(getHardenedPrefix(keypath)).build();
         }
-        if(ScriptType.P2SH_P2WPKH.isScriptType(output.getScript())) {
+        if(ScriptType.P2SH_P2WPKH.isScriptType(output.getScript()) && ScriptType.P2WPKH.isScriptType(redeemScript)) {
             return Btc.BTCScriptConfigWithKeypath.newBuilder().setScriptConfig(Btc.BTCScriptConfig.newBuilder()
                     .setSimpleType(Btc.BTCScriptConfig.SimpleType.P2WPKH_P2SH)).addAllKeypath(getHardenedPrefix(keypath)).build();
         }

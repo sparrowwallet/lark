@@ -18,6 +18,14 @@ public class AbstractWalletPolicy {
         }
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public WalletType getVersion() {
+        return version;
+    }
+
     public byte[] serialize() {
         byte[] nameBytes = serialize(name);
         ByteBuffer buf = ByteBuffer.allocate(1 + nameBytes.length);

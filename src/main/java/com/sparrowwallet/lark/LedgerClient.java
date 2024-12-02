@@ -282,6 +282,7 @@ public class LedgerClient extends HardwareClient {
 
         LedgerDevice.WalletRegistration registration = ledgerDevice.registerWallet(mswp);
         Sha256Hash registeredWalletId = registration.hmac();
+        walletNames.put(walletDescriptor, mswp.getName());
         walletRegistrations.put(walletDescriptor, registeredWalletId.getBytes());
         return registeredWalletId;
     }

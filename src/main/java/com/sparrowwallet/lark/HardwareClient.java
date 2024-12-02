@@ -19,7 +19,7 @@ import java.util.stream.Stream;
 
 public abstract class HardwareClient {
     protected String error;
-    private Map<OutputDescriptor, String> walletNames = new HashMap<>();
+    protected Map<OutputDescriptor, String> walletNames = new HashMap<>();
 
     abstract void initializeMasterFingerprint() throws DeviceException;
     abstract ExtendedKey getPubKeyAtPath(String path) throws DeviceException;

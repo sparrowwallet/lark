@@ -368,7 +368,8 @@ public class TrezorClient extends HardwareClient {
                                 txOutput.addAllAddressN(keypath.getDerivation().stream().map(ChildNumber::i).toList());
                                 txOutput.clearAddress();
                             } else if(ScriptType.P2SH.isScriptType(out.getScript()) && psbtOutput.getRedeemScript() != null) {
-                                if(ScriptType.P2SH_P2WPKH.isScriptType(psbtOutput.getRedeemScript()) || ScriptType.P2SH_P2WSH.isScriptType(psbtOutput.getRedeemScript())) {
+                                optWitnessType = isWitness(psbtOutput.getRedeemScript());
+                                if(optWitnessType.isPresent() && (optWitnessType.get() == ScriptType.P2WPKH || optWitnessType.get() == ScriptType.P2WSH)) {
                                     txOutput.setScriptType(TrezorMessageBitcoin.OutputScriptType.PAYTOP2SHWITNESS);
                                     txOutput.addAllAddressN(keypath.getDerivation().stream().map(ChildNumber::i).toList());
                                     txOutput.clearAddress();

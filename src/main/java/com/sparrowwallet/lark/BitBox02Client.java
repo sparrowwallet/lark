@@ -242,7 +242,7 @@ public class BitBox02Client extends HardwareClient {
 
                 Optional<Map.Entry<ECKey, KeyDerivation>> optOurKey = findOurKey(bitBox02Device, derivedPubKeys);
 
-                boolean isChange = optOurKey.isPresent() && optOurKey.get().getValue().getDerivation().get(optOurKey.get().getValue().getDerivation().size() - 2) == KeyPurpose.CHANGE.getPathIndex();
+                boolean isChange = optOurKey.isPresent() && optOurKey.get().getValue().getDerivation().get(optOurKey.get().getValue().getDerivation().size() - 2).equals(KeyPurpose.CHANGE.getPathIndex());
                 if(isChange) {
                     KeyDerivation keyDerivation = optOurKey.get().getValue();
                     int scriptConfigIndex = addScriptConfig(scriptConfigs, getScriptConfigFromUtxo(psbt, txOutput, keyDerivation.getDerivation().stream().map(ChildNumber::i).toList(),

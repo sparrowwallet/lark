@@ -31,4 +31,9 @@ public class SignMessageOperation extends AbstractClientOperation {
     public String getSignature() {
         return signature;
     }
+
+    @Override
+    public boolean success() {
+        return signature != null;
+    }
 }

@@ -90,6 +90,9 @@ public class Lark {
             enumerateHidClients(clientOperation);
             enumerateSerialClients(clientOperation);
             enumerateWebusbClients(clientOperation);
+            if(!clientOperation.success()) {
+                throw new DeviceNotFoundException("Could not find device with specified type or fingerprint");
+            }
         }
     }
 

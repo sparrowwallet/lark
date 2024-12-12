@@ -3,7 +3,8 @@ package com.sparrowwallet.lark;
 import com.sparrowwallet.drongo.psbt.PSBT;
 
 public class SignPsbtOperation extends AbstractClientOperation {
-    private PSBT psbt;
+    private final PSBT psbt;
+    private PSBT signedPsbt;
 
     public SignPsbtOperation(String deviceType, PSBT psbt) {
         super(deviceType);
@@ -22,10 +23,15 @@ public class SignPsbtOperation extends AbstractClientOperation {
 
     @Override
     public void apply(HardwareClient hardwareClient) throws DeviceException {
-        psbt = hardwareClient.signTransaction(psbt);
+        signedPsbt = hardwareClient.signTransaction(psbt);
     }
 
     public PSBT getPsbt() {
-        return psbt;
+        return signedPsbt;
+    }
+
+    @Override
+    public boolean success() {
+        return signedPsbt != null;
     }
 }

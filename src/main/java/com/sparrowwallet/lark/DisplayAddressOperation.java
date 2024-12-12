@@ -63,4 +63,9 @@ public class DisplayAddressOperation extends AbstractClientOperation {
     public String getAddress() {
         return address;
     }
+
+    @Override
+    public boolean success() {
+        return address != null;
+    }
 }

@@ -2,7 +2,7 @@ package com.sparrowwallet.lark;
 
 public class SendPinOperation extends AbstractClientOperation {
     private final String pin;
-    private boolean result;
+    private Boolean result;
 
     public SendPinOperation(String deviceType, String pin) {
         super(deviceType);
@@ -25,6 +25,11 @@ public class SendPinOperation extends AbstractClientOperation {
     }
 
     public boolean getResult() {
-        return result;
+        return result != null && result;
+    }
+
+    @Override
+    public boolean success() {
+        return result != null;
     }
 }

@@ -1,7 +1,7 @@
 package com.sparrowwallet.lark;
 
 public class PromptPinOperation extends AbstractClientOperation {
-    private boolean result;
+    private Boolean result;
 
     public PromptPinOperation(String deviceType) {
         super(deviceType);
@@ -21,6 +21,11 @@ public class PromptPinOperation extends AbstractClientOperation {
     }
 
     public boolean getResult() {
-        return result;
+        return result != null && result;
+    }
+
+    @Override
+    public boolean success() {
+        return result != null;
     }
 }

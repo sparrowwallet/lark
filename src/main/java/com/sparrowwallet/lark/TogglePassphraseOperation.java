@@ -1,7 +1,7 @@
 package com.sparrowwallet.lark;
 
 public class TogglePassphraseOperation extends AbstractClientOperation {
-    private boolean result;
+    private Boolean result;
 
     public TogglePassphraseOperation(String deviceType) {
         super(deviceType);
@@ -21,6 +21,11 @@ public class TogglePassphraseOperation extends AbstractClientOperation {
     }
 
     public boolean getResult() {
-        return result;
+        return result != null && result;
+    }
+
+    @Override
+    public boolean success() {
+        return result != null;
     }
 }

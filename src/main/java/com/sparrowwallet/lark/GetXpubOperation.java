@@ -29,4 +29,9 @@ public class GetXpubOperation extends AbstractClientOperation {
     public ExtendedKey getXpub() {
         return xpub;
     }
+
+    @Override
+    public boolean success() {
+        return xpub != null;
+    }
 }

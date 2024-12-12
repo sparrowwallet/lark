@@ -24,4 +24,9 @@ public class EnumerateOperation implements ClientOperation {
     public List<HardwareClient> getHardwareClients() {
         return clients;
     }
+
+    @Override
+    public boolean success() {
+        return true;
+    }
 }

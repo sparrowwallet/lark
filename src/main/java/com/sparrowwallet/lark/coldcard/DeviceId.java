@@ -31,10 +31,21 @@ public record DeviceId(byte[] remotePubKey, byte[] masterFingerprint, byte[] xpu
             y = p.subtract(y);
         }
 
+        byte[] xBytes = x.toByteArray();
+        byte[] yBytes = y.toByteArray();
+
         ByteBuffer buffer = ByteBuffer.allocate(65);
         buffer.put((byte)4);
-        buffer.put(x.toByteArray(), 1, 32);
-        buffer.put(y.toByteArray(), 1, 32);
+        if(xBytes.length > 32) {
+            buffer.put(xBytes, 1, 32);
+        } else {
+            buffer.put(xBytes);
+        }
+        if(yBytes.length > 32) {
+            buffer.put(yBytes, 1, 32);
+        } else {
+            buffer.put(yBytes);
+        }
 
         return buffer.array();
     }

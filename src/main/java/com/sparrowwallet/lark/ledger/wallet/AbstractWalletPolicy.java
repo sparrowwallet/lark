@@ -9,6 +9,8 @@ public class AbstractWalletPolicy {
     protected final String name;
     protected final WalletType version;
 
+    protected final static int MAX_NAME_LENGTH = 64;
+
     public AbstractWalletPolicy(String name, WalletType version) {
         this.name = name;
         this.version = version;

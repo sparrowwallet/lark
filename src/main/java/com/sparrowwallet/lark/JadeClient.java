@@ -9,14 +9,19 @@ import com.sparrowwallet.drongo.wallet.WalletModel;
 import com.sparrowwallet.lark.jade.JadeDevice;
 import com.sparrowwallet.lark.jade.JadeVersion;
 import com.sparrowwallet.tern.http.client.HttpClientService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 public class JadeClient extends HardwareClient {
+    private static final Logger log = LoggerFactory.getLogger(JadeClient.class);
+
     public static final List<DeviceId> JADE_DEVICE_IDS = List.of(new DeviceId(0x10c4, 0xea60),
             new DeviceId(0x1a86, 0x55d4), new DeviceId(0x0403, 0x6001), new DeviceId(0x1a86, 0x7523),
             new DeviceId(0x303a, 0x4001), new DeviceId(0x303a, 0x1001));
     private static final Version MIN_SUPPORTED_VERSION = new Version("0.1.47");
+    private static final int MAX_WALLET_NAME_LENGTH = 15;
 
     private final SerialPort serialPort;
     private final HttpClientService httpClientService;
@@ -35,7 +40,7 @@ public class JadeClient extends HardwareClient {
     void initializeMasterFingerprint() throws DeviceException {
         try(JadeDevice jadeDevice = new JadeDevice(serialPort, httpClientService)) {
             initialize(jadeDevice);
-            this.masterFingerprint = Utils.bytesToHex(jadeDevice.getXpub(Network.get(), "m/0h").getParentFingerprint());
+            this.masterFingerprint = Utils.bytesToHex(jadeDevice.getXpub(Network.getCanonical(), "m/0h").getParentFingerprint());
         }
     }
 
@@ -43,7 +48,7 @@ public class JadeClient extends HardwareClient {
     ExtendedKey getPubKeyAtPath(String path) throws DeviceException {
         try(JadeDevice jadeDevice = new JadeDevice(serialPort, httpClientService)) {
             initialize(jadeDevice);
-            return jadeDevice.getXpub(Network.get(), path);
+            return jadeDevice.getXpub(Network.getCanonical(), path);
         }
     }
 
@@ -51,8 +56,21 @@ public class JadeClient extends HardwareClient {
     PSBT signTransaction(PSBT psbt) throws DeviceException {
         try(JadeDevice jadeDevice = new JadeDevice(serialPort, httpClientService)) {
             initialize(jadeDevice);
+
+            try {
+                OutputDescriptor outputDescriptor = getOutputDescriptor(psbt);
+                if(outputDescriptor != null && outputDescriptor.isMultisig()) {
+                    String name = getWalletNameOrDefault(outputDescriptor);
+                    jadeDevice.registerMultisig(Network.getCanonical(), name, outputDescriptor);
+                }
+            } catch(DeviceException e) {
+                log.warn("Could not register wallet: " + e.getMessage());
+            } catch(RuntimeException e) {
+                log.error("Error registering wallet", e);
+            }
+
             byte[] psbtBytes = psbt.serialize();
-            byte[] signedPsbtBytes = jadeDevice.signTransaction(Network.get(), psbtBytes);
+            byte[] signedPsbtBytes = jadeDevice.signTransaction(Network.getCanonical(), psbtBytes);
             return new PSBT(signedPsbtBytes);
         } catch(PSBTParseException e) {
             throw new DeviceException("Invalid signed PSBT", e);
@@ -71,7 +89,7 @@ public class JadeClient extends HardwareClient {
     String displaySinglesigAddress(String path, ScriptType scriptType) throws DeviceException {
         try(JadeDevice jadeDevice = new JadeDevice(serialPort, httpClientService)) {
             initialize(jadeDevice);
-            return jadeDevice.displaySinglesigAddress(Network.get(), path, scriptType);
+            return jadeDevice.displaySinglesigAddress(Network.getCanonical(), path, scriptType);
         }
     }
 
@@ -80,9 +98,21 @@ public class JadeClient extends HardwareClient {
         try(JadeDevice jadeDevice = new JadeDevice(serialPort, httpClientService)) {
             initialize(jadeDevice);
             String name = getWalletNameOrDefault(outputDescriptor);
-            jadeDevice.registerMultisig(Network.get(), name, outputDescriptor);
-            return jadeDevice.displayMultisigAddress(Network.get(), name, outputDescriptor);
+            jadeDevice.registerMultisig(Network.getCanonical(), name, outputDescriptor);
+            return jadeDevice.displayMultisigAddress(Network.getCanonical(), name, outputDescriptor);
         }
+    }
+
+    @Override
+    protected String getWalletNameOrDefault(OutputDescriptor outputDescriptor) {
+        String name = super.getWalletNameOrDefault(outputDescriptor).trim().replaceAll("[^\\x21-\\x7E]", "_");
+        if(name.isEmpty()) {
+            name = "Wallet";
+        } else if(name.length() > MAX_WALLET_NAME_LENGTH) {
+            name = name.substring(0, MAX_WALLET_NAME_LENGTH);
+        }
+
+        return name;
     }
 
     private void initialize(JadeDevice jadeDevice) throws DeviceException {
@@ -95,7 +125,7 @@ public class JadeClient extends HardwareClient {
 
         boolean authenticated = false;
         while(!authenticated) {
-            authenticated = jadeDevice.authUser(Network.get());
+            authenticated = jadeDevice.authUser(Network.getCanonical());
         }
     }
 

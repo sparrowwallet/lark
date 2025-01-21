@@ -90,6 +90,10 @@ public abstract class HardwareClient {
     }
 
     protected String getWalletNameOrDefault(OutputDescriptor outputDescriptor, PSBT psbt) {
+        if(outputDescriptor == null) {
+            outputDescriptor = getOutputDescriptor(psbt);
+        }
+
         String name = getWalletName(outputDescriptor);
         if(name == null) {
             if(psbt != null) {
@@ -106,6 +110,21 @@ public abstract class HardwareClient {
         }
 
         return name;
+    }
+
+    protected OutputDescriptor getOutputDescriptor(PSBT psbt) {
+        Optional<ScriptType> optScriptType = psbt.getPsbtInputs().stream().filter(psbtInput -> psbtInput.getUtxo() != null).map(PSBTInput::getScriptType).findFirst();
+        Optional<Script> optSigningScript = psbt.getPsbtInputs().stream().filter(psbtInput -> psbtInput.getUtxo() != null).map(PSBTInput::getSigningScript).findFirst();
+        if(optSigningScript.isPresent() && optScriptType.isPresent() && !psbt.getExtendedPublicKeys().isEmpty()) {
+            if(ScriptType.MULTISIG.isScriptType(optSigningScript.get())) {
+                int threshold = ScriptType.MULTISIG.getThreshold(optSigningScript.get());
+                return new OutputDescriptor(optScriptType.get(), threshold, psbt.getExtendedPublicKeys());
+            } else {
+                return new OutputDescriptor(optScriptType.get(), psbt.getExtendedPublicKeys());
+            }
+        }
+
+        return null;
     }
 
     private String getWalletName(PSBT psbt) {

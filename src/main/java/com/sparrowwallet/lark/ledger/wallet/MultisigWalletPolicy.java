@@ -13,7 +13,7 @@ public class MultisigWalletPolicy extends WalletPolicy {
     }
 
     public MultisigWalletPolicy(String name, ScriptType scriptType, int threshold, List<String> keysInfo, boolean sorted, WalletType version) {
-        super(name, getDescriptorTemplate(scriptType, threshold, keysInfo, sorted, version), keysInfo, version);
+        super(sanitizeName(name), getDescriptorTemplate(scriptType, threshold, keysInfo, sorted, version), keysInfo, version);
         this.threshold = threshold;
     }
 
@@ -39,5 +39,16 @@ public class MultisigWalletPolicy extends WalletPolicy {
 
     public int getThreshold() {
         return threshold;
+    }
+
+    private static String sanitizeName(String name) {
+        String cleanName = name.trim().replaceAll("[^\\x20-\\x7E]", "_");
+        if(cleanName.isEmpty()) {
+            cleanName = "Wallet";
+        } else if(cleanName.length() > MAX_NAME_LENGTH) {
+            cleanName = cleanName.substring(0, MAX_NAME_LENGTH);
+        }
+
+        return cleanName;
     }
 }

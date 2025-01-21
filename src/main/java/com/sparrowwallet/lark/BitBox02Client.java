@@ -30,6 +30,7 @@ public class BitBox02Client extends HardwareClient {
     private static final Logger log = LoggerFactory.getLogger(BitBox02Client.class);
 
     private static final DeviceId BITBOX02_ID = new DeviceId(BITBOX02_VID, BITBOX02_PID);
+    public static final int MAX_WALLET_NAME_LENGTH = 30;
 
     private final HidDevice hidDevice;
     private final BitBox02Edition edition;
@@ -741,7 +742,7 @@ public class BitBox02Client extends HardwareClient {
                 bitBox02Device.requireAtLeastVersion(new Version("9.3.0"));
             }
 
-            if(name.length() > 30) {
+            if(name.length() > MAX_WALLET_NAME_LENGTH) {
                 throw new DeviceException("Multisig name is too long, must be 30 characters or less");
             }
 
@@ -791,6 +792,21 @@ public class BitBox02Client extends HardwareClient {
 
     private Btc.BTCCoin getCoin() {
         return Network.get() == Network.MAINNET ? Btc.BTCCoin.BTC : Btc.BTCCoin.TBTC;
+    }
+
+    @Override
+    protected String getWalletName(OutputDescriptor walletDescriptor) {
+        String name = super.getWalletName(walletDescriptor);
+        if(name == null || name.trim().isEmpty()) {
+            return null;
+        }
+
+        name = name.trim().replaceAll("[^\\x20-\\x7E]", "_");
+        if(name.length() > MAX_WALLET_NAME_LENGTH) {
+            name = name.substring(0, MAX_WALLET_NAME_LENGTH);
+        }
+
+        return name;
     }
 
     @Override

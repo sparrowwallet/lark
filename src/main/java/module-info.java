@@ -10,4 +10,5 @@ open module com.sparrowwallet.lark {
     requires org.usb4java;
     requires com.fasterxml.jackson.databind;
     exports com.sparrowwallet.lark;
+    exports com.sparrowwallet.lark.bitbox02;
 }

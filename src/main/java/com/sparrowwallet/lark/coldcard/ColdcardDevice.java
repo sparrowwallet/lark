@@ -75,7 +75,7 @@ public class ColdcardDevice implements Closeable {
         }
 
         String lastError = hidDevice.getLastErrorMessage();
-        if(lastError != null && !lastError.equals("Success") && !lastError.contains("not implemented yet")) {
+        if(lastError != null && !lastError.equals("Success") && !lastError.equals("S") && !lastError.contains("not implemented yet")) {
             throw new DeviceException("HID returned error of " + lastError);
         }
 

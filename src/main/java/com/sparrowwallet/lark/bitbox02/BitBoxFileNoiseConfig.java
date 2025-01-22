@@ -1,5 +1,6 @@
 package com.sparrowwallet.lark.bitbox02;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sparrowwallet.drongo.crypto.X25519Key;
@@ -65,7 +66,6 @@ public class BitBoxFileNoiseConfig implements BitBoxNoiseConfig {
     public void setAppStaticKey(X25519Key x25519Key) {
         NoiseFileConfig noiseConfig = read();
         noiseConfig.appNoiseStaticKeypair = new AppNoiseKeypair();
-        noiseConfig.appNoiseStaticKeypair.publicKey = Base64.getEncoder().encodeToString(x25519Key.getRawPublicKeyBytes());
         noiseConfig.appNoiseStaticKeypair.privateKey = Base64.getEncoder().encodeToString(x25519Key.getRawPrivateKeyBytes());
         write(noiseConfig);
     }
@@ -98,10 +98,9 @@ public class BitBoxFileNoiseConfig implements BitBoxNoiseConfig {
         public List<String> deviceNoiseStaticPubkeys = new ArrayList<>();
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class AppNoiseKeypair {
         @JsonProperty("private")
         public String privateKey;
-        @JsonProperty("public")
-        public String publicKey;
     }
 }

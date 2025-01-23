@@ -162,6 +162,8 @@ public class LegacyLedgerDevice extends LedgerDevice {
                     buffer.put(witnessProgram);
                     buffer.put(new byte[] { (byte)0x88, (byte)0xAC });
                     script = new Script(buffer.array());
+                } else if(ScriptType.P2TR.isScriptType(script)) {
+                    throw new DeviceException("The legacy firmware on this Ledger does not support spending from Taproot addresses. Upgrade your firmware to do this.");
                 } else {
                     continue;
                 }

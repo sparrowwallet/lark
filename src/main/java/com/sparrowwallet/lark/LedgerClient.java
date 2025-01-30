@@ -147,8 +147,7 @@ public class LedgerClient extends HardwareClient {
                         int m = ScriptType.MULTISIG.getThreshold(script);
                         ECKey[] keys = ScriptType.MULTISIG.getPublicKeysFromScript(script);
 
-                        List<String> keyExprs = new ArrayList<>();
-                        Map<ExtendedKey, KeyDerivation> extendedPublicKeys = new HashMap<>();
+                        Map<ExtendedKey, KeyDerivation> extendedPublicKeys = new LinkedHashMap<>();
                         boolean ok = true;
                         for(ECKey key : keys) {
                             if(psbtInput.getDerivedPublicKeys().containsKey(key)) {
@@ -160,7 +159,6 @@ public class LedgerClient extends HardwareClient {
                                     KeyDerivation xpubOrigin = psbt2.getExtendedPublicKeys().get(xpub);
                                     if(xpubOrigin.getMasterFingerprint().equals(origin.getMasterFingerprint()) &&
                                             xpubOrigin.getDerivation().equals(origin.getDerivation().subList(0, xpubOrigin.getDerivation().size()))) {
-                                        keyExprs.add(OutputDescriptor.writeKey(xpub, xpubOrigin, null, true, true, true));
                                         extendedPublicKeys.put(xpub, xpubOrigin);
                                         break;
                                     }
@@ -179,6 +177,8 @@ public class LedgerClient extends HardwareClient {
                         }
 
                         OutputDescriptor walletDescriptor = new OutputDescriptor(scriptType, m, extendedPublicKeys);
+                        List<String> keyExprs = walletDescriptor.copy(false).getExtendedPublicKeys().stream()
+                                .map(xpub -> OutputDescriptor.writeKey(xpub, walletDescriptor.getKeyDerivation(xpub), null, true, true, true)).toList();
                         MultisigWalletPolicy mswp = new MultisigWalletPolicy(getWalletNameOrDefault(walletDescriptor, psbt), scriptType, m, keyExprs);
                         Sha256Hash mswpId = mswp.id();
                         if(!wallets.containsKey(mswpId)) {
@@ -393,11 +393,10 @@ public class LedgerClient extends HardwareClient {
                 throw new DeviceException("Ledger Bitcoin app requires extended keys with derivation length at most 4");
             }
 
-            List<String> keysInfo = outputDescriptor.sortExtendedPubKeys(outputDescriptor.getExtendedPublicKeys())
-                    .stream().map(xpub -> OutputDescriptor.writeKey(xpub, outputDescriptor.getKeyDerivation(xpub), null, true, true, true)).toList();
+            List<String> keyExprs = outputDescriptor.copy(false).getExtendedPublicKeys().stream()
+                    .map(xpub -> OutputDescriptor.writeKey(xpub, outputDescriptor.getKeyDerivation(xpub), null, true, true, true)).toList();
 
-            MultisigWalletPolicy mswp = new MultisigWalletPolicy(getWalletNameOrDefault(outputDescriptor), outputDescriptor.getScriptType(),
-                    outputDescriptor.getMultisigThreshold(), keysInfo, true, WalletType.WALLET_POLICY_V2);
+            MultisigWalletPolicy mswp = new MultisigWalletPolicy(getWalletNameOrDefault(outputDescriptor), outputDescriptor.getScriptType(), outputDescriptor.getMultisigThreshold(), keyExprs);
             Sha256Hash registeredWalletId = getWalletRegistration(ledgerDevice, outputDescriptor, mswp);
 
             List<ChildNumber> childPath = outputDescriptor.getChildDerivation(outputDescriptor.getExtendedPublicKeys().iterator().next());

@@ -672,6 +672,10 @@ public class TrezorClient extends HardwareClient {
 
     @Override
     public boolean togglePassphrase() throws DeviceException {
+        if(passphrase == null) {
+            passphrase = "";
+        }
+
         try(TrezorDevice trezorDevice = new TrezorDevice(device, new PassphraseUI(passphrase), trezorModel)) {
             checkUnlocked(trezorDevice);
 

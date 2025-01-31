@@ -103,7 +103,7 @@ public class TrezorClient extends HardwareClient {
             throw new DeviceNotReadyException(getHardwareType().getDisplayName() + " is locked. Unlock by using 'promptpin' and then 'sendpin'.");
         }
         if(needsPassphraseSent && passphrase == null) {
-            this.warnings.add("Passphrase protection enabled but passphrase was not provided. Using default passphrase of the empty string (\"\")");
+            return;
         }
         if(trezorDevice.getFeatures().getInitialized()) {
             initializeMasterFingerprint(trezorDevice);
@@ -736,7 +736,7 @@ public class TrezorClient extends HardwareClient {
         if(warnings.isEmpty()) {
             return new String[0][];
         } else {
-            return warnings.toArray(new String[warnings.size()][]);
+            return new String[][] { warnings.toArray(new String[0]) };
         }
     }
 

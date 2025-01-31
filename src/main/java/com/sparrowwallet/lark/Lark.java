@@ -195,7 +195,7 @@ public class Lark {
                     descriptor.iProduct();
                     hardwareClient = HardwareType.fromWebusbDevice(device, descriptor);
                     hardwareClient.setWalletNames(walletNames);
-                    if(hardwareClient instanceof TrezorClient trezorClient && passphrase != null) {
+                    if(hardwareClient instanceof TrezorClient trezorClient) {
                         trezorClient.setPassphrase(passphrase);
                     }
                     if(foundClients.add(hardwareClient) && clientOperation != null && clientOperation.matches(hardwareClient)) {

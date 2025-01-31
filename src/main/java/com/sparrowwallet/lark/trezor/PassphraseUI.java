@@ -43,7 +43,7 @@ public class PassphraseUI implements TrezorUI {
             return PASSPHRASE_ON_DEVICE;
         }
         if(returnPassphrase) {
-            return passphrase;
+            return passphrase == null ? "" : passphrase;
         }
 
         throw new DeviceException("Passphrase from Host is not allowed for Trezor T");

@@ -101,7 +101,7 @@ public class BitBox02Client extends HardwareClient {
     @Override
     ExtendedKey getPubKeyAtPath(String path) throws DeviceException {
         if(!isValidPath(path)) {
-            throw new DeviceException("The BitBox02 does not support retrieving an xpub at " + path + ". Only standard segwit paths are supported.");
+            throw new DeviceException("The BitBox02 does not support retrieving an xpub at " + path + ". Only standard segwit paths on the configured network are supported from account 0 to 99.");
         }
 
         try(BitBox02Device bitBox02Device = new BitBox02Device(hidDevice, new U2FHid(new HidPhysicalLayer(hidDevice)), noiseConfig)) {
@@ -119,6 +119,10 @@ public class BitBox02Client extends HardwareClient {
             if(account >= 0 && account < 100) {
                 return true;
             }
+        }
+
+        if(path.matches("m/48'/[01]'/\\d{1,2}'")) {
+            return true;
         }
 
         return false;

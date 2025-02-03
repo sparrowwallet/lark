@@ -103,6 +103,7 @@ public class TrezorClient extends HardwareClient {
             throw new DeviceNotReadyException(getHardwareType().getDisplayName() + " is locked. Unlock by using 'promptpin' and then 'sendpin'.");
         }
         if(needsPassphraseSent && passphrase == null) {
+            setError("Passphrase needs to be specified before fingerprint information can be retrieved");
             return;
         }
         if(trezorDevice.getFeatures().getInitialized()) {

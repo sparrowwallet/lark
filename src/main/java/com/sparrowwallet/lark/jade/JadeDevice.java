@@ -201,7 +201,8 @@ public class JadeDevice implements Closeable {
 
     private Object getResultOrThrow(Map<String, Object> reply) throws DeviceException {
         if(reply.get("error") instanceof Map<?,?> errorMap) {
-            throw new JadeResponseException("Jade returned error: " + errorMap.get("message"), (Integer)errorMap.get("code"), (String)errorMap.get("data"));
+            throw new JadeResponseException("Jade returned error: " + errorMap.get("message"), (Integer)errorMap.get("code"),
+                    errorMap.get("data") instanceof byte[] ? new String((byte[])errorMap.get("data"), StandardCharsets.UTF_8) : (errorMap.get("data") == null ? null : errorMap.get("data").toString()));
         }
 
         return reply.get("result");

@@ -11,6 +11,7 @@ public abstract class Protocol {
     protected static final int AFC_BECH32 = 0x04;       // just how we're encoding it?
     protected static final int AFC_SCRIPT = 0x08;       // paying into a script
     protected static final int AFC_WRAPPED = 0x10;      // for transition/compat types for segwit vs. old
+    protected static final int AFC_BECH32M = 0x20;      // no difference between script/key path in taproot
 
     public static final int AF_CLASSIC      = AFC_PUBKEY;          // 1addr
     public static final int AF_P2SH         = AFC_SCRIPT;          // classic multisig / simple P2SH / 3hash
@@ -18,6 +19,7 @@ public abstract class Protocol {
     public static final int AF_P2WSH        = AFC_SCRIPT  | AFC_SEGWIT | AFC_BECH32;     // segwit multisig
     public static final int AF_P2WPKH_P2SH  = AFC_WRAPPED | AFC_PUBKEY | AFC_SEGWIT;     // looks classic P2SH, but p2wpkh inside
     public static final int AF_P2WSH_P2SH   = AFC_WRAPPED | AFC_SCRIPT | AFC_SEGWIT;     // looks classic P2SH, segwit multisig
+    public static final int AF_P2TR         = AFC_PUBKEY  | AFC_SEGWIT | AFC_BECH32M;    // bc1p
 
     protected static final int STXN_FINALIZE = 1;
     protected static final byte[] LOGO = "logo".getBytes(StandardCharsets.UTF_8);

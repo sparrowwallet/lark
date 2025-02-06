@@ -4,6 +4,7 @@ import com.sparrowwallet.drongo.ExtendedKey;
 import com.sparrowwallet.drongo.KeyDerivation;
 import com.sparrowwallet.drongo.OutputDescriptor;
 import com.sparrowwallet.drongo.Utils;
+import com.sparrowwallet.drongo.crypto.ChildNumber;
 import com.sparrowwallet.drongo.crypto.ECKey;
 import com.sparrowwallet.drongo.protocol.Script;
 import com.sparrowwallet.drongo.protocol.ScriptType;
@@ -145,10 +146,18 @@ public class ColdcardClient extends HardwareClient {
         try(ColdcardDevice coldcardDevice = new ColdcardDevice(hidDevice)) {
             coldcardDevice.checkMitm();
 
+            List<ChildNumber> keypath = KeyDerivation.parsePath(path);
+            if(keypath.size() > 2) {
+                keypath = keypath.subList(0, keypath.size() - 2);
+            }
+            String accountPath = KeyDerivation.writePath(keypath);
+            Optional<ScriptType> optScriptType = Arrays.stream(ScriptType.values()).filter(scriptType -> scriptType.getAccount(accountPath, true) > -1).findFirst();
+            int addressFormat = optScriptType.isPresent() ? getAddressFormat(optScriptType.get()) : Protocol.AF_CLASSIC;
+
             String rewrittenPath = path.replaceAll("[hH]", "'");
             byte[] msgBytes = message.getBytes(StandardCharsets.UTF_8);
 
-            Object resp = coldcardDevice.sendRecv(ProtocolPacker.signMessage(msgBytes, rewrittenPath), true, -1);
+            Object resp = coldcardDevice.sendRecv(ProtocolPacker.signMessage(msgBytes, rewrittenPath, addressFormat), true, -1);
             if(resp != null) {
                 throw new DeviceException("Received unexpected response of " + resp);
             }
@@ -227,7 +236,7 @@ public class ColdcardClient extends HardwareClient {
             case P2SH_P2WPKH -> Protocol.AF_P2WPKH_P2SH;
             case P2WPKH -> Protocol.AF_P2WPKH;
             case P2PKH -> Protocol.AF_CLASSIC;
-            case P2TR -> throw new DeviceException("Coldcard does not support displaying Taproot addresses yet");
+            case P2TR -> Protocol.AF_P2TR;
             case P2SH_P2WSH -> Protocol.AF_P2WSH_P2SH;
             case P2WSH -> Protocol.AF_P2WSH;
             case P2SH -> Protocol.AF_P2SH;

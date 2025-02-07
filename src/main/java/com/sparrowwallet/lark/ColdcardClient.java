@@ -151,7 +151,7 @@ public class ColdcardClient extends HardwareClient {
                 keypath = keypath.subList(0, keypath.size() - 2);
             }
             String accountPath = KeyDerivation.writePath(keypath);
-            Optional<ScriptType> optScriptType = Arrays.stream(ScriptType.values()).filter(scriptType -> scriptType.getAccount(accountPath, true) > -1).findFirst();
+            Optional<ScriptType> optScriptType = Arrays.stream(ScriptType.ADDRESSABLE_TYPES).filter(scriptType -> scriptType.getAccount(accountPath, true) > -1).findFirst();
             int addressFormat = optScriptType.isPresent() ? getAddressFormat(optScriptType.get()) : Protocol.AF_CLASSIC;
 
             String rewrittenPath = path.replaceAll("[hH]", "'");

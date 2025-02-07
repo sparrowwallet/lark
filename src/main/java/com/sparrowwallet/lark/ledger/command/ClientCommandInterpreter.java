@@ -29,7 +29,7 @@ public class ClientCommandInterpreter {
             throw new DeviceException("Unexpected empty SW_INTERRUPTED_EXECUTION response from hardware wallet");
         }
 
-        byte commandCode = hwResponse[0];
+        int commandCode = hwResponse[0] & 0xFF;
         for(ClientCommand command : commands) {
             if(command.code() == commandCode) {
                 return command.execute(hwResponse);

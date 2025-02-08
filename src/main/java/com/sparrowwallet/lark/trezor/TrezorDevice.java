@@ -178,7 +178,8 @@ public class TrezorDevice implements Closeable {
                 .addAllAddressN(KeyDerivation.parsePath(path).stream().map(ChildNumber::i).toList())
                 .setCoinName(getCoinName(network))
                 .setShowDisplay(showDisplay)
-                .setIgnoreXpubMagic(ignoreXpubMagic);
+                .setIgnoreXpubMagic(ignoreXpubMagic)
+                .setChunkify(true);
         if(multisig != null) {
             getAddress.setMultisig(multisig);
         }

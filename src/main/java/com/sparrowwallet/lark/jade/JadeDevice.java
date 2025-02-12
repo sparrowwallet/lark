@@ -244,7 +244,7 @@ public class JadeDevice implements Closeable {
     private void writeRequest(Map<String, Object> request) throws DeviceException {
         byte[] cborMsg = serialiseCborRequest(request);
         int written = 0;
-        while(written < cborMsg.length) {
+        while(written >= 0 && written < cborMsg.length) {
             written += serialPort.writeBytes(cborMsg, cborMsg.length - written, written);
         }
     }

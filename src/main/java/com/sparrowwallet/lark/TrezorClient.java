@@ -134,7 +134,7 @@ public class TrezorClient extends HardwareClient {
     private String getMasterFingerprint(TrezorDevice trezorDevice) throws DeviceException {
         TrezorMessageBitcoin.PublicKey masterKey = trezorDevice.getPublicNode(Network.MAINNET, List.of(ChildNumber.ZERO_HARDENED));
         if(masterKey.getRootFingerprint() != 0) {
-            return Integer.toHexString(masterKey.getRootFingerprint());
+            return String.format("%08x", masterKey.getRootFingerprint());
         }
         return Utils.bytesToHex(Arrays.copyOfRange(Base58.decode(masterKey.getXpub()), 5, 9));
     }

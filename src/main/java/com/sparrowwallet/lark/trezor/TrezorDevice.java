@@ -100,7 +100,10 @@ public class TrezorDevice implements Closeable {
         if(this.model == null) {
             this.model = TrezorModel.fromName(features.getModel());
             if(model == null) {
-                throw new DeviceException("Unsupported Trezor model " + features.getModel());
+                this.model = TrezorModel.fromInternalName(features.getInternalModel());
+            }
+            if(model == null) {
+                throw new IllegalStateException("Unsupported Trezor model: " + features.getModel() + " " + features.getInternalModel());
             }
         }
 

@@ -713,7 +713,7 @@ public class TrezorClient extends HardwareClient {
 
     @Override
     public WalletModel getModel() {
-        return model;
+        return model == null ? WalletModel.TREZOR_T : model;
     }
 
     @Override

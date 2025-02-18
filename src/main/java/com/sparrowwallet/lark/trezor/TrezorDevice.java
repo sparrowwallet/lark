@@ -3,9 +3,8 @@ package com.sparrowwallet.lark.trezor;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
-import com.sparrowwallet.drongo.KeyDerivation;
-import com.sparrowwallet.drongo.Network;
-import com.sparrowwallet.drongo.Utils;
+import com.sparrowwallet.drongo.*;
+import com.sparrowwallet.drongo.Version;
 import com.sparrowwallet.drongo.crypto.ChildNumber;
 import com.sparrowwallet.drongo.crypto.ECDSASignature;
 import com.sparrowwallet.drongo.crypto.SchnorrSignature;
@@ -14,7 +13,6 @@ import com.sparrowwallet.drongo.protocol.SigHash;
 import com.sparrowwallet.drongo.protocol.TransactionSignature;
 import com.sparrowwallet.lark.DeviceException;
 import com.sparrowwallet.lark.UserRefusedException;
-import com.sparrowwallet.drongo.Version;
 import com.sparrowwallet.lark.trezor.generated.TrezorMessage;
 import com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin;
 import com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon;
@@ -63,6 +61,9 @@ public class TrezorDevice implements Closeable {
         this.model = trezorModel;
         int result = LibUsb.open(device, deviceHandle);
         if(result != LibUsb.SUCCESS) {
+            if(result == LibUsb.ERROR_ACCESS && OsType.getCurrent() == OsType.WINDOWS) {
+                throw new DeviceException("Could not open Trezor at " + deviceHandle + ", invalid device driver");
+            }
             throw new DeviceException("Could not open Trezor at " + deviceHandle + ", returned " + result);
         }
 

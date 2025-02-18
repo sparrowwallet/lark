@@ -126,7 +126,7 @@ public class Lark {
                     //ignore, hid device does not match available hardware types
                 } catch(DeviceException e) {
                     if(hardwareClient != null && clientOperation instanceof InitializeFingerprintOperation) {
-                        hardwareClient.setError("Could not open client or get fingerprint information: " + e.getMessage() +
+                        hardwareClient.setError("Could not open device or get fingerprint: " + e.getMessage() +
                                 (OsType.getCurrent() == OsType.UNIX ? ". Are udev rules installed?" : ""));
                     } else {
                         throw e;
@@ -158,7 +158,7 @@ public class Lark {
                 //ignore, serial device does not match available hardware types
             } catch(DeviceException e) {
                 if(hardwareClient != null && clientOperation instanceof InitializeFingerprintOperation) {
-                    hardwareClient.setError("Could not open client or get fingerprint information: " + e.getMessage() +
+                    hardwareClient.setError("Could not open device or get fingerprint: " + e.getMessage() +
                             (OsType.getCurrent() == OsType.UNIX ? ". Are udev rules installed?" : ""));
                 } else {
                     throw e;
@@ -205,8 +205,9 @@ public class Lark {
                     //ignore, serial device does not match available hardware types
                 } catch(DeviceException e) {
                     if(hardwareClient != null && clientOperation instanceof InitializeFingerprintOperation) {
-                        hardwareClient.setError("Could not open client or get fingerprint information: " + e.getMessage() +
-                                (OsType.getCurrent() == OsType.UNIX ? ". Are udev rules installed?" : ""));
+                        hardwareClient.setError("Could not open device or get fingerprint: " + e.getMessage() +
+                                (OsType.getCurrent() == OsType.UNIX ? ". Are udev rules installed?" : "") +
+                                (OsType.getCurrent() == OsType.WINDOWS ? ". See [https://sparrowwallet.com/docs/faq.html#i-cant-connect-to-my-trezor]" : ""));
                     } else {
                         throw e;
                     }

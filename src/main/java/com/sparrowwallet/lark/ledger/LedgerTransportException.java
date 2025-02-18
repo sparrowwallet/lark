@@ -6,12 +6,11 @@ public class LedgerTransportException extends DeviceException {
     protected final Transport.Response response;
 
     public LedgerTransportException(Transport.Response response) {
-        super(getMessage(response.sw(), "Invalid status: 0x" + String.format("%04X", response.sw())));
-        this.response = response;
+        this(response, "Invalid status: 0x" + String.format("%04X", response.sw()));
     }
 
     protected LedgerTransportException(Transport.Response response, String defaultMessage) {
-        super(getMessage(response.sw(), defaultMessage));
+        super("Ledger returned error: " + getMessage(response.sw(), defaultMessage));
         this.response = response;
     }
 

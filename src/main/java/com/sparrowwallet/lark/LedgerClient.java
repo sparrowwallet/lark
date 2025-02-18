@@ -11,7 +11,6 @@ import com.sparrowwallet.drongo.wallet.WalletModel;
 import com.sparrowwallet.lark.ledger.*;
 import com.sparrowwallet.lark.ledger.wallet.MultisigWalletPolicy;
 import com.sparrowwallet.lark.ledger.wallet.WalletPolicy;
-import com.sparrowwallet.lark.ledger.wallet.WalletType;
 import org.hid4java.HidDevice;
 
 import java.util.*;
@@ -58,7 +57,7 @@ public class LedgerClient extends HardwareClient {
     @Override
     ExtendedKey getPubKeyAtPath(String path) throws DeviceException {
         try(LedgerDevice ledgerDevice = getLedgerDevice(hidDevice)) {
-            return ledgerDevice.getExtendedPubkey(path, false);
+            return ledgerDevice.getExtendedPubkey(path, isHighAccountNumber(path));
         }
     }
 
@@ -271,7 +270,7 @@ public class LedgerClient extends HardwareClient {
         }
     }
 
-    private Sha256Hash getWalletRegistration(LedgerDevice ledgerDevice, OutputDescriptor outputDescriptor, MultisigWalletPolicy mswp) throws DeviceException {
+    private Sha256Hash getWalletRegistration(LedgerDevice ledgerDevice, OutputDescriptor outputDescriptor, WalletPolicy walletPolicy) throws DeviceException {
         OutputDescriptor walletDescriptor = outputDescriptor.copy(false);
         if(walletRegistrations.containsKey(walletDescriptor)) {
             if(walletRegistrations.get(walletDescriptor).length != 32) {
@@ -280,9 +279,9 @@ public class LedgerClient extends HardwareClient {
             return Sha256Hash.wrap(walletRegistrations.get(walletDescriptor));
         }
 
-        LedgerDevice.WalletRegistration registration = ledgerDevice.registerWallet(mswp);
+        LedgerDevice.WalletRegistration registration = ledgerDevice.registerWallet(walletPolicy);
         Sha256Hash registeredWalletId = registration.hmac();
-        walletNames.put(walletDescriptor, mswp.getName());
+        walletNames.put(walletDescriptor, walletPolicy.getName());
         walletRegistrations.put(walletDescriptor, registeredWalletId.getBytes());
         return registeredWalletId;
     }
@@ -294,7 +293,13 @@ public class LedgerClient extends HardwareClient {
         }
 
         WalletPolicy walletPolicy = getSingleSigWalletPolicy(ledgerDevice, scriptType, origin.getDerivation().get(2).num());
-        wallets.put(walletPolicy.id(), new Wallet(SigningPriority.fromScriptType(scriptType), scriptType, walletPolicy, null));
+        Sha256Hash registeredWalletId = null;
+        if(isHighAccountNumber(origin.getDerivationPath())) {
+            OutputDescriptor outputDescriptor = OutputDescriptor.getOutputDescriptor(scriptType.getDescriptor() + walletPolicy.getKeysInfo().getFirst() + scriptType.getCloseDescriptor());
+            registeredWalletId = getWalletRegistration(ledgerDevice, outputDescriptor, walletPolicy);
+        }
+
+        wallets.put(walletPolicy.id(), new Wallet(SigningPriority.fromScriptType(scriptType), scriptType, walletPolicy, registeredWalletId));
     }
 
     private boolean isStandardPath(List<ChildNumber> path, ScriptType scriptType) {
@@ -335,9 +340,11 @@ public class LedgerClient extends HardwareClient {
 
         List<ChildNumber> path = scriptType.getDefaultDerivation(account);
         KeyDerivation origin = new KeyDerivation(this.masterFingerprint, path);
-        ExtendedKey xpub = ledgerDevice.getExtendedPubkey(origin.getDerivationPath(), false);
+        boolean highAccountNumber = isHighAccountNumber(origin.getDerivationPath());
+        ExtendedKey xpub = ledgerDevice.getExtendedPubkey(origin.getDerivationPath(), highAccountNumber);
         String keyExpr = OutputDescriptor.writeKey(xpub, origin, null, true, true, true);
-        return new WalletPolicy("", template, List.of(keyExpr));
+        String name = highAccountNumber ? getWalletNameOrDefault(OutputDescriptor.getOutputDescriptor(scriptType.getDescriptor() + keyExpr + scriptType.getCloseDescriptor())) : "";
+        return new WalletPolicy(name, template, List.of(keyExpr));
     }
 
     @Override
@@ -356,6 +363,7 @@ public class LedgerClient extends HardwareClient {
             List<ChildNumber> keyPath = KeyDerivation.parsePath(path);
             getMasterFingerprint(ledgerDevice);
             WalletPolicy walletPolicy;
+            Sha256Hash registeredWalletId = null;
             if(ledgerDevice instanceof LegacyLedgerDevice) {
                 String template = switch(scriptType) {
                     case P2PKH -> "pkh(@0/**)";
@@ -372,9 +380,13 @@ public class LedgerClient extends HardwareClient {
                     throw new DeviceException("Ledger requires BIP 44 standard paths");
                 }
                 walletPolicy = getSingleSigWalletPolicy(ledgerDevice, scriptType, keyPath.get(2).num());
+                if(isHighAccountNumber(path)) {
+                    OutputDescriptor outputDescriptor = OutputDescriptor.getOutputDescriptor(scriptType.getDescriptor() + walletPolicy.getKeysInfo().getFirst() + scriptType.getCloseDescriptor());
+                    registeredWalletId = getWalletRegistration(ledgerDevice, outputDescriptor, walletPolicy);
+                }
             }
 
-            return ledgerDevice.getWalletAddress(walletPolicy, null, keyPath.get(keyPath.size() - 2).num(), keyPath.get(keyPath.size() - 1).num(), true);
+            return ledgerDevice.getWalletAddress(walletPolicy, registeredWalletId, keyPath.get(keyPath.size() - 2).num(), keyPath.get(keyPath.size() - 1).num(), true);
         }
     }
 
@@ -406,6 +418,19 @@ public class LedgerClient extends HardwareClient {
 
     private boolean isValidDerivationPath(List<ChildNumber> derivationPath) {
         return derivationPath.size() == 3 && (derivationPath.get(1).equals(ChildNumber.ZERO) || derivationPath.get(1).equals(ChildNumber.ONE)) && !derivationPath.get(2).isHardened();
+    }
+
+    private boolean isHighAccountNumber(String path) {
+        List<ChildNumber> keypath = KeyDerivation.parsePath(path);
+        for(ScriptType scriptType : ScriptType.ADDRESSABLE_TYPES) {
+            List<ChildNumber> xpubPath = keypath.size() > scriptType.getDefaultDerivation().size() ? keypath.subList(0, scriptType.getDefaultDerivation().size()) : keypath;
+            int account = scriptType.getAccount(KeyDerivation.writePath(xpubPath));
+            if(account > 100) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     @Override

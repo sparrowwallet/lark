@@ -707,6 +707,11 @@ public class TrezorClient extends HardwareClient {
     }
 
     @Override
+    public String getType() {
+        return getModel() == WalletModel.ONEKEY_PRO || getModel() == WalletModel.ONEKEY_CLASSIC_1S ? WalletModel.ONEKEY_PRO.getType() : super.getType();
+    }
+
+    @Override
     public HardwareType getHardwareType() {
         return HardwareType.TREZOR;
     }

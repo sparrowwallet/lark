@@ -1,6 +1,7 @@
 package com.sparrowwallet.lark;
 
 import com.sparrowwallet.drongo.Utils;
+import com.sparrowwallet.drongo.wallet.WalletModel;
 
 public abstract class AbstractClientOperation implements ClientOperation {
     private final String deviceType;
@@ -8,13 +9,13 @@ public abstract class AbstractClientOperation implements ClientOperation {
     private final byte[] fingerprint;
 
     public AbstractClientOperation(String deviceType) {
-        this.deviceType = deviceType;
+        this.deviceType = getActualType(deviceType);
         this.devicePath = null;
         this.fingerprint = null;
     }
 
     public AbstractClientOperation(String deviceType, String devicePath) {
-        this.deviceType = deviceType;
+        this.deviceType = getActualType(deviceType);
         this.devicePath = devicePath;
         this.fingerprint = null;
     }
@@ -49,5 +50,9 @@ public abstract class AbstractClientOperation implements ClientOperation {
             return client.fingerprint().equals(Utils.bytesToHex(fingerprint));
         }
         return false;
+    }
+
+    protected static String getActualType(String type) {
+        return WalletModel.ONEKEY_PRO.getType().equals(type) ? WalletModel.TREZOR_T.getType() : type;
     }
 }

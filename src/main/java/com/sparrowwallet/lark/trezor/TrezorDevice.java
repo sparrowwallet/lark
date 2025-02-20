@@ -108,7 +108,7 @@ public class TrezorDevice implements Closeable {
             }
             if(features.getLabel().startsWith("OneKey")) {
                 if(model == TrezorModel.T1B1) {
-                    model = TrezorModel.ONEKEY_CLASSIC;
+                    model = TrezorModel.ONEKEY_CLASSIC_1S;
                 } else if(model == TrezorModel.T2T1) {
                     model = TrezorModel.ONEKEY_PRO;
                 }

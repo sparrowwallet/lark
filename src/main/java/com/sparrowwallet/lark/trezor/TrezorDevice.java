@@ -106,6 +106,13 @@ public class TrezorDevice implements Closeable {
             if(model == null) {
                 throw new IllegalStateException("Unsupported Trezor model: " + features.getModel() + " " + features.getInternalModel());
             }
+            if(features.getLabel().startsWith("OneKey")) {
+                if(model == TrezorModel.T1B1) {
+                    model = TrezorModel.ONEKEY_CLASSIC;
+                } else if(model == TrezorModel.T2T1) {
+                    model = TrezorModel.ONEKEY_PRO;
+                }
+            }
         }
 
         this.features = features;

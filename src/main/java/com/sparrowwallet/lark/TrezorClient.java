@@ -80,7 +80,7 @@ public class TrezorClient extends HardwareClient {
 
     private void prepareDevice(TrezorDevice trezorDevice) throws DeviceException {
         trezorDevice.refreshFeatures();
-        if(trezorDevice.getModel() == TrezorModel.T1B1 || trezorDevice.getModel() == TrezorModel.KEEPKEY) {
+        if(trezorDevice.getModel() == TrezorModel.T1B1 || trezorDevice.getModel() == TrezorModel.KEEPKEY || trezorDevice.getModel() == TrezorModel.ONEKEY_CLASSIC) {
             trezorDevice.initDevice();
         } else {
             try {
@@ -94,7 +94,7 @@ public class TrezorClient extends HardwareClient {
         this.model = trezorDevice.getModel().getWalletModel();
         this.label = trezorDevice.getFeatures().getLabel();
         this.needsPinSent = trezorDevice.getFeatures().getPinProtection() && !trezorDevice.getFeatures().getUnlocked();
-        if(trezorDevice.getModel().equals(TrezorModel.T1B1)) {
+        if(trezorDevice.getModel().equals(TrezorModel.T1B1) || trezorDevice.getModel().equals(TrezorModel.ONEKEY_CLASSIC)) {
             this.needsPassphraseSent = trezorDevice.getFeatures().getPassphraseProtection();
         } else {
             this.needsPassphraseSent = false;
@@ -752,7 +752,7 @@ public class TrezorClient extends HardwareClient {
 
     @Override
     public String getProductModel() {
-        return trezorModel == null ? "trezor_1" : "trezor_" + trezorModel.getName().replace(" ", "_").toLowerCase(Locale.ROOT);
+        return trezorModel == null ? "trezor_t" : "trezor_" + trezorModel.getName().replace(" ", "_").toLowerCase(Locale.ROOT);
     }
 
     public void setPassphrase(String passphrase) {

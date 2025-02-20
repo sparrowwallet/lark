@@ -14,7 +14,9 @@ public enum TrezorModel {
     T3B1("Safe 3", "T3B1", WalletModel.TREZOR_SAFE_3, new Version("2.1.0"), List.of(new DeviceId(0x1209, 0x53C1), new DeviceId(0x1209, 0x53C0))),
     DISC1("DISC1", "D001", WalletModel.TREZOR_SAFE_5, new Version("2.1.0"), List.of(new DeviceId(0x1209, 0x53C1), new DeviceId(0x1209, 0x53C0))),
     DISC2("DISC2", "D002", WalletModel.TREZOR_SAFE_5, new Version("2.1.0"), List.of(new DeviceId(0x1209, 0x53C1), new DeviceId(0x1209, 0x53C0))),
-    KEEPKEY("K1-14M", "keepkey", WalletModel.KEEPKEY, new Version("0.0.0"), List.of());
+    KEEPKEY("K1-14M", "keepkey", WalletModel.KEEPKEY, new Version("0.0.0"), List.of()),
+    ONEKEY_CLASSIC("1", "onekey_1", WalletModel.ONEKEY_CLASSIC, new Version("1.8.0"), List.of(new DeviceId(0x534C, 0x0001))),
+    ONEKEY_PRO("T", "onekey_t", WalletModel.ONEKEY_PRO, new Version("2.1.0"), List.of(new DeviceId(0x1209, 0x53C1), new DeviceId(0x1209, 0x53C0)));
 
     private final String name;
     private final String internalName;

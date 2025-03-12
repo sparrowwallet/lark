@@ -1,7 +1,9 @@
 package com.sparrowwallet.lark;
 
 import com.sparrowwallet.drongo.ExtendedKey;
+import com.sparrowwallet.drongo.KeyDerivation;
 import com.sparrowwallet.drongo.OutputDescriptor;
+import com.sparrowwallet.drongo.crypto.ChildNumber;
 import com.sparrowwallet.drongo.protocol.Script;
 import com.sparrowwallet.drongo.protocol.ScriptType;
 import com.sparrowwallet.drongo.psbt.PSBT;
@@ -11,10 +13,7 @@ import com.sparrowwallet.drongo.wallet.WalletModel;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Stream;
 
 public abstract class HardwareClient {
@@ -144,6 +143,15 @@ public abstract class HardwareClient {
 
     protected String getWalletName(OutputDescriptor walletDescriptor) {
         return walletNames.get(walletDescriptor.copy(false));
+    }
+
+    protected Optional<ScriptType> getScriptType(String addressPath) {
+        List<ChildNumber> keypath = KeyDerivation.parsePath(addressPath);
+        if(keypath.size() > 2) {
+            keypath = keypath.subList(0, keypath.size() - 2);
+        }
+        String accountPath = KeyDerivation.writePath(keypath);
+        return Arrays.stream(ScriptType.ADDRESSABLE_TYPES).filter(scriptType -> scriptType.getAccount(accountPath, true) > -1).findFirst();
     }
 
     /**

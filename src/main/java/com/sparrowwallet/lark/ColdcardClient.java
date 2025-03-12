@@ -146,12 +146,7 @@ public class ColdcardClient extends HardwareClient {
         try(ColdcardDevice coldcardDevice = new ColdcardDevice(hidDevice)) {
             coldcardDevice.checkMitm();
 
-            List<ChildNumber> keypath = KeyDerivation.parsePath(path);
-            if(keypath.size() > 2) {
-                keypath = keypath.subList(0, keypath.size() - 2);
-            }
-            String accountPath = KeyDerivation.writePath(keypath);
-            Optional<ScriptType> optScriptType = Arrays.stream(ScriptType.ADDRESSABLE_TYPES).filter(scriptType -> scriptType.getAccount(accountPath, true) > -1).findFirst();
+            Optional<ScriptType> optScriptType = getScriptType(path);
             int addressFormat = optScriptType.isPresent() ? getAddressFormat(optScriptType.get()) : Protocol.AF_CLASSIC;
 
             String rewrittenPath = path.replaceAll("[hH]", "'");

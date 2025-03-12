@@ -526,11 +526,10 @@ public class TrezorClient extends HardwareClient {
             checkUnlocked(trezorDevice);
 
             TrezorMessageBitcoin.InputScriptType scriptType = TrezorMessageBitcoin.InputScriptType.SPENDADDRESS;
-            List<ChildNumber> keypath = KeyDerivation.parsePath(path);
-            keypath = keypath.subList(0, Math.min(3, keypath.size()));
-            if(ScriptType.P2WPKH.getDefaultDerivation().equals(keypath)) {
+            Optional<ScriptType> optScriptType = getScriptType(path);
+            if(optScriptType.isPresent() && optScriptType.get() == ScriptType.P2WPKH) {
                 scriptType = TrezorMessageBitcoin.InputScriptType.SPENDWITNESS;
-            } else if(ScriptType.P2SH_P2WPKH.getDefaultDerivation().equals(keypath)) {
+            } else if(optScriptType.isPresent() && optScriptType.get() == ScriptType.P2SH_P2WPKH) {
                 scriptType = TrezorMessageBitcoin.InputScriptType.SPENDP2SHWITNESS;
             }
 

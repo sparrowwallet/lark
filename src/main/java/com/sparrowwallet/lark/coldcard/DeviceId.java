@@ -17,7 +17,7 @@ public record DeviceId(byte[] remotePubKey, byte[] masterFingerprint, byte[] xpu
     }
 
     public ExtendedKey getMasterXpub() {
-        return ExtendedKey.fromDescriptor(new String(xpub, StandardCharsets.UTF_8));
+        return ExtendedKey.fromDescriptor(new String(xpub, StandardCharsets.UTF_8), true);
     }
 
     public byte[] getPubKeyString() {

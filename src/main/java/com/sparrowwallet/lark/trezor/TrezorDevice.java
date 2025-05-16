@@ -36,7 +36,7 @@ public class TrezorDevice implements Closeable {
 
     private static final byte IN_ENDPOINT = (byte) 0x81;
     private static final byte OUT_ENDPOINT = (byte) 0x01;
-    private static final int TIMEOUT = 400;
+    private static final int TIMEOUT = 2000;
     private static final int TREZOR_INTERFACE = 0;
     private static final int REPLEN = 64;
 
@@ -723,6 +723,9 @@ public class TrezorDevice implements Closeable {
                     transferred,
                     TIMEOUT
             );
+            if(result == LibUsb.ERROR_TIMEOUT) {
+                throw new LibUsbException("Timed out waiting to read remaining data after " + TIMEOUT + "ms", result);
+            }
             if(result != LibUsb.SUCCESS) {
                 throw new LibUsbException("Unable to read data", result);
             }

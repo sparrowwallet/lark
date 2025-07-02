@@ -56,18 +56,18 @@ public class JadeDevice implements Closeable {
     }
 
     public boolean authUser(Network network) throws DeviceException {
-        Map<String, Object> params = Map.of("network", network.toString(), "epoch", System.currentTimeMillis() / 1000);
+        Map<String, Object> params = Map.of("network", getNetwork(network), "epoch", System.currentTimeMillis() / 1000);
         return rpc("auth_user", params, new HttpRequest(), true, Boolean.class);
     }
 
     public ExtendedKey getXpub(Network network, String path) throws DeviceException {
         List<Long> derivationPath = getPathAsInts(path);
-        String xpub = rpc("get_xpub", Map.of("network", network.toString(), "path", derivationPath), String.class);
+        String xpub = rpc("get_xpub", Map.of("network", getNetwork(network), "path", derivationPath), String.class);
         return ExtendedKey.fromDescriptor(xpub);
     }
 
     public byte[] signTransaction(Network network, byte[] psbtBytes) throws DeviceException {
-        Map<String, Object> params = Map.of("network", network.toString(), "psbt", psbtBytes);
+        Map<String, Object> params = Map.of("network", getNetwork(network), "psbt", psbtBytes);
         String inputId = Integer.toString(secureRandom.nextInt(899999) + 100000);
         Map<String, Object> request = buildRequest(inputId, "sign_psbt", params);
         writeRequest(request);
@@ -103,12 +103,12 @@ public class JadeDevice implements Closeable {
     public String displaySinglesigAddress(Network network, String path, ScriptType scriptType) throws DeviceException {
         List<Long> derivationPath = getPathAsInts(path);
         String addressVariant = getAddressVariant(scriptType);
-        return rpc("get_receive_address", Map.of("network", network.toString(), "variant", addressVariant, "path", derivationPath), null, true, String.class);
+        return rpc("get_receive_address", Map.of("network", getNetwork(network), "variant", addressVariant, "path", derivationPath), null, true, String.class);
     }
 
     public String displayMultisigAddress(Network network, String name, OutputDescriptor outputDescriptor) throws DeviceException {
         List<List<Long>> paths = outputDescriptor.getExtendedPublicKeys().stream().map(outputDescriptor::getChildDerivationPath).map(JadeDevice::getPathAsInts).toList();
-        return rpc("get_receive_address", Map.of("network", network.toString(), "paths", paths, "multisig_name", name), null, true, String.class);
+        return rpc("get_receive_address", Map.of("network", getNetwork(network), "paths", paths, "multisig_name", name), null, true, String.class);
     }
 
     public boolean registerMultisig(Network network, String name, OutputDescriptor outputDescriptor) throws DeviceException {
@@ -125,8 +125,18 @@ public class JadeDevice implements Closeable {
             signers.add(signer);
         }
 
-        return rpc("register_multisig", Map.of("network", network.toString(), "multisig_name", name,
+        return rpc("register_multisig", Map.of("network", getNetwork(network), "multisig_name", name,
                 "descriptor", Map.of("variant", addressVariant, "sorted", true, "threshold", threshold, "signers", signers)), null, true, Boolean.class);
+    }
+
+    private static String getNetwork(Network network) {
+        return switch(network) {
+            case MAINNET -> "mainnet";
+            case TESTNET -> "testnet";
+            case SIGNET -> "testnet";
+            case REGTEST -> "localtest";
+            default -> throw new IllegalArgumentException("Unsupported network: " + network);
+        };
     }
 
     private static List<Long> getPathAsInts(String path) {

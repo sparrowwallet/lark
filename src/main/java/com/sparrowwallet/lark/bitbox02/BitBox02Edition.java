@@ -1,7 +1,10 @@
 package com.sparrowwallet.lark.bitbox02;
 
 public enum BitBox02Edition {
-    MULTI("multi", "BitBox02"), BTCONLY("btconly", "BitBox02BTC");
+    MULTI("multi", "BitBox02"),
+    BTCONLY("btconly", "BitBox02BTC"),
+    NOVA_MULTI("novamulti", "BitBox02 Nova Multi"),
+    NOVA_BTCONLY("novabtconly", "BitBox02 Nova BTC-only");
 
     private final String name;
     private final String productString;

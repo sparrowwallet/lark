@@ -57,7 +57,7 @@ public class LedgerClient extends HardwareClient {
     @Override
     ExtendedKey getPubKeyAtPath(String path) throws DeviceException {
         try(LedgerDevice ledgerDevice = getLedgerDevice(hidDevice)) {
-            return ledgerDevice.getExtendedPubkey(path, isHighAccountNumber(path));
+            return ledgerDevice.getExtendedPubkey(path, isNonStandard(path));
         }
     }
 
@@ -294,7 +294,7 @@ public class LedgerClient extends HardwareClient {
 
         WalletPolicy walletPolicy = getSingleSigWalletPolicy(ledgerDevice, scriptType, origin.getDerivation().get(2).num());
         Sha256Hash registeredWalletId = null;
-        if(isHighAccountNumber(origin.getDerivationPath())) {
+        if(isNonStandard(origin.getDerivationPath())) {
             OutputDescriptor outputDescriptor = OutputDescriptor.getOutputDescriptor(scriptType.getDescriptor() + walletPolicy.getKeysInfo().getFirst() + scriptType.getCloseDescriptor());
             registeredWalletId = getWalletRegistration(ledgerDevice, outputDescriptor, walletPolicy);
         }
@@ -340,10 +340,10 @@ public class LedgerClient extends HardwareClient {
 
         List<ChildNumber> path = scriptType.getDefaultDerivation(account);
         KeyDerivation origin = new KeyDerivation(this.masterFingerprint, path);
-        boolean highAccountNumber = isHighAccountNumber(origin.getDerivationPath());
-        ExtendedKey xpub = ledgerDevice.getExtendedPubkey(origin.getDerivationPath(), highAccountNumber);
+        boolean nonStandard = isNonStandard(origin.getDerivationPath());
+        ExtendedKey xpub = ledgerDevice.getExtendedPubkey(origin.getDerivationPath(), nonStandard);
         String keyExpr = OutputDescriptor.writeKey(xpub, origin, null, true, true, true);
-        String name = highAccountNumber ? getWalletNameOrDefault(OutputDescriptor.getOutputDescriptor(scriptType.getDescriptor() + keyExpr + scriptType.getCloseDescriptor())) : "";
+        String name = nonStandard ? getWalletNameOrDefault(OutputDescriptor.getOutputDescriptor(scriptType.getDescriptor() + keyExpr + scriptType.getCloseDescriptor())) : "";
         return new WalletPolicy(name, template, List.of(keyExpr));
     }
 
@@ -380,7 +380,7 @@ public class LedgerClient extends HardwareClient {
                     throw new DeviceException("Ledger requires BIP 44 standard paths");
                 }
                 walletPolicy = getSingleSigWalletPolicy(ledgerDevice, scriptType, keyPath.get(2).num());
-                if(isHighAccountNumber(path)) {
+                if(isNonStandard(path)) {
                     OutputDescriptor outputDescriptor = OutputDescriptor.getOutputDescriptor(scriptType.getDescriptor() + walletPolicy.getKeysInfo().getFirst() + scriptType.getCloseDescriptor());
                     registeredWalletId = getWalletRegistration(ledgerDevice, outputDescriptor, walletPolicy);
                 }
@@ -420,17 +420,17 @@ public class LedgerClient extends HardwareClient {
         return derivationPath.size() == 3 && (derivationPath.get(1).equals(ChildNumber.ZERO) || derivationPath.get(1).equals(ChildNumber.ONE)) && !derivationPath.get(2).isHardened();
     }
 
-    private boolean isHighAccountNumber(String path) {
+    private boolean isNonStandard(String path) {
         List<ChildNumber> keypath = KeyDerivation.parsePath(path);
         for(ScriptType scriptType : ScriptType.ADDRESSABLE_TYPES) {
             List<ChildNumber> xpubPath = keypath.size() > scriptType.getDefaultDerivation().size() ? keypath.subList(0, scriptType.getDefaultDerivation().size()) : keypath;
             int account = scriptType.getAccount(KeyDerivation.writePath(xpubPath));
-            if(account > 100) {
-                return true;
+            if(account >= 0 && account <= 100) {
+                return false;
             }
         }
 
-        return false;
+        return true;
     }
 
     @Override

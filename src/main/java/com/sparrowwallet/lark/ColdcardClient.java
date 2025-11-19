@@ -82,7 +82,7 @@ public class ColdcardClient extends HardwareClient {
 
             PSBT signedPsbt = psbt;
             for(int i = 0; i < passes; i++) {
-                byte[] psbtBytes = signedPsbt.serialize();
+                byte[] psbtBytes = signedPsbt.getForExport().serialize();
                 ByteArrayInputStream bais = new ByteArrayInputStream(psbtBytes);
                 int size = psbtBytes.length;
 

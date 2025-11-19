@@ -69,7 +69,7 @@ public class JadeClient extends HardwareClient {
                 log.error("Error registering wallet", e);
             }
 
-            byte[] psbtBytes = psbt.serialize();
+            byte[] psbtBytes = psbt.getForExport().serialize();
             byte[] signedPsbtBytes = jadeDevice.signTransaction(Network.getCanonical(), psbtBytes);
             return new PSBT(signedPsbtBytes);
         } catch(PSBTParseException e) {

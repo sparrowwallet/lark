@@ -77,7 +77,7 @@ public class LedgerClient extends HardwareClient {
 
                 return psbt;
             } else {
-                PSBT psbt2 = new PSBT(psbt.serialize());
+                PSBT psbt2 = psbt.copy();
                 if(psbt2.getVersion() == null || psbt2.getVersion() == 0) {
                     psbt2.convertVersion(2);
                 }
@@ -265,8 +265,6 @@ public class LedgerClient extends HardwareClient {
 
                 return psbt;
             }
-        } catch(PSBTParseException e) {
-            throw new IllegalArgumentException("Could not reparse PSBT", e);
         }
     }
 

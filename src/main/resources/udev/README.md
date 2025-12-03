@@ -20,7 +20,7 @@ cd src/main/resources; \
   sudo cp udev/*.rules /etc/udev/rules.d/ && \
   sudo udevadm trigger && \
   sudo udevadm control --reload-rules  && \
-  sudo groupadd plugdev && \
+  sudo groupadd -r plugdev && \
   sudo usermod -aG plugdev `whoami`
 ```
 

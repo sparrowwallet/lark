@@ -12,6 +12,7 @@ public enum LedgerModel {
     LEDGER_NANO_S_PLUS(0x50, "ledger_nano_s_plus", WalletModel.LEDGER_NANO_S_PLUS),
     LEDGER_STAX(0x60, "ledger_stax", WalletModel.LEDGER_STAX),
     LEDGER_FLEX(0x70, "ledger_flex", WalletModel.LEDGER_FLEX),
+    LEDGER_NANO_GEN5(0x80, "ledger_nano_gen5", WalletModel.LEDGER_NANO_GEN5),
     LEGACY_LEDGER_NANO_S(0x0001, "ledger_nano_s", WalletModel.LEDGER_NANO_S),
     LEGACY_LEDGER_NANO_X(0x0004, "ledger_nano_x", WalletModel.LEDGER_NANO_X);
 

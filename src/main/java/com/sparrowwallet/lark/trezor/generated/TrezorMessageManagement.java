@@ -365,6 +365,134 @@ public final class TrezorMessageManagement {
   /**
    * <pre>
    * *
+   * Allowed display rotation angles (in degrees from North)
+   * </pre>
+   *
+   * Protobuf enum {@code hw.trezor.messages.management.DisplayRotation}
+   */
+  public enum DisplayRotation
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>North = 0;</code>
+     */
+    North(0),
+    /**
+     * <code>East = 90;</code>
+     */
+    East(90),
+    /**
+     * <code>South = 180;</code>
+     */
+    South(180),
+    /**
+     * <code>West = 270;</code>
+     */
+    West(270),
+    ;
+
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        DisplayRotation.class.getName());
+    }
+    /**
+     * <code>North = 0;</code>
+     */
+    public static final int North_VALUE = 0;
+    /**
+     * <code>East = 90;</code>
+     */
+    public static final int East_VALUE = 90;
+    /**
+     * <code>South = 180;</code>
+     */
+    public static final int South_VALUE = 180;
+    /**
+     * <code>West = 270;</code>
+     */
+    public static final int West_VALUE = 270;
+
+
+    public final int getNumber() {
+      return value;
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static DisplayRotation valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static DisplayRotation forNumber(int value) {
+      switch (value) {
+        case 0: return North;
+        case 90: return East;
+        case 180: return South;
+        case 270: return West;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<DisplayRotation>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        DisplayRotation> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<DisplayRotation>() {
+            public DisplayRotation findValueByNumber(int number) {
+              return DisplayRotation.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.getDescriptor().getEnumTypes().get(2);
+    }
+
+    private static final DisplayRotation[] VALUES = values();
+
+    public static DisplayRotation valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private DisplayRotation(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:hw.trezor.messages.management.DisplayRotation)
+  }
+
+  /**
+   * <pre>
+   * *
    * Format of the homescreen image
    * </pre>
    *
@@ -482,7 +610,7 @@ public final class TrezorMessageManagement {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.getDescriptor().getEnumTypes().get(2);
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.getDescriptor().getEnumTypes().get(3);
     }
 
     private static final HomescreenFormat[] VALUES = values();
@@ -620,7 +748,7 @@ public final class TrezorMessageManagement {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.getDescriptor().getEnumTypes().get(3);
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.getDescriptor().getEnumTypes().get(4);
     }
 
     private static final RecoveryType[] VALUES = values();
@@ -673,7 +801,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional bool _skip_passphrase = 2 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.Initialize._skip_passphrase is deprecated.
-     *     See messages-management.proto;l=49
+     *     See messages-management.proto;l=58
      * @return Whether the skipPassphrase field is set.
      */
     @java.lang.Deprecated boolean hasSkipPassphrase();
@@ -684,7 +812,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional bool _skip_passphrase = 2 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.Initialize._skip_passphrase is deprecated.
-     *     See messages-management.proto;l=49
+     *     See messages-management.proto;l=58
      * @return The skipPassphrase.
      */
     @java.lang.Deprecated boolean getSkipPassphrase();
@@ -790,7 +918,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional bool _skip_passphrase = 2 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.Initialize._skip_passphrase is deprecated.
-     *     See messages-management.proto;l=49
+     *     See messages-management.proto;l=58
      * @return Whether the skipPassphrase field is set.
      */
     @java.lang.Override
@@ -804,7 +932,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional bool _skip_passphrase = 2 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.Initialize._skip_passphrase is deprecated.
-     *     See messages-management.proto;l=49
+     *     See messages-management.proto;l=58
      * @return The skipPassphrase.
      */
     @java.lang.Override
@@ -1271,7 +1399,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional bool _skip_passphrase = 2 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.Initialize._skip_passphrase is deprecated.
-       *     See messages-management.proto;l=49
+       *     See messages-management.proto;l=58
        * @return Whether the skipPassphrase field is set.
        */
       @java.lang.Override
@@ -1285,7 +1413,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional bool _skip_passphrase = 2 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.Initialize._skip_passphrase is deprecated.
-       *     See messages-management.proto;l=49
+       *     See messages-management.proto;l=58
        * @return The skipPassphrase.
        */
       @java.lang.Override
@@ -1299,7 +1427,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional bool _skip_passphrase = 2 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.Initialize._skip_passphrase is deprecated.
-       *     See messages-management.proto;l=49
+       *     See messages-management.proto;l=58
        * @param value The skipPassphrase to set.
        * @return This builder for chaining.
        */
@@ -1317,7 +1445,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional bool _skip_passphrase = 2 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.Initialize._skip_passphrase is deprecated.
-       *     See messages-management.proto;l=49
+       *     See messages-management.proto;l=58
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearSkipPassphrase() {
@@ -1895,6 +2023,25 @@ public final class TrezorMessageManagement {
 
     /**
      * <pre>
+     * build version of the firmware/bootloader, e.g. 0
+     * </pre>
+     *
+     * <code>optional uint32 build_version = 61;</code>
+     * @return Whether the buildVersion field is set.
+     */
+    boolean hasBuildVersion();
+    /**
+     * <pre>
+     * build version of the firmware/bootloader, e.g. 0
+     * </pre>
+     *
+     * <code>optional uint32 build_version = 61;</code>
+     * @return The buildVersion.
+     */
+    int getBuildVersion();
+
+    /**
+     * <pre>
      * is device in bootloader mode?
      * </pre>
      *
@@ -2139,7 +2286,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional bool _passphrase_cached = 17 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.Features._passphrase_cached is deprecated.
-     *     See messages-management.proto;l=81
+     *     See messages-management.proto;l=91
      * @return Whether the passphraseCached field is set.
      */
     @java.lang.Deprecated boolean hasPassphraseCached();
@@ -2150,14 +2297,14 @@ public final class TrezorMessageManagement {
      *
      * <code>optional bool _passphrase_cached = 17 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.Features._passphrase_cached is deprecated.
-     *     See messages-management.proto;l=81
+     *     See messages-management.proto;l=91
      * @return The passphraseCached.
      */
     @java.lang.Deprecated boolean getPassphraseCached();
 
     /**
      * <pre>
-     * is valid firmware loaded?
+     * is firmware loaded?
      * </pre>
      *
      * <code>optional bool firmware_present = 18;</code>
@@ -2166,7 +2313,7 @@ public final class TrezorMessageManagement {
     boolean hasFirmwarePresent();
     /**
      * <pre>
-     * is valid firmware loaded?
+     * is firmware loaded?
      * </pre>
      *
      * <code>optional bool firmware_present = 18;</code>
@@ -2297,6 +2444,25 @@ public final class TrezorMessageManagement {
      * @return The fwPatch.
      */
     int getFwPatch();
+
+    /**
+     * <pre>
+     * reported firmware version if in bootloader mode
+     * </pre>
+     *
+     * <code>optional uint32 fw_build = 62;</code>
+     * @return Whether the fwBuild field is set.
+     */
+    boolean hasFwBuild();
+    /**
+     * <pre>
+     * reported firmware version if in bootloader mode
+     * </pre>
+     *
+     * <code>optional uint32 fw_build = 62;</code>
+     * @return The fwBuild.
+     */
+    int getFwBuild();
 
     /**
      * <pre>
@@ -2559,22 +2725,22 @@ public final class TrezorMessageManagement {
 
     /**
      * <pre>
-     * in degrees from North
+     * rotation of display (in degrees from North)
      * </pre>
      *
-     * <code>optional uint32 display_rotation = 39;</code>
+     * <code>optional .hw.trezor.messages.management.DisplayRotation display_rotation = 39;</code>
      * @return Whether the displayRotation field is set.
      */
     boolean hasDisplayRotation();
     /**
      * <pre>
-     * in degrees from North
+     * rotation of display (in degrees from North)
      * </pre>
      *
-     * <code>optional uint32 display_rotation = 39;</code>
+     * <code>optional .hw.trezor.messages.management.DisplayRotation display_rotation = 39;</code>
      * @return The displayRotation.
      */
-    int getDisplayRotation();
+    com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation getDisplayRotation();
 
     /**
      * <pre>
@@ -2870,6 +3036,120 @@ public final class TrezorMessageManagement {
      * @return The optigaSec.
      */
     int getOptigaSec();
+
+    /**
+     * <pre>
+     * Battery state of charge (0 - 100%)
+     * </pre>
+     *
+     * <code>optional uint32 soc = 55;</code>
+     * @return Whether the soc field is set.
+     */
+    boolean hasSoc();
+    /**
+     * <pre>
+     * Battery state of charge (0 - 100%)
+     * </pre>
+     *
+     * <code>optional uint32 soc = 55;</code>
+     * @return The soc.
+     */
+    int getSoc();
+
+    /**
+     * <pre>
+     * true if the firmware is corrupted
+     * </pre>
+     *
+     * <code>optional bool firmware_corrupted = 56;</code>
+     * @return Whether the firmwareCorrupted field is set.
+     */
+    boolean hasFirmwareCorrupted();
+    /**
+     * <pre>
+     * true if the firmware is corrupted
+     * </pre>
+     *
+     * <code>optional bool firmware_corrupted = 56;</code>
+     * @return The firmwareCorrupted.
+     */
+    boolean getFirmwareCorrupted();
+
+    /**
+     * <pre>
+     * number of milliseconds after which the battery-powered device locks itself
+     * </pre>
+     *
+     * <code>optional uint32 auto_lock_delay_battery_ms = 57;</code>
+     * @return Whether the autoLockDelayBatteryMs field is set.
+     */
+    boolean hasAutoLockDelayBatteryMs();
+    /**
+     * <pre>
+     * number of milliseconds after which the battery-powered device locks itself
+     * </pre>
+     *
+     * <code>optional uint32 auto_lock_delay_battery_ms = 57;</code>
+     * @return The autoLockDelayBatteryMs.
+     */
+    int getAutoLockDelayBatteryMs();
+
+    /**
+     * <pre>
+     * RGB LED settings
+     * </pre>
+     *
+     * <code>optional bool led = 58;</code>
+     * @return Whether the led field is set.
+     */
+    boolean hasLed();
+    /**
+     * <pre>
+     * RGB LED settings
+     * </pre>
+     *
+     * <code>optional bool led = 58;</code>
+     * @return The led.
+     */
+    boolean getLed();
+
+    /**
+     * <pre>
+     * USB connected
+     * </pre>
+     *
+     * <code>optional bool usb_connected = 59;</code>
+     * @return Whether the usbConnected field is set.
+     */
+    boolean hasUsbConnected();
+    /**
+     * <pre>
+     * USB connected
+     * </pre>
+     *
+     * <code>optional bool usb_connected = 59;</code>
+     * @return The usbConnected.
+     */
+    boolean getUsbConnected();
+
+    /**
+     * <pre>
+     * Wireless charger connected
+     * </pre>
+     *
+     * <code>optional bool wireless_connected = 60;</code>
+     * @return Whether the wirelessConnected field is set.
+     */
+    boolean hasWirelessConnected();
+    /**
+     * <pre>
+     * Wireless charger connected
+     * </pre>
+     *
+     * <code>optional bool wireless_connected = 60;</code>
+     * @return The wirelessConnected.
+     */
+    boolean getWirelessConnected();
   }
   /**
    * <pre>
@@ -2913,6 +3193,7 @@ public final class TrezorMessageManagement {
       backupType_ = 0;
       sessionId_ = com.google.protobuf.ByteString.EMPTY;
       safetyChecks_ = 0;
+      displayRotation_ = 0;
       homescreenFormat_ = 1;
       internalModel_ = "";
       languageVersionMatches_ = true;
@@ -3226,6 +3507,10 @@ public final class TrezorMessageManagement {
        */
       Capability_Bitcoin_like(2),
       /**
+       * <pre>
+       * BNB Smart Chain
+       * </pre>
+       *
        * <code>Capability_Binance = 3;</code>
        */
       Capability_Binance(3),
@@ -3310,6 +3595,22 @@ public final class TrezorMessageManagement {
        * <code>Capability_Haptic = 21 [(.hw.trezor.messages.bitcoin_only) = true];</code>
        */
       Capability_Haptic(21),
+      /**
+       * <pre>
+       * Bluetooth Low Energy
+       * </pre>
+       *
+       * <code>Capability_BLE = 22 [(.hw.trezor.messages.bitcoin_only) = true];</code>
+       */
+      Capability_BLE(22),
+      /**
+       * <pre>
+       * Near Field Communications
+       * </pre>
+       *
+       * <code>Capability_NFC = 23 [(.hw.trezor.messages.bitcoin_only) = true];</code>
+       */
+      Capability_NFC(23),
       ;
 
       static {
@@ -3334,6 +3635,10 @@ public final class TrezorMessageManagement {
        */
       public static final int Capability_Bitcoin_like_VALUE = 2;
       /**
+       * <pre>
+       * BNB Smart Chain
+       * </pre>
+       *
        * <code>Capability_Binance = 3;</code>
        */
       public static final int Capability_Binance_VALUE = 3;
@@ -3417,6 +3722,22 @@ public final class TrezorMessageManagement {
        * <code>Capability_Haptic = 21 [(.hw.trezor.messages.bitcoin_only) = true];</code>
        */
       public static final int Capability_Haptic_VALUE = 21;
+      /**
+       * <pre>
+       * Bluetooth Low Energy
+       * </pre>
+       *
+       * <code>Capability_BLE = 22 [(.hw.trezor.messages.bitcoin_only) = true];</code>
+       */
+      public static final int Capability_BLE_VALUE = 22;
+      /**
+       * <pre>
+       * Near Field Communications
+       * </pre>
+       *
+       * <code>Capability_NFC = 23 [(.hw.trezor.messages.bitcoin_only) = true];</code>
+       */
+      public static final int Capability_NFC_VALUE = 23;
 
 
       public final int getNumber() {
@@ -3460,6 +3781,8 @@ public final class TrezorMessageManagement {
           case 19: return Capability_Translations;
           case 20: return Capability_Brightness;
           case 21: return Capability_Haptic;
+          case 22: return Capability_BLE;
+          case 23: return Capability_NFC;
           default: return null;
         }
       }
@@ -3653,6 +3976,33 @@ public final class TrezorMessageManagement {
       return patchVersion_;
     }
 
+    public static final int BUILD_VERSION_FIELD_NUMBER = 61;
+    private int buildVersion_ = 0;
+    /**
+     * <pre>
+     * build version of the firmware/bootloader, e.g. 0
+     * </pre>
+     *
+     * <code>optional uint32 build_version = 61;</code>
+     * @return Whether the buildVersion field is set.
+     */
+    @java.lang.Override
+    public boolean hasBuildVersion() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <pre>
+     * build version of the firmware/bootloader, e.g. 0
+     * </pre>
+     *
+     * <code>optional uint32 build_version = 61;</code>
+     * @return The buildVersion.
+     */
+    @java.lang.Override
+    public int getBuildVersion() {
+      return buildVersion_;
+    }
+
     public static final int BOOTLOADER_MODE_FIELD_NUMBER = 5;
     private boolean bootloaderMode_ = false;
     /**
@@ -3665,7 +4015,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasBootloaderMode() {
-      return ((bitField0_ & 0x00000010) != 0);
+      return ((bitField0_ & 0x00000020) != 0);
     }
     /**
      * <pre>
@@ -3693,7 +4043,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasDeviceId() {
-      return ((bitField0_ & 0x00000020) != 0);
+      return ((bitField0_ & 0x00000040) != 0);
     }
     /**
      * <pre>
@@ -3753,7 +4103,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasPinProtection() {
-      return ((bitField0_ & 0x00000040) != 0);
+      return ((bitField0_ & 0x00000080) != 0);
     }
     /**
      * <pre>
@@ -3780,7 +4130,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasPassphraseProtection() {
-      return ((bitField0_ & 0x00000080) != 0);
+      return ((bitField0_ & 0x00000100) != 0);
     }
     /**
      * <pre>
@@ -3808,7 +4158,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasLanguage() {
-      return ((bitField0_ & 0x00000100) != 0);
+      return ((bitField0_ & 0x00000200) != 0);
     }
     /**
      * <pre>
@@ -3869,7 +4219,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasLabel() {
-      return ((bitField0_ & 0x00000200) != 0);
+      return ((bitField0_ & 0x00000400) != 0);
     }
     /**
      * <pre>
@@ -3929,7 +4279,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasInitialized() {
-      return ((bitField0_ & 0x00000400) != 0);
+      return ((bitField0_ & 0x00000800) != 0);
     }
     /**
      * <pre>
@@ -3956,7 +4306,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasRevision() {
-      return ((bitField0_ & 0x00000800) != 0);
+      return ((bitField0_ & 0x00001000) != 0);
     }
     /**
      * <pre>
@@ -3983,7 +4333,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasBootloaderHash() {
-      return ((bitField0_ & 0x00001000) != 0);
+      return ((bitField0_ & 0x00002000) != 0);
     }
     /**
      * <pre>
@@ -4010,7 +4360,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasImported() {
-      return ((bitField0_ & 0x00002000) != 0);
+      return ((bitField0_ & 0x00004000) != 0);
     }
     /**
      * <pre>
@@ -4037,7 +4387,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasUnlocked() {
-      return ((bitField0_ & 0x00004000) != 0);
+      return ((bitField0_ & 0x00008000) != 0);
     }
     /**
      * <pre>
@@ -4061,12 +4411,12 @@ public final class TrezorMessageManagement {
      *
      * <code>optional bool _passphrase_cached = 17 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.Features._passphrase_cached is deprecated.
-     *     See messages-management.proto;l=81
+     *     See messages-management.proto;l=91
      * @return Whether the passphraseCached field is set.
      */
     @java.lang.Override
     @java.lang.Deprecated public boolean hasPassphraseCached() {
-      return ((bitField0_ & 0x00008000) != 0);
+      return ((bitField0_ & 0x00010000) != 0);
     }
     /**
      * <pre>
@@ -4075,7 +4425,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional bool _passphrase_cached = 17 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.Features._passphrase_cached is deprecated.
-     *     See messages-management.proto;l=81
+     *     See messages-management.proto;l=91
      * @return The passphraseCached.
      */
     @java.lang.Override
@@ -4087,7 +4437,7 @@ public final class TrezorMessageManagement {
     private boolean firmwarePresent_ = false;
     /**
      * <pre>
-     * is valid firmware loaded?
+     * is firmware loaded?
      * </pre>
      *
      * <code>optional bool firmware_present = 18;</code>
@@ -4095,11 +4445,11 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasFirmwarePresent() {
-      return ((bitField0_ & 0x00010000) != 0);
+      return ((bitField0_ & 0x00020000) != 0);
     }
     /**
      * <pre>
-     * is valid firmware loaded?
+     * is firmware loaded?
      * </pre>
      *
      * <code>optional bool firmware_present = 18;</code>
@@ -4121,7 +4471,7 @@ public final class TrezorMessageManagement {
      * @return Whether the backupAvailability field is set.
      */
     @java.lang.Override public boolean hasBackupAvailability() {
-      return ((bitField0_ & 0x00020000) != 0);
+      return ((bitField0_ & 0x00040000) != 0);
     }
     /**
      * <pre>
@@ -4148,7 +4498,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasFlags() {
-      return ((bitField0_ & 0x00040000) != 0);
+      return ((bitField0_ & 0x00080000) != 0);
     }
     /**
      * <pre>
@@ -4176,7 +4526,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasModel() {
-      return ((bitField0_ & 0x00080000) != 0);
+      return ((bitField0_ & 0x00100000) != 0);
     }
     /**
      * <pre>
@@ -4236,7 +4586,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasFwMajor() {
-      return ((bitField0_ & 0x00100000) != 0);
+      return ((bitField0_ & 0x00200000) != 0);
     }
     /**
      * <pre>
@@ -4263,7 +4613,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasFwMinor() {
-      return ((bitField0_ & 0x00200000) != 0);
+      return ((bitField0_ & 0x00400000) != 0);
     }
     /**
      * <pre>
@@ -4290,7 +4640,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasFwPatch() {
-      return ((bitField0_ & 0x00400000) != 0);
+      return ((bitField0_ & 0x00800000) != 0);
     }
     /**
      * <pre>
@@ -4303,6 +4653,33 @@ public final class TrezorMessageManagement {
     @java.lang.Override
     public int getFwPatch() {
       return fwPatch_;
+    }
+
+    public static final int FW_BUILD_FIELD_NUMBER = 62;
+    private int fwBuild_ = 0;
+    /**
+     * <pre>
+     * reported firmware version if in bootloader mode
+     * </pre>
+     *
+     * <code>optional uint32 fw_build = 62;</code>
+     * @return Whether the fwBuild field is set.
+     */
+    @java.lang.Override
+    public boolean hasFwBuild() {
+      return ((bitField0_ & 0x01000000) != 0);
+    }
+    /**
+     * <pre>
+     * reported firmware version if in bootloader mode
+     * </pre>
+     *
+     * <code>optional uint32 fw_build = 62;</code>
+     * @return The fwBuild.
+     */
+    @java.lang.Override
+    public int getFwBuild() {
+      return fwBuild_;
     }
 
     public static final int FW_VENDOR_FIELD_NUMBER = 25;
@@ -4318,7 +4695,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasFwVendor() {
-      return ((bitField0_ & 0x00800000) != 0);
+      return ((bitField0_ & 0x02000000) != 0);
     }
     /**
      * <pre>
@@ -4378,7 +4755,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasUnfinishedBackup() {
-      return ((bitField0_ & 0x01000000) != 0);
+      return ((bitField0_ & 0x04000000) != 0);
     }
     /**
      * <pre>
@@ -4405,7 +4782,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasNoBackup() {
-      return ((bitField0_ & 0x02000000) != 0);
+      return ((bitField0_ & 0x08000000) != 0);
     }
     /**
      * <pre>
@@ -4431,7 +4808,7 @@ public final class TrezorMessageManagement {
      * @return Whether the recoveryStatus field is set.
      */
     @java.lang.Override public boolean hasRecoveryStatus() {
-      return ((bitField0_ & 0x04000000) != 0);
+      return ((bitField0_ & 0x10000000) != 0);
     }
     /**
      * <pre>
@@ -4508,7 +4885,7 @@ public final class TrezorMessageManagement {
      * @return Whether the backupType field is set.
      */
     @java.lang.Override public boolean hasBackupType() {
-      return ((bitField0_ & 0x08000000) != 0);
+      return ((bitField0_ & 0x20000000) != 0);
     }
     /**
      * <pre>
@@ -4535,7 +4912,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasSdCardPresent() {
-      return ((bitField0_ & 0x10000000) != 0);
+      return ((bitField0_ & 0x40000000) != 0);
     }
     /**
      * <pre>
@@ -4562,7 +4939,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasSdProtection() {
-      return ((bitField0_ & 0x20000000) != 0);
+      return ((bitField0_ & 0x80000000) != 0);
     }
     /**
      * <pre>
@@ -4589,7 +4966,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasWipeCodeProtection() {
-      return ((bitField0_ & 0x40000000) != 0);
+      return ((bitField1_ & 0x00000001) != 0);
     }
     /**
      * <pre>
@@ -4612,7 +4989,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasSessionId() {
-      return ((bitField0_ & 0x80000000) != 0);
+      return ((bitField1_ & 0x00000002) != 0);
     }
     /**
      * <code>optional bytes session_id = 35;</code>
@@ -4635,7 +5012,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasPassphraseAlwaysOnDevice() {
-      return ((bitField1_ & 0x00000001) != 0);
+      return ((bitField1_ & 0x00000004) != 0);
     }
     /**
      * <pre>
@@ -4661,7 +5038,7 @@ public final class TrezorMessageManagement {
      * @return Whether the safetyChecks field is set.
      */
     @java.lang.Override public boolean hasSafetyChecks() {
-      return ((bitField1_ & 0x00000002) != 0);
+      return ((bitField1_ & 0x00000008) != 0);
     }
     /**
      * <pre>
@@ -4688,7 +5065,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasAutoLockDelayMs() {
-      return ((bitField1_ & 0x00000004) != 0);
+      return ((bitField1_ & 0x00000010) != 0);
     }
     /**
      * <pre>
@@ -4707,27 +5084,26 @@ public final class TrezorMessageManagement {
     private int displayRotation_ = 0;
     /**
      * <pre>
-     * in degrees from North
+     * rotation of display (in degrees from North)
      * </pre>
      *
-     * <code>optional uint32 display_rotation = 39;</code>
+     * <code>optional .hw.trezor.messages.management.DisplayRotation display_rotation = 39;</code>
      * @return Whether the displayRotation field is set.
      */
-    @java.lang.Override
-    public boolean hasDisplayRotation() {
-      return ((bitField1_ & 0x00000008) != 0);
+    @java.lang.Override public boolean hasDisplayRotation() {
+      return ((bitField1_ & 0x00000020) != 0);
     }
     /**
      * <pre>
-     * in degrees from North
+     * rotation of display (in degrees from North)
      * </pre>
      *
-     * <code>optional uint32 display_rotation = 39;</code>
+     * <code>optional .hw.trezor.messages.management.DisplayRotation display_rotation = 39;</code>
      * @return The displayRotation.
      */
-    @java.lang.Override
-    public int getDisplayRotation() {
-      return displayRotation_;
+    @java.lang.Override public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation getDisplayRotation() {
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation result = com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation.forNumber(displayRotation_);
+      return result == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation.North : result;
     }
 
     public static final int EXPERIMENTAL_FEATURES_FIELD_NUMBER = 40;
@@ -4742,7 +5118,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasExperimentalFeatures() {
-      return ((bitField1_ & 0x00000010) != 0);
+      return ((bitField1_ & 0x00000040) != 0);
     }
     /**
      * <pre>
@@ -4769,7 +5145,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasBusy() {
-      return ((bitField1_ & 0x00000020) != 0);
+      return ((bitField1_ & 0x00000080) != 0);
     }
     /**
      * <pre>
@@ -4795,7 +5171,7 @@ public final class TrezorMessageManagement {
      * @return Whether the homescreenFormat field is set.
      */
     @java.lang.Override public boolean hasHomescreenFormat() {
-      return ((bitField1_ & 0x00000040) != 0);
+      return ((bitField1_ & 0x00000100) != 0);
     }
     /**
      * <pre>
@@ -4822,7 +5198,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasHidePassphraseFromHost() {
-      return ((bitField1_ & 0x00000080) != 0);
+      return ((bitField1_ & 0x00000200) != 0);
     }
     /**
      * <pre>
@@ -4850,7 +5226,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasInternalModel() {
-      return ((bitField1_ & 0x00000100) != 0);
+      return ((bitField1_ & 0x00000400) != 0);
     }
     /**
      * <pre>
@@ -4910,7 +5286,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasUnitColor() {
-      return ((bitField1_ & 0x00000200) != 0);
+      return ((bitField1_ & 0x00000800) != 0);
     }
     /**
      * <pre>
@@ -4937,7 +5313,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasUnitBtconly() {
-      return ((bitField1_ & 0x00000400) != 0);
+      return ((bitField1_ & 0x00001000) != 0);
     }
     /**
      * <pre>
@@ -4964,7 +5340,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasHomescreenWidth() {
-      return ((bitField1_ & 0x00000800) != 0);
+      return ((bitField1_ & 0x00002000) != 0);
     }
     /**
      * <pre>
@@ -4991,7 +5367,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasHomescreenHeight() {
-      return ((bitField1_ & 0x00001000) != 0);
+      return ((bitField1_ & 0x00004000) != 0);
     }
     /**
      * <pre>
@@ -5018,7 +5394,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasBootloaderLocked() {
-      return ((bitField1_ & 0x00002000) != 0);
+      return ((bitField1_ & 0x00008000) != 0);
     }
     /**
      * <pre>
@@ -5045,7 +5421,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasLanguageVersionMatches() {
-      return ((bitField1_ & 0x00004000) != 0);
+      return ((bitField1_ & 0x00010000) != 0);
     }
     /**
      * <pre>
@@ -5072,7 +5448,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasUnitPackaging() {
-      return ((bitField1_ & 0x00008000) != 0);
+      return ((bitField1_ & 0x00020000) != 0);
     }
     /**
      * <pre>
@@ -5099,7 +5475,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasHapticFeedback() {
-      return ((bitField1_ & 0x00010000) != 0);
+      return ((bitField1_ & 0x00040000) != 0);
     }
     /**
      * <pre>
@@ -5125,7 +5501,7 @@ public final class TrezorMessageManagement {
      * @return Whether the recoveryType field is set.
      */
     @java.lang.Override public boolean hasRecoveryType() {
-      return ((bitField1_ & 0x00020000) != 0);
+      return ((bitField1_ & 0x00080000) != 0);
     }
     /**
      * <pre>
@@ -5152,7 +5528,7 @@ public final class TrezorMessageManagement {
      */
     @java.lang.Override
     public boolean hasOptigaSec() {
-      return ((bitField1_ & 0x00040000) != 0);
+      return ((bitField1_ & 0x00100000) != 0);
     }
     /**
      * <pre>
@@ -5165,6 +5541,168 @@ public final class TrezorMessageManagement {
     @java.lang.Override
     public int getOptigaSec() {
       return optigaSec_;
+    }
+
+    public static final int SOC_FIELD_NUMBER = 55;
+    private int soc_ = 0;
+    /**
+     * <pre>
+     * Battery state of charge (0 - 100%)
+     * </pre>
+     *
+     * <code>optional uint32 soc = 55;</code>
+     * @return Whether the soc field is set.
+     */
+    @java.lang.Override
+    public boolean hasSoc() {
+      return ((bitField1_ & 0x00200000) != 0);
+    }
+    /**
+     * <pre>
+     * Battery state of charge (0 - 100%)
+     * </pre>
+     *
+     * <code>optional uint32 soc = 55;</code>
+     * @return The soc.
+     */
+    @java.lang.Override
+    public int getSoc() {
+      return soc_;
+    }
+
+    public static final int FIRMWARE_CORRUPTED_FIELD_NUMBER = 56;
+    private boolean firmwareCorrupted_ = false;
+    /**
+     * <pre>
+     * true if the firmware is corrupted
+     * </pre>
+     *
+     * <code>optional bool firmware_corrupted = 56;</code>
+     * @return Whether the firmwareCorrupted field is set.
+     */
+    @java.lang.Override
+    public boolean hasFirmwareCorrupted() {
+      return ((bitField1_ & 0x00400000) != 0);
+    }
+    /**
+     * <pre>
+     * true if the firmware is corrupted
+     * </pre>
+     *
+     * <code>optional bool firmware_corrupted = 56;</code>
+     * @return The firmwareCorrupted.
+     */
+    @java.lang.Override
+    public boolean getFirmwareCorrupted() {
+      return firmwareCorrupted_;
+    }
+
+    public static final int AUTO_LOCK_DELAY_BATTERY_MS_FIELD_NUMBER = 57;
+    private int autoLockDelayBatteryMs_ = 0;
+    /**
+     * <pre>
+     * number of milliseconds after which the battery-powered device locks itself
+     * </pre>
+     *
+     * <code>optional uint32 auto_lock_delay_battery_ms = 57;</code>
+     * @return Whether the autoLockDelayBatteryMs field is set.
+     */
+    @java.lang.Override
+    public boolean hasAutoLockDelayBatteryMs() {
+      return ((bitField1_ & 0x00800000) != 0);
+    }
+    /**
+     * <pre>
+     * number of milliseconds after which the battery-powered device locks itself
+     * </pre>
+     *
+     * <code>optional uint32 auto_lock_delay_battery_ms = 57;</code>
+     * @return The autoLockDelayBatteryMs.
+     */
+    @java.lang.Override
+    public int getAutoLockDelayBatteryMs() {
+      return autoLockDelayBatteryMs_;
+    }
+
+    public static final int LED_FIELD_NUMBER = 58;
+    private boolean led_ = false;
+    /**
+     * <pre>
+     * RGB LED settings
+     * </pre>
+     *
+     * <code>optional bool led = 58;</code>
+     * @return Whether the led field is set.
+     */
+    @java.lang.Override
+    public boolean hasLed() {
+      return ((bitField1_ & 0x01000000) != 0);
+    }
+    /**
+     * <pre>
+     * RGB LED settings
+     * </pre>
+     *
+     * <code>optional bool led = 58;</code>
+     * @return The led.
+     */
+    @java.lang.Override
+    public boolean getLed() {
+      return led_;
+    }
+
+    public static final int USB_CONNECTED_FIELD_NUMBER = 59;
+    private boolean usbConnected_ = false;
+    /**
+     * <pre>
+     * USB connected
+     * </pre>
+     *
+     * <code>optional bool usb_connected = 59;</code>
+     * @return Whether the usbConnected field is set.
+     */
+    @java.lang.Override
+    public boolean hasUsbConnected() {
+      return ((bitField1_ & 0x02000000) != 0);
+    }
+    /**
+     * <pre>
+     * USB connected
+     * </pre>
+     *
+     * <code>optional bool usb_connected = 59;</code>
+     * @return The usbConnected.
+     */
+    @java.lang.Override
+    public boolean getUsbConnected() {
+      return usbConnected_;
+    }
+
+    public static final int WIRELESS_CONNECTED_FIELD_NUMBER = 60;
+    private boolean wirelessConnected_ = false;
+    /**
+     * <pre>
+     * Wireless charger connected
+     * </pre>
+     *
+     * <code>optional bool wireless_connected = 60;</code>
+     * @return Whether the wirelessConnected field is set.
+     */
+    @java.lang.Override
+    public boolean hasWirelessConnected() {
+      return ((bitField1_ & 0x04000000) != 0);
+    }
+    /**
+     * <pre>
+     * Wireless charger connected
+     * </pre>
+     *
+     * <code>optional bool wireless_connected = 60;</code>
+     * @return The wirelessConnected.
+     */
+    @java.lang.Override
+    public boolean getWirelessConnected() {
+      return wirelessConnected_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -5205,149 +5743,173 @@ public final class TrezorMessageManagement {
       if (((bitField0_ & 0x00000008) != 0)) {
         output.writeUInt32(4, patchVersion_);
       }
-      if (((bitField0_ & 0x00000010) != 0)) {
+      if (((bitField0_ & 0x00000020) != 0)) {
         output.writeBool(5, bootloaderMode_);
       }
-      if (((bitField0_ & 0x00000020) != 0)) {
+      if (((bitField0_ & 0x00000040) != 0)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 6, deviceId_);
       }
-      if (((bitField0_ & 0x00000040) != 0)) {
+      if (((bitField0_ & 0x00000080) != 0)) {
         output.writeBool(7, pinProtection_);
       }
-      if (((bitField0_ & 0x00000080) != 0)) {
+      if (((bitField0_ & 0x00000100) != 0)) {
         output.writeBool(8, passphraseProtection_);
       }
-      if (((bitField0_ & 0x00000100) != 0)) {
+      if (((bitField0_ & 0x00000200) != 0)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 9, language_);
       }
-      if (((bitField0_ & 0x00000200) != 0)) {
+      if (((bitField0_ & 0x00000400) != 0)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 10, label_);
       }
-      if (((bitField0_ & 0x00000400) != 0)) {
+      if (((bitField0_ & 0x00000800) != 0)) {
         output.writeBool(12, initialized_);
       }
-      if (((bitField0_ & 0x00000800) != 0)) {
+      if (((bitField0_ & 0x00001000) != 0)) {
         output.writeBytes(13, revision_);
       }
-      if (((bitField0_ & 0x00001000) != 0)) {
+      if (((bitField0_ & 0x00002000) != 0)) {
         output.writeBytes(14, bootloaderHash_);
       }
-      if (((bitField0_ & 0x00002000) != 0)) {
+      if (((bitField0_ & 0x00004000) != 0)) {
         output.writeBool(15, imported_);
       }
-      if (((bitField0_ & 0x00004000) != 0)) {
+      if (((bitField0_ & 0x00008000) != 0)) {
         output.writeBool(16, unlocked_);
       }
-      if (((bitField0_ & 0x00008000) != 0)) {
+      if (((bitField0_ & 0x00010000) != 0)) {
         output.writeBool(17, PassphraseCached_);
       }
-      if (((bitField0_ & 0x00010000) != 0)) {
+      if (((bitField0_ & 0x00020000) != 0)) {
         output.writeBool(18, firmwarePresent_);
       }
-      if (((bitField0_ & 0x00020000) != 0)) {
+      if (((bitField0_ & 0x00040000) != 0)) {
         output.writeEnum(19, backupAvailability_);
       }
-      if (((bitField0_ & 0x00040000) != 0)) {
+      if (((bitField0_ & 0x00080000) != 0)) {
         output.writeUInt32(20, flags_);
       }
-      if (((bitField0_ & 0x00080000) != 0)) {
+      if (((bitField0_ & 0x00100000) != 0)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 21, model_);
       }
-      if (((bitField0_ & 0x00100000) != 0)) {
+      if (((bitField0_ & 0x00200000) != 0)) {
         output.writeUInt32(22, fwMajor_);
       }
-      if (((bitField0_ & 0x00200000) != 0)) {
+      if (((bitField0_ & 0x00400000) != 0)) {
         output.writeUInt32(23, fwMinor_);
       }
-      if (((bitField0_ & 0x00400000) != 0)) {
+      if (((bitField0_ & 0x00800000) != 0)) {
         output.writeUInt32(24, fwPatch_);
       }
-      if (((bitField0_ & 0x00800000) != 0)) {
+      if (((bitField0_ & 0x02000000) != 0)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 25, fwVendor_);
       }
-      if (((bitField0_ & 0x01000000) != 0)) {
+      if (((bitField0_ & 0x04000000) != 0)) {
         output.writeBool(27, unfinishedBackup_);
       }
-      if (((bitField0_ & 0x02000000) != 0)) {
+      if (((bitField0_ & 0x08000000) != 0)) {
         output.writeBool(28, noBackup_);
       }
-      if (((bitField0_ & 0x04000000) != 0)) {
+      if (((bitField0_ & 0x10000000) != 0)) {
         output.writeEnum(29, recoveryStatus_);
       }
       for (int i = 0; i < capabilities_.size(); i++) {
         output.writeEnum(30, capabilities_.getInt(i));
       }
-      if (((bitField0_ & 0x08000000) != 0)) {
+      if (((bitField0_ & 0x20000000) != 0)) {
         output.writeEnum(31, backupType_);
       }
-      if (((bitField0_ & 0x10000000) != 0)) {
+      if (((bitField0_ & 0x40000000) != 0)) {
         output.writeBool(32, sdCardPresent_);
       }
-      if (((bitField0_ & 0x20000000) != 0)) {
+      if (((bitField0_ & 0x80000000) != 0)) {
         output.writeBool(33, sdProtection_);
       }
-      if (((bitField0_ & 0x40000000) != 0)) {
+      if (((bitField1_ & 0x00000001) != 0)) {
         output.writeBool(34, wipeCodeProtection_);
       }
-      if (((bitField0_ & 0x80000000) != 0)) {
+      if (((bitField1_ & 0x00000002) != 0)) {
         output.writeBytes(35, sessionId_);
       }
-      if (((bitField1_ & 0x00000001) != 0)) {
+      if (((bitField1_ & 0x00000004) != 0)) {
         output.writeBool(36, passphraseAlwaysOnDevice_);
       }
-      if (((bitField1_ & 0x00000002) != 0)) {
+      if (((bitField1_ & 0x00000008) != 0)) {
         output.writeEnum(37, safetyChecks_);
       }
-      if (((bitField1_ & 0x00000004) != 0)) {
+      if (((bitField1_ & 0x00000010) != 0)) {
         output.writeUInt32(38, autoLockDelayMs_);
       }
-      if (((bitField1_ & 0x00000008) != 0)) {
-        output.writeUInt32(39, displayRotation_);
-      }
-      if (((bitField1_ & 0x00000010) != 0)) {
-        output.writeBool(40, experimentalFeatures_);
-      }
       if (((bitField1_ & 0x00000020) != 0)) {
-        output.writeBool(41, busy_);
+        output.writeEnum(39, displayRotation_);
       }
       if (((bitField1_ & 0x00000040) != 0)) {
-        output.writeEnum(42, homescreenFormat_);
+        output.writeBool(40, experimentalFeatures_);
       }
       if (((bitField1_ & 0x00000080) != 0)) {
-        output.writeBool(43, hidePassphraseFromHost_);
+        output.writeBool(41, busy_);
       }
       if (((bitField1_ & 0x00000100) != 0)) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 44, internalModel_);
+        output.writeEnum(42, homescreenFormat_);
       }
       if (((bitField1_ & 0x00000200) != 0)) {
-        output.writeUInt32(45, unitColor_);
+        output.writeBool(43, hidePassphraseFromHost_);
       }
       if (((bitField1_ & 0x00000400) != 0)) {
-        output.writeBool(46, unitBtconly_);
+        com.google.protobuf.GeneratedMessage.writeString(output, 44, internalModel_);
       }
       if (((bitField1_ & 0x00000800) != 0)) {
-        output.writeUInt32(47, homescreenWidth_);
+        output.writeUInt32(45, unitColor_);
       }
       if (((bitField1_ & 0x00001000) != 0)) {
-        output.writeUInt32(48, homescreenHeight_);
+        output.writeBool(46, unitBtconly_);
       }
       if (((bitField1_ & 0x00002000) != 0)) {
-        output.writeBool(49, bootloaderLocked_);
+        output.writeUInt32(47, homescreenWidth_);
       }
       if (((bitField1_ & 0x00004000) != 0)) {
-        output.writeBool(50, languageVersionMatches_);
+        output.writeUInt32(48, homescreenHeight_);
       }
       if (((bitField1_ & 0x00008000) != 0)) {
-        output.writeUInt32(51, unitPackaging_);
+        output.writeBool(49, bootloaderLocked_);
       }
       if (((bitField1_ & 0x00010000) != 0)) {
-        output.writeBool(52, hapticFeedback_);
+        output.writeBool(50, languageVersionMatches_);
       }
       if (((bitField1_ & 0x00020000) != 0)) {
-        output.writeEnum(53, recoveryType_);
+        output.writeUInt32(51, unitPackaging_);
       }
       if (((bitField1_ & 0x00040000) != 0)) {
+        output.writeBool(52, hapticFeedback_);
+      }
+      if (((bitField1_ & 0x00080000) != 0)) {
+        output.writeEnum(53, recoveryType_);
+      }
+      if (((bitField1_ & 0x00100000) != 0)) {
         output.writeUInt32(54, optigaSec_);
+      }
+      if (((bitField1_ & 0x00200000) != 0)) {
+        output.writeUInt32(55, soc_);
+      }
+      if (((bitField1_ & 0x00400000) != 0)) {
+        output.writeBool(56, firmwareCorrupted_);
+      }
+      if (((bitField1_ & 0x00800000) != 0)) {
+        output.writeUInt32(57, autoLockDelayBatteryMs_);
+      }
+      if (((bitField1_ & 0x01000000) != 0)) {
+        output.writeBool(58, led_);
+      }
+      if (((bitField1_ & 0x02000000) != 0)) {
+        output.writeBool(59, usbConnected_);
+      }
+      if (((bitField1_ & 0x04000000) != 0)) {
+        output.writeBool(60, wirelessConnected_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        output.writeUInt32(61, buildVersion_);
+      }
+      if (((bitField0_ & 0x01000000) != 0)) {
+        output.writeUInt32(62, fwBuild_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -5373,90 +5935,90 @@ public final class TrezorMessageManagement {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(4, patchVersion_);
       }
-      if (((bitField0_ & 0x00000010) != 0)) {
+      if (((bitField0_ & 0x00000020) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(5, bootloaderMode_);
       }
-      if (((bitField0_ & 0x00000020) != 0)) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(6, deviceId_);
-      }
       if (((bitField0_ & 0x00000040) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(7, pinProtection_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(6, deviceId_);
       }
       if (((bitField0_ & 0x00000080) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(8, passphraseProtection_);
+          .computeBoolSize(7, pinProtection_);
       }
       if (((bitField0_ & 0x00000100) != 0)) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(9, language_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(8, passphraseProtection_);
       }
       if (((bitField0_ & 0x00000200) != 0)) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(10, label_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(9, language_);
       }
       if (((bitField0_ & 0x00000400) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(12, initialized_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(10, label_);
       }
       if (((bitField0_ & 0x00000800) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(13, revision_);
+          .computeBoolSize(12, initialized_);
       }
       if (((bitField0_ & 0x00001000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(14, bootloaderHash_);
+          .computeBytesSize(13, revision_);
       }
       if (((bitField0_ & 0x00002000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(15, imported_);
+          .computeBytesSize(14, bootloaderHash_);
       }
       if (((bitField0_ & 0x00004000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(16, unlocked_);
+          .computeBoolSize(15, imported_);
       }
       if (((bitField0_ & 0x00008000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(17, PassphraseCached_);
+          .computeBoolSize(16, unlocked_);
       }
       if (((bitField0_ & 0x00010000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(18, firmwarePresent_);
+          .computeBoolSize(17, PassphraseCached_);
       }
       if (((bitField0_ & 0x00020000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(19, backupAvailability_);
+          .computeBoolSize(18, firmwarePresent_);
       }
       if (((bitField0_ & 0x00040000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(20, flags_);
+          .computeEnumSize(19, backupAvailability_);
       }
       if (((bitField0_ & 0x00080000) != 0)) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(21, model_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(20, flags_);
       }
       if (((bitField0_ & 0x00100000) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(22, fwMajor_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(21, model_);
       }
       if (((bitField0_ & 0x00200000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(23, fwMinor_);
+          .computeUInt32Size(22, fwMajor_);
       }
       if (((bitField0_ & 0x00400000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(24, fwPatch_);
+          .computeUInt32Size(23, fwMinor_);
       }
       if (((bitField0_ & 0x00800000) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(24, fwPatch_);
+      }
+      if (((bitField0_ & 0x02000000) != 0)) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(25, fwVendor_);
       }
-      if (((bitField0_ & 0x01000000) != 0)) {
+      if (((bitField0_ & 0x04000000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(27, unfinishedBackup_);
       }
-      if (((bitField0_ & 0x02000000) != 0)) {
+      if (((bitField0_ & 0x08000000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(28, noBackup_);
       }
-      if (((bitField0_ & 0x04000000) != 0)) {
+      if (((bitField0_ & 0x10000000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(29, recoveryStatus_);
       }
@@ -5469,100 +6031,132 @@ public final class TrezorMessageManagement {
         size += dataSize;
         size += 2 * capabilities_.size();
       }
-      if (((bitField0_ & 0x08000000) != 0)) {
+      if (((bitField0_ & 0x20000000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(31, backupType_);
       }
-      if (((bitField0_ & 0x10000000) != 0)) {
+      if (((bitField0_ & 0x40000000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(32, sdCardPresent_);
       }
-      if (((bitField0_ & 0x20000000) != 0)) {
+      if (((bitField0_ & 0x80000000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(33, sdProtection_);
       }
-      if (((bitField0_ & 0x40000000) != 0)) {
+      if (((bitField1_ & 0x00000001) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(34, wipeCodeProtection_);
       }
-      if (((bitField0_ & 0x80000000) != 0)) {
+      if (((bitField1_ & 0x00000002) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(35, sessionId_);
       }
-      if (((bitField1_ & 0x00000001) != 0)) {
+      if (((bitField1_ & 0x00000004) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(36, passphraseAlwaysOnDevice_);
       }
-      if (((bitField1_ & 0x00000002) != 0)) {
+      if (((bitField1_ & 0x00000008) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(37, safetyChecks_);
       }
-      if (((bitField1_ & 0x00000004) != 0)) {
+      if (((bitField1_ & 0x00000010) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(38, autoLockDelayMs_);
       }
-      if (((bitField1_ & 0x00000008) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(39, displayRotation_);
-      }
-      if (((bitField1_ & 0x00000010) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(40, experimentalFeatures_);
-      }
       if (((bitField1_ & 0x00000020) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(41, busy_);
+          .computeEnumSize(39, displayRotation_);
       }
       if (((bitField1_ & 0x00000040) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(42, homescreenFormat_);
+          .computeBoolSize(40, experimentalFeatures_);
       }
       if (((bitField1_ & 0x00000080) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(43, hidePassphraseFromHost_);
+          .computeBoolSize(41, busy_);
       }
       if (((bitField1_ & 0x00000100) != 0)) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(44, internalModel_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(42, homescreenFormat_);
       }
       if (((bitField1_ & 0x00000200) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(45, unitColor_);
+          .computeBoolSize(43, hidePassphraseFromHost_);
       }
       if (((bitField1_ & 0x00000400) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(46, unitBtconly_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(44, internalModel_);
       }
       if (((bitField1_ & 0x00000800) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(47, homescreenWidth_);
+          .computeUInt32Size(45, unitColor_);
       }
       if (((bitField1_ & 0x00001000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(48, homescreenHeight_);
+          .computeBoolSize(46, unitBtconly_);
       }
       if (((bitField1_ & 0x00002000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(49, bootloaderLocked_);
+          .computeUInt32Size(47, homescreenWidth_);
       }
       if (((bitField1_ & 0x00004000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(50, languageVersionMatches_);
+          .computeUInt32Size(48, homescreenHeight_);
       }
       if (((bitField1_ & 0x00008000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(51, unitPackaging_);
+          .computeBoolSize(49, bootloaderLocked_);
       }
       if (((bitField1_ & 0x00010000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(52, hapticFeedback_);
+          .computeBoolSize(50, languageVersionMatches_);
       }
       if (((bitField1_ & 0x00020000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(53, recoveryType_);
+          .computeUInt32Size(51, unitPackaging_);
       }
       if (((bitField1_ & 0x00040000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(52, hapticFeedback_);
+      }
+      if (((bitField1_ & 0x00080000) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(53, recoveryType_);
+      }
+      if (((bitField1_ & 0x00100000) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(54, optigaSec_);
+      }
+      if (((bitField1_ & 0x00200000) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(55, soc_);
+      }
+      if (((bitField1_ & 0x00400000) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(56, firmwareCorrupted_);
+      }
+      if (((bitField1_ & 0x00800000) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(57, autoLockDelayBatteryMs_);
+      }
+      if (((bitField1_ & 0x01000000) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(58, led_);
+      }
+      if (((bitField1_ & 0x02000000) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(59, usbConnected_);
+      }
+      if (((bitField1_ & 0x04000000) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(60, wirelessConnected_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(61, buildVersion_);
+      }
+      if (((bitField0_ & 0x01000000) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(62, fwBuild_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -5598,6 +6192,11 @@ public final class TrezorMessageManagement {
       if (hasPatchVersion()) {
         if (getPatchVersion()
             != other.getPatchVersion()) return false;
+      }
+      if (hasBuildVersion() != other.hasBuildVersion()) return false;
+      if (hasBuildVersion()) {
+        if (getBuildVersion()
+            != other.getBuildVersion()) return false;
       }
       if (hasBootloaderMode() != other.hasBootloaderMode()) return false;
       if (hasBootloaderMode()) {
@@ -5693,6 +6292,11 @@ public final class TrezorMessageManagement {
         if (getFwPatch()
             != other.getFwPatch()) return false;
       }
+      if (hasFwBuild() != other.hasFwBuild()) return false;
+      if (hasFwBuild()) {
+        if (getFwBuild()
+            != other.getFwBuild()) return false;
+      }
       if (hasFwVendor() != other.hasFwVendor()) return false;
       if (hasFwVendor()) {
         if (!getFwVendor()
@@ -5753,8 +6357,7 @@ public final class TrezorMessageManagement {
       }
       if (hasDisplayRotation() != other.hasDisplayRotation()) return false;
       if (hasDisplayRotation()) {
-        if (getDisplayRotation()
-            != other.getDisplayRotation()) return false;
+        if (displayRotation_ != other.displayRotation_) return false;
       }
       if (hasExperimentalFeatures() != other.hasExperimentalFeatures()) return false;
       if (hasExperimentalFeatures()) {
@@ -5829,6 +6432,36 @@ public final class TrezorMessageManagement {
         if (getOptigaSec()
             != other.getOptigaSec()) return false;
       }
+      if (hasSoc() != other.hasSoc()) return false;
+      if (hasSoc()) {
+        if (getSoc()
+            != other.getSoc()) return false;
+      }
+      if (hasFirmwareCorrupted() != other.hasFirmwareCorrupted()) return false;
+      if (hasFirmwareCorrupted()) {
+        if (getFirmwareCorrupted()
+            != other.getFirmwareCorrupted()) return false;
+      }
+      if (hasAutoLockDelayBatteryMs() != other.hasAutoLockDelayBatteryMs()) return false;
+      if (hasAutoLockDelayBatteryMs()) {
+        if (getAutoLockDelayBatteryMs()
+            != other.getAutoLockDelayBatteryMs()) return false;
+      }
+      if (hasLed() != other.hasLed()) return false;
+      if (hasLed()) {
+        if (getLed()
+            != other.getLed()) return false;
+      }
+      if (hasUsbConnected() != other.hasUsbConnected()) return false;
+      if (hasUsbConnected()) {
+        if (getUsbConnected()
+            != other.getUsbConnected()) return false;
+      }
+      if (hasWirelessConnected() != other.hasWirelessConnected()) return false;
+      if (hasWirelessConnected()) {
+        if (getWirelessConnected()
+            != other.getWirelessConnected()) return false;
+      }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -5855,6 +6488,10 @@ public final class TrezorMessageManagement {
       if (hasPatchVersion()) {
         hash = (37 * hash) + PATCH_VERSION_FIELD_NUMBER;
         hash = (53 * hash) + getPatchVersion();
+      }
+      if (hasBuildVersion()) {
+        hash = (37 * hash) + BUILD_VERSION_FIELD_NUMBER;
+        hash = (53 * hash) + getBuildVersion();
       }
       if (hasBootloaderMode()) {
         hash = (37 * hash) + BOOTLOADER_MODE_FIELD_NUMBER;
@@ -5940,6 +6577,10 @@ public final class TrezorMessageManagement {
         hash = (37 * hash) + FW_PATCH_FIELD_NUMBER;
         hash = (53 * hash) + getFwPatch();
       }
+      if (hasFwBuild()) {
+        hash = (37 * hash) + FW_BUILD_FIELD_NUMBER;
+        hash = (53 * hash) + getFwBuild();
+      }
       if (hasFwVendor()) {
         hash = (37 * hash) + FW_VENDOR_FIELD_NUMBER;
         hash = (53 * hash) + getFwVendor().hashCode();
@@ -6000,7 +6641,7 @@ public final class TrezorMessageManagement {
       }
       if (hasDisplayRotation()) {
         hash = (37 * hash) + DISPLAY_ROTATION_FIELD_NUMBER;
-        hash = (53 * hash) + getDisplayRotation();
+        hash = (53 * hash) + displayRotation_;
       }
       if (hasExperimentalFeatures()) {
         hash = (37 * hash) + EXPERIMENTAL_FEATURES_FIELD_NUMBER;
@@ -6068,6 +6709,34 @@ public final class TrezorMessageManagement {
       if (hasOptigaSec()) {
         hash = (37 * hash) + OPTIGA_SEC_FIELD_NUMBER;
         hash = (53 * hash) + getOptigaSec();
+      }
+      if (hasSoc()) {
+        hash = (37 * hash) + SOC_FIELD_NUMBER;
+        hash = (53 * hash) + getSoc();
+      }
+      if (hasFirmwareCorrupted()) {
+        hash = (37 * hash) + FIRMWARE_CORRUPTED_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getFirmwareCorrupted());
+      }
+      if (hasAutoLockDelayBatteryMs()) {
+        hash = (37 * hash) + AUTO_LOCK_DELAY_BATTERY_MS_FIELD_NUMBER;
+        hash = (53 * hash) + getAutoLockDelayBatteryMs();
+      }
+      if (hasLed()) {
+        hash = (37 * hash) + LED_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getLed());
+      }
+      if (hasUsbConnected()) {
+        hash = (37 * hash) + USB_CONNECTED_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getUsbConnected());
+      }
+      if (hasWirelessConnected()) {
+        hash = (37 * hash) + WIRELESS_CONNECTED_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getWirelessConnected());
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -6211,6 +6880,7 @@ public final class TrezorMessageManagement {
         majorVersion_ = 0;
         minorVersion_ = 0;
         patchVersion_ = 0;
+        buildVersion_ = 0;
         bootloaderMode_ = false;
         deviceId_ = "";
         pinProtection_ = false;
@@ -6230,12 +6900,13 @@ public final class TrezorMessageManagement {
         fwMajor_ = 0;
         fwMinor_ = 0;
         fwPatch_ = 0;
+        fwBuild_ = 0;
         fwVendor_ = "";
         unfinishedBackup_ = false;
         noBackup_ = false;
         recoveryStatus_ = 0;
         capabilities_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x08000000);
+        bitField0_ = (bitField0_ & ~0x20000000);
         backupType_ = 0;
         sdCardPresent_ = false;
         sdProtection_ = false;
@@ -6260,6 +6931,12 @@ public final class TrezorMessageManagement {
         hapticFeedback_ = false;
         recoveryType_ = 0;
         optigaSec_ = 0;
+        soc_ = 0;
+        firmwareCorrupted_ = false;
+        autoLockDelayBatteryMs_ = 0;
+        led_ = false;
+        usbConnected_ = false;
+        wirelessConnected_ = false;
         return this;
       }
 
@@ -6294,9 +6971,9 @@ public final class TrezorMessageManagement {
       }
 
       private void buildPartialRepeatedFields(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.Features result) {
-        if (((bitField0_ & 0x08000000) != 0)) {
+        if (((bitField0_ & 0x20000000) != 0)) {
           capabilities_.makeImmutable();
-          bitField0_ = (bitField0_ & ~0x08000000);
+          bitField0_ = (bitField0_ & ~0x20000000);
         }
         result.capabilities_ = capabilities_;
       }
@@ -6321,111 +6998,111 @@ public final class TrezorMessageManagement {
           to_bitField0_ |= 0x00000008;
         }
         if (((from_bitField0_ & 0x00000010) != 0)) {
-          result.bootloaderMode_ = bootloaderMode_;
+          result.buildVersion_ = buildVersion_;
           to_bitField0_ |= 0x00000010;
         }
         if (((from_bitField0_ & 0x00000020) != 0)) {
-          result.deviceId_ = deviceId_;
+          result.bootloaderMode_ = bootloaderMode_;
           to_bitField0_ |= 0x00000020;
         }
         if (((from_bitField0_ & 0x00000040) != 0)) {
-          result.pinProtection_ = pinProtection_;
+          result.deviceId_ = deviceId_;
           to_bitField0_ |= 0x00000040;
         }
         if (((from_bitField0_ & 0x00000080) != 0)) {
-          result.passphraseProtection_ = passphraseProtection_;
+          result.pinProtection_ = pinProtection_;
           to_bitField0_ |= 0x00000080;
         }
         if (((from_bitField0_ & 0x00000100) != 0)) {
-          result.language_ = language_;
+          result.passphraseProtection_ = passphraseProtection_;
           to_bitField0_ |= 0x00000100;
         }
         if (((from_bitField0_ & 0x00000200) != 0)) {
-          result.label_ = label_;
+          result.language_ = language_;
           to_bitField0_ |= 0x00000200;
         }
         if (((from_bitField0_ & 0x00000400) != 0)) {
-          result.initialized_ = initialized_;
+          result.label_ = label_;
           to_bitField0_ |= 0x00000400;
         }
         if (((from_bitField0_ & 0x00000800) != 0)) {
-          result.revision_ = revision_;
+          result.initialized_ = initialized_;
           to_bitField0_ |= 0x00000800;
         }
         if (((from_bitField0_ & 0x00001000) != 0)) {
-          result.bootloaderHash_ = bootloaderHash_;
+          result.revision_ = revision_;
           to_bitField0_ |= 0x00001000;
         }
         if (((from_bitField0_ & 0x00002000) != 0)) {
-          result.imported_ = imported_;
+          result.bootloaderHash_ = bootloaderHash_;
           to_bitField0_ |= 0x00002000;
         }
         if (((from_bitField0_ & 0x00004000) != 0)) {
-          result.unlocked_ = unlocked_;
+          result.imported_ = imported_;
           to_bitField0_ |= 0x00004000;
         }
         if (((from_bitField0_ & 0x00008000) != 0)) {
-          result.PassphraseCached_ = PassphraseCached_;
+          result.unlocked_ = unlocked_;
           to_bitField0_ |= 0x00008000;
         }
         if (((from_bitField0_ & 0x00010000) != 0)) {
-          result.firmwarePresent_ = firmwarePresent_;
+          result.PassphraseCached_ = PassphraseCached_;
           to_bitField0_ |= 0x00010000;
         }
         if (((from_bitField0_ & 0x00020000) != 0)) {
-          result.backupAvailability_ = backupAvailability_;
+          result.firmwarePresent_ = firmwarePresent_;
           to_bitField0_ |= 0x00020000;
         }
         if (((from_bitField0_ & 0x00040000) != 0)) {
-          result.flags_ = flags_;
+          result.backupAvailability_ = backupAvailability_;
           to_bitField0_ |= 0x00040000;
         }
         if (((from_bitField0_ & 0x00080000) != 0)) {
-          result.model_ = model_;
+          result.flags_ = flags_;
           to_bitField0_ |= 0x00080000;
         }
         if (((from_bitField0_ & 0x00100000) != 0)) {
-          result.fwMajor_ = fwMajor_;
+          result.model_ = model_;
           to_bitField0_ |= 0x00100000;
         }
         if (((from_bitField0_ & 0x00200000) != 0)) {
-          result.fwMinor_ = fwMinor_;
+          result.fwMajor_ = fwMajor_;
           to_bitField0_ |= 0x00200000;
         }
         if (((from_bitField0_ & 0x00400000) != 0)) {
-          result.fwPatch_ = fwPatch_;
+          result.fwMinor_ = fwMinor_;
           to_bitField0_ |= 0x00400000;
         }
         if (((from_bitField0_ & 0x00800000) != 0)) {
-          result.fwVendor_ = fwVendor_;
+          result.fwPatch_ = fwPatch_;
           to_bitField0_ |= 0x00800000;
         }
         if (((from_bitField0_ & 0x01000000) != 0)) {
-          result.unfinishedBackup_ = unfinishedBackup_;
+          result.fwBuild_ = fwBuild_;
           to_bitField0_ |= 0x01000000;
         }
         if (((from_bitField0_ & 0x02000000) != 0)) {
-          result.noBackup_ = noBackup_;
+          result.fwVendor_ = fwVendor_;
           to_bitField0_ |= 0x02000000;
         }
         if (((from_bitField0_ & 0x04000000) != 0)) {
-          result.recoveryStatus_ = recoveryStatus_;
+          result.unfinishedBackup_ = unfinishedBackup_;
           to_bitField0_ |= 0x04000000;
         }
-        if (((from_bitField0_ & 0x10000000) != 0)) {
-          result.backupType_ = backupType_;
+        if (((from_bitField0_ & 0x08000000) != 0)) {
+          result.noBackup_ = noBackup_;
           to_bitField0_ |= 0x08000000;
         }
-        if (((from_bitField0_ & 0x20000000) != 0)) {
-          result.sdCardPresent_ = sdCardPresent_;
+        if (((from_bitField0_ & 0x10000000) != 0)) {
+          result.recoveryStatus_ = recoveryStatus_;
           to_bitField0_ |= 0x10000000;
         }
         if (((from_bitField0_ & 0x40000000) != 0)) {
-          result.sdProtection_ = sdProtection_;
+          result.backupType_ = backupType_;
           to_bitField0_ |= 0x20000000;
         }
         if (((from_bitField0_ & 0x80000000) != 0)) {
-          result.wipeCodeProtection_ = wipeCodeProtection_;
+          result.sdCardPresent_ = sdCardPresent_;
           to_bitField0_ |= 0x40000000;
         }
         result.bitField0_ |= to_bitField0_;
@@ -6435,85 +7112,117 @@ public final class TrezorMessageManagement {
         int from_bitField1_ = bitField1_;
         int to_bitField0_ = 0;
         if (((from_bitField1_ & 0x00000001) != 0)) {
-          result.sessionId_ = sessionId_;
+          result.sdProtection_ = sdProtection_;
           to_bitField0_ |= 0x80000000;
         }
         int to_bitField1_ = 0;
         if (((from_bitField1_ & 0x00000002) != 0)) {
-          result.passphraseAlwaysOnDevice_ = passphraseAlwaysOnDevice_;
+          result.wipeCodeProtection_ = wipeCodeProtection_;
           to_bitField1_ |= 0x00000001;
         }
         if (((from_bitField1_ & 0x00000004) != 0)) {
-          result.safetyChecks_ = safetyChecks_;
+          result.sessionId_ = sessionId_;
           to_bitField1_ |= 0x00000002;
         }
         if (((from_bitField1_ & 0x00000008) != 0)) {
-          result.autoLockDelayMs_ = autoLockDelayMs_;
+          result.passphraseAlwaysOnDevice_ = passphraseAlwaysOnDevice_;
           to_bitField1_ |= 0x00000004;
         }
         if (((from_bitField1_ & 0x00000010) != 0)) {
-          result.displayRotation_ = displayRotation_;
+          result.safetyChecks_ = safetyChecks_;
           to_bitField1_ |= 0x00000008;
         }
         if (((from_bitField1_ & 0x00000020) != 0)) {
-          result.experimentalFeatures_ = experimentalFeatures_;
+          result.autoLockDelayMs_ = autoLockDelayMs_;
           to_bitField1_ |= 0x00000010;
         }
         if (((from_bitField1_ & 0x00000040) != 0)) {
-          result.busy_ = busy_;
+          result.displayRotation_ = displayRotation_;
           to_bitField1_ |= 0x00000020;
         }
         if (((from_bitField1_ & 0x00000080) != 0)) {
-          result.homescreenFormat_ = homescreenFormat_;
+          result.experimentalFeatures_ = experimentalFeatures_;
           to_bitField1_ |= 0x00000040;
         }
         if (((from_bitField1_ & 0x00000100) != 0)) {
-          result.hidePassphraseFromHost_ = hidePassphraseFromHost_;
+          result.busy_ = busy_;
           to_bitField1_ |= 0x00000080;
         }
         if (((from_bitField1_ & 0x00000200) != 0)) {
-          result.internalModel_ = internalModel_;
+          result.homescreenFormat_ = homescreenFormat_;
           to_bitField1_ |= 0x00000100;
         }
         if (((from_bitField1_ & 0x00000400) != 0)) {
-          result.unitColor_ = unitColor_;
+          result.hidePassphraseFromHost_ = hidePassphraseFromHost_;
           to_bitField1_ |= 0x00000200;
         }
         if (((from_bitField1_ & 0x00000800) != 0)) {
-          result.unitBtconly_ = unitBtconly_;
+          result.internalModel_ = internalModel_;
           to_bitField1_ |= 0x00000400;
         }
         if (((from_bitField1_ & 0x00001000) != 0)) {
-          result.homescreenWidth_ = homescreenWidth_;
+          result.unitColor_ = unitColor_;
           to_bitField1_ |= 0x00000800;
         }
         if (((from_bitField1_ & 0x00002000) != 0)) {
-          result.homescreenHeight_ = homescreenHeight_;
+          result.unitBtconly_ = unitBtconly_;
           to_bitField1_ |= 0x00001000;
         }
         if (((from_bitField1_ & 0x00004000) != 0)) {
-          result.bootloaderLocked_ = bootloaderLocked_;
+          result.homescreenWidth_ = homescreenWidth_;
           to_bitField1_ |= 0x00002000;
         }
         if (((from_bitField1_ & 0x00008000) != 0)) {
-          result.languageVersionMatches_ = languageVersionMatches_;
+          result.homescreenHeight_ = homescreenHeight_;
           to_bitField1_ |= 0x00004000;
         }
         if (((from_bitField1_ & 0x00010000) != 0)) {
-          result.unitPackaging_ = unitPackaging_;
+          result.bootloaderLocked_ = bootloaderLocked_;
           to_bitField1_ |= 0x00008000;
         }
         if (((from_bitField1_ & 0x00020000) != 0)) {
-          result.hapticFeedback_ = hapticFeedback_;
+          result.languageVersionMatches_ = languageVersionMatches_;
           to_bitField1_ |= 0x00010000;
         }
         if (((from_bitField1_ & 0x00040000) != 0)) {
-          result.recoveryType_ = recoveryType_;
+          result.unitPackaging_ = unitPackaging_;
           to_bitField1_ |= 0x00020000;
         }
         if (((from_bitField1_ & 0x00080000) != 0)) {
-          result.optigaSec_ = optigaSec_;
+          result.hapticFeedback_ = hapticFeedback_;
           to_bitField1_ |= 0x00040000;
+        }
+        if (((from_bitField1_ & 0x00100000) != 0)) {
+          result.recoveryType_ = recoveryType_;
+          to_bitField1_ |= 0x00080000;
+        }
+        if (((from_bitField1_ & 0x00200000) != 0)) {
+          result.optigaSec_ = optigaSec_;
+          to_bitField1_ |= 0x00100000;
+        }
+        if (((from_bitField1_ & 0x00400000) != 0)) {
+          result.soc_ = soc_;
+          to_bitField1_ |= 0x00200000;
+        }
+        if (((from_bitField1_ & 0x00800000) != 0)) {
+          result.firmwareCorrupted_ = firmwareCorrupted_;
+          to_bitField1_ |= 0x00400000;
+        }
+        if (((from_bitField1_ & 0x01000000) != 0)) {
+          result.autoLockDelayBatteryMs_ = autoLockDelayBatteryMs_;
+          to_bitField1_ |= 0x00800000;
+        }
+        if (((from_bitField1_ & 0x02000000) != 0)) {
+          result.led_ = led_;
+          to_bitField1_ |= 0x01000000;
+        }
+        if (((from_bitField1_ & 0x04000000) != 0)) {
+          result.usbConnected_ = usbConnected_;
+          to_bitField1_ |= 0x02000000;
+        }
+        if (((from_bitField1_ & 0x08000000) != 0)) {
+          result.wirelessConnected_ = wirelessConnected_;
+          to_bitField1_ |= 0x04000000;
         }
         result.bitField0_ |= to_bitField0_;
         result.bitField1_ |= to_bitField1_;
@@ -6545,12 +7254,15 @@ public final class TrezorMessageManagement {
         if (other.hasPatchVersion()) {
           setPatchVersion(other.getPatchVersion());
         }
+        if (other.hasBuildVersion()) {
+          setBuildVersion(other.getBuildVersion());
+        }
         if (other.hasBootloaderMode()) {
           setBootloaderMode(other.getBootloaderMode());
         }
         if (other.hasDeviceId()) {
           deviceId_ = other.deviceId_;
-          bitField0_ |= 0x00000020;
+          bitField0_ |= 0x00000040;
           onChanged();
         }
         if (other.hasPinProtection()) {
@@ -6561,12 +7273,12 @@ public final class TrezorMessageManagement {
         }
         if (other.hasLanguage()) {
           language_ = other.language_;
-          bitField0_ |= 0x00000100;
+          bitField0_ |= 0x00000200;
           onChanged();
         }
         if (other.hasLabel()) {
           label_ = other.label_;
-          bitField0_ |= 0x00000200;
+          bitField0_ |= 0x00000400;
           onChanged();
         }
         if (other.hasInitialized()) {
@@ -6598,7 +7310,7 @@ public final class TrezorMessageManagement {
         }
         if (other.hasModel()) {
           model_ = other.model_;
-          bitField0_ |= 0x00080000;
+          bitField0_ |= 0x00100000;
           onChanged();
         }
         if (other.hasFwMajor()) {
@@ -6610,9 +7322,12 @@ public final class TrezorMessageManagement {
         if (other.hasFwPatch()) {
           setFwPatch(other.getFwPatch());
         }
+        if (other.hasFwBuild()) {
+          setFwBuild(other.getFwBuild());
+        }
         if (other.hasFwVendor()) {
           fwVendor_ = other.fwVendor_;
-          bitField0_ |= 0x00800000;
+          bitField0_ |= 0x02000000;
           onChanged();
         }
         if (other.hasUnfinishedBackup()) {
@@ -6627,7 +7342,7 @@ public final class TrezorMessageManagement {
         if (!other.capabilities_.isEmpty()) {
           if (capabilities_.isEmpty()) {
             capabilities_ = other.capabilities_;
-            bitField0_ = (bitField0_ & ~0x08000000);
+            bitField0_ = (bitField0_ & ~0x20000000);
           } else {
             ensureCapabilitiesIsMutable();
             capabilities_.addAll(other.capabilities_);
@@ -6675,7 +7390,7 @@ public final class TrezorMessageManagement {
         }
         if (other.hasInternalModel()) {
           internalModel_ = other.internalModel_;
-          bitField1_ |= 0x00000200;
+          bitField1_ |= 0x00000800;
           onChanged();
         }
         if (other.hasUnitColor()) {
@@ -6707,6 +7422,24 @@ public final class TrezorMessageManagement {
         }
         if (other.hasOptigaSec()) {
           setOptigaSec(other.getOptigaSec());
+        }
+        if (other.hasSoc()) {
+          setSoc(other.getSoc());
+        }
+        if (other.hasFirmwareCorrupted()) {
+          setFirmwareCorrupted(other.getFirmwareCorrupted());
+        }
+        if (other.hasAutoLockDelayBatteryMs()) {
+          setAutoLockDelayBatteryMs(other.getAutoLockDelayBatteryMs());
+        }
+        if (other.hasLed()) {
+          setLed(other.getLed());
+        }
+        if (other.hasUsbConnected()) {
+          setUsbConnected(other.getUsbConnected());
+        }
+        if (other.hasWirelessConnected()) {
+          setWirelessConnected(other.getWirelessConnected());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -6765,67 +7498,67 @@ public final class TrezorMessageManagement {
               } // case 32
               case 40: {
                 bootloaderMode_ = input.readBool();
-                bitField0_ |= 0x00000010;
+                bitField0_ |= 0x00000020;
                 break;
               } // case 40
               case 50: {
                 deviceId_ = input.readBytes();
-                bitField0_ |= 0x00000020;
+                bitField0_ |= 0x00000040;
                 break;
               } // case 50
               case 56: {
                 pinProtection_ = input.readBool();
-                bitField0_ |= 0x00000040;
+                bitField0_ |= 0x00000080;
                 break;
               } // case 56
               case 64: {
                 passphraseProtection_ = input.readBool();
-                bitField0_ |= 0x00000080;
+                bitField0_ |= 0x00000100;
                 break;
               } // case 64
               case 74: {
                 language_ = input.readBytes();
-                bitField0_ |= 0x00000100;
+                bitField0_ |= 0x00000200;
                 break;
               } // case 74
               case 82: {
                 label_ = input.readBytes();
-                bitField0_ |= 0x00000200;
+                bitField0_ |= 0x00000400;
                 break;
               } // case 82
               case 96: {
                 initialized_ = input.readBool();
-                bitField0_ |= 0x00000400;
+                bitField0_ |= 0x00000800;
                 break;
               } // case 96
               case 106: {
                 revision_ = input.readBytes();
-                bitField0_ |= 0x00000800;
+                bitField0_ |= 0x00001000;
                 break;
               } // case 106
               case 114: {
                 bootloaderHash_ = input.readBytes();
-                bitField0_ |= 0x00001000;
+                bitField0_ |= 0x00002000;
                 break;
               } // case 114
               case 120: {
                 imported_ = input.readBool();
-                bitField0_ |= 0x00002000;
+                bitField0_ |= 0x00004000;
                 break;
               } // case 120
               case 128: {
                 unlocked_ = input.readBool();
-                bitField0_ |= 0x00004000;
+                bitField0_ |= 0x00008000;
                 break;
               } // case 128
               case 136: {
                 PassphraseCached_ = input.readBool();
-                bitField0_ |= 0x00008000;
+                bitField0_ |= 0x00010000;
                 break;
               } // case 136
               case 144: {
                 firmwarePresent_ = input.readBool();
-                bitField0_ |= 0x00010000;
+                bitField0_ |= 0x00020000;
                 break;
               } // case 144
               case 152: {
@@ -6836,48 +7569,48 @@ public final class TrezorMessageManagement {
                   mergeUnknownVarintField(19, tmpRaw);
                 } else {
                   backupAvailability_ = tmpRaw;
-                  bitField0_ |= 0x00020000;
+                  bitField0_ |= 0x00040000;
                 }
                 break;
               } // case 152
               case 160: {
                 flags_ = input.readUInt32();
-                bitField0_ |= 0x00040000;
+                bitField0_ |= 0x00080000;
                 break;
               } // case 160
               case 170: {
                 model_ = input.readBytes();
-                bitField0_ |= 0x00080000;
+                bitField0_ |= 0x00100000;
                 break;
               } // case 170
               case 176: {
                 fwMajor_ = input.readUInt32();
-                bitField0_ |= 0x00100000;
+                bitField0_ |= 0x00200000;
                 break;
               } // case 176
               case 184: {
                 fwMinor_ = input.readUInt32();
-                bitField0_ |= 0x00200000;
+                bitField0_ |= 0x00400000;
                 break;
               } // case 184
               case 192: {
                 fwPatch_ = input.readUInt32();
-                bitField0_ |= 0x00400000;
+                bitField0_ |= 0x00800000;
                 break;
               } // case 192
               case 202: {
                 fwVendor_ = input.readBytes();
-                bitField0_ |= 0x00800000;
+                bitField0_ |= 0x02000000;
                 break;
               } // case 202
               case 216: {
                 unfinishedBackup_ = input.readBool();
-                bitField0_ |= 0x01000000;
+                bitField0_ |= 0x04000000;
                 break;
               } // case 216
               case 224: {
                 noBackup_ = input.readBool();
-                bitField0_ |= 0x02000000;
+                bitField0_ |= 0x08000000;
                 break;
               } // case 224
               case 232: {
@@ -6888,7 +7621,7 @@ public final class TrezorMessageManagement {
                   mergeUnknownVarintField(29, tmpRaw);
                 } else {
                   recoveryStatus_ = tmpRaw;
-                  bitField0_ |= 0x04000000;
+                  bitField0_ |= 0x10000000;
                 }
                 break;
               } // case 232
@@ -6929,33 +7662,33 @@ public final class TrezorMessageManagement {
                   mergeUnknownVarintField(31, tmpRaw);
                 } else {
                   backupType_ = tmpRaw;
-                  bitField0_ |= 0x10000000;
+                  bitField0_ |= 0x40000000;
                 }
                 break;
               } // case 248
               case 256: {
                 sdCardPresent_ = input.readBool();
-                bitField0_ |= 0x20000000;
+                bitField0_ |= 0x80000000;
                 break;
               } // case 256
               case 264: {
                 sdProtection_ = input.readBool();
-                bitField0_ |= 0x40000000;
+                bitField1_ |= 0x00000001;
                 break;
               } // case 264
               case 272: {
                 wipeCodeProtection_ = input.readBool();
-                bitField0_ |= 0x80000000;
+                bitField1_ |= 0x00000002;
                 break;
               } // case 272
               case 282: {
                 sessionId_ = input.readBytes();
-                bitField1_ |= 0x00000001;
+                bitField1_ |= 0x00000004;
                 break;
               } // case 282
               case 288: {
                 passphraseAlwaysOnDevice_ = input.readBool();
-                bitField1_ |= 0x00000002;
+                bitField1_ |= 0x00000008;
                 break;
               } // case 288
               case 296: {
@@ -6966,28 +7699,35 @@ public final class TrezorMessageManagement {
                   mergeUnknownVarintField(37, tmpRaw);
                 } else {
                   safetyChecks_ = tmpRaw;
-                  bitField1_ |= 0x00000004;
+                  bitField1_ |= 0x00000010;
                 }
                 break;
               } // case 296
               case 304: {
                 autoLockDelayMs_ = input.readUInt32();
-                bitField1_ |= 0x00000008;
+                bitField1_ |= 0x00000020;
                 break;
               } // case 304
               case 312: {
-                displayRotation_ = input.readUInt32();
-                bitField1_ |= 0x00000010;
+                int tmpRaw = input.readEnum();
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation tmpValue =
+                    com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation.forNumber(tmpRaw);
+                if (tmpValue == null) {
+                  mergeUnknownVarintField(39, tmpRaw);
+                } else {
+                  displayRotation_ = tmpRaw;
+                  bitField1_ |= 0x00000040;
+                }
                 break;
               } // case 312
               case 320: {
                 experimentalFeatures_ = input.readBool();
-                bitField1_ |= 0x00000020;
+                bitField1_ |= 0x00000080;
                 break;
               } // case 320
               case 328: {
                 busy_ = input.readBool();
-                bitField1_ |= 0x00000040;
+                bitField1_ |= 0x00000100;
                 break;
               } // case 328
               case 336: {
@@ -6998,58 +7738,58 @@ public final class TrezorMessageManagement {
                   mergeUnknownVarintField(42, tmpRaw);
                 } else {
                   homescreenFormat_ = tmpRaw;
-                  bitField1_ |= 0x00000080;
+                  bitField1_ |= 0x00000200;
                 }
                 break;
               } // case 336
               case 344: {
                 hidePassphraseFromHost_ = input.readBool();
-                bitField1_ |= 0x00000100;
+                bitField1_ |= 0x00000400;
                 break;
               } // case 344
               case 354: {
                 internalModel_ = input.readBytes();
-                bitField1_ |= 0x00000200;
+                bitField1_ |= 0x00000800;
                 break;
               } // case 354
               case 360: {
                 unitColor_ = input.readUInt32();
-                bitField1_ |= 0x00000400;
+                bitField1_ |= 0x00001000;
                 break;
               } // case 360
               case 368: {
                 unitBtconly_ = input.readBool();
-                bitField1_ |= 0x00000800;
+                bitField1_ |= 0x00002000;
                 break;
               } // case 368
               case 376: {
                 homescreenWidth_ = input.readUInt32();
-                bitField1_ |= 0x00001000;
+                bitField1_ |= 0x00004000;
                 break;
               } // case 376
               case 384: {
                 homescreenHeight_ = input.readUInt32();
-                bitField1_ |= 0x00002000;
+                bitField1_ |= 0x00008000;
                 break;
               } // case 384
               case 392: {
                 bootloaderLocked_ = input.readBool();
-                bitField1_ |= 0x00004000;
+                bitField1_ |= 0x00010000;
                 break;
               } // case 392
               case 400: {
                 languageVersionMatches_ = input.readBool();
-                bitField1_ |= 0x00008000;
+                bitField1_ |= 0x00020000;
                 break;
               } // case 400
               case 408: {
                 unitPackaging_ = input.readUInt32();
-                bitField1_ |= 0x00010000;
+                bitField1_ |= 0x00040000;
                 break;
               } // case 408
               case 416: {
                 hapticFeedback_ = input.readBool();
-                bitField1_ |= 0x00020000;
+                bitField1_ |= 0x00080000;
                 break;
               } // case 416
               case 424: {
@@ -7060,15 +7800,55 @@ public final class TrezorMessageManagement {
                   mergeUnknownVarintField(53, tmpRaw);
                 } else {
                   recoveryType_ = tmpRaw;
-                  bitField1_ |= 0x00040000;
+                  bitField1_ |= 0x00100000;
                 }
                 break;
               } // case 424
               case 432: {
                 optigaSec_ = input.readUInt32();
-                bitField1_ |= 0x00080000;
+                bitField1_ |= 0x00200000;
                 break;
               } // case 432
+              case 440: {
+                soc_ = input.readUInt32();
+                bitField1_ |= 0x00400000;
+                break;
+              } // case 440
+              case 448: {
+                firmwareCorrupted_ = input.readBool();
+                bitField1_ |= 0x00800000;
+                break;
+              } // case 448
+              case 456: {
+                autoLockDelayBatteryMs_ = input.readUInt32();
+                bitField1_ |= 0x01000000;
+                break;
+              } // case 456
+              case 464: {
+                led_ = input.readBool();
+                bitField1_ |= 0x02000000;
+                break;
+              } // case 464
+              case 472: {
+                usbConnected_ = input.readBool();
+                bitField1_ |= 0x04000000;
+                break;
+              } // case 472
+              case 480: {
+                wirelessConnected_ = input.readBool();
+                bitField1_ |= 0x08000000;
+                break;
+              } // case 480
+              case 488: {
+                buildVersion_ = input.readUInt32();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 488
+              case 496: {
+                fwBuild_ = input.readUInt32();
+                bitField0_ |= 0x01000000;
+                break;
+              } // case 496
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -7359,6 +8139,62 @@ public final class TrezorMessageManagement {
         return this;
       }
 
+      private int buildVersion_ ;
+      /**
+       * <pre>
+       * build version of the firmware/bootloader, e.g. 0
+       * </pre>
+       *
+       * <code>optional uint32 build_version = 61;</code>
+       * @return Whether the buildVersion field is set.
+       */
+      @java.lang.Override
+      public boolean hasBuildVersion() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <pre>
+       * build version of the firmware/bootloader, e.g. 0
+       * </pre>
+       *
+       * <code>optional uint32 build_version = 61;</code>
+       * @return The buildVersion.
+       */
+      @java.lang.Override
+      public int getBuildVersion() {
+        return buildVersion_;
+      }
+      /**
+       * <pre>
+       * build version of the firmware/bootloader, e.g. 0
+       * </pre>
+       *
+       * <code>optional uint32 build_version = 61;</code>
+       * @param value The buildVersion to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBuildVersion(int value) {
+
+        buildVersion_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * build version of the firmware/bootloader, e.g. 0
+       * </pre>
+       *
+       * <code>optional uint32 build_version = 61;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBuildVersion() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        buildVersion_ = 0;
+        onChanged();
+        return this;
+      }
+
       private boolean bootloaderMode_ ;
       /**
        * <pre>
@@ -7370,7 +8206,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasBootloaderMode() {
-        return ((bitField0_ & 0x00000010) != 0);
+        return ((bitField0_ & 0x00000020) != 0);
       }
       /**
        * <pre>
@@ -7396,7 +8232,7 @@ public final class TrezorMessageManagement {
       public Builder setBootloaderMode(boolean value) {
 
         bootloaderMode_ = value;
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -7409,7 +8245,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearBootloaderMode() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         bootloaderMode_ = false;
         onChanged();
         return this;
@@ -7425,7 +8261,7 @@ public final class TrezorMessageManagement {
        * @return Whether the deviceId field is set.
        */
       public boolean hasDeviceId() {
-        return ((bitField0_ & 0x00000020) != 0);
+        return ((bitField0_ & 0x00000040) != 0);
       }
       /**
        * <pre>
@@ -7483,7 +8319,7 @@ public final class TrezorMessageManagement {
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
         deviceId_ = value;
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         onChanged();
         return this;
       }
@@ -7497,7 +8333,7 @@ public final class TrezorMessageManagement {
        */
       public Builder clearDeviceId() {
         deviceId_ = getDefaultInstance().getDeviceId();
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         onChanged();
         return this;
       }
@@ -7514,7 +8350,7 @@ public final class TrezorMessageManagement {
           com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
         deviceId_ = value;
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         onChanged();
         return this;
       }
@@ -7530,7 +8366,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasPinProtection() {
-        return ((bitField0_ & 0x00000040) != 0);
+        return ((bitField0_ & 0x00000080) != 0);
       }
       /**
        * <pre>
@@ -7556,7 +8392,7 @@ public final class TrezorMessageManagement {
       public Builder setPinProtection(boolean value) {
 
         pinProtection_ = value;
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         onChanged();
         return this;
       }
@@ -7569,7 +8405,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearPinProtection() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         pinProtection_ = false;
         onChanged();
         return this;
@@ -7586,7 +8422,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasPassphraseProtection() {
-        return ((bitField0_ & 0x00000080) != 0);
+        return ((bitField0_ & 0x00000100) != 0);
       }
       /**
        * <pre>
@@ -7612,7 +8448,7 @@ public final class TrezorMessageManagement {
       public Builder setPassphraseProtection(boolean value) {
 
         passphraseProtection_ = value;
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         onChanged();
         return this;
       }
@@ -7625,7 +8461,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearPassphraseProtection() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000100);
         passphraseProtection_ = false;
         onChanged();
         return this;
@@ -7641,7 +8477,7 @@ public final class TrezorMessageManagement {
        * @return Whether the language field is set.
        */
       public boolean hasLanguage() {
-        return ((bitField0_ & 0x00000100) != 0);
+        return ((bitField0_ & 0x00000200) != 0);
       }
       /**
        * <pre>
@@ -7699,7 +8535,7 @@ public final class TrezorMessageManagement {
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
         language_ = value;
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000200;
         onChanged();
         return this;
       }
@@ -7713,7 +8549,7 @@ public final class TrezorMessageManagement {
        */
       public Builder clearLanguage() {
         language_ = getDefaultInstance().getLanguage();
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000200);
         onChanged();
         return this;
       }
@@ -7730,7 +8566,7 @@ public final class TrezorMessageManagement {
           com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
         language_ = value;
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000200;
         onChanged();
         return this;
       }
@@ -7745,7 +8581,7 @@ public final class TrezorMessageManagement {
        * @return Whether the label field is set.
        */
       public boolean hasLabel() {
-        return ((bitField0_ & 0x00000200) != 0);
+        return ((bitField0_ & 0x00000400) != 0);
       }
       /**
        * <pre>
@@ -7803,7 +8639,7 @@ public final class TrezorMessageManagement {
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
         label_ = value;
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         onChanged();
         return this;
       }
@@ -7817,7 +8653,7 @@ public final class TrezorMessageManagement {
        */
       public Builder clearLabel() {
         label_ = getDefaultInstance().getLabel();
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000400);
         onChanged();
         return this;
       }
@@ -7834,7 +8670,7 @@ public final class TrezorMessageManagement {
           com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
         label_ = value;
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         onChanged();
         return this;
       }
@@ -7850,7 +8686,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasInitialized() {
-        return ((bitField0_ & 0x00000400) != 0);
+        return ((bitField0_ & 0x00000800) != 0);
       }
       /**
        * <pre>
@@ -7876,7 +8712,7 @@ public final class TrezorMessageManagement {
       public Builder setInitialized(boolean value) {
 
         initialized_ = value;
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00000800;
         onChanged();
         return this;
       }
@@ -7889,7 +8725,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearInitialized() {
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000800);
         initialized_ = false;
         onChanged();
         return this;
@@ -7906,7 +8742,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasRevision() {
-        return ((bitField0_ & 0x00000800) != 0);
+        return ((bitField0_ & 0x00001000) != 0);
       }
       /**
        * <pre>
@@ -7932,7 +8768,7 @@ public final class TrezorMessageManagement {
       public Builder setRevision(com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
         revision_ = value;
-        bitField0_ |= 0x00000800;
+        bitField0_ |= 0x00001000;
         onChanged();
         return this;
       }
@@ -7945,7 +8781,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearRevision() {
-        bitField0_ = (bitField0_ & ~0x00000800);
+        bitField0_ = (bitField0_ & ~0x00001000);
         revision_ = getDefaultInstance().getRevision();
         onChanged();
         return this;
@@ -7962,7 +8798,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasBootloaderHash() {
-        return ((bitField0_ & 0x00001000) != 0);
+        return ((bitField0_ & 0x00002000) != 0);
       }
       /**
        * <pre>
@@ -7988,7 +8824,7 @@ public final class TrezorMessageManagement {
       public Builder setBootloaderHash(com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
         bootloaderHash_ = value;
-        bitField0_ |= 0x00001000;
+        bitField0_ |= 0x00002000;
         onChanged();
         return this;
       }
@@ -8001,7 +8837,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearBootloaderHash() {
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00002000);
         bootloaderHash_ = getDefaultInstance().getBootloaderHash();
         onChanged();
         return this;
@@ -8018,7 +8854,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasImported() {
-        return ((bitField0_ & 0x00002000) != 0);
+        return ((bitField0_ & 0x00004000) != 0);
       }
       /**
        * <pre>
@@ -8044,7 +8880,7 @@ public final class TrezorMessageManagement {
       public Builder setImported(boolean value) {
 
         imported_ = value;
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00004000;
         onChanged();
         return this;
       }
@@ -8057,7 +8893,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearImported() {
-        bitField0_ = (bitField0_ & ~0x00002000);
+        bitField0_ = (bitField0_ & ~0x00004000);
         imported_ = false;
         onChanged();
         return this;
@@ -8074,7 +8910,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasUnlocked() {
-        return ((bitField0_ & 0x00004000) != 0);
+        return ((bitField0_ & 0x00008000) != 0);
       }
       /**
        * <pre>
@@ -8100,7 +8936,7 @@ public final class TrezorMessageManagement {
       public Builder setUnlocked(boolean value) {
 
         unlocked_ = value;
-        bitField0_ |= 0x00004000;
+        bitField0_ |= 0x00008000;
         onChanged();
         return this;
       }
@@ -8113,7 +8949,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearUnlocked() {
-        bitField0_ = (bitField0_ & ~0x00004000);
+        bitField0_ = (bitField0_ & ~0x00008000);
         unlocked_ = false;
         onChanged();
         return this;
@@ -8127,12 +8963,12 @@ public final class TrezorMessageManagement {
        *
        * <code>optional bool _passphrase_cached = 17 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.Features._passphrase_cached is deprecated.
-       *     See messages-management.proto;l=81
+       *     See messages-management.proto;l=91
        * @return Whether the passphraseCached field is set.
        */
       @java.lang.Override
       @java.lang.Deprecated public boolean hasPassphraseCached() {
-        return ((bitField0_ & 0x00008000) != 0);
+        return ((bitField0_ & 0x00010000) != 0);
       }
       /**
        * <pre>
@@ -8141,7 +8977,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional bool _passphrase_cached = 17 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.Features._passphrase_cached is deprecated.
-       *     See messages-management.proto;l=81
+       *     See messages-management.proto;l=91
        * @return The passphraseCached.
        */
       @java.lang.Override
@@ -8155,14 +8991,14 @@ public final class TrezorMessageManagement {
        *
        * <code>optional bool _passphrase_cached = 17 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.Features._passphrase_cached is deprecated.
-       *     See messages-management.proto;l=81
+       *     See messages-management.proto;l=91
        * @param value The passphraseCached to set.
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder setPassphraseCached(boolean value) {
 
         PassphraseCached_ = value;
-        bitField0_ |= 0x00008000;
+        bitField0_ |= 0x00010000;
         onChanged();
         return this;
       }
@@ -8173,11 +9009,11 @@ public final class TrezorMessageManagement {
        *
        * <code>optional bool _passphrase_cached = 17 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.Features._passphrase_cached is deprecated.
-       *     See messages-management.proto;l=81
+       *     See messages-management.proto;l=91
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearPassphraseCached() {
-        bitField0_ = (bitField0_ & ~0x00008000);
+        bitField0_ = (bitField0_ & ~0x00010000);
         PassphraseCached_ = false;
         onChanged();
         return this;
@@ -8186,7 +9022,7 @@ public final class TrezorMessageManagement {
       private boolean firmwarePresent_ ;
       /**
        * <pre>
-       * is valid firmware loaded?
+       * is firmware loaded?
        * </pre>
        *
        * <code>optional bool firmware_present = 18;</code>
@@ -8194,11 +9030,11 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasFirmwarePresent() {
-        return ((bitField0_ & 0x00010000) != 0);
+        return ((bitField0_ & 0x00020000) != 0);
       }
       /**
        * <pre>
-       * is valid firmware loaded?
+       * is firmware loaded?
        * </pre>
        *
        * <code>optional bool firmware_present = 18;</code>
@@ -8210,7 +9046,7 @@ public final class TrezorMessageManagement {
       }
       /**
        * <pre>
-       * is valid firmware loaded?
+       * is firmware loaded?
        * </pre>
        *
        * <code>optional bool firmware_present = 18;</code>
@@ -8220,20 +9056,20 @@ public final class TrezorMessageManagement {
       public Builder setFirmwarePresent(boolean value) {
 
         firmwarePresent_ = value;
-        bitField0_ |= 0x00010000;
+        bitField0_ |= 0x00020000;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * is valid firmware loaded?
+       * is firmware loaded?
        * </pre>
        *
        * <code>optional bool firmware_present = 18;</code>
        * @return This builder for chaining.
        */
       public Builder clearFirmwarePresent() {
-        bitField0_ = (bitField0_ & ~0x00010000);
+        bitField0_ = (bitField0_ & ~0x00020000);
         firmwarePresent_ = false;
         onChanged();
         return this;
@@ -8249,7 +9085,7 @@ public final class TrezorMessageManagement {
        * @return Whether the backupAvailability field is set.
        */
       @java.lang.Override public boolean hasBackupAvailability() {
-        return ((bitField0_ & 0x00020000) != 0);
+        return ((bitField0_ & 0x00040000) != 0);
       }
       /**
        * <pre>
@@ -8277,7 +9113,7 @@ public final class TrezorMessageManagement {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00020000;
+        bitField0_ |= 0x00040000;
         backupAvailability_ = value.getNumber();
         onChanged();
         return this;
@@ -8291,7 +9127,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearBackupAvailability() {
-        bitField0_ = (bitField0_ & ~0x00020000);
+        bitField0_ = (bitField0_ & ~0x00040000);
         backupAvailability_ = 0;
         onChanged();
         return this;
@@ -8308,7 +9144,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasFlags() {
-        return ((bitField0_ & 0x00040000) != 0);
+        return ((bitField0_ & 0x00080000) != 0);
       }
       /**
        * <pre>
@@ -8334,7 +9170,7 @@ public final class TrezorMessageManagement {
       public Builder setFlags(int value) {
 
         flags_ = value;
-        bitField0_ |= 0x00040000;
+        bitField0_ |= 0x00080000;
         onChanged();
         return this;
       }
@@ -8347,7 +9183,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearFlags() {
-        bitField0_ = (bitField0_ & ~0x00040000);
+        bitField0_ = (bitField0_ & ~0x00080000);
         flags_ = 0;
         onChanged();
         return this;
@@ -8363,7 +9199,7 @@ public final class TrezorMessageManagement {
        * @return Whether the model field is set.
        */
       public boolean hasModel() {
-        return ((bitField0_ & 0x00080000) != 0);
+        return ((bitField0_ & 0x00100000) != 0);
       }
       /**
        * <pre>
@@ -8421,7 +9257,7 @@ public final class TrezorMessageManagement {
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
         model_ = value;
-        bitField0_ |= 0x00080000;
+        bitField0_ |= 0x00100000;
         onChanged();
         return this;
       }
@@ -8435,7 +9271,7 @@ public final class TrezorMessageManagement {
        */
       public Builder clearModel() {
         model_ = getDefaultInstance().getModel();
-        bitField0_ = (bitField0_ & ~0x00080000);
+        bitField0_ = (bitField0_ & ~0x00100000);
         onChanged();
         return this;
       }
@@ -8452,7 +9288,7 @@ public final class TrezorMessageManagement {
           com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
         model_ = value;
-        bitField0_ |= 0x00080000;
+        bitField0_ |= 0x00100000;
         onChanged();
         return this;
       }
@@ -8468,7 +9304,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasFwMajor() {
-        return ((bitField0_ & 0x00100000) != 0);
+        return ((bitField0_ & 0x00200000) != 0);
       }
       /**
        * <pre>
@@ -8494,7 +9330,7 @@ public final class TrezorMessageManagement {
       public Builder setFwMajor(int value) {
 
         fwMajor_ = value;
-        bitField0_ |= 0x00100000;
+        bitField0_ |= 0x00200000;
         onChanged();
         return this;
       }
@@ -8507,7 +9343,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearFwMajor() {
-        bitField0_ = (bitField0_ & ~0x00100000);
+        bitField0_ = (bitField0_ & ~0x00200000);
         fwMajor_ = 0;
         onChanged();
         return this;
@@ -8524,7 +9360,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasFwMinor() {
-        return ((bitField0_ & 0x00200000) != 0);
+        return ((bitField0_ & 0x00400000) != 0);
       }
       /**
        * <pre>
@@ -8550,7 +9386,7 @@ public final class TrezorMessageManagement {
       public Builder setFwMinor(int value) {
 
         fwMinor_ = value;
-        bitField0_ |= 0x00200000;
+        bitField0_ |= 0x00400000;
         onChanged();
         return this;
       }
@@ -8563,7 +9399,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearFwMinor() {
-        bitField0_ = (bitField0_ & ~0x00200000);
+        bitField0_ = (bitField0_ & ~0x00400000);
         fwMinor_ = 0;
         onChanged();
         return this;
@@ -8580,7 +9416,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasFwPatch() {
-        return ((bitField0_ & 0x00400000) != 0);
+        return ((bitField0_ & 0x00800000) != 0);
       }
       /**
        * <pre>
@@ -8606,7 +9442,7 @@ public final class TrezorMessageManagement {
       public Builder setFwPatch(int value) {
 
         fwPatch_ = value;
-        bitField0_ |= 0x00400000;
+        bitField0_ |= 0x00800000;
         onChanged();
         return this;
       }
@@ -8619,8 +9455,64 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearFwPatch() {
-        bitField0_ = (bitField0_ & ~0x00400000);
+        bitField0_ = (bitField0_ & ~0x00800000);
         fwPatch_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int fwBuild_ ;
+      /**
+       * <pre>
+       * reported firmware version if in bootloader mode
+       * </pre>
+       *
+       * <code>optional uint32 fw_build = 62;</code>
+       * @return Whether the fwBuild field is set.
+       */
+      @java.lang.Override
+      public boolean hasFwBuild() {
+        return ((bitField0_ & 0x01000000) != 0);
+      }
+      /**
+       * <pre>
+       * reported firmware version if in bootloader mode
+       * </pre>
+       *
+       * <code>optional uint32 fw_build = 62;</code>
+       * @return The fwBuild.
+       */
+      @java.lang.Override
+      public int getFwBuild() {
+        return fwBuild_;
+      }
+      /**
+       * <pre>
+       * reported firmware version if in bootloader mode
+       * </pre>
+       *
+       * <code>optional uint32 fw_build = 62;</code>
+       * @param value The fwBuild to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFwBuild(int value) {
+
+        fwBuild_ = value;
+        bitField0_ |= 0x01000000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * reported firmware version if in bootloader mode
+       * </pre>
+       *
+       * <code>optional uint32 fw_build = 62;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFwBuild() {
+        bitField0_ = (bitField0_ & ~0x01000000);
+        fwBuild_ = 0;
         onChanged();
         return this;
       }
@@ -8635,7 +9527,7 @@ public final class TrezorMessageManagement {
        * @return Whether the fwVendor field is set.
        */
       public boolean hasFwVendor() {
-        return ((bitField0_ & 0x00800000) != 0);
+        return ((bitField0_ & 0x02000000) != 0);
       }
       /**
        * <pre>
@@ -8693,7 +9585,7 @@ public final class TrezorMessageManagement {
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
         fwVendor_ = value;
-        bitField0_ |= 0x00800000;
+        bitField0_ |= 0x02000000;
         onChanged();
         return this;
       }
@@ -8707,7 +9599,7 @@ public final class TrezorMessageManagement {
        */
       public Builder clearFwVendor() {
         fwVendor_ = getDefaultInstance().getFwVendor();
-        bitField0_ = (bitField0_ & ~0x00800000);
+        bitField0_ = (bitField0_ & ~0x02000000);
         onChanged();
         return this;
       }
@@ -8724,7 +9616,7 @@ public final class TrezorMessageManagement {
           com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
         fwVendor_ = value;
-        bitField0_ |= 0x00800000;
+        bitField0_ |= 0x02000000;
         onChanged();
         return this;
       }
@@ -8740,7 +9632,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasUnfinishedBackup() {
-        return ((bitField0_ & 0x01000000) != 0);
+        return ((bitField0_ & 0x04000000) != 0);
       }
       /**
        * <pre>
@@ -8766,7 +9658,7 @@ public final class TrezorMessageManagement {
       public Builder setUnfinishedBackup(boolean value) {
 
         unfinishedBackup_ = value;
-        bitField0_ |= 0x01000000;
+        bitField0_ |= 0x04000000;
         onChanged();
         return this;
       }
@@ -8779,7 +9671,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearUnfinishedBackup() {
-        bitField0_ = (bitField0_ & ~0x01000000);
+        bitField0_ = (bitField0_ & ~0x04000000);
         unfinishedBackup_ = false;
         onChanged();
         return this;
@@ -8796,7 +9688,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasNoBackup() {
-        return ((bitField0_ & 0x02000000) != 0);
+        return ((bitField0_ & 0x08000000) != 0);
       }
       /**
        * <pre>
@@ -8822,7 +9714,7 @@ public final class TrezorMessageManagement {
       public Builder setNoBackup(boolean value) {
 
         noBackup_ = value;
-        bitField0_ |= 0x02000000;
+        bitField0_ |= 0x08000000;
         onChanged();
         return this;
       }
@@ -8835,7 +9727,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearNoBackup() {
-        bitField0_ = (bitField0_ & ~0x02000000);
+        bitField0_ = (bitField0_ & ~0x08000000);
         noBackup_ = false;
         onChanged();
         return this;
@@ -8851,7 +9743,7 @@ public final class TrezorMessageManagement {
        * @return Whether the recoveryStatus field is set.
        */
       @java.lang.Override public boolean hasRecoveryStatus() {
-        return ((bitField0_ & 0x04000000) != 0);
+        return ((bitField0_ & 0x10000000) != 0);
       }
       /**
        * <pre>
@@ -8879,7 +9771,7 @@ public final class TrezorMessageManagement {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x04000000;
+        bitField0_ |= 0x10000000;
         recoveryStatus_ = value.getNumber();
         onChanged();
         return this;
@@ -8893,7 +9785,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearRecoveryStatus() {
-        bitField0_ = (bitField0_ & ~0x04000000);
+        bitField0_ = (bitField0_ & ~0x10000000);
         recoveryStatus_ = 0;
         onChanged();
         return this;
@@ -8902,9 +9794,9 @@ public final class TrezorMessageManagement {
       private com.google.protobuf.Internal.IntList capabilities_ =
         emptyIntList();
       private void ensureCapabilitiesIsMutable() {
-        if (!((bitField0_ & 0x08000000) != 0)) {
+        if (!((bitField0_ & 0x20000000) != 0)) {
           capabilities_ = makeMutableCopy(capabilities_);
-          bitField0_ |= 0x08000000;
+          bitField0_ |= 0x20000000;
         }
       }
       /**
@@ -9008,7 +9900,7 @@ public final class TrezorMessageManagement {
        */
       public Builder clearCapabilities() {
         capabilities_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x08000000);
+        bitField0_ = (bitField0_ & ~0x20000000);
         onChanged();
         return this;
       }
@@ -9023,7 +9915,7 @@ public final class TrezorMessageManagement {
        * @return Whether the backupType field is set.
        */
       @java.lang.Override public boolean hasBackupType() {
-        return ((bitField0_ & 0x10000000) != 0);
+        return ((bitField0_ & 0x40000000) != 0);
       }
       /**
        * <pre>
@@ -9051,7 +9943,7 @@ public final class TrezorMessageManagement {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x10000000;
+        bitField0_ |= 0x40000000;
         backupType_ = value.getNumber();
         onChanged();
         return this;
@@ -9065,7 +9957,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearBackupType() {
-        bitField0_ = (bitField0_ & ~0x10000000);
+        bitField0_ = (bitField0_ & ~0x40000000);
         backupType_ = 0;
         onChanged();
         return this;
@@ -9082,7 +9974,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasSdCardPresent() {
-        return ((bitField0_ & 0x20000000) != 0);
+        return ((bitField0_ & 0x80000000) != 0);
       }
       /**
        * <pre>
@@ -9108,7 +10000,7 @@ public final class TrezorMessageManagement {
       public Builder setSdCardPresent(boolean value) {
 
         sdCardPresent_ = value;
-        bitField0_ |= 0x20000000;
+        bitField0_ |= 0x80000000;
         onChanged();
         return this;
       }
@@ -9121,7 +10013,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearSdCardPresent() {
-        bitField0_ = (bitField0_ & ~0x20000000);
+        bitField0_ = (bitField0_ & ~0x80000000);
         sdCardPresent_ = false;
         onChanged();
         return this;
@@ -9138,7 +10030,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasSdProtection() {
-        return ((bitField0_ & 0x40000000) != 0);
+        return ((bitField1_ & 0x00000001) != 0);
       }
       /**
        * <pre>
@@ -9164,7 +10056,7 @@ public final class TrezorMessageManagement {
       public Builder setSdProtection(boolean value) {
 
         sdProtection_ = value;
-        bitField0_ |= 0x40000000;
+        bitField1_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -9177,7 +10069,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearSdProtection() {
-        bitField0_ = (bitField0_ & ~0x40000000);
+        bitField1_ = (bitField1_ & ~0x00000001);
         sdProtection_ = false;
         onChanged();
         return this;
@@ -9194,7 +10086,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasWipeCodeProtection() {
-        return ((bitField0_ & 0x80000000) != 0);
+        return ((bitField1_ & 0x00000002) != 0);
       }
       /**
        * <pre>
@@ -9220,7 +10112,7 @@ public final class TrezorMessageManagement {
       public Builder setWipeCodeProtection(boolean value) {
 
         wipeCodeProtection_ = value;
-        bitField0_ |= 0x80000000;
+        bitField1_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -9233,7 +10125,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearWipeCodeProtection() {
-        bitField0_ = (bitField0_ & ~0x80000000);
+        bitField1_ = (bitField1_ & ~0x00000002);
         wipeCodeProtection_ = false;
         onChanged();
         return this;
@@ -9246,7 +10138,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasSessionId() {
-        return ((bitField1_ & 0x00000001) != 0);
+        return ((bitField1_ & 0x00000004) != 0);
       }
       /**
        * <code>optional bytes session_id = 35;</code>
@@ -9264,7 +10156,7 @@ public final class TrezorMessageManagement {
       public Builder setSessionId(com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
         sessionId_ = value;
-        bitField1_ |= 0x00000001;
+        bitField1_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -9273,7 +10165,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearSessionId() {
-        bitField1_ = (bitField1_ & ~0x00000001);
+        bitField1_ = (bitField1_ & ~0x00000004);
         sessionId_ = getDefaultInstance().getSessionId();
         onChanged();
         return this;
@@ -9290,7 +10182,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasPassphraseAlwaysOnDevice() {
-        return ((bitField1_ & 0x00000002) != 0);
+        return ((bitField1_ & 0x00000008) != 0);
       }
       /**
        * <pre>
@@ -9316,7 +10208,7 @@ public final class TrezorMessageManagement {
       public Builder setPassphraseAlwaysOnDevice(boolean value) {
 
         passphraseAlwaysOnDevice_ = value;
-        bitField1_ |= 0x00000002;
+        bitField1_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -9329,7 +10221,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearPassphraseAlwaysOnDevice() {
-        bitField1_ = (bitField1_ & ~0x00000002);
+        bitField1_ = (bitField1_ & ~0x00000008);
         passphraseAlwaysOnDevice_ = false;
         onChanged();
         return this;
@@ -9345,7 +10237,7 @@ public final class TrezorMessageManagement {
        * @return Whether the safetyChecks field is set.
        */
       @java.lang.Override public boolean hasSafetyChecks() {
-        return ((bitField1_ & 0x00000004) != 0);
+        return ((bitField1_ & 0x00000010) != 0);
       }
       /**
        * <pre>
@@ -9373,7 +10265,7 @@ public final class TrezorMessageManagement {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField1_ |= 0x00000004;
+        bitField1_ |= 0x00000010;
         safetyChecks_ = value.getNumber();
         onChanged();
         return this;
@@ -9387,7 +10279,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearSafetyChecks() {
-        bitField1_ = (bitField1_ & ~0x00000004);
+        bitField1_ = (bitField1_ & ~0x00000010);
         safetyChecks_ = 0;
         onChanged();
         return this;
@@ -9404,7 +10296,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasAutoLockDelayMs() {
-        return ((bitField1_ & 0x00000008) != 0);
+        return ((bitField1_ & 0x00000020) != 0);
       }
       /**
        * <pre>
@@ -9430,7 +10322,7 @@ public final class TrezorMessageManagement {
       public Builder setAutoLockDelayMs(int value) {
 
         autoLockDelayMs_ = value;
-        bitField1_ |= 0x00000008;
+        bitField1_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -9443,63 +10335,65 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearAutoLockDelayMs() {
-        bitField1_ = (bitField1_ & ~0x00000008);
+        bitField1_ = (bitField1_ & ~0x00000020);
         autoLockDelayMs_ = 0;
         onChanged();
         return this;
       }
 
-      private int displayRotation_ ;
+      private int displayRotation_ = 0;
       /**
        * <pre>
-       * in degrees from North
+       * rotation of display (in degrees from North)
        * </pre>
        *
-       * <code>optional uint32 display_rotation = 39;</code>
+       * <code>optional .hw.trezor.messages.management.DisplayRotation display_rotation = 39;</code>
        * @return Whether the displayRotation field is set.
        */
-      @java.lang.Override
-      public boolean hasDisplayRotation() {
-        return ((bitField1_ & 0x00000010) != 0);
+      @java.lang.Override public boolean hasDisplayRotation() {
+        return ((bitField1_ & 0x00000040) != 0);
       }
       /**
        * <pre>
-       * in degrees from North
+       * rotation of display (in degrees from North)
        * </pre>
        *
-       * <code>optional uint32 display_rotation = 39;</code>
+       * <code>optional .hw.trezor.messages.management.DisplayRotation display_rotation = 39;</code>
        * @return The displayRotation.
        */
       @java.lang.Override
-      public int getDisplayRotation() {
-        return displayRotation_;
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation getDisplayRotation() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation result = com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation.forNumber(displayRotation_);
+        return result == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation.North : result;
       }
       /**
        * <pre>
-       * in degrees from North
+       * rotation of display (in degrees from North)
        * </pre>
        *
-       * <code>optional uint32 display_rotation = 39;</code>
+       * <code>optional .hw.trezor.messages.management.DisplayRotation display_rotation = 39;</code>
        * @param value The displayRotation to set.
        * @return This builder for chaining.
        */
-      public Builder setDisplayRotation(int value) {
-
-        displayRotation_ = value;
-        bitField1_ |= 0x00000010;
+      public Builder setDisplayRotation(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField1_ |= 0x00000040;
+        displayRotation_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * in degrees from North
+       * rotation of display (in degrees from North)
        * </pre>
        *
-       * <code>optional uint32 display_rotation = 39;</code>
+       * <code>optional .hw.trezor.messages.management.DisplayRotation display_rotation = 39;</code>
        * @return This builder for chaining.
        */
       public Builder clearDisplayRotation() {
-        bitField1_ = (bitField1_ & ~0x00000010);
+        bitField1_ = (bitField1_ & ~0x00000040);
         displayRotation_ = 0;
         onChanged();
         return this;
@@ -9516,7 +10410,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasExperimentalFeatures() {
-        return ((bitField1_ & 0x00000020) != 0);
+        return ((bitField1_ & 0x00000080) != 0);
       }
       /**
        * <pre>
@@ -9542,7 +10436,7 @@ public final class TrezorMessageManagement {
       public Builder setExperimentalFeatures(boolean value) {
 
         experimentalFeatures_ = value;
-        bitField1_ |= 0x00000020;
+        bitField1_ |= 0x00000080;
         onChanged();
         return this;
       }
@@ -9555,7 +10449,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearExperimentalFeatures() {
-        bitField1_ = (bitField1_ & ~0x00000020);
+        bitField1_ = (bitField1_ & ~0x00000080);
         experimentalFeatures_ = false;
         onChanged();
         return this;
@@ -9572,7 +10466,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasBusy() {
-        return ((bitField1_ & 0x00000040) != 0);
+        return ((bitField1_ & 0x00000100) != 0);
       }
       /**
        * <pre>
@@ -9598,7 +10492,7 @@ public final class TrezorMessageManagement {
       public Builder setBusy(boolean value) {
 
         busy_ = value;
-        bitField1_ |= 0x00000040;
+        bitField1_ |= 0x00000100;
         onChanged();
         return this;
       }
@@ -9611,7 +10505,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearBusy() {
-        bitField1_ = (bitField1_ & ~0x00000040);
+        bitField1_ = (bitField1_ & ~0x00000100);
         busy_ = false;
         onChanged();
         return this;
@@ -9627,7 +10521,7 @@ public final class TrezorMessageManagement {
        * @return Whether the homescreenFormat field is set.
        */
       @java.lang.Override public boolean hasHomescreenFormat() {
-        return ((bitField1_ & 0x00000080) != 0);
+        return ((bitField1_ & 0x00000200) != 0);
       }
       /**
        * <pre>
@@ -9655,7 +10549,7 @@ public final class TrezorMessageManagement {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField1_ |= 0x00000080;
+        bitField1_ |= 0x00000200;
         homescreenFormat_ = value.getNumber();
         onChanged();
         return this;
@@ -9669,7 +10563,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearHomescreenFormat() {
-        bitField1_ = (bitField1_ & ~0x00000080);
+        bitField1_ = (bitField1_ & ~0x00000200);
         homescreenFormat_ = 1;
         onChanged();
         return this;
@@ -9686,7 +10580,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasHidePassphraseFromHost() {
-        return ((bitField1_ & 0x00000100) != 0);
+        return ((bitField1_ & 0x00000400) != 0);
       }
       /**
        * <pre>
@@ -9712,7 +10606,7 @@ public final class TrezorMessageManagement {
       public Builder setHidePassphraseFromHost(boolean value) {
 
         hidePassphraseFromHost_ = value;
-        bitField1_ |= 0x00000100;
+        bitField1_ |= 0x00000400;
         onChanged();
         return this;
       }
@@ -9725,7 +10619,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearHidePassphraseFromHost() {
-        bitField1_ = (bitField1_ & ~0x00000100);
+        bitField1_ = (bitField1_ & ~0x00000400);
         hidePassphraseFromHost_ = false;
         onChanged();
         return this;
@@ -9741,7 +10635,7 @@ public final class TrezorMessageManagement {
        * @return Whether the internalModel field is set.
        */
       public boolean hasInternalModel() {
-        return ((bitField1_ & 0x00000200) != 0);
+        return ((bitField1_ & 0x00000800) != 0);
       }
       /**
        * <pre>
@@ -9799,7 +10693,7 @@ public final class TrezorMessageManagement {
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
         internalModel_ = value;
-        bitField1_ |= 0x00000200;
+        bitField1_ |= 0x00000800;
         onChanged();
         return this;
       }
@@ -9813,7 +10707,7 @@ public final class TrezorMessageManagement {
        */
       public Builder clearInternalModel() {
         internalModel_ = getDefaultInstance().getInternalModel();
-        bitField1_ = (bitField1_ & ~0x00000200);
+        bitField1_ = (bitField1_ & ~0x00000800);
         onChanged();
         return this;
       }
@@ -9830,7 +10724,7 @@ public final class TrezorMessageManagement {
           com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
         internalModel_ = value;
-        bitField1_ |= 0x00000200;
+        bitField1_ |= 0x00000800;
         onChanged();
         return this;
       }
@@ -9846,7 +10740,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasUnitColor() {
-        return ((bitField1_ & 0x00000400) != 0);
+        return ((bitField1_ & 0x00001000) != 0);
       }
       /**
        * <pre>
@@ -9872,7 +10766,7 @@ public final class TrezorMessageManagement {
       public Builder setUnitColor(int value) {
 
         unitColor_ = value;
-        bitField1_ |= 0x00000400;
+        bitField1_ |= 0x00001000;
         onChanged();
         return this;
       }
@@ -9885,7 +10779,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearUnitColor() {
-        bitField1_ = (bitField1_ & ~0x00000400);
+        bitField1_ = (bitField1_ & ~0x00001000);
         unitColor_ = 0;
         onChanged();
         return this;
@@ -9902,7 +10796,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasUnitBtconly() {
-        return ((bitField1_ & 0x00000800) != 0);
+        return ((bitField1_ & 0x00002000) != 0);
       }
       /**
        * <pre>
@@ -9928,7 +10822,7 @@ public final class TrezorMessageManagement {
       public Builder setUnitBtconly(boolean value) {
 
         unitBtconly_ = value;
-        bitField1_ |= 0x00000800;
+        bitField1_ |= 0x00002000;
         onChanged();
         return this;
       }
@@ -9941,7 +10835,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearUnitBtconly() {
-        bitField1_ = (bitField1_ & ~0x00000800);
+        bitField1_ = (bitField1_ & ~0x00002000);
         unitBtconly_ = false;
         onChanged();
         return this;
@@ -9958,7 +10852,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasHomescreenWidth() {
-        return ((bitField1_ & 0x00001000) != 0);
+        return ((bitField1_ & 0x00004000) != 0);
       }
       /**
        * <pre>
@@ -9984,7 +10878,7 @@ public final class TrezorMessageManagement {
       public Builder setHomescreenWidth(int value) {
 
         homescreenWidth_ = value;
-        bitField1_ |= 0x00001000;
+        bitField1_ |= 0x00004000;
         onChanged();
         return this;
       }
@@ -9997,7 +10891,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearHomescreenWidth() {
-        bitField1_ = (bitField1_ & ~0x00001000);
+        bitField1_ = (bitField1_ & ~0x00004000);
         homescreenWidth_ = 0;
         onChanged();
         return this;
@@ -10014,7 +10908,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasHomescreenHeight() {
-        return ((bitField1_ & 0x00002000) != 0);
+        return ((bitField1_ & 0x00008000) != 0);
       }
       /**
        * <pre>
@@ -10040,7 +10934,7 @@ public final class TrezorMessageManagement {
       public Builder setHomescreenHeight(int value) {
 
         homescreenHeight_ = value;
-        bitField1_ |= 0x00002000;
+        bitField1_ |= 0x00008000;
         onChanged();
         return this;
       }
@@ -10053,7 +10947,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearHomescreenHeight() {
-        bitField1_ = (bitField1_ & ~0x00002000);
+        bitField1_ = (bitField1_ & ~0x00008000);
         homescreenHeight_ = 0;
         onChanged();
         return this;
@@ -10070,7 +10964,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasBootloaderLocked() {
-        return ((bitField1_ & 0x00004000) != 0);
+        return ((bitField1_ & 0x00010000) != 0);
       }
       /**
        * <pre>
@@ -10096,7 +10990,7 @@ public final class TrezorMessageManagement {
       public Builder setBootloaderLocked(boolean value) {
 
         bootloaderLocked_ = value;
-        bitField1_ |= 0x00004000;
+        bitField1_ |= 0x00010000;
         onChanged();
         return this;
       }
@@ -10109,7 +11003,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearBootloaderLocked() {
-        bitField1_ = (bitField1_ & ~0x00004000);
+        bitField1_ = (bitField1_ & ~0x00010000);
         bootloaderLocked_ = false;
         onChanged();
         return this;
@@ -10126,7 +11020,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasLanguageVersionMatches() {
-        return ((bitField1_ & 0x00008000) != 0);
+        return ((bitField1_ & 0x00020000) != 0);
       }
       /**
        * <pre>
@@ -10152,7 +11046,7 @@ public final class TrezorMessageManagement {
       public Builder setLanguageVersionMatches(boolean value) {
 
         languageVersionMatches_ = value;
-        bitField1_ |= 0x00008000;
+        bitField1_ |= 0x00020000;
         onChanged();
         return this;
       }
@@ -10165,7 +11059,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearLanguageVersionMatches() {
-        bitField1_ = (bitField1_ & ~0x00008000);
+        bitField1_ = (bitField1_ & ~0x00020000);
         languageVersionMatches_ = true;
         onChanged();
         return this;
@@ -10182,7 +11076,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasUnitPackaging() {
-        return ((bitField1_ & 0x00010000) != 0);
+        return ((bitField1_ & 0x00040000) != 0);
       }
       /**
        * <pre>
@@ -10208,7 +11102,7 @@ public final class TrezorMessageManagement {
       public Builder setUnitPackaging(int value) {
 
         unitPackaging_ = value;
-        bitField1_ |= 0x00010000;
+        bitField1_ |= 0x00040000;
         onChanged();
         return this;
       }
@@ -10221,7 +11115,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearUnitPackaging() {
-        bitField1_ = (bitField1_ & ~0x00010000);
+        bitField1_ = (bitField1_ & ~0x00040000);
         unitPackaging_ = 0;
         onChanged();
         return this;
@@ -10238,7 +11132,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasHapticFeedback() {
-        return ((bitField1_ & 0x00020000) != 0);
+        return ((bitField1_ & 0x00080000) != 0);
       }
       /**
        * <pre>
@@ -10264,7 +11158,7 @@ public final class TrezorMessageManagement {
       public Builder setHapticFeedback(boolean value) {
 
         hapticFeedback_ = value;
-        bitField1_ |= 0x00020000;
+        bitField1_ |= 0x00080000;
         onChanged();
         return this;
       }
@@ -10277,7 +11171,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearHapticFeedback() {
-        bitField1_ = (bitField1_ & ~0x00020000);
+        bitField1_ = (bitField1_ & ~0x00080000);
         hapticFeedback_ = false;
         onChanged();
         return this;
@@ -10293,7 +11187,7 @@ public final class TrezorMessageManagement {
        * @return Whether the recoveryType field is set.
        */
       @java.lang.Override public boolean hasRecoveryType() {
-        return ((bitField1_ & 0x00040000) != 0);
+        return ((bitField1_ & 0x00100000) != 0);
       }
       /**
        * <pre>
@@ -10321,7 +11215,7 @@ public final class TrezorMessageManagement {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField1_ |= 0x00040000;
+        bitField1_ |= 0x00100000;
         recoveryType_ = value.getNumber();
         onChanged();
         return this;
@@ -10335,7 +11229,7 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearRecoveryType() {
-        bitField1_ = (bitField1_ & ~0x00040000);
+        bitField1_ = (bitField1_ & ~0x00100000);
         recoveryType_ = 0;
         onChanged();
         return this;
@@ -10352,7 +11246,7 @@ public final class TrezorMessageManagement {
        */
       @java.lang.Override
       public boolean hasOptigaSec() {
-        return ((bitField1_ & 0x00080000) != 0);
+        return ((bitField1_ & 0x00200000) != 0);
       }
       /**
        * <pre>
@@ -10378,7 +11272,7 @@ public final class TrezorMessageManagement {
       public Builder setOptigaSec(int value) {
 
         optigaSec_ = value;
-        bitField1_ |= 0x00080000;
+        bitField1_ |= 0x00200000;
         onChanged();
         return this;
       }
@@ -10391,8 +11285,344 @@ public final class TrezorMessageManagement {
        * @return This builder for chaining.
        */
       public Builder clearOptigaSec() {
-        bitField1_ = (bitField1_ & ~0x00080000);
+        bitField1_ = (bitField1_ & ~0x00200000);
         optigaSec_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int soc_ ;
+      /**
+       * <pre>
+       * Battery state of charge (0 - 100%)
+       * </pre>
+       *
+       * <code>optional uint32 soc = 55;</code>
+       * @return Whether the soc field is set.
+       */
+      @java.lang.Override
+      public boolean hasSoc() {
+        return ((bitField1_ & 0x00400000) != 0);
+      }
+      /**
+       * <pre>
+       * Battery state of charge (0 - 100%)
+       * </pre>
+       *
+       * <code>optional uint32 soc = 55;</code>
+       * @return The soc.
+       */
+      @java.lang.Override
+      public int getSoc() {
+        return soc_;
+      }
+      /**
+       * <pre>
+       * Battery state of charge (0 - 100%)
+       * </pre>
+       *
+       * <code>optional uint32 soc = 55;</code>
+       * @param value The soc to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSoc(int value) {
+
+        soc_ = value;
+        bitField1_ |= 0x00400000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Battery state of charge (0 - 100%)
+       * </pre>
+       *
+       * <code>optional uint32 soc = 55;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSoc() {
+        bitField1_ = (bitField1_ & ~0x00400000);
+        soc_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean firmwareCorrupted_ ;
+      /**
+       * <pre>
+       * true if the firmware is corrupted
+       * </pre>
+       *
+       * <code>optional bool firmware_corrupted = 56;</code>
+       * @return Whether the firmwareCorrupted field is set.
+       */
+      @java.lang.Override
+      public boolean hasFirmwareCorrupted() {
+        return ((bitField1_ & 0x00800000) != 0);
+      }
+      /**
+       * <pre>
+       * true if the firmware is corrupted
+       * </pre>
+       *
+       * <code>optional bool firmware_corrupted = 56;</code>
+       * @return The firmwareCorrupted.
+       */
+      @java.lang.Override
+      public boolean getFirmwareCorrupted() {
+        return firmwareCorrupted_;
+      }
+      /**
+       * <pre>
+       * true if the firmware is corrupted
+       * </pre>
+       *
+       * <code>optional bool firmware_corrupted = 56;</code>
+       * @param value The firmwareCorrupted to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFirmwareCorrupted(boolean value) {
+
+        firmwareCorrupted_ = value;
+        bitField1_ |= 0x00800000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * true if the firmware is corrupted
+       * </pre>
+       *
+       * <code>optional bool firmware_corrupted = 56;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFirmwareCorrupted() {
+        bitField1_ = (bitField1_ & ~0x00800000);
+        firmwareCorrupted_ = false;
+        onChanged();
+        return this;
+      }
+
+      private int autoLockDelayBatteryMs_ ;
+      /**
+       * <pre>
+       * number of milliseconds after which the battery-powered device locks itself
+       * </pre>
+       *
+       * <code>optional uint32 auto_lock_delay_battery_ms = 57;</code>
+       * @return Whether the autoLockDelayBatteryMs field is set.
+       */
+      @java.lang.Override
+      public boolean hasAutoLockDelayBatteryMs() {
+        return ((bitField1_ & 0x01000000) != 0);
+      }
+      /**
+       * <pre>
+       * number of milliseconds after which the battery-powered device locks itself
+       * </pre>
+       *
+       * <code>optional uint32 auto_lock_delay_battery_ms = 57;</code>
+       * @return The autoLockDelayBatteryMs.
+       */
+      @java.lang.Override
+      public int getAutoLockDelayBatteryMs() {
+        return autoLockDelayBatteryMs_;
+      }
+      /**
+       * <pre>
+       * number of milliseconds after which the battery-powered device locks itself
+       * </pre>
+       *
+       * <code>optional uint32 auto_lock_delay_battery_ms = 57;</code>
+       * @param value The autoLockDelayBatteryMs to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAutoLockDelayBatteryMs(int value) {
+
+        autoLockDelayBatteryMs_ = value;
+        bitField1_ |= 0x01000000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * number of milliseconds after which the battery-powered device locks itself
+       * </pre>
+       *
+       * <code>optional uint32 auto_lock_delay_battery_ms = 57;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAutoLockDelayBatteryMs() {
+        bitField1_ = (bitField1_ & ~0x01000000);
+        autoLockDelayBatteryMs_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean led_ ;
+      /**
+       * <pre>
+       * RGB LED settings
+       * </pre>
+       *
+       * <code>optional bool led = 58;</code>
+       * @return Whether the led field is set.
+       */
+      @java.lang.Override
+      public boolean hasLed() {
+        return ((bitField1_ & 0x02000000) != 0);
+      }
+      /**
+       * <pre>
+       * RGB LED settings
+       * </pre>
+       *
+       * <code>optional bool led = 58;</code>
+       * @return The led.
+       */
+      @java.lang.Override
+      public boolean getLed() {
+        return led_;
+      }
+      /**
+       * <pre>
+       * RGB LED settings
+       * </pre>
+       *
+       * <code>optional bool led = 58;</code>
+       * @param value The led to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLed(boolean value) {
+
+        led_ = value;
+        bitField1_ |= 0x02000000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * RGB LED settings
+       * </pre>
+       *
+       * <code>optional bool led = 58;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLed() {
+        bitField1_ = (bitField1_ & ~0x02000000);
+        led_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean usbConnected_ ;
+      /**
+       * <pre>
+       * USB connected
+       * </pre>
+       *
+       * <code>optional bool usb_connected = 59;</code>
+       * @return Whether the usbConnected field is set.
+       */
+      @java.lang.Override
+      public boolean hasUsbConnected() {
+        return ((bitField1_ & 0x04000000) != 0);
+      }
+      /**
+       * <pre>
+       * USB connected
+       * </pre>
+       *
+       * <code>optional bool usb_connected = 59;</code>
+       * @return The usbConnected.
+       */
+      @java.lang.Override
+      public boolean getUsbConnected() {
+        return usbConnected_;
+      }
+      /**
+       * <pre>
+       * USB connected
+       * </pre>
+       *
+       * <code>optional bool usb_connected = 59;</code>
+       * @param value The usbConnected to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUsbConnected(boolean value) {
+
+        usbConnected_ = value;
+        bitField1_ |= 0x04000000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * USB connected
+       * </pre>
+       *
+       * <code>optional bool usb_connected = 59;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUsbConnected() {
+        bitField1_ = (bitField1_ & ~0x04000000);
+        usbConnected_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean wirelessConnected_ ;
+      /**
+       * <pre>
+       * Wireless charger connected
+       * </pre>
+       *
+       * <code>optional bool wireless_connected = 60;</code>
+       * @return Whether the wirelessConnected field is set.
+       */
+      @java.lang.Override
+      public boolean hasWirelessConnected() {
+        return ((bitField1_ & 0x08000000) != 0);
+      }
+      /**
+       * <pre>
+       * Wireless charger connected
+       * </pre>
+       *
+       * <code>optional bool wireless_connected = 60;</code>
+       * @return The wirelessConnected.
+       */
+      @java.lang.Override
+      public boolean getWirelessConnected() {
+        return wirelessConnected_;
+      }
+      /**
+       * <pre>
+       * Wireless charger connected
+       * </pre>
+       *
+       * <code>optional bool wireless_connected = 60;</code>
+       * @param value The wirelessConnected to set.
+       * @return This builder for chaining.
+       */
+      public Builder setWirelessConnected(boolean value) {
+
+        wirelessConnected_ = value;
+        bitField1_ |= 0x08000000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Wireless charger connected
+       * </pre>
+       *
+       * <code>optional bool wireless_connected = 60;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearWirelessConnected() {
+        bitField1_ = (bitField1_ & ~0x08000000);
+        wirelessConnected_ = false;
         onChanged();
         return this;
       }
@@ -11707,21 +12937,21 @@ public final class TrezorMessageManagement {
     /**
      * <code>optional string language = 1 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.ApplySettings.language is deprecated.
-     *     See messages-management.proto;l=196
+     *     See messages-management.proto;l=216
      * @return Whether the language field is set.
      */
     @java.lang.Deprecated boolean hasLanguage();
     /**
      * <code>optional string language = 1 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.ApplySettings.language is deprecated.
-     *     See messages-management.proto;l=196
+     *     See messages-management.proto;l=216
      * @return The language.
      */
     @java.lang.Deprecated java.lang.String getLanguage();
     /**
      * <code>optional string language = 1 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.ApplySettings.language is deprecated.
-     *     See messages-management.proto;l=196
+     *     See messages-management.proto;l=216
      * @return The bytes for language.
      */
     @java.lang.Deprecated com.google.protobuf.ByteString
@@ -11756,11 +12986,19 @@ public final class TrezorMessageManagement {
     boolean getUsePassphrase();
 
     /**
+     * <pre>
+     * homescreen image in single array, deprecated for 14
+     * </pre>
+     *
      * <code>optional bytes homescreen = 4;</code>
      * @return Whether the homescreen field is set.
      */
     boolean hasHomescreen();
     /**
+     * <pre>
+     * homescreen image in single array, deprecated for 14
+     * </pre>
+     *
      * <code>optional bytes homescreen = 4;</code>
      * @return The homescreen.
      */
@@ -11773,7 +13011,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional uint32 _passphrase_source = 5 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.ApplySettings._passphrase_source is deprecated.
-     *     See messages-management.proto;l=200
+     *     See messages-management.proto;l=220
      * @return Whether the passphraseSource field is set.
      */
     @java.lang.Deprecated boolean hasPassphraseSource();
@@ -11784,7 +13022,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional uint32 _passphrase_source = 5 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.ApplySettings._passphrase_source is deprecated.
-     *     See messages-management.proto;l=200
+     *     See messages-management.proto;l=220
      * @return The passphraseSource.
      */
     @java.lang.Deprecated int getPassphraseSource();
@@ -11802,22 +13040,22 @@ public final class TrezorMessageManagement {
 
     /**
      * <pre>
-     * in degrees from North
+     * rotation of display (in degrees from North)
      * </pre>
      *
-     * <code>optional uint32 display_rotation = 7;</code>
+     * <code>optional .hw.trezor.messages.management.DisplayRotation display_rotation = 7;</code>
      * @return Whether the displayRotation field is set.
      */
     boolean hasDisplayRotation();
     /**
      * <pre>
-     * in degrees from North
+     * rotation of display (in degrees from North)
      * </pre>
      *
-     * <code>optional uint32 display_rotation = 7;</code>
+     * <code>optional .hw.trezor.messages.management.DisplayRotation display_rotation = 7;</code>
      * @return The displayRotation.
      */
-    int getDisplayRotation();
+    com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation getDisplayRotation();
 
     /**
      * <pre>
@@ -11913,6 +13151,44 @@ public final class TrezorMessageManagement {
      * @return The hapticFeedback.
      */
     boolean getHapticFeedback();
+
+    /**
+     * <pre>
+     * byte length of new homescreen, device will request chunks
+     * </pre>
+     *
+     * <code>optional uint32 homescreen_length = 14;</code>
+     * @return Whether the homescreenLength field is set.
+     */
+    boolean hasHomescreenLength();
+    /**
+     * <pre>
+     * byte length of new homescreen, device will request chunks
+     * </pre>
+     *
+     * <code>optional uint32 homescreen_length = 14;</code>
+     * @return The homescreenLength.
+     */
+    int getHomescreenLength();
+
+    /**
+     * <pre>
+     * time in ms after which device locks when on battery or wireless charger
+     * </pre>
+     *
+     * <code>optional uint32 auto_lock_delay_battery_ms = 15;</code>
+     * @return Whether the autoLockDelayBatteryMs field is set.
+     */
+    boolean hasAutoLockDelayBatteryMs();
+    /**
+     * <pre>
+     * time in ms after which device locks when on battery or wireless charger
+     * </pre>
+     *
+     * <code>optional uint32 auto_lock_delay_battery_ms = 15;</code>
+     * @return The autoLockDelayBatteryMs.
+     */
+    int getAutoLockDelayBatteryMs();
   }
   /**
    * <pre>
@@ -11920,6 +13196,7 @@ public final class TrezorMessageManagement {
    * Request: change some property of the device, e.g. label or homescreen
    * &#64;start
    * &#64;next Success
+   * &#64;next DataChunkRequest
    * &#64;next Failure
    * </pre>
    *
@@ -11947,6 +13224,7 @@ public final class TrezorMessageManagement {
       language_ = "";
       label_ = "";
       homescreen_ = com.google.protobuf.ByteString.EMPTY;
+      displayRotation_ = 0;
       safetyChecks_ = 0;
     }
 
@@ -11970,7 +13248,7 @@ public final class TrezorMessageManagement {
     /**
      * <code>optional string language = 1 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.ApplySettings.language is deprecated.
-     *     See messages-management.proto;l=196
+     *     See messages-management.proto;l=216
      * @return Whether the language field is set.
      */
     @java.lang.Override
@@ -11980,7 +13258,7 @@ public final class TrezorMessageManagement {
     /**
      * <code>optional string language = 1 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.ApplySettings.language is deprecated.
-     *     See messages-management.proto;l=196
+     *     See messages-management.proto;l=216
      * @return The language.
      */
     @java.lang.Override
@@ -12001,7 +13279,7 @@ public final class TrezorMessageManagement {
     /**
      * <code>optional string language = 1 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.ApplySettings.language is deprecated.
-     *     See messages-management.proto;l=196
+     *     See messages-management.proto;l=216
      * @return The bytes for language.
      */
     @java.lang.Override
@@ -12090,6 +13368,10 @@ public final class TrezorMessageManagement {
     public static final int HOMESCREEN_FIELD_NUMBER = 4;
     private com.google.protobuf.ByteString homescreen_ = com.google.protobuf.ByteString.EMPTY;
     /**
+     * <pre>
+     * homescreen image in single array, deprecated for 14
+     * </pre>
+     *
      * <code>optional bytes homescreen = 4;</code>
      * @return Whether the homescreen field is set.
      */
@@ -12098,6 +13380,10 @@ public final class TrezorMessageManagement {
       return ((bitField0_ & 0x00000008) != 0);
     }
     /**
+     * <pre>
+     * homescreen image in single array, deprecated for 14
+     * </pre>
+     *
      * <code>optional bytes homescreen = 4;</code>
      * @return The homescreen.
      */
@@ -12115,7 +13401,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional uint32 _passphrase_source = 5 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.ApplySettings._passphrase_source is deprecated.
-     *     See messages-management.proto;l=200
+     *     See messages-management.proto;l=220
      * @return Whether the passphraseSource field is set.
      */
     @java.lang.Override
@@ -12129,7 +13415,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional uint32 _passphrase_source = 5 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.ApplySettings._passphrase_source is deprecated.
-     *     See messages-management.proto;l=200
+     *     See messages-management.proto;l=220
      * @return The passphraseSource.
      */
     @java.lang.Override
@@ -12160,27 +13446,26 @@ public final class TrezorMessageManagement {
     private int displayRotation_ = 0;
     /**
      * <pre>
-     * in degrees from North
+     * rotation of display (in degrees from North)
      * </pre>
      *
-     * <code>optional uint32 display_rotation = 7;</code>
+     * <code>optional .hw.trezor.messages.management.DisplayRotation display_rotation = 7;</code>
      * @return Whether the displayRotation field is set.
      */
-    @java.lang.Override
-    public boolean hasDisplayRotation() {
+    @java.lang.Override public boolean hasDisplayRotation() {
       return ((bitField0_ & 0x00000040) != 0);
     }
     /**
      * <pre>
-     * in degrees from North
+     * rotation of display (in degrees from North)
      * </pre>
      *
-     * <code>optional uint32 display_rotation = 7;</code>
+     * <code>optional .hw.trezor.messages.management.DisplayRotation display_rotation = 7;</code>
      * @return The displayRotation.
      */
-    @java.lang.Override
-    public int getDisplayRotation() {
-      return displayRotation_;
+    @java.lang.Override public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation getDisplayRotation() {
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation result = com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation.forNumber(displayRotation_);
+      return result == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation.North : result;
     }
 
     public static final int PASSPHRASE_ALWAYS_ON_DEVICE_FIELD_NUMBER = 8;
@@ -12317,6 +13602,60 @@ public final class TrezorMessageManagement {
       return hapticFeedback_;
     }
 
+    public static final int HOMESCREEN_LENGTH_FIELD_NUMBER = 14;
+    private int homescreenLength_ = 0;
+    /**
+     * <pre>
+     * byte length of new homescreen, device will request chunks
+     * </pre>
+     *
+     * <code>optional uint32 homescreen_length = 14;</code>
+     * @return Whether the homescreenLength field is set.
+     */
+    @java.lang.Override
+    public boolean hasHomescreenLength() {
+      return ((bitField0_ & 0x00001000) != 0);
+    }
+    /**
+     * <pre>
+     * byte length of new homescreen, device will request chunks
+     * </pre>
+     *
+     * <code>optional uint32 homescreen_length = 14;</code>
+     * @return The homescreenLength.
+     */
+    @java.lang.Override
+    public int getHomescreenLength() {
+      return homescreenLength_;
+    }
+
+    public static final int AUTO_LOCK_DELAY_BATTERY_MS_FIELD_NUMBER = 15;
+    private int autoLockDelayBatteryMs_ = 0;
+    /**
+     * <pre>
+     * time in ms after which device locks when on battery or wireless charger
+     * </pre>
+     *
+     * <code>optional uint32 auto_lock_delay_battery_ms = 15;</code>
+     * @return Whether the autoLockDelayBatteryMs field is set.
+     */
+    @java.lang.Override
+    public boolean hasAutoLockDelayBatteryMs() {
+      return ((bitField0_ & 0x00002000) != 0);
+    }
+    /**
+     * <pre>
+     * time in ms after which device locks when on battery or wireless charger
+     * </pre>
+     *
+     * <code>optional uint32 auto_lock_delay_battery_ms = 15;</code>
+     * @return The autoLockDelayBatteryMs.
+     */
+    @java.lang.Override
+    public int getAutoLockDelayBatteryMs() {
+      return autoLockDelayBatteryMs_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -12350,7 +13689,7 @@ public final class TrezorMessageManagement {
         output.writeUInt32(6, autoLockDelayMs_);
       }
       if (((bitField0_ & 0x00000040) != 0)) {
-        output.writeUInt32(7, displayRotation_);
+        output.writeEnum(7, displayRotation_);
       }
       if (((bitField0_ & 0x00000080) != 0)) {
         output.writeBool(8, passphraseAlwaysOnDevice_);
@@ -12366,6 +13705,12 @@ public final class TrezorMessageManagement {
       }
       if (((bitField0_ & 0x00000800) != 0)) {
         output.writeBool(13, hapticFeedback_);
+      }
+      if (((bitField0_ & 0x00001000) != 0)) {
+        output.writeUInt32(14, homescreenLength_);
+      }
+      if (((bitField0_ & 0x00002000) != 0)) {
+        output.writeUInt32(15, autoLockDelayBatteryMs_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -12400,7 +13745,7 @@ public final class TrezorMessageManagement {
       }
       if (((bitField0_ & 0x00000040) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(7, displayRotation_);
+          .computeEnumSize(7, displayRotation_);
       }
       if (((bitField0_ & 0x00000080) != 0)) {
         size += com.google.protobuf.CodedOutputStream
@@ -12421,6 +13766,14 @@ public final class TrezorMessageManagement {
       if (((bitField0_ & 0x00000800) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(13, hapticFeedback_);
+      }
+      if (((bitField0_ & 0x00001000) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(14, homescreenLength_);
+      }
+      if (((bitField0_ & 0x00002000) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(15, autoLockDelayBatteryMs_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -12469,8 +13822,7 @@ public final class TrezorMessageManagement {
       }
       if (hasDisplayRotation() != other.hasDisplayRotation()) return false;
       if (hasDisplayRotation()) {
-        if (getDisplayRotation()
-            != other.getDisplayRotation()) return false;
+        if (displayRotation_ != other.displayRotation_) return false;
       }
       if (hasPassphraseAlwaysOnDevice() != other.hasPassphraseAlwaysOnDevice()) return false;
       if (hasPassphraseAlwaysOnDevice()) {
@@ -12495,6 +13847,16 @@ public final class TrezorMessageManagement {
       if (hasHapticFeedback()) {
         if (getHapticFeedback()
             != other.getHapticFeedback()) return false;
+      }
+      if (hasHomescreenLength() != other.hasHomescreenLength()) return false;
+      if (hasHomescreenLength()) {
+        if (getHomescreenLength()
+            != other.getHomescreenLength()) return false;
+      }
+      if (hasAutoLockDelayBatteryMs() != other.hasAutoLockDelayBatteryMs()) return false;
+      if (hasAutoLockDelayBatteryMs()) {
+        if (getAutoLockDelayBatteryMs()
+            != other.getAutoLockDelayBatteryMs()) return false;
       }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
@@ -12534,7 +13896,7 @@ public final class TrezorMessageManagement {
       }
       if (hasDisplayRotation()) {
         hash = (37 * hash) + DISPLAY_ROTATION_FIELD_NUMBER;
-        hash = (53 * hash) + getDisplayRotation();
+        hash = (53 * hash) + displayRotation_;
       }
       if (hasPassphraseAlwaysOnDevice()) {
         hash = (37 * hash) + PASSPHRASE_ALWAYS_ON_DEVICE_FIELD_NUMBER;
@@ -12559,6 +13921,14 @@ public final class TrezorMessageManagement {
         hash = (37 * hash) + HAPTIC_FEEDBACK_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
             getHapticFeedback());
+      }
+      if (hasHomescreenLength()) {
+        hash = (37 * hash) + HOMESCREEN_LENGTH_FIELD_NUMBER;
+        hash = (53 * hash) + getHomescreenLength();
+      }
+      if (hasAutoLockDelayBatteryMs()) {
+        hash = (37 * hash) + AUTO_LOCK_DELAY_BATTERY_MS_FIELD_NUMBER;
+        hash = (53 * hash) + getAutoLockDelayBatteryMs();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -12663,6 +14033,7 @@ public final class TrezorMessageManagement {
      * Request: change some property of the device, e.g. label or homescreen
      * &#64;start
      * &#64;next Success
+     * &#64;next DataChunkRequest
      * &#64;next Failure
      * </pre>
      *
@@ -12711,6 +14082,8 @@ public final class TrezorMessageManagement {
         experimentalFeatures_ = false;
         hidePassphraseFromHost_ = false;
         hapticFeedback_ = false;
+        homescreenLength_ = 0;
+        autoLockDelayBatteryMs_ = 0;
         return this;
       }
 
@@ -12793,6 +14166,14 @@ public final class TrezorMessageManagement {
           result.hapticFeedback_ = hapticFeedback_;
           to_bitField0_ |= 0x00000800;
         }
+        if (((from_bitField0_ & 0x00001000) != 0)) {
+          result.homescreenLength_ = homescreenLength_;
+          to_bitField0_ |= 0x00001000;
+        }
+        if (((from_bitField0_ & 0x00002000) != 0)) {
+          result.autoLockDelayBatteryMs_ = autoLockDelayBatteryMs_;
+          to_bitField0_ |= 0x00002000;
+        }
         result.bitField0_ |= to_bitField0_;
       }
 
@@ -12847,6 +14228,12 @@ public final class TrezorMessageManagement {
         }
         if (other.hasHapticFeedback()) {
           setHapticFeedback(other.getHapticFeedback());
+        }
+        if (other.hasHomescreenLength()) {
+          setHomescreenLength(other.getHomescreenLength());
+        }
+        if (other.hasAutoLockDelayBatteryMs()) {
+          setAutoLockDelayBatteryMs(other.getAutoLockDelayBatteryMs());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -12905,8 +14292,15 @@ public final class TrezorMessageManagement {
                 break;
               } // case 48
               case 56: {
-                displayRotation_ = input.readUInt32();
-                bitField0_ |= 0x00000040;
+                int tmpRaw = input.readEnum();
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation tmpValue =
+                    com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation.forNumber(tmpRaw);
+                if (tmpValue == null) {
+                  mergeUnknownVarintField(7, tmpRaw);
+                } else {
+                  displayRotation_ = tmpRaw;
+                  bitField0_ |= 0x00000040;
+                }
                 break;
               } // case 56
               case 64: {
@@ -12941,6 +14335,16 @@ public final class TrezorMessageManagement {
                 bitField0_ |= 0x00000800;
                 break;
               } // case 104
+              case 112: {
+                homescreenLength_ = input.readUInt32();
+                bitField0_ |= 0x00001000;
+                break;
+              } // case 112
+              case 120: {
+                autoLockDelayBatteryMs_ = input.readUInt32();
+                bitField0_ |= 0x00002000;
+                break;
+              } // case 120
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -12962,7 +14366,7 @@ public final class TrezorMessageManagement {
       /**
        * <code>optional string language = 1 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.ApplySettings.language is deprecated.
-       *     See messages-management.proto;l=196
+       *     See messages-management.proto;l=216
        * @return Whether the language field is set.
        */
       @java.lang.Deprecated public boolean hasLanguage() {
@@ -12971,7 +14375,7 @@ public final class TrezorMessageManagement {
       /**
        * <code>optional string language = 1 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.ApplySettings.language is deprecated.
-       *     See messages-management.proto;l=196
+       *     See messages-management.proto;l=216
        * @return The language.
        */
       @java.lang.Deprecated public java.lang.String getLanguage() {
@@ -12991,7 +14395,7 @@ public final class TrezorMessageManagement {
       /**
        * <code>optional string language = 1 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.ApplySettings.language is deprecated.
-       *     See messages-management.proto;l=196
+       *     See messages-management.proto;l=216
        * @return The bytes for language.
        */
       @java.lang.Deprecated public com.google.protobuf.ByteString
@@ -13010,7 +14414,7 @@ public final class TrezorMessageManagement {
       /**
        * <code>optional string language = 1 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.ApplySettings.language is deprecated.
-       *     See messages-management.proto;l=196
+       *     See messages-management.proto;l=216
        * @param value The language to set.
        * @return This builder for chaining.
        */
@@ -13025,7 +14429,7 @@ public final class TrezorMessageManagement {
       /**
        * <code>optional string language = 1 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.ApplySettings.language is deprecated.
-       *     See messages-management.proto;l=196
+       *     See messages-management.proto;l=216
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearLanguage() {
@@ -13037,7 +14441,7 @@ public final class TrezorMessageManagement {
       /**
        * <code>optional string language = 1 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.ApplySettings.language is deprecated.
-       *     See messages-management.proto;l=196
+       *     See messages-management.proto;l=216
        * @param value The bytes for language to set.
        * @return This builder for chaining.
        */
@@ -13172,6 +14576,10 @@ public final class TrezorMessageManagement {
 
       private com.google.protobuf.ByteString homescreen_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       * <pre>
+       * homescreen image in single array, deprecated for 14
+       * </pre>
+       *
        * <code>optional bytes homescreen = 4;</code>
        * @return Whether the homescreen field is set.
        */
@@ -13180,6 +14588,10 @@ public final class TrezorMessageManagement {
         return ((bitField0_ & 0x00000008) != 0);
       }
       /**
+       * <pre>
+       * homescreen image in single array, deprecated for 14
+       * </pre>
+       *
        * <code>optional bytes homescreen = 4;</code>
        * @return The homescreen.
        */
@@ -13188,6 +14600,10 @@ public final class TrezorMessageManagement {
         return homescreen_;
       }
       /**
+       * <pre>
+       * homescreen image in single array, deprecated for 14
+       * </pre>
+       *
        * <code>optional bytes homescreen = 4;</code>
        * @param value The homescreen to set.
        * @return This builder for chaining.
@@ -13200,6 +14616,10 @@ public final class TrezorMessageManagement {
         return this;
       }
       /**
+       * <pre>
+       * homescreen image in single array, deprecated for 14
+       * </pre>
+       *
        * <code>optional bytes homescreen = 4;</code>
        * @return This builder for chaining.
        */
@@ -13218,7 +14638,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional uint32 _passphrase_source = 5 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.ApplySettings._passphrase_source is deprecated.
-       *     See messages-management.proto;l=200
+       *     See messages-management.proto;l=220
        * @return Whether the passphraseSource field is set.
        */
       @java.lang.Override
@@ -13232,7 +14652,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional uint32 _passphrase_source = 5 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.ApplySettings._passphrase_source is deprecated.
-       *     See messages-management.proto;l=200
+       *     See messages-management.proto;l=220
        * @return The passphraseSource.
        */
       @java.lang.Override
@@ -13246,7 +14666,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional uint32 _passphrase_source = 5 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.ApplySettings._passphrase_source is deprecated.
-       *     See messages-management.proto;l=200
+       *     See messages-management.proto;l=220
        * @param value The passphraseSource to set.
        * @return This builder for chaining.
        */
@@ -13264,7 +14684,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional uint32 _passphrase_source = 5 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.ApplySettings._passphrase_source is deprecated.
-       *     See messages-management.proto;l=200
+       *     See messages-management.proto;l=220
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearPassphraseSource() {
@@ -13314,53 +14734,55 @@ public final class TrezorMessageManagement {
         return this;
       }
 
-      private int displayRotation_ ;
+      private int displayRotation_ = 0;
       /**
        * <pre>
-       * in degrees from North
+       * rotation of display (in degrees from North)
        * </pre>
        *
-       * <code>optional uint32 display_rotation = 7;</code>
+       * <code>optional .hw.trezor.messages.management.DisplayRotation display_rotation = 7;</code>
        * @return Whether the displayRotation field is set.
        */
-      @java.lang.Override
-      public boolean hasDisplayRotation() {
+      @java.lang.Override public boolean hasDisplayRotation() {
         return ((bitField0_ & 0x00000040) != 0);
       }
       /**
        * <pre>
-       * in degrees from North
+       * rotation of display (in degrees from North)
        * </pre>
        *
-       * <code>optional uint32 display_rotation = 7;</code>
+       * <code>optional .hw.trezor.messages.management.DisplayRotation display_rotation = 7;</code>
        * @return The displayRotation.
        */
       @java.lang.Override
-      public int getDisplayRotation() {
-        return displayRotation_;
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation getDisplayRotation() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation result = com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation.forNumber(displayRotation_);
+        return result == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation.North : result;
       }
       /**
        * <pre>
-       * in degrees from North
+       * rotation of display (in degrees from North)
        * </pre>
        *
-       * <code>optional uint32 display_rotation = 7;</code>
+       * <code>optional .hw.trezor.messages.management.DisplayRotation display_rotation = 7;</code>
        * @param value The displayRotation to set.
        * @return This builder for chaining.
        */
-      public Builder setDisplayRotation(int value) {
-
-        displayRotation_ = value;
+      public Builder setDisplayRotation(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DisplayRotation value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
         bitField0_ |= 0x00000040;
+        displayRotation_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * in degrees from North
+       * rotation of display (in degrees from North)
        * </pre>
        *
-       * <code>optional uint32 display_rotation = 7;</code>
+       * <code>optional .hw.trezor.messages.management.DisplayRotation display_rotation = 7;</code>
        * @return This builder for chaining.
        */
       public Builder clearDisplayRotation() {
@@ -13652,6 +15074,118 @@ public final class TrezorMessageManagement {
         return this;
       }
 
+      private int homescreenLength_ ;
+      /**
+       * <pre>
+       * byte length of new homescreen, device will request chunks
+       * </pre>
+       *
+       * <code>optional uint32 homescreen_length = 14;</code>
+       * @return Whether the homescreenLength field is set.
+       */
+      @java.lang.Override
+      public boolean hasHomescreenLength() {
+        return ((bitField0_ & 0x00001000) != 0);
+      }
+      /**
+       * <pre>
+       * byte length of new homescreen, device will request chunks
+       * </pre>
+       *
+       * <code>optional uint32 homescreen_length = 14;</code>
+       * @return The homescreenLength.
+       */
+      @java.lang.Override
+      public int getHomescreenLength() {
+        return homescreenLength_;
+      }
+      /**
+       * <pre>
+       * byte length of new homescreen, device will request chunks
+       * </pre>
+       *
+       * <code>optional uint32 homescreen_length = 14;</code>
+       * @param value The homescreenLength to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHomescreenLength(int value) {
+
+        homescreenLength_ = value;
+        bitField0_ |= 0x00001000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * byte length of new homescreen, device will request chunks
+       * </pre>
+       *
+       * <code>optional uint32 homescreen_length = 14;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearHomescreenLength() {
+        bitField0_ = (bitField0_ & ~0x00001000);
+        homescreenLength_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int autoLockDelayBatteryMs_ ;
+      /**
+       * <pre>
+       * time in ms after which device locks when on battery or wireless charger
+       * </pre>
+       *
+       * <code>optional uint32 auto_lock_delay_battery_ms = 15;</code>
+       * @return Whether the autoLockDelayBatteryMs field is set.
+       */
+      @java.lang.Override
+      public boolean hasAutoLockDelayBatteryMs() {
+        return ((bitField0_ & 0x00002000) != 0);
+      }
+      /**
+       * <pre>
+       * time in ms after which device locks when on battery or wireless charger
+       * </pre>
+       *
+       * <code>optional uint32 auto_lock_delay_battery_ms = 15;</code>
+       * @return The autoLockDelayBatteryMs.
+       */
+      @java.lang.Override
+      public int getAutoLockDelayBatteryMs() {
+        return autoLockDelayBatteryMs_;
+      }
+      /**
+       * <pre>
+       * time in ms after which device locks when on battery or wireless charger
+       * </pre>
+       *
+       * <code>optional uint32 auto_lock_delay_battery_ms = 15;</code>
+       * @param value The autoLockDelayBatteryMs to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAutoLockDelayBatteryMs(int value) {
+
+        autoLockDelayBatteryMs_ = value;
+        bitField0_ |= 0x00002000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * time in ms after which device locks when on battery or wireless charger
+       * </pre>
+       *
+       * <code>optional uint32 auto_lock_delay_battery_ms = 15;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAutoLockDelayBatteryMs() {
+        bitField0_ = (bitField0_ & ~0x00002000);
+        autoLockDelayBatteryMs_ = 0;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:hw.trezor.messages.management.ApplySettings)
     }
 
@@ -13766,7 +15300,7 @@ public final class TrezorMessageManagement {
    * Does not send the translation data itself, as they are too large for one message.
    * Device will request the translation data in chunks.
    * &#64;start
-   * &#64;next TranslationDataRequest
+   * &#64;next DataChunkRequest
    * &#64;next Failure
    * </pre>
    *
@@ -14065,7 +15599,7 @@ public final class TrezorMessageManagement {
      * Does not send the translation data itself, as they are too large for one message.
      * Device will request the translation data in chunks.
      * &#64;start
-     * &#64;next TranslationDataRequest
+     * &#64;next DataChunkRequest
      * &#64;next Failure
      * </pre>
      *
@@ -14414,8 +15948,8 @@ public final class TrezorMessageManagement {
 
   }
 
-  public interface TranslationDataRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.management.TranslationDataRequest)
+  public interface DataChunkRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.management.DataChunkRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -14459,17 +15993,17 @@ public final class TrezorMessageManagement {
   /**
    * <pre>
    * *
-   * Response: Device asks for more data from transaction payload.
+   * Response: Device asks for more data from translation/homescreen image.
    * &#64;end
-   * &#64;next TranslationDataAck
+   * &#64;next DataChunkAck
    * </pre>
    *
-   * Protobuf type {@code hw.trezor.messages.management.TranslationDataRequest}
+   * Protobuf type {@code hw.trezor.messages.management.DataChunkRequest}
    */
-  public static final class TranslationDataRequest extends
+  public static final class DataChunkRequest extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:hw.trezor.messages.management.TranslationDataRequest)
-      TranslationDataRequestOrBuilder {
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.management.DataChunkRequest)
+      DataChunkRequestOrBuilder {
   private static final long serialVersionUID = 0L;
     static {
       com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
@@ -14478,26 +16012,26 @@ public final class TrezorMessageManagement {
         /* minor= */ 28,
         /* patch= */ 3,
         /* suffix= */ "",
-        TranslationDataRequest.class.getName());
+        DataChunkRequest.class.getName());
     }
-    // Use TranslationDataRequest.newBuilder() to construct.
-    private TranslationDataRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    // Use DataChunkRequest.newBuilder() to construct.
+    private DataChunkRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
-    private TranslationDataRequest() {
+    private DataChunkRequest() {
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_TranslationDataRequest_descriptor;
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_DataChunkRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_TranslationDataRequest_fieldAccessorTable
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_DataChunkRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest.Builder.class);
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest.Builder.class);
     }
 
     private int bitField0_;
@@ -14610,10 +16144,10 @@ public final class TrezorMessageManagement {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest)) {
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest)) {
         return super.equals(obj);
       }
-      com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest) obj;
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest) obj;
 
       if (hasDataLength() != other.hasDataLength()) return false;
       if (hasDataLength()) {
@@ -14649,44 +16183,44 @@ public final class TrezorMessageManagement {
       return hash;
     }
 
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest parseFrom(byte[] data)
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest parseFrom(java.io.InputStream input)
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -14694,26 +16228,26 @@ public final class TrezorMessageManagement {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest parseDelimitedFrom(java.io.InputStream input)
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest parseDelimitedFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -14726,7 +16260,7 @@ public final class TrezorMessageManagement {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest prototype) {
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -14744,31 +16278,31 @@ public final class TrezorMessageManagement {
     /**
      * <pre>
      * *
-     * Response: Device asks for more data from transaction payload.
+     * Response: Device asks for more data from translation/homescreen image.
      * &#64;end
-     * &#64;next TranslationDataAck
+     * &#64;next DataChunkAck
      * </pre>
      *
-     * Protobuf type {@code hw.trezor.messages.management.TranslationDataRequest}
+     * Protobuf type {@code hw.trezor.messages.management.DataChunkRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.management.TranslationDataRequest)
-        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.management.DataChunkRequest)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_TranslationDataRequest_descriptor;
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_DataChunkRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_TranslationDataRequest_fieldAccessorTable
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_DataChunkRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest.Builder.class);
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest.Builder.class);
       }
 
-      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest.newBuilder()
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest.newBuilder()
       private Builder() {
 
       }
@@ -14790,17 +16324,17 @@ public final class TrezorMessageManagement {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_TranslationDataRequest_descriptor;
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_DataChunkRequest_descriptor;
       }
 
       @java.lang.Override
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest getDefaultInstanceForType() {
-        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest.getDefaultInstance();
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest build() {
-        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest result = buildPartial();
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -14808,14 +16342,14 @@ public final class TrezorMessageManagement {
       }
 
       @java.lang.Override
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest buildPartial() {
-        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest(this);
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest(this);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest result) {
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest result) {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -14831,16 +16365,16 @@ public final class TrezorMessageManagement {
 
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest) {
-          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest)other);
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest other) {
-        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest.getDefaultInstance()) return this;
         if (other.hasDataLength()) {
           setDataLength(other.getDataLength());
         }
@@ -15018,23 +16552,23 @@ public final class TrezorMessageManagement {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.management.TranslationDataRequest)
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.management.DataChunkRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:hw.trezor.messages.management.TranslationDataRequest)
-    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.management.DataChunkRequest)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest();
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest();
     }
 
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest getDefaultInstance() {
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<TranslationDataRequest>
-        PARSER = new com.google.protobuf.AbstractParser<TranslationDataRequest>() {
+    private static final com.google.protobuf.Parser<DataChunkRequest>
+        PARSER = new com.google.protobuf.AbstractParser<DataChunkRequest>() {
       @java.lang.Override
-      public TranslationDataRequest parsePartialFrom(
+      public DataChunkRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -15053,29 +16587,29 @@ public final class TrezorMessageManagement {
       }
     };
 
-    public static com.google.protobuf.Parser<TranslationDataRequest> parser() {
+    public static com.google.protobuf.Parser<DataChunkRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<TranslationDataRequest> getParserForType() {
+    public com.google.protobuf.Parser<DataChunkRequest> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataRequest getDefaultInstanceForType() {
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface TranslationDataAckOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.management.TranslationDataAck)
+  public interface DataChunkAckOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.management.DataChunkAck)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <pre>
-     * Bytes from translation payload
+     * Bytes from translation/homescreen payload
      * </pre>
      *
      * <code>required bytes data_chunk = 1;</code>
@@ -15084,7 +16618,7 @@ public final class TrezorMessageManagement {
     boolean hasDataChunk();
     /**
      * <pre>
-     * Bytes from translation payload
+     * Bytes from translation/homescreen payload
      * </pre>
      *
      * <code>required bytes data_chunk = 1;</code>
@@ -15095,17 +16629,17 @@ public final class TrezorMessageManagement {
   /**
    * <pre>
    * *
-   * Request: Translation payload data.
-   * &#64;next TranslationDataRequest
+   * Request: Translation/homescreen payload data.
+   * &#64;next DataChunkRequest
    * &#64;next Success
    * </pre>
    *
-   * Protobuf type {@code hw.trezor.messages.management.TranslationDataAck}
+   * Protobuf type {@code hw.trezor.messages.management.DataChunkAck}
    */
-  public static final class TranslationDataAck extends
+  public static final class DataChunkAck extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:hw.trezor.messages.management.TranslationDataAck)
-      TranslationDataAckOrBuilder {
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.management.DataChunkAck)
+      DataChunkAckOrBuilder {
   private static final long serialVersionUID = 0L;
     static {
       com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
@@ -15114,27 +16648,27 @@ public final class TrezorMessageManagement {
         /* minor= */ 28,
         /* patch= */ 3,
         /* suffix= */ "",
-        TranslationDataAck.class.getName());
+        DataChunkAck.class.getName());
     }
-    // Use TranslationDataAck.newBuilder() to construct.
-    private TranslationDataAck(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    // Use DataChunkAck.newBuilder() to construct.
+    private DataChunkAck(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
-    private TranslationDataAck() {
+    private DataChunkAck() {
       dataChunk_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_TranslationDataAck_descriptor;
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_DataChunkAck_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_TranslationDataAck_fieldAccessorTable
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_DataChunkAck_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck.Builder.class);
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck.Builder.class);
     }
 
     private int bitField0_;
@@ -15142,7 +16676,7 @@ public final class TrezorMessageManagement {
     private com.google.protobuf.ByteString dataChunk_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <pre>
-     * Bytes from translation payload
+     * Bytes from translation/homescreen payload
      * </pre>
      *
      * <code>required bytes data_chunk = 1;</code>
@@ -15154,7 +16688,7 @@ public final class TrezorMessageManagement {
     }
     /**
      * <pre>
-     * Bytes from translation payload
+     * Bytes from translation/homescreen payload
      * </pre>
      *
      * <code>required bytes data_chunk = 1;</code>
@@ -15209,10 +16743,10 @@ public final class TrezorMessageManagement {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck)) {
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck)) {
         return super.equals(obj);
       }
-      com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck) obj;
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck) obj;
 
       if (hasDataChunk() != other.hasDataChunk()) return false;
       if (hasDataChunk()) {
@@ -15239,44 +16773,44 @@ public final class TrezorMessageManagement {
       return hash;
     }
 
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck parseFrom(byte[] data)
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck parseFrom(java.io.InputStream input)
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -15284,26 +16818,26 @@ public final class TrezorMessageManagement {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck parseDelimitedFrom(java.io.InputStream input)
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck parseDelimitedFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -15316,7 +16850,7 @@ public final class TrezorMessageManagement {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck prototype) {
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -15334,31 +16868,31 @@ public final class TrezorMessageManagement {
     /**
      * <pre>
      * *
-     * Request: Translation payload data.
-     * &#64;next TranslationDataRequest
+     * Request: Translation/homescreen payload data.
+     * &#64;next DataChunkRequest
      * &#64;next Success
      * </pre>
      *
-     * Protobuf type {@code hw.trezor.messages.management.TranslationDataAck}
+     * Protobuf type {@code hw.trezor.messages.management.DataChunkAck}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.management.TranslationDataAck)
-        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAckOrBuilder {
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.management.DataChunkAck)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAckOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_TranslationDataAck_descriptor;
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_DataChunkAck_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_TranslationDataAck_fieldAccessorTable
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_DataChunkAck_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck.Builder.class);
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck.Builder.class);
       }
 
-      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck.newBuilder()
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck.newBuilder()
       private Builder() {
 
       }
@@ -15379,17 +16913,17 @@ public final class TrezorMessageManagement {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_TranslationDataAck_descriptor;
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_DataChunkAck_descriptor;
       }
 
       @java.lang.Override
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck getDefaultInstanceForType() {
-        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck.getDefaultInstance();
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck build() {
-        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck result = buildPartial();
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -15397,14 +16931,14 @@ public final class TrezorMessageManagement {
       }
 
       @java.lang.Override
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck buildPartial() {
-        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck(this);
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck(this);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck result) {
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck result) {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -15416,16 +16950,16 @@ public final class TrezorMessageManagement {
 
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck) {
-          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck)other);
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck other) {
-        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck.getDefaultInstance()) return this;
         if (other.hasDataChunk()) {
           setDataChunk(other.getDataChunk());
         }
@@ -15483,7 +17017,7 @@ public final class TrezorMessageManagement {
       private com.google.protobuf.ByteString dataChunk_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <pre>
-       * Bytes from translation payload
+       * Bytes from translation/homescreen payload
        * </pre>
        *
        * <code>required bytes data_chunk = 1;</code>
@@ -15495,7 +17029,7 @@ public final class TrezorMessageManagement {
       }
       /**
        * <pre>
-       * Bytes from translation payload
+       * Bytes from translation/homescreen payload
        * </pre>
        *
        * <code>required bytes data_chunk = 1;</code>
@@ -15507,7 +17041,7 @@ public final class TrezorMessageManagement {
       }
       /**
        * <pre>
-       * Bytes from translation payload
+       * Bytes from translation/homescreen payload
        * </pre>
        *
        * <code>required bytes data_chunk = 1;</code>
@@ -15523,7 +17057,7 @@ public final class TrezorMessageManagement {
       }
       /**
        * <pre>
-       * Bytes from translation payload
+       * Bytes from translation/homescreen payload
        * </pre>
        *
        * <code>required bytes data_chunk = 1;</code>
@@ -15536,23 +17070,23 @@ public final class TrezorMessageManagement {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.management.TranslationDataAck)
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.management.DataChunkAck)
     }
 
-    // @@protoc_insertion_point(class_scope:hw.trezor.messages.management.TranslationDataAck)
-    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.management.DataChunkAck)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck();
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck();
     }
 
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck getDefaultInstance() {
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<TranslationDataAck>
-        PARSER = new com.google.protobuf.AbstractParser<TranslationDataAck>() {
+    private static final com.google.protobuf.Parser<DataChunkAck>
+        PARSER = new com.google.protobuf.AbstractParser<DataChunkAck>() {
       @java.lang.Override
-      public TranslationDataAck parsePartialFrom(
+      public DataChunkAck parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -15571,17 +17105,17 @@ public final class TrezorMessageManagement {
       }
     };
 
-    public static com.google.protobuf.Parser<TranslationDataAck> parser() {
+    public static com.google.protobuf.Parser<DataChunkAck> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<TranslationDataAck> getParserForType() {
+    public com.google.protobuf.Parser<DataChunkAck> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.TranslationDataAck getDefaultInstanceForType() {
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.DataChunkAck getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -21409,51 +22943,99 @@ public final class TrezorMessageManagement {
 
     /**
      * <pre>
-     * A certificate chain starting with the device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+     * A certificate chain starting with the Optiga device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
      * </pre>
      *
-     * <code>repeated bytes certificates = 1;</code>
-     * @return A list containing the certificates.
+     * <code>repeated bytes optiga_certificates = 1;</code>
+     * @return A list containing the optigaCertificates.
      */
-    java.util.List<com.google.protobuf.ByteString> getCertificatesList();
+    java.util.List<com.google.protobuf.ByteString> getOptigaCertificatesList();
     /**
      * <pre>
-     * A certificate chain starting with the device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+     * A certificate chain starting with the Optiga device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
      * </pre>
      *
-     * <code>repeated bytes certificates = 1;</code>
-     * @return The count of certificates.
+     * <code>repeated bytes optiga_certificates = 1;</code>
+     * @return The count of optigaCertificates.
      */
-    int getCertificatesCount();
+    int getOptigaCertificatesCount();
     /**
      * <pre>
-     * A certificate chain starting with the device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+     * A certificate chain starting with the Optiga device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
      * </pre>
      *
-     * <code>repeated bytes certificates = 1;</code>
+     * <code>repeated bytes optiga_certificates = 1;</code>
      * @param index The index of the element to return.
-     * @return The certificates at the given index.
+     * @return The optigaCertificates at the given index.
      */
-    com.google.protobuf.ByteString getCertificates(int index);
+    com.google.protobuf.ByteString getOptigaCertificates(int index);
 
     /**
      * <pre>
-     * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the device certificate.
+     * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the Optiga device certificate.
      * </pre>
      *
-     * <code>required bytes signature = 2;</code>
-     * @return Whether the signature field is set.
+     * <code>required bytes optiga_signature = 2;</code>
+     * @return Whether the optigaSignature field is set.
      */
-    boolean hasSignature();
+    boolean hasOptigaSignature();
     /**
      * <pre>
-     * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the device certificate.
+     * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the Optiga device certificate.
      * </pre>
      *
-     * <code>required bytes signature = 2;</code>
-     * @return The signature.
+     * <code>required bytes optiga_signature = 2;</code>
+     * @return The optigaSignature.
      */
-    com.google.protobuf.ByteString getSignature();
+    com.google.protobuf.ByteString getOptigaSignature();
+
+    /**
+     * <pre>
+     * A certificate chain starting with the Tropic device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+     * </pre>
+     *
+     * <code>repeated bytes tropic_certificates = 3;</code>
+     * @return A list containing the tropicCertificates.
+     */
+    java.util.List<com.google.protobuf.ByteString> getTropicCertificatesList();
+    /**
+     * <pre>
+     * A certificate chain starting with the Tropic device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+     * </pre>
+     *
+     * <code>repeated bytes tropic_certificates = 3;</code>
+     * @return The count of tropicCertificates.
+     */
+    int getTropicCertificatesCount();
+    /**
+     * <pre>
+     * A certificate chain starting with the Tropic device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+     * </pre>
+     *
+     * <code>repeated bytes tropic_certificates = 3;</code>
+     * @param index The index of the element to return.
+     * @return The tropicCertificates at the given index.
+     */
+    com.google.protobuf.ByteString getTropicCertificates(int index);
+
+    /**
+     * <pre>
+     * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the Tropic device certificate.
+     * </pre>
+     *
+     * <code>optional bytes tropic_signature = 4;</code>
+     * @return Whether the tropicSignature field is set.
+     */
+    boolean hasTropicSignature();
+    /**
+     * <pre>
+     * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the Tropic device certificate.
+     * </pre>
+     *
+     * <code>optional bytes tropic_signature = 4;</code>
+     * @return The tropicSignature.
+     */
+    com.google.protobuf.ByteString getTropicSignature();
   }
   /**
    * <pre>
@@ -21483,8 +23065,10 @@ public final class TrezorMessageManagement {
       super(builder);
     }
     private AuthenticityProof() {
-      certificates_ = emptyList(com.google.protobuf.ByteString.class);
-      signature_ = com.google.protobuf.ByteString.EMPTY;
+      optigaCertificates_ = emptyList(com.google.protobuf.ByteString.class);
+      optigaSignature_ = com.google.protobuf.ByteString.EMPTY;
+      tropicCertificates_ = emptyList(com.google.protobuf.ByteString.class);
+      tropicSignature_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -21501,72 +23085,140 @@ public final class TrezorMessageManagement {
     }
 
     private int bitField0_;
-    public static final int CERTIFICATES_FIELD_NUMBER = 1;
+    public static final int OPTIGA_CERTIFICATES_FIELD_NUMBER = 1;
     @SuppressWarnings("serial")
-    private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> certificates_ =
+    private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> optigaCertificates_ =
         emptyList(com.google.protobuf.ByteString.class);
     /**
      * <pre>
-     * A certificate chain starting with the device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+     * A certificate chain starting with the Optiga device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
      * </pre>
      *
-     * <code>repeated bytes certificates = 1;</code>
-     * @return A list containing the certificates.
+     * <code>repeated bytes optiga_certificates = 1;</code>
+     * @return A list containing the optigaCertificates.
      */
     @java.lang.Override
     public java.util.List<com.google.protobuf.ByteString>
-        getCertificatesList() {
-      return certificates_;
+        getOptigaCertificatesList() {
+      return optigaCertificates_;
     }
     /**
      * <pre>
-     * A certificate chain starting with the device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+     * A certificate chain starting with the Optiga device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
      * </pre>
      *
-     * <code>repeated bytes certificates = 1;</code>
-     * @return The count of certificates.
+     * <code>repeated bytes optiga_certificates = 1;</code>
+     * @return The count of optigaCertificates.
      */
-    public int getCertificatesCount() {
-      return certificates_.size();
+    public int getOptigaCertificatesCount() {
+      return optigaCertificates_.size();
     }
     /**
      * <pre>
-     * A certificate chain starting with the device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+     * A certificate chain starting with the Optiga device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
      * </pre>
      *
-     * <code>repeated bytes certificates = 1;</code>
+     * <code>repeated bytes optiga_certificates = 1;</code>
      * @param index The index of the element to return.
-     * @return The certificates at the given index.
+     * @return The optigaCertificates at the given index.
      */
-    public com.google.protobuf.ByteString getCertificates(int index) {
-      return certificates_.get(index);
+    public com.google.protobuf.ByteString getOptigaCertificates(int index) {
+      return optigaCertificates_.get(index);
     }
 
-    public static final int SIGNATURE_FIELD_NUMBER = 2;
-    private com.google.protobuf.ByteString signature_ = com.google.protobuf.ByteString.EMPTY;
+    public static final int OPTIGA_SIGNATURE_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString optigaSignature_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <pre>
-     * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the device certificate.
+     * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the Optiga device certificate.
      * </pre>
      *
-     * <code>required bytes signature = 2;</code>
-     * @return Whether the signature field is set.
+     * <code>required bytes optiga_signature = 2;</code>
+     * @return Whether the optigaSignature field is set.
      */
     @java.lang.Override
-    public boolean hasSignature() {
+    public boolean hasOptigaSignature() {
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
      * <pre>
-     * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the device certificate.
+     * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the Optiga device certificate.
      * </pre>
      *
-     * <code>required bytes signature = 2;</code>
-     * @return The signature.
+     * <code>required bytes optiga_signature = 2;</code>
+     * @return The optigaSignature.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getSignature() {
-      return signature_;
+    public com.google.protobuf.ByteString getOptigaSignature() {
+      return optigaSignature_;
+    }
+
+    public static final int TROPIC_CERTIFICATES_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> tropicCertificates_ =
+        emptyList(com.google.protobuf.ByteString.class);
+    /**
+     * <pre>
+     * A certificate chain starting with the Tropic device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+     * </pre>
+     *
+     * <code>repeated bytes tropic_certificates = 3;</code>
+     * @return A list containing the tropicCertificates.
+     */
+    @java.lang.Override
+    public java.util.List<com.google.protobuf.ByteString>
+        getTropicCertificatesList() {
+      return tropicCertificates_;
+    }
+    /**
+     * <pre>
+     * A certificate chain starting with the Tropic device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+     * </pre>
+     *
+     * <code>repeated bytes tropic_certificates = 3;</code>
+     * @return The count of tropicCertificates.
+     */
+    public int getTropicCertificatesCount() {
+      return tropicCertificates_.size();
+    }
+    /**
+     * <pre>
+     * A certificate chain starting with the Tropic device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+     * </pre>
+     *
+     * <code>repeated bytes tropic_certificates = 3;</code>
+     * @param index The index of the element to return.
+     * @return The tropicCertificates at the given index.
+     */
+    public com.google.protobuf.ByteString getTropicCertificates(int index) {
+      return tropicCertificates_.get(index);
+    }
+
+    public static final int TROPIC_SIGNATURE_FIELD_NUMBER = 4;
+    private com.google.protobuf.ByteString tropicSignature_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the Tropic device certificate.
+     * </pre>
+     *
+     * <code>optional bytes tropic_signature = 4;</code>
+     * @return Whether the tropicSignature field is set.
+     */
+    @java.lang.Override
+    public boolean hasTropicSignature() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the Tropic device certificate.
+     * </pre>
+     *
+     * <code>optional bytes tropic_signature = 4;</code>
+     * @return The tropicSignature.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getTropicSignature() {
+      return tropicSignature_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -21576,7 +23228,7 @@ public final class TrezorMessageManagement {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasSignature()) {
+      if (!hasOptigaSignature()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -21587,11 +23239,17 @@ public final class TrezorMessageManagement {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      for (int i = 0; i < certificates_.size(); i++) {
-        output.writeBytes(1, certificates_.get(i));
+      for (int i = 0; i < optigaCertificates_.size(); i++) {
+        output.writeBytes(1, optigaCertificates_.get(i));
       }
       if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeBytes(2, signature_);
+        output.writeBytes(2, optigaSignature_);
+      }
+      for (int i = 0; i < tropicCertificates_.size(); i++) {
+        output.writeBytes(3, tropicCertificates_.get(i));
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeBytes(4, tropicSignature_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -21604,16 +23262,29 @@ public final class TrezorMessageManagement {
       size = 0;
       {
         int dataSize = 0;
-        for (int i = 0; i < certificates_.size(); i++) {
+        for (int i = 0; i < optigaCertificates_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeBytesSizeNoTag(certificates_.get(i));
+            .computeBytesSizeNoTag(optigaCertificates_.get(i));
         }
         size += dataSize;
-        size += 1 * getCertificatesList().size();
+        size += 1 * getOptigaCertificatesList().size();
       }
       if (((bitField0_ & 0x00000001) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, signature_);
+          .computeBytesSize(2, optigaSignature_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < tropicCertificates_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeBytesSizeNoTag(tropicCertificates_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getTropicCertificatesList().size();
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, tropicSignature_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -21630,12 +23301,19 @@ public final class TrezorMessageManagement {
       }
       com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.AuthenticityProof other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.AuthenticityProof) obj;
 
-      if (!getCertificatesList()
-          .equals(other.getCertificatesList())) return false;
-      if (hasSignature() != other.hasSignature()) return false;
-      if (hasSignature()) {
-        if (!getSignature()
-            .equals(other.getSignature())) return false;
+      if (!getOptigaCertificatesList()
+          .equals(other.getOptigaCertificatesList())) return false;
+      if (hasOptigaSignature() != other.hasOptigaSignature()) return false;
+      if (hasOptigaSignature()) {
+        if (!getOptigaSignature()
+            .equals(other.getOptigaSignature())) return false;
+      }
+      if (!getTropicCertificatesList()
+          .equals(other.getTropicCertificatesList())) return false;
+      if (hasTropicSignature() != other.hasTropicSignature()) return false;
+      if (hasTropicSignature()) {
+        if (!getTropicSignature()
+            .equals(other.getTropicSignature())) return false;
       }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
@@ -21648,13 +23326,21 @@ public final class TrezorMessageManagement {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (getCertificatesCount() > 0) {
-        hash = (37 * hash) + CERTIFICATES_FIELD_NUMBER;
-        hash = (53 * hash) + getCertificatesList().hashCode();
+      if (getOptigaCertificatesCount() > 0) {
+        hash = (37 * hash) + OPTIGA_CERTIFICATES_FIELD_NUMBER;
+        hash = (53 * hash) + getOptigaCertificatesList().hashCode();
       }
-      if (hasSignature()) {
-        hash = (37 * hash) + SIGNATURE_FIELD_NUMBER;
-        hash = (53 * hash) + getSignature().hashCode();
+      if (hasOptigaSignature()) {
+        hash = (37 * hash) + OPTIGA_SIGNATURE_FIELD_NUMBER;
+        hash = (53 * hash) + getOptigaSignature().hashCode();
+      }
+      if (getTropicCertificatesCount() > 0) {
+        hash = (37 * hash) + TROPIC_CERTIFICATES_FIELD_NUMBER;
+        hash = (53 * hash) + getTropicCertificatesList().hashCode();
+      }
+      if (hasTropicSignature()) {
+        hash = (37 * hash) + TROPIC_SIGNATURE_FIELD_NUMBER;
+        hash = (53 * hash) + getTropicSignature().hashCode();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -21793,8 +23479,10 @@ public final class TrezorMessageManagement {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        certificates_ = emptyList(com.google.protobuf.ByteString.class);
-        signature_ = com.google.protobuf.ByteString.EMPTY;
+        optigaCertificates_ = emptyList(com.google.protobuf.ByteString.class);
+        optigaSignature_ = com.google.protobuf.ByteString.EMPTY;
+        tropicCertificates_ = emptyList(com.google.protobuf.ByteString.class);
+        tropicSignature_ = com.google.protobuf.ByteString.EMPTY;
         return this;
       }
 
@@ -21829,13 +23517,21 @@ public final class TrezorMessageManagement {
       private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.AuthenticityProof result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          certificates_.makeImmutable();
-          result.certificates_ = certificates_;
+          optigaCertificates_.makeImmutable();
+          result.optigaCertificates_ = optigaCertificates_;
         }
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.signature_ = signature_;
+          result.optigaSignature_ = optigaSignature_;
           to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          tropicCertificates_.makeImmutable();
+          result.tropicCertificates_ = tropicCertificates_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.tropicSignature_ = tropicSignature_;
+          to_bitField0_ |= 0x00000002;
         }
         result.bitField0_ |= to_bitField0_;
       }
@@ -21852,19 +23548,33 @@ public final class TrezorMessageManagement {
 
       public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.AuthenticityProof other) {
         if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.AuthenticityProof.getDefaultInstance()) return this;
-        if (!other.certificates_.isEmpty()) {
-          if (certificates_.isEmpty()) {
-            certificates_ = other.certificates_;
-            certificates_.makeImmutable();
+        if (!other.optigaCertificates_.isEmpty()) {
+          if (optigaCertificates_.isEmpty()) {
+            optigaCertificates_ = other.optigaCertificates_;
+            optigaCertificates_.makeImmutable();
             bitField0_ |= 0x00000001;
           } else {
-            ensureCertificatesIsMutable();
-            certificates_.addAll(other.certificates_);
+            ensureOptigaCertificatesIsMutable();
+            optigaCertificates_.addAll(other.optigaCertificates_);
           }
           onChanged();
         }
-        if (other.hasSignature()) {
-          setSignature(other.getSignature());
+        if (other.hasOptigaSignature()) {
+          setOptigaSignature(other.getOptigaSignature());
+        }
+        if (!other.tropicCertificates_.isEmpty()) {
+          if (tropicCertificates_.isEmpty()) {
+            tropicCertificates_ = other.tropicCertificates_;
+            tropicCertificates_.makeImmutable();
+            bitField0_ |= 0x00000004;
+          } else {
+            ensureTropicCertificatesIsMutable();
+            tropicCertificates_.addAll(other.tropicCertificates_);
+          }
+          onChanged();
+        }
+        if (other.hasTropicSignature()) {
+          setTropicSignature(other.getTropicSignature());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -21873,7 +23583,7 @@ public final class TrezorMessageManagement {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasSignature()) {
+        if (!hasOptigaSignature()) {
           return false;
         }
         return true;
@@ -21897,15 +23607,26 @@ public final class TrezorMessageManagement {
                 break;
               case 10: {
                 com.google.protobuf.ByteString v = input.readBytes();
-                ensureCertificatesIsMutable();
-                certificates_.add(v);
+                ensureOptigaCertificatesIsMutable();
+                optigaCertificates_.add(v);
                 break;
               } // case 10
               case 18: {
-                signature_ = input.readBytes();
+                optigaSignature_ = input.readBytes();
                 bitField0_ |= 0x00000002;
                 break;
               } // case 18
+              case 26: {
+                com.google.protobuf.ByteString v = input.readBytes();
+                ensureTropicCertificatesIsMutable();
+                tropicCertificates_.add(v);
+                break;
+              } // case 26
+              case 34: {
+                tropicSignature_ = input.readBytes();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -21923,170 +23644,338 @@ public final class TrezorMessageManagement {
       }
       private int bitField0_;
 
-      private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> certificates_ = emptyList(com.google.protobuf.ByteString.class);
-      private void ensureCertificatesIsMutable() {
-        if (!certificates_.isModifiable()) {
-          certificates_ = makeMutableCopy(certificates_);
+      private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> optigaCertificates_ = emptyList(com.google.protobuf.ByteString.class);
+      private void ensureOptigaCertificatesIsMutable() {
+        if (!optigaCertificates_.isModifiable()) {
+          optigaCertificates_ = makeMutableCopy(optigaCertificates_);
         }
         bitField0_ |= 0x00000001;
       }
       /**
        * <pre>
-       * A certificate chain starting with the device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+       * A certificate chain starting with the Optiga device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
        * </pre>
        *
-       * <code>repeated bytes certificates = 1;</code>
-       * @return A list containing the certificates.
+       * <code>repeated bytes optiga_certificates = 1;</code>
+       * @return A list containing the optigaCertificates.
        */
       public java.util.List<com.google.protobuf.ByteString>
-          getCertificatesList() {
-        certificates_.makeImmutable();
-        return certificates_;
+          getOptigaCertificatesList() {
+        optigaCertificates_.makeImmutable();
+        return optigaCertificates_;
       }
       /**
        * <pre>
-       * A certificate chain starting with the device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+       * A certificate chain starting with the Optiga device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
        * </pre>
        *
-       * <code>repeated bytes certificates = 1;</code>
-       * @return The count of certificates.
+       * <code>repeated bytes optiga_certificates = 1;</code>
+       * @return The count of optigaCertificates.
        */
-      public int getCertificatesCount() {
-        return certificates_.size();
+      public int getOptigaCertificatesCount() {
+        return optigaCertificates_.size();
       }
       /**
        * <pre>
-       * A certificate chain starting with the device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+       * A certificate chain starting with the Optiga device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
        * </pre>
        *
-       * <code>repeated bytes certificates = 1;</code>
+       * <code>repeated bytes optiga_certificates = 1;</code>
        * @param index The index of the element to return.
-       * @return The certificates at the given index.
+       * @return The optigaCertificates at the given index.
        */
-      public com.google.protobuf.ByteString getCertificates(int index) {
-        return certificates_.get(index);
+      public com.google.protobuf.ByteString getOptigaCertificates(int index) {
+        return optigaCertificates_.get(index);
       }
       /**
        * <pre>
-       * A certificate chain starting with the device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+       * A certificate chain starting with the Optiga device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
        * </pre>
        *
-       * <code>repeated bytes certificates = 1;</code>
+       * <code>repeated bytes optiga_certificates = 1;</code>
        * @param index The index to set the value at.
-       * @param value The certificates to set.
+       * @param value The optigaCertificates to set.
        * @return This builder for chaining.
        */
-      public Builder setCertificates(
+      public Builder setOptigaCertificates(
           int index, com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
-        ensureCertificatesIsMutable();
-        certificates_.set(index, value);
+        ensureOptigaCertificatesIsMutable();
+        optigaCertificates_.set(index, value);
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * A certificate chain starting with the device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+       * A certificate chain starting with the Optiga device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
        * </pre>
        *
-       * <code>repeated bytes certificates = 1;</code>
-       * @param value The certificates to add.
+       * <code>repeated bytes optiga_certificates = 1;</code>
+       * @param value The optigaCertificates to add.
        * @return This builder for chaining.
        */
-      public Builder addCertificates(com.google.protobuf.ByteString value) {
+      public Builder addOptigaCertificates(com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
-        ensureCertificatesIsMutable();
-        certificates_.add(value);
+        ensureOptigaCertificatesIsMutable();
+        optigaCertificates_.add(value);
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * A certificate chain starting with the device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+       * A certificate chain starting with the Optiga device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
        * </pre>
        *
-       * <code>repeated bytes certificates = 1;</code>
-       * @param values The certificates to add.
+       * <code>repeated bytes optiga_certificates = 1;</code>
+       * @param values The optigaCertificates to add.
        * @return This builder for chaining.
        */
-      public Builder addAllCertificates(
+      public Builder addAllOptigaCertificates(
           java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
-        ensureCertificatesIsMutable();
+        ensureOptigaCertificatesIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, certificates_);
+            values, optigaCertificates_);
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * A certificate chain starting with the device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+       * A certificate chain starting with the Optiga device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
        * </pre>
        *
-       * <code>repeated bytes certificates = 1;</code>
+       * <code>repeated bytes optiga_certificates = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearCertificates() {
-        certificates_ = emptyList(com.google.protobuf.ByteString.class);
+      public Builder clearOptigaCertificates() {
+        optigaCertificates_ = emptyList(com.google.protobuf.ByteString.class);
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.ByteString signature_ = com.google.protobuf.ByteString.EMPTY;
+      private com.google.protobuf.ByteString optigaSignature_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <pre>
-       * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the device certificate.
+       * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the Optiga device certificate.
        * </pre>
        *
-       * <code>required bytes signature = 2;</code>
-       * @return Whether the signature field is set.
+       * <code>required bytes optiga_signature = 2;</code>
+       * @return Whether the optigaSignature field is set.
        */
       @java.lang.Override
-      public boolean hasSignature() {
+      public boolean hasOptigaSignature() {
         return ((bitField0_ & 0x00000002) != 0);
       }
       /**
        * <pre>
-       * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the device certificate.
+       * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the Optiga device certificate.
        * </pre>
        *
-       * <code>required bytes signature = 2;</code>
-       * @return The signature.
+       * <code>required bytes optiga_signature = 2;</code>
+       * @return The optigaSignature.
        */
       @java.lang.Override
-      public com.google.protobuf.ByteString getSignature() {
-        return signature_;
+      public com.google.protobuf.ByteString getOptigaSignature() {
+        return optigaSignature_;
       }
       /**
        * <pre>
-       * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the device certificate.
+       * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the Optiga device certificate.
        * </pre>
        *
-       * <code>required bytes signature = 2;</code>
-       * @param value The signature to set.
+       * <code>required bytes optiga_signature = 2;</code>
+       * @param value The optigaSignature to set.
        * @return This builder for chaining.
        */
-      public Builder setSignature(com.google.protobuf.ByteString value) {
+      public Builder setOptigaSignature(com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
-        signature_ = value;
+        optigaSignature_ = value;
         bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the device certificate.
+       * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the Optiga device certificate.
        * </pre>
        *
-       * <code>required bytes signature = 2;</code>
+       * <code>required bytes optiga_signature = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearSignature() {
+      public Builder clearOptigaSignature() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        signature_ = getDefaultInstance().getSignature();
+        optigaSignature_ = getDefaultInstance().getOptigaSignature();
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> tropicCertificates_ = emptyList(com.google.protobuf.ByteString.class);
+      private void ensureTropicCertificatesIsMutable() {
+        if (!tropicCertificates_.isModifiable()) {
+          tropicCertificates_ = makeMutableCopy(tropicCertificates_);
+        }
+        bitField0_ |= 0x00000004;
+      }
+      /**
+       * <pre>
+       * A certificate chain starting with the Tropic device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+       * </pre>
+       *
+       * <code>repeated bytes tropic_certificates = 3;</code>
+       * @return A list containing the tropicCertificates.
+       */
+      public java.util.List<com.google.protobuf.ByteString>
+          getTropicCertificatesList() {
+        tropicCertificates_.makeImmutable();
+        return tropicCertificates_;
+      }
+      /**
+       * <pre>
+       * A certificate chain starting with the Tropic device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+       * </pre>
+       *
+       * <code>repeated bytes tropic_certificates = 3;</code>
+       * @return The count of tropicCertificates.
+       */
+      public int getTropicCertificatesCount() {
+        return tropicCertificates_.size();
+      }
+      /**
+       * <pre>
+       * A certificate chain starting with the Tropic device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+       * </pre>
+       *
+       * <code>repeated bytes tropic_certificates = 3;</code>
+       * @param index The index of the element to return.
+       * @return The tropicCertificates at the given index.
+       */
+      public com.google.protobuf.ByteString getTropicCertificates(int index) {
+        return tropicCertificates_.get(index);
+      }
+      /**
+       * <pre>
+       * A certificate chain starting with the Tropic device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+       * </pre>
+       *
+       * <code>repeated bytes tropic_certificates = 3;</code>
+       * @param index The index to set the value at.
+       * @param value The tropicCertificates to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTropicCertificates(
+          int index, com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureTropicCertificatesIsMutable();
+        tropicCertificates_.set(index, value);
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * A certificate chain starting with the Tropic device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+       * </pre>
+       *
+       * <code>repeated bytes tropic_certificates = 3;</code>
+       * @param value The tropicCertificates to add.
+       * @return This builder for chaining.
+       */
+      public Builder addTropicCertificates(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureTropicCertificatesIsMutable();
+        tropicCertificates_.add(value);
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * A certificate chain starting with the Tropic device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+       * </pre>
+       *
+       * <code>repeated bytes tropic_certificates = 3;</code>
+       * @param values The tropicCertificates to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllTropicCertificates(
+          java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
+        ensureTropicCertificatesIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, tropicCertificates_);
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * A certificate chain starting with the Tropic device certificate, followed by intermediate CA certificates, the last of which is signed by Trezor company's root CA.
+       * </pre>
+       *
+       * <code>repeated bytes tropic_certificates = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTropicCertificates() {
+        tropicCertificates_ = emptyList(com.google.protobuf.ByteString.class);
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString tropicSignature_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the Tropic device certificate.
+       * </pre>
+       *
+       * <code>optional bytes tropic_signature = 4;</code>
+       * @return Whether the tropicSignature field is set.
+       */
+      @java.lang.Override
+      public boolean hasTropicSignature() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <pre>
+       * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the Tropic device certificate.
+       * </pre>
+       *
+       * <code>optional bytes tropic_signature = 4;</code>
+       * @return The tropicSignature.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getTropicSignature() {
+        return tropicSignature_;
+      }
+      /**
+       * <pre>
+       * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the Tropic device certificate.
+       * </pre>
+       *
+       * <code>optional bytes tropic_signature = 4;</code>
+       * @param value The tropicSignature to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTropicSignature(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        tropicSignature_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * A DER-encoded signature of "&#92;0x13AuthenticateDevice:" + length-prefixed challenge that should be verified using the Tropic device certificate.
+       * </pre>
+       *
+       * <code>optional bytes tropic_signature = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTropicSignature() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        tropicSignature_ = getDefaultInstance().getTropicSignature();
         onChanged();
         return this;
       }
@@ -22613,7 +24502,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional string language = 5 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.LoadDevice.language is deprecated.
-     *     See messages-management.proto;l=391
+     *     See messages-management.proto;l=415
      * @return Whether the language field is set.
      */
     @java.lang.Deprecated boolean hasLanguage();
@@ -22624,7 +24513,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional string language = 5 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.LoadDevice.language is deprecated.
-     *     See messages-management.proto;l=391
+     *     See messages-management.proto;l=415
      * @return The language.
      */
     @java.lang.Deprecated java.lang.String getLanguage();
@@ -22635,7 +24524,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional string language = 5 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.LoadDevice.language is deprecated.
-     *     See messages-management.proto;l=391
+     *     See messages-management.proto;l=415
      * @return The bytes for language.
      */
     @java.lang.Deprecated com.google.protobuf.ByteString
@@ -22948,7 +24837,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional string language = 5 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.LoadDevice.language is deprecated.
-     *     See messages-management.proto;l=391
+     *     See messages-management.proto;l=415
      * @return Whether the language field is set.
      */
     @java.lang.Override
@@ -22962,7 +24851,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional string language = 5 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.LoadDevice.language is deprecated.
-     *     See messages-management.proto;l=391
+     *     See messages-management.proto;l=415
      * @return The language.
      */
     @java.lang.Override
@@ -22987,7 +24876,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional string language = 5 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.LoadDevice.language is deprecated.
-     *     See messages-management.proto;l=391
+     *     See messages-management.proto;l=415
      * @return The bytes for language.
      */
     @java.lang.Override
@@ -24046,7 +25935,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional string language = 5 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.LoadDevice.language is deprecated.
-       *     See messages-management.proto;l=391
+       *     See messages-management.proto;l=415
        * @return Whether the language field is set.
        */
       @java.lang.Deprecated public boolean hasLanguage() {
@@ -24059,7 +25948,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional string language = 5 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.LoadDevice.language is deprecated.
-       *     See messages-management.proto;l=391
+       *     See messages-management.proto;l=415
        * @return The language.
        */
       @java.lang.Deprecated public java.lang.String getLanguage() {
@@ -24083,7 +25972,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional string language = 5 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.LoadDevice.language is deprecated.
-       *     See messages-management.proto;l=391
+       *     See messages-management.proto;l=415
        * @return The bytes for language.
        */
       @java.lang.Deprecated public com.google.protobuf.ByteString
@@ -24106,7 +25995,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional string language = 5 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.LoadDevice.language is deprecated.
-       *     See messages-management.proto;l=391
+       *     See messages-management.proto;l=415
        * @param value The language to set.
        * @return This builder for chaining.
        */
@@ -24125,7 +26014,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional string language = 5 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.LoadDevice.language is deprecated.
-       *     See messages-management.proto;l=391
+       *     See messages-management.proto;l=415
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearLanguage() {
@@ -24141,7 +26030,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional string language = 5 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.LoadDevice.language is deprecated.
-       *     See messages-management.proto;l=391
+       *     See messages-management.proto;l=415
        * @param value The bytes for language to set.
        * @return This builder for chaining.
        */
@@ -24601,7 +26490,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional string language = 5 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.ResetDevice.language is deprecated.
-     *     See messages-management.proto;l=410
+     *     See messages-management.proto;l=434
      * @return Whether the language field is set.
      */
     @java.lang.Deprecated boolean hasLanguage();
@@ -24612,7 +26501,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional string language = 5 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.ResetDevice.language is deprecated.
-     *     See messages-management.proto;l=410
+     *     See messages-management.proto;l=434
      * @return The language.
      */
     @java.lang.Deprecated java.lang.String getLanguage();
@@ -24623,7 +26512,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional string language = 5 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.ResetDevice.language is deprecated.
-     *     See messages-management.proto;l=410
+     *     See messages-management.proto;l=434
      * @return The bytes for language.
      */
     @java.lang.Deprecated com.google.protobuf.ByteString
@@ -24733,6 +26622,25 @@ public final class TrezorMessageManagement {
      * @return The backupType.
      */
     com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.BackupType getBackupType();
+
+    /**
+     * <pre>
+     * run with entropy check protocol
+     * </pre>
+     *
+     * <code>optional bool entropy_check = 11;</code>
+     * @return Whether the entropyCheck field is set.
+     */
+    boolean hasEntropyCheck();
+    /**
+     * <pre>
+     * run with entropy check protocol
+     * </pre>
+     *
+     * <code>optional bool entropy_check = 11;</code>
+     * @return The entropyCheck.
+     */
+    boolean getEntropyCheck();
   }
   /**
    * <pre>
@@ -24875,7 +26783,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional string language = 5 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.ResetDevice.language is deprecated.
-     *     See messages-management.proto;l=410
+     *     See messages-management.proto;l=434
      * @return Whether the language field is set.
      */
     @java.lang.Override
@@ -24889,7 +26797,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional string language = 5 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.ResetDevice.language is deprecated.
-     *     See messages-management.proto;l=410
+     *     See messages-management.proto;l=434
      * @return The language.
      */
     @java.lang.Override
@@ -24914,7 +26822,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional string language = 5 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.ResetDevice.language is deprecated.
-     *     See messages-management.proto;l=410
+     *     See messages-management.proto;l=434
      * @return The bytes for language.
      */
     @java.lang.Override
@@ -25100,6 +27008,33 @@ public final class TrezorMessageManagement {
       return result == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.BackupType.Bip39 : result;
     }
 
+    public static final int ENTROPY_CHECK_FIELD_NUMBER = 11;
+    private boolean entropyCheck_ = false;
+    /**
+     * <pre>
+     * run with entropy check protocol
+     * </pre>
+     *
+     * <code>optional bool entropy_check = 11;</code>
+     * @return Whether the entropyCheck field is set.
+     */
+    @java.lang.Override
+    public boolean hasEntropyCheck() {
+      return ((bitField0_ & 0x00000200) != 0);
+    }
+    /**
+     * <pre>
+     * run with entropy check protocol
+     * </pre>
+     *
+     * <code>optional bool entropy_check = 11;</code>
+     * @return The entropyCheck.
+     */
+    @java.lang.Override
+    public boolean getEntropyCheck() {
+      return entropyCheck_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -25140,6 +27075,9 @@ public final class TrezorMessageManagement {
       }
       if (((bitField0_ & 0x00000100) != 0)) {
         output.writeEnum(10, backupType_);
+      }
+      if (((bitField0_ & 0x00000200) != 0)) {
+        output.writeBool(11, entropyCheck_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -25183,6 +27121,10 @@ public final class TrezorMessageManagement {
       if (((bitField0_ & 0x00000100) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(10, backupType_);
+      }
+      if (((bitField0_ & 0x00000200) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(11, entropyCheck_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -25243,6 +27185,11 @@ public final class TrezorMessageManagement {
       if (hasBackupType()) {
         if (backupType_ != other.backupType_) return false;
       }
+      if (hasEntropyCheck() != other.hasEntropyCheck()) return false;
+      if (hasEntropyCheck()) {
+        if (getEntropyCheck()
+            != other.getEntropyCheck()) return false;
+      }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -25293,6 +27240,11 @@ public final class TrezorMessageManagement {
       if (hasBackupType()) {
         hash = (37 * hash) + BACKUP_TYPE_FIELD_NUMBER;
         hash = (53 * hash) + backupType_;
+      }
+      if (hasEntropyCheck()) {
+        hash = (37 * hash) + ENTROPY_CHECK_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getEntropyCheck());
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -25442,6 +27394,7 @@ public final class TrezorMessageManagement {
         skipBackup_ = false;
         noBackup_ = false;
         backupType_ = 0;
+        entropyCheck_ = false;
         return this;
       }
 
@@ -25512,6 +27465,10 @@ public final class TrezorMessageManagement {
           result.backupType_ = backupType_;
           to_bitField0_ |= 0x00000100;
         }
+        if (((from_bitField0_ & 0x00000200) != 0)) {
+          result.entropyCheck_ = entropyCheck_;
+          to_bitField0_ |= 0x00000200;
+        }
         result.bitField0_ |= to_bitField0_;
       }
 
@@ -25557,6 +27514,9 @@ public final class TrezorMessageManagement {
         }
         if (other.hasBackupType()) {
           setBackupType(other.getBackupType());
+        }
+        if (other.hasEntropyCheck()) {
+          setEntropyCheck(other.getEntropyCheck());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -25636,6 +27596,11 @@ public final class TrezorMessageManagement {
                 }
                 break;
               } // case 80
+              case 88: {
+                entropyCheck_ = input.readBool();
+                bitField0_ |= 0x00000200;
+                break;
+              } // case 88
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -25829,7 +27794,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional string language = 5 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.ResetDevice.language is deprecated.
-       *     See messages-management.proto;l=410
+       *     See messages-management.proto;l=434
        * @return Whether the language field is set.
        */
       @java.lang.Deprecated public boolean hasLanguage() {
@@ -25842,7 +27807,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional string language = 5 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.ResetDevice.language is deprecated.
-       *     See messages-management.proto;l=410
+       *     See messages-management.proto;l=434
        * @return The language.
        */
       @java.lang.Deprecated public java.lang.String getLanguage() {
@@ -25866,7 +27831,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional string language = 5 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.ResetDevice.language is deprecated.
-       *     See messages-management.proto;l=410
+       *     See messages-management.proto;l=434
        * @return The bytes for language.
        */
       @java.lang.Deprecated public com.google.protobuf.ByteString
@@ -25889,7 +27854,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional string language = 5 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.ResetDevice.language is deprecated.
-       *     See messages-management.proto;l=410
+       *     See messages-management.proto;l=434
        * @param value The language to set.
        * @return This builder for chaining.
        */
@@ -25908,7 +27873,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional string language = 5 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.ResetDevice.language is deprecated.
-       *     See messages-management.proto;l=410
+       *     See messages-management.proto;l=434
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearLanguage() {
@@ -25924,7 +27889,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional string language = 5 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.ResetDevice.language is deprecated.
-       *     See messages-management.proto;l=410
+       *     See messages-management.proto;l=434
        * @param value The bytes for language to set.
        * @return This builder for chaining.
        */
@@ -26263,6 +28228,62 @@ public final class TrezorMessageManagement {
       public Builder clearBackupType() {
         bitField0_ = (bitField0_ & ~0x00000100);
         backupType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean entropyCheck_ ;
+      /**
+       * <pre>
+       * run with entropy check protocol
+       * </pre>
+       *
+       * <code>optional bool entropy_check = 11;</code>
+       * @return Whether the entropyCheck field is set.
+       */
+      @java.lang.Override
+      public boolean hasEntropyCheck() {
+        return ((bitField0_ & 0x00000200) != 0);
+      }
+      /**
+       * <pre>
+       * run with entropy check protocol
+       * </pre>
+       *
+       * <code>optional bool entropy_check = 11;</code>
+       * @return The entropyCheck.
+       */
+      @java.lang.Override
+      public boolean getEntropyCheck() {
+        return entropyCheck_;
+      }
+      /**
+       * <pre>
+       * run with entropy check protocol
+       * </pre>
+       *
+       * <code>optional bool entropy_check = 11;</code>
+       * @param value The entropyCheck to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEntropyCheck(boolean value) {
+
+        entropyCheck_ = value;
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * run with entropy check protocol
+       * </pre>
+       *
+       * <code>optional bool entropy_check = 11;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEntropyCheck() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        entropyCheck_ = false;
         onChanged();
         return this;
       }
@@ -27765,6 +29786,44 @@ public final class TrezorMessageManagement {
   public interface EntropyRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:hw.trezor.messages.management.EntropyRequest)
       com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * HMAC-SHA256 of Trezor's internal entropy used in entropy check.
+     * </pre>
+     *
+     * <code>optional bytes entropy_commitment = 1;</code>
+     * @return Whether the entropyCommitment field is set.
+     */
+    boolean hasEntropyCommitment();
+    /**
+     * <pre>
+     * HMAC-SHA256 of Trezor's internal entropy used in entropy check.
+     * </pre>
+     *
+     * <code>optional bytes entropy_commitment = 1;</code>
+     * @return The entropyCommitment.
+     */
+    com.google.protobuf.ByteString getEntropyCommitment();
+
+    /**
+     * <pre>
+     * Trezor's internal entropy from the previous round of entropy check.
+     * </pre>
+     *
+     * <code>optional bytes prev_entropy = 2;</code>
+     * @return Whether the prevEntropy field is set.
+     */
+    boolean hasPrevEntropy();
+    /**
+     * <pre>
+     * Trezor's internal entropy from the previous round of entropy check.
+     * </pre>
+     *
+     * <code>optional bytes prev_entropy = 2;</code>
+     * @return The prevEntropy.
+     */
+    com.google.protobuf.ByteString getPrevEntropy();
   }
   /**
    * <pre>
@@ -27794,6 +29853,8 @@ public final class TrezorMessageManagement {
       super(builder);
     }
     private EntropyRequest() {
+      entropyCommitment_ = com.google.protobuf.ByteString.EMPTY;
+      prevEntropy_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -27807,6 +29868,61 @@ public final class TrezorMessageManagement {
       return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_EntropyRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyRequest.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyRequest.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int ENTROPY_COMMITMENT_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString entropyCommitment_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * HMAC-SHA256 of Trezor's internal entropy used in entropy check.
+     * </pre>
+     *
+     * <code>optional bytes entropy_commitment = 1;</code>
+     * @return Whether the entropyCommitment field is set.
+     */
+    @java.lang.Override
+    public boolean hasEntropyCommitment() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * HMAC-SHA256 of Trezor's internal entropy used in entropy check.
+     * </pre>
+     *
+     * <code>optional bytes entropy_commitment = 1;</code>
+     * @return The entropyCommitment.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getEntropyCommitment() {
+      return entropyCommitment_;
+    }
+
+    public static final int PREV_ENTROPY_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString prevEntropy_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * Trezor's internal entropy from the previous round of entropy check.
+     * </pre>
+     *
+     * <code>optional bytes prev_entropy = 2;</code>
+     * @return Whether the prevEntropy field is set.
+     */
+    @java.lang.Override
+    public boolean hasPrevEntropy() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * Trezor's internal entropy from the previous round of entropy check.
+     * </pre>
+     *
+     * <code>optional bytes prev_entropy = 2;</code>
+     * @return The prevEntropy.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getPrevEntropy() {
+      return prevEntropy_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -27823,6 +29939,12 @@ public final class TrezorMessageManagement {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeBytes(1, entropyCommitment_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeBytes(2, prevEntropy_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -27832,6 +29954,14 @@ public final class TrezorMessageManagement {
       if (size != -1) return size;
 
       size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, entropyCommitment_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, prevEntropy_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -27847,6 +29977,16 @@ public final class TrezorMessageManagement {
       }
       com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyRequest other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyRequest) obj;
 
+      if (hasEntropyCommitment() != other.hasEntropyCommitment()) return false;
+      if (hasEntropyCommitment()) {
+        if (!getEntropyCommitment()
+            .equals(other.getEntropyCommitment())) return false;
+      }
+      if (hasPrevEntropy() != other.hasPrevEntropy()) return false;
+      if (hasPrevEntropy()) {
+        if (!getPrevEntropy()
+            .equals(other.getPrevEntropy())) return false;
+      }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -27858,6 +29998,14 @@ public final class TrezorMessageManagement {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasEntropyCommitment()) {
+        hash = (37 * hash) + ENTROPY_COMMITMENT_FIELD_NUMBER;
+        hash = (53 * hash) + getEntropyCommitment().hashCode();
+      }
+      if (hasPrevEntropy()) {
+        hash = (37 * hash) + PREV_ENTROPY_FIELD_NUMBER;
+        hash = (53 * hash) + getPrevEntropy().hashCode();
+      }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -27994,6 +30142,9 @@ public final class TrezorMessageManagement {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        bitField0_ = 0;
+        entropyCommitment_ = com.google.protobuf.ByteString.EMPTY;
+        prevEntropy_ = com.google.protobuf.ByteString.EMPTY;
         return this;
       }
 
@@ -28020,8 +30171,23 @@ public final class TrezorMessageManagement {
       @java.lang.Override
       public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyRequest buildPartial() {
         com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyRequest result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyRequest result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.entropyCommitment_ = entropyCommitment_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.prevEntropy_ = prevEntropy_;
+          to_bitField0_ |= 0x00000002;
+        }
+        result.bitField0_ |= to_bitField0_;
       }
 
       @java.lang.Override
@@ -28036,6 +30202,12 @@ public final class TrezorMessageManagement {
 
       public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyRequest other) {
         if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyRequest.getDefaultInstance()) return this;
+        if (other.hasEntropyCommitment()) {
+          setEntropyCommitment(other.getEntropyCommitment());
+        }
+        if (other.hasPrevEntropy()) {
+          setPrevEntropy(other.getPrevEntropy());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -28062,6 +30234,16 @@ public final class TrezorMessageManagement {
               case 0:
                 done = true;
                 break;
+              case 10: {
+                entropyCommitment_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                prevEntropy_ = input.readBytes();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -28075,6 +30257,119 @@ public final class TrezorMessageManagement {
         } finally {
           onChanged();
         } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.ByteString entropyCommitment_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * HMAC-SHA256 of Trezor's internal entropy used in entropy check.
+       * </pre>
+       *
+       * <code>optional bytes entropy_commitment = 1;</code>
+       * @return Whether the entropyCommitment field is set.
+       */
+      @java.lang.Override
+      public boolean hasEntropyCommitment() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * HMAC-SHA256 of Trezor's internal entropy used in entropy check.
+       * </pre>
+       *
+       * <code>optional bytes entropy_commitment = 1;</code>
+       * @return The entropyCommitment.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getEntropyCommitment() {
+        return entropyCommitment_;
+      }
+      /**
+       * <pre>
+       * HMAC-SHA256 of Trezor's internal entropy used in entropy check.
+       * </pre>
+       *
+       * <code>optional bytes entropy_commitment = 1;</code>
+       * @param value The entropyCommitment to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEntropyCommitment(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        entropyCommitment_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * HMAC-SHA256 of Trezor's internal entropy used in entropy check.
+       * </pre>
+       *
+       * <code>optional bytes entropy_commitment = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEntropyCommitment() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        entropyCommitment_ = getDefaultInstance().getEntropyCommitment();
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString prevEntropy_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * Trezor's internal entropy from the previous round of entropy check.
+       * </pre>
+       *
+       * <code>optional bytes prev_entropy = 2;</code>
+       * @return Whether the prevEntropy field is set.
+       */
+      @java.lang.Override
+      public boolean hasPrevEntropy() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * Trezor's internal entropy from the previous round of entropy check.
+       * </pre>
+       *
+       * <code>optional bytes prev_entropy = 2;</code>
+       * @return The prevEntropy.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getPrevEntropy() {
+        return prevEntropy_;
+      }
+      /**
+       * <pre>
+       * Trezor's internal entropy from the previous round of entropy check.
+       * </pre>
+       *
+       * <code>optional bytes prev_entropy = 2;</code>
+       * @param value The prevEntropy to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPrevEntropy(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        prevEntropy_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Trezor's internal entropy from the previous round of entropy check.
+       * </pre>
+       *
+       * <code>optional bytes prev_entropy = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPrevEntropy() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        prevEntropy_ = getDefaultInstance().getPrevEntropy();
+        onChanged();
         return this;
       }
 
@@ -28135,7 +30430,7 @@ public final class TrezorMessageManagement {
 
     /**
      * <pre>
-     * 256 bits (32 bytes) of random data
+     * 256 bits (32 bytes) of the host's random data
      * </pre>
      *
      * <code>required bytes entropy = 1;</code>
@@ -28144,7 +30439,7 @@ public final class TrezorMessageManagement {
     boolean hasEntropy();
     /**
      * <pre>
-     * 256 bits (32 bytes) of random data
+     * 256 bits (32 bytes) of the host's random data
      * </pre>
      *
      * <code>required bytes entropy = 1;</code>
@@ -28157,6 +30452,7 @@ public final class TrezorMessageManagement {
    * *
    * Request: Provide additional entropy for seed generation function
    * &#64;next Success
+   * &#64;next EntropyCheckReady
    * </pre>
    *
    * Protobuf type {@code hw.trezor.messages.management.EntropyAck}
@@ -28201,7 +30497,7 @@ public final class TrezorMessageManagement {
     private com.google.protobuf.ByteString entropy_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <pre>
-     * 256 bits (32 bytes) of random data
+     * 256 bits (32 bytes) of the host's random data
      * </pre>
      *
      * <code>required bytes entropy = 1;</code>
@@ -28213,7 +30509,7 @@ public final class TrezorMessageManagement {
     }
     /**
      * <pre>
-     * 256 bits (32 bytes) of random data
+     * 256 bits (32 bytes) of the host's random data
      * </pre>
      *
      * <code>required bytes entropy = 1;</code>
@@ -28395,6 +30691,7 @@ public final class TrezorMessageManagement {
      * *
      * Request: Provide additional entropy for seed generation function
      * &#64;next Success
+     * &#64;next EntropyCheckReady
      * </pre>
      *
      * Protobuf type {@code hw.trezor.messages.management.EntropyAck}
@@ -28541,7 +30838,7 @@ public final class TrezorMessageManagement {
       private com.google.protobuf.ByteString entropy_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <pre>
-       * 256 bits (32 bytes) of random data
+       * 256 bits (32 bytes) of the host's random data
        * </pre>
        *
        * <code>required bytes entropy = 1;</code>
@@ -28553,7 +30850,7 @@ public final class TrezorMessageManagement {
       }
       /**
        * <pre>
-       * 256 bits (32 bytes) of random data
+       * 256 bits (32 bytes) of the host's random data
        * </pre>
        *
        * <code>required bytes entropy = 1;</code>
@@ -28565,7 +30862,7 @@ public final class TrezorMessageManagement {
       }
       /**
        * <pre>
-       * 256 bits (32 bytes) of random data
+       * 256 bits (32 bytes) of the host's random data
        * </pre>
        *
        * <code>required bytes entropy = 1;</code>
@@ -28581,7 +30878,7 @@ public final class TrezorMessageManagement {
       }
       /**
        * <pre>
-       * 256 bits (32 bytes) of random data
+       * 256 bits (32 bytes) of the host's random data
        * </pre>
        *
        * <code>required bytes entropy = 1;</code>
@@ -28640,6 +30937,886 @@ public final class TrezorMessageManagement {
 
     @java.lang.Override
     public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyAck getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface EntropyCheckReadyOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.management.EntropyCheckReady)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * <pre>
+   * *
+   * Response: Trezor is ready for the next phase of the entropy check protocol.
+   * &#64;next EntropyCheckContinue
+   * &#64;next GetPublicKey
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.management.EntropyCheckReady}
+   */
+  public static final class EntropyCheckReady extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.management.EntropyCheckReady)
+      EntropyCheckReadyOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        EntropyCheckReady.class.getName());
+    }
+    // Use EntropyCheckReady.newBuilder() to construct.
+    private EntropyCheckReady(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private EntropyCheckReady() {
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_EntropyCheckReady_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_EntropyCheckReady_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady) obj;
+
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Response: Trezor is ready for the next phase of the entropy check protocol.
+     * &#64;next EntropyCheckContinue
+     * &#64;next GetPublicKey
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.management.EntropyCheckReady}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.management.EntropyCheckReady)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReadyOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_EntropyCheckReady_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_EntropyCheckReady_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_EntropyCheckReady_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady(this);
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.management.EntropyCheckReady)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.management.EntropyCheckReady)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<EntropyCheckReady>
+        PARSER = new com.google.protobuf.AbstractParser<EntropyCheckReady>() {
+      @java.lang.Override
+      public EntropyCheckReady parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<EntropyCheckReady> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<EntropyCheckReady> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckReady getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface EntropyCheckContinueOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.management.EntropyCheckContinue)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * finish the entropy check protocol, store the seed
+     * </pre>
+     *
+     * <code>optional bool finish = 1 [default = false];</code>
+     * @return Whether the finish field is set.
+     */
+    boolean hasFinish();
+    /**
+     * <pre>
+     * finish the entropy check protocol, store the seed
+     * </pre>
+     *
+     * <code>optional bool finish = 1 [default = false];</code>
+     * @return The finish.
+     */
+    boolean getFinish();
+  }
+  /**
+   * <pre>
+   * *
+   * Request: Proceed with the next phase of the entropy check protocol, asking Trezor to either reveal its internal entropy or to finish and store the seed.
+   * &#64;next Success
+   * &#64;next EntropyRequest
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.management.EntropyCheckContinue}
+   */
+  public static final class EntropyCheckContinue extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.management.EntropyCheckContinue)
+      EntropyCheckContinueOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        EntropyCheckContinue.class.getName());
+    }
+    // Use EntropyCheckContinue.newBuilder() to construct.
+    private EntropyCheckContinue(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private EntropyCheckContinue() {
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_EntropyCheckContinue_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_EntropyCheckContinue_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int FINISH_FIELD_NUMBER = 1;
+    private boolean finish_ = false;
+    /**
+     * <pre>
+     * finish the entropy check protocol, store the seed
+     * </pre>
+     *
+     * <code>optional bool finish = 1 [default = false];</code>
+     * @return Whether the finish field is set.
+     */
+    @java.lang.Override
+    public boolean hasFinish() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * finish the entropy check protocol, store the seed
+     * </pre>
+     *
+     * <code>optional bool finish = 1 [default = false];</code>
+     * @return The finish.
+     */
+    @java.lang.Override
+    public boolean getFinish() {
+      return finish_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeBool(1, finish_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, finish_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue) obj;
+
+      if (hasFinish() != other.hasFinish()) return false;
+      if (hasFinish()) {
+        if (getFinish()
+            != other.getFinish()) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasFinish()) {
+        hash = (37 * hash) + FINISH_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getFinish());
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Request: Proceed with the next phase of the entropy check protocol, asking Trezor to either reveal its internal entropy or to finish and store the seed.
+     * &#64;next Success
+     * &#64;next EntropyRequest
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.management.EntropyCheckContinue}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.management.EntropyCheckContinue)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinueOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_EntropyCheckContinue_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_EntropyCheckContinue_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        finish_ = false;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_EntropyCheckContinue_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.finish_ = finish_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue.getDefaultInstance()) return this;
+        if (other.hasFinish()) {
+          setFinish(other.getFinish());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                finish_ = input.readBool();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private boolean finish_ ;
+      /**
+       * <pre>
+       * finish the entropy check protocol, store the seed
+       * </pre>
+       *
+       * <code>optional bool finish = 1 [default = false];</code>
+       * @return Whether the finish field is set.
+       */
+      @java.lang.Override
+      public boolean hasFinish() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * finish the entropy check protocol, store the seed
+       * </pre>
+       *
+       * <code>optional bool finish = 1 [default = false];</code>
+       * @return The finish.
+       */
+      @java.lang.Override
+      public boolean getFinish() {
+        return finish_;
+      }
+      /**
+       * <pre>
+       * finish the entropy check protocol, store the seed
+       * </pre>
+       *
+       * <code>optional bool finish = 1 [default = false];</code>
+       * @param value The finish to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFinish(boolean value) {
+
+        finish_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * finish the entropy check protocol, store the seed
+       * </pre>
+       *
+       * <code>optional bool finish = 1 [default = false];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFinish() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        finish_ = false;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.management.EntropyCheckContinue)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.management.EntropyCheckContinue)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<EntropyCheckContinue>
+        PARSER = new com.google.protobuf.AbstractParser<EntropyCheckContinue>() {
+      @java.lang.Override
+      public EntropyCheckContinue parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<EntropyCheckContinue> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<EntropyCheckContinue> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.EntropyCheckContinue getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -28713,7 +31890,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional string language = 4 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.RecoveryDevice.language is deprecated.
-     *     See messages-management.proto;l=457
+     *     See messages-management.proto;l=502
      * @return Whether the language field is set.
      */
     @java.lang.Deprecated boolean hasLanguage();
@@ -28724,7 +31901,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional string language = 4 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.RecoveryDevice.language is deprecated.
-     *     See messages-management.proto;l=457
+     *     See messages-management.proto;l=502
      * @return The language.
      */
     @java.lang.Deprecated java.lang.String getLanguage();
@@ -28735,7 +31912,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional string language = 4 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.RecoveryDevice.language is deprecated.
-     *     See messages-management.proto;l=457
+     *     See messages-management.proto;l=502
      * @return The bytes for language.
      */
     @java.lang.Deprecated com.google.protobuf.ByteString
@@ -29118,7 +32295,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional string language = 4 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.RecoveryDevice.language is deprecated.
-     *     See messages-management.proto;l=457
+     *     See messages-management.proto;l=502
      * @return Whether the language field is set.
      */
     @java.lang.Override
@@ -29132,7 +32309,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional string language = 4 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.RecoveryDevice.language is deprecated.
-     *     See messages-management.proto;l=457
+     *     See messages-management.proto;l=502
      * @return The language.
      */
     @java.lang.Override
@@ -29157,7 +32334,7 @@ public final class TrezorMessageManagement {
      *
      * <code>optional string language = 4 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.management.RecoveryDevice.language is deprecated.
-     *     See messages-management.proto;l=457
+     *     See messages-management.proto;l=502
      * @return The bytes for language.
      */
     @java.lang.Override
@@ -30076,7 +33253,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional string language = 4 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.RecoveryDevice.language is deprecated.
-       *     See messages-management.proto;l=457
+       *     See messages-management.proto;l=502
        * @return Whether the language field is set.
        */
       @java.lang.Deprecated public boolean hasLanguage() {
@@ -30089,7 +33266,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional string language = 4 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.RecoveryDevice.language is deprecated.
-       *     See messages-management.proto;l=457
+       *     See messages-management.proto;l=502
        * @return The language.
        */
       @java.lang.Deprecated public java.lang.String getLanguage() {
@@ -30113,7 +33290,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional string language = 4 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.RecoveryDevice.language is deprecated.
-       *     See messages-management.proto;l=457
+       *     See messages-management.proto;l=502
        * @return The bytes for language.
        */
       @java.lang.Deprecated public com.google.protobuf.ByteString
@@ -30136,7 +33313,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional string language = 4 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.RecoveryDevice.language is deprecated.
-       *     See messages-management.proto;l=457
+       *     See messages-management.proto;l=502
        * @param value The language to set.
        * @return This builder for chaining.
        */
@@ -30155,7 +33332,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional string language = 4 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.RecoveryDevice.language is deprecated.
-       *     See messages-management.proto;l=457
+       *     See messages-management.proto;l=502
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearLanguage() {
@@ -30171,7 +33348,7 @@ public final class TrezorMessageManagement {
        *
        * <code>optional string language = 4 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.management.RecoveryDevice.language is deprecated.
-       *     See messages-management.proto;l=457
+       *     See messages-management.proto;l=502
        * @param value The bytes for language to set.
        * @return This builder for chaining.
        */
@@ -34309,6 +37486,7 @@ public final class TrezorMessageManagement {
    * Request: Reboot firmware to bootloader
    * &#64;start
    * &#64;next Success
+   * &#64;next DataChunkRequest
    * </pre>
    *
    * Protobuf type {@code hw.trezor.messages.management.RebootToBootloader}
@@ -34750,6 +37928,7 @@ public final class TrezorMessageManagement {
      * Request: Reboot firmware to bootloader
      * &#64;start
      * &#64;next Success
+     * &#64;next DataChunkRequest
      * </pre>
      *
      * Protobuf type {@code hw.trezor.messages.management.RebootToBootloader}
@@ -36784,7 +39963,7 @@ public final class TrezorMessageManagement {
      * authentication code for future UnlockPath calls
      * </pre>
      *
-     * <code>optional bytes mac = 1;</code>
+     * <code>required bytes mac = 1;</code>
      * @return Whether the mac field is set.
      */
     boolean hasMac();
@@ -36793,7 +39972,7 @@ public final class TrezorMessageManagement {
      * authentication code for future UnlockPath calls
      * </pre>
      *
-     * <code>optional bytes mac = 1;</code>
+     * <code>required bytes mac = 1;</code>
      * @return The mac.
      */
     com.google.protobuf.ByteString getMac();
@@ -36853,7 +40032,7 @@ public final class TrezorMessageManagement {
      * authentication code for future UnlockPath calls
      * </pre>
      *
-     * <code>optional bytes mac = 1;</code>
+     * <code>required bytes mac = 1;</code>
      * @return Whether the mac field is set.
      */
     @java.lang.Override
@@ -36865,7 +40044,7 @@ public final class TrezorMessageManagement {
      * authentication code for future UnlockPath calls
      * </pre>
      *
-     * <code>optional bytes mac = 1;</code>
+     * <code>required bytes mac = 1;</code>
      * @return The mac.
      */
     @java.lang.Override
@@ -36880,6 +40059,10 @@ public final class TrezorMessageManagement {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      if (!hasMac()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -37142,6 +40325,9 @@ public final class TrezorMessageManagement {
 
       @java.lang.Override
       public final boolean isInitialized() {
+        if (!hasMac()) {
+          return false;
+        }
         return true;
       }
 
@@ -37189,7 +40375,7 @@ public final class TrezorMessageManagement {
        * authentication code for future UnlockPath calls
        * </pre>
        *
-       * <code>optional bytes mac = 1;</code>
+       * <code>required bytes mac = 1;</code>
        * @return Whether the mac field is set.
        */
       @java.lang.Override
@@ -37201,7 +40387,7 @@ public final class TrezorMessageManagement {
        * authentication code for future UnlockPath calls
        * </pre>
        *
-       * <code>optional bytes mac = 1;</code>
+       * <code>required bytes mac = 1;</code>
        * @return The mac.
        */
       @java.lang.Override
@@ -37213,7 +40399,7 @@ public final class TrezorMessageManagement {
        * authentication code for future UnlockPath calls
        * </pre>
        *
-       * <code>optional bytes mac = 1;</code>
+       * <code>required bytes mac = 1;</code>
        * @param value The mac to set.
        * @return This builder for chaining.
        */
@@ -37229,7 +40415,7 @@ public final class TrezorMessageManagement {
        * authentication code for future UnlockPath calls
        * </pre>
        *
-       * <code>optional bytes mac = 1;</code>
+       * <code>required bytes mac = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearMac() {
@@ -38540,6 +41726,936 @@ public final class TrezorMessageManagement {
 
   }
 
+  public interface GetSerialNumberOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.management.GetSerialNumber)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * <pre>
+   * *
+   * Request: Get unit serial number
+   * &#64;start
+   * &#64;next SerialNumber
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.management.GetSerialNumber}
+   */
+  public static final class GetSerialNumber extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.management.GetSerialNumber)
+      GetSerialNumberOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        GetSerialNumber.class.getName());
+    }
+    // Use GetSerialNumber.newBuilder() to construct.
+    private GetSerialNumber(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private GetSerialNumber() {
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_GetSerialNumber_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_GetSerialNumber_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber) obj;
+
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Request: Get unit serial number
+     * &#64;start
+     * &#64;next SerialNumber
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.management.GetSerialNumber}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.management.GetSerialNumber)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumberOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_GetSerialNumber_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_GetSerialNumber_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_GetSerialNumber_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber(this);
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.management.GetSerialNumber)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.management.GetSerialNumber)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<GetSerialNumber>
+        PARSER = new com.google.protobuf.AbstractParser<GetSerialNumber>() {
+      @java.lang.Override
+      public GetSerialNumber parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<GetSerialNumber> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GetSerialNumber> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.GetSerialNumber getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SerialNumberOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.management.SerialNumber)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required string serial_number = 1;</code>
+     * @return Whether the serialNumber field is set.
+     */
+    boolean hasSerialNumber();
+    /**
+     * <code>required string serial_number = 1;</code>
+     * @return The serialNumber.
+     */
+    java.lang.String getSerialNumber();
+    /**
+     * <code>required string serial_number = 1;</code>
+     * @return The bytes for serialNumber.
+     */
+    com.google.protobuf.ByteString
+        getSerialNumberBytes();
+  }
+  /**
+   * <pre>
+   * *
+   * Response: contains unit serial number
+   * &#64;end
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.management.SerialNumber}
+   */
+  public static final class SerialNumber extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.management.SerialNumber)
+      SerialNumberOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        SerialNumber.class.getName());
+    }
+    // Use SerialNumber.newBuilder() to construct.
+    private SerialNumber(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private SerialNumber() {
+      serialNumber_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_SerialNumber_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_SerialNumber_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int SERIAL_NUMBER_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object serialNumber_ = "";
+    /**
+     * <code>required string serial_number = 1;</code>
+     * @return Whether the serialNumber field is set.
+     */
+    @java.lang.Override
+    public boolean hasSerialNumber() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>required string serial_number = 1;</code>
+     * @return The serialNumber.
+     */
+    @java.lang.Override
+    public java.lang.String getSerialNumber() {
+      java.lang.Object ref = serialNumber_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          serialNumber_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string serial_number = 1;</code>
+     * @return The bytes for serialNumber.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSerialNumberBytes() {
+      java.lang.Object ref = serialNumber_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        serialNumber_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasSerialNumber()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, serialNumber_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, serialNumber_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber) obj;
+
+      if (hasSerialNumber() != other.hasSerialNumber()) return false;
+      if (hasSerialNumber()) {
+        if (!getSerialNumber()
+            .equals(other.getSerialNumber())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasSerialNumber()) {
+        hash = (37 * hash) + SERIAL_NUMBER_FIELD_NUMBER;
+        hash = (53 * hash) + getSerialNumber().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Response: contains unit serial number
+     * &#64;end
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.management.SerialNumber}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.management.SerialNumber)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumberOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_SerialNumber_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_SerialNumber_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        serialNumber_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.internal_static_hw_trezor_messages_management_SerialNumber_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.serialNumber_ = serialNumber_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber.getDefaultInstance()) return this;
+        if (other.hasSerialNumber()) {
+          serialNumber_ = other.serialNumber_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasSerialNumber()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                serialNumber_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object serialNumber_ = "";
+      /**
+       * <code>required string serial_number = 1;</code>
+       * @return Whether the serialNumber field is set.
+       */
+      public boolean hasSerialNumber() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>required string serial_number = 1;</code>
+       * @return The serialNumber.
+       */
+      public java.lang.String getSerialNumber() {
+        java.lang.Object ref = serialNumber_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            serialNumber_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string serial_number = 1;</code>
+       * @return The bytes for serialNumber.
+       */
+      public com.google.protobuf.ByteString
+          getSerialNumberBytes() {
+        java.lang.Object ref = serialNumber_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          serialNumber_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string serial_number = 1;</code>
+       * @param value The serialNumber to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSerialNumber(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        serialNumber_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string serial_number = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSerialNumber() {
+        serialNumber_ = getDefaultInstance().getSerialNumber();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string serial_number = 1;</code>
+       * @param value The bytes for serialNumber to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSerialNumberBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        serialNumber_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.management.SerialNumber)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.management.SerialNumber)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SerialNumber>
+        PARSER = new com.google.protobuf.AbstractParser<SerialNumber>() {
+      @java.lang.Override
+      public SerialNumber parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<SerialNumber> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SerialNumber> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.SerialNumber getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_hw_trezor_messages_management_Initialize_descriptor;
   private static final 
@@ -38581,15 +42697,15 @@ public final class TrezorMessageManagement {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_hw_trezor_messages_management_ChangeLanguage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_hw_trezor_messages_management_TranslationDataRequest_descriptor;
+    internal_static_hw_trezor_messages_management_DataChunkRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_hw_trezor_messages_management_TranslationDataRequest_fieldAccessorTable;
+      internal_static_hw_trezor_messages_management_DataChunkRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_hw_trezor_messages_management_TranslationDataAck_descriptor;
+    internal_static_hw_trezor_messages_management_DataChunkAck_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_hw_trezor_messages_management_TranslationDataAck_fieldAccessorTable;
+      internal_static_hw_trezor_messages_management_DataChunkAck_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_hw_trezor_messages_management_ApplyFlags_descriptor;
   private static final 
@@ -38686,6 +42802,16 @@ public final class TrezorMessageManagement {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_hw_trezor_messages_management_EntropyAck_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_management_EntropyCheckReady_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_management_EntropyCheckReady_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_management_EntropyCheckContinue_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_management_EntropyCheckContinue_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_hw_trezor_messages_management_RecoveryDevice_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -38770,6 +42896,16 @@ public final class TrezorMessageManagement {
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_hw_trezor_messages_management_SetBrightness_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_management_GetSerialNumber_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_management_GetSerialNumber_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_management_SerialNumber_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_management_SerialNumber_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -38783,152 +42919,170 @@ public final class TrezorMessageManagement {
       "essages.management\032\roptions.proto\"V\n\nIni" +
       "tialize\022\022\n\nsession_id\030\001 \001(\014\022\034\n\020_skip_pas" +
       "sphrase\030\002 \001(\010B\002\030\001\022\026\n\016derive_cardano\030\003 \001(" +
-      "\010\"\r\n\013GetFeatures\"\361\021\n\010Features\022\016\n\006vendor\030" +
+      "\010\"\r\n\013GetFeatures\"\213\024\n\010Features\022\016\n\006vendor\030" +
       "\001 \001(\t\022\025\n\rmajor_version\030\002 \002(\r\022\025\n\rminor_ve" +
-      "rsion\030\003 \002(\r\022\025\n\rpatch_version\030\004 \002(\r\022\027\n\017bo" +
-      "otloader_mode\030\005 \001(\010\022\021\n\tdevice_id\030\006 \001(\t\022\026" +
-      "\n\016pin_protection\030\007 \001(\010\022\035\n\025passphrase_pro" +
-      "tection\030\010 \001(\010\022\020\n\010language\030\t \001(\t\022\r\n\005label" +
-      "\030\n \001(\t\022\023\n\013initialized\030\014 \001(\010\022\020\n\010revision\030" +
-      "\r \001(\014\022\027\n\017bootloader_hash\030\016 \001(\014\022\020\n\010import" +
-      "ed\030\017 \001(\010\022\020\n\010unlocked\030\020 \001(\010\022\036\n\022_passphras" +
-      "e_cached\030\021 \001(\010B\002\030\001\022\030\n\020firmware_present\030\022" +
-      " \001(\010\022W\n\023backup_availability\030\023 \001(\0162:.hw.t" +
-      "rezor.messages.management.Features.Backu" +
-      "pAvailability\022\r\n\005flags\030\024 \001(\r\022\r\n\005model\030\025 " +
-      "\001(\t\022\020\n\010fw_major\030\026 \001(\r\022\020\n\010fw_minor\030\027 \001(\r\022" +
-      "\020\n\010fw_patch\030\030 \001(\r\022\021\n\tfw_vendor\030\031 \001(\t\022\031\n\021" +
-      "unfinished_backup\030\033 \001(\010\022\021\n\tno_backup\030\034 \001" +
-      "(\010\022O\n\017recovery_status\030\035 \001(\01626.hw.trezor." +
-      "messages.management.Features.RecoverySta" +
-      "tus\022H\n\014capabilities\030\036 \003(\01622.hw.trezor.me" +
-      "ssages.management.Features.Capability\022>\n" +
-      "\013backup_type\030\037 \001(\0162).hw.trezor.messages." +
-      "management.BackupType\022\027\n\017sd_card_present" +
-      "\030  \001(\010\022\025\n\rsd_protection\030! \001(\010\022\034\n\024wipe_co" +
-      "de_protection\030\" \001(\010\022\022\n\nsession_id\030# \001(\014\022" +
-      "#\n\033passphrase_always_on_device\030$ \001(\010\022F\n\r" +
-      "safety_checks\030% \001(\0162/.hw.trezor.messages" +
-      ".management.SafetyCheckLevel\022\032\n\022auto_loc" +
-      "k_delay_ms\030& \001(\r\022\030\n\020display_rotation\030\' \001" +
-      "(\r\022\035\n\025experimental_features\030( \001(\010\022\014\n\004bus" +
-      "y\030) \001(\010\022J\n\021homescreen_format\030* \001(\0162/.hw." +
-      "trezor.messages.management.HomescreenFor" +
-      "mat\022!\n\031hide_passphrase_from_host\030+ \001(\010\022\026" +
-      "\n\016internal_model\030, \001(\t\022\022\n\nunit_color\030- \001" +
-      "(\r\022\024\n\014unit_btconly\030. \001(\010\022\030\n\020homescreen_w" +
-      "idth\030/ \001(\r\022\031\n\021homescreen_height\0300 \001(\r\022\031\n" +
-      "\021bootloader_locked\0301 \001(\010\022&\n\030language_ver" +
-      "sion_matches\0302 \001(\010:\004true\022\026\n\016unit_packagi" +
-      "ng\0303 \001(\r\022\027\n\017haptic_feedback\0304 \001(\010\022B\n\rrec" +
-      "overy_type\0305 \001(\0162+.hw.trezor.messages.ma" +
-      "nagement.RecoveryType\022\022\n\noptiga_sec\0306 \001(" +
-      "\r\"C\n\022BackupAvailability\022\020\n\014NotAvailable\020" +
-      "\000\022\014\n\010Required\020\001\022\r\n\tAvailable\020\002\"7\n\016Recove" +
-      "ryStatus\022\013\n\007Nothing\020\000\022\014\n\010Recovery\020\001\022\n\n\006B" +
-      "ackup\020\002\"\302\004\n\nCapability\022\034\n\022Capability_Bit" +
-      "coin\020\001\032\004\200\246\035\001\022\033\n\027Capability_Bitcoin_like\020" +
-      "\002\022\026\n\022Capability_Binance\020\003\022\026\n\022Capability_" +
-      "Cardano\020\004\022\033\n\021Capability_Crypto\020\005\032\004\200\246\035\001\022\022" +
-      "\n\016Capability_EOS\020\006\022\027\n\023Capability_Ethereu" +
-      "m\020\007\022\027\n\017Capability_Lisk\020\010\032\002\010\001\022\025\n\021Capabili" +
-      "ty_Monero\020\t\022\022\n\016Capability_NEM\020\n\022\025\n\021Capab" +
-      "ility_Ripple\020\013\022\026\n\022Capability_Stellar\020\014\022\024" +
-      "\n\020Capability_Tezos\020\r\022\022\n\016Capability_U2F\020\016" +
-      "\022\033\n\021Capability_Shamir\020\017\032\004\200\246\035\001\022!\n\027Capabil" +
-      "ity_ShamirGroups\020\020\032\004\200\246\035\001\022$\n\032Capability_P" +
-      "assphraseEntry\020\021\032\004\200\246\035\001\022\025\n\021Capability_Sol" +
-      "ana\020\022\022!\n\027Capability_Translations\020\023\032\004\200\246\035\001" +
-      "\022\037\n\025Capability_Brightness\020\024\032\004\200\246\035\001\022\033\n\021Cap" +
-      "ability_Haptic\020\025\032\004\200\246\035\001\032\004\310\363\030\001\"\014\n\nLockDevi" +
-      "ce\"\034\n\007SetBusy\022\021\n\texpiry_ms\030\001 \001(\r\"\014\n\nEndS" +
-      "ession\"\376\002\n\rApplySettings\022\024\n\010language\030\001 \001" +
-      "(\tB\002\030\001\022\r\n\005label\030\002 \001(\t\022\026\n\016use_passphrase\030" +
-      "\003 \001(\010\022\022\n\nhomescreen\030\004 \001(\014\022\036\n\022_passphrase" +
-      "_source\030\005 \001(\rB\002\030\001\022\032\n\022auto_lock_delay_ms\030" +
-      "\006 \001(\r\022\030\n\020display_rotation\030\007 \001(\r\022#\n\033passp" +
-      "hrase_always_on_device\030\010 \001(\010\022F\n\rsafety_c" +
-      "hecks\030\t \001(\0162/.hw.trezor.messages.managem" +
-      "ent.SafetyCheckLevel\022\035\n\025experimental_fea" +
-      "tures\030\n \001(\010\022!\n\031hide_passphrase_from_host" +
-      "\030\013 \001(\010\022\027\n\017haptic_feedback\030\r \001(\010\";\n\016Chang" +
-      "eLanguage\022\023\n\013data_length\030\001 \002(\r\022\024\n\014show_d" +
-      "isplay\030\002 \001(\010\"B\n\026TranslationDataRequest\022\023" +
-      "\n\013data_length\030\001 \002(\r\022\023\n\013data_offset\030\002 \002(\r" +
-      "\"(\n\022TranslationDataAck\022\022\n\ndata_chunk\030\001 \002" +
-      "(\014\"\033\n\nApplyFlags\022\r\n\005flags\030\001 \002(\r\"\033\n\tChang" +
-      "ePin\022\016\n\006remove\030\001 \001(\010\" \n\016ChangeWipeCode\022\016" +
-      "\n\006remove\030\001 \001(\010\"\237\001\n\tSdProtect\022R\n\toperatio" +
-      "n\030\001 \002(\0162?.hw.trezor.messages.management." +
-      "SdProtect.SdProtectOperationType\">\n\026SdPr" +
-      "otectOperationType\022\013\n\007DISABLE\020\000\022\n\n\006ENABL" +
-      "E\020\001\022\013\n\007REFRESH\020\002\"4\n\004Ping\022\021\n\007message\030\001 \001(" +
-      "\t:\000\022\031\n\021button_protection\030\002 \001(\010\"\010\n\006Cancel" +
-      "\"\032\n\nGetEntropy\022\014\n\004size\030\001 \002(\r\"\032\n\007Entropy\022" +
-      "\017\n\007entropy\030\001 \002(\014\"$\n\017GetFirmwareHash\022\021\n\tc" +
-      "hallenge\030\001 \001(\014\"\034\n\014FirmwareHash\022\014\n\004hash\030\001" +
-      " \002(\014\"\'\n\022AuthenticateDevice\022\021\n\tchallenge\030" +
-      "\001 \002(\014\"<\n\021AuthenticityProof\022\024\n\014certificat" +
-      "es\030\001 \003(\014\022\021\n\tsignature\030\002 \002(\014\"\014\n\nWipeDevic" +
-      "e\"\305\001\n\nLoadDevice\022\021\n\tmnemonics\030\001 \003(\t\022\013\n\003p" +
-      "in\030\003 \001(\t\022\035\n\025passphrase_protection\030\004 \001(\010\022" +
-      "\024\n\010language\030\005 \001(\tB\002\030\001\022\r\n\005label\030\006 \001(\t\022\025\n\r" +
-      "skip_checksum\030\007 \001(\010\022\023\n\013u2f_counter\030\010 \001(\r" +
-      "\022\024\n\014needs_backup\030\t \001(\010\022\021\n\tno_backup\030\n \001(" +
-      "\010\"\212\002\n\013ResetDevice\022\025\n\010strength\030\002 \001(\r:\003256" +
-      "\022\035\n\025passphrase_protection\030\003 \001(\010\022\026\n\016pin_p" +
-      "rotection\030\004 \001(\010\022\024\n\010language\030\005 \001(\tB\002\030\001\022\r\n" +
-      "\005label\030\006 \001(\t\022\023\n\013u2f_counter\030\007 \001(\r\022\023\n\013ski" +
-      "p_backup\030\010 \001(\010\022\021\n\tno_backup\030\t \001(\010\022E\n\013bac" +
-      "kup_type\030\n \001(\0162).hw.trezor.messages.mana" +
-      "gement.BackupType:\005Bip39J\004\010\001\020\002\"\257\001\n\014Backu" +
-      "pDevice\022\027\n\017group_threshold\030\001 \001(\r\022G\n\006grou" +
-      "ps\030\002 \003(\01327.hw.trezor.messages.management" +
-      ".BackupDevice.Slip39Group\032=\n\013Slip39Group" +
-      "\022\030\n\020member_threshold\030\001 \002(\r\022\024\n\014member_cou" +
-      "nt\030\002 \002(\r\"\020\n\016EntropyRequest\"\035\n\nEntropyAck" +
-      "\022\017\n\007entropy\030\001 \002(\014\"\234\003\n\016RecoveryDevice\022\022\n\n" +
-      "word_count\030\001 \001(\r\022\035\n\025passphrase_protectio" +
-      "n\030\002 \001(\010\022\026\n\016pin_protection\030\003 \001(\010\022\024\n\010langu" +
-      "age\030\004 \001(\tB\002\030\001\022\r\n\005label\030\005 \001(\t\022\030\n\020enforce_" +
-      "wordlist\030\006 \001(\010\022]\n\014input_method\030\010 \001(\0162G.h" +
-      "w.trezor.messages.management.RecoveryDev" +
-      "ice.RecoveryDeviceInputMethod\022\023\n\013u2f_cou" +
-      "nter\030\t \001(\r\022I\n\004type\030\n \001(\0162+.hw.trezor.mes" +
-      "sages.management.RecoveryType:\016NormalRec" +
-      "overy\";\n\031RecoveryDeviceInputMethod\022\022\n\016Sc" +
-      "rambledWords\020\000\022\n\n\006Matrix\020\001J\004\010\007\020\010\"\277\001\n\013Wor" +
-      "dRequest\022H\n\004type\030\001 \002(\0162:.hw.trezor.messa" +
-      "ges.management.WordRequest.WordRequestTy" +
-      "pe\"f\n\017WordRequestType\022\031\n\025WordRequestType" +
-      "_Plain\020\000\022\033\n\027WordRequestType_Matrix9\020\001\022\033\n" +
-      "\027WordRequestType_Matrix6\020\002\"\027\n\007WordAck\022\014\n" +
-      "\004word\030\001 \002(\t\"$\n\rSetU2FCounter\022\023\n\013u2f_coun" +
-      "ter\030\001 \002(\r\"\023\n\021GetNextU2FCounter\"%\n\016NextU2" +
-      "FCounter\022\023\n\013u2f_counter\030\001 \002(\r\"\021\n\017DoPreau" +
-      "thorized\"\026\n\024PreauthorizedRequest\"\025\n\023Canc" +
-      "elAuthorization\"\351\001\n\022RebootToBootloader\022b" +
-      "\n\014boot_command\030\001 \001(\0162=.hw.trezor.message" +
-      "s.management.RebootToBootloader.BootComm" +
-      "and:\rSTOP_AND_WAIT\022\027\n\017firmware_header\030\002 " +
-      "\001(\014\022\037\n\024language_data_length\030\003 \001(\r:\0010\"5\n\013" +
-      "BootCommand\022\021\n\rSTOP_AND_WAIT\020\000\022\023\n\017INSTAL" +
-      "L_UPGRADE\020\001\"\020\n\010GetNonce:\004\210\262\031\001\"\034\n\005Nonce\022\r" +
-      "\n\005nonce\030\001 \002(\014:\004\210\262\031\001\",\n\nUnlockPath\022\021\n\tadd" +
-      "ress_n\030\001 \003(\r\022\013\n\003mac\030\002 \001(\014\"\"\n\023UnlockedPat" +
-      "hRequest\022\013\n\003mac\030\001 \001(\014\"\024\n\022ShowDeviceTutor" +
-      "ial\"\022\n\020UnlockBootloader\"\036\n\rSetBrightness" +
-      "\022\r\n\005value\030\001 \001(\r*\231\001\n\nBackupType\022\t\n\005Bip39\020" +
-      "\000\022\020\n\014Slip39_Basic\020\001\022\023\n\017Slip39_Advanced\020\002" +
-      "\022\034\n\030Slip39_Single_Extendable\020\003\022\033\n\027Slip39" +
-      "_Basic_Extendable\020\004\022\036\n\032Slip39_Advanced_E" +
-      "xtendable\020\005*G\n\020SafetyCheckLevel\022\n\n\006Stric" +
-      "t\020\000\022\020\n\014PromptAlways\020\001\022\025\n\021PromptTemporari" +
-      "ly\020\002*0\n\020HomescreenFormat\022\010\n\004Toif\020\001\022\010\n\004Jp" +
-      "eg\020\002\022\010\n\004ToiG\020\003*H\n\014RecoveryType\022\022\n\016Normal" +
-      "Recovery\020\000\022\n\n\006DryRun\020\001\022\030\n\024UnlockRepeated" +
-      "Backup\020\002BF\n\'com.sparrowwallet.lark.trezo" +
-      "r.generatedB\027TrezorMessageManagement\200\246\035\001"
+      "rsion\030\003 \002(\r\022\025\n\rpatch_version\030\004 \002(\r\022\025\n\rbu" +
+      "ild_version\030= \001(\r\022\027\n\017bootloader_mode\030\005 \001" +
+      "(\010\022\021\n\tdevice_id\030\006 \001(\t\022\026\n\016pin_protection\030" +
+      "\007 \001(\010\022\035\n\025passphrase_protection\030\010 \001(\010\022\020\n\010" +
+      "language\030\t \001(\t\022\r\n\005label\030\n \001(\t\022\023\n\013initial" +
+      "ized\030\014 \001(\010\022\020\n\010revision\030\r \001(\014\022\027\n\017bootload" +
+      "er_hash\030\016 \001(\014\022\020\n\010imported\030\017 \001(\010\022\020\n\010unloc" +
+      "ked\030\020 \001(\010\022\036\n\022_passphrase_cached\030\021 \001(\010B\002\030" +
+      "\001\022\030\n\020firmware_present\030\022 \001(\010\022W\n\023backup_av" +
+      "ailability\030\023 \001(\0162:.hw.trezor.messages.ma" +
+      "nagement.Features.BackupAvailability\022\r\n\005" +
+      "flags\030\024 \001(\r\022\r\n\005model\030\025 \001(\t\022\020\n\010fw_major\030\026" +
+      " \001(\r\022\020\n\010fw_minor\030\027 \001(\r\022\020\n\010fw_patch\030\030 \001(\r" +
+      "\022\020\n\010fw_build\030> \001(\r\022\021\n\tfw_vendor\030\031 \001(\t\022\031\n" +
+      "\021unfinished_backup\030\033 \001(\010\022\021\n\tno_backup\030\034 " +
+      "\001(\010\022O\n\017recovery_status\030\035 \001(\01626.hw.trezor" +
+      ".messages.management.Features.RecoverySt" +
+      "atus\022H\n\014capabilities\030\036 \003(\01622.hw.trezor.m" +
+      "essages.management.Features.Capability\022>" +
+      "\n\013backup_type\030\037 \001(\0162).hw.trezor.messages" +
+      ".management.BackupType\022\027\n\017sd_card_presen" +
+      "t\030  \001(\010\022\025\n\rsd_protection\030! \001(\010\022\034\n\024wipe_c" +
+      "ode_protection\030\" \001(\010\022\022\n\nsession_id\030# \001(\014" +
+      "\022#\n\033passphrase_always_on_device\030$ \001(\010\022F\n" +
+      "\rsafety_checks\030% \001(\0162/.hw.trezor.message" +
+      "s.management.SafetyCheckLevel\022\032\n\022auto_lo" +
+      "ck_delay_ms\030& \001(\r\022H\n\020display_rotation\030\' " +
+      "\001(\0162..hw.trezor.messages.management.Disp" +
+      "layRotation\022\035\n\025experimental_features\030( \001" +
+      "(\010\022\014\n\004busy\030) \001(\010\022J\n\021homescreen_format\030* " +
+      "\001(\0162/.hw.trezor.messages.management.Home" +
+      "screenFormat\022!\n\031hide_passphrase_from_hos" +
+      "t\030+ \001(\010\022\026\n\016internal_model\030, \001(\t\022\022\n\nunit_" +
+      "color\030- \001(\r\022\024\n\014unit_btconly\030. \001(\010\022\030\n\020hom" +
+      "escreen_width\030/ \001(\r\022\031\n\021homescreen_height" +
+      "\0300 \001(\r\022\031\n\021bootloader_locked\0301 \001(\010\022&\n\030lan" +
+      "guage_version_matches\0302 \001(\010:\004true\022\026\n\016uni" +
+      "t_packaging\0303 \001(\r\022\027\n\017haptic_feedback\0304 \001" +
+      "(\010\022B\n\rrecovery_type\0305 \001(\0162+.hw.trezor.me" +
+      "ssages.management.RecoveryType\022\022\n\noptiga" +
+      "_sec\0306 \001(\r\022\013\n\003soc\0307 \001(\r\022\032\n\022firmware_corr" +
+      "upted\0308 \001(\010\022\"\n\032auto_lock_delay_battery_m" +
+      "s\0309 \001(\r\022\013\n\003led\030: \001(\010\022\025\n\rusb_connected\030; " +
+      "\001(\010\022\032\n\022wireless_connected\030< \001(\010\"C\n\022Backu" +
+      "pAvailability\022\020\n\014NotAvailable\020\000\022\014\n\010Requi" +
+      "red\020\001\022\r\n\tAvailable\020\002\"7\n\016RecoveryStatus\022\013" +
+      "\n\007Nothing\020\000\022\014\n\010Recovery\020\001\022\n\n\006Backup\020\002\"\366\004" +
+      "\n\nCapability\022\034\n\022Capability_Bitcoin\020\001\032\004\200\246" +
+      "\035\001\022\033\n\027Capability_Bitcoin_like\020\002\022\026\n\022Capab" +
+      "ility_Binance\020\003\022\026\n\022Capability_Cardano\020\004\022" +
+      "\033\n\021Capability_Crypto\020\005\032\004\200\246\035\001\022\022\n\016Capabili" +
+      "ty_EOS\020\006\022\027\n\023Capability_Ethereum\020\007\022\027\n\017Cap" +
+      "ability_Lisk\020\010\032\002\010\001\022\025\n\021Capability_Monero\020" +
+      "\t\022\022\n\016Capability_NEM\020\n\022\025\n\021Capability_Ripp" +
+      "le\020\013\022\026\n\022Capability_Stellar\020\014\022\024\n\020Capabili" +
+      "ty_Tezos\020\r\022\022\n\016Capability_U2F\020\016\022\033\n\021Capabi" +
+      "lity_Shamir\020\017\032\004\200\246\035\001\022!\n\027Capability_Shamir" +
+      "Groups\020\020\032\004\200\246\035\001\022$\n\032Capability_PassphraseE" +
+      "ntry\020\021\032\004\200\246\035\001\022\025\n\021Capability_Solana\020\022\022!\n\027C" +
+      "apability_Translations\020\023\032\004\200\246\035\001\022\037\n\025Capabi" +
+      "lity_Brightness\020\024\032\004\200\246\035\001\022\033\n\021Capability_Ha" +
+      "ptic\020\025\032\004\200\246\035\001\022\030\n\016Capability_BLE\020\026\032\004\200\246\035\001\022\030" +
+      "\n\016Capability_NFC\020\027\032\004\200\246\035\001\032\004\310\363\030\001\"\014\n\nLockDe" +
+      "vice\"\034\n\007SetBusy\022\021\n\texpiry_ms\030\001 \001(\r\"\014\n\nEn" +
+      "dSession\"\355\003\n\rApplySettings\022\024\n\010language\030\001" +
+      " \001(\tB\002\030\001\022\r\n\005label\030\002 \001(\t\022\026\n\016use_passphras" +
+      "e\030\003 \001(\010\022\022\n\nhomescreen\030\004 \001(\014\022\036\n\022_passphra" +
+      "se_source\030\005 \001(\rB\002\030\001\022\032\n\022auto_lock_delay_m" +
+      "s\030\006 \001(\r\022H\n\020display_rotation\030\007 \001(\0162..hw.t" +
+      "rezor.messages.management.DisplayRotatio" +
+      "n\022#\n\033passphrase_always_on_device\030\010 \001(\010\022F" +
+      "\n\rsafety_checks\030\t \001(\0162/.hw.trezor.messag" +
+      "es.management.SafetyCheckLevel\022\035\n\025experi" +
+      "mental_features\030\n \001(\010\022!\n\031hide_passphrase" +
+      "_from_host\030\013 \001(\010\022\027\n\017haptic_feedback\030\r \001(" +
+      "\010\022\031\n\021homescreen_length\030\016 \001(\r\022\"\n\032auto_loc" +
+      "k_delay_battery_ms\030\017 \001(\r\";\n\016ChangeLangua" +
+      "ge\022\023\n\013data_length\030\001 \002(\r\022\024\n\014show_display\030" +
+      "\002 \001(\010\"<\n\020DataChunkRequest\022\023\n\013data_length" +
+      "\030\001 \002(\r\022\023\n\013data_offset\030\002 \002(\r\"\"\n\014DataChunk" +
+      "Ack\022\022\n\ndata_chunk\030\001 \002(\014\"\033\n\nApplyFlags\022\r\n" +
+      "\005flags\030\001 \002(\r\"\033\n\tChangePin\022\016\n\006remove\030\001 \001(" +
+      "\010\" \n\016ChangeWipeCode\022\016\n\006remove\030\001 \001(\010\"\237\001\n\t" +
+      "SdProtect\022R\n\toperation\030\001 \002(\0162?.hw.trezor" +
+      ".messages.management.SdProtect.SdProtect" +
+      "OperationType\">\n\026SdProtectOperationType\022" +
+      "\013\n\007DISABLE\020\000\022\n\n\006ENABLE\020\001\022\013\n\007REFRESH\020\002\"4\n" +
+      "\004Ping\022\021\n\007message\030\001 \001(\t:\000\022\031\n\021button_prote" +
+      "ction\030\002 \001(\010\"\010\n\006Cancel\"\032\n\nGetEntropy\022\014\n\004s" +
+      "ize\030\001 \002(\r\"\032\n\007Entropy\022\017\n\007entropy\030\001 \002(\014\"$\n" +
+      "\017GetFirmwareHash\022\021\n\tchallenge\030\001 \001(\014\"\034\n\014F" +
+      "irmwareHash\022\014\n\004hash\030\001 \002(\014\"\'\n\022Authenticat" +
+      "eDevice\022\021\n\tchallenge\030\001 \002(\014\"\201\001\n\021Authentic" +
+      "ityProof\022\033\n\023optiga_certificates\030\001 \003(\014\022\030\n" +
+      "\020optiga_signature\030\002 \002(\014\022\033\n\023tropic_certif" +
+      "icates\030\003 \003(\014\022\030\n\020tropic_signature\030\004 \001(\014\"\014" +
+      "\n\nWipeDevice\"\305\001\n\nLoadDevice\022\021\n\tmnemonics" +
+      "\030\001 \003(\t\022\013\n\003pin\030\003 \001(\t\022\035\n\025passphrase_protec" +
+      "tion\030\004 \001(\010\022\024\n\010language\030\005 \001(\tB\002\030\001\022\r\n\005labe" +
+      "l\030\006 \001(\t\022\025\n\rskip_checksum\030\007 \001(\010\022\023\n\013u2f_co" +
+      "unter\030\010 \001(\r\022\024\n\014needs_backup\030\t \001(\010\022\021\n\tno_" +
+      "backup\030\n \001(\010\"\241\002\n\013ResetDevice\022\025\n\010strength" +
+      "\030\002 \001(\r:\003256\022\035\n\025passphrase_protection\030\003 \001" +
+      "(\010\022\026\n\016pin_protection\030\004 \001(\010\022\024\n\010language\030\005" +
+      " \001(\tB\002\030\001\022\r\n\005label\030\006 \001(\t\022\023\n\013u2f_counter\030\007" +
+      " \001(\r\022\023\n\013skip_backup\030\010 \001(\010\022\021\n\tno_backup\030\t" +
+      " \001(\010\022E\n\013backup_type\030\n \001(\0162).hw.trezor.me" +
+      "ssages.management.BackupType:\005Bip39\022\025\n\re" +
+      "ntropy_check\030\013 \001(\010J\004\010\001\020\002\"\257\001\n\014BackupDevic" +
+      "e\022\027\n\017group_threshold\030\001 \001(\r\022G\n\006groups\030\002 \003" +
+      "(\01327.hw.trezor.messages.management.Backu" +
+      "pDevice.Slip39Group\032=\n\013Slip39Group\022\030\n\020me" +
+      "mber_threshold\030\001 \002(\r\022\024\n\014member_count\030\002 \002" +
+      "(\r\"B\n\016EntropyRequest\022\032\n\022entropy_commitme" +
+      "nt\030\001 \001(\014\022\024\n\014prev_entropy\030\002 \001(\014\"\035\n\nEntrop" +
+      "yAck\022\017\n\007entropy\030\001 \002(\014\"\023\n\021EntropyCheckRea" +
+      "dy\"-\n\024EntropyCheckContinue\022\025\n\006finish\030\001 \001" +
+      "(\010:\005false\"\234\003\n\016RecoveryDevice\022\022\n\nword_cou" +
+      "nt\030\001 \001(\r\022\035\n\025passphrase_protection\030\002 \001(\010\022" +
+      "\026\n\016pin_protection\030\003 \001(\010\022\024\n\010language\030\004 \001(" +
+      "\tB\002\030\001\022\r\n\005label\030\005 \001(\t\022\030\n\020enforce_wordlist" +
+      "\030\006 \001(\010\022]\n\014input_method\030\010 \001(\0162G.hw.trezor" +
+      ".messages.management.RecoveryDevice.Reco" +
+      "veryDeviceInputMethod\022\023\n\013u2f_counter\030\t \001" +
+      "(\r\022I\n\004type\030\n \001(\0162+.hw.trezor.messages.ma" +
+      "nagement.RecoveryType:\016NormalRecovery\";\n" +
+      "\031RecoveryDeviceInputMethod\022\022\n\016ScrambledW" +
+      "ords\020\000\022\n\n\006Matrix\020\001J\004\010\007\020\010\"\277\001\n\013WordRequest" +
+      "\022H\n\004type\030\001 \002(\0162:.hw.trezor.messages.mana" +
+      "gement.WordRequest.WordRequestType\"f\n\017Wo" +
+      "rdRequestType\022\031\n\025WordRequestType_Plain\020\000" +
+      "\022\033\n\027WordRequestType_Matrix9\020\001\022\033\n\027WordReq" +
+      "uestType_Matrix6\020\002\"\027\n\007WordAck\022\014\n\004word\030\001 " +
+      "\002(\t\"$\n\rSetU2FCounter\022\023\n\013u2f_counter\030\001 \002(" +
+      "\r\"\023\n\021GetNextU2FCounter\"%\n\016NextU2FCounter" +
+      "\022\023\n\013u2f_counter\030\001 \002(\r\"\021\n\017DoPreauthorized" +
+      "\"\026\n\024PreauthorizedRequest\"\025\n\023CancelAuthor" +
+      "ization\"\351\001\n\022RebootToBootloader\022b\n\014boot_c" +
+      "ommand\030\001 \001(\0162=.hw.trezor.messages.manage" +
+      "ment.RebootToBootloader.BootCommand:\rSTO" +
+      "P_AND_WAIT\022\027\n\017firmware_header\030\002 \001(\014\022\037\n\024l" +
+      "anguage_data_length\030\003 \001(\r:\0010\"5\n\013BootComm" +
+      "and\022\021\n\rSTOP_AND_WAIT\020\000\022\023\n\017INSTALL_UPGRAD" +
+      "E\020\001\"\n\n\010GetNonce\"\026\n\005Nonce\022\r\n\005nonce\030\001 \002(\014\"" +
+      ",\n\nUnlockPath\022\021\n\taddress_n\030\001 \003(\r\022\013\n\003mac\030" +
+      "\002 \001(\014\"\"\n\023UnlockedPathRequest\022\013\n\003mac\030\001 \002(" +
+      "\014\"\024\n\022ShowDeviceTutorial\"\022\n\020UnlockBootloa" +
+      "der\"\036\n\rSetBrightness\022\r\n\005value\030\001 \001(\r\"\021\n\017G" +
+      "etSerialNumber\"%\n\014SerialNumber\022\025\n\rserial" +
+      "_number\030\001 \002(\t*\231\001\n\nBackupType\022\t\n\005Bip39\020\000\022" +
+      "\020\n\014Slip39_Basic\020\001\022\023\n\017Slip39_Advanced\020\002\022\034" +
+      "\n\030Slip39_Single_Extendable\020\003\022\033\n\027Slip39_B" +
+      "asic_Extendable\020\004\022\036\n\032Slip39_Advanced_Ext" +
+      "endable\020\005*G\n\020SafetyCheckLevel\022\n\n\006Strict\020" +
+      "\000\022\020\n\014PromptAlways\020\001\022\025\n\021PromptTemporarily" +
+      "\020\002*=\n\017DisplayRotation\022\t\n\005North\020\000\022\010\n\004East" +
+      "\020Z\022\n\n\005South\020\264\001\022\t\n\004West\020\216\002*0\n\020HomescreenF" +
+      "ormat\022\010\n\004Toif\020\001\022\010\n\004Jpeg\020\002\022\010\n\004ToiG\020\003*H\n\014R" +
+      "ecoveryType\022\022\n\016NormalRecovery\020\000\022\n\n\006DryRu" +
+      "n\020\001\022\030\n\024UnlockRepeatedBackup\020\002BF\n\'com.spa" +
+      "rrowwallet.lark.trezor.generatedB\027Trezor" +
+      "MessageManagement\200\246\035\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -38952,7 +43106,7 @@ public final class TrezorMessageManagement {
     internal_static_hw_trezor_messages_management_Features_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_Features_descriptor,
-        new java.lang.String[] { "Vendor", "MajorVersion", "MinorVersion", "PatchVersion", "BootloaderMode", "DeviceId", "PinProtection", "PassphraseProtection", "Language", "Label", "Initialized", "Revision", "BootloaderHash", "Imported", "Unlocked", "PassphraseCached", "FirmwarePresent", "BackupAvailability", "Flags", "Model", "FwMajor", "FwMinor", "FwPatch", "FwVendor", "UnfinishedBackup", "NoBackup", "RecoveryStatus", "Capabilities", "BackupType", "SdCardPresent", "SdProtection", "WipeCodeProtection", "SessionId", "PassphraseAlwaysOnDevice", "SafetyChecks", "AutoLockDelayMs", "DisplayRotation", "ExperimentalFeatures", "Busy", "HomescreenFormat", "HidePassphraseFromHost", "InternalModel", "UnitColor", "UnitBtconly", "HomescreenWidth", "HomescreenHeight", "BootloaderLocked", "LanguageVersionMatches", "UnitPackaging", "HapticFeedback", "RecoveryType", "OptigaSec", });
+        new java.lang.String[] { "Vendor", "MajorVersion", "MinorVersion", "PatchVersion", "BuildVersion", "BootloaderMode", "DeviceId", "PinProtection", "PassphraseProtection", "Language", "Label", "Initialized", "Revision", "BootloaderHash", "Imported", "Unlocked", "PassphraseCached", "FirmwarePresent", "BackupAvailability", "Flags", "Model", "FwMajor", "FwMinor", "FwPatch", "FwBuild", "FwVendor", "UnfinishedBackup", "NoBackup", "RecoveryStatus", "Capabilities", "BackupType", "SdCardPresent", "SdProtection", "WipeCodeProtection", "SessionId", "PassphraseAlwaysOnDevice", "SafetyChecks", "AutoLockDelayMs", "DisplayRotation", "ExperimentalFeatures", "Busy", "HomescreenFormat", "HidePassphraseFromHost", "InternalModel", "UnitColor", "UnitBtconly", "HomescreenWidth", "HomescreenHeight", "BootloaderLocked", "LanguageVersionMatches", "UnitPackaging", "HapticFeedback", "RecoveryType", "OptigaSec", "Soc", "FirmwareCorrupted", "AutoLockDelayBatteryMs", "Led", "UsbConnected", "WirelessConnected", });
     internal_static_hw_trezor_messages_management_LockDevice_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_hw_trezor_messages_management_LockDevice_fieldAccessorTable = new
@@ -38976,24 +43130,24 @@ public final class TrezorMessageManagement {
     internal_static_hw_trezor_messages_management_ApplySettings_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_ApplySettings_descriptor,
-        new java.lang.String[] { "Language", "Label", "UsePassphrase", "Homescreen", "PassphraseSource", "AutoLockDelayMs", "DisplayRotation", "PassphraseAlwaysOnDevice", "SafetyChecks", "ExperimentalFeatures", "HidePassphraseFromHost", "HapticFeedback", });
+        new java.lang.String[] { "Language", "Label", "UsePassphrase", "Homescreen", "PassphraseSource", "AutoLockDelayMs", "DisplayRotation", "PassphraseAlwaysOnDevice", "SafetyChecks", "ExperimentalFeatures", "HidePassphraseFromHost", "HapticFeedback", "HomescreenLength", "AutoLockDelayBatteryMs", });
     internal_static_hw_trezor_messages_management_ChangeLanguage_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_hw_trezor_messages_management_ChangeLanguage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_ChangeLanguage_descriptor,
         new java.lang.String[] { "DataLength", "ShowDisplay", });
-    internal_static_hw_trezor_messages_management_TranslationDataRequest_descriptor =
+    internal_static_hw_trezor_messages_management_DataChunkRequest_descriptor =
       getDescriptor().getMessageTypes().get(8);
-    internal_static_hw_trezor_messages_management_TranslationDataRequest_fieldAccessorTable = new
+    internal_static_hw_trezor_messages_management_DataChunkRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_hw_trezor_messages_management_TranslationDataRequest_descriptor,
+        internal_static_hw_trezor_messages_management_DataChunkRequest_descriptor,
         new java.lang.String[] { "DataLength", "DataOffset", });
-    internal_static_hw_trezor_messages_management_TranslationDataAck_descriptor =
+    internal_static_hw_trezor_messages_management_DataChunkAck_descriptor =
       getDescriptor().getMessageTypes().get(9);
-    internal_static_hw_trezor_messages_management_TranslationDataAck_fieldAccessorTable = new
+    internal_static_hw_trezor_messages_management_DataChunkAck_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_hw_trezor_messages_management_TranslationDataAck_descriptor,
+        internal_static_hw_trezor_messages_management_DataChunkAck_descriptor,
         new java.lang.String[] { "DataChunk", });
     internal_static_hw_trezor_messages_management_ApplyFlags_descriptor =
       getDescriptor().getMessageTypes().get(10);
@@ -39066,7 +43220,7 @@ public final class TrezorMessageManagement {
     internal_static_hw_trezor_messages_management_AuthenticityProof_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_AuthenticityProof_descriptor,
-        new java.lang.String[] { "Certificates", "Signature", });
+        new java.lang.String[] { "OptigaCertificates", "OptigaSignature", "TropicCertificates", "TropicSignature", });
     internal_static_hw_trezor_messages_management_WipeDevice_descriptor =
       getDescriptor().getMessageTypes().get(22);
     internal_static_hw_trezor_messages_management_WipeDevice_fieldAccessorTable = new
@@ -39084,7 +43238,7 @@ public final class TrezorMessageManagement {
     internal_static_hw_trezor_messages_management_ResetDevice_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_ResetDevice_descriptor,
-        new java.lang.String[] { "Strength", "PassphraseProtection", "PinProtection", "Language", "Label", "U2FCounter", "SkipBackup", "NoBackup", "BackupType", });
+        new java.lang.String[] { "Strength", "PassphraseProtection", "PinProtection", "Language", "Label", "U2FCounter", "SkipBackup", "NoBackup", "BackupType", "EntropyCheck", });
     internal_static_hw_trezor_messages_management_BackupDevice_descriptor =
       getDescriptor().getMessageTypes().get(25);
     internal_static_hw_trezor_messages_management_BackupDevice_fieldAccessorTable = new
@@ -39102,121 +43256,144 @@ public final class TrezorMessageManagement {
     internal_static_hw_trezor_messages_management_EntropyRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_EntropyRequest_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "EntropyCommitment", "PrevEntropy", });
     internal_static_hw_trezor_messages_management_EntropyAck_descriptor =
       getDescriptor().getMessageTypes().get(27);
     internal_static_hw_trezor_messages_management_EntropyAck_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_EntropyAck_descriptor,
         new java.lang.String[] { "Entropy", });
-    internal_static_hw_trezor_messages_management_RecoveryDevice_descriptor =
+    internal_static_hw_trezor_messages_management_EntropyCheckReady_descriptor =
       getDescriptor().getMessageTypes().get(28);
+    internal_static_hw_trezor_messages_management_EntropyCheckReady_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_management_EntropyCheckReady_descriptor,
+        new java.lang.String[] { });
+    internal_static_hw_trezor_messages_management_EntropyCheckContinue_descriptor =
+      getDescriptor().getMessageTypes().get(29);
+    internal_static_hw_trezor_messages_management_EntropyCheckContinue_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_management_EntropyCheckContinue_descriptor,
+        new java.lang.String[] { "Finish", });
+    internal_static_hw_trezor_messages_management_RecoveryDevice_descriptor =
+      getDescriptor().getMessageTypes().get(30);
     internal_static_hw_trezor_messages_management_RecoveryDevice_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_RecoveryDevice_descriptor,
         new java.lang.String[] { "WordCount", "PassphraseProtection", "PinProtection", "Language", "Label", "EnforceWordlist", "InputMethod", "U2FCounter", "Type", });
     internal_static_hw_trezor_messages_management_WordRequest_descriptor =
-      getDescriptor().getMessageTypes().get(29);
+      getDescriptor().getMessageTypes().get(31);
     internal_static_hw_trezor_messages_management_WordRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_WordRequest_descriptor,
         new java.lang.String[] { "Type", });
     internal_static_hw_trezor_messages_management_WordAck_descriptor =
-      getDescriptor().getMessageTypes().get(30);
+      getDescriptor().getMessageTypes().get(32);
     internal_static_hw_trezor_messages_management_WordAck_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_WordAck_descriptor,
         new java.lang.String[] { "Word", });
     internal_static_hw_trezor_messages_management_SetU2FCounter_descriptor =
-      getDescriptor().getMessageTypes().get(31);
+      getDescriptor().getMessageTypes().get(33);
     internal_static_hw_trezor_messages_management_SetU2FCounter_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_SetU2FCounter_descriptor,
         new java.lang.String[] { "U2FCounter", });
     internal_static_hw_trezor_messages_management_GetNextU2FCounter_descriptor =
-      getDescriptor().getMessageTypes().get(32);
+      getDescriptor().getMessageTypes().get(34);
     internal_static_hw_trezor_messages_management_GetNextU2FCounter_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_GetNextU2FCounter_descriptor,
         new java.lang.String[] { });
     internal_static_hw_trezor_messages_management_NextU2FCounter_descriptor =
-      getDescriptor().getMessageTypes().get(33);
+      getDescriptor().getMessageTypes().get(35);
     internal_static_hw_trezor_messages_management_NextU2FCounter_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_NextU2FCounter_descriptor,
         new java.lang.String[] { "U2FCounter", });
     internal_static_hw_trezor_messages_management_DoPreauthorized_descriptor =
-      getDescriptor().getMessageTypes().get(34);
+      getDescriptor().getMessageTypes().get(36);
     internal_static_hw_trezor_messages_management_DoPreauthorized_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_DoPreauthorized_descriptor,
         new java.lang.String[] { });
     internal_static_hw_trezor_messages_management_PreauthorizedRequest_descriptor =
-      getDescriptor().getMessageTypes().get(35);
+      getDescriptor().getMessageTypes().get(37);
     internal_static_hw_trezor_messages_management_PreauthorizedRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_PreauthorizedRequest_descriptor,
         new java.lang.String[] { });
     internal_static_hw_trezor_messages_management_CancelAuthorization_descriptor =
-      getDescriptor().getMessageTypes().get(36);
+      getDescriptor().getMessageTypes().get(38);
     internal_static_hw_trezor_messages_management_CancelAuthorization_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_CancelAuthorization_descriptor,
         new java.lang.String[] { });
     internal_static_hw_trezor_messages_management_RebootToBootloader_descriptor =
-      getDescriptor().getMessageTypes().get(37);
+      getDescriptor().getMessageTypes().get(39);
     internal_static_hw_trezor_messages_management_RebootToBootloader_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_RebootToBootloader_descriptor,
         new java.lang.String[] { "BootCommand", "FirmwareHeader", "LanguageDataLength", });
     internal_static_hw_trezor_messages_management_GetNonce_descriptor =
-      getDescriptor().getMessageTypes().get(38);
+      getDescriptor().getMessageTypes().get(40);
     internal_static_hw_trezor_messages_management_GetNonce_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_GetNonce_descriptor,
         new java.lang.String[] { });
     internal_static_hw_trezor_messages_management_Nonce_descriptor =
-      getDescriptor().getMessageTypes().get(39);
+      getDescriptor().getMessageTypes().get(41);
     internal_static_hw_trezor_messages_management_Nonce_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_Nonce_descriptor,
         new java.lang.String[] { "Nonce", });
     internal_static_hw_trezor_messages_management_UnlockPath_descriptor =
-      getDescriptor().getMessageTypes().get(40);
+      getDescriptor().getMessageTypes().get(42);
     internal_static_hw_trezor_messages_management_UnlockPath_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_UnlockPath_descriptor,
         new java.lang.String[] { "AddressN", "Mac", });
     internal_static_hw_trezor_messages_management_UnlockedPathRequest_descriptor =
-      getDescriptor().getMessageTypes().get(41);
+      getDescriptor().getMessageTypes().get(43);
     internal_static_hw_trezor_messages_management_UnlockedPathRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_UnlockedPathRequest_descriptor,
         new java.lang.String[] { "Mac", });
     internal_static_hw_trezor_messages_management_ShowDeviceTutorial_descriptor =
-      getDescriptor().getMessageTypes().get(42);
+      getDescriptor().getMessageTypes().get(44);
     internal_static_hw_trezor_messages_management_ShowDeviceTutorial_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_ShowDeviceTutorial_descriptor,
         new java.lang.String[] { });
     internal_static_hw_trezor_messages_management_UnlockBootloader_descriptor =
-      getDescriptor().getMessageTypes().get(43);
+      getDescriptor().getMessageTypes().get(45);
     internal_static_hw_trezor_messages_management_UnlockBootloader_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_UnlockBootloader_descriptor,
         new java.lang.String[] { });
     internal_static_hw_trezor_messages_management_SetBrightness_descriptor =
-      getDescriptor().getMessageTypes().get(44);
+      getDescriptor().getMessageTypes().get(46);
     internal_static_hw_trezor_messages_management_SetBrightness_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_management_SetBrightness_descriptor,
         new java.lang.String[] { "Value", });
+    internal_static_hw_trezor_messages_management_GetSerialNumber_descriptor =
+      getDescriptor().getMessageTypes().get(47);
+    internal_static_hw_trezor_messages_management_GetSerialNumber_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_management_GetSerialNumber_descriptor,
+        new java.lang.String[] { });
+    internal_static_hw_trezor_messages_management_SerialNumber_descriptor =
+      getDescriptor().getMessageTypes().get(48);
+    internal_static_hw_trezor_messages_management_SerialNumber_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_management_SerialNumber_descriptor,
+        new java.lang.String[] { "SerialNumber", });
     descriptor.resolveAllFeaturesImmutable();
     com.sparrowwallet.lark.trezor.generated.TrezorOptions.getDescriptor();
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.bitcoinOnly);
-    registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.experimentalMessage);
     registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.hasBitcoinOnlyValues);
     registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.includeInBitcoinOnly);
     com.google.protobuf.Descriptors.FileDescriptor

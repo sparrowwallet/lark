@@ -700,13 +700,134 @@ public final class TrezorMessageBitcoin {
     // @@protoc_insertion_point(enum_scope:hw.trezor.messages.bitcoin.AmountUnit)
   }
 
+  /**
+   * Protobuf enum {@code hw.trezor.messages.bitcoin.MultisigPubkeysOrder}
+   */
+  public enum MultisigPubkeysOrder
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <pre>
+     * order of pubkeys is preserved
+     * </pre>
+     *
+     * <code>PRESERVED = 0;</code>
+     */
+    PRESERVED(0),
+    /**
+     * <pre>
+     * pubkeys are sorted lexicographically (BIP-67)
+     * </pre>
+     *
+     * <code>LEXICOGRAPHIC = 1;</code>
+     */
+    LEXICOGRAPHIC(1),
+    ;
+
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        MultisigPubkeysOrder.class.getName());
+    }
+    /**
+     * <pre>
+     * order of pubkeys is preserved
+     * </pre>
+     *
+     * <code>PRESERVED = 0;</code>
+     */
+    public static final int PRESERVED_VALUE = 0;
+    /**
+     * <pre>
+     * pubkeys are sorted lexicographically (BIP-67)
+     * </pre>
+     *
+     * <code>LEXICOGRAPHIC = 1;</code>
+     */
+    public static final int LEXICOGRAPHIC_VALUE = 1;
+
+
+    public final int getNumber() {
+      return value;
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static MultisigPubkeysOrder valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static MultisigPubkeysOrder forNumber(int value) {
+      switch (value) {
+        case 0: return PRESERVED;
+        case 1: return LEXICOGRAPHIC;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<MultisigPubkeysOrder>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        MultisigPubkeysOrder> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<MultisigPubkeysOrder>() {
+            public MultisigPubkeysOrder findValueByNumber(int number) {
+              return MultisigPubkeysOrder.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.getDescriptor().getEnumTypes().get(4);
+    }
+
+    private static final MultisigPubkeysOrder[] VALUES = values();
+
+    public static MultisigPubkeysOrder valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private MultisigPubkeysOrder(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:hw.trezor.messages.bitcoin.MultisigPubkeysOrder)
+  }
+
   public interface MultisigRedeemScriptTypeOrBuilder extends
       // @@protoc_insertion_point(interface_extends:hw.trezor.messages.bitcoin.MultisigRedeemScriptType)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <pre>
-     * pubkeys from multisig address (sorted lexicographically)
+     * this field is deprecated and will be removed in the future, use nodes together with address_n instead
      * </pre>
      *
      * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -715,7 +836,7 @@ public final class TrezorMessageBitcoin {
         getPubkeysList();
     /**
      * <pre>
-     * pubkeys from multisig address (sorted lexicographically)
+     * this field is deprecated and will be removed in the future, use nodes together with address_n instead
      * </pre>
      *
      * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -723,7 +844,7 @@ public final class TrezorMessageBitcoin {
     com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.MultisigRedeemScriptType.HDNodePathType getPubkeys(int index);
     /**
      * <pre>
-     * pubkeys from multisig address (sorted lexicographically)
+     * this field is deprecated and will be removed in the future, use nodes together with address_n instead
      * </pre>
      *
      * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -731,7 +852,7 @@ public final class TrezorMessageBitcoin {
     int getPubkeysCount();
     /**
      * <pre>
-     * pubkeys from multisig address (sorted lexicographically)
+     * this field is deprecated and will be removed in the future, use nodes together with address_n instead
      * </pre>
      *
      * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -740,7 +861,7 @@ public final class TrezorMessageBitcoin {
         getPubkeysOrBuilderList();
     /**
      * <pre>
-     * pubkeys from multisig address (sorted lexicographically)
+     * this field is deprecated and will be removed in the future, use nodes together with address_n instead
      * </pre>
      *
      * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -797,44 +918,24 @@ public final class TrezorMessageBitcoin {
     int getM();
 
     /**
-     * <pre>
-     * simplified way how to specify pubkeys if they share the same address_n path
-     * </pre>
-     *
      * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
      */
     java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.HDNodeType> 
         getNodesList();
     /**
-     * <pre>
-     * simplified way how to specify pubkeys if they share the same address_n path
-     * </pre>
-     *
      * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
      */
     com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.HDNodeType getNodes(int index);
     /**
-     * <pre>
-     * simplified way how to specify pubkeys if they share the same address_n path
-     * </pre>
-     *
      * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
      */
     int getNodesCount();
     /**
-     * <pre>
-     * simplified way how to specify pubkeys if they share the same address_n path
-     * </pre>
-     *
      * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
      */
     java.util.List<? extends com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.HDNodeTypeOrBuilder> 
         getNodesOrBuilderList();
     /**
-     * <pre>
-     * simplified way how to specify pubkeys if they share the same address_n path
-     * </pre>
-     *
      * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
      */
     com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.HDNodeTypeOrBuilder getNodesOrBuilder(
@@ -842,7 +943,7 @@ public final class TrezorMessageBitcoin {
 
     /**
      * <pre>
-     * use only field 1 or fields 4+5, if fields 4+5 are used, field 1 is ignored
+     * path to derive pubkeys from nodes
      * </pre>
      *
      * <code>repeated uint32 address_n = 5;</code>
@@ -851,7 +952,7 @@ public final class TrezorMessageBitcoin {
     java.util.List<java.lang.Integer> getAddressNList();
     /**
      * <pre>
-     * use only field 1 or fields 4+5, if fields 4+5 are used, field 1 is ignored
+     * path to derive pubkeys from nodes
      * </pre>
      *
      * <code>repeated uint32 address_n = 5;</code>
@@ -860,7 +961,7 @@ public final class TrezorMessageBitcoin {
     int getAddressNCount();
     /**
      * <pre>
-     * use only field 1 or fields 4+5, if fields 4+5 are used, field 1 is ignored
+     * path to derive pubkeys from nodes
      * </pre>
      *
      * <code>repeated uint32 address_n = 5;</code>
@@ -868,6 +969,25 @@ public final class TrezorMessageBitcoin {
      * @return The addressN at the given index.
      */
     int getAddressN(int index);
+
+    /**
+     * <pre>
+     * order of pubkeys in script pubkey
+     * </pre>
+     *
+     * <code>optional .hw.trezor.messages.bitcoin.MultisigPubkeysOrder pubkeys_order = 6 [default = PRESERVED];</code>
+     * @return Whether the pubkeysOrder field is set.
+     */
+    boolean hasPubkeysOrder();
+    /**
+     * <pre>
+     * order of pubkeys in script pubkey
+     * </pre>
+     *
+     * <code>optional .hw.trezor.messages.bitcoin.MultisigPubkeysOrder pubkeys_order = 6 [default = PRESERVED];</code>
+     * @return The pubkeysOrder.
+     */
+    com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.MultisigPubkeysOrder getPubkeysOrder();
   }
   /**
    * <pre>
@@ -901,6 +1021,7 @@ public final class TrezorMessageBitcoin {
       signatures_ = emptyList(com.google.protobuf.ByteString.class);
       nodes_ = java.util.Collections.emptyList();
       addressN_ = emptyIntList();
+      pubkeysOrder_ = 0;
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -1809,7 +1930,7 @@ public final class TrezorMessageBitcoin {
     private java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.MultisigRedeemScriptType.HDNodePathType> pubkeys_;
     /**
      * <pre>
-     * pubkeys from multisig address (sorted lexicographically)
+     * this field is deprecated and will be removed in the future, use nodes together with address_n instead
      * </pre>
      *
      * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -1820,7 +1941,7 @@ public final class TrezorMessageBitcoin {
     }
     /**
      * <pre>
-     * pubkeys from multisig address (sorted lexicographically)
+     * this field is deprecated and will be removed in the future, use nodes together with address_n instead
      * </pre>
      *
      * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -1832,7 +1953,7 @@ public final class TrezorMessageBitcoin {
     }
     /**
      * <pre>
-     * pubkeys from multisig address (sorted lexicographically)
+     * this field is deprecated and will be removed in the future, use nodes together with address_n instead
      * </pre>
      *
      * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -1843,7 +1964,7 @@ public final class TrezorMessageBitcoin {
     }
     /**
      * <pre>
-     * pubkeys from multisig address (sorted lexicographically)
+     * this field is deprecated and will be removed in the future, use nodes together with address_n instead
      * </pre>
      *
      * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -1854,7 +1975,7 @@ public final class TrezorMessageBitcoin {
     }
     /**
      * <pre>
-     * pubkeys from multisig address (sorted lexicographically)
+     * this field is deprecated and will be removed in the future, use nodes together with address_n instead
      * </pre>
      *
      * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -1937,10 +2058,6 @@ public final class TrezorMessageBitcoin {
     @SuppressWarnings("serial")
     private java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.HDNodeType> nodes_;
     /**
-     * <pre>
-     * simplified way how to specify pubkeys if they share the same address_n path
-     * </pre>
-     *
      * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
      */
     @java.lang.Override
@@ -1948,10 +2065,6 @@ public final class TrezorMessageBitcoin {
       return nodes_;
     }
     /**
-     * <pre>
-     * simplified way how to specify pubkeys if they share the same address_n path
-     * </pre>
-     *
      * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
      */
     @java.lang.Override
@@ -1960,10 +2073,6 @@ public final class TrezorMessageBitcoin {
       return nodes_;
     }
     /**
-     * <pre>
-     * simplified way how to specify pubkeys if they share the same address_n path
-     * </pre>
-     *
      * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
      */
     @java.lang.Override
@@ -1971,10 +2080,6 @@ public final class TrezorMessageBitcoin {
       return nodes_.size();
     }
     /**
-     * <pre>
-     * simplified way how to specify pubkeys if they share the same address_n path
-     * </pre>
-     *
      * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
      */
     @java.lang.Override
@@ -1982,10 +2087,6 @@ public final class TrezorMessageBitcoin {
       return nodes_.get(index);
     }
     /**
-     * <pre>
-     * simplified way how to specify pubkeys if they share the same address_n path
-     * </pre>
-     *
      * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
      */
     @java.lang.Override
@@ -2000,7 +2101,7 @@ public final class TrezorMessageBitcoin {
         emptyIntList();
     /**
      * <pre>
-     * use only field 1 or fields 4+5, if fields 4+5 are used, field 1 is ignored
+     * path to derive pubkeys from nodes
      * </pre>
      *
      * <code>repeated uint32 address_n = 5;</code>
@@ -2013,7 +2114,7 @@ public final class TrezorMessageBitcoin {
     }
     /**
      * <pre>
-     * use only field 1 or fields 4+5, if fields 4+5 are used, field 1 is ignored
+     * path to derive pubkeys from nodes
      * </pre>
      *
      * <code>repeated uint32 address_n = 5;</code>
@@ -2024,7 +2125,7 @@ public final class TrezorMessageBitcoin {
     }
     /**
      * <pre>
-     * use only field 1 or fields 4+5, if fields 4+5 are used, field 1 is ignored
+     * path to derive pubkeys from nodes
      * </pre>
      *
      * <code>repeated uint32 address_n = 5;</code>
@@ -2033,6 +2134,32 @@ public final class TrezorMessageBitcoin {
      */
     public int getAddressN(int index) {
       return addressN_.getInt(index);
+    }
+
+    public static final int PUBKEYS_ORDER_FIELD_NUMBER = 6;
+    private int pubkeysOrder_ = 0;
+    /**
+     * <pre>
+     * order of pubkeys in script pubkey
+     * </pre>
+     *
+     * <code>optional .hw.trezor.messages.bitcoin.MultisigPubkeysOrder pubkeys_order = 6 [default = PRESERVED];</code>
+     * @return Whether the pubkeysOrder field is set.
+     */
+    @java.lang.Override public boolean hasPubkeysOrder() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * order of pubkeys in script pubkey
+     * </pre>
+     *
+     * <code>optional .hw.trezor.messages.bitcoin.MultisigPubkeysOrder pubkeys_order = 6 [default = PRESERVED];</code>
+     * @return The pubkeysOrder.
+     */
+    @java.lang.Override public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.MultisigPubkeysOrder getPubkeysOrder() {
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.MultisigPubkeysOrder result = com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.MultisigPubkeysOrder.forNumber(pubkeysOrder_);
+      return result == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.MultisigPubkeysOrder.PRESERVED : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2080,6 +2207,9 @@ public final class TrezorMessageBitcoin {
       for (int i = 0; i < addressN_.size(); i++) {
         output.writeUInt32(5, addressN_.getInt(i));
       }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeEnum(6, pubkeysOrder_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -2119,6 +2249,10 @@ public final class TrezorMessageBitcoin {
         size += dataSize;
         size += 1 * getAddressNList().size();
       }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(6, pubkeysOrder_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -2147,6 +2281,10 @@ public final class TrezorMessageBitcoin {
           .equals(other.getNodesList())) return false;
       if (!getAddressNList()
           .equals(other.getAddressNList())) return false;
+      if (hasPubkeysOrder() != other.hasPubkeysOrder()) return false;
+      if (hasPubkeysOrder()) {
+        if (pubkeysOrder_ != other.pubkeysOrder_) return false;
+      }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -2177,6 +2315,10 @@ public final class TrezorMessageBitcoin {
       if (getAddressNCount() > 0) {
         hash = (37 * hash) + ADDRESS_N_FIELD_NUMBER;
         hash = (53 * hash) + getAddressNList().hashCode();
+      }
+      if (hasPubkeysOrder()) {
+        hash = (37 * hash) + PUBKEYS_ORDER_FIELD_NUMBER;
+        hash = (53 * hash) + pubkeysOrder_;
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -2332,6 +2474,7 @@ public final class TrezorMessageBitcoin {
         }
         bitField0_ = (bitField0_ & ~0x00000008);
         addressN_ = emptyIntList();
+        pubkeysOrder_ = 0;
         return this;
       }
 
@@ -2399,6 +2542,10 @@ public final class TrezorMessageBitcoin {
         if (((from_bitField0_ & 0x00000010) != 0)) {
           addressN_.makeImmutable();
           result.addressN_ = addressN_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.pubkeysOrder_ = pubkeysOrder_;
+          to_bitField0_ |= 0x00000002;
         }
         result.bitField0_ |= to_bitField0_;
       }
@@ -2492,6 +2639,9 @@ public final class TrezorMessageBitcoin {
           }
           onChanged();
         }
+        if (other.hasPubkeysOrder()) {
+          setPubkeysOrder(other.getPubkeysOrder());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -2584,6 +2734,18 @@ public final class TrezorMessageBitcoin {
                 input.popLimit(limit);
                 break;
               } // case 42
+              case 48: {
+                int tmpRaw = input.readEnum();
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.MultisigPubkeysOrder tmpValue =
+                    com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.MultisigPubkeysOrder.forNumber(tmpRaw);
+                if (tmpValue == null) {
+                  mergeUnknownVarintField(6, tmpRaw);
+                } else {
+                  pubkeysOrder_ = tmpRaw;
+                  bitField0_ |= 0x00000020;
+                }
+                break;
+              } // case 48
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -2615,7 +2777,7 @@ public final class TrezorMessageBitcoin {
 
       /**
        * <pre>
-       * pubkeys from multisig address (sorted lexicographically)
+       * this field is deprecated and will be removed in the future, use nodes together with address_n instead
        * </pre>
        *
        * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -2629,7 +2791,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * pubkeys from multisig address (sorted lexicographically)
+       * this field is deprecated and will be removed in the future, use nodes together with address_n instead
        * </pre>
        *
        * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -2643,7 +2805,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * pubkeys from multisig address (sorted lexicographically)
+       * this field is deprecated and will be removed in the future, use nodes together with address_n instead
        * </pre>
        *
        * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -2657,7 +2819,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * pubkeys from multisig address (sorted lexicographically)
+       * this field is deprecated and will be removed in the future, use nodes together with address_n instead
        * </pre>
        *
        * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -2678,7 +2840,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * pubkeys from multisig address (sorted lexicographically)
+       * this field is deprecated and will be removed in the future, use nodes together with address_n instead
        * </pre>
        *
        * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -2696,7 +2858,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * pubkeys from multisig address (sorted lexicographically)
+       * this field is deprecated and will be removed in the future, use nodes together with address_n instead
        * </pre>
        *
        * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -2716,7 +2878,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * pubkeys from multisig address (sorted lexicographically)
+       * this field is deprecated and will be removed in the future, use nodes together with address_n instead
        * </pre>
        *
        * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -2737,7 +2899,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * pubkeys from multisig address (sorted lexicographically)
+       * this field is deprecated and will be removed in the future, use nodes together with address_n instead
        * </pre>
        *
        * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -2755,7 +2917,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * pubkeys from multisig address (sorted lexicographically)
+       * this field is deprecated and will be removed in the future, use nodes together with address_n instead
        * </pre>
        *
        * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -2773,7 +2935,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * pubkeys from multisig address (sorted lexicographically)
+       * this field is deprecated and will be removed in the future, use nodes together with address_n instead
        * </pre>
        *
        * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -2792,7 +2954,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * pubkeys from multisig address (sorted lexicographically)
+       * this field is deprecated and will be removed in the future, use nodes together with address_n instead
        * </pre>
        *
        * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -2809,7 +2971,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * pubkeys from multisig address (sorted lexicographically)
+       * this field is deprecated and will be removed in the future, use nodes together with address_n instead
        * </pre>
        *
        * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -2826,7 +2988,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * pubkeys from multisig address (sorted lexicographically)
+       * this field is deprecated and will be removed in the future, use nodes together with address_n instead
        * </pre>
        *
        * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -2837,7 +2999,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * pubkeys from multisig address (sorted lexicographically)
+       * this field is deprecated and will be removed in the future, use nodes together with address_n instead
        * </pre>
        *
        * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -2851,7 +3013,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * pubkeys from multisig address (sorted lexicographically)
+       * this field is deprecated and will be removed in the future, use nodes together with address_n instead
        * </pre>
        *
        * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -2866,7 +3028,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * pubkeys from multisig address (sorted lexicographically)
+       * this field is deprecated and will be removed in the future, use nodes together with address_n instead
        * </pre>
        *
        * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -2877,7 +3039,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * pubkeys from multisig address (sorted lexicographically)
+       * this field is deprecated and will be removed in the future, use nodes together with address_n instead
        * </pre>
        *
        * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -2889,7 +3051,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * pubkeys from multisig address (sorted lexicographically)
+       * this field is deprecated and will be removed in the future, use nodes together with address_n instead
        * </pre>
        *
        * <code>repeated .hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType pubkeys = 1;</code>
@@ -3094,10 +3256,6 @@ public final class TrezorMessageBitcoin {
           com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.HDNodeType, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.HDNodeType.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.HDNodeTypeOrBuilder> nodesBuilder_;
 
       /**
-       * <pre>
-       * simplified way how to specify pubkeys if they share the same address_n path
-       * </pre>
-       *
        * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
        */
       public java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.HDNodeType> getNodesList() {
@@ -3108,10 +3266,6 @@ public final class TrezorMessageBitcoin {
         }
       }
       /**
-       * <pre>
-       * simplified way how to specify pubkeys if they share the same address_n path
-       * </pre>
-       *
        * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
        */
       public int getNodesCount() {
@@ -3122,10 +3276,6 @@ public final class TrezorMessageBitcoin {
         }
       }
       /**
-       * <pre>
-       * simplified way how to specify pubkeys if they share the same address_n path
-       * </pre>
-       *
        * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
        */
       public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.HDNodeType getNodes(int index) {
@@ -3136,10 +3286,6 @@ public final class TrezorMessageBitcoin {
         }
       }
       /**
-       * <pre>
-       * simplified way how to specify pubkeys if they share the same address_n path
-       * </pre>
-       *
        * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
        */
       public Builder setNodes(
@@ -3157,10 +3303,6 @@ public final class TrezorMessageBitcoin {
         return this;
       }
       /**
-       * <pre>
-       * simplified way how to specify pubkeys if they share the same address_n path
-       * </pre>
-       *
        * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
        */
       public Builder setNodes(
@@ -3175,10 +3317,6 @@ public final class TrezorMessageBitcoin {
         return this;
       }
       /**
-       * <pre>
-       * simplified way how to specify pubkeys if they share the same address_n path
-       * </pre>
-       *
        * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
        */
       public Builder addNodes(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.HDNodeType value) {
@@ -3195,10 +3333,6 @@ public final class TrezorMessageBitcoin {
         return this;
       }
       /**
-       * <pre>
-       * simplified way how to specify pubkeys if they share the same address_n path
-       * </pre>
-       *
        * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
        */
       public Builder addNodes(
@@ -3216,10 +3350,6 @@ public final class TrezorMessageBitcoin {
         return this;
       }
       /**
-       * <pre>
-       * simplified way how to specify pubkeys if they share the same address_n path
-       * </pre>
-       *
        * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
        */
       public Builder addNodes(
@@ -3234,10 +3364,6 @@ public final class TrezorMessageBitcoin {
         return this;
       }
       /**
-       * <pre>
-       * simplified way how to specify pubkeys if they share the same address_n path
-       * </pre>
-       *
        * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
        */
       public Builder addNodes(
@@ -3252,10 +3378,6 @@ public final class TrezorMessageBitcoin {
         return this;
       }
       /**
-       * <pre>
-       * simplified way how to specify pubkeys if they share the same address_n path
-       * </pre>
-       *
        * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
        */
       public Builder addAllNodes(
@@ -3271,10 +3393,6 @@ public final class TrezorMessageBitcoin {
         return this;
       }
       /**
-       * <pre>
-       * simplified way how to specify pubkeys if they share the same address_n path
-       * </pre>
-       *
        * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
        */
       public Builder clearNodes() {
@@ -3288,10 +3406,6 @@ public final class TrezorMessageBitcoin {
         return this;
       }
       /**
-       * <pre>
-       * simplified way how to specify pubkeys if they share the same address_n path
-       * </pre>
-       *
        * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
        */
       public Builder removeNodes(int index) {
@@ -3305,10 +3419,6 @@ public final class TrezorMessageBitcoin {
         return this;
       }
       /**
-       * <pre>
-       * simplified way how to specify pubkeys if they share the same address_n path
-       * </pre>
-       *
        * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
        */
       public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.HDNodeType.Builder getNodesBuilder(
@@ -3316,10 +3426,6 @@ public final class TrezorMessageBitcoin {
         return getNodesFieldBuilder().getBuilder(index);
       }
       /**
-       * <pre>
-       * simplified way how to specify pubkeys if they share the same address_n path
-       * </pre>
-       *
        * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
        */
       public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.HDNodeTypeOrBuilder getNodesOrBuilder(
@@ -3330,10 +3436,6 @@ public final class TrezorMessageBitcoin {
         }
       }
       /**
-       * <pre>
-       * simplified way how to specify pubkeys if they share the same address_n path
-       * </pre>
-       *
        * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
        */
       public java.util.List<? extends com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.HDNodeTypeOrBuilder> 
@@ -3345,10 +3447,6 @@ public final class TrezorMessageBitcoin {
         }
       }
       /**
-       * <pre>
-       * simplified way how to specify pubkeys if they share the same address_n path
-       * </pre>
-       *
        * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
        */
       public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.HDNodeType.Builder addNodesBuilder() {
@@ -3356,10 +3454,6 @@ public final class TrezorMessageBitcoin {
             com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.HDNodeType.getDefaultInstance());
       }
       /**
-       * <pre>
-       * simplified way how to specify pubkeys if they share the same address_n path
-       * </pre>
-       *
        * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
        */
       public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.HDNodeType.Builder addNodesBuilder(
@@ -3368,10 +3462,6 @@ public final class TrezorMessageBitcoin {
             index, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.HDNodeType.getDefaultInstance());
       }
       /**
-       * <pre>
-       * simplified way how to specify pubkeys if they share the same address_n path
-       * </pre>
-       *
        * <code>repeated .hw.trezor.messages.common.HDNodeType nodes = 4;</code>
        */
       public java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.HDNodeType.Builder> 
@@ -3402,7 +3492,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * use only field 1 or fields 4+5, if fields 4+5 are used, field 1 is ignored
+       * path to derive pubkeys from nodes
        * </pre>
        *
        * <code>repeated uint32 address_n = 5;</code>
@@ -3415,7 +3505,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * use only field 1 or fields 4+5, if fields 4+5 are used, field 1 is ignored
+       * path to derive pubkeys from nodes
        * </pre>
        *
        * <code>repeated uint32 address_n = 5;</code>
@@ -3426,7 +3516,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * use only field 1 or fields 4+5, if fields 4+5 are used, field 1 is ignored
+       * path to derive pubkeys from nodes
        * </pre>
        *
        * <code>repeated uint32 address_n = 5;</code>
@@ -3438,7 +3528,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * use only field 1 or fields 4+5, if fields 4+5 are used, field 1 is ignored
+       * path to derive pubkeys from nodes
        * </pre>
        *
        * <code>repeated uint32 address_n = 5;</code>
@@ -3457,7 +3547,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * use only field 1 or fields 4+5, if fields 4+5 are used, field 1 is ignored
+       * path to derive pubkeys from nodes
        * </pre>
        *
        * <code>repeated uint32 address_n = 5;</code>
@@ -3474,7 +3564,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * use only field 1 or fields 4+5, if fields 4+5 are used, field 1 is ignored
+       * path to derive pubkeys from nodes
        * </pre>
        *
        * <code>repeated uint32 address_n = 5;</code>
@@ -3492,7 +3582,7 @@ public final class TrezorMessageBitcoin {
       }
       /**
        * <pre>
-       * use only field 1 or fields 4+5, if fields 4+5 are used, field 1 is ignored
+       * path to derive pubkeys from nodes
        * </pre>
        *
        * <code>repeated uint32 address_n = 5;</code>
@@ -3501,6 +3591,64 @@ public final class TrezorMessageBitcoin {
       public Builder clearAddressN() {
         addressN_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+
+      private int pubkeysOrder_ = 0;
+      /**
+       * <pre>
+       * order of pubkeys in script pubkey
+       * </pre>
+       *
+       * <code>optional .hw.trezor.messages.bitcoin.MultisigPubkeysOrder pubkeys_order = 6 [default = PRESERVED];</code>
+       * @return Whether the pubkeysOrder field is set.
+       */
+      @java.lang.Override public boolean hasPubkeysOrder() {
+        return ((bitField0_ & 0x00000020) != 0);
+      }
+      /**
+       * <pre>
+       * order of pubkeys in script pubkey
+       * </pre>
+       *
+       * <code>optional .hw.trezor.messages.bitcoin.MultisigPubkeysOrder pubkeys_order = 6 [default = PRESERVED];</code>
+       * @return The pubkeysOrder.
+       */
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.MultisigPubkeysOrder getPubkeysOrder() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.MultisigPubkeysOrder result = com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.MultisigPubkeysOrder.forNumber(pubkeysOrder_);
+        return result == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.MultisigPubkeysOrder.PRESERVED : result;
+      }
+      /**
+       * <pre>
+       * order of pubkeys in script pubkey
+       * </pre>
+       *
+       * <code>optional .hw.trezor.messages.bitcoin.MultisigPubkeysOrder pubkeys_order = 6 [default = PRESERVED];</code>
+       * @param value The pubkeysOrder to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPubkeysOrder(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.MultisigPubkeysOrder value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000020;
+        pubkeysOrder_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * order of pubkeys in script pubkey
+       * </pre>
+       *
+       * <code>optional .hw.trezor.messages.bitcoin.MultisigPubkeysOrder pubkeys_order = 6 [default = PRESERVED];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPubkeysOrder() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        pubkeysOrder_ = 0;
         onChanged();
         return this;
       }
@@ -13940,7 +14088,7 @@ public final class TrezorMessageBitcoin {
      *
      * <code>optional bool overwintered = 7 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.bitcoin.SignTx.overwintered is deprecated.
-     *     See messages-bitcoin.proto;l=197
+     *     See messages-bitcoin.proto;l=203
      * @return Whether the overwintered field is set.
      */
     @java.lang.Deprecated boolean hasOverwintered();
@@ -13951,7 +14099,7 @@ public final class TrezorMessageBitcoin {
      *
      * <code>optional bool overwintered = 7 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.bitcoin.SignTx.overwintered is deprecated.
-     *     See messages-bitcoin.proto;l=197
+     *     See messages-bitcoin.proto;l=203
      * @return The overwintered.
      */
     @java.lang.Deprecated boolean getOverwintered();
@@ -15426,7 +15574,7 @@ public final class TrezorMessageBitcoin {
      *
      * <code>optional bool overwintered = 7 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.bitcoin.SignTx.overwintered is deprecated.
-     *     See messages-bitcoin.proto;l=197
+     *     See messages-bitcoin.proto;l=203
      * @return Whether the overwintered field is set.
      */
     @java.lang.Override
@@ -15440,7 +15588,7 @@ public final class TrezorMessageBitcoin {
      *
      * <code>optional bool overwintered = 7 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.bitcoin.SignTx.overwintered is deprecated.
-     *     See messages-bitcoin.proto;l=197
+     *     See messages-bitcoin.proto;l=203
      * @return The overwintered.
      */
     @java.lang.Override
@@ -16831,7 +16979,7 @@ public final class TrezorMessageBitcoin {
        *
        * <code>optional bool overwintered = 7 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.bitcoin.SignTx.overwintered is deprecated.
-       *     See messages-bitcoin.proto;l=197
+       *     See messages-bitcoin.proto;l=203
        * @return Whether the overwintered field is set.
        */
       @java.lang.Override
@@ -16845,7 +16993,7 @@ public final class TrezorMessageBitcoin {
        *
        * <code>optional bool overwintered = 7 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.bitcoin.SignTx.overwintered is deprecated.
-       *     See messages-bitcoin.proto;l=197
+       *     See messages-bitcoin.proto;l=203
        * @return The overwintered.
        */
       @java.lang.Override
@@ -16859,7 +17007,7 @@ public final class TrezorMessageBitcoin {
        *
        * <code>optional bool overwintered = 7 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.bitcoin.SignTx.overwintered is deprecated.
-       *     See messages-bitcoin.proto;l=197
+       *     See messages-bitcoin.proto;l=203
        * @param value The overwintered to set.
        * @return This builder for chaining.
        */
@@ -16877,7 +17025,7 @@ public final class TrezorMessageBitcoin {
        *
        * <code>optional bool overwintered = 7 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.bitcoin.SignTx.overwintered is deprecated.
-       *     See messages-bitcoin.proto;l=197
+       *     See messages-bitcoin.proto;l=203
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearOverwintered() {
@@ -17579,7 +17727,7 @@ public final class TrezorMessageBitcoin {
    * &#64;next TxAckPrevInput
    * &#64;next TxAckPrevOutput
    * &#64;next TxAckPrevExtraData
-   * &#64;next TxAckPaymentRequest
+   * &#64;next PaymentRequest
    * </pre>
    *
    * Protobuf type {@code hw.trezor.messages.bitcoin.TxRequest}
@@ -19762,7 +19910,7 @@ public final class TrezorMessageBitcoin {
      * &#64;next TxAckPrevInput
      * &#64;next TxAckPrevOutput
      * &#64;next TxAckPrevExtraData
-     * &#64;next TxAckPaymentRequest
+     * &#64;next PaymentRequest
      * </pre>
      *
      * Protobuf type {@code hw.trezor.messages.bitcoin.TxRequest}
@@ -20636,7 +20784,7 @@ public final class TrezorMessageBitcoin {
        *
        * <code>optional bool overwintered = 11 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.bitcoin.TxAck.TransactionType.overwintered is deprecated.
-       *     See messages-bitcoin.proto;l=298
+       *     See messages-bitcoin.proto;l=304
        * @return Whether the overwintered field is set.
        */
       @java.lang.Deprecated boolean hasOverwintered();
@@ -20647,7 +20795,7 @@ public final class TrezorMessageBitcoin {
        *
        * <code>optional bool overwintered = 11 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.bitcoin.TxAck.TransactionType.overwintered is deprecated.
-       *     See messages-bitcoin.proto;l=298
+       *     See messages-bitcoin.proto;l=304
        * @return The overwintered.
        */
       @java.lang.Deprecated boolean getOverwintered();
@@ -24572,7 +24720,7 @@ public final class TrezorMessageBitcoin {
          * index of the PaymentRequest containing this output
          * </pre>
          *
-         * <code>optional uint32 payment_req_index = 12 [(.hw.trezor.messages.experimental_field) = true];</code>
+         * <code>optional uint32 payment_req_index = 12;</code>
          * @return Whether the paymentReqIndex field is set.
          */
         boolean hasPaymentReqIndex();
@@ -24581,7 +24729,7 @@ public final class TrezorMessageBitcoin {
          * index of the PaymentRequest containing this output
          * </pre>
          *
-         * <code>optional uint32 payment_req_index = 12 [(.hw.trezor.messages.experimental_field) = true];</code>
+         * <code>optional uint32 payment_req_index = 12;</code>
          * @return The paymentReqIndex.
          */
         int getPaymentReqIndex();
@@ -24919,7 +25067,7 @@ public final class TrezorMessageBitcoin {
          * index of the PaymentRequest containing this output
          * </pre>
          *
-         * <code>optional uint32 payment_req_index = 12 [(.hw.trezor.messages.experimental_field) = true];</code>
+         * <code>optional uint32 payment_req_index = 12;</code>
          * @return Whether the paymentReqIndex field is set.
          */
         @java.lang.Override
@@ -24931,7 +25079,7 @@ public final class TrezorMessageBitcoin {
          * index of the PaymentRequest containing this output
          * </pre>
          *
-         * <code>optional uint32 payment_req_index = 12 [(.hw.trezor.messages.experimental_field) = true];</code>
+         * <code>optional uint32 payment_req_index = 12;</code>
          * @return The paymentReqIndex.
          */
         @java.lang.Override
@@ -26207,7 +26355,7 @@ public final class TrezorMessageBitcoin {
            * index of the PaymentRequest containing this output
            * </pre>
            *
-           * <code>optional uint32 payment_req_index = 12 [(.hw.trezor.messages.experimental_field) = true];</code>
+           * <code>optional uint32 payment_req_index = 12;</code>
            * @return Whether the paymentReqIndex field is set.
            */
           @java.lang.Override
@@ -26219,7 +26367,7 @@ public final class TrezorMessageBitcoin {
            * index of the PaymentRequest containing this output
            * </pre>
            *
-           * <code>optional uint32 payment_req_index = 12 [(.hw.trezor.messages.experimental_field) = true];</code>
+           * <code>optional uint32 payment_req_index = 12;</code>
            * @return The paymentReqIndex.
            */
           @java.lang.Override
@@ -26231,7 +26379,7 @@ public final class TrezorMessageBitcoin {
            * index of the PaymentRequest containing this output
            * </pre>
            *
-           * <code>optional uint32 payment_req_index = 12 [(.hw.trezor.messages.experimental_field) = true];</code>
+           * <code>optional uint32 payment_req_index = 12;</code>
            * @param value The paymentReqIndex to set.
            * @return This builder for chaining.
            */
@@ -26247,7 +26395,7 @@ public final class TrezorMessageBitcoin {
            * index of the PaymentRequest containing this output
            * </pre>
            *
-           * <code>optional uint32 payment_req_index = 12 [(.hw.trezor.messages.experimental_field) = true];</code>
+           * <code>optional uint32 payment_req_index = 12;</code>
            * @return This builder for chaining.
            */
           public Builder clearPaymentReqIndex() {
@@ -26598,7 +26746,7 @@ public final class TrezorMessageBitcoin {
        *
        * <code>optional bool overwintered = 11 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.bitcoin.TxAck.TransactionType.overwintered is deprecated.
-       *     See messages-bitcoin.proto;l=298
+       *     See messages-bitcoin.proto;l=304
        * @return Whether the overwintered field is set.
        */
       @java.lang.Override
@@ -26612,7 +26760,7 @@ public final class TrezorMessageBitcoin {
        *
        * <code>optional bool overwintered = 11 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.bitcoin.TxAck.TransactionType.overwintered is deprecated.
-       *     See messages-bitcoin.proto;l=298
+       *     See messages-bitcoin.proto;l=304
        * @return The overwintered.
        */
       @java.lang.Override
@@ -28595,7 +28743,7 @@ public final class TrezorMessageBitcoin {
          *
          * <code>optional bool overwintered = 11 [deprecated = true];</code>
          * @deprecated hw.trezor.messages.bitcoin.TxAck.TransactionType.overwintered is deprecated.
-         *     See messages-bitcoin.proto;l=298
+         *     See messages-bitcoin.proto;l=304
          * @return Whether the overwintered field is set.
          */
         @java.lang.Override
@@ -28609,7 +28757,7 @@ public final class TrezorMessageBitcoin {
          *
          * <code>optional bool overwintered = 11 [deprecated = true];</code>
          * @deprecated hw.trezor.messages.bitcoin.TxAck.TransactionType.overwintered is deprecated.
-         *     See messages-bitcoin.proto;l=298
+         *     See messages-bitcoin.proto;l=304
          * @return The overwintered.
          */
         @java.lang.Override
@@ -28623,7 +28771,7 @@ public final class TrezorMessageBitcoin {
          *
          * <code>optional bool overwintered = 11 [deprecated = true];</code>
          * @deprecated hw.trezor.messages.bitcoin.TxAck.TransactionType.overwintered is deprecated.
-         *     See messages-bitcoin.proto;l=298
+         *     See messages-bitcoin.proto;l=304
          * @param value The overwintered to set.
          * @return This builder for chaining.
          */
@@ -28641,7 +28789,7 @@ public final class TrezorMessageBitcoin {
          *
          * <code>optional bool overwintered = 11 [deprecated = true];</code>
          * @deprecated hw.trezor.messages.bitcoin.TxAck.TransactionType.overwintered is deprecated.
-         *     See messages-bitcoin.proto;l=298
+         *     See messages-bitcoin.proto;l=304
          * @return This builder for chaining.
          */
         @java.lang.Deprecated public Builder clearOverwintered() {
@@ -32499,7 +32647,7 @@ public final class TrezorMessageBitcoin {
      * index of the PaymentRequest containing this output
      * </pre>
      *
-     * <code>optional uint32 payment_req_index = 12 [(.hw.trezor.messages.experimental_field) = true];</code>
+     * <code>optional uint32 payment_req_index = 12;</code>
      * @return Whether the paymentReqIndex field is set.
      */
     boolean hasPaymentReqIndex();
@@ -32508,7 +32656,7 @@ public final class TrezorMessageBitcoin {
      * index of the PaymentRequest containing this output
      * </pre>
      *
-     * <code>optional uint32 payment_req_index = 12 [(.hw.trezor.messages.experimental_field) = true];</code>
+     * <code>optional uint32 payment_req_index = 12;</code>
      * @return The paymentReqIndex.
      */
     int getPaymentReqIndex();
@@ -32842,7 +32990,7 @@ public final class TrezorMessageBitcoin {
      * index of the PaymentRequest containing this output
      * </pre>
      *
-     * <code>optional uint32 payment_req_index = 12 [(.hw.trezor.messages.experimental_field) = true];</code>
+     * <code>optional uint32 payment_req_index = 12;</code>
      * @return Whether the paymentReqIndex field is set.
      */
     @java.lang.Override
@@ -32854,7 +33002,7 @@ public final class TrezorMessageBitcoin {
      * index of the PaymentRequest containing this output
      * </pre>
      *
-     * <code>optional uint32 payment_req_index = 12 [(.hw.trezor.messages.experimental_field) = true];</code>
+     * <code>optional uint32 payment_req_index = 12;</code>
      * @return The paymentReqIndex.
      */
     @java.lang.Override
@@ -34122,7 +34270,7 @@ public final class TrezorMessageBitcoin {
        * index of the PaymentRequest containing this output
        * </pre>
        *
-       * <code>optional uint32 payment_req_index = 12 [(.hw.trezor.messages.experimental_field) = true];</code>
+       * <code>optional uint32 payment_req_index = 12;</code>
        * @return Whether the paymentReqIndex field is set.
        */
       @java.lang.Override
@@ -34134,7 +34282,7 @@ public final class TrezorMessageBitcoin {
        * index of the PaymentRequest containing this output
        * </pre>
        *
-       * <code>optional uint32 payment_req_index = 12 [(.hw.trezor.messages.experimental_field) = true];</code>
+       * <code>optional uint32 payment_req_index = 12;</code>
        * @return The paymentReqIndex.
        */
       @java.lang.Override
@@ -34146,7 +34294,7 @@ public final class TrezorMessageBitcoin {
        * index of the PaymentRequest containing this output
        * </pre>
        *
-       * <code>optional uint32 payment_req_index = 12 [(.hw.trezor.messages.experimental_field) = true];</code>
+       * <code>optional uint32 payment_req_index = 12;</code>
        * @param value The paymentReqIndex to set.
        * @return This builder for chaining.
        */
@@ -34162,7 +34310,7 @@ public final class TrezorMessageBitcoin {
        * index of the PaymentRequest containing this output
        * </pre>
        *
-       * <code>optional uint32 payment_req_index = 12 [(.hw.trezor.messages.experimental_field) = true];</code>
+       * <code>optional uint32 payment_req_index = 12;</code>
        * @return This builder for chaining.
        */
       public Builder clearPaymentReqIndex() {
@@ -37520,4959 +37668,6 @@ public final class TrezorMessageBitcoin {
 
     @java.lang.Override
     public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.PrevOutput getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface TxAckPaymentRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.bitcoin.TxAckPaymentRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <pre>
-     * the nonce used in the signature computation
-     * </pre>
-     *
-     * <code>optional bytes nonce = 1;</code>
-     * @return Whether the nonce field is set.
-     */
-    boolean hasNonce();
-    /**
-     * <pre>
-     * the nonce used in the signature computation
-     * </pre>
-     *
-     * <code>optional bytes nonce = 1;</code>
-     * @return The nonce.
-     */
-    com.google.protobuf.ByteString getNonce();
-
-    /**
-     * <pre>
-     * merchant's name
-     * </pre>
-     *
-     * <code>required string recipient_name = 2;</code>
-     * @return Whether the recipientName field is set.
-     */
-    boolean hasRecipientName();
-    /**
-     * <pre>
-     * merchant's name
-     * </pre>
-     *
-     * <code>required string recipient_name = 2;</code>
-     * @return The recipientName.
-     */
-    java.lang.String getRecipientName();
-    /**
-     * <pre>
-     * merchant's name
-     * </pre>
-     *
-     * <code>required string recipient_name = 2;</code>
-     * @return The bytes for recipientName.
-     */
-    com.google.protobuf.ByteString
-        getRecipientNameBytes();
-
-    /**
-     * <pre>
-     * any memos that were signed as part of the request
-     * </pre>
-     *
-     * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-     */
-    java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo> 
-        getMemosList();
-    /**
-     * <pre>
-     * any memos that were signed as part of the request
-     * </pre>
-     *
-     * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-     */
-    com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo getMemos(int index);
-    /**
-     * <pre>
-     * any memos that were signed as part of the request
-     * </pre>
-     *
-     * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-     */
-    int getMemosCount();
-    /**
-     * <pre>
-     * any memos that were signed as part of the request
-     * </pre>
-     *
-     * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-     */
-    java.util.List<? extends com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemoOrBuilder> 
-        getMemosOrBuilderList();
-    /**
-     * <pre>
-     * any memos that were signed as part of the request
-     * </pre>
-     *
-     * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-     */
-    com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemoOrBuilder getMemosOrBuilder(
-        int index);
-
-    /**
-     * <pre>
-     * the sum of the external output amounts requested, required for non-CoinJoin
-     * </pre>
-     *
-     * <code>optional uint64 amount = 4;</code>
-     * @return Whether the amount field is set.
-     */
-    boolean hasAmount();
-    /**
-     * <pre>
-     * the sum of the external output amounts requested, required for non-CoinJoin
-     * </pre>
-     *
-     * <code>optional uint64 amount = 4;</code>
-     * @return The amount.
-     */
-    long getAmount();
-
-    /**
-     * <pre>
-     * the trusted party's signature of the paymentRequestDigest
-     * </pre>
-     *
-     * <code>required bytes signature = 5;</code>
-     * @return Whether the signature field is set.
-     */
-    boolean hasSignature();
-    /**
-     * <pre>
-     * the trusted party's signature of the paymentRequestDigest
-     * </pre>
-     *
-     * <code>required bytes signature = 5;</code>
-     * @return The signature.
-     */
-    com.google.protobuf.ByteString getSignature();
-  }
-  /**
-   * <pre>
-   * * Data type of a payment request for a set of outputs.
-   * &#64;next TxRequest
-   * </pre>
-   *
-   * Protobuf type {@code hw.trezor.messages.bitcoin.TxAckPaymentRequest}
-   */
-  public static final class TxAckPaymentRequest extends
-      com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:hw.trezor.messages.bitcoin.TxAckPaymentRequest)
-      TxAckPaymentRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
-    static {
-      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
-        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
-        /* major= */ 4,
-        /* minor= */ 28,
-        /* patch= */ 3,
-        /* suffix= */ "",
-        TxAckPaymentRequest.class.getName());
-    }
-    // Use TxAckPaymentRequest.newBuilder() to construct.
-    private TxAckPaymentRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-    }
-    private TxAckPaymentRequest() {
-      nonce_ = com.google.protobuf.ByteString.EMPTY;
-      recipientName_ = "";
-      memos_ = java.util.Collections.emptyList();
-      signature_ = com.google.protobuf.ByteString.EMPTY;
-    }
-
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.Builder.class);
-    }
-
-    public interface PaymentRequestMemoOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo)
-        com.google.protobuf.MessageOrBuilder {
-
-      /**
-       * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo text_memo = 1;</code>
-       * @return Whether the textMemo field is set.
-       */
-      boolean hasTextMemo();
-      /**
-       * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo text_memo = 1;</code>
-       * @return The textMemo.
-       */
-      com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo getTextMemo();
-      /**
-       * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo text_memo = 1;</code>
-       */
-      com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemoOrBuilder getTextMemoOrBuilder();
-
-      /**
-       * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo refund_memo = 2;</code>
-       * @return Whether the refundMemo field is set.
-       */
-      boolean hasRefundMemo();
-      /**
-       * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo refund_memo = 2;</code>
-       * @return The refundMemo.
-       */
-      com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo getRefundMemo();
-      /**
-       * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo refund_memo = 2;</code>
-       */
-      com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemoOrBuilder getRefundMemoOrBuilder();
-
-      /**
-       * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
-       * @return Whether the coinPurchaseMemo field is set.
-       */
-      boolean hasCoinPurchaseMemo();
-      /**
-       * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
-       * @return The coinPurchaseMemo.
-       */
-      com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo getCoinPurchaseMemo();
-      /**
-       * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
-       */
-      com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemoOrBuilder getCoinPurchaseMemoOrBuilder();
-    }
-    /**
-     * Protobuf type {@code hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo}
-     */
-    public static final class PaymentRequestMemo extends
-        com.google.protobuf.GeneratedMessage implements
-        // @@protoc_insertion_point(message_implements:hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo)
-        PaymentRequestMemoOrBuilder {
-    private static final long serialVersionUID = 0L;
-      static {
-        com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
-          com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
-          /* major= */ 4,
-          /* minor= */ 28,
-          /* patch= */ 3,
-          /* suffix= */ "",
-          PaymentRequestMemo.class.getName());
-      }
-      // Use PaymentRequestMemo.newBuilder() to construct.
-      private PaymentRequestMemo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-        super(builder);
-      }
-      private PaymentRequestMemo() {
-      }
-
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_PaymentRequestMemo_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_PaymentRequestMemo_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo.Builder.class);
-      }
-
-      private int bitField0_;
-      public static final int TEXT_MEMO_FIELD_NUMBER = 1;
-      private com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo textMemo_;
-      /**
-       * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo text_memo = 1;</code>
-       * @return Whether the textMemo field is set.
-       */
-      @java.lang.Override
-      public boolean hasTextMemo() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo text_memo = 1;</code>
-       * @return The textMemo.
-       */
-      @java.lang.Override
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo getTextMemo() {
-        return textMemo_ == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo.getDefaultInstance() : textMemo_;
-      }
-      /**
-       * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo text_memo = 1;</code>
-       */
-      @java.lang.Override
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemoOrBuilder getTextMemoOrBuilder() {
-        return textMemo_ == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo.getDefaultInstance() : textMemo_;
-      }
-
-      public static final int REFUND_MEMO_FIELD_NUMBER = 2;
-      private com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo refundMemo_;
-      /**
-       * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo refund_memo = 2;</code>
-       * @return Whether the refundMemo field is set.
-       */
-      @java.lang.Override
-      public boolean hasRefundMemo() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo refund_memo = 2;</code>
-       * @return The refundMemo.
-       */
-      @java.lang.Override
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo getRefundMemo() {
-        return refundMemo_ == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo.getDefaultInstance() : refundMemo_;
-      }
-      /**
-       * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo refund_memo = 2;</code>
-       */
-      @java.lang.Override
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemoOrBuilder getRefundMemoOrBuilder() {
-        return refundMemo_ == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo.getDefaultInstance() : refundMemo_;
-      }
-
-      public static final int COIN_PURCHASE_MEMO_FIELD_NUMBER = 3;
-      private com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo coinPurchaseMemo_;
-      /**
-       * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
-       * @return Whether the coinPurchaseMemo field is set.
-       */
-      @java.lang.Override
-      public boolean hasCoinPurchaseMemo() {
-        return ((bitField0_ & 0x00000004) != 0);
-      }
-      /**
-       * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
-       * @return The coinPurchaseMemo.
-       */
-      @java.lang.Override
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo getCoinPurchaseMemo() {
-        return coinPurchaseMemo_ == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo.getDefaultInstance() : coinPurchaseMemo_;
-      }
-      /**
-       * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
-       */
-      @java.lang.Override
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemoOrBuilder getCoinPurchaseMemoOrBuilder() {
-        return coinPurchaseMemo_ == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo.getDefaultInstance() : coinPurchaseMemo_;
-      }
-
-      private byte memoizedIsInitialized = -1;
-      @java.lang.Override
-      public final boolean isInitialized() {
-        byte isInitialized = memoizedIsInitialized;
-        if (isInitialized == 1) return true;
-        if (isInitialized == 0) return false;
-
-        if (hasTextMemo()) {
-          if (!getTextMemo().isInitialized()) {
-            memoizedIsInitialized = 0;
-            return false;
-          }
-        }
-        if (hasRefundMemo()) {
-          if (!getRefundMemo().isInitialized()) {
-            memoizedIsInitialized = 0;
-            return false;
-          }
-        }
-        if (hasCoinPurchaseMemo()) {
-          if (!getCoinPurchaseMemo().isInitialized()) {
-            memoizedIsInitialized = 0;
-            return false;
-          }
-        }
-        memoizedIsInitialized = 1;
-        return true;
-      }
-
-      @java.lang.Override
-      public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
-        if (((bitField0_ & 0x00000001) != 0)) {
-          output.writeMessage(1, getTextMemo());
-        }
-        if (((bitField0_ & 0x00000002) != 0)) {
-          output.writeMessage(2, getRefundMemo());
-        }
-        if (((bitField0_ & 0x00000004) != 0)) {
-          output.writeMessage(3, getCoinPurchaseMemo());
-        }
-        getUnknownFields().writeTo(output);
-      }
-
-      @java.lang.Override
-      public int getSerializedSize() {
-        int size = memoizedSize;
-        if (size != -1) return size;
-
-        size = 0;
-        if (((bitField0_ & 0x00000001) != 0)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(1, getTextMemo());
-        }
-        if (((bitField0_ & 0x00000002) != 0)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(2, getRefundMemo());
-        }
-        if (((bitField0_ & 0x00000004) != 0)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(3, getCoinPurchaseMemo());
-        }
-        size += getUnknownFields().getSerializedSize();
-        memoizedSize = size;
-        return size;
-      }
-
-      @java.lang.Override
-      public boolean equals(final java.lang.Object obj) {
-        if (obj == this) {
-         return true;
-        }
-        if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo)) {
-          return super.equals(obj);
-        }
-        com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo) obj;
-
-        if (hasTextMemo() != other.hasTextMemo()) return false;
-        if (hasTextMemo()) {
-          if (!getTextMemo()
-              .equals(other.getTextMemo())) return false;
-        }
-        if (hasRefundMemo() != other.hasRefundMemo()) return false;
-        if (hasRefundMemo()) {
-          if (!getRefundMemo()
-              .equals(other.getRefundMemo())) return false;
-        }
-        if (hasCoinPurchaseMemo() != other.hasCoinPurchaseMemo()) return false;
-        if (hasCoinPurchaseMemo()) {
-          if (!getCoinPurchaseMemo()
-              .equals(other.getCoinPurchaseMemo())) return false;
-        }
-        if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-        return true;
-      }
-
-      @java.lang.Override
-      public int hashCode() {
-        if (memoizedHashCode != 0) {
-          return memoizedHashCode;
-        }
-        int hash = 41;
-        hash = (19 * hash) + getDescriptor().hashCode();
-        if (hasTextMemo()) {
-          hash = (37 * hash) + TEXT_MEMO_FIELD_NUMBER;
-          hash = (53 * hash) + getTextMemo().hashCode();
-        }
-        if (hasRefundMemo()) {
-          hash = (37 * hash) + REFUND_MEMO_FIELD_NUMBER;
-          hash = (53 * hash) + getRefundMemo().hashCode();
-        }
-        if (hasCoinPurchaseMemo()) {
-          hash = (37 * hash) + COIN_PURCHASE_MEMO_FIELD_NUMBER;
-          hash = (53 * hash) + getCoinPurchaseMemo().hashCode();
-        }
-        hash = (29 * hash) + getUnknownFields().hashCode();
-        memoizedHashCode = hash;
-        return hash;
-      }
-
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo parseFrom(
-          java.nio.ByteBuffer data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo parseFrom(
-          java.nio.ByteBuffer data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo parseFrom(
-          com.google.protobuf.ByteString data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo parseFrom(
-          com.google.protobuf.ByteString data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo parseFrom(byte[] data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo parseFrom(
-          byte[] data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo parseFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseWithIOException(PARSER, input);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo parseFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseWithIOException(PARSER, input, extensionRegistry);
-      }
-
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo parseDelimitedFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseDelimitedWithIOException(PARSER, input);
-      }
-
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo parseDelimitedFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo parseFrom(
-          com.google.protobuf.CodedInputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseWithIOException(PARSER, input);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo parseFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseWithIOException(PARSER, input, extensionRegistry);
-      }
-
-      @java.lang.Override
-      public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder() {
-        return DEFAULT_INSTANCE.toBuilder();
-      }
-      public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo prototype) {
-        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-      }
-      @java.lang.Override
-      public Builder toBuilder() {
-        return this == DEFAULT_INSTANCE
-            ? new Builder() : new Builder().mergeFrom(this);
-      }
-
-      @java.lang.Override
-      protected Builder newBuilderForType(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        Builder builder = new Builder(parent);
-        return builder;
-      }
-      /**
-       * Protobuf type {@code hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo}
-       */
-      public static final class Builder extends
-          com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo)
-          com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemoOrBuilder {
-        public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_PaymentRequestMemo_descriptor;
-        }
-
-        @java.lang.Override
-        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_PaymentRequestMemo_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo.Builder.class);
-        }
-
-        // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo.newBuilder()
-        private Builder() {
-          maybeForceBuilderInitialization();
-        }
-
-        private Builder(
-            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-          super(parent);
-          maybeForceBuilderInitialization();
-        }
-        private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessage
-                  .alwaysUseFieldBuilders) {
-            getTextMemoFieldBuilder();
-            getRefundMemoFieldBuilder();
-            getCoinPurchaseMemoFieldBuilder();
-          }
-        }
-        @java.lang.Override
-        public Builder clear() {
-          super.clear();
-          bitField0_ = 0;
-          textMemo_ = null;
-          if (textMemoBuilder_ != null) {
-            textMemoBuilder_.dispose();
-            textMemoBuilder_ = null;
-          }
-          refundMemo_ = null;
-          if (refundMemoBuilder_ != null) {
-            refundMemoBuilder_.dispose();
-            refundMemoBuilder_ = null;
-          }
-          coinPurchaseMemo_ = null;
-          if (coinPurchaseMemoBuilder_ != null) {
-            coinPurchaseMemoBuilder_.dispose();
-            coinPurchaseMemoBuilder_ = null;
-          }
-          return this;
-        }
-
-        @java.lang.Override
-        public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-          return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_PaymentRequestMemo_descriptor;
-        }
-
-        @java.lang.Override
-        public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo getDefaultInstanceForType() {
-          return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo.getDefaultInstance();
-        }
-
-        @java.lang.Override
-        public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo build() {
-          com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo result = buildPartial();
-          if (!result.isInitialized()) {
-            throw newUninitializedMessageException(result);
-          }
-          return result;
-        }
-
-        @java.lang.Override
-        public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo buildPartial() {
-          com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo(this);
-          if (bitField0_ != 0) { buildPartial0(result); }
-          onBuilt();
-          return result;
-        }
-
-        private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo result) {
-          int from_bitField0_ = bitField0_;
-          int to_bitField0_ = 0;
-          if (((from_bitField0_ & 0x00000001) != 0)) {
-            result.textMemo_ = textMemoBuilder_ == null
-                ? textMemo_
-                : textMemoBuilder_.build();
-            to_bitField0_ |= 0x00000001;
-          }
-          if (((from_bitField0_ & 0x00000002) != 0)) {
-            result.refundMemo_ = refundMemoBuilder_ == null
-                ? refundMemo_
-                : refundMemoBuilder_.build();
-            to_bitField0_ |= 0x00000002;
-          }
-          if (((from_bitField0_ & 0x00000004) != 0)) {
-            result.coinPurchaseMemo_ = coinPurchaseMemoBuilder_ == null
-                ? coinPurchaseMemo_
-                : coinPurchaseMemoBuilder_.build();
-            to_bitField0_ |= 0x00000004;
-          }
-          result.bitField0_ |= to_bitField0_;
-        }
-
-        @java.lang.Override
-        public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo) {
-            return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo)other);
-          } else {
-            super.mergeFrom(other);
-            return this;
-          }
-        }
-
-        public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo other) {
-          if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo.getDefaultInstance()) return this;
-          if (other.hasTextMemo()) {
-            mergeTextMemo(other.getTextMemo());
-          }
-          if (other.hasRefundMemo()) {
-            mergeRefundMemo(other.getRefundMemo());
-          }
-          if (other.hasCoinPurchaseMemo()) {
-            mergeCoinPurchaseMemo(other.getCoinPurchaseMemo());
-          }
-          this.mergeUnknownFields(other.getUnknownFields());
-          onChanged();
-          return this;
-        }
-
-        @java.lang.Override
-        public final boolean isInitialized() {
-          if (hasTextMemo()) {
-            if (!getTextMemo().isInitialized()) {
-              return false;
-            }
-          }
-          if (hasRefundMemo()) {
-            if (!getRefundMemo().isInitialized()) {
-              return false;
-            }
-          }
-          if (hasCoinPurchaseMemo()) {
-            if (!getCoinPurchaseMemo().isInitialized()) {
-              return false;
-            }
-          }
-          return true;
-        }
-
-        @java.lang.Override
-        public Builder mergeFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          if (extensionRegistry == null) {
-            throw new java.lang.NullPointerException();
-          }
-          try {
-            boolean done = false;
-            while (!done) {
-              int tag = input.readTag();
-              switch (tag) {
-                case 0:
-                  done = true;
-                  break;
-                case 10: {
-                  input.readMessage(
-                      getTextMemoFieldBuilder().getBuilder(),
-                      extensionRegistry);
-                  bitField0_ |= 0x00000001;
-                  break;
-                } // case 10
-                case 18: {
-                  input.readMessage(
-                      getRefundMemoFieldBuilder().getBuilder(),
-                      extensionRegistry);
-                  bitField0_ |= 0x00000002;
-                  break;
-                } // case 18
-                case 26: {
-                  input.readMessage(
-                      getCoinPurchaseMemoFieldBuilder().getBuilder(),
-                      extensionRegistry);
-                  bitField0_ |= 0x00000004;
-                  break;
-                } // case 26
-                default: {
-                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                    done = true; // was an endgroup tag
-                  }
-                  break;
-                } // default:
-              } // switch (tag)
-            } // while (!done)
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.unwrapIOException();
-          } finally {
-            onChanged();
-          } // finally
-          return this;
-        }
-        private int bitField0_;
-
-        private com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo textMemo_;
-        private com.google.protobuf.SingleFieldBuilder<
-            com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemoOrBuilder> textMemoBuilder_;
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo text_memo = 1;</code>
-         * @return Whether the textMemo field is set.
-         */
-        public boolean hasTextMemo() {
-          return ((bitField0_ & 0x00000001) != 0);
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo text_memo = 1;</code>
-         * @return The textMemo.
-         */
-        public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo getTextMemo() {
-          if (textMemoBuilder_ == null) {
-            return textMemo_ == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo.getDefaultInstance() : textMemo_;
-          } else {
-            return textMemoBuilder_.getMessage();
-          }
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo text_memo = 1;</code>
-         */
-        public Builder setTextMemo(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo value) {
-          if (textMemoBuilder_ == null) {
-            if (value == null) {
-              throw new NullPointerException();
-            }
-            textMemo_ = value;
-          } else {
-            textMemoBuilder_.setMessage(value);
-          }
-          bitField0_ |= 0x00000001;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo text_memo = 1;</code>
-         */
-        public Builder setTextMemo(
-            com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo.Builder builderForValue) {
-          if (textMemoBuilder_ == null) {
-            textMemo_ = builderForValue.build();
-          } else {
-            textMemoBuilder_.setMessage(builderForValue.build());
-          }
-          bitField0_ |= 0x00000001;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo text_memo = 1;</code>
-         */
-        public Builder mergeTextMemo(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo value) {
-          if (textMemoBuilder_ == null) {
-            if (((bitField0_ & 0x00000001) != 0) &&
-              textMemo_ != null &&
-              textMemo_ != com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo.getDefaultInstance()) {
-              getTextMemoBuilder().mergeFrom(value);
-            } else {
-              textMemo_ = value;
-            }
-          } else {
-            textMemoBuilder_.mergeFrom(value);
-          }
-          if (textMemo_ != null) {
-            bitField0_ |= 0x00000001;
-            onChanged();
-          }
-          return this;
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo text_memo = 1;</code>
-         */
-        public Builder clearTextMemo() {
-          bitField0_ = (bitField0_ & ~0x00000001);
-          textMemo_ = null;
-          if (textMemoBuilder_ != null) {
-            textMemoBuilder_.dispose();
-            textMemoBuilder_ = null;
-          }
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo text_memo = 1;</code>
-         */
-        public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo.Builder getTextMemoBuilder() {
-          bitField0_ |= 0x00000001;
-          onChanged();
-          return getTextMemoFieldBuilder().getBuilder();
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo text_memo = 1;</code>
-         */
-        public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemoOrBuilder getTextMemoOrBuilder() {
-          if (textMemoBuilder_ != null) {
-            return textMemoBuilder_.getMessageOrBuilder();
-          } else {
-            return textMemo_ == null ?
-                com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo.getDefaultInstance() : textMemo_;
-          }
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo text_memo = 1;</code>
-         */
-        private com.google.protobuf.SingleFieldBuilder<
-            com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemoOrBuilder> 
-            getTextMemoFieldBuilder() {
-          if (textMemoBuilder_ == null) {
-            textMemoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-                com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemoOrBuilder>(
-                    getTextMemo(),
-                    getParentForChildren(),
-                    isClean());
-            textMemo_ = null;
-          }
-          return textMemoBuilder_;
-        }
-
-        private com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo refundMemo_;
-        private com.google.protobuf.SingleFieldBuilder<
-            com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemoOrBuilder> refundMemoBuilder_;
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo refund_memo = 2;</code>
-         * @return Whether the refundMemo field is set.
-         */
-        public boolean hasRefundMemo() {
-          return ((bitField0_ & 0x00000002) != 0);
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo refund_memo = 2;</code>
-         * @return The refundMemo.
-         */
-        public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo getRefundMemo() {
-          if (refundMemoBuilder_ == null) {
-            return refundMemo_ == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo.getDefaultInstance() : refundMemo_;
-          } else {
-            return refundMemoBuilder_.getMessage();
-          }
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo refund_memo = 2;</code>
-         */
-        public Builder setRefundMemo(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo value) {
-          if (refundMemoBuilder_ == null) {
-            if (value == null) {
-              throw new NullPointerException();
-            }
-            refundMemo_ = value;
-          } else {
-            refundMemoBuilder_.setMessage(value);
-          }
-          bitField0_ |= 0x00000002;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo refund_memo = 2;</code>
-         */
-        public Builder setRefundMemo(
-            com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo.Builder builderForValue) {
-          if (refundMemoBuilder_ == null) {
-            refundMemo_ = builderForValue.build();
-          } else {
-            refundMemoBuilder_.setMessage(builderForValue.build());
-          }
-          bitField0_ |= 0x00000002;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo refund_memo = 2;</code>
-         */
-        public Builder mergeRefundMemo(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo value) {
-          if (refundMemoBuilder_ == null) {
-            if (((bitField0_ & 0x00000002) != 0) &&
-              refundMemo_ != null &&
-              refundMemo_ != com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo.getDefaultInstance()) {
-              getRefundMemoBuilder().mergeFrom(value);
-            } else {
-              refundMemo_ = value;
-            }
-          } else {
-            refundMemoBuilder_.mergeFrom(value);
-          }
-          if (refundMemo_ != null) {
-            bitField0_ |= 0x00000002;
-            onChanged();
-          }
-          return this;
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo refund_memo = 2;</code>
-         */
-        public Builder clearRefundMemo() {
-          bitField0_ = (bitField0_ & ~0x00000002);
-          refundMemo_ = null;
-          if (refundMemoBuilder_ != null) {
-            refundMemoBuilder_.dispose();
-            refundMemoBuilder_ = null;
-          }
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo refund_memo = 2;</code>
-         */
-        public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo.Builder getRefundMemoBuilder() {
-          bitField0_ |= 0x00000002;
-          onChanged();
-          return getRefundMemoFieldBuilder().getBuilder();
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo refund_memo = 2;</code>
-         */
-        public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemoOrBuilder getRefundMemoOrBuilder() {
-          if (refundMemoBuilder_ != null) {
-            return refundMemoBuilder_.getMessageOrBuilder();
-          } else {
-            return refundMemo_ == null ?
-                com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo.getDefaultInstance() : refundMemo_;
-          }
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo refund_memo = 2;</code>
-         */
-        private com.google.protobuf.SingleFieldBuilder<
-            com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemoOrBuilder> 
-            getRefundMemoFieldBuilder() {
-          if (refundMemoBuilder_ == null) {
-            refundMemoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-                com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemoOrBuilder>(
-                    getRefundMemo(),
-                    getParentForChildren(),
-                    isClean());
-            refundMemo_ = null;
-          }
-          return refundMemoBuilder_;
-        }
-
-        private com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo coinPurchaseMemo_;
-        private com.google.protobuf.SingleFieldBuilder<
-            com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemoOrBuilder> coinPurchaseMemoBuilder_;
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
-         * @return Whether the coinPurchaseMemo field is set.
-         */
-        public boolean hasCoinPurchaseMemo() {
-          return ((bitField0_ & 0x00000004) != 0);
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
-         * @return The coinPurchaseMemo.
-         */
-        public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo getCoinPurchaseMemo() {
-          if (coinPurchaseMemoBuilder_ == null) {
-            return coinPurchaseMemo_ == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo.getDefaultInstance() : coinPurchaseMemo_;
-          } else {
-            return coinPurchaseMemoBuilder_.getMessage();
-          }
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
-         */
-        public Builder setCoinPurchaseMemo(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo value) {
-          if (coinPurchaseMemoBuilder_ == null) {
-            if (value == null) {
-              throw new NullPointerException();
-            }
-            coinPurchaseMemo_ = value;
-          } else {
-            coinPurchaseMemoBuilder_.setMessage(value);
-          }
-          bitField0_ |= 0x00000004;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
-         */
-        public Builder setCoinPurchaseMemo(
-            com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo.Builder builderForValue) {
-          if (coinPurchaseMemoBuilder_ == null) {
-            coinPurchaseMemo_ = builderForValue.build();
-          } else {
-            coinPurchaseMemoBuilder_.setMessage(builderForValue.build());
-          }
-          bitField0_ |= 0x00000004;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
-         */
-        public Builder mergeCoinPurchaseMemo(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo value) {
-          if (coinPurchaseMemoBuilder_ == null) {
-            if (((bitField0_ & 0x00000004) != 0) &&
-              coinPurchaseMemo_ != null &&
-              coinPurchaseMemo_ != com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo.getDefaultInstance()) {
-              getCoinPurchaseMemoBuilder().mergeFrom(value);
-            } else {
-              coinPurchaseMemo_ = value;
-            }
-          } else {
-            coinPurchaseMemoBuilder_.mergeFrom(value);
-          }
-          if (coinPurchaseMemo_ != null) {
-            bitField0_ |= 0x00000004;
-            onChanged();
-          }
-          return this;
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
-         */
-        public Builder clearCoinPurchaseMemo() {
-          bitField0_ = (bitField0_ & ~0x00000004);
-          coinPurchaseMemo_ = null;
-          if (coinPurchaseMemoBuilder_ != null) {
-            coinPurchaseMemoBuilder_.dispose();
-            coinPurchaseMemoBuilder_ = null;
-          }
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
-         */
-        public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo.Builder getCoinPurchaseMemoBuilder() {
-          bitField0_ |= 0x00000004;
-          onChanged();
-          return getCoinPurchaseMemoFieldBuilder().getBuilder();
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
-         */
-        public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemoOrBuilder getCoinPurchaseMemoOrBuilder() {
-          if (coinPurchaseMemoBuilder_ != null) {
-            return coinPurchaseMemoBuilder_.getMessageOrBuilder();
-          } else {
-            return coinPurchaseMemo_ == null ?
-                com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo.getDefaultInstance() : coinPurchaseMemo_;
-          }
-        }
-        /**
-         * <code>optional .hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
-         */
-        private com.google.protobuf.SingleFieldBuilder<
-            com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemoOrBuilder> 
-            getCoinPurchaseMemoFieldBuilder() {
-          if (coinPurchaseMemoBuilder_ == null) {
-            coinPurchaseMemoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-                com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemoOrBuilder>(
-                    getCoinPurchaseMemo(),
-                    getParentForChildren(),
-                    isClean());
-            coinPurchaseMemo_ = null;
-          }
-          return coinPurchaseMemoBuilder_;
-        }
-
-        // @@protoc_insertion_point(builder_scope:hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo)
-      }
-
-      // @@protoc_insertion_point(class_scope:hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo)
-      private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo DEFAULT_INSTANCE;
-      static {
-        DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo();
-      }
-
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo getDefaultInstance() {
-        return DEFAULT_INSTANCE;
-      }
-
-      private static final com.google.protobuf.Parser<PaymentRequestMemo>
-          PARSER = new com.google.protobuf.AbstractParser<PaymentRequestMemo>() {
-        @java.lang.Override
-        public PaymentRequestMemo parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
-
-      public static com.google.protobuf.Parser<PaymentRequestMemo> parser() {
-        return PARSER;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Parser<PaymentRequestMemo> getParserForType() {
-        return PARSER;
-      }
-
-      @java.lang.Override
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo getDefaultInstanceForType() {
-        return DEFAULT_INSTANCE;
-      }
-
-    }
-
-    public interface TextMemoOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo)
-        com.google.protobuf.MessageOrBuilder {
-
-      /**
-       * <pre>
-       * plain-text note explaining the purpose of the payment request
-       * </pre>
-       *
-       * <code>required string text = 1;</code>
-       * @return Whether the text field is set.
-       */
-      boolean hasText();
-      /**
-       * <pre>
-       * plain-text note explaining the purpose of the payment request
-       * </pre>
-       *
-       * <code>required string text = 1;</code>
-       * @return The text.
-       */
-      java.lang.String getText();
-      /**
-       * <pre>
-       * plain-text note explaining the purpose of the payment request
-       * </pre>
-       *
-       * <code>required string text = 1;</code>
-       * @return The bytes for text.
-       */
-      com.google.protobuf.ByteString
-          getTextBytes();
-    }
-    /**
-     * Protobuf type {@code hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo}
-     */
-    public static final class TextMemo extends
-        com.google.protobuf.GeneratedMessage implements
-        // @@protoc_insertion_point(message_implements:hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo)
-        TextMemoOrBuilder {
-    private static final long serialVersionUID = 0L;
-      static {
-        com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
-          com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
-          /* major= */ 4,
-          /* minor= */ 28,
-          /* patch= */ 3,
-          /* suffix= */ "",
-          TextMemo.class.getName());
-      }
-      // Use TextMemo.newBuilder() to construct.
-      private TextMemo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-        super(builder);
-      }
-      private TextMemo() {
-        text_ = "";
-      }
-
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_TextMemo_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_TextMemo_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo.Builder.class);
-      }
-
-      private int bitField0_;
-      public static final int TEXT_FIELD_NUMBER = 1;
-      @SuppressWarnings("serial")
-      private volatile java.lang.Object text_ = "";
-      /**
-       * <pre>
-       * plain-text note explaining the purpose of the payment request
-       * </pre>
-       *
-       * <code>required string text = 1;</code>
-       * @return Whether the text field is set.
-       */
-      @java.lang.Override
-      public boolean hasText() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <pre>
-       * plain-text note explaining the purpose of the payment request
-       * </pre>
-       *
-       * <code>required string text = 1;</code>
-       * @return The text.
-       */
-      @java.lang.Override
-      public java.lang.String getText() {
-        java.lang.Object ref = text_;
-        if (ref instanceof java.lang.String) {
-          return (java.lang.String) ref;
-        } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            text_ = s;
-          }
-          return s;
-        }
-      }
-      /**
-       * <pre>
-       * plain-text note explaining the purpose of the payment request
-       * </pre>
-       *
-       * <code>required string text = 1;</code>
-       * @return The bytes for text.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getTextBytes() {
-        java.lang.Object ref = text_;
-        if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          text_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-
-      private byte memoizedIsInitialized = -1;
-      @java.lang.Override
-      public final boolean isInitialized() {
-        byte isInitialized = memoizedIsInitialized;
-        if (isInitialized == 1) return true;
-        if (isInitialized == 0) return false;
-
-        if (!hasText()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-        memoizedIsInitialized = 1;
-        return true;
-      }
-
-      @java.lang.Override
-      public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
-        if (((bitField0_ & 0x00000001) != 0)) {
-          com.google.protobuf.GeneratedMessage.writeString(output, 1, text_);
-        }
-        getUnknownFields().writeTo(output);
-      }
-
-      @java.lang.Override
-      public int getSerializedSize() {
-        int size = memoizedSize;
-        if (size != -1) return size;
-
-        size = 0;
-        if (((bitField0_ & 0x00000001) != 0)) {
-          size += com.google.protobuf.GeneratedMessage.computeStringSize(1, text_);
-        }
-        size += getUnknownFields().getSerializedSize();
-        memoizedSize = size;
-        return size;
-      }
-
-      @java.lang.Override
-      public boolean equals(final java.lang.Object obj) {
-        if (obj == this) {
-         return true;
-        }
-        if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo)) {
-          return super.equals(obj);
-        }
-        com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo) obj;
-
-        if (hasText() != other.hasText()) return false;
-        if (hasText()) {
-          if (!getText()
-              .equals(other.getText())) return false;
-        }
-        if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-        return true;
-      }
-
-      @java.lang.Override
-      public int hashCode() {
-        if (memoizedHashCode != 0) {
-          return memoizedHashCode;
-        }
-        int hash = 41;
-        hash = (19 * hash) + getDescriptor().hashCode();
-        if (hasText()) {
-          hash = (37 * hash) + TEXT_FIELD_NUMBER;
-          hash = (53 * hash) + getText().hashCode();
-        }
-        hash = (29 * hash) + getUnknownFields().hashCode();
-        memoizedHashCode = hash;
-        return hash;
-      }
-
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo parseFrom(
-          java.nio.ByteBuffer data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo parseFrom(
-          java.nio.ByteBuffer data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo parseFrom(
-          com.google.protobuf.ByteString data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo parseFrom(
-          com.google.protobuf.ByteString data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo parseFrom(byte[] data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo parseFrom(
-          byte[] data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo parseFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseWithIOException(PARSER, input);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo parseFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseWithIOException(PARSER, input, extensionRegistry);
-      }
-
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo parseDelimitedFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseDelimitedWithIOException(PARSER, input);
-      }
-
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo parseDelimitedFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo parseFrom(
-          com.google.protobuf.CodedInputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseWithIOException(PARSER, input);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo parseFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseWithIOException(PARSER, input, extensionRegistry);
-      }
-
-      @java.lang.Override
-      public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder() {
-        return DEFAULT_INSTANCE.toBuilder();
-      }
-      public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo prototype) {
-        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-      }
-      @java.lang.Override
-      public Builder toBuilder() {
-        return this == DEFAULT_INSTANCE
-            ? new Builder() : new Builder().mergeFrom(this);
-      }
-
-      @java.lang.Override
-      protected Builder newBuilderForType(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        Builder builder = new Builder(parent);
-        return builder;
-      }
-      /**
-       * Protobuf type {@code hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo}
-       */
-      public static final class Builder extends
-          com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo)
-          com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemoOrBuilder {
-        public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_TextMemo_descriptor;
-        }
-
-        @java.lang.Override
-        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_TextMemo_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo.Builder.class);
-        }
-
-        // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo.newBuilder()
-        private Builder() {
-
-        }
-
-        private Builder(
-            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-          super(parent);
-
-        }
-        @java.lang.Override
-        public Builder clear() {
-          super.clear();
-          bitField0_ = 0;
-          text_ = "";
-          return this;
-        }
-
-        @java.lang.Override
-        public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-          return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_TextMemo_descriptor;
-        }
-
-        @java.lang.Override
-        public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo getDefaultInstanceForType() {
-          return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo.getDefaultInstance();
-        }
-
-        @java.lang.Override
-        public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo build() {
-          com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo result = buildPartial();
-          if (!result.isInitialized()) {
-            throw newUninitializedMessageException(result);
-          }
-          return result;
-        }
-
-        @java.lang.Override
-        public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo buildPartial() {
-          com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo(this);
-          if (bitField0_ != 0) { buildPartial0(result); }
-          onBuilt();
-          return result;
-        }
-
-        private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo result) {
-          int from_bitField0_ = bitField0_;
-          int to_bitField0_ = 0;
-          if (((from_bitField0_ & 0x00000001) != 0)) {
-            result.text_ = text_;
-            to_bitField0_ |= 0x00000001;
-          }
-          result.bitField0_ |= to_bitField0_;
-        }
-
-        @java.lang.Override
-        public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo) {
-            return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo)other);
-          } else {
-            super.mergeFrom(other);
-            return this;
-          }
-        }
-
-        public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo other) {
-          if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo.getDefaultInstance()) return this;
-          if (other.hasText()) {
-            text_ = other.text_;
-            bitField0_ |= 0x00000001;
-            onChanged();
-          }
-          this.mergeUnknownFields(other.getUnknownFields());
-          onChanged();
-          return this;
-        }
-
-        @java.lang.Override
-        public final boolean isInitialized() {
-          if (!hasText()) {
-            return false;
-          }
-          return true;
-        }
-
-        @java.lang.Override
-        public Builder mergeFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          if (extensionRegistry == null) {
-            throw new java.lang.NullPointerException();
-          }
-          try {
-            boolean done = false;
-            while (!done) {
-              int tag = input.readTag();
-              switch (tag) {
-                case 0:
-                  done = true;
-                  break;
-                case 10: {
-                  text_ = input.readBytes();
-                  bitField0_ |= 0x00000001;
-                  break;
-                } // case 10
-                default: {
-                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                    done = true; // was an endgroup tag
-                  }
-                  break;
-                } // default:
-              } // switch (tag)
-            } // while (!done)
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.unwrapIOException();
-          } finally {
-            onChanged();
-          } // finally
-          return this;
-        }
-        private int bitField0_;
-
-        private java.lang.Object text_ = "";
-        /**
-         * <pre>
-         * plain-text note explaining the purpose of the payment request
-         * </pre>
-         *
-         * <code>required string text = 1;</code>
-         * @return Whether the text field is set.
-         */
-        public boolean hasText() {
-          return ((bitField0_ & 0x00000001) != 0);
-        }
-        /**
-         * <pre>
-         * plain-text note explaining the purpose of the payment request
-         * </pre>
-         *
-         * <code>required string text = 1;</code>
-         * @return The text.
-         */
-        public java.lang.String getText() {
-          java.lang.Object ref = text_;
-          if (!(ref instanceof java.lang.String)) {
-            com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            if (bs.isValidUtf8()) {
-              text_ = s;
-            }
-            return s;
-          } else {
-            return (java.lang.String) ref;
-          }
-        }
-        /**
-         * <pre>
-         * plain-text note explaining the purpose of the payment request
-         * </pre>
-         *
-         * <code>required string text = 1;</code>
-         * @return The bytes for text.
-         */
-        public com.google.protobuf.ByteString
-            getTextBytes() {
-          java.lang.Object ref = text_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            text_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
-        }
-        /**
-         * <pre>
-         * plain-text note explaining the purpose of the payment request
-         * </pre>
-         *
-         * <code>required string text = 1;</code>
-         * @param value The text to set.
-         * @return This builder for chaining.
-         */
-        public Builder setText(
-            java.lang.String value) {
-          if (value == null) { throw new NullPointerException(); }
-          text_ = value;
-          bitField0_ |= 0x00000001;
-          onChanged();
-          return this;
-        }
-        /**
-         * <pre>
-         * plain-text note explaining the purpose of the payment request
-         * </pre>
-         *
-         * <code>required string text = 1;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearText() {
-          text_ = getDefaultInstance().getText();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-          return this;
-        }
-        /**
-         * <pre>
-         * plain-text note explaining the purpose of the payment request
-         * </pre>
-         *
-         * <code>required string text = 1;</code>
-         * @param value The bytes for text to set.
-         * @return This builder for chaining.
-         */
-        public Builder setTextBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) { throw new NullPointerException(); }
-          text_ = value;
-          bitField0_ |= 0x00000001;
-          onChanged();
-          return this;
-        }
-
-        // @@protoc_insertion_point(builder_scope:hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo)
-      }
-
-      // @@protoc_insertion_point(class_scope:hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo)
-      private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo DEFAULT_INSTANCE;
-      static {
-        DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo();
-      }
-
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo getDefaultInstance() {
-        return DEFAULT_INSTANCE;
-      }
-
-      private static final com.google.protobuf.Parser<TextMemo>
-          PARSER = new com.google.protobuf.AbstractParser<TextMemo>() {
-        @java.lang.Override
-        public TextMemo parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
-
-      public static com.google.protobuf.Parser<TextMemo> parser() {
-        return PARSER;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Parser<TextMemo> getParserForType() {
-        return PARSER;
-      }
-
-      @java.lang.Override
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.TextMemo getDefaultInstanceForType() {
-        return DEFAULT_INSTANCE;
-      }
-
-    }
-
-    public interface RefundMemoOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo)
-        com.google.protobuf.MessageOrBuilder {
-
-      /**
-       * <pre>
-       * the address where the payment should be refunded if necessary
-       * </pre>
-       *
-       * <code>required string address = 1;</code>
-       * @return Whether the address field is set.
-       */
-      boolean hasAddress();
-      /**
-       * <pre>
-       * the address where the payment should be refunded if necessary
-       * </pre>
-       *
-       * <code>required string address = 1;</code>
-       * @return The address.
-       */
-      java.lang.String getAddress();
-      /**
-       * <pre>
-       * the address where the payment should be refunded if necessary
-       * </pre>
-       *
-       * <code>required string address = 1;</code>
-       * @return The bytes for address.
-       */
-      com.google.protobuf.ByteString
-          getAddressBytes();
-
-      /**
-       * <pre>
-       * the MAC returned by GetAddress
-       * </pre>
-       *
-       * <code>required bytes mac = 2;</code>
-       * @return Whether the mac field is set.
-       */
-      boolean hasMac();
-      /**
-       * <pre>
-       * the MAC returned by GetAddress
-       * </pre>
-       *
-       * <code>required bytes mac = 2;</code>
-       * @return The mac.
-       */
-      com.google.protobuf.ByteString getMac();
-    }
-    /**
-     * Protobuf type {@code hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo}
-     */
-    public static final class RefundMemo extends
-        com.google.protobuf.GeneratedMessage implements
-        // @@protoc_insertion_point(message_implements:hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo)
-        RefundMemoOrBuilder {
-    private static final long serialVersionUID = 0L;
-      static {
-        com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
-          com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
-          /* major= */ 4,
-          /* minor= */ 28,
-          /* patch= */ 3,
-          /* suffix= */ "",
-          RefundMemo.class.getName());
-      }
-      // Use RefundMemo.newBuilder() to construct.
-      private RefundMemo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-        super(builder);
-      }
-      private RefundMemo() {
-        address_ = "";
-        mac_ = com.google.protobuf.ByteString.EMPTY;
-      }
-
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_RefundMemo_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_RefundMemo_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo.Builder.class);
-      }
-
-      private int bitField0_;
-      public static final int ADDRESS_FIELD_NUMBER = 1;
-      @SuppressWarnings("serial")
-      private volatile java.lang.Object address_ = "";
-      /**
-       * <pre>
-       * the address where the payment should be refunded if necessary
-       * </pre>
-       *
-       * <code>required string address = 1;</code>
-       * @return Whether the address field is set.
-       */
-      @java.lang.Override
-      public boolean hasAddress() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <pre>
-       * the address where the payment should be refunded if necessary
-       * </pre>
-       *
-       * <code>required string address = 1;</code>
-       * @return The address.
-       */
-      @java.lang.Override
-      public java.lang.String getAddress() {
-        java.lang.Object ref = address_;
-        if (ref instanceof java.lang.String) {
-          return (java.lang.String) ref;
-        } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            address_ = s;
-          }
-          return s;
-        }
-      }
-      /**
-       * <pre>
-       * the address where the payment should be refunded if necessary
-       * </pre>
-       *
-       * <code>required string address = 1;</code>
-       * @return The bytes for address.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getAddressBytes() {
-        java.lang.Object ref = address_;
-        if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          address_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-
-      public static final int MAC_FIELD_NUMBER = 2;
-      private com.google.protobuf.ByteString mac_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <pre>
-       * the MAC returned by GetAddress
-       * </pre>
-       *
-       * <code>required bytes mac = 2;</code>
-       * @return Whether the mac field is set.
-       */
-      @java.lang.Override
-      public boolean hasMac() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <pre>
-       * the MAC returned by GetAddress
-       * </pre>
-       *
-       * <code>required bytes mac = 2;</code>
-       * @return The mac.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getMac() {
-        return mac_;
-      }
-
-      private byte memoizedIsInitialized = -1;
-      @java.lang.Override
-      public final boolean isInitialized() {
-        byte isInitialized = memoizedIsInitialized;
-        if (isInitialized == 1) return true;
-        if (isInitialized == 0) return false;
-
-        if (!hasAddress()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-        if (!hasMac()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-        memoizedIsInitialized = 1;
-        return true;
-      }
-
-      @java.lang.Override
-      public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
-        if (((bitField0_ & 0x00000001) != 0)) {
-          com.google.protobuf.GeneratedMessage.writeString(output, 1, address_);
-        }
-        if (((bitField0_ & 0x00000002) != 0)) {
-          output.writeBytes(2, mac_);
-        }
-        getUnknownFields().writeTo(output);
-      }
-
-      @java.lang.Override
-      public int getSerializedSize() {
-        int size = memoizedSize;
-        if (size != -1) return size;
-
-        size = 0;
-        if (((bitField0_ & 0x00000001) != 0)) {
-          size += com.google.protobuf.GeneratedMessage.computeStringSize(1, address_);
-        }
-        if (((bitField0_ & 0x00000002) != 0)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(2, mac_);
-        }
-        size += getUnknownFields().getSerializedSize();
-        memoizedSize = size;
-        return size;
-      }
-
-      @java.lang.Override
-      public boolean equals(final java.lang.Object obj) {
-        if (obj == this) {
-         return true;
-        }
-        if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo)) {
-          return super.equals(obj);
-        }
-        com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo) obj;
-
-        if (hasAddress() != other.hasAddress()) return false;
-        if (hasAddress()) {
-          if (!getAddress()
-              .equals(other.getAddress())) return false;
-        }
-        if (hasMac() != other.hasMac()) return false;
-        if (hasMac()) {
-          if (!getMac()
-              .equals(other.getMac())) return false;
-        }
-        if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-        return true;
-      }
-
-      @java.lang.Override
-      public int hashCode() {
-        if (memoizedHashCode != 0) {
-          return memoizedHashCode;
-        }
-        int hash = 41;
-        hash = (19 * hash) + getDescriptor().hashCode();
-        if (hasAddress()) {
-          hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
-          hash = (53 * hash) + getAddress().hashCode();
-        }
-        if (hasMac()) {
-          hash = (37 * hash) + MAC_FIELD_NUMBER;
-          hash = (53 * hash) + getMac().hashCode();
-        }
-        hash = (29 * hash) + getUnknownFields().hashCode();
-        memoizedHashCode = hash;
-        return hash;
-      }
-
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo parseFrom(
-          java.nio.ByteBuffer data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo parseFrom(
-          java.nio.ByteBuffer data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo parseFrom(
-          com.google.protobuf.ByteString data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo parseFrom(
-          com.google.protobuf.ByteString data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo parseFrom(byte[] data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo parseFrom(
-          byte[] data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo parseFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseWithIOException(PARSER, input);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo parseFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseWithIOException(PARSER, input, extensionRegistry);
-      }
-
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo parseDelimitedFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseDelimitedWithIOException(PARSER, input);
-      }
-
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo parseDelimitedFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo parseFrom(
-          com.google.protobuf.CodedInputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseWithIOException(PARSER, input);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo parseFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseWithIOException(PARSER, input, extensionRegistry);
-      }
-
-      @java.lang.Override
-      public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder() {
-        return DEFAULT_INSTANCE.toBuilder();
-      }
-      public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo prototype) {
-        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-      }
-      @java.lang.Override
-      public Builder toBuilder() {
-        return this == DEFAULT_INSTANCE
-            ? new Builder() : new Builder().mergeFrom(this);
-      }
-
-      @java.lang.Override
-      protected Builder newBuilderForType(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        Builder builder = new Builder(parent);
-        return builder;
-      }
-      /**
-       * Protobuf type {@code hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo}
-       */
-      public static final class Builder extends
-          com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo)
-          com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemoOrBuilder {
-        public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_RefundMemo_descriptor;
-        }
-
-        @java.lang.Override
-        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_RefundMemo_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo.Builder.class);
-        }
-
-        // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo.newBuilder()
-        private Builder() {
-
-        }
-
-        private Builder(
-            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-          super(parent);
-
-        }
-        @java.lang.Override
-        public Builder clear() {
-          super.clear();
-          bitField0_ = 0;
-          address_ = "";
-          mac_ = com.google.protobuf.ByteString.EMPTY;
-          return this;
-        }
-
-        @java.lang.Override
-        public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-          return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_RefundMemo_descriptor;
-        }
-
-        @java.lang.Override
-        public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo getDefaultInstanceForType() {
-          return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo.getDefaultInstance();
-        }
-
-        @java.lang.Override
-        public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo build() {
-          com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo result = buildPartial();
-          if (!result.isInitialized()) {
-            throw newUninitializedMessageException(result);
-          }
-          return result;
-        }
-
-        @java.lang.Override
-        public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo buildPartial() {
-          com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo(this);
-          if (bitField0_ != 0) { buildPartial0(result); }
-          onBuilt();
-          return result;
-        }
-
-        private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo result) {
-          int from_bitField0_ = bitField0_;
-          int to_bitField0_ = 0;
-          if (((from_bitField0_ & 0x00000001) != 0)) {
-            result.address_ = address_;
-            to_bitField0_ |= 0x00000001;
-          }
-          if (((from_bitField0_ & 0x00000002) != 0)) {
-            result.mac_ = mac_;
-            to_bitField0_ |= 0x00000002;
-          }
-          result.bitField0_ |= to_bitField0_;
-        }
-
-        @java.lang.Override
-        public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo) {
-            return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo)other);
-          } else {
-            super.mergeFrom(other);
-            return this;
-          }
-        }
-
-        public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo other) {
-          if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo.getDefaultInstance()) return this;
-          if (other.hasAddress()) {
-            address_ = other.address_;
-            bitField0_ |= 0x00000001;
-            onChanged();
-          }
-          if (other.hasMac()) {
-            setMac(other.getMac());
-          }
-          this.mergeUnknownFields(other.getUnknownFields());
-          onChanged();
-          return this;
-        }
-
-        @java.lang.Override
-        public final boolean isInitialized() {
-          if (!hasAddress()) {
-            return false;
-          }
-          if (!hasMac()) {
-            return false;
-          }
-          return true;
-        }
-
-        @java.lang.Override
-        public Builder mergeFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          if (extensionRegistry == null) {
-            throw new java.lang.NullPointerException();
-          }
-          try {
-            boolean done = false;
-            while (!done) {
-              int tag = input.readTag();
-              switch (tag) {
-                case 0:
-                  done = true;
-                  break;
-                case 10: {
-                  address_ = input.readBytes();
-                  bitField0_ |= 0x00000001;
-                  break;
-                } // case 10
-                case 18: {
-                  mac_ = input.readBytes();
-                  bitField0_ |= 0x00000002;
-                  break;
-                } // case 18
-                default: {
-                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                    done = true; // was an endgroup tag
-                  }
-                  break;
-                } // default:
-              } // switch (tag)
-            } // while (!done)
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.unwrapIOException();
-          } finally {
-            onChanged();
-          } // finally
-          return this;
-        }
-        private int bitField0_;
-
-        private java.lang.Object address_ = "";
-        /**
-         * <pre>
-         * the address where the payment should be refunded if necessary
-         * </pre>
-         *
-         * <code>required string address = 1;</code>
-         * @return Whether the address field is set.
-         */
-        public boolean hasAddress() {
-          return ((bitField0_ & 0x00000001) != 0);
-        }
-        /**
-         * <pre>
-         * the address where the payment should be refunded if necessary
-         * </pre>
-         *
-         * <code>required string address = 1;</code>
-         * @return The address.
-         */
-        public java.lang.String getAddress() {
-          java.lang.Object ref = address_;
-          if (!(ref instanceof java.lang.String)) {
-            com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            if (bs.isValidUtf8()) {
-              address_ = s;
-            }
-            return s;
-          } else {
-            return (java.lang.String) ref;
-          }
-        }
-        /**
-         * <pre>
-         * the address where the payment should be refunded if necessary
-         * </pre>
-         *
-         * <code>required string address = 1;</code>
-         * @return The bytes for address.
-         */
-        public com.google.protobuf.ByteString
-            getAddressBytes() {
-          java.lang.Object ref = address_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            address_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
-        }
-        /**
-         * <pre>
-         * the address where the payment should be refunded if necessary
-         * </pre>
-         *
-         * <code>required string address = 1;</code>
-         * @param value The address to set.
-         * @return This builder for chaining.
-         */
-        public Builder setAddress(
-            java.lang.String value) {
-          if (value == null) { throw new NullPointerException(); }
-          address_ = value;
-          bitField0_ |= 0x00000001;
-          onChanged();
-          return this;
-        }
-        /**
-         * <pre>
-         * the address where the payment should be refunded if necessary
-         * </pre>
-         *
-         * <code>required string address = 1;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearAddress() {
-          address_ = getDefaultInstance().getAddress();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-          return this;
-        }
-        /**
-         * <pre>
-         * the address where the payment should be refunded if necessary
-         * </pre>
-         *
-         * <code>required string address = 1;</code>
-         * @param value The bytes for address to set.
-         * @return This builder for chaining.
-         */
-        public Builder setAddressBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) { throw new NullPointerException(); }
-          address_ = value;
-          bitField0_ |= 0x00000001;
-          onChanged();
-          return this;
-        }
-
-        private com.google.protobuf.ByteString mac_ = com.google.protobuf.ByteString.EMPTY;
-        /**
-         * <pre>
-         * the MAC returned by GetAddress
-         * </pre>
-         *
-         * <code>required bytes mac = 2;</code>
-         * @return Whether the mac field is set.
-         */
-        @java.lang.Override
-        public boolean hasMac() {
-          return ((bitField0_ & 0x00000002) != 0);
-        }
-        /**
-         * <pre>
-         * the MAC returned by GetAddress
-         * </pre>
-         *
-         * <code>required bytes mac = 2;</code>
-         * @return The mac.
-         */
-        @java.lang.Override
-        public com.google.protobuf.ByteString getMac() {
-          return mac_;
-        }
-        /**
-         * <pre>
-         * the MAC returned by GetAddress
-         * </pre>
-         *
-         * <code>required bytes mac = 2;</code>
-         * @param value The mac to set.
-         * @return This builder for chaining.
-         */
-        public Builder setMac(com.google.protobuf.ByteString value) {
-          if (value == null) { throw new NullPointerException(); }
-          mac_ = value;
-          bitField0_ |= 0x00000002;
-          onChanged();
-          return this;
-        }
-        /**
-         * <pre>
-         * the MAC returned by GetAddress
-         * </pre>
-         *
-         * <code>required bytes mac = 2;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearMac() {
-          bitField0_ = (bitField0_ & ~0x00000002);
-          mac_ = getDefaultInstance().getMac();
-          onChanged();
-          return this;
-        }
-
-        // @@protoc_insertion_point(builder_scope:hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo)
-      }
-
-      // @@protoc_insertion_point(class_scope:hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo)
-      private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo DEFAULT_INSTANCE;
-      static {
-        DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo();
-      }
-
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo getDefaultInstance() {
-        return DEFAULT_INSTANCE;
-      }
-
-      private static final com.google.protobuf.Parser<RefundMemo>
-          PARSER = new com.google.protobuf.AbstractParser<RefundMemo>() {
-        @java.lang.Override
-        public RefundMemo parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
-
-      public static com.google.protobuf.Parser<RefundMemo> parser() {
-        return PARSER;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Parser<RefundMemo> getParserForType() {
-        return PARSER;
-      }
-
-      @java.lang.Override
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.RefundMemo getDefaultInstanceForType() {
-        return DEFAULT_INSTANCE;
-      }
-
-    }
-
-    public interface CoinPurchaseMemoOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo)
-        com.google.protobuf.MessageOrBuilder {
-
-      /**
-       * <pre>
-       * the SLIP-0044 coin type of the address
-       * </pre>
-       *
-       * <code>required uint32 coin_type = 1;</code>
-       * @return Whether the coinType field is set.
-       */
-      boolean hasCoinType();
-      /**
-       * <pre>
-       * the SLIP-0044 coin type of the address
-       * </pre>
-       *
-       * <code>required uint32 coin_type = 1;</code>
-       * @return The coinType.
-       */
-      int getCoinType();
-
-      /**
-       * <pre>
-       * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
-       * </pre>
-       *
-       * <code>required string amount = 2;</code>
-       * @return Whether the amount field is set.
-       */
-      boolean hasAmount();
-      /**
-       * <pre>
-       * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
-       * </pre>
-       *
-       * <code>required string amount = 2;</code>
-       * @return The amount.
-       */
-      java.lang.String getAmount();
-      /**
-       * <pre>
-       * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
-       * </pre>
-       *
-       * <code>required string amount = 2;</code>
-       * @return The bytes for amount.
-       */
-      com.google.protobuf.ByteString
-          getAmountBytes();
-
-      /**
-       * <pre>
-       * the address where the coin purchase will be delivered
-       * </pre>
-       *
-       * <code>required string address = 3;</code>
-       * @return Whether the address field is set.
-       */
-      boolean hasAddress();
-      /**
-       * <pre>
-       * the address where the coin purchase will be delivered
-       * </pre>
-       *
-       * <code>required string address = 3;</code>
-       * @return The address.
-       */
-      java.lang.String getAddress();
-      /**
-       * <pre>
-       * the address where the coin purchase will be delivered
-       * </pre>
-       *
-       * <code>required string address = 3;</code>
-       * @return The bytes for address.
-       */
-      com.google.protobuf.ByteString
-          getAddressBytes();
-
-      /**
-       * <pre>
-       * the MAC returned by GetAddress
-       * </pre>
-       *
-       * <code>required bytes mac = 4;</code>
-       * @return Whether the mac field is set.
-       */
-      boolean hasMac();
-      /**
-       * <pre>
-       * the MAC returned by GetAddress
-       * </pre>
-       *
-       * <code>required bytes mac = 4;</code>
-       * @return The mac.
-       */
-      com.google.protobuf.ByteString getMac();
-    }
-    /**
-     * Protobuf type {@code hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo}
-     */
-    public static final class CoinPurchaseMemo extends
-        com.google.protobuf.GeneratedMessage implements
-        // @@protoc_insertion_point(message_implements:hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo)
-        CoinPurchaseMemoOrBuilder {
-    private static final long serialVersionUID = 0L;
-      static {
-        com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
-          com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
-          /* major= */ 4,
-          /* minor= */ 28,
-          /* patch= */ 3,
-          /* suffix= */ "",
-          CoinPurchaseMemo.class.getName());
-      }
-      // Use CoinPurchaseMemo.newBuilder() to construct.
-      private CoinPurchaseMemo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-        super(builder);
-      }
-      private CoinPurchaseMemo() {
-        amount_ = "";
-        address_ = "";
-        mac_ = com.google.protobuf.ByteString.EMPTY;
-      }
-
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_CoinPurchaseMemo_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_CoinPurchaseMemo_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo.Builder.class);
-      }
-
-      private int bitField0_;
-      public static final int COIN_TYPE_FIELD_NUMBER = 1;
-      private int coinType_ = 0;
-      /**
-       * <pre>
-       * the SLIP-0044 coin type of the address
-       * </pre>
-       *
-       * <code>required uint32 coin_type = 1;</code>
-       * @return Whether the coinType field is set.
-       */
-      @java.lang.Override
-      public boolean hasCoinType() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <pre>
-       * the SLIP-0044 coin type of the address
-       * </pre>
-       *
-       * <code>required uint32 coin_type = 1;</code>
-       * @return The coinType.
-       */
-      @java.lang.Override
-      public int getCoinType() {
-        return coinType_;
-      }
-
-      public static final int AMOUNT_FIELD_NUMBER = 2;
-      @SuppressWarnings("serial")
-      private volatile java.lang.Object amount_ = "";
-      /**
-       * <pre>
-       * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
-       * </pre>
-       *
-       * <code>required string amount = 2;</code>
-       * @return Whether the amount field is set.
-       */
-      @java.lang.Override
-      public boolean hasAmount() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <pre>
-       * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
-       * </pre>
-       *
-       * <code>required string amount = 2;</code>
-       * @return The amount.
-       */
-      @java.lang.Override
-      public java.lang.String getAmount() {
-        java.lang.Object ref = amount_;
-        if (ref instanceof java.lang.String) {
-          return (java.lang.String) ref;
-        } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            amount_ = s;
-          }
-          return s;
-        }
-      }
-      /**
-       * <pre>
-       * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
-       * </pre>
-       *
-       * <code>required string amount = 2;</code>
-       * @return The bytes for amount.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getAmountBytes() {
-        java.lang.Object ref = amount_;
-        if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          amount_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-
-      public static final int ADDRESS_FIELD_NUMBER = 3;
-      @SuppressWarnings("serial")
-      private volatile java.lang.Object address_ = "";
-      /**
-       * <pre>
-       * the address where the coin purchase will be delivered
-       * </pre>
-       *
-       * <code>required string address = 3;</code>
-       * @return Whether the address field is set.
-       */
-      @java.lang.Override
-      public boolean hasAddress() {
-        return ((bitField0_ & 0x00000004) != 0);
-      }
-      /**
-       * <pre>
-       * the address where the coin purchase will be delivered
-       * </pre>
-       *
-       * <code>required string address = 3;</code>
-       * @return The address.
-       */
-      @java.lang.Override
-      public java.lang.String getAddress() {
-        java.lang.Object ref = address_;
-        if (ref instanceof java.lang.String) {
-          return (java.lang.String) ref;
-        } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            address_ = s;
-          }
-          return s;
-        }
-      }
-      /**
-       * <pre>
-       * the address where the coin purchase will be delivered
-       * </pre>
-       *
-       * <code>required string address = 3;</code>
-       * @return The bytes for address.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getAddressBytes() {
-        java.lang.Object ref = address_;
-        if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          address_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-
-      public static final int MAC_FIELD_NUMBER = 4;
-      private com.google.protobuf.ByteString mac_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <pre>
-       * the MAC returned by GetAddress
-       * </pre>
-       *
-       * <code>required bytes mac = 4;</code>
-       * @return Whether the mac field is set.
-       */
-      @java.lang.Override
-      public boolean hasMac() {
-        return ((bitField0_ & 0x00000008) != 0);
-      }
-      /**
-       * <pre>
-       * the MAC returned by GetAddress
-       * </pre>
-       *
-       * <code>required bytes mac = 4;</code>
-       * @return The mac.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getMac() {
-        return mac_;
-      }
-
-      private byte memoizedIsInitialized = -1;
-      @java.lang.Override
-      public final boolean isInitialized() {
-        byte isInitialized = memoizedIsInitialized;
-        if (isInitialized == 1) return true;
-        if (isInitialized == 0) return false;
-
-        if (!hasCoinType()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-        if (!hasAmount()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-        if (!hasAddress()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-        if (!hasMac()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-        memoizedIsInitialized = 1;
-        return true;
-      }
-
-      @java.lang.Override
-      public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
-        if (((bitField0_ & 0x00000001) != 0)) {
-          output.writeUInt32(1, coinType_);
-        }
-        if (((bitField0_ & 0x00000002) != 0)) {
-          com.google.protobuf.GeneratedMessage.writeString(output, 2, amount_);
-        }
-        if (((bitField0_ & 0x00000004) != 0)) {
-          com.google.protobuf.GeneratedMessage.writeString(output, 3, address_);
-        }
-        if (((bitField0_ & 0x00000008) != 0)) {
-          output.writeBytes(4, mac_);
-        }
-        getUnknownFields().writeTo(output);
-      }
-
-      @java.lang.Override
-      public int getSerializedSize() {
-        int size = memoizedSize;
-        if (size != -1) return size;
-
-        size = 0;
-        if (((bitField0_ & 0x00000001) != 0)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeUInt32Size(1, coinType_);
-        }
-        if (((bitField0_ & 0x00000002) != 0)) {
-          size += com.google.protobuf.GeneratedMessage.computeStringSize(2, amount_);
-        }
-        if (((bitField0_ & 0x00000004) != 0)) {
-          size += com.google.protobuf.GeneratedMessage.computeStringSize(3, address_);
-        }
-        if (((bitField0_ & 0x00000008) != 0)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(4, mac_);
-        }
-        size += getUnknownFields().getSerializedSize();
-        memoizedSize = size;
-        return size;
-      }
-
-      @java.lang.Override
-      public boolean equals(final java.lang.Object obj) {
-        if (obj == this) {
-         return true;
-        }
-        if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo)) {
-          return super.equals(obj);
-        }
-        com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo) obj;
-
-        if (hasCoinType() != other.hasCoinType()) return false;
-        if (hasCoinType()) {
-          if (getCoinType()
-              != other.getCoinType()) return false;
-        }
-        if (hasAmount() != other.hasAmount()) return false;
-        if (hasAmount()) {
-          if (!getAmount()
-              .equals(other.getAmount())) return false;
-        }
-        if (hasAddress() != other.hasAddress()) return false;
-        if (hasAddress()) {
-          if (!getAddress()
-              .equals(other.getAddress())) return false;
-        }
-        if (hasMac() != other.hasMac()) return false;
-        if (hasMac()) {
-          if (!getMac()
-              .equals(other.getMac())) return false;
-        }
-        if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-        return true;
-      }
-
-      @java.lang.Override
-      public int hashCode() {
-        if (memoizedHashCode != 0) {
-          return memoizedHashCode;
-        }
-        int hash = 41;
-        hash = (19 * hash) + getDescriptor().hashCode();
-        if (hasCoinType()) {
-          hash = (37 * hash) + COIN_TYPE_FIELD_NUMBER;
-          hash = (53 * hash) + getCoinType();
-        }
-        if (hasAmount()) {
-          hash = (37 * hash) + AMOUNT_FIELD_NUMBER;
-          hash = (53 * hash) + getAmount().hashCode();
-        }
-        if (hasAddress()) {
-          hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
-          hash = (53 * hash) + getAddress().hashCode();
-        }
-        if (hasMac()) {
-          hash = (37 * hash) + MAC_FIELD_NUMBER;
-          hash = (53 * hash) + getMac().hashCode();
-        }
-        hash = (29 * hash) + getUnknownFields().hashCode();
-        memoizedHashCode = hash;
-        return hash;
-      }
-
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo parseFrom(
-          java.nio.ByteBuffer data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo parseFrom(
-          java.nio.ByteBuffer data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo parseFrom(
-          com.google.protobuf.ByteString data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo parseFrom(
-          com.google.protobuf.ByteString data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo parseFrom(byte[] data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo parseFrom(
-          byte[] data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo parseFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseWithIOException(PARSER, input);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo parseFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseWithIOException(PARSER, input, extensionRegistry);
-      }
-
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo parseDelimitedFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseDelimitedWithIOException(PARSER, input);
-      }
-
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo parseDelimitedFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo parseFrom(
-          com.google.protobuf.CodedInputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseWithIOException(PARSER, input);
-      }
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo parseFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessage
-            .parseWithIOException(PARSER, input, extensionRegistry);
-      }
-
-      @java.lang.Override
-      public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder() {
-        return DEFAULT_INSTANCE.toBuilder();
-      }
-      public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo prototype) {
-        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-      }
-      @java.lang.Override
-      public Builder toBuilder() {
-        return this == DEFAULT_INSTANCE
-            ? new Builder() : new Builder().mergeFrom(this);
-      }
-
-      @java.lang.Override
-      protected Builder newBuilderForType(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        Builder builder = new Builder(parent);
-        return builder;
-      }
-      /**
-       * Protobuf type {@code hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo}
-       */
-      public static final class Builder extends
-          com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo)
-          com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemoOrBuilder {
-        public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_CoinPurchaseMemo_descriptor;
-        }
-
-        @java.lang.Override
-        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_CoinPurchaseMemo_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo.Builder.class);
-        }
-
-        // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo.newBuilder()
-        private Builder() {
-
-        }
-
-        private Builder(
-            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-          super(parent);
-
-        }
-        @java.lang.Override
-        public Builder clear() {
-          super.clear();
-          bitField0_ = 0;
-          coinType_ = 0;
-          amount_ = "";
-          address_ = "";
-          mac_ = com.google.protobuf.ByteString.EMPTY;
-          return this;
-        }
-
-        @java.lang.Override
-        public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-          return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_CoinPurchaseMemo_descriptor;
-        }
-
-        @java.lang.Override
-        public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo getDefaultInstanceForType() {
-          return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo.getDefaultInstance();
-        }
-
-        @java.lang.Override
-        public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo build() {
-          com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo result = buildPartial();
-          if (!result.isInitialized()) {
-            throw newUninitializedMessageException(result);
-          }
-          return result;
-        }
-
-        @java.lang.Override
-        public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo buildPartial() {
-          com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo(this);
-          if (bitField0_ != 0) { buildPartial0(result); }
-          onBuilt();
-          return result;
-        }
-
-        private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo result) {
-          int from_bitField0_ = bitField0_;
-          int to_bitField0_ = 0;
-          if (((from_bitField0_ & 0x00000001) != 0)) {
-            result.coinType_ = coinType_;
-            to_bitField0_ |= 0x00000001;
-          }
-          if (((from_bitField0_ & 0x00000002) != 0)) {
-            result.amount_ = amount_;
-            to_bitField0_ |= 0x00000002;
-          }
-          if (((from_bitField0_ & 0x00000004) != 0)) {
-            result.address_ = address_;
-            to_bitField0_ |= 0x00000004;
-          }
-          if (((from_bitField0_ & 0x00000008) != 0)) {
-            result.mac_ = mac_;
-            to_bitField0_ |= 0x00000008;
-          }
-          result.bitField0_ |= to_bitField0_;
-        }
-
-        @java.lang.Override
-        public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo) {
-            return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo)other);
-          } else {
-            super.mergeFrom(other);
-            return this;
-          }
-        }
-
-        public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo other) {
-          if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo.getDefaultInstance()) return this;
-          if (other.hasCoinType()) {
-            setCoinType(other.getCoinType());
-          }
-          if (other.hasAmount()) {
-            amount_ = other.amount_;
-            bitField0_ |= 0x00000002;
-            onChanged();
-          }
-          if (other.hasAddress()) {
-            address_ = other.address_;
-            bitField0_ |= 0x00000004;
-            onChanged();
-          }
-          if (other.hasMac()) {
-            setMac(other.getMac());
-          }
-          this.mergeUnknownFields(other.getUnknownFields());
-          onChanged();
-          return this;
-        }
-
-        @java.lang.Override
-        public final boolean isInitialized() {
-          if (!hasCoinType()) {
-            return false;
-          }
-          if (!hasAmount()) {
-            return false;
-          }
-          if (!hasAddress()) {
-            return false;
-          }
-          if (!hasMac()) {
-            return false;
-          }
-          return true;
-        }
-
-        @java.lang.Override
-        public Builder mergeFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          if (extensionRegistry == null) {
-            throw new java.lang.NullPointerException();
-          }
-          try {
-            boolean done = false;
-            while (!done) {
-              int tag = input.readTag();
-              switch (tag) {
-                case 0:
-                  done = true;
-                  break;
-                case 8: {
-                  coinType_ = input.readUInt32();
-                  bitField0_ |= 0x00000001;
-                  break;
-                } // case 8
-                case 18: {
-                  amount_ = input.readBytes();
-                  bitField0_ |= 0x00000002;
-                  break;
-                } // case 18
-                case 26: {
-                  address_ = input.readBytes();
-                  bitField0_ |= 0x00000004;
-                  break;
-                } // case 26
-                case 34: {
-                  mac_ = input.readBytes();
-                  bitField0_ |= 0x00000008;
-                  break;
-                } // case 34
-                default: {
-                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                    done = true; // was an endgroup tag
-                  }
-                  break;
-                } // default:
-              } // switch (tag)
-            } // while (!done)
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.unwrapIOException();
-          } finally {
-            onChanged();
-          } // finally
-          return this;
-        }
-        private int bitField0_;
-
-        private int coinType_ ;
-        /**
-         * <pre>
-         * the SLIP-0044 coin type of the address
-         * </pre>
-         *
-         * <code>required uint32 coin_type = 1;</code>
-         * @return Whether the coinType field is set.
-         */
-        @java.lang.Override
-        public boolean hasCoinType() {
-          return ((bitField0_ & 0x00000001) != 0);
-        }
-        /**
-         * <pre>
-         * the SLIP-0044 coin type of the address
-         * </pre>
-         *
-         * <code>required uint32 coin_type = 1;</code>
-         * @return The coinType.
-         */
-        @java.lang.Override
-        public int getCoinType() {
-          return coinType_;
-        }
-        /**
-         * <pre>
-         * the SLIP-0044 coin type of the address
-         * </pre>
-         *
-         * <code>required uint32 coin_type = 1;</code>
-         * @param value The coinType to set.
-         * @return This builder for chaining.
-         */
-        public Builder setCoinType(int value) {
-
-          coinType_ = value;
-          bitField0_ |= 0x00000001;
-          onChanged();
-          return this;
-        }
-        /**
-         * <pre>
-         * the SLIP-0044 coin type of the address
-         * </pre>
-         *
-         * <code>required uint32 coin_type = 1;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearCoinType() {
-          bitField0_ = (bitField0_ & ~0x00000001);
-          coinType_ = 0;
-          onChanged();
-          return this;
-        }
-
-        private java.lang.Object amount_ = "";
-        /**
-         * <pre>
-         * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
-         * </pre>
-         *
-         * <code>required string amount = 2;</code>
-         * @return Whether the amount field is set.
-         */
-        public boolean hasAmount() {
-          return ((bitField0_ & 0x00000002) != 0);
-        }
-        /**
-         * <pre>
-         * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
-         * </pre>
-         *
-         * <code>required string amount = 2;</code>
-         * @return The amount.
-         */
-        public java.lang.String getAmount() {
-          java.lang.Object ref = amount_;
-          if (!(ref instanceof java.lang.String)) {
-            com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            if (bs.isValidUtf8()) {
-              amount_ = s;
-            }
-            return s;
-          } else {
-            return (java.lang.String) ref;
-          }
-        }
-        /**
-         * <pre>
-         * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
-         * </pre>
-         *
-         * <code>required string amount = 2;</code>
-         * @return The bytes for amount.
-         */
-        public com.google.protobuf.ByteString
-            getAmountBytes() {
-          java.lang.Object ref = amount_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            amount_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
-        }
-        /**
-         * <pre>
-         * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
-         * </pre>
-         *
-         * <code>required string amount = 2;</code>
-         * @param value The amount to set.
-         * @return This builder for chaining.
-         */
-        public Builder setAmount(
-            java.lang.String value) {
-          if (value == null) { throw new NullPointerException(); }
-          amount_ = value;
-          bitField0_ |= 0x00000002;
-          onChanged();
-          return this;
-        }
-        /**
-         * <pre>
-         * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
-         * </pre>
-         *
-         * <code>required string amount = 2;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearAmount() {
-          amount_ = getDefaultInstance().getAmount();
-          bitField0_ = (bitField0_ & ~0x00000002);
-          onChanged();
-          return this;
-        }
-        /**
-         * <pre>
-         * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
-         * </pre>
-         *
-         * <code>required string amount = 2;</code>
-         * @param value The bytes for amount to set.
-         * @return This builder for chaining.
-         */
-        public Builder setAmountBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) { throw new NullPointerException(); }
-          amount_ = value;
-          bitField0_ |= 0x00000002;
-          onChanged();
-          return this;
-        }
-
-        private java.lang.Object address_ = "";
-        /**
-         * <pre>
-         * the address where the coin purchase will be delivered
-         * </pre>
-         *
-         * <code>required string address = 3;</code>
-         * @return Whether the address field is set.
-         */
-        public boolean hasAddress() {
-          return ((bitField0_ & 0x00000004) != 0);
-        }
-        /**
-         * <pre>
-         * the address where the coin purchase will be delivered
-         * </pre>
-         *
-         * <code>required string address = 3;</code>
-         * @return The address.
-         */
-        public java.lang.String getAddress() {
-          java.lang.Object ref = address_;
-          if (!(ref instanceof java.lang.String)) {
-            com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            if (bs.isValidUtf8()) {
-              address_ = s;
-            }
-            return s;
-          } else {
-            return (java.lang.String) ref;
-          }
-        }
-        /**
-         * <pre>
-         * the address where the coin purchase will be delivered
-         * </pre>
-         *
-         * <code>required string address = 3;</code>
-         * @return The bytes for address.
-         */
-        public com.google.protobuf.ByteString
-            getAddressBytes() {
-          java.lang.Object ref = address_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            address_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
-        }
-        /**
-         * <pre>
-         * the address where the coin purchase will be delivered
-         * </pre>
-         *
-         * <code>required string address = 3;</code>
-         * @param value The address to set.
-         * @return This builder for chaining.
-         */
-        public Builder setAddress(
-            java.lang.String value) {
-          if (value == null) { throw new NullPointerException(); }
-          address_ = value;
-          bitField0_ |= 0x00000004;
-          onChanged();
-          return this;
-        }
-        /**
-         * <pre>
-         * the address where the coin purchase will be delivered
-         * </pre>
-         *
-         * <code>required string address = 3;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearAddress() {
-          address_ = getDefaultInstance().getAddress();
-          bitField0_ = (bitField0_ & ~0x00000004);
-          onChanged();
-          return this;
-        }
-        /**
-         * <pre>
-         * the address where the coin purchase will be delivered
-         * </pre>
-         *
-         * <code>required string address = 3;</code>
-         * @param value The bytes for address to set.
-         * @return This builder for chaining.
-         */
-        public Builder setAddressBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) { throw new NullPointerException(); }
-          address_ = value;
-          bitField0_ |= 0x00000004;
-          onChanged();
-          return this;
-        }
-
-        private com.google.protobuf.ByteString mac_ = com.google.protobuf.ByteString.EMPTY;
-        /**
-         * <pre>
-         * the MAC returned by GetAddress
-         * </pre>
-         *
-         * <code>required bytes mac = 4;</code>
-         * @return Whether the mac field is set.
-         */
-        @java.lang.Override
-        public boolean hasMac() {
-          return ((bitField0_ & 0x00000008) != 0);
-        }
-        /**
-         * <pre>
-         * the MAC returned by GetAddress
-         * </pre>
-         *
-         * <code>required bytes mac = 4;</code>
-         * @return The mac.
-         */
-        @java.lang.Override
-        public com.google.protobuf.ByteString getMac() {
-          return mac_;
-        }
-        /**
-         * <pre>
-         * the MAC returned by GetAddress
-         * </pre>
-         *
-         * <code>required bytes mac = 4;</code>
-         * @param value The mac to set.
-         * @return This builder for chaining.
-         */
-        public Builder setMac(com.google.protobuf.ByteString value) {
-          if (value == null) { throw new NullPointerException(); }
-          mac_ = value;
-          bitField0_ |= 0x00000008;
-          onChanged();
-          return this;
-        }
-        /**
-         * <pre>
-         * the MAC returned by GetAddress
-         * </pre>
-         *
-         * <code>required bytes mac = 4;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearMac() {
-          bitField0_ = (bitField0_ & ~0x00000008);
-          mac_ = getDefaultInstance().getMac();
-          onChanged();
-          return this;
-        }
-
-        // @@protoc_insertion_point(builder_scope:hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo)
-      }
-
-      // @@protoc_insertion_point(class_scope:hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo)
-      private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo DEFAULT_INSTANCE;
-      static {
-        DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo();
-      }
-
-      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo getDefaultInstance() {
-        return DEFAULT_INSTANCE;
-      }
-
-      private static final com.google.protobuf.Parser<CoinPurchaseMemo>
-          PARSER = new com.google.protobuf.AbstractParser<CoinPurchaseMemo>() {
-        @java.lang.Override
-        public CoinPurchaseMemo parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
-
-      public static com.google.protobuf.Parser<CoinPurchaseMemo> parser() {
-        return PARSER;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Parser<CoinPurchaseMemo> getParserForType() {
-        return PARSER;
-      }
-
-      @java.lang.Override
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.CoinPurchaseMemo getDefaultInstanceForType() {
-        return DEFAULT_INSTANCE;
-      }
-
-    }
-
-    private int bitField0_;
-    public static final int NONCE_FIELD_NUMBER = 1;
-    private com.google.protobuf.ByteString nonce_ = com.google.protobuf.ByteString.EMPTY;
-    /**
-     * <pre>
-     * the nonce used in the signature computation
-     * </pre>
-     *
-     * <code>optional bytes nonce = 1;</code>
-     * @return Whether the nonce field is set.
-     */
-    @java.lang.Override
-    public boolean hasNonce() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <pre>
-     * the nonce used in the signature computation
-     * </pre>
-     *
-     * <code>optional bytes nonce = 1;</code>
-     * @return The nonce.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString getNonce() {
-      return nonce_;
-    }
-
-    public static final int RECIPIENT_NAME_FIELD_NUMBER = 2;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object recipientName_ = "";
-    /**
-     * <pre>
-     * merchant's name
-     * </pre>
-     *
-     * <code>required string recipient_name = 2;</code>
-     * @return Whether the recipientName field is set.
-     */
-    @java.lang.Override
-    public boolean hasRecipientName() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <pre>
-     * merchant's name
-     * </pre>
-     *
-     * <code>required string recipient_name = 2;</code>
-     * @return The recipientName.
-     */
-    @java.lang.Override
-    public java.lang.String getRecipientName() {
-      java.lang.Object ref = recipientName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          recipientName_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <pre>
-     * merchant's name
-     * </pre>
-     *
-     * <code>required string recipient_name = 2;</code>
-     * @return The bytes for recipientName.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getRecipientNameBytes() {
-      java.lang.Object ref = recipientName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        recipientName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int MEMOS_FIELD_NUMBER = 3;
-    @SuppressWarnings("serial")
-    private java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo> memos_;
-    /**
-     * <pre>
-     * any memos that were signed as part of the request
-     * </pre>
-     *
-     * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-     */
-    @java.lang.Override
-    public java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo> getMemosList() {
-      return memos_;
-    }
-    /**
-     * <pre>
-     * any memos that were signed as part of the request
-     * </pre>
-     *
-     * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-     */
-    @java.lang.Override
-    public java.util.List<? extends com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemoOrBuilder> 
-        getMemosOrBuilderList() {
-      return memos_;
-    }
-    /**
-     * <pre>
-     * any memos that were signed as part of the request
-     * </pre>
-     *
-     * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-     */
-    @java.lang.Override
-    public int getMemosCount() {
-      return memos_.size();
-    }
-    /**
-     * <pre>
-     * any memos that were signed as part of the request
-     * </pre>
-     *
-     * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-     */
-    @java.lang.Override
-    public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo getMemos(int index) {
-      return memos_.get(index);
-    }
-    /**
-     * <pre>
-     * any memos that were signed as part of the request
-     * </pre>
-     *
-     * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-     */
-    @java.lang.Override
-    public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemoOrBuilder getMemosOrBuilder(
-        int index) {
-      return memos_.get(index);
-    }
-
-    public static final int AMOUNT_FIELD_NUMBER = 4;
-    private long amount_ = 0L;
-    /**
-     * <pre>
-     * the sum of the external output amounts requested, required for non-CoinJoin
-     * </pre>
-     *
-     * <code>optional uint64 amount = 4;</code>
-     * @return Whether the amount field is set.
-     */
-    @java.lang.Override
-    public boolean hasAmount() {
-      return ((bitField0_ & 0x00000004) != 0);
-    }
-    /**
-     * <pre>
-     * the sum of the external output amounts requested, required for non-CoinJoin
-     * </pre>
-     *
-     * <code>optional uint64 amount = 4;</code>
-     * @return The amount.
-     */
-    @java.lang.Override
-    public long getAmount() {
-      return amount_;
-    }
-
-    public static final int SIGNATURE_FIELD_NUMBER = 5;
-    private com.google.protobuf.ByteString signature_ = com.google.protobuf.ByteString.EMPTY;
-    /**
-     * <pre>
-     * the trusted party's signature of the paymentRequestDigest
-     * </pre>
-     *
-     * <code>required bytes signature = 5;</code>
-     * @return Whether the signature field is set.
-     */
-    @java.lang.Override
-    public boolean hasSignature() {
-      return ((bitField0_ & 0x00000008) != 0);
-    }
-    /**
-     * <pre>
-     * the trusted party's signature of the paymentRequestDigest
-     * </pre>
-     *
-     * <code>required bytes signature = 5;</code>
-     * @return The signature.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString getSignature() {
-      return signature_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      if (!hasRecipientName()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasSignature()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      for (int i = 0; i < getMemosCount(); i++) {
-        if (!getMemos(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeBytes(1, nonce_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, recipientName_);
-      }
-      for (int i = 0; i < memos_.size(); i++) {
-        output.writeMessage(3, memos_.get(i));
-      }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        output.writeUInt64(4, amount_);
-      }
-      if (((bitField0_ & 0x00000008) != 0)) {
-        output.writeBytes(5, signature_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, nonce_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, recipientName_);
-      }
-      for (int i = 0; i < memos_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, memos_.get(i));
-      }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(4, amount_);
-      }
-      if (((bitField0_ & 0x00000008) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(5, signature_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest)) {
-        return super.equals(obj);
-      }
-      com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest) obj;
-
-      if (hasNonce() != other.hasNonce()) return false;
-      if (hasNonce()) {
-        if (!getNonce()
-            .equals(other.getNonce())) return false;
-      }
-      if (hasRecipientName() != other.hasRecipientName()) return false;
-      if (hasRecipientName()) {
-        if (!getRecipientName()
-            .equals(other.getRecipientName())) return false;
-      }
-      if (!getMemosList()
-          .equals(other.getMemosList())) return false;
-      if (hasAmount() != other.hasAmount()) return false;
-      if (hasAmount()) {
-        if (getAmount()
-            != other.getAmount()) return false;
-      }
-      if (hasSignature() != other.hasSignature()) return false;
-      if (hasSignature()) {
-        if (!getSignature()
-            .equals(other.getSignature())) return false;
-      }
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasNonce()) {
-        hash = (37 * hash) + NONCE_FIELD_NUMBER;
-        hash = (53 * hash) + getNonce().hashCode();
-      }
-      if (hasRecipientName()) {
-        hash = (37 * hash) + RECIPIENT_NAME_FIELD_NUMBER;
-        hash = (53 * hash) + getRecipientName().hashCode();
-      }
-      if (getMemosCount() > 0) {
-        hash = (37 * hash) + MEMOS_FIELD_NUMBER;
-        hash = (53 * hash) + getMemosList().hashCode();
-      }
-      if (hasAmount()) {
-        hash = (37 * hash) + AMOUNT_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-            getAmount());
-      }
-      if (hasSignature()) {
-        hash = (37 * hash) + SIGNATURE_FIELD_NUMBER;
-        hash = (53 * hash) + getSignature().hashCode();
-      }
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * <pre>
-     * * Data type of a payment request for a set of outputs.
-     * &#64;next TxRequest
-     * </pre>
-     *
-     * Protobuf type {@code hw.trezor.messages.bitcoin.TxAckPaymentRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.bitcoin.TxAckPaymentRequest)
-        com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.Builder.class);
-      }
-
-      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.newBuilder()
-      private Builder() {
-
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        bitField0_ = 0;
-        nonce_ = com.google.protobuf.ByteString.EMPTY;
-        recipientName_ = "";
-        if (memosBuilder_ == null) {
-          memos_ = java.util.Collections.emptyList();
-        } else {
-          memos_ = null;
-          memosBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000004);
-        amount_ = 0L;
-        signature_ = com.google.protobuf.ByteString.EMPTY;
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_descriptor;
-      }
-
-      @java.lang.Override
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest getDefaultInstanceForType() {
-        return com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest build() {
-        com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest buildPartial() {
-        com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest(this);
-        buildPartialRepeatedFields(result);
-        if (bitField0_ != 0) { buildPartial0(result); }
-        onBuilt();
-        return result;
-      }
-
-      private void buildPartialRepeatedFields(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest result) {
-        if (memosBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) != 0)) {
-            memos_ = java.util.Collections.unmodifiableList(memos_);
-            bitField0_ = (bitField0_ & ~0x00000004);
-          }
-          result.memos_ = memos_;
-        } else {
-          result.memos_ = memosBuilder_.build();
-        }
-      }
-
-      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest result) {
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.nonce_ = nonce_;
-          to_bitField0_ |= 0x00000001;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.recipientName_ = recipientName_;
-          to_bitField0_ |= 0x00000002;
-        }
-        if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.amount_ = amount_;
-          to_bitField0_ |= 0x00000004;
-        }
-        if (((from_bitField0_ & 0x00000010) != 0)) {
-          result.signature_ = signature_;
-          to_bitField0_ |= 0x00000008;
-        }
-        result.bitField0_ |= to_bitField0_;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest) {
-          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest other) {
-        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.getDefaultInstance()) return this;
-        if (other.hasNonce()) {
-          setNonce(other.getNonce());
-        }
-        if (other.hasRecipientName()) {
-          recipientName_ = other.recipientName_;
-          bitField0_ |= 0x00000002;
-          onChanged();
-        }
-        if (memosBuilder_ == null) {
-          if (!other.memos_.isEmpty()) {
-            if (memos_.isEmpty()) {
-              memos_ = other.memos_;
-              bitField0_ = (bitField0_ & ~0x00000004);
-            } else {
-              ensureMemosIsMutable();
-              memos_.addAll(other.memos_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.memos_.isEmpty()) {
-            if (memosBuilder_.isEmpty()) {
-              memosBuilder_.dispose();
-              memosBuilder_ = null;
-              memos_ = other.memos_;
-              bitField0_ = (bitField0_ & ~0x00000004);
-              memosBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getMemosFieldBuilder() : null;
-            } else {
-              memosBuilder_.addAllMessages(other.memos_);
-            }
-          }
-        }
-        if (other.hasAmount()) {
-          setAmount(other.getAmount());
-        }
-        if (other.hasSignature()) {
-          setSignature(other.getSignature());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        if (!hasRecipientName()) {
-          return false;
-        }
-        if (!hasSignature()) {
-          return false;
-        }
-        for (int i = 0; i < getMemosCount(); i++) {
-          if (!getMemos(i).isInitialized()) {
-            return false;
-          }
-        }
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 10: {
-                nonce_ = input.readBytes();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 10
-              case 18: {
-                recipientName_ = input.readBytes();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 18
-              case 26: {
-                com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo m =
-                    input.readMessage(
-                        com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo.parser(),
-                        extensionRegistry);
-                if (memosBuilder_ == null) {
-                  ensureMemosIsMutable();
-                  memos_.add(m);
-                } else {
-                  memosBuilder_.addMessage(m);
-                }
-                break;
-              } // case 26
-              case 32: {
-                amount_ = input.readUInt64();
-                bitField0_ |= 0x00000008;
-                break;
-              } // case 32
-              case 42: {
-                signature_ = input.readBytes();
-                bitField0_ |= 0x00000010;
-                break;
-              } // case 42
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-      private int bitField0_;
-
-      private com.google.protobuf.ByteString nonce_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <pre>
-       * the nonce used in the signature computation
-       * </pre>
-       *
-       * <code>optional bytes nonce = 1;</code>
-       * @return Whether the nonce field is set.
-       */
-      @java.lang.Override
-      public boolean hasNonce() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <pre>
-       * the nonce used in the signature computation
-       * </pre>
-       *
-       * <code>optional bytes nonce = 1;</code>
-       * @return The nonce.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getNonce() {
-        return nonce_;
-      }
-      /**
-       * <pre>
-       * the nonce used in the signature computation
-       * </pre>
-       *
-       * <code>optional bytes nonce = 1;</code>
-       * @param value The nonce to set.
-       * @return This builder for chaining.
-       */
-      public Builder setNonce(com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        nonce_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * the nonce used in the signature computation
-       * </pre>
-       *
-       * <code>optional bytes nonce = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearNonce() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        nonce_ = getDefaultInstance().getNonce();
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object recipientName_ = "";
-      /**
-       * <pre>
-       * merchant's name
-       * </pre>
-       *
-       * <code>required string recipient_name = 2;</code>
-       * @return Whether the recipientName field is set.
-       */
-      public boolean hasRecipientName() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <pre>
-       * merchant's name
-       * </pre>
-       *
-       * <code>required string recipient_name = 2;</code>
-       * @return The recipientName.
-       */
-      public java.lang.String getRecipientName() {
-        java.lang.Object ref = recipientName_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            recipientName_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <pre>
-       * merchant's name
-       * </pre>
-       *
-       * <code>required string recipient_name = 2;</code>
-       * @return The bytes for recipientName.
-       */
-      public com.google.protobuf.ByteString
-          getRecipientNameBytes() {
-        java.lang.Object ref = recipientName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          recipientName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       * merchant's name
-       * </pre>
-       *
-       * <code>required string recipient_name = 2;</code>
-       * @param value The recipientName to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRecipientName(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        recipientName_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * merchant's name
-       * </pre>
-       *
-       * <code>required string recipient_name = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearRecipientName() {
-        recipientName_ = getDefaultInstance().getRecipientName();
-        bitField0_ = (bitField0_ & ~0x00000002);
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * merchant's name
-       * </pre>
-       *
-       * <code>required string recipient_name = 2;</code>
-       * @param value The bytes for recipientName to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRecipientNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        recipientName_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-
-      private java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo> memos_ =
-        java.util.Collections.emptyList();
-      private void ensureMemosIsMutable() {
-        if (!((bitField0_ & 0x00000004) != 0)) {
-          memos_ = new java.util.ArrayList<com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo>(memos_);
-          bitField0_ |= 0x00000004;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemoOrBuilder> memosBuilder_;
-
-      /**
-       * <pre>
-       * any memos that were signed as part of the request
-       * </pre>
-       *
-       * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-       */
-      public java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo> getMemosList() {
-        if (memosBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(memos_);
-        } else {
-          return memosBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <pre>
-       * any memos that were signed as part of the request
-       * </pre>
-       *
-       * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-       */
-      public int getMemosCount() {
-        if (memosBuilder_ == null) {
-          return memos_.size();
-        } else {
-          return memosBuilder_.getCount();
-        }
-      }
-      /**
-       * <pre>
-       * any memos that were signed as part of the request
-       * </pre>
-       *
-       * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-       */
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo getMemos(int index) {
-        if (memosBuilder_ == null) {
-          return memos_.get(index);
-        } else {
-          return memosBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <pre>
-       * any memos that were signed as part of the request
-       * </pre>
-       *
-       * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-       */
-      public Builder setMemos(
-          int index, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo value) {
-        if (memosBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureMemosIsMutable();
-          memos_.set(index, value);
-          onChanged();
-        } else {
-          memosBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * any memos that were signed as part of the request
-       * </pre>
-       *
-       * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-       */
-      public Builder setMemos(
-          int index, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo.Builder builderForValue) {
-        if (memosBuilder_ == null) {
-          ensureMemosIsMutable();
-          memos_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          memosBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * any memos that were signed as part of the request
-       * </pre>
-       *
-       * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-       */
-      public Builder addMemos(com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo value) {
-        if (memosBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureMemosIsMutable();
-          memos_.add(value);
-          onChanged();
-        } else {
-          memosBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * any memos that were signed as part of the request
-       * </pre>
-       *
-       * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-       */
-      public Builder addMemos(
-          int index, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo value) {
-        if (memosBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureMemosIsMutable();
-          memos_.add(index, value);
-          onChanged();
-        } else {
-          memosBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * any memos that were signed as part of the request
-       * </pre>
-       *
-       * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-       */
-      public Builder addMemos(
-          com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo.Builder builderForValue) {
-        if (memosBuilder_ == null) {
-          ensureMemosIsMutable();
-          memos_.add(builderForValue.build());
-          onChanged();
-        } else {
-          memosBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * any memos that were signed as part of the request
-       * </pre>
-       *
-       * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-       */
-      public Builder addMemos(
-          int index, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo.Builder builderForValue) {
-        if (memosBuilder_ == null) {
-          ensureMemosIsMutable();
-          memos_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          memosBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * any memos that were signed as part of the request
-       * </pre>
-       *
-       * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-       */
-      public Builder addAllMemos(
-          java.lang.Iterable<? extends com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo> values) {
-        if (memosBuilder_ == null) {
-          ensureMemosIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, memos_);
-          onChanged();
-        } else {
-          memosBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * any memos that were signed as part of the request
-       * </pre>
-       *
-       * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-       */
-      public Builder clearMemos() {
-        if (memosBuilder_ == null) {
-          memos_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
-          onChanged();
-        } else {
-          memosBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * any memos that were signed as part of the request
-       * </pre>
-       *
-       * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-       */
-      public Builder removeMemos(int index) {
-        if (memosBuilder_ == null) {
-          ensureMemosIsMutable();
-          memos_.remove(index);
-          onChanged();
-        } else {
-          memosBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <pre>
-       * any memos that were signed as part of the request
-       * </pre>
-       *
-       * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-       */
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo.Builder getMemosBuilder(
-          int index) {
-        return getMemosFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <pre>
-       * any memos that were signed as part of the request
-       * </pre>
-       *
-       * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-       */
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemoOrBuilder getMemosOrBuilder(
-          int index) {
-        if (memosBuilder_ == null) {
-          return memos_.get(index);  } else {
-          return memosBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <pre>
-       * any memos that were signed as part of the request
-       * </pre>
-       *
-       * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-       */
-      public java.util.List<? extends com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemoOrBuilder> 
-           getMemosOrBuilderList() {
-        if (memosBuilder_ != null) {
-          return memosBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(memos_);
-        }
-      }
-      /**
-       * <pre>
-       * any memos that were signed as part of the request
-       * </pre>
-       *
-       * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-       */
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo.Builder addMemosBuilder() {
-        return getMemosFieldBuilder().addBuilder(
-            com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo.getDefaultInstance());
-      }
-      /**
-       * <pre>
-       * any memos that were signed as part of the request
-       * </pre>
-       *
-       * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-       */
-      public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo.Builder addMemosBuilder(
-          int index) {
-        return getMemosFieldBuilder().addBuilder(
-            index, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo.getDefaultInstance());
-      }
-      /**
-       * <pre>
-       * any memos that were signed as part of the request
-       * </pre>
-       *
-       * <code>repeated .hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo memos = 3;</code>
-       */
-      public java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo.Builder> 
-           getMemosBuilderList() {
-        return getMemosFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemoOrBuilder> 
-          getMemosFieldBuilder() {
-        if (memosBuilder_ == null) {
-          memosBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest.PaymentRequestMemoOrBuilder>(
-                  memos_,
-                  ((bitField0_ & 0x00000004) != 0),
-                  getParentForChildren(),
-                  isClean());
-          memos_ = null;
-        }
-        return memosBuilder_;
-      }
-
-      private long amount_ ;
-      /**
-       * <pre>
-       * the sum of the external output amounts requested, required for non-CoinJoin
-       * </pre>
-       *
-       * <code>optional uint64 amount = 4;</code>
-       * @return Whether the amount field is set.
-       */
-      @java.lang.Override
-      public boolean hasAmount() {
-        return ((bitField0_ & 0x00000008) != 0);
-      }
-      /**
-       * <pre>
-       * the sum of the external output amounts requested, required for non-CoinJoin
-       * </pre>
-       *
-       * <code>optional uint64 amount = 4;</code>
-       * @return The amount.
-       */
-      @java.lang.Override
-      public long getAmount() {
-        return amount_;
-      }
-      /**
-       * <pre>
-       * the sum of the external output amounts requested, required for non-CoinJoin
-       * </pre>
-       *
-       * <code>optional uint64 amount = 4;</code>
-       * @param value The amount to set.
-       * @return This builder for chaining.
-       */
-      public Builder setAmount(long value) {
-
-        amount_ = value;
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * the sum of the external output amounts requested, required for non-CoinJoin
-       * </pre>
-       *
-       * <code>optional uint64 amount = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearAmount() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        amount_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.ByteString signature_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <pre>
-       * the trusted party's signature of the paymentRequestDigest
-       * </pre>
-       *
-       * <code>required bytes signature = 5;</code>
-       * @return Whether the signature field is set.
-       */
-      @java.lang.Override
-      public boolean hasSignature() {
-        return ((bitField0_ & 0x00000010) != 0);
-      }
-      /**
-       * <pre>
-       * the trusted party's signature of the paymentRequestDigest
-       * </pre>
-       *
-       * <code>required bytes signature = 5;</code>
-       * @return The signature.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getSignature() {
-        return signature_;
-      }
-      /**
-       * <pre>
-       * the trusted party's signature of the paymentRequestDigest
-       * </pre>
-       *
-       * <code>required bytes signature = 5;</code>
-       * @param value The signature to set.
-       * @return This builder for chaining.
-       */
-      public Builder setSignature(com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        signature_ = value;
-        bitField0_ |= 0x00000010;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * the trusted party's signature of the paymentRequestDigest
-       * </pre>
-       *
-       * <code>required bytes signature = 5;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearSignature() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        signature_ = getDefaultInstance().getSignature();
-        onChanged();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.bitcoin.TxAckPaymentRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:hw.trezor.messages.bitcoin.TxAckPaymentRequest)
-    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest();
-    }
-
-    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<TxAckPaymentRequest>
-        PARSER = new com.google.protobuf.AbstractParser<TxAckPaymentRequest>() {
-      @java.lang.Override
-      public TxAckPaymentRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
-
-    public static com.google.protobuf.Parser<TxAckPaymentRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<TxAckPaymentRequest> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin.TxAckPaymentRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -53211,31 +48406,6 @@ public final class TrezorMessageBitcoin {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_hw_trezor_messages_bitcoin_PrevOutput_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_PaymentRequestMemo_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_PaymentRequestMemo_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_TextMemo_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_TextMemo_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_RefundMemo_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_RefundMemo_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_CoinPurchaseMemo_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_CoinPurchaseMemo_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_hw_trezor_messages_bitcoin_TxAckInput_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -53316,219 +48486,206 @@ public final class TrezorMessageBitcoin {
     java.lang.String[] descriptorData = {
       "\n\026messages-bitcoin.proto\022\032hw.trezor.mess" +
       "ages.bitcoin\032\025messages-common.proto\032\ropt" +
-      "ions.proto\"\262\002\n\030MultisigRedeemScriptType\022" +
+      "ions.proto\"\206\003\n\030MultisigRedeemScriptType\022" +
       "T\n\007pubkeys\030\001 \003(\0132C.hw.trezor.messages.bi" +
       "tcoin.MultisigRedeemScriptType.HDNodePat" +
       "hType\022\022\n\nsignatures\030\002 \003(\014\022\t\n\001m\030\003 \002(\r\0224\n\005" +
       "nodes\030\004 \003(\0132%.hw.trezor.messages.common." +
-      "HDNodeType\022\021\n\taddress_n\030\005 \003(\r\032X\n\016HDNodeP" +
-      "athType\0223\n\004node\030\001 \002(\0132%.hw.trezor.messag" +
-      "es.common.HDNodeType\022\021\n\taddress_n\030\002 \003(\r\"" +
-      "\330\001\n\014GetPublicKey\022\021\n\taddress_n\030\001 \003(\r\022\030\n\020e" +
-      "cdsa_curve_name\030\002 \001(\t\022\024\n\014show_display\030\003 " +
-      "\001(\010\022\032\n\tcoin_name\030\004 \001(\t:\007Bitcoin\022N\n\013scrip" +
+      "HDNodeType\022\021\n\taddress_n\030\005 \003(\r\022R\n\rpubkeys" +
+      "_order\030\006 \001(\01620.hw.trezor.messages.bitcoi" +
+      "n.MultisigPubkeysOrder:\tPRESERVED\032X\n\016HDN" +
+      "odePathType\0223\n\004node\030\001 \002(\0132%.hw.trezor.me" +
+      "ssages.common.HDNodeType\022\021\n\taddress_n\030\002 " +
+      "\003(\r\"\330\001\n\014GetPublicKey\022\021\n\taddress_n\030\001 \003(\r\022" +
+      "\030\n\020ecdsa_curve_name\030\002 \001(\t\022\024\n\014show_displa" +
+      "y\030\003 \001(\010\022\032\n\tcoin_name\030\004 \001(\t:\007Bitcoin\022N\n\013s" +
+      "cript_type\030\005 \001(\0162+.hw.trezor.messages.bi" +
+      "tcoin.InputScriptType:\014SPENDADDRESS\022\031\n\021i" +
+      "gnore_xpub_magic\030\006 \001(\010\"\202\001\n\tPublicKey\0223\n\004" +
+      "node\030\001 \002(\0132%.hw.trezor.messages.common.H" +
+      "DNodeType\022\014\n\004xpub\030\002 \002(\t\022\030\n\020root_fingerpr" +
+      "int\030\003 \001(\r\022\030\n\020descriptor_field\030\004 \001(\t\"\226\002\n\n" +
+      "GetAddress\022\021\n\taddress_n\030\001 \003(\r\022\032\n\tcoin_na" +
+      "me\030\002 \001(\t:\007Bitcoin\022\024\n\014show_display\030\003 \001(\010\022" +
+      "F\n\010multisig\030\004 \001(\01324.hw.trezor.messages.b" +
+      "itcoin.MultisigRedeemScriptType\022N\n\013scrip" +
       "t_type\030\005 \001(\0162+.hw.trezor.messages.bitcoi" +
       "n.InputScriptType:\014SPENDADDRESS\022\031\n\021ignor" +
-      "e_xpub_magic\030\006 \001(\010\"\202\001\n\tPublicKey\0223\n\004node" +
-      "\030\001 \002(\0132%.hw.trezor.messages.common.HDNod" +
-      "eType\022\014\n\004xpub\030\002 \002(\t\022\030\n\020root_fingerprint\030" +
-      "\003 \001(\r\022\030\n\020descriptor_field\030\004 \001(\t\"\226\002\n\nGetA" +
-      "ddress\022\021\n\taddress_n\030\001 \003(\r\022\032\n\tcoin_name\030\002" +
-      " \001(\t:\007Bitcoin\022\024\n\014show_display\030\003 \001(\010\022F\n\010m" +
-      "ultisig\030\004 \001(\01324.hw.trezor.messages.bitco" +
-      "in.MultisigRedeemScriptType\022N\n\013script_ty" +
-      "pe\030\005 \001(\0162+.hw.trezor.messages.bitcoin.In" +
-      "putScriptType:\014SPENDADDRESS\022\031\n\021ignore_xp" +
-      "ub_magic\030\006 \001(\010\022\020\n\010chunkify\030\007 \001(\010\"\'\n\007Addr" +
-      "ess\022\017\n\007address\030\001 \002(\t\022\013\n\003mac\030\002 \001(\014\"\327\001\n\016Ge" +
-      "tOwnershipId\022\021\n\taddress_n\030\001 \003(\r\022\032\n\tcoin_" +
-      "name\030\002 \001(\t:\007Bitcoin\022F\n\010multisig\030\003 \001(\01324." +
-      "hw.trezor.messages.bitcoin.MultisigRedee" +
-      "mScriptType\022N\n\013script_type\030\004 \001(\0162+.hw.tr" +
-      "ezor.messages.bitcoin.InputScriptType:\014S" +
-      "PENDADDRESS\"#\n\013OwnershipId\022\024\n\014ownership_" +
-      "id\030\001 \002(\014\"\307\001\n\013SignMessage\022\021\n\taddress_n\030\001 " +
-      "\003(\r\022\017\n\007message\030\002 \002(\014\022\032\n\tcoin_name\030\003 \001(\t:" +
-      "\007Bitcoin\022N\n\013script_type\030\004 \001(\0162+.hw.trezo" +
-      "r.messages.bitcoin.InputScriptType:\014SPEN" +
-      "DADDRESS\022\026\n\016no_script_type\030\005 \001(\010\022\020\n\010chun" +
-      "kify\030\006 \001(\010\"6\n\020MessageSignature\022\017\n\007addres" +
-      "s\030\001 \002(\t\022\021\n\tsignature\030\002 \002(\014\"r\n\rVerifyMess" +
-      "age\022\017\n\007address\030\001 \002(\t\022\021\n\tsignature\030\002 \002(\014\022" +
-      "\017\n\007message\030\003 \002(\014\022\032\n\tcoin_name\030\004 \001(\t:\007Bit" +
-      "coin\022\020\n\010chunkify\030\005 \001(\010\"\326\004\n\006SignTx\022\025\n\rout" +
-      "puts_count\030\001 \002(\r\022\024\n\014inputs_count\030\002 \002(\r\022\032" +
-      "\n\tcoin_name\030\003 \001(\t:\007Bitcoin\022\022\n\007version\030\004 " +
-      "\001(\r:\0011\022\024\n\tlock_time\030\005 \001(\r:\0010\022\016\n\006expiry\030\006" +
-      " \001(\r\022\030\n\014overwintered\030\007 \001(\010B\002\030\001\022\030\n\020versio" +
-      "n_group_id\030\010 \001(\r\022\021\n\ttimestamp\030\t \001(\r\022\021\n\tb" +
-      "ranch_id\030\n \001(\r\022D\n\013amount_unit\030\013 \001(\0162&.hw" +
-      ".trezor.messages.bitcoin.AmountUnit:\007BIT" +
-      "COIN\022$\n\025decred_staking_ticket\030\014 \001(\010:\005fal" +
-      "se\022\027\n\tserialize\030\r \001(\010:\004true\022L\n\020coinjoin_" +
-      "request\030\016 \001(\01322.hw.trezor.messages.bitco" +
-      "in.SignTx.CoinJoinRequest\022\020\n\010chunkify\030\017 " +
-      "\001(\010\032\211\001\n\017CoinJoinRequest\022\020\n\010fee_rate\030\001 \002(" +
-      "\r\022\030\n\020no_fee_threshold\030\002 \002(\004\022\036\n\026min_regis" +
-      "trable_amount\030\003 \002(\004\022\027\n\017mask_public_key\030\004" +
-      " \001(\014\022\021\n\tsignature\030\005 \001(\014\"\322\004\n\tTxRequest\022G\n" +
-      "\014request_type\030\001 \001(\01621.hw.trezor.messages" +
-      ".bitcoin.TxRequest.RequestType\022K\n\007detail" +
-      "s\030\002 \001(\0132:.hw.trezor.messages.bitcoin.TxR" +
-      "equest.TxRequestDetailsType\022Q\n\nserialize" +
-      "d\030\003 \001(\0132=.hw.trezor.messages.bitcoin.TxR" +
-      "equest.TxRequestSerializedType\032q\n\024TxRequ" +
-      "estDetailsType\022\025\n\rrequest_index\030\001 \001(\r\022\017\n" +
-      "\007tx_hash\030\002 \001(\014\022\026\n\016extra_data_len\030\003 \001(\r\022\031" +
-      "\n\021extra_data_offset\030\004 \001(\r\032\\\n\027TxRequestSe" +
-      "rializedType\022\027\n\017signature_index\030\001 \001(\r\022\021\n" +
-      "\tsignature\030\002 \001(\014\022\025\n\rserialized_tx\030\003 \001(\014\"" +
-      "\212\001\n\013RequestType\022\013\n\007TXINPUT\020\000\022\014\n\010TXOUTPUT" +
-      "\020\001\022\n\n\006TXMETA\020\002\022\016\n\nTXFINISHED\020\003\022\017\n\013TXEXTR" +
-      "ADATA\020\004\022\017\n\013TXORIGINPUT\020\005\022\020\n\014TXORIGOUTPUT" +
-      "\020\006\022\020\n\014TXPAYMENTREQ\020\007\"\367\013\n\005TxAck\022=\n\002tx\030\001 \001" +
-      "(\01321.hw.trezor.messages.bitcoin.TxAck.Tr" +
-      "ansactionType\032\252\013\n\017TransactionType\022\017\n\007ver" +
-      "sion\030\001 \001(\r\022M\n\006inputs\030\002 \003(\0132=.hw.trezor.m" +
-      "essages.bitcoin.TxAck.TransactionType.Tx" +
-      "InputType\022V\n\013bin_outputs\030\003 \003(\0132A.hw.trez" +
+      "e_xpub_magic\030\006 \001(\010\022\020\n\010chunkify\030\007 \001(\010\"\'\n\007" +
+      "Address\022\017\n\007address\030\001 \002(\t\022\013\n\003mac\030\002 \001(\014\"\327\001" +
+      "\n\016GetOwnershipId\022\021\n\taddress_n\030\001 \003(\r\022\032\n\tc" +
+      "oin_name\030\002 \001(\t:\007Bitcoin\022F\n\010multisig\030\003 \001(" +
+      "\01324.hw.trezor.messages.bitcoin.MultisigR" +
+      "edeemScriptType\022N\n\013script_type\030\004 \001(\0162+.h" +
+      "w.trezor.messages.bitcoin.InputScriptTyp" +
+      "e:\014SPENDADDRESS\"#\n\013OwnershipId\022\024\n\014owners" +
+      "hip_id\030\001 \002(\014\"\307\001\n\013SignMessage\022\021\n\taddress_" +
+      "n\030\001 \003(\r\022\017\n\007message\030\002 \002(\014\022\032\n\tcoin_name\030\003 " +
+      "\001(\t:\007Bitcoin\022N\n\013script_type\030\004 \001(\0162+.hw.t" +
+      "rezor.messages.bitcoin.InputScriptType:\014" +
+      "SPENDADDRESS\022\026\n\016no_script_type\030\005 \001(\010\022\020\n\010" +
+      "chunkify\030\006 \001(\010\"6\n\020MessageSignature\022\017\n\007ad" +
+      "dress\030\001 \002(\t\022\021\n\tsignature\030\002 \002(\014\"r\n\rVerify" +
+      "Message\022\017\n\007address\030\001 \002(\t\022\021\n\tsignature\030\002 " +
+      "\002(\014\022\017\n\007message\030\003 \002(\014\022\032\n\tcoin_name\030\004 \001(\t:" +
+      "\007Bitcoin\022\020\n\010chunkify\030\005 \001(\010\"\326\004\n\006SignTx\022\025\n" +
+      "\routputs_count\030\001 \002(\r\022\024\n\014inputs_count\030\002 \002" +
+      "(\r\022\032\n\tcoin_name\030\003 \001(\t:\007Bitcoin\022\022\n\007versio" +
+      "n\030\004 \001(\r:\0011\022\024\n\tlock_time\030\005 \001(\r:\0010\022\016\n\006expi" +
+      "ry\030\006 \001(\r\022\030\n\014overwintered\030\007 \001(\010B\002\030\001\022\030\n\020ve" +
+      "rsion_group_id\030\010 \001(\r\022\021\n\ttimestamp\030\t \001(\r\022" +
+      "\021\n\tbranch_id\030\n \001(\r\022D\n\013amount_unit\030\013 \001(\0162" +
+      "&.hw.trezor.messages.bitcoin.AmountUnit:" +
+      "\007BITCOIN\022$\n\025decred_staking_ticket\030\014 \001(\010:" +
+      "\005false\022\027\n\tserialize\030\r \001(\010:\004true\022L\n\020coinj" +
+      "oin_request\030\016 \001(\01322.hw.trezor.messages.b" +
+      "itcoin.SignTx.CoinJoinRequest\022\020\n\010chunkif" +
+      "y\030\017 \001(\010\032\211\001\n\017CoinJoinRequest\022\020\n\010fee_rate\030" +
+      "\001 \002(\r\022\030\n\020no_fee_threshold\030\002 \002(\004\022\036\n\026min_r" +
+      "egistrable_amount\030\003 \002(\004\022\027\n\017mask_public_k" +
+      "ey\030\004 \001(\014\022\021\n\tsignature\030\005 \001(\014\"\322\004\n\tTxReques" +
+      "t\022G\n\014request_type\030\001 \001(\01621.hw.trezor.mess" +
+      "ages.bitcoin.TxRequest.RequestType\022K\n\007de" +
+      "tails\030\002 \001(\0132:.hw.trezor.messages.bitcoin" +
+      ".TxRequest.TxRequestDetailsType\022Q\n\nseria" +
+      "lized\030\003 \001(\0132=.hw.trezor.messages.bitcoin" +
+      ".TxRequest.TxRequestSerializedType\032q\n\024Tx" +
+      "RequestDetailsType\022\025\n\rrequest_index\030\001 \001(" +
+      "\r\022\017\n\007tx_hash\030\002 \001(\014\022\026\n\016extra_data_len\030\003 \001" +
+      "(\r\022\031\n\021extra_data_offset\030\004 \001(\r\032\\\n\027TxReque" +
+      "stSerializedType\022\027\n\017signature_index\030\001 \001(" +
+      "\r\022\021\n\tsignature\030\002 \001(\014\022\025\n\rserialized_tx\030\003 " +
+      "\001(\014\"\212\001\n\013RequestType\022\013\n\007TXINPUT\020\000\022\014\n\010TXOU" +
+      "TPUT\020\001\022\n\n\006TXMETA\020\002\022\016\n\nTXFINISHED\020\003\022\017\n\013TX" +
+      "EXTRADATA\020\004\022\017\n\013TXORIGINPUT\020\005\022\020\n\014TXORIGOU" +
+      "TPUT\020\006\022\020\n\014TXPAYMENTREQ\020\007\"\361\013\n\005TxAck\022=\n\002tx" +
+      "\030\001 \001(\01321.hw.trezor.messages.bitcoin.TxAc" +
+      "k.TransactionType\032\244\013\n\017TransactionType\022\017\n" +
+      "\007version\030\001 \001(\r\022M\n\006inputs\030\002 \003(\0132=.hw.trez" +
       "or.messages.bitcoin.TxAck.TransactionTyp" +
-      "e.TxOutputBinType\022\021\n\tlock_time\030\004 \001(\r\022O\n\007" +
-      "outputs\030\005 \003(\0132>.hw.trezor.messages.bitco" +
-      "in.TxAck.TransactionType.TxOutputType\022\022\n" +
-      "\ninputs_cnt\030\006 \001(\r\022\023\n\013outputs_cnt\030\007 \001(\r\022\022" +
-      "\n\nextra_data\030\010 \001(\014\022\026\n\016extra_data_len\030\t \001" +
-      "(\r\022\016\n\006expiry\030\n \001(\r\022\030\n\014overwintered\030\013 \001(\010" +
-      "B\002\030\001\022\030\n\020version_group_id\030\014 \001(\r\022\021\n\ttimest" +
-      "amp\030\r \001(\r\022\021\n\tbranch_id\030\016 \001(\r\032\244\004\n\013TxInput" +
-      "Type\022\021\n\taddress_n\030\001 \003(\r\022\021\n\tprev_hash\030\002 \002" +
-      "(\014\022\022\n\nprev_index\030\003 \002(\r\022\022\n\nscript_sig\030\004 \001" +
-      "(\014\022\034\n\010sequence\030\005 \001(\r:\n4294967295\022N\n\013scri" +
-      "pt_type\030\006 \001(\0162+.hw.trezor.messages.bitco" +
-      "in.InputScriptType:\014SPENDADDRESS\022F\n\010mult" +
-      "isig\030\007 \001(\01324.hw.trezor.messages.bitcoin." +
-      "MultisigRedeemScriptType\022\016\n\006amount\030\010 \001(\004" +
-      "\022\023\n\013decred_tree\030\t \001(\r\022\017\n\007witness\030\r \001(\014\022\027" +
-      "\n\017ownership_proof\030\016 \001(\014\022\027\n\017commitment_da" +
-      "ta\030\017 \001(\014\022\021\n\torig_hash\030\020 \001(\014\022\022\n\norig_inde" +
-      "x\030\021 \001(\r\022P\n\024decred_staking_spend\030\022 \001(\01622." +
-      "hw.trezor.messages.bitcoin.DecredStaking" +
-      "SpendType\022\025\n\rscript_pubkey\030\023 \001(\014\022\031\n\016coin" +
-      "join_flags\030\024 \001(\r:\0010\032W\n\017TxOutputBinType\022\016" +
+      "e.TxInputType\022V\n\013bin_outputs\030\003 \003(\0132A.hw." +
+      "trezor.messages.bitcoin.TxAck.Transactio" +
+      "nType.TxOutputBinType\022\021\n\tlock_time\030\004 \001(\r" +
+      "\022O\n\007outputs\030\005 \003(\0132>.hw.trezor.messages.b" +
+      "itcoin.TxAck.TransactionType.TxOutputTyp" +
+      "e\022\022\n\ninputs_cnt\030\006 \001(\r\022\023\n\013outputs_cnt\030\007 \001" +
+      "(\r\022\022\n\nextra_data\030\010 \001(\014\022\026\n\016extra_data_len" +
+      "\030\t \001(\r\022\016\n\006expiry\030\n \001(\r\022\030\n\014overwintered\030\013" +
+      " \001(\010B\002\030\001\022\030\n\020version_group_id\030\014 \001(\r\022\021\n\tti" +
+      "mestamp\030\r \001(\r\022\021\n\tbranch_id\030\016 \001(\r\032\244\004\n\013TxI" +
+      "nputType\022\021\n\taddress_n\030\001 \003(\r\022\021\n\tprev_hash" +
+      "\030\002 \002(\014\022\022\n\nprev_index\030\003 \002(\r\022\022\n\nscript_sig" +
+      "\030\004 \001(\014\022\034\n\010sequence\030\005 \001(\r:\n4294967295\022N\n\013" +
+      "script_type\030\006 \001(\0162+.hw.trezor.messages.b" +
+      "itcoin.InputScriptType:\014SPENDADDRESS\022F\n\010" +
+      "multisig\030\007 \001(\01324.hw.trezor.messages.bitc" +
+      "oin.MultisigRedeemScriptType\022\016\n\006amount\030\010" +
+      " \001(\004\022\023\n\013decred_tree\030\t \001(\r\022\017\n\007witness\030\r \001" +
+      "(\014\022\027\n\017ownership_proof\030\016 \001(\014\022\027\n\017commitmen" +
+      "t_data\030\017 \001(\014\022\021\n\torig_hash\030\020 \001(\014\022\022\n\norig_" +
+      "index\030\021 \001(\r\022P\n\024decred_staking_spend\030\022 \001(" +
+      "\01622.hw.trezor.messages.bitcoin.DecredSta" +
+      "kingSpendType\022\025\n\rscript_pubkey\030\023 \001(\014\022\031\n\016" +
+      "coinjoin_flags\030\024 \001(\r:\0010\032W\n\017TxOutputBinTy" +
+      "pe\022\016\n\006amount\030\001 \002(\004\022\025\n\rscript_pubkey\030\002 \002(" +
+      "\014\022\035\n\025decred_script_version\030\003 \001(\r\032\265\002\n\014TxO" +
+      "utputType\022\017\n\007address\030\001 \001(\t\022\021\n\taddress_n\030" +
+      "\002 \003(\r\022\016\n\006amount\030\003 \002(\004\022O\n\013script_type\030\004 \001" +
+      "(\0162,.hw.trezor.messages.bitcoin.OutputSc" +
+      "riptType:\014PAYTOADDRESS\022F\n\010multisig\030\005 \001(\013" +
+      "24.hw.trezor.messages.bitcoin.MultisigRe" +
+      "deemScriptType\022\026\n\016op_return_data\030\006 \001(\014\022\021" +
+      "\n\torig_hash\030\n \001(\014\022\022\n\norig_index\030\013 \001(\r\022\031\n" +
+      "\021payment_req_index\030\014 \001(\r:\002\030\001\"\262\004\n\007TxInput" +
+      "\022\021\n\taddress_n\030\001 \003(\r\022\021\n\tprev_hash\030\002 \002(\014\022\022" +
+      "\n\nprev_index\030\003 \002(\r\022\022\n\nscript_sig\030\004 \001(\014\022\034" +
+      "\n\010sequence\030\005 \001(\r:\n4294967295\022N\n\013script_t" +
+      "ype\030\006 \001(\0162+.hw.trezor.messages.bitcoin.I" +
+      "nputScriptType:\014SPENDADDRESS\022F\n\010multisig" +
+      "\030\007 \001(\01324.hw.trezor.messages.bitcoin.Mult" +
+      "isigRedeemScriptType\022\016\n\006amount\030\010 \002(\004\022\023\n\013" +
+      "decred_tree\030\t \001(\r\022\017\n\007witness\030\r \001(\014\022\027\n\017ow" +
+      "nership_proof\030\016 \001(\014\022\027\n\017commitment_data\030\017" +
+      " \001(\014\022\021\n\torig_hash\030\020 \001(\014\022\022\n\norig_index\030\021 " +
+      "\001(\r\022P\n\024decred_staking_spend\030\022 \001(\01622.hw.t" +
+      "rezor.messages.bitcoin.DecredStakingSpen" +
+      "dType\022\025\n\rscript_pubkey\030\023 \001(\014\022\031\n\016coinjoin" +
+      "_flags\030\024 \001(\r:\0010J\004\010\n\020\013J\004\010\013\020\014J\004\010\014\020\r\"\303\002\n\010Tx" +
+      "Output\022\017\n\007address\030\001 \001(\t\022\021\n\taddress_n\030\002 \003" +
+      "(\r\022\016\n\006amount\030\003 \002(\004\022O\n\013script_type\030\004 \001(\0162" +
+      ",.hw.trezor.messages.bitcoin.OutputScrip" +
+      "tType:\014PAYTOADDRESS\022F\n\010multisig\030\005 \001(\01324." +
+      "hw.trezor.messages.bitcoin.MultisigRedee" +
+      "mScriptType\022\026\n\016op_return_data\030\006 \001(\014\022\021\n\to" +
+      "rig_hash\030\n \001(\014\022\022\n\norig_index\030\013 \001(\r\022\031\n\021pa" +
+      "yment_req_index\030\014 \001(\rJ\004\010\007\020\010J\004\010\010\020\tJ\004\010\t\020\n\"" +
+      "\342\001\n\006PrevTx\022\017\n\007version\030\001 \002(\r\022\021\n\tlock_time" +
+      "\030\004 \002(\r\022\024\n\014inputs_count\030\006 \002(\r\022\025\n\routputs_" +
+      "count\030\007 \002(\r\022\031\n\016extra_data_len\030\t \001(\r:\0010\022\016" +
+      "\n\006expiry\030\n \001(\r\022\030\n\020version_group_id\030\014 \001(\r" +
+      "\022\021\n\ttimestamp\030\r \001(\r\022\021\n\tbranch_id\030\016 \001(\rJ\004" +
+      "\010\002\020\003J\004\010\003\020\004J\004\010\005\020\006J\004\010\010\020\tJ\004\010\013\020\014\"\301\001\n\tPrevInp" +
+      "ut\022\021\n\tprev_hash\030\002 \002(\014\022\022\n\nprev_index\030\003 \002(" +
+      "\r\022\022\n\nscript_sig\030\004 \002(\014\022\020\n\010sequence\030\005 \002(\r\022" +
+      "\023\n\013decred_tree\030\t \001(\rJ\004\010\001\020\002J\004\010\006\020\007J\004\010\007\020\010J\004" +
+      "\010\010\020\tJ\004\010\n\020\013J\004\010\013\020\014J\004\010\014\020\rJ\004\010\r\020\016J\004\010\016\020\017J\004\010\017\020\020" +
+      "J\004\010\020\020\021J\004\010\021\020\022J\004\010\022\020\023J\004\010\023\020\024\"R\n\nPrevOutput\022\016" +
       "\n\006amount\030\001 \002(\004\022\025\n\rscript_pubkey\030\002 \002(\014\022\035\n" +
-      "\025decred_script_version\030\003 \001(\r\032\273\002\n\014TxOutpu" +
-      "tType\022\017\n\007address\030\001 \001(\t\022\021\n\taddress_n\030\002 \003(" +
-      "\r\022\016\n\006amount\030\003 \002(\004\022O\n\013script_type\030\004 \001(\0162," +
-      ".hw.trezor.messages.bitcoin.OutputScript" +
-      "Type:\014PAYTOADDRESS\022F\n\010multisig\030\005 \001(\01324.h" +
-      "w.trezor.messages.bitcoin.MultisigRedeem" +
-      "ScriptType\022\026\n\016op_return_data\030\006 \001(\014\022\021\n\tor" +
-      "ig_hash\030\n \001(\014\022\022\n\norig_index\030\013 \001(\r\022\037\n\021pay" +
-      "ment_req_index\030\014 \001(\rB\004\310\360\031\001:\002\030\001\"\262\004\n\007TxInp" +
-      "ut\022\021\n\taddress_n\030\001 \003(\r\022\021\n\tprev_hash\030\002 \002(\014" +
-      "\022\022\n\nprev_index\030\003 \002(\r\022\022\n\nscript_sig\030\004 \001(\014" +
-      "\022\034\n\010sequence\030\005 \001(\r:\n4294967295\022N\n\013script" +
-      "_type\030\006 \001(\0162+.hw.trezor.messages.bitcoin" +
-      ".InputScriptType:\014SPENDADDRESS\022F\n\010multis" +
-      "ig\030\007 \001(\01324.hw.trezor.messages.bitcoin.Mu" +
-      "ltisigRedeemScriptType\022\016\n\006amount\030\010 \002(\004\022\023" +
-      "\n\013decred_tree\030\t \001(\r\022\017\n\007witness\030\r \001(\014\022\027\n\017" +
-      "ownership_proof\030\016 \001(\014\022\027\n\017commitment_data" +
-      "\030\017 \001(\014\022\021\n\torig_hash\030\020 \001(\014\022\022\n\norig_index\030" +
-      "\021 \001(\r\022P\n\024decred_staking_spend\030\022 \001(\01622.hw" +
-      ".trezor.messages.bitcoin.DecredStakingSp" +
-      "endType\022\025\n\rscript_pubkey\030\023 \001(\014\022\031\n\016coinjo" +
-      "in_flags\030\024 \001(\r:\0010J\004\010\n\020\013J\004\010\013\020\014J\004\010\014\020\r\"\311\002\n\010" +
-      "TxOutput\022\017\n\007address\030\001 \001(\t\022\021\n\taddress_n\030\002" +
-      " \003(\r\022\016\n\006amount\030\003 \002(\004\022O\n\013script_type\030\004 \001(" +
-      "\0162,.hw.trezor.messages.bitcoin.OutputScr" +
-      "iptType:\014PAYTOADDRESS\022F\n\010multisig\030\005 \001(\0132" +
-      "4.hw.trezor.messages.bitcoin.MultisigRed" +
-      "eemScriptType\022\026\n\016op_return_data\030\006 \001(\014\022\021\n" +
-      "\torig_hash\030\n \001(\014\022\022\n\norig_index\030\013 \001(\r\022\037\n\021" +
-      "payment_req_index\030\014 \001(\rB\004\310\360\031\001J\004\010\007\020\010J\004\010\010\020" +
-      "\tJ\004\010\t\020\n\"\342\001\n\006PrevTx\022\017\n\007version\030\001 \002(\r\022\021\n\tl" +
-      "ock_time\030\004 \002(\r\022\024\n\014inputs_count\030\006 \002(\r\022\025\n\r" +
-      "outputs_count\030\007 \002(\r\022\031\n\016extra_data_len\030\t " +
-      "\001(\r:\0010\022\016\n\006expiry\030\n \001(\r\022\030\n\020version_group_" +
-      "id\030\014 \001(\r\022\021\n\ttimestamp\030\r \001(\r\022\021\n\tbranch_id" +
-      "\030\016 \001(\rJ\004\010\002\020\003J\004\010\003\020\004J\004\010\005\020\006J\004\010\010\020\tJ\004\010\013\020\014\"\301\001\n" +
-      "\tPrevInput\022\021\n\tprev_hash\030\002 \002(\014\022\022\n\nprev_in" +
-      "dex\030\003 \002(\r\022\022\n\nscript_sig\030\004 \002(\014\022\020\n\010sequenc" +
-      "e\030\005 \002(\r\022\023\n\013decred_tree\030\t \001(\rJ\004\010\001\020\002J\004\010\006\020\007" +
-      "J\004\010\007\020\010J\004\010\010\020\tJ\004\010\n\020\013J\004\010\013\020\014J\004\010\014\020\rJ\004\010\r\020\016J\004\010\016" +
-      "\020\017J\004\010\017\020\020J\004\010\020\020\021J\004\010\021\020\022J\004\010\022\020\023J\004\010\023\020\024\"R\n\nPrev" +
-      "Output\022\016\n\006amount\030\001 \002(\004\022\025\n\rscript_pubkey\030" +
-      "\002 \002(\014\022\035\n\025decred_script_version\030\003 \001(\r\"\346\004\n" +
-      "\023TxAckPaymentRequest\022\r\n\005nonce\030\001 \001(\014\022\026\n\016r" +
-      "ecipient_name\030\002 \002(\t\022Q\n\005memos\030\003 \003(\0132B.hw." +
-      "trezor.messages.bitcoin.TxAckPaymentRequ" +
-      "est.PaymentRequestMemo\022\016\n\006amount\030\004 \001(\004\022\021" +
-      "\n\tsignature\030\005 \002(\014\032\220\002\n\022PaymentRequestMemo" +
-      "\022K\n\ttext_memo\030\001 \001(\01328.hw.trezor.messages" +
-      ".bitcoin.TxAckPaymentRequest.TextMemo\022O\n" +
-      "\013refund_memo\030\002 \001(\0132:.hw.trezor.messages." +
-      "bitcoin.TxAckPaymentRequest.RefundMemo\022\\" +
-      "\n\022coin_purchase_memo\030\003 \001(\0132@.hw.trezor.m" +
-      "essages.bitcoin.TxAckPaymentRequest.Coin" +
-      "PurchaseMemo\032\030\n\010TextMemo\022\014\n\004text\030\001 \002(\t\032*" +
-      "\n\nRefundMemo\022\017\n\007address\030\001 \002(\t\022\013\n\003mac\030\002 \002" +
-      "(\014\032S\n\020CoinPurchaseMemo\022\021\n\tcoin_type\030\001 \002(" +
-      "\r\022\016\n\006amount\030\002 \002(\t\022\017\n\007address\030\003 \002(\t\022\013\n\003ma" +
-      "c\030\004 \002(\014:\004\210\262\031\001\"\241\001\n\nTxAckInput\022D\n\002tx\030\001 \002(\013" +
-      "28.hw.trezor.messages.bitcoin.TxAckInput" +
-      ".TxAckInputWrapper\032G\n\021TxAckInputWrapper\022" +
-      "2\n\005input\030\002 \002(\0132#.hw.trezor.messages.bitc" +
-      "oin.TxInput:\004\220\262\031\026\"\247\001\n\013TxAckOutput\022F\n\002tx\030" +
-      "\001 \002(\0132:.hw.trezor.messages.bitcoin.TxAck" +
-      "Output.TxAckOutputWrapper\032J\n\022TxAckOutput" +
-      "Wrapper\0224\n\006output\030\005 \002(\0132$.hw.trezor.mess" +
-      "ages.bitcoin.TxOutput:\004\220\262\031\026\"E\n\rTxAckPrev" +
-      "Meta\022.\n\002tx\030\001 \002(\0132\".hw.trezor.messages.bi" +
-      "tcoin.PrevTx:\004\220\262\031\026\"\263\001\n\016TxAckPrevInput\022L\n" +
-      "\002tx\030\001 \002(\0132@.hw.trezor.messages.bitcoin.T" +
-      "xAckPrevInput.TxAckPrevInputWrapper\032M\n\025T" +
-      "xAckPrevInputWrapper\0224\n\005input\030\002 \002(\0132%.hw" +
-      ".trezor.messages.bitcoin.PrevInput:\004\220\262\031\026" +
-      "\"\271\001\n\017TxAckPrevOutput\022N\n\002tx\030\001 \002(\0132B.hw.tr" +
-      "ezor.messages.bitcoin.TxAckPrevOutput.Tx" +
-      "AckPrevOutputWrapper\032P\n\026TxAckPrevOutputW" +
-      "rapper\0226\n\006output\030\003 \002(\0132&.hw.trezor.messa" +
-      "ges.bitcoin.PrevOutput:\004\220\262\031\026\"\247\001\n\022TxAckPr" +
-      "evExtraData\022T\n\002tx\030\001 \002(\0132H.hw.trezor.mess" +
-      "ages.bitcoin.TxAckPrevExtraData.TxAckPre" +
-      "vExtraDataWrapper\0325\n\031TxAckPrevExtraDataW" +
-      "rapper\022\030\n\020extra_data_chunk\030\010 \002(\014:\004\220\262\031\026\"\256" +
-      "\002\n\021GetOwnershipProof\022\021\n\taddress_n\030\001 \003(\r\022" +
-      "\032\n\tcoin_name\030\002 \001(\t:\007Bitcoin\022N\n\013script_ty" +
-      "pe\030\003 \001(\0162+.hw.trezor.messages.bitcoin.In" +
-      "putScriptType:\014SPENDWITNESS\022F\n\010multisig\030" +
-      "\004 \001(\01324.hw.trezor.messages.bitcoin.Multi" +
-      "sigRedeemScriptType\022 \n\021user_confirmation" +
-      "\030\005 \001(\010:\005false\022\025\n\rownership_ids\030\006 \003(\014\022\031\n\017" +
-      "commitment_data\030\007 \001(\014:\000\"<\n\016OwnershipProo" +
-      "f\022\027\n\017ownership_proof\030\001 \002(\014\022\021\n\tsignature\030" +
-      "\002 \002(\014\"\277\002\n\021AuthorizeCoinJoin\022\023\n\013coordinat" +
-      "or\030\001 \002(\t\022\022\n\nmax_rounds\030\002 \002(\004\022 \n\030max_coor" +
-      "dinator_fee_rate\030\003 \002(\r\022\032\n\022max_fee_per_kv" +
-      "byte\030\004 \002(\r\022\021\n\taddress_n\030\005 \003(\r\022\032\n\tcoin_na" +
-      "me\030\006 \001(\t:\007Bitcoin\022N\n\013script_type\030\007 \001(\0162+" +
-      ".hw.trezor.messages.bitcoin.InputScriptT" +
-      "ype:\014SPENDADDRESS\022D\n\013amount_unit\030\010 \001(\0162&" +
-      ".hw.trezor.messages.bitcoin.AmountUnit:\007" +
-      "BITCOIN*~\n\017InputScriptType\022\020\n\014SPENDADDRE" +
-      "SS\020\000\022\021\n\rSPENDMULTISIG\020\001\022\014\n\010EXTERNAL\020\002\022\020\n" +
-      "\014SPENDWITNESS\020\003\022\024\n\020SPENDP2SHWITNESS\020\004\022\020\n" +
-      "\014SPENDTAPROOT\020\005*\231\001\n\020OutputScriptType\022\020\n\014" +
-      "PAYTOADDRESS\020\000\022\023\n\017PAYTOSCRIPTHASH\020\001\022\021\n\rP" +
-      "AYTOMULTISIG\020\002\022\021\n\rPAYTOOPRETURN\020\003\022\020\n\014PAY" +
-      "TOWITNESS\020\004\022\024\n\020PAYTOP2SHWITNESS\020\005\022\020\n\014PAY" +
-      "TOTAPROOT\020\006*.\n\026DecredStakingSpendType\022\t\n" +
-      "\005SSGen\020\000\022\t\n\005SSRTX\020\001*J\n\nAmountUnit\022\013\n\007BIT" +
-      "COIN\020\000\022\020\n\014MILLIBITCOIN\020\001\022\020\n\014MICROBITCOIN" +
-      "\020\002\022\013\n\007SATOSHI\020\003BC\n\'com.sparrowwallet.lar" +
-      "k.trezor.generatedB\024TrezorMessageBitcoin" +
-      "\200\246\035\001"
+      "\025decred_script_version\030\003 \001(\r\"\241\001\n\nTxAckIn" +
+      "put\022D\n\002tx\030\001 \002(\01328.hw.trezor.messages.bit" +
+      "coin.TxAckInput.TxAckInputWrapper\032G\n\021TxA" +
+      "ckInputWrapper\0222\n\005input\030\002 \002(\0132#.hw.trezo" +
+      "r.messages.bitcoin.TxInput:\004\220\262\031\026\"\247\001\n\013TxA" +
+      "ckOutput\022F\n\002tx\030\001 \002(\0132:.hw.trezor.message" +
+      "s.bitcoin.TxAckOutput.TxAckOutputWrapper" +
+      "\032J\n\022TxAckOutputWrapper\0224\n\006output\030\005 \002(\0132$" +
+      ".hw.trezor.messages.bitcoin.TxOutput:\004\220\262" +
+      "\031\026\"E\n\rTxAckPrevMeta\022.\n\002tx\030\001 \002(\0132\".hw.tre" +
+      "zor.messages.bitcoin.PrevTx:\004\220\262\031\026\"\263\001\n\016Tx" +
+      "AckPrevInput\022L\n\002tx\030\001 \002(\0132@.hw.trezor.mes" +
+      "sages.bitcoin.TxAckPrevInput.TxAckPrevIn" +
+      "putWrapper\032M\n\025TxAckPrevInputWrapper\0224\n\005i" +
+      "nput\030\002 \002(\0132%.hw.trezor.messages.bitcoin." +
+      "PrevInput:\004\220\262\031\026\"\271\001\n\017TxAckPrevOutput\022N\n\002t" +
+      "x\030\001 \002(\0132B.hw.trezor.messages.bitcoin.TxA" +
+      "ckPrevOutput.TxAckPrevOutputWrapper\032P\n\026T" +
+      "xAckPrevOutputWrapper\0226\n\006output\030\003 \002(\0132&." +
+      "hw.trezor.messages.bitcoin.PrevOutput:\004\220" +
+      "\262\031\026\"\247\001\n\022TxAckPrevExtraData\022T\n\002tx\030\001 \002(\0132H" +
+      ".hw.trezor.messages.bitcoin.TxAckPrevExt" +
+      "raData.TxAckPrevExtraDataWrapper\0325\n\031TxAc" +
+      "kPrevExtraDataWrapper\022\030\n\020extra_data_chun" +
+      "k\030\010 \002(\014:\004\220\262\031\026\"\256\002\n\021GetOwnershipProof\022\021\n\ta" +
+      "ddress_n\030\001 \003(\r\022\032\n\tcoin_name\030\002 \001(\t:\007Bitco" +
+      "in\022N\n\013script_type\030\003 \001(\0162+.hw.trezor.mess" +
+      "ages.bitcoin.InputScriptType:\014SPENDWITNE" +
+      "SS\022F\n\010multisig\030\004 \001(\01324.hw.trezor.message" +
+      "s.bitcoin.MultisigRedeemScriptType\022 \n\021us" +
+      "er_confirmation\030\005 \001(\010:\005false\022\025\n\rownershi" +
+      "p_ids\030\006 \003(\014\022\031\n\017commitment_data\030\007 \001(\014:\000\"<" +
+      "\n\016OwnershipProof\022\027\n\017ownership_proof\030\001 \002(" +
+      "\014\022\021\n\tsignature\030\002 \002(\014\"\277\002\n\021AuthorizeCoinJo" +
+      "in\022\023\n\013coordinator\030\001 \002(\t\022\022\n\nmax_rounds\030\002 " +
+      "\002(\004\022 \n\030max_coordinator_fee_rate\030\003 \002(\r\022\032\n" +
+      "\022max_fee_per_kvbyte\030\004 \002(\r\022\021\n\taddress_n\030\005" +
+      " \003(\r\022\032\n\tcoin_name\030\006 \001(\t:\007Bitcoin\022N\n\013scri" +
+      "pt_type\030\007 \001(\0162+.hw.trezor.messages.bitco" +
+      "in.InputScriptType:\014SPENDADDRESS\022D\n\013amou" +
+      "nt_unit\030\010 \001(\0162&.hw.trezor.messages.bitco" +
+      "in.AmountUnit:\007BITCOIN*~\n\017InputScriptTyp" +
+      "e\022\020\n\014SPENDADDRESS\020\000\022\021\n\rSPENDMULTISIG\020\001\022\014" +
+      "\n\010EXTERNAL\020\002\022\020\n\014SPENDWITNESS\020\003\022\024\n\020SPENDP" +
+      "2SHWITNESS\020\004\022\020\n\014SPENDTAPROOT\020\005*\231\001\n\020Outpu" +
+      "tScriptType\022\020\n\014PAYTOADDRESS\020\000\022\023\n\017PAYTOSC" +
+      "RIPTHASH\020\001\022\021\n\rPAYTOMULTISIG\020\002\022\021\n\rPAYTOOP" +
+      "RETURN\020\003\022\020\n\014PAYTOWITNESS\020\004\022\024\n\020PAYTOP2SHW" +
+      "ITNESS\020\005\022\020\n\014PAYTOTAPROOT\020\006*.\n\026DecredStak" +
+      "ingSpendType\022\t\n\005SSGen\020\000\022\t\n\005SSRTX\020\001*J\n\nAm" +
+      "ountUnit\022\013\n\007BITCOIN\020\000\022\020\n\014MILLIBITCOIN\020\001\022" +
+      "\020\n\014MICROBITCOIN\020\002\022\013\n\007SATOSHI\020\003*8\n\024Multis" +
+      "igPubkeysOrder\022\r\n\tPRESERVED\020\000\022\021\n\rLEXICOG" +
+      "RAPHIC\020\001BC\n\'com.sparrowwallet.lark.trezo" +
+      "r.generatedB\024TrezorMessageBitcoin\200\246\035\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -53541,7 +48698,7 @@ public final class TrezorMessageBitcoin {
     internal_static_hw_trezor_messages_bitcoin_MultisigRedeemScriptType_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_bitcoin_MultisigRedeemScriptType_descriptor,
-        new java.lang.String[] { "Pubkeys", "Signatures", "M", "Nodes", "AddressN", });
+        new java.lang.String[] { "Pubkeys", "Signatures", "M", "Nodes", "AddressN", "PubkeysOrder", });
     internal_static_hw_trezor_messages_bitcoin_MultisigRedeemScriptType_HDNodePathType_descriptor =
       internal_static_hw_trezor_messages_bitcoin_MultisigRedeemScriptType_descriptor.getNestedTypes().get(0);
     internal_static_hw_trezor_messages_bitcoin_MultisigRedeemScriptType_HDNodePathType_fieldAccessorTable = new
@@ -53692,38 +48849,8 @@ public final class TrezorMessageBitcoin {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_bitcoin_PrevOutput_descriptor,
         new java.lang.String[] { "Amount", "ScriptPubkey", "DecredScriptVersion", });
-    internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_descriptor =
-      getDescriptor().getMessageTypes().get(18);
-    internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_descriptor,
-        new java.lang.String[] { "Nonce", "RecipientName", "Memos", "Amount", "Signature", });
-    internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_PaymentRequestMemo_descriptor =
-      internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_descriptor.getNestedTypes().get(0);
-    internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_PaymentRequestMemo_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_PaymentRequestMemo_descriptor,
-        new java.lang.String[] { "TextMemo", "RefundMemo", "CoinPurchaseMemo", });
-    internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_TextMemo_descriptor =
-      internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_descriptor.getNestedTypes().get(1);
-    internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_TextMemo_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_TextMemo_descriptor,
-        new java.lang.String[] { "Text", });
-    internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_RefundMemo_descriptor =
-      internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_descriptor.getNestedTypes().get(2);
-    internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_RefundMemo_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_RefundMemo_descriptor,
-        new java.lang.String[] { "Address", "Mac", });
-    internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_CoinPurchaseMemo_descriptor =
-      internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_descriptor.getNestedTypes().get(3);
-    internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_CoinPurchaseMemo_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_hw_trezor_messages_bitcoin_TxAckPaymentRequest_CoinPurchaseMemo_descriptor,
-        new java.lang.String[] { "CoinType", "Amount", "Address", "Mac", });
     internal_static_hw_trezor_messages_bitcoin_TxAckInput_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_hw_trezor_messages_bitcoin_TxAckInput_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_bitcoin_TxAckInput_descriptor,
@@ -53735,7 +48862,7 @@ public final class TrezorMessageBitcoin {
         internal_static_hw_trezor_messages_bitcoin_TxAckInput_TxAckInputWrapper_descriptor,
         new java.lang.String[] { "Input", });
     internal_static_hw_trezor_messages_bitcoin_TxAckOutput_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_hw_trezor_messages_bitcoin_TxAckOutput_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_bitcoin_TxAckOutput_descriptor,
@@ -53747,13 +48874,13 @@ public final class TrezorMessageBitcoin {
         internal_static_hw_trezor_messages_bitcoin_TxAckOutput_TxAckOutputWrapper_descriptor,
         new java.lang.String[] { "Output", });
     internal_static_hw_trezor_messages_bitcoin_TxAckPrevMeta_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(20);
     internal_static_hw_trezor_messages_bitcoin_TxAckPrevMeta_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_bitcoin_TxAckPrevMeta_descriptor,
         new java.lang.String[] { "Tx", });
     internal_static_hw_trezor_messages_bitcoin_TxAckPrevInput_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_hw_trezor_messages_bitcoin_TxAckPrevInput_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_bitcoin_TxAckPrevInput_descriptor,
@@ -53765,7 +48892,7 @@ public final class TrezorMessageBitcoin {
         internal_static_hw_trezor_messages_bitcoin_TxAckPrevInput_TxAckPrevInputWrapper_descriptor,
         new java.lang.String[] { "Input", });
     internal_static_hw_trezor_messages_bitcoin_TxAckPrevOutput_descriptor =
-      getDescriptor().getMessageTypes().get(23);
+      getDescriptor().getMessageTypes().get(22);
     internal_static_hw_trezor_messages_bitcoin_TxAckPrevOutput_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_bitcoin_TxAckPrevOutput_descriptor,
@@ -53777,7 +48904,7 @@ public final class TrezorMessageBitcoin {
         internal_static_hw_trezor_messages_bitcoin_TxAckPrevOutput_TxAckPrevOutputWrapper_descriptor,
         new java.lang.String[] { "Output", });
     internal_static_hw_trezor_messages_bitcoin_TxAckPrevExtraData_descriptor =
-      getDescriptor().getMessageTypes().get(24);
+      getDescriptor().getMessageTypes().get(23);
     internal_static_hw_trezor_messages_bitcoin_TxAckPrevExtraData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_bitcoin_TxAckPrevExtraData_descriptor,
@@ -53789,19 +48916,19 @@ public final class TrezorMessageBitcoin {
         internal_static_hw_trezor_messages_bitcoin_TxAckPrevExtraData_TxAckPrevExtraDataWrapper_descriptor,
         new java.lang.String[] { "ExtraDataChunk", });
     internal_static_hw_trezor_messages_bitcoin_GetOwnershipProof_descriptor =
-      getDescriptor().getMessageTypes().get(25);
+      getDescriptor().getMessageTypes().get(24);
     internal_static_hw_trezor_messages_bitcoin_GetOwnershipProof_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_bitcoin_GetOwnershipProof_descriptor,
         new java.lang.String[] { "AddressN", "CoinName", "ScriptType", "Multisig", "UserConfirmation", "OwnershipIds", "CommitmentData", });
     internal_static_hw_trezor_messages_bitcoin_OwnershipProof_descriptor =
-      getDescriptor().getMessageTypes().get(26);
+      getDescriptor().getMessageTypes().get(25);
     internal_static_hw_trezor_messages_bitcoin_OwnershipProof_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_bitcoin_OwnershipProof_descriptor,
         new java.lang.String[] { "OwnershipProof", "Signature", });
     internal_static_hw_trezor_messages_bitcoin_AuthorizeCoinJoin_descriptor =
-      getDescriptor().getMessageTypes().get(27);
+      getDescriptor().getMessageTypes().get(26);
     internal_static_hw_trezor_messages_bitcoin_AuthorizeCoinJoin_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_bitcoin_AuthorizeCoinJoin_descriptor,
@@ -53811,8 +48938,6 @@ public final class TrezorMessageBitcoin {
     com.sparrowwallet.lark.trezor.generated.TrezorOptions.getDescriptor();
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
-    registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.experimentalField);
-    registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.experimentalMessage);
     registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.includeInBitcoinOnly);
     registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.wireType);
     com.google.protobuf.Descriptors.FileDescriptor

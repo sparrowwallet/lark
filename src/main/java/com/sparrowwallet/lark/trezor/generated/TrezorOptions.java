@@ -27,6 +27,7 @@ public final class TrezorOptions {
     registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.wireNoFsm);
     registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.bitcoinOnly);
     registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.hasBitcoinOnlyValues);
+    registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.wireEnum);
     registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.experimentalMessage);
     registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.wireType);
     registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.internalOnly);
@@ -174,6 +175,21 @@ public final class TrezorOptions {
           .newFileScopedGeneratedExtension(
         java.lang.Boolean.class,
         null);
+  public static final int WIRE_ENUM_FIELD_NUMBER = 51002;
+  /**
+   * <pre>
+   * this enum is used for mapping wire type integer to message type, it cannot be used as normal enum
+   * </pre>
+   *
+   * <code>extend .google.protobuf.EnumOptions { ... }</code>
+   */
+  public static final
+    com.google.protobuf.GeneratedMessage.GeneratedExtension<
+      com.google.protobuf.DescriptorProtos.EnumOptions,
+      java.lang.Boolean> wireEnum = com.google.protobuf.GeneratedMessage
+          .newFileScopedGeneratedExtension(
+        java.lang.Boolean.class,
+        null);
   public static final int EXPERIMENTAL_MESSAGE_FIELD_NUMBER = 52001;
   /**
    * <pre>
@@ -273,15 +289,17 @@ public final class TrezorOptions {
       "itcoin_only\022!.google.protobuf.EnumValueO" +
       "ptions\030\340\324\003 \001(\010:?\n\027has_bitcoin_only_value" +
       "s\022\034.google.protobuf.EnumOptions\030\271\216\003 \001(\010:" +
-      "?\n\024experimental_message\022\037.google.protobu" +
-      "f.MessageOptions\030\241\226\003 \001(\010:4\n\twire_type\022\037." +
-      "google.protobuf.MessageOptions\030\242\226\003 \001(\r:8" +
-      "\n\rinternal_only\022\037.google.protobuf.Messag" +
-      "eOptions\030\243\226\003 \001(\010:;\n\022experimental_field\022\035" +
-      ".google.protobuf.FieldOptions\030\211\236\003 \001(\010:?\n" +
-      "\027include_in_bitcoin_only\022\034.google.protob" +
-      "uf.FileOptions\030\340\324\003 \001(\010B8\n\'com.sparrowwal" +
-      "let.lark.trezor.generatedB\rTrezorOptions"
+      "1\n\twire_enum\022\034.google.protobuf.EnumOptio" +
+      "ns\030\272\216\003 \001(\010:?\n\024experimental_message\022\037.goo" +
+      "gle.protobuf.MessageOptions\030\241\226\003 \001(\010:4\n\tw" +
+      "ire_type\022\037.google.protobuf.MessageOption" +
+      "s\030\242\226\003 \001(\r:8\n\rinternal_only\022\037.google.prot" +
+      "obuf.MessageOptions\030\243\226\003 \001(\010:;\n\022experimen" +
+      "tal_field\022\035.google.protobuf.FieldOptions" +
+      "\030\211\236\003 \001(\010:?\n\027include_in_bitcoin_only\022\034.go" +
+      "ogle.protobuf.FileOptions\030\340\324\003 \001(\010B8\n\'com" +
+      ".sparrowwallet.lark.trezor.generatedB\rTr" +
+      "ezorOptions"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -297,11 +315,12 @@ public final class TrezorOptions {
     wireNoFsm.internalInit(descriptor.getExtensions().get(6));
     bitcoinOnly.internalInit(descriptor.getExtensions().get(7));
     hasBitcoinOnlyValues.internalInit(descriptor.getExtensions().get(8));
-    experimentalMessage.internalInit(descriptor.getExtensions().get(9));
-    wireType.internalInit(descriptor.getExtensions().get(10));
-    internalOnly.internalInit(descriptor.getExtensions().get(11));
-    experimentalField.internalInit(descriptor.getExtensions().get(12));
-    includeInBitcoinOnly.internalInit(descriptor.getExtensions().get(13));
+    wireEnum.internalInit(descriptor.getExtensions().get(9));
+    experimentalMessage.internalInit(descriptor.getExtensions().get(10));
+    wireType.internalInit(descriptor.getExtensions().get(11));
+    internalOnly.internalInit(descriptor.getExtensions().get(12));
+    experimentalField.internalInit(descriptor.getExtensions().get(13));
+    includeInBitcoinOnly.internalInit(descriptor.getExtensions().get(14));
     descriptor.resolveAllFeaturesImmutable();
     com.google.protobuf.DescriptorProtos.getDescriptor();
   }

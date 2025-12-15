@@ -25,38 +25,12164 @@ public final class TrezorMessageThp {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  /**
+   * <pre>
+   * *
+   * Mapping between Trezor wire identifier (uint) and a Thp protobuf message
+   * </pre>
+   *
+   * Protobuf enum {@code hw.trezor.messages.thp.ThpMessageType}
+   */
+  public enum ThpMessageType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>ThpMessageType_Cancel = 20;</code>
+     */
+    ThpMessageType_Cancel(20),
+    /**
+     * <code>ThpMessageType_ButtonRequest = 26;</code>
+     */
+    ThpMessageType_ButtonRequest(26),
+    /**
+     * <code>ThpMessageType_ButtonAck = 27;</code>
+     */
+    ThpMessageType_ButtonAck(27),
+    /**
+     * <code>ThpMessageType_ThpPairingRequest = 1008;</code>
+     */
+    ThpMessageType_ThpPairingRequest(1008),
+    /**
+     * <code>ThpMessageType_ThpPairingRequestApproved = 1009;</code>
+     */
+    ThpMessageType_ThpPairingRequestApproved(1009),
+    /**
+     * <code>ThpMessageType_ThpSelectMethod = 1010;</code>
+     */
+    ThpMessageType_ThpSelectMethod(1010),
+    /**
+     * <code>ThpMessageType_ThpPairingPreparationsFinished = 1011;</code>
+     */
+    ThpMessageType_ThpPairingPreparationsFinished(1011),
+    /**
+     * <code>ThpMessageType_ThpCredentialRequest = 1016;</code>
+     */
+    ThpMessageType_ThpCredentialRequest(1016),
+    /**
+     * <code>ThpMessageType_ThpCredentialResponse = 1017;</code>
+     */
+    ThpMessageType_ThpCredentialResponse(1017),
+    /**
+     * <code>ThpMessageType_ThpEndRequest = 1018;</code>
+     */
+    ThpMessageType_ThpEndRequest(1018),
+    /**
+     * <code>ThpMessageType_ThpEndResponse = 1019;</code>
+     */
+    ThpMessageType_ThpEndResponse(1019),
+    /**
+     * <code>ThpMessageType_ThpCodeEntryCommitment = 1024;</code>
+     */
+    ThpMessageType_ThpCodeEntryCommitment(1024),
+    /**
+     * <code>ThpMessageType_ThpCodeEntryChallenge = 1025;</code>
+     */
+    ThpMessageType_ThpCodeEntryChallenge(1025),
+    /**
+     * <code>ThpMessageType_ThpCodeEntryCpaceTrezor = 1026;</code>
+     */
+    ThpMessageType_ThpCodeEntryCpaceTrezor(1026),
+    /**
+     * <code>ThpMessageType_ThpCodeEntryCpaceHostTag = 1027;</code>
+     */
+    ThpMessageType_ThpCodeEntryCpaceHostTag(1027),
+    /**
+     * <code>ThpMessageType_ThpCodeEntrySecret = 1028;</code>
+     */
+    ThpMessageType_ThpCodeEntrySecret(1028),
+    /**
+     * <code>ThpMessageType_ThpQrCodeTag = 1032;</code>
+     */
+    ThpMessageType_ThpQrCodeTag(1032),
+    /**
+     * <code>ThpMessageType_ThpQrCodeSecret = 1033;</code>
+     */
+    ThpMessageType_ThpQrCodeSecret(1033),
+    /**
+     * <code>ThpMessageType_ThpNfcTagHost = 1040;</code>
+     */
+    ThpMessageType_ThpNfcTagHost(1040),
+    /**
+     * <code>ThpMessageType_ThpNfcTagTrezor = 1041;</code>
+     */
+    ThpMessageType_ThpNfcTagTrezor(1041),
+    ;
+
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ThpMessageType.class.getName());
+    }
+    /**
+     * <code>ThpMessageType_Cancel = 20;</code>
+     */
+    public static final int ThpMessageType_Cancel_VALUE = 20;
+    /**
+     * <code>ThpMessageType_ButtonRequest = 26;</code>
+     */
+    public static final int ThpMessageType_ButtonRequest_VALUE = 26;
+    /**
+     * <code>ThpMessageType_ButtonAck = 27;</code>
+     */
+    public static final int ThpMessageType_ButtonAck_VALUE = 27;
+    /**
+     * <code>ThpMessageType_ThpPairingRequest = 1008;</code>
+     */
+    public static final int ThpMessageType_ThpPairingRequest_VALUE = 1008;
+    /**
+     * <code>ThpMessageType_ThpPairingRequestApproved = 1009;</code>
+     */
+    public static final int ThpMessageType_ThpPairingRequestApproved_VALUE = 1009;
+    /**
+     * <code>ThpMessageType_ThpSelectMethod = 1010;</code>
+     */
+    public static final int ThpMessageType_ThpSelectMethod_VALUE = 1010;
+    /**
+     * <code>ThpMessageType_ThpPairingPreparationsFinished = 1011;</code>
+     */
+    public static final int ThpMessageType_ThpPairingPreparationsFinished_VALUE = 1011;
+    /**
+     * <code>ThpMessageType_ThpCredentialRequest = 1016;</code>
+     */
+    public static final int ThpMessageType_ThpCredentialRequest_VALUE = 1016;
+    /**
+     * <code>ThpMessageType_ThpCredentialResponse = 1017;</code>
+     */
+    public static final int ThpMessageType_ThpCredentialResponse_VALUE = 1017;
+    /**
+     * <code>ThpMessageType_ThpEndRequest = 1018;</code>
+     */
+    public static final int ThpMessageType_ThpEndRequest_VALUE = 1018;
+    /**
+     * <code>ThpMessageType_ThpEndResponse = 1019;</code>
+     */
+    public static final int ThpMessageType_ThpEndResponse_VALUE = 1019;
+    /**
+     * <code>ThpMessageType_ThpCodeEntryCommitment = 1024;</code>
+     */
+    public static final int ThpMessageType_ThpCodeEntryCommitment_VALUE = 1024;
+    /**
+     * <code>ThpMessageType_ThpCodeEntryChallenge = 1025;</code>
+     */
+    public static final int ThpMessageType_ThpCodeEntryChallenge_VALUE = 1025;
+    /**
+     * <code>ThpMessageType_ThpCodeEntryCpaceTrezor = 1026;</code>
+     */
+    public static final int ThpMessageType_ThpCodeEntryCpaceTrezor_VALUE = 1026;
+    /**
+     * <code>ThpMessageType_ThpCodeEntryCpaceHostTag = 1027;</code>
+     */
+    public static final int ThpMessageType_ThpCodeEntryCpaceHostTag_VALUE = 1027;
+    /**
+     * <code>ThpMessageType_ThpCodeEntrySecret = 1028;</code>
+     */
+    public static final int ThpMessageType_ThpCodeEntrySecret_VALUE = 1028;
+    /**
+     * <code>ThpMessageType_ThpQrCodeTag = 1032;</code>
+     */
+    public static final int ThpMessageType_ThpQrCodeTag_VALUE = 1032;
+    /**
+     * <code>ThpMessageType_ThpQrCodeSecret = 1033;</code>
+     */
+    public static final int ThpMessageType_ThpQrCodeSecret_VALUE = 1033;
+    /**
+     * <code>ThpMessageType_ThpNfcTagHost = 1040;</code>
+     */
+    public static final int ThpMessageType_ThpNfcTagHost_VALUE = 1040;
+    /**
+     * <code>ThpMessageType_ThpNfcTagTrezor = 1041;</code>
+     */
+    public static final int ThpMessageType_ThpNfcTagTrezor_VALUE = 1041;
+
+
+    public final int getNumber() {
+      return value;
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static ThpMessageType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static ThpMessageType forNumber(int value) {
+      switch (value) {
+        case 20: return ThpMessageType_Cancel;
+        case 26: return ThpMessageType_ButtonRequest;
+        case 27: return ThpMessageType_ButtonAck;
+        case 1008: return ThpMessageType_ThpPairingRequest;
+        case 1009: return ThpMessageType_ThpPairingRequestApproved;
+        case 1010: return ThpMessageType_ThpSelectMethod;
+        case 1011: return ThpMessageType_ThpPairingPreparationsFinished;
+        case 1016: return ThpMessageType_ThpCredentialRequest;
+        case 1017: return ThpMessageType_ThpCredentialResponse;
+        case 1018: return ThpMessageType_ThpEndRequest;
+        case 1019: return ThpMessageType_ThpEndResponse;
+        case 1024: return ThpMessageType_ThpCodeEntryCommitment;
+        case 1025: return ThpMessageType_ThpCodeEntryChallenge;
+        case 1026: return ThpMessageType_ThpCodeEntryCpaceTrezor;
+        case 1027: return ThpMessageType_ThpCodeEntryCpaceHostTag;
+        case 1028: return ThpMessageType_ThpCodeEntrySecret;
+        case 1032: return ThpMessageType_ThpQrCodeTag;
+        case 1033: return ThpMessageType_ThpQrCodeSecret;
+        case 1040: return ThpMessageType_ThpNfcTagHost;
+        case 1041: return ThpMessageType_ThpNfcTagTrezor;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ThpMessageType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        ThpMessageType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ThpMessageType>() {
+            public ThpMessageType findValueByNumber(int number) {
+              return ThpMessageType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final ThpMessageType[] VALUES = values();
+
+    public static ThpMessageType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private ThpMessageType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:hw.trezor.messages.thp.ThpMessageType)
+  }
+
+  /**
+   * <pre>
+   * *
+   * Numeric identifiers of pairing methods.
+   * &#64;embed
+   * </pre>
+   *
+   * Protobuf enum {@code hw.trezor.messages.thp.ThpPairingMethod}
+   */
+  public enum ThpPairingMethod
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <pre>
+     * Trust without MITM protection.
+     * </pre>
+     *
+     * <code>SkipPairing = 1;</code>
+     */
+    SkipPairing(1),
+    /**
+     * <pre>
+     * User types code diplayed on Trezor into the host application.
+     * </pre>
+     *
+     * <code>CodeEntry = 2;</code>
+     */
+    CodeEntry(2),
+    /**
+     * <pre>
+     * User scans code displayed on Trezor into host application.
+     * </pre>
+     *
+     * <code>QrCode = 3;</code>
+     */
+    QrCode(3),
+    /**
+     * <pre>
+     * Trezor and host application exchange authentication secrets via NFC.
+     * </pre>
+     *
+     * <code>NFC = 4;</code>
+     */
+    NFC(4),
+    ;
+
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ThpPairingMethod.class.getName());
+    }
+    /**
+     * <pre>
+     * Trust without MITM protection.
+     * </pre>
+     *
+     * <code>SkipPairing = 1;</code>
+     */
+    public static final int SkipPairing_VALUE = 1;
+    /**
+     * <pre>
+     * User types code diplayed on Trezor into the host application.
+     * </pre>
+     *
+     * <code>CodeEntry = 2;</code>
+     */
+    public static final int CodeEntry_VALUE = 2;
+    /**
+     * <pre>
+     * User scans code displayed on Trezor into host application.
+     * </pre>
+     *
+     * <code>QrCode = 3;</code>
+     */
+    public static final int QrCode_VALUE = 3;
+    /**
+     * <pre>
+     * Trezor and host application exchange authentication secrets via NFC.
+     * </pre>
+     *
+     * <code>NFC = 4;</code>
+     */
+    public static final int NFC_VALUE = 4;
+
+
+    public final int getNumber() {
+      return value;
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static ThpPairingMethod valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static ThpPairingMethod forNumber(int value) {
+      switch (value) {
+        case 1: return SkipPairing;
+        case 2: return CodeEntry;
+        case 3: return QrCode;
+        case 4: return NFC;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ThpPairingMethod>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        ThpPairingMethod> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ThpPairingMethod>() {
+            public ThpPairingMethod findValueByNumber(int number) {
+              return ThpPairingMethod.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.getDescriptor().getEnumTypes().get(1);
+    }
+
+    private static final ThpPairingMethod[] VALUES = values();
+
+    public static ThpPairingMethod valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private ThpPairingMethod(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:hw.trezor.messages.thp.ThpPairingMethod)
+  }
+
+  public interface ThpDevicePropertiesOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.thp.ThpDeviceProperties)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Internal model name e.g. "T2B1".
+     * </pre>
+     *
+     * <code>required string internal_model = 1;</code>
+     * @return Whether the internalModel field is set.
+     */
+    boolean hasInternalModel();
+    /**
+     * <pre>
+     * Internal model name e.g. "T2B1".
+     * </pre>
+     *
+     * <code>required string internal_model = 1;</code>
+     * @return The internalModel.
+     */
+    java.lang.String getInternalModel();
+    /**
+     * <pre>
+     * Internal model name e.g. "T2B1".
+     * </pre>
+     *
+     * <code>required string internal_model = 1;</code>
+     * @return The bytes for internalModel.
+     */
+    com.google.protobuf.ByteString
+        getInternalModelBytes();
+
+    /**
+     * <pre>
+     * Encodes the device properties such as color.
+     * </pre>
+     *
+     * <code>optional uint32 model_variant = 2 [default = 0];</code>
+     * @return Whether the modelVariant field is set.
+     */
+    boolean hasModelVariant();
+    /**
+     * <pre>
+     * Encodes the device properties such as color.
+     * </pre>
+     *
+     * <code>optional uint32 model_variant = 2 [default = 0];</code>
+     * @return The modelVariant.
+     */
+    int getModelVariant();
+
+    /**
+     * <pre>
+     * The major version of the communication protocol used by the firmware.
+     * </pre>
+     *
+     * <code>required uint32 protocol_version_major = 3;</code>
+     * @return Whether the protocolVersionMajor field is set.
+     */
+    boolean hasProtocolVersionMajor();
+    /**
+     * <pre>
+     * The major version of the communication protocol used by the firmware.
+     * </pre>
+     *
+     * <code>required uint32 protocol_version_major = 3;</code>
+     * @return The protocolVersionMajor.
+     */
+    int getProtocolVersionMajor();
+
+    /**
+     * <pre>
+     * The minor version of the communication protocol used by the firmware.
+     * </pre>
+     *
+     * <code>required uint32 protocol_version_minor = 4;</code>
+     * @return Whether the protocolVersionMinor field is set.
+     */
+    boolean hasProtocolVersionMinor();
+    /**
+     * <pre>
+     * The minor version of the communication protocol used by the firmware.
+     * </pre>
+     *
+     * <code>required uint32 protocol_version_minor = 4;</code>
+     * @return The protocolVersionMinor.
+     */
+    int getProtocolVersionMinor();
+
+    /**
+     * <pre>
+     * The pairing methods supported by the Trezor.
+     * </pre>
+     *
+     * <code>repeated .hw.trezor.messages.thp.ThpPairingMethod pairing_methods = 5;</code>
+     * @return A list containing the pairingMethods.
+     */
+    java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod> getPairingMethodsList();
+    /**
+     * <pre>
+     * The pairing methods supported by the Trezor.
+     * </pre>
+     *
+     * <code>repeated .hw.trezor.messages.thp.ThpPairingMethod pairing_methods = 5;</code>
+     * @return The count of pairingMethods.
+     */
+    int getPairingMethodsCount();
+    /**
+     * <pre>
+     * The pairing methods supported by the Trezor.
+     * </pre>
+     *
+     * <code>repeated .hw.trezor.messages.thp.ThpPairingMethod pairing_methods = 5;</code>
+     * @param index The index of the element to return.
+     * @return The pairingMethods at the given index.
+     */
+    com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod getPairingMethods(int index);
+  }
+  /**
+   * <pre>
+   * *
+   * &#64;embed
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.thp.ThpDeviceProperties}
+   */
+  public static final class ThpDeviceProperties extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.thp.ThpDeviceProperties)
+      ThpDevicePropertiesOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ThpDeviceProperties.class.getName());
+    }
+    // Use ThpDeviceProperties.newBuilder() to construct.
+    private ThpDeviceProperties(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ThpDeviceProperties() {
+      internalModel_ = "";
+      pairingMethods_ = emptyIntList();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpDeviceProperties_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpDeviceProperties_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int INTERNAL_MODEL_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object internalModel_ = "";
+    /**
+     * <pre>
+     * Internal model name e.g. "T2B1".
+     * </pre>
+     *
+     * <code>required string internal_model = 1;</code>
+     * @return Whether the internalModel field is set.
+     */
+    @java.lang.Override
+    public boolean hasInternalModel() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * Internal model name e.g. "T2B1".
+     * </pre>
+     *
+     * <code>required string internal_model = 1;</code>
+     * @return The internalModel.
+     */
+    @java.lang.Override
+    public java.lang.String getInternalModel() {
+      java.lang.Object ref = internalModel_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          internalModel_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Internal model name e.g. "T2B1".
+     * </pre>
+     *
+     * <code>required string internal_model = 1;</code>
+     * @return The bytes for internalModel.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getInternalModelBytes() {
+      java.lang.Object ref = internalModel_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        internalModel_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int MODEL_VARIANT_FIELD_NUMBER = 2;
+    private int modelVariant_ = 0;
+    /**
+     * <pre>
+     * Encodes the device properties such as color.
+     * </pre>
+     *
+     * <code>optional uint32 model_variant = 2 [default = 0];</code>
+     * @return Whether the modelVariant field is set.
+     */
+    @java.lang.Override
+    public boolean hasModelVariant() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * Encodes the device properties such as color.
+     * </pre>
+     *
+     * <code>optional uint32 model_variant = 2 [default = 0];</code>
+     * @return The modelVariant.
+     */
+    @java.lang.Override
+    public int getModelVariant() {
+      return modelVariant_;
+    }
+
+    public static final int PROTOCOL_VERSION_MAJOR_FIELD_NUMBER = 3;
+    private int protocolVersionMajor_ = 0;
+    /**
+     * <pre>
+     * The major version of the communication protocol used by the firmware.
+     * </pre>
+     *
+     * <code>required uint32 protocol_version_major = 3;</code>
+     * @return Whether the protocolVersionMajor field is set.
+     */
+    @java.lang.Override
+    public boolean hasProtocolVersionMajor() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <pre>
+     * The major version of the communication protocol used by the firmware.
+     * </pre>
+     *
+     * <code>required uint32 protocol_version_major = 3;</code>
+     * @return The protocolVersionMajor.
+     */
+    @java.lang.Override
+    public int getProtocolVersionMajor() {
+      return protocolVersionMajor_;
+    }
+
+    public static final int PROTOCOL_VERSION_MINOR_FIELD_NUMBER = 4;
+    private int protocolVersionMinor_ = 0;
+    /**
+     * <pre>
+     * The minor version of the communication protocol used by the firmware.
+     * </pre>
+     *
+     * <code>required uint32 protocol_version_minor = 4;</code>
+     * @return Whether the protocolVersionMinor field is set.
+     */
+    @java.lang.Override
+    public boolean hasProtocolVersionMinor() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <pre>
+     * The minor version of the communication protocol used by the firmware.
+     * </pre>
+     *
+     * <code>required uint32 protocol_version_minor = 4;</code>
+     * @return The protocolVersionMinor.
+     */
+    @java.lang.Override
+    public int getProtocolVersionMinor() {
+      return protocolVersionMinor_;
+    }
+
+    public static final int PAIRING_METHODS_FIELD_NUMBER = 5;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList pairingMethods_;
+    private static final com.google.protobuf.Internal.IntListAdapter.IntConverter<
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod> pairingMethods_converter_ =
+            new com.google.protobuf.Internal.IntListAdapter.IntConverter<
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod>() {
+              public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod convert(int from) {
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod result = com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod.forNumber(from);
+                return result == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod.SkipPairing : result;
+              }
+            };
+    /**
+     * <pre>
+     * The pairing methods supported by the Trezor.
+     * </pre>
+     *
+     * <code>repeated .hw.trezor.messages.thp.ThpPairingMethod pairing_methods = 5;</code>
+     * @return A list containing the pairingMethods.
+     */
+    @java.lang.Override
+    public java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod> getPairingMethodsList() {
+      return new com.google.protobuf.Internal.IntListAdapter<
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod>(pairingMethods_, pairingMethods_converter_);
+    }
+    /**
+     * <pre>
+     * The pairing methods supported by the Trezor.
+     * </pre>
+     *
+     * <code>repeated .hw.trezor.messages.thp.ThpPairingMethod pairing_methods = 5;</code>
+     * @return The count of pairingMethods.
+     */
+    @java.lang.Override
+    public int getPairingMethodsCount() {
+      return pairingMethods_.size();
+    }
+    /**
+     * <pre>
+     * The pairing methods supported by the Trezor.
+     * </pre>
+     *
+     * <code>repeated .hw.trezor.messages.thp.ThpPairingMethod pairing_methods = 5;</code>
+     * @param index The index of the element to return.
+     * @return The pairingMethods at the given index.
+     */
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod getPairingMethods(int index) {
+      return pairingMethods_converter_.convert(pairingMethods_.getInt(index));
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasInternalModel()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasProtocolVersionMajor()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasProtocolVersionMinor()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, internalModel_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeUInt32(2, modelVariant_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeUInt32(3, protocolVersionMajor_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        output.writeUInt32(4, protocolVersionMinor_);
+      }
+      for (int i = 0; i < pairingMethods_.size(); i++) {
+        output.writeEnum(5, pairingMethods_.getInt(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, internalModel_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, modelVariant_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, protocolVersionMajor_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(4, protocolVersionMinor_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < pairingMethods_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeEnumSizeNoTag(pairingMethods_.getInt(i));
+        }
+        size += dataSize;
+        size += 1 * pairingMethods_.size();
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties) obj;
+
+      if (hasInternalModel() != other.hasInternalModel()) return false;
+      if (hasInternalModel()) {
+        if (!getInternalModel()
+            .equals(other.getInternalModel())) return false;
+      }
+      if (hasModelVariant() != other.hasModelVariant()) return false;
+      if (hasModelVariant()) {
+        if (getModelVariant()
+            != other.getModelVariant()) return false;
+      }
+      if (hasProtocolVersionMajor() != other.hasProtocolVersionMajor()) return false;
+      if (hasProtocolVersionMajor()) {
+        if (getProtocolVersionMajor()
+            != other.getProtocolVersionMajor()) return false;
+      }
+      if (hasProtocolVersionMinor() != other.hasProtocolVersionMinor()) return false;
+      if (hasProtocolVersionMinor()) {
+        if (getProtocolVersionMinor()
+            != other.getProtocolVersionMinor()) return false;
+      }
+      if (!pairingMethods_.equals(other.pairingMethods_)) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasInternalModel()) {
+        hash = (37 * hash) + INTERNAL_MODEL_FIELD_NUMBER;
+        hash = (53 * hash) + getInternalModel().hashCode();
+      }
+      if (hasModelVariant()) {
+        hash = (37 * hash) + MODEL_VARIANT_FIELD_NUMBER;
+        hash = (53 * hash) + getModelVariant();
+      }
+      if (hasProtocolVersionMajor()) {
+        hash = (37 * hash) + PROTOCOL_VERSION_MAJOR_FIELD_NUMBER;
+        hash = (53 * hash) + getProtocolVersionMajor();
+      }
+      if (hasProtocolVersionMinor()) {
+        hash = (37 * hash) + PROTOCOL_VERSION_MINOR_FIELD_NUMBER;
+        hash = (53 * hash) + getProtocolVersionMinor();
+      }
+      if (getPairingMethodsCount() > 0) {
+        hash = (37 * hash) + PAIRING_METHODS_FIELD_NUMBER;
+        hash = (53 * hash) + pairingMethods_.hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * &#64;embed
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.thp.ThpDeviceProperties}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.thp.ThpDeviceProperties)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDevicePropertiesOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpDeviceProperties_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpDeviceProperties_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        internalModel_ = "";
+        modelVariant_ = 0;
+        protocolVersionMajor_ = 0;
+        protocolVersionMinor_ = 0;
+        pairingMethods_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpDeviceProperties_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties(this);
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties result) {
+        if (((bitField0_ & 0x00000010) != 0)) {
+          pairingMethods_.makeImmutable();
+          bitField0_ = (bitField0_ & ~0x00000010);
+        }
+        result.pairingMethods_ = pairingMethods_;
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.internalModel_ = internalModel_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.modelVariant_ = modelVariant_;
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.protocolVersionMajor_ = protocolVersionMajor_;
+          to_bitField0_ |= 0x00000004;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.protocolVersionMinor_ = protocolVersionMinor_;
+          to_bitField0_ |= 0x00000008;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties.getDefaultInstance()) return this;
+        if (other.hasInternalModel()) {
+          internalModel_ = other.internalModel_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.hasModelVariant()) {
+          setModelVariant(other.getModelVariant());
+        }
+        if (other.hasProtocolVersionMajor()) {
+          setProtocolVersionMajor(other.getProtocolVersionMajor());
+        }
+        if (other.hasProtocolVersionMinor()) {
+          setProtocolVersionMinor(other.getProtocolVersionMinor());
+        }
+        if (!other.pairingMethods_.isEmpty()) {
+          if (pairingMethods_.isEmpty()) {
+            pairingMethods_ = other.pairingMethods_;
+            bitField0_ = (bitField0_ & ~0x00000010);
+          } else {
+            ensurePairingMethodsIsMutable();
+            pairingMethods_.addAll(other.pairingMethods_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasInternalModel()) {
+          return false;
+        }
+        if (!hasProtocolVersionMajor()) {
+          return false;
+        }
+        if (!hasProtocolVersionMinor()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                internalModel_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                modelVariant_ = input.readUInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                protocolVersionMajor_ = input.readUInt32();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              case 32: {
+                protocolVersionMinor_ = input.readUInt32();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              case 40: {
+                int tmpRaw = input.readEnum();
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod tmpValue =
+                    com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod.forNumber(tmpRaw);
+                if (tmpValue == null) {
+                  mergeUnknownVarintField(5, tmpRaw);
+                } else {
+                  ensurePairingMethodsIsMutable();
+                  pairingMethods_.addInt(tmpRaw);
+                }
+                break;
+              } // case 40
+              case 42: {
+                int length = input.readRawVarint32();
+                int oldLimit = input.pushLimit(length);
+                while(input.getBytesUntilLimit() > 0) {
+                  int tmpRaw = input.readEnum();
+                  com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod tmpValue =
+                      com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod.forNumber(tmpRaw);
+                  if (tmpValue == null) {
+                    mergeUnknownVarintField(5, tmpRaw);
+                  } else {
+                    ensurePairingMethodsIsMutable();
+                    pairingMethods_.addInt(tmpRaw);
+                  }
+                }
+                input.popLimit(oldLimit);
+                break;
+              } // case 42
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object internalModel_ = "";
+      /**
+       * <pre>
+       * Internal model name e.g. "T2B1".
+       * </pre>
+       *
+       * <code>required string internal_model = 1;</code>
+       * @return Whether the internalModel field is set.
+       */
+      public boolean hasInternalModel() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * Internal model name e.g. "T2B1".
+       * </pre>
+       *
+       * <code>required string internal_model = 1;</code>
+       * @return The internalModel.
+       */
+      public java.lang.String getInternalModel() {
+        java.lang.Object ref = internalModel_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            internalModel_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Internal model name e.g. "T2B1".
+       * </pre>
+       *
+       * <code>required string internal_model = 1;</code>
+       * @return The bytes for internalModel.
+       */
+      public com.google.protobuf.ByteString
+          getInternalModelBytes() {
+        java.lang.Object ref = internalModel_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          internalModel_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Internal model name e.g. "T2B1".
+       * </pre>
+       *
+       * <code>required string internal_model = 1;</code>
+       * @param value The internalModel to set.
+       * @return This builder for chaining.
+       */
+      public Builder setInternalModel(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        internalModel_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Internal model name e.g. "T2B1".
+       * </pre>
+       *
+       * <code>required string internal_model = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearInternalModel() {
+        internalModel_ = getDefaultInstance().getInternalModel();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Internal model name e.g. "T2B1".
+       * </pre>
+       *
+       * <code>required string internal_model = 1;</code>
+       * @param value The bytes for internalModel to set.
+       * @return This builder for chaining.
+       */
+      public Builder setInternalModelBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        internalModel_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private int modelVariant_ ;
+      /**
+       * <pre>
+       * Encodes the device properties such as color.
+       * </pre>
+       *
+       * <code>optional uint32 model_variant = 2 [default = 0];</code>
+       * @return Whether the modelVariant field is set.
+       */
+      @java.lang.Override
+      public boolean hasModelVariant() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * Encodes the device properties such as color.
+       * </pre>
+       *
+       * <code>optional uint32 model_variant = 2 [default = 0];</code>
+       * @return The modelVariant.
+       */
+      @java.lang.Override
+      public int getModelVariant() {
+        return modelVariant_;
+      }
+      /**
+       * <pre>
+       * Encodes the device properties such as color.
+       * </pre>
+       *
+       * <code>optional uint32 model_variant = 2 [default = 0];</code>
+       * @param value The modelVariant to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModelVariant(int value) {
+
+        modelVariant_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Encodes the device properties such as color.
+       * </pre>
+       *
+       * <code>optional uint32 model_variant = 2 [default = 0];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearModelVariant() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        modelVariant_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int protocolVersionMajor_ ;
+      /**
+       * <pre>
+       * The major version of the communication protocol used by the firmware.
+       * </pre>
+       *
+       * <code>required uint32 protocol_version_major = 3;</code>
+       * @return Whether the protocolVersionMajor field is set.
+       */
+      @java.lang.Override
+      public boolean hasProtocolVersionMajor() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <pre>
+       * The major version of the communication protocol used by the firmware.
+       * </pre>
+       *
+       * <code>required uint32 protocol_version_major = 3;</code>
+       * @return The protocolVersionMajor.
+       */
+      @java.lang.Override
+      public int getProtocolVersionMajor() {
+        return protocolVersionMajor_;
+      }
+      /**
+       * <pre>
+       * The major version of the communication protocol used by the firmware.
+       * </pre>
+       *
+       * <code>required uint32 protocol_version_major = 3;</code>
+       * @param value The protocolVersionMajor to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProtocolVersionMajor(int value) {
+
+        protocolVersionMajor_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The major version of the communication protocol used by the firmware.
+       * </pre>
+       *
+       * <code>required uint32 protocol_version_major = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearProtocolVersionMajor() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        protocolVersionMajor_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int protocolVersionMinor_ ;
+      /**
+       * <pre>
+       * The minor version of the communication protocol used by the firmware.
+       * </pre>
+       *
+       * <code>required uint32 protocol_version_minor = 4;</code>
+       * @return Whether the protocolVersionMinor field is set.
+       */
+      @java.lang.Override
+      public boolean hasProtocolVersionMinor() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <pre>
+       * The minor version of the communication protocol used by the firmware.
+       * </pre>
+       *
+       * <code>required uint32 protocol_version_minor = 4;</code>
+       * @return The protocolVersionMinor.
+       */
+      @java.lang.Override
+      public int getProtocolVersionMinor() {
+        return protocolVersionMinor_;
+      }
+      /**
+       * <pre>
+       * The minor version of the communication protocol used by the firmware.
+       * </pre>
+       *
+       * <code>required uint32 protocol_version_minor = 4;</code>
+       * @param value The protocolVersionMinor to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProtocolVersionMinor(int value) {
+
+        protocolVersionMinor_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The minor version of the communication protocol used by the firmware.
+       * </pre>
+       *
+       * <code>required uint32 protocol_version_minor = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearProtocolVersionMinor() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        protocolVersionMinor_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList pairingMethods_ =
+        emptyIntList();
+      private void ensurePairingMethodsIsMutable() {
+        if (!((bitField0_ & 0x00000010) != 0)) {
+          pairingMethods_ = makeMutableCopy(pairingMethods_);
+          bitField0_ |= 0x00000010;
+        }
+      }
+      /**
+       * <pre>
+       * The pairing methods supported by the Trezor.
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.thp.ThpPairingMethod pairing_methods = 5;</code>
+       * @return A list containing the pairingMethods.
+       */
+      public java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod> getPairingMethodsList() {
+        return new com.google.protobuf.Internal.IntListAdapter<
+            com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod>(pairingMethods_, pairingMethods_converter_);
+      }
+      /**
+       * <pre>
+       * The pairing methods supported by the Trezor.
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.thp.ThpPairingMethod pairing_methods = 5;</code>
+       * @return The count of pairingMethods.
+       */
+      public int getPairingMethodsCount() {
+        return pairingMethods_.size();
+      }
+      /**
+       * <pre>
+       * The pairing methods supported by the Trezor.
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.thp.ThpPairingMethod pairing_methods = 5;</code>
+       * @param index The index of the element to return.
+       * @return The pairingMethods at the given index.
+       */
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod getPairingMethods(int index) {
+        return pairingMethods_converter_.convert(pairingMethods_.getInt(index));
+      }
+      /**
+       * <pre>
+       * The pairing methods supported by the Trezor.
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.thp.ThpPairingMethod pairing_methods = 5;</code>
+       * @param index The index to set the value at.
+       * @param value The pairingMethods to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPairingMethods(
+          int index, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensurePairingMethodsIsMutable();
+        pairingMethods_.setInt(index, value.getNumber());
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The pairing methods supported by the Trezor.
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.thp.ThpPairingMethod pairing_methods = 5;</code>
+       * @param value The pairingMethods to add.
+       * @return This builder for chaining.
+       */
+      public Builder addPairingMethods(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensurePairingMethodsIsMutable();
+        pairingMethods_.addInt(value.getNumber());
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The pairing methods supported by the Trezor.
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.thp.ThpPairingMethod pairing_methods = 5;</code>
+       * @param values The pairingMethods to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllPairingMethods(
+          java.lang.Iterable<? extends com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod> values) {
+        ensurePairingMethodsIsMutable();
+        for (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod value : values) {
+          pairingMethods_.addInt(value.getNumber());
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The pairing methods supported by the Trezor.
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.thp.ThpPairingMethod pairing_methods = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPairingMethods() {
+        pairingMethods_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.thp.ThpDeviceProperties)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.thp.ThpDeviceProperties)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ThpDeviceProperties>
+        PARSER = new com.google.protobuf.AbstractParser<ThpDeviceProperties>() {
+      @java.lang.Override
+      public ThpDeviceProperties parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThpDeviceProperties> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThpDeviceProperties> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpDeviceProperties getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ThpHandshakeCompletionReqNoisePayloadOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.thp.ThpHandshakeCompletionReqNoisePayload)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Host's pairing credential
+     * </pre>
+     *
+     * <code>optional bytes host_pairing_credential = 1;</code>
+     * @return Whether the hostPairingCredential field is set.
+     */
+    boolean hasHostPairingCredential();
+    /**
+     * <pre>
+     * Host's pairing credential
+     * </pre>
+     *
+     * <code>optional bytes host_pairing_credential = 1;</code>
+     * @return The hostPairingCredential.
+     */
+    com.google.protobuf.ByteString getHostPairingCredential();
+  }
+  /**
+   * <pre>
+   * *
+   * &#64;embed
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.thp.ThpHandshakeCompletionReqNoisePayload}
+   */
+  public static final class ThpHandshakeCompletionReqNoisePayload extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.thp.ThpHandshakeCompletionReqNoisePayload)
+      ThpHandshakeCompletionReqNoisePayloadOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ThpHandshakeCompletionReqNoisePayload.class.getName());
+    }
+    // Use ThpHandshakeCompletionReqNoisePayload.newBuilder() to construct.
+    private ThpHandshakeCompletionReqNoisePayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ThpHandshakeCompletionReqNoisePayload() {
+      hostPairingCredential_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpHandshakeCompletionReqNoisePayload_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpHandshakeCompletionReqNoisePayload_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int HOST_PAIRING_CREDENTIAL_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString hostPairingCredential_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * Host's pairing credential
+     * </pre>
+     *
+     * <code>optional bytes host_pairing_credential = 1;</code>
+     * @return Whether the hostPairingCredential field is set.
+     */
+    @java.lang.Override
+    public boolean hasHostPairingCredential() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * Host's pairing credential
+     * </pre>
+     *
+     * <code>optional bytes host_pairing_credential = 1;</code>
+     * @return The hostPairingCredential.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getHostPairingCredential() {
+      return hostPairingCredential_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeBytes(1, hostPairingCredential_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, hostPairingCredential_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload) obj;
+
+      if (hasHostPairingCredential() != other.hasHostPairingCredential()) return false;
+      if (hasHostPairingCredential()) {
+        if (!getHostPairingCredential()
+            .equals(other.getHostPairingCredential())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasHostPairingCredential()) {
+        hash = (37 * hash) + HOST_PAIRING_CREDENTIAL_FIELD_NUMBER;
+        hash = (53 * hash) + getHostPairingCredential().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * &#64;embed
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.thp.ThpHandshakeCompletionReqNoisePayload}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.thp.ThpHandshakeCompletionReqNoisePayload)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayloadOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpHandshakeCompletionReqNoisePayload_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpHandshakeCompletionReqNoisePayload_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        hostPairingCredential_ = com.google.protobuf.ByteString.EMPTY;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpHandshakeCompletionReqNoisePayload_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.hostPairingCredential_ = hostPairingCredential_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload.getDefaultInstance()) return this;
+        if (other.hasHostPairingCredential()) {
+          setHostPairingCredential(other.getHostPairingCredential());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                hostPairingCredential_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.ByteString hostPairingCredential_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * Host's pairing credential
+       * </pre>
+       *
+       * <code>optional bytes host_pairing_credential = 1;</code>
+       * @return Whether the hostPairingCredential field is set.
+       */
+      @java.lang.Override
+      public boolean hasHostPairingCredential() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * Host's pairing credential
+       * </pre>
+       *
+       * <code>optional bytes host_pairing_credential = 1;</code>
+       * @return The hostPairingCredential.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getHostPairingCredential() {
+        return hostPairingCredential_;
+      }
+      /**
+       * <pre>
+       * Host's pairing credential
+       * </pre>
+       *
+       * <code>optional bytes host_pairing_credential = 1;</code>
+       * @param value The hostPairingCredential to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHostPairingCredential(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        hostPairingCredential_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Host's pairing credential
+       * </pre>
+       *
+       * <code>optional bytes host_pairing_credential = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearHostPairingCredential() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        hostPairingCredential_ = getDefaultInstance().getHostPairingCredential();
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.thp.ThpHandshakeCompletionReqNoisePayload)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.thp.ThpHandshakeCompletionReqNoisePayload)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ThpHandshakeCompletionReqNoisePayload>
+        PARSER = new com.google.protobuf.AbstractParser<ThpHandshakeCompletionReqNoisePayload>() {
+      @java.lang.Override
+      public ThpHandshakeCompletionReqNoisePayload parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThpHandshakeCompletionReqNoisePayload> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThpHandshakeCompletionReqNoisePayload> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpHandshakeCompletionReqNoisePayload getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ThpCreateNewSessionOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.thp.ThpCreateNewSession)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string passphrase = 1;</code>
+     * @return Whether the passphrase field is set.
+     */
+    boolean hasPassphrase();
+    /**
+     * <code>optional string passphrase = 1;</code>
+     * @return The passphrase.
+     */
+    java.lang.String getPassphrase();
+    /**
+     * <code>optional string passphrase = 1;</code>
+     * @return The bytes for passphrase.
+     */
+    com.google.protobuf.ByteString
+        getPassphraseBytes();
+
+    /**
+     * <pre>
+     * User wants to enter passphrase on the device
+     * </pre>
+     *
+     * <code>optional bool on_device = 2 [default = false];</code>
+     * @return Whether the onDevice field is set.
+     */
+    boolean hasOnDevice();
+    /**
+     * <pre>
+     * User wants to enter passphrase on the device
+     * </pre>
+     *
+     * <code>optional bool on_device = 2 [default = false];</code>
+     * @return The onDevice.
+     */
+    boolean getOnDevice();
+
+    /**
+     * <pre>
+     * If True, Cardano keys will be derived. Ignored with BTC-only
+     * </pre>
+     *
+     * <code>optional bool derive_cardano = 3 [default = false];</code>
+     * @return Whether the deriveCardano field is set.
+     */
+    boolean hasDeriveCardano();
+    /**
+     * <pre>
+     * If True, Cardano keys will be derived. Ignored with BTC-only
+     * </pre>
+     *
+     * <code>optional bool derive_cardano = 3 [default = false];</code>
+     * @return The deriveCardano.
+     */
+    boolean getDeriveCardano();
+  }
+  /**
+   * <pre>
+   * *
+   * Request: Ask device for a new session with given passphrase.
+   * &#64;start
+   * &#64;next Success
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.thp.ThpCreateNewSession}
+   */
+  public static final class ThpCreateNewSession extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.thp.ThpCreateNewSession)
+      ThpCreateNewSessionOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ThpCreateNewSession.class.getName());
+    }
+    // Use ThpCreateNewSession.newBuilder() to construct.
+    private ThpCreateNewSession(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ThpCreateNewSession() {
+      passphrase_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCreateNewSession_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCreateNewSession_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int PASSPHRASE_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object passphrase_ = "";
+    /**
+     * <code>optional string passphrase = 1;</code>
+     * @return Whether the passphrase field is set.
+     */
+    @java.lang.Override
+    public boolean hasPassphrase() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>optional string passphrase = 1;</code>
+     * @return The passphrase.
+     */
+    @java.lang.Override
+    public java.lang.String getPassphrase() {
+      java.lang.Object ref = passphrase_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          passphrase_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string passphrase = 1;</code>
+     * @return The bytes for passphrase.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPassphraseBytes() {
+      java.lang.Object ref = passphrase_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        passphrase_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ON_DEVICE_FIELD_NUMBER = 2;
+    private boolean onDevice_ = false;
+    /**
+     * <pre>
+     * User wants to enter passphrase on the device
+     * </pre>
+     *
+     * <code>optional bool on_device = 2 [default = false];</code>
+     * @return Whether the onDevice field is set.
+     */
+    @java.lang.Override
+    public boolean hasOnDevice() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * User wants to enter passphrase on the device
+     * </pre>
+     *
+     * <code>optional bool on_device = 2 [default = false];</code>
+     * @return The onDevice.
+     */
+    @java.lang.Override
+    public boolean getOnDevice() {
+      return onDevice_;
+    }
+
+    public static final int DERIVE_CARDANO_FIELD_NUMBER = 3;
+    private boolean deriveCardano_ = false;
+    /**
+     * <pre>
+     * If True, Cardano keys will be derived. Ignored with BTC-only
+     * </pre>
+     *
+     * <code>optional bool derive_cardano = 3 [default = false];</code>
+     * @return Whether the deriveCardano field is set.
+     */
+    @java.lang.Override
+    public boolean hasDeriveCardano() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <pre>
+     * If True, Cardano keys will be derived. Ignored with BTC-only
+     * </pre>
+     *
+     * <code>optional bool derive_cardano = 3 [default = false];</code>
+     * @return The deriveCardano.
+     */
+    @java.lang.Override
+    public boolean getDeriveCardano() {
+      return deriveCardano_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, passphrase_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeBool(2, onDevice_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeBool(3, deriveCardano_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, passphrase_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, onDevice_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(3, deriveCardano_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession) obj;
+
+      if (hasPassphrase() != other.hasPassphrase()) return false;
+      if (hasPassphrase()) {
+        if (!getPassphrase()
+            .equals(other.getPassphrase())) return false;
+      }
+      if (hasOnDevice() != other.hasOnDevice()) return false;
+      if (hasOnDevice()) {
+        if (getOnDevice()
+            != other.getOnDevice()) return false;
+      }
+      if (hasDeriveCardano() != other.hasDeriveCardano()) return false;
+      if (hasDeriveCardano()) {
+        if (getDeriveCardano()
+            != other.getDeriveCardano()) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasPassphrase()) {
+        hash = (37 * hash) + PASSPHRASE_FIELD_NUMBER;
+        hash = (53 * hash) + getPassphrase().hashCode();
+      }
+      if (hasOnDevice()) {
+        hash = (37 * hash) + ON_DEVICE_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getOnDevice());
+      }
+      if (hasDeriveCardano()) {
+        hash = (37 * hash) + DERIVE_CARDANO_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getDeriveCardano());
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Request: Ask device for a new session with given passphrase.
+     * &#64;start
+     * &#64;next Success
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.thp.ThpCreateNewSession}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.thp.ThpCreateNewSession)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSessionOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCreateNewSession_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCreateNewSession_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        passphrase_ = "";
+        onDevice_ = false;
+        deriveCardano_ = false;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCreateNewSession_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.passphrase_ = passphrase_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.onDevice_ = onDevice_;
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.deriveCardano_ = deriveCardano_;
+          to_bitField0_ |= 0x00000004;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession.getDefaultInstance()) return this;
+        if (other.hasPassphrase()) {
+          passphrase_ = other.passphrase_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.hasOnDevice()) {
+          setOnDevice(other.getOnDevice());
+        }
+        if (other.hasDeriveCardano()) {
+          setDeriveCardano(other.getDeriveCardano());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                passphrase_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                onDevice_ = input.readBool();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                deriveCardano_ = input.readBool();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object passphrase_ = "";
+      /**
+       * <code>optional string passphrase = 1;</code>
+       * @return Whether the passphrase field is set.
+       */
+      public boolean hasPassphrase() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>optional string passphrase = 1;</code>
+       * @return The passphrase.
+       */
+      public java.lang.String getPassphrase() {
+        java.lang.Object ref = passphrase_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            passphrase_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string passphrase = 1;</code>
+       * @return The bytes for passphrase.
+       */
+      public com.google.protobuf.ByteString
+          getPassphraseBytes() {
+        java.lang.Object ref = passphrase_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          passphrase_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string passphrase = 1;</code>
+       * @param value The passphrase to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPassphrase(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        passphrase_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string passphrase = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPassphrase() {
+        passphrase_ = getDefaultInstance().getPassphrase();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string passphrase = 1;</code>
+       * @param value The bytes for passphrase to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPassphraseBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        passphrase_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private boolean onDevice_ ;
+      /**
+       * <pre>
+       * User wants to enter passphrase on the device
+       * </pre>
+       *
+       * <code>optional bool on_device = 2 [default = false];</code>
+       * @return Whether the onDevice field is set.
+       */
+      @java.lang.Override
+      public boolean hasOnDevice() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * User wants to enter passphrase on the device
+       * </pre>
+       *
+       * <code>optional bool on_device = 2 [default = false];</code>
+       * @return The onDevice.
+       */
+      @java.lang.Override
+      public boolean getOnDevice() {
+        return onDevice_;
+      }
+      /**
+       * <pre>
+       * User wants to enter passphrase on the device
+       * </pre>
+       *
+       * <code>optional bool on_device = 2 [default = false];</code>
+       * @param value The onDevice to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOnDevice(boolean value) {
+
+        onDevice_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * User wants to enter passphrase on the device
+       * </pre>
+       *
+       * <code>optional bool on_device = 2 [default = false];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOnDevice() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onDevice_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean deriveCardano_ ;
+      /**
+       * <pre>
+       * If True, Cardano keys will be derived. Ignored with BTC-only
+       * </pre>
+       *
+       * <code>optional bool derive_cardano = 3 [default = false];</code>
+       * @return Whether the deriveCardano field is set.
+       */
+      @java.lang.Override
+      public boolean hasDeriveCardano() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <pre>
+       * If True, Cardano keys will be derived. Ignored with BTC-only
+       * </pre>
+       *
+       * <code>optional bool derive_cardano = 3 [default = false];</code>
+       * @return The deriveCardano.
+       */
+      @java.lang.Override
+      public boolean getDeriveCardano() {
+        return deriveCardano_;
+      }
+      /**
+       * <pre>
+       * If True, Cardano keys will be derived. Ignored with BTC-only
+       * </pre>
+       *
+       * <code>optional bool derive_cardano = 3 [default = false];</code>
+       * @param value The deriveCardano to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDeriveCardano(boolean value) {
+
+        deriveCardano_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * If True, Cardano keys will be derived. Ignored with BTC-only
+       * </pre>
+       *
+       * <code>optional bool derive_cardano = 3 [default = false];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDeriveCardano() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        deriveCardano_ = false;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.thp.ThpCreateNewSession)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.thp.ThpCreateNewSession)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ThpCreateNewSession>
+        PARSER = new com.google.protobuf.AbstractParser<ThpCreateNewSession>() {
+      @java.lang.Override
+      public ThpCreateNewSession parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThpCreateNewSession> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThpCreateNewSession> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCreateNewSession getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ThpPairingRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.thp.ThpPairingRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Human-readable host name (browser name for web apps)
+     * </pre>
+     *
+     * <code>required string host_name = 1;</code>
+     * @return Whether the hostName field is set.
+     */
+    boolean hasHostName();
+    /**
+     * <pre>
+     * Human-readable host name (browser name for web apps)
+     * </pre>
+     *
+     * <code>required string host_name = 1;</code>
+     * @return The hostName.
+     */
+    java.lang.String getHostName();
+    /**
+     * <pre>
+     * Human-readable host name (browser name for web apps)
+     * </pre>
+     *
+     * <code>required string host_name = 1;</code>
+     * @return The bytes for hostName.
+     */
+    com.google.protobuf.ByteString
+        getHostNameBytes();
+
+    /**
+     * <pre>
+     * Human-readable application name
+     * </pre>
+     *
+     * <code>required string app_name = 2;</code>
+     * @return Whether the appName field is set.
+     */
+    boolean hasAppName();
+    /**
+     * <pre>
+     * Human-readable application name
+     * </pre>
+     *
+     * <code>required string app_name = 2;</code>
+     * @return The appName.
+     */
+    java.lang.String getAppName();
+    /**
+     * <pre>
+     * Human-readable application name
+     * </pre>
+     *
+     * <code>required string app_name = 2;</code>
+     * @return The bytes for appName.
+     */
+    com.google.protobuf.ByteString
+        getAppNameBytes();
+  }
+  /**
+   * <pre>
+   * *
+   * Request: Start pairing process.
+   * &#64;start
+   * &#64;next ThpPairingRequestApproved
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.thp.ThpPairingRequest}
+   */
+  public static final class ThpPairingRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.thp.ThpPairingRequest)
+      ThpPairingRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ThpPairingRequest.class.getName());
+    }
+    // Use ThpPairingRequest.newBuilder() to construct.
+    private ThpPairingRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ThpPairingRequest() {
+      hostName_ = "";
+      appName_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairingRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairingRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int HOST_NAME_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object hostName_ = "";
+    /**
+     * <pre>
+     * Human-readable host name (browser name for web apps)
+     * </pre>
+     *
+     * <code>required string host_name = 1;</code>
+     * @return Whether the hostName field is set.
+     */
+    @java.lang.Override
+    public boolean hasHostName() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * Human-readable host name (browser name for web apps)
+     * </pre>
+     *
+     * <code>required string host_name = 1;</code>
+     * @return The hostName.
+     */
+    @java.lang.Override
+    public java.lang.String getHostName() {
+      java.lang.Object ref = hostName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          hostName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Human-readable host name (browser name for web apps)
+     * </pre>
+     *
+     * <code>required string host_name = 1;</code>
+     * @return The bytes for hostName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getHostNameBytes() {
+      java.lang.Object ref = hostName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        hostName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int APP_NAME_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object appName_ = "";
+    /**
+     * <pre>
+     * Human-readable application name
+     * </pre>
+     *
+     * <code>required string app_name = 2;</code>
+     * @return Whether the appName field is set.
+     */
+    @java.lang.Override
+    public boolean hasAppName() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * Human-readable application name
+     * </pre>
+     *
+     * <code>required string app_name = 2;</code>
+     * @return The appName.
+     */
+    @java.lang.Override
+    public java.lang.String getAppName() {
+      java.lang.Object ref = appName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          appName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Human-readable application name
+     * </pre>
+     *
+     * <code>required string app_name = 2;</code>
+     * @return The bytes for appName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getAppNameBytes() {
+      java.lang.Object ref = appName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        appName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasHostName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasAppName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, hostName_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, appName_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, hostName_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, appName_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest) obj;
+
+      if (hasHostName() != other.hasHostName()) return false;
+      if (hasHostName()) {
+        if (!getHostName()
+            .equals(other.getHostName())) return false;
+      }
+      if (hasAppName() != other.hasAppName()) return false;
+      if (hasAppName()) {
+        if (!getAppName()
+            .equals(other.getAppName())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasHostName()) {
+        hash = (37 * hash) + HOST_NAME_FIELD_NUMBER;
+        hash = (53 * hash) + getHostName().hashCode();
+      }
+      if (hasAppName()) {
+        hash = (37 * hash) + APP_NAME_FIELD_NUMBER;
+        hash = (53 * hash) + getAppName().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Request: Start pairing process.
+     * &#64;start
+     * &#64;next ThpPairingRequestApproved
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.thp.ThpPairingRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.thp.ThpPairingRequest)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairingRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairingRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        hostName_ = "";
+        appName_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairingRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.hostName_ = hostName_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.appName_ = appName_;
+          to_bitField0_ |= 0x00000002;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest.getDefaultInstance()) return this;
+        if (other.hasHostName()) {
+          hostName_ = other.hostName_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.hasAppName()) {
+          appName_ = other.appName_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasHostName()) {
+          return false;
+        }
+        if (!hasAppName()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                hostName_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                appName_ = input.readBytes();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object hostName_ = "";
+      /**
+       * <pre>
+       * Human-readable host name (browser name for web apps)
+       * </pre>
+       *
+       * <code>required string host_name = 1;</code>
+       * @return Whether the hostName field is set.
+       */
+      public boolean hasHostName() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * Human-readable host name (browser name for web apps)
+       * </pre>
+       *
+       * <code>required string host_name = 1;</code>
+       * @return The hostName.
+       */
+      public java.lang.String getHostName() {
+        java.lang.Object ref = hostName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            hostName_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Human-readable host name (browser name for web apps)
+       * </pre>
+       *
+       * <code>required string host_name = 1;</code>
+       * @return The bytes for hostName.
+       */
+      public com.google.protobuf.ByteString
+          getHostNameBytes() {
+        java.lang.Object ref = hostName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          hostName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Human-readable host name (browser name for web apps)
+       * </pre>
+       *
+       * <code>required string host_name = 1;</code>
+       * @param value The hostName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHostName(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        hostName_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Human-readable host name (browser name for web apps)
+       * </pre>
+       *
+       * <code>required string host_name = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearHostName() {
+        hostName_ = getDefaultInstance().getHostName();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Human-readable host name (browser name for web apps)
+       * </pre>
+       *
+       * <code>required string host_name = 1;</code>
+       * @param value The bytes for hostName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHostNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        hostName_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object appName_ = "";
+      /**
+       * <pre>
+       * Human-readable application name
+       * </pre>
+       *
+       * <code>required string app_name = 2;</code>
+       * @return Whether the appName field is set.
+       */
+      public boolean hasAppName() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * Human-readable application name
+       * </pre>
+       *
+       * <code>required string app_name = 2;</code>
+       * @return The appName.
+       */
+      public java.lang.String getAppName() {
+        java.lang.Object ref = appName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            appName_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Human-readable application name
+       * </pre>
+       *
+       * <code>required string app_name = 2;</code>
+       * @return The bytes for appName.
+       */
+      public com.google.protobuf.ByteString
+          getAppNameBytes() {
+        java.lang.Object ref = appName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          appName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Human-readable application name
+       * </pre>
+       *
+       * <code>required string app_name = 2;</code>
+       * @param value The appName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAppName(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        appName_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Human-readable application name
+       * </pre>
+       *
+       * <code>required string app_name = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAppName() {
+        appName_ = getDefaultInstance().getAppName();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Human-readable application name
+       * </pre>
+       *
+       * <code>required string app_name = 2;</code>
+       * @param value The bytes for appName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAppNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        appName_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.thp.ThpPairingRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.thp.ThpPairingRequest)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ThpPairingRequest>
+        PARSER = new com.google.protobuf.AbstractParser<ThpPairingRequest>() {
+      @java.lang.Override
+      public ThpPairingRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThpPairingRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThpPairingRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ThpPairingRequestApprovedOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.thp.ThpPairingRequestApproved)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * <pre>
+   * *
+   * Response: Host is allowed to start pairing process.
+   * &#64;start
+   * &#64;next ThpSelectMethod
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.thp.ThpPairingRequestApproved}
+   */
+  public static final class ThpPairingRequestApproved extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.thp.ThpPairingRequestApproved)
+      ThpPairingRequestApprovedOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ThpPairingRequestApproved.class.getName());
+    }
+    // Use ThpPairingRequestApproved.newBuilder() to construct.
+    private ThpPairingRequestApproved(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ThpPairingRequestApproved() {
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairingRequestApproved_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairingRequestApproved_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved) obj;
+
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Response: Host is allowed to start pairing process.
+     * &#64;start
+     * &#64;next ThpSelectMethod
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.thp.ThpPairingRequestApproved}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.thp.ThpPairingRequestApproved)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApprovedOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairingRequestApproved_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairingRequestApproved_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairingRequestApproved_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved(this);
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.thp.ThpPairingRequestApproved)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.thp.ThpPairingRequestApproved)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ThpPairingRequestApproved>
+        PARSER = new com.google.protobuf.AbstractParser<ThpPairingRequestApproved>() {
+      @java.lang.Override
+      public ThpPairingRequestApproved parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThpPairingRequestApproved> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThpPairingRequestApproved> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingRequestApproved getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ThpSelectMethodOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.thp.ThpSelectMethod)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required .hw.trezor.messages.thp.ThpPairingMethod selected_pairing_method = 1;</code>
+     * @return Whether the selectedPairingMethod field is set.
+     */
+    boolean hasSelectedPairingMethod();
+    /**
+     * <code>required .hw.trezor.messages.thp.ThpPairingMethod selected_pairing_method = 1;</code>
+     * @return The selectedPairingMethod.
+     */
+    com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod getSelectedPairingMethod();
+  }
+  /**
+   * <pre>
+   * *
+   * Request: Start pairing using the method selected.
+   * &#64;start
+   * &#64;next ThpPairingPreparationsFinished
+   * &#64;next ThpCodeEntryCommitment
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.thp.ThpSelectMethod}
+   */
+  public static final class ThpSelectMethod extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.thp.ThpSelectMethod)
+      ThpSelectMethodOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ThpSelectMethod.class.getName());
+    }
+    // Use ThpSelectMethod.newBuilder() to construct.
+    private ThpSelectMethod(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ThpSelectMethod() {
+      selectedPairingMethod_ = 1;
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpSelectMethod_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpSelectMethod_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int SELECTED_PAIRING_METHOD_FIELD_NUMBER = 1;
+    private int selectedPairingMethod_ = 1;
+    /**
+     * <code>required .hw.trezor.messages.thp.ThpPairingMethod selected_pairing_method = 1;</code>
+     * @return Whether the selectedPairingMethod field is set.
+     */
+    @java.lang.Override public boolean hasSelectedPairingMethod() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>required .hw.trezor.messages.thp.ThpPairingMethod selected_pairing_method = 1;</code>
+     * @return The selectedPairingMethod.
+     */
+    @java.lang.Override public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod getSelectedPairingMethod() {
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod result = com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod.forNumber(selectedPairingMethod_);
+      return result == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod.SkipPairing : result;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasSelectedPairingMethod()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeEnum(1, selectedPairingMethod_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, selectedPairingMethod_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod) obj;
+
+      if (hasSelectedPairingMethod() != other.hasSelectedPairingMethod()) return false;
+      if (hasSelectedPairingMethod()) {
+        if (selectedPairingMethod_ != other.selectedPairingMethod_) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasSelectedPairingMethod()) {
+        hash = (37 * hash) + SELECTED_PAIRING_METHOD_FIELD_NUMBER;
+        hash = (53 * hash) + selectedPairingMethod_;
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Request: Start pairing using the method selected.
+     * &#64;start
+     * &#64;next ThpPairingPreparationsFinished
+     * &#64;next ThpCodeEntryCommitment
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.thp.ThpSelectMethod}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.thp.ThpSelectMethod)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethodOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpSelectMethod_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpSelectMethod_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        selectedPairingMethod_ = 1;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpSelectMethod_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.selectedPairingMethod_ = selectedPairingMethod_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod.getDefaultInstance()) return this;
+        if (other.hasSelectedPairingMethod()) {
+          setSelectedPairingMethod(other.getSelectedPairingMethod());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasSelectedPairingMethod()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                int tmpRaw = input.readEnum();
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod tmpValue =
+                    com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod.forNumber(tmpRaw);
+                if (tmpValue == null) {
+                  mergeUnknownVarintField(1, tmpRaw);
+                } else {
+                  selectedPairingMethod_ = tmpRaw;
+                  bitField0_ |= 0x00000001;
+                }
+                break;
+              } // case 8
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private int selectedPairingMethod_ = 1;
+      /**
+       * <code>required .hw.trezor.messages.thp.ThpPairingMethod selected_pairing_method = 1;</code>
+       * @return Whether the selectedPairingMethod field is set.
+       */
+      @java.lang.Override public boolean hasSelectedPairingMethod() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>required .hw.trezor.messages.thp.ThpPairingMethod selected_pairing_method = 1;</code>
+       * @return The selectedPairingMethod.
+       */
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod getSelectedPairingMethod() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod result = com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod.forNumber(selectedPairingMethod_);
+        return result == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod.SkipPairing : result;
+      }
+      /**
+       * <code>required .hw.trezor.messages.thp.ThpPairingMethod selected_pairing_method = 1;</code>
+       * @param value The selectedPairingMethod to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSelectedPairingMethod(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingMethod value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000001;
+        selectedPairingMethod_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required .hw.trezor.messages.thp.ThpPairingMethod selected_pairing_method = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSelectedPairingMethod() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        selectedPairingMethod_ = 1;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.thp.ThpSelectMethod)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.thp.ThpSelectMethod)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ThpSelectMethod>
+        PARSER = new com.google.protobuf.AbstractParser<ThpSelectMethod>() {
+      @java.lang.Override
+      public ThpSelectMethod parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThpSelectMethod> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThpSelectMethod> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpSelectMethod getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ThpPairingPreparationsFinishedOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.thp.ThpPairingPreparationsFinished)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * <pre>
+   * *
+   * Response: Pairing is ready for user input / OOB communication.
+   * &#64;next ThpCodeEntryCpace
+   * &#64;next ThpQrCodeTag
+   * &#64;next ThpNfcTagHost
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.thp.ThpPairingPreparationsFinished}
+   */
+  public static final class ThpPairingPreparationsFinished extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.thp.ThpPairingPreparationsFinished)
+      ThpPairingPreparationsFinishedOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ThpPairingPreparationsFinished.class.getName());
+    }
+    // Use ThpPairingPreparationsFinished.newBuilder() to construct.
+    private ThpPairingPreparationsFinished(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ThpPairingPreparationsFinished() {
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairingPreparationsFinished_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairingPreparationsFinished_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished) obj;
+
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Response: Pairing is ready for user input / OOB communication.
+     * &#64;next ThpCodeEntryCpace
+     * &#64;next ThpQrCodeTag
+     * &#64;next ThpNfcTagHost
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.thp.ThpPairingPreparationsFinished}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.thp.ThpPairingPreparationsFinished)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinishedOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairingPreparationsFinished_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairingPreparationsFinished_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairingPreparationsFinished_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished(this);
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.thp.ThpPairingPreparationsFinished)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.thp.ThpPairingPreparationsFinished)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ThpPairingPreparationsFinished>
+        PARSER = new com.google.protobuf.AbstractParser<ThpPairingPreparationsFinished>() {
+      @java.lang.Override
+      public ThpPairingPreparationsFinished parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThpPairingPreparationsFinished> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThpPairingPreparationsFinished> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairingPreparationsFinished getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ThpCodeEntryCommitmentOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.thp.ThpCodeEntryCommitment)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * SHA-256 of Trezor's random 32-byte secret
+     * </pre>
+     *
+     * <code>required bytes commitment = 1;</code>
+     * @return Whether the commitment field is set.
+     */
+    boolean hasCommitment();
+    /**
+     * <pre>
+     * SHA-256 of Trezor's random 32-byte secret
+     * </pre>
+     *
+     * <code>required bytes commitment = 1;</code>
+     * @return The commitment.
+     */
+    com.google.protobuf.ByteString getCommitment();
+  }
+  /**
+   * <pre>
+   * *
+   * Response: If Code Entry is an allowed pairing option, Trezor responds with a commitment.
+   * &#64;next ThpCodeEntryChallenge
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.thp.ThpCodeEntryCommitment}
+   */
+  public static final class ThpCodeEntryCommitment extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.thp.ThpCodeEntryCommitment)
+      ThpCodeEntryCommitmentOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ThpCodeEntryCommitment.class.getName());
+    }
+    // Use ThpCodeEntryCommitment.newBuilder() to construct.
+    private ThpCodeEntryCommitment(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ThpCodeEntryCommitment() {
+      commitment_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntryCommitment_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntryCommitment_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int COMMITMENT_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString commitment_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * SHA-256 of Trezor's random 32-byte secret
+     * </pre>
+     *
+     * <code>required bytes commitment = 1;</code>
+     * @return Whether the commitment field is set.
+     */
+    @java.lang.Override
+    public boolean hasCommitment() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * SHA-256 of Trezor's random 32-byte secret
+     * </pre>
+     *
+     * <code>required bytes commitment = 1;</code>
+     * @return The commitment.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getCommitment() {
+      return commitment_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasCommitment()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeBytes(1, commitment_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, commitment_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment) obj;
+
+      if (hasCommitment() != other.hasCommitment()) return false;
+      if (hasCommitment()) {
+        if (!getCommitment()
+            .equals(other.getCommitment())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasCommitment()) {
+        hash = (37 * hash) + COMMITMENT_FIELD_NUMBER;
+        hash = (53 * hash) + getCommitment().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Response: If Code Entry is an allowed pairing option, Trezor responds with a commitment.
+     * &#64;next ThpCodeEntryChallenge
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.thp.ThpCodeEntryCommitment}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.thp.ThpCodeEntryCommitment)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitmentOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntryCommitment_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntryCommitment_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        commitment_ = com.google.protobuf.ByteString.EMPTY;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntryCommitment_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.commitment_ = commitment_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment.getDefaultInstance()) return this;
+        if (other.hasCommitment()) {
+          setCommitment(other.getCommitment());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasCommitment()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                commitment_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.ByteString commitment_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * SHA-256 of Trezor's random 32-byte secret
+       * </pre>
+       *
+       * <code>required bytes commitment = 1;</code>
+       * @return Whether the commitment field is set.
+       */
+      @java.lang.Override
+      public boolean hasCommitment() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * SHA-256 of Trezor's random 32-byte secret
+       * </pre>
+       *
+       * <code>required bytes commitment = 1;</code>
+       * @return The commitment.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getCommitment() {
+        return commitment_;
+      }
+      /**
+       * <pre>
+       * SHA-256 of Trezor's random 32-byte secret
+       * </pre>
+       *
+       * <code>required bytes commitment = 1;</code>
+       * @param value The commitment to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCommitment(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        commitment_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * SHA-256 of Trezor's random 32-byte secret
+       * </pre>
+       *
+       * <code>required bytes commitment = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCommitment() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        commitment_ = getDefaultInstance().getCommitment();
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.thp.ThpCodeEntryCommitment)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.thp.ThpCodeEntryCommitment)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ThpCodeEntryCommitment>
+        PARSER = new com.google.protobuf.AbstractParser<ThpCodeEntryCommitment>() {
+      @java.lang.Override
+      public ThpCodeEntryCommitment parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThpCodeEntryCommitment> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThpCodeEntryCommitment> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCommitment getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ThpCodeEntryChallengeOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.thp.ThpCodeEntryChallenge)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Host's random 32-byte challenge
+     * </pre>
+     *
+     * <code>required bytes challenge = 1;</code>
+     * @return Whether the challenge field is set.
+     */
+    boolean hasChallenge();
+    /**
+     * <pre>
+     * Host's random 32-byte challenge
+     * </pre>
+     *
+     * <code>required bytes challenge = 1;</code>
+     * @return The challenge.
+     */
+    com.google.protobuf.ByteString getChallenge();
+  }
+  /**
+   * <pre>
+   * *
+   * Response: Host responds to Trezor's Code Entry commitment with a challenge.
+   * &#64;next ThpCodeEntryCpaceTrezor
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.thp.ThpCodeEntryChallenge}
+   */
+  public static final class ThpCodeEntryChallenge extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.thp.ThpCodeEntryChallenge)
+      ThpCodeEntryChallengeOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ThpCodeEntryChallenge.class.getName());
+    }
+    // Use ThpCodeEntryChallenge.newBuilder() to construct.
+    private ThpCodeEntryChallenge(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ThpCodeEntryChallenge() {
+      challenge_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntryChallenge_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntryChallenge_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int CHALLENGE_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString challenge_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * Host's random 32-byte challenge
+     * </pre>
+     *
+     * <code>required bytes challenge = 1;</code>
+     * @return Whether the challenge field is set.
+     */
+    @java.lang.Override
+    public boolean hasChallenge() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * Host's random 32-byte challenge
+     * </pre>
+     *
+     * <code>required bytes challenge = 1;</code>
+     * @return The challenge.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getChallenge() {
+      return challenge_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasChallenge()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeBytes(1, challenge_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, challenge_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge) obj;
+
+      if (hasChallenge() != other.hasChallenge()) return false;
+      if (hasChallenge()) {
+        if (!getChallenge()
+            .equals(other.getChallenge())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasChallenge()) {
+        hash = (37 * hash) + CHALLENGE_FIELD_NUMBER;
+        hash = (53 * hash) + getChallenge().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Response: Host responds to Trezor's Code Entry commitment with a challenge.
+     * &#64;next ThpCodeEntryCpaceTrezor
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.thp.ThpCodeEntryChallenge}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.thp.ThpCodeEntryChallenge)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallengeOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntryChallenge_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntryChallenge_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        challenge_ = com.google.protobuf.ByteString.EMPTY;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntryChallenge_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.challenge_ = challenge_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge.getDefaultInstance()) return this;
+        if (other.hasChallenge()) {
+          setChallenge(other.getChallenge());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasChallenge()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                challenge_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.ByteString challenge_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * Host's random 32-byte challenge
+       * </pre>
+       *
+       * <code>required bytes challenge = 1;</code>
+       * @return Whether the challenge field is set.
+       */
+      @java.lang.Override
+      public boolean hasChallenge() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * Host's random 32-byte challenge
+       * </pre>
+       *
+       * <code>required bytes challenge = 1;</code>
+       * @return The challenge.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getChallenge() {
+        return challenge_;
+      }
+      /**
+       * <pre>
+       * Host's random 32-byte challenge
+       * </pre>
+       *
+       * <code>required bytes challenge = 1;</code>
+       * @param value The challenge to set.
+       * @return This builder for chaining.
+       */
+      public Builder setChallenge(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        challenge_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Host's random 32-byte challenge
+       * </pre>
+       *
+       * <code>required bytes challenge = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearChallenge() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        challenge_ = getDefaultInstance().getChallenge();
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.thp.ThpCodeEntryChallenge)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.thp.ThpCodeEntryChallenge)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ThpCodeEntryChallenge>
+        PARSER = new com.google.protobuf.AbstractParser<ThpCodeEntryChallenge>() {
+      @java.lang.Override
+      public ThpCodeEntryChallenge parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThpCodeEntryChallenge> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThpCodeEntryChallenge> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryChallenge getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ThpCodeEntryCpaceTrezorOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.thp.ThpCodeEntryCpaceTrezor)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Trezor's ephemeral CPace public key
+     * </pre>
+     *
+     * <code>required bytes cpace_trezor_public_key = 1;</code>
+     * @return Whether the cpaceTrezorPublicKey field is set.
+     */
+    boolean hasCpaceTrezorPublicKey();
+    /**
+     * <pre>
+     * Trezor's ephemeral CPace public key
+     * </pre>
+     *
+     * <code>required bytes cpace_trezor_public_key = 1;</code>
+     * @return The cpaceTrezorPublicKey.
+     */
+    com.google.protobuf.ByteString getCpaceTrezorPublicKey();
+  }
+  /**
+   * <pre>
+   * *
+   * Response: Trezor continues with the CPACE protocol.
+   * &#64;next ThpCodeEntryCpaceHostTag
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.thp.ThpCodeEntryCpaceTrezor}
+   */
+  public static final class ThpCodeEntryCpaceTrezor extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.thp.ThpCodeEntryCpaceTrezor)
+      ThpCodeEntryCpaceTrezorOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ThpCodeEntryCpaceTrezor.class.getName());
+    }
+    // Use ThpCodeEntryCpaceTrezor.newBuilder() to construct.
+    private ThpCodeEntryCpaceTrezor(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ThpCodeEntryCpaceTrezor() {
+      cpaceTrezorPublicKey_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntryCpaceTrezor_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntryCpaceTrezor_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int CPACE_TREZOR_PUBLIC_KEY_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString cpaceTrezorPublicKey_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * Trezor's ephemeral CPace public key
+     * </pre>
+     *
+     * <code>required bytes cpace_trezor_public_key = 1;</code>
+     * @return Whether the cpaceTrezorPublicKey field is set.
+     */
+    @java.lang.Override
+    public boolean hasCpaceTrezorPublicKey() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * Trezor's ephemeral CPace public key
+     * </pre>
+     *
+     * <code>required bytes cpace_trezor_public_key = 1;</code>
+     * @return The cpaceTrezorPublicKey.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getCpaceTrezorPublicKey() {
+      return cpaceTrezorPublicKey_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasCpaceTrezorPublicKey()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeBytes(1, cpaceTrezorPublicKey_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, cpaceTrezorPublicKey_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor) obj;
+
+      if (hasCpaceTrezorPublicKey() != other.hasCpaceTrezorPublicKey()) return false;
+      if (hasCpaceTrezorPublicKey()) {
+        if (!getCpaceTrezorPublicKey()
+            .equals(other.getCpaceTrezorPublicKey())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasCpaceTrezorPublicKey()) {
+        hash = (37 * hash) + CPACE_TREZOR_PUBLIC_KEY_FIELD_NUMBER;
+        hash = (53 * hash) + getCpaceTrezorPublicKey().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Response: Trezor continues with the CPACE protocol.
+     * &#64;next ThpCodeEntryCpaceHostTag
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.thp.ThpCodeEntryCpaceTrezor}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.thp.ThpCodeEntryCpaceTrezor)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezorOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntryCpaceTrezor_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntryCpaceTrezor_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        cpaceTrezorPublicKey_ = com.google.protobuf.ByteString.EMPTY;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntryCpaceTrezor_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.cpaceTrezorPublicKey_ = cpaceTrezorPublicKey_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor.getDefaultInstance()) return this;
+        if (other.hasCpaceTrezorPublicKey()) {
+          setCpaceTrezorPublicKey(other.getCpaceTrezorPublicKey());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasCpaceTrezorPublicKey()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                cpaceTrezorPublicKey_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.ByteString cpaceTrezorPublicKey_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * Trezor's ephemeral CPace public key
+       * </pre>
+       *
+       * <code>required bytes cpace_trezor_public_key = 1;</code>
+       * @return Whether the cpaceTrezorPublicKey field is set.
+       */
+      @java.lang.Override
+      public boolean hasCpaceTrezorPublicKey() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * Trezor's ephemeral CPace public key
+       * </pre>
+       *
+       * <code>required bytes cpace_trezor_public_key = 1;</code>
+       * @return The cpaceTrezorPublicKey.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getCpaceTrezorPublicKey() {
+        return cpaceTrezorPublicKey_;
+      }
+      /**
+       * <pre>
+       * Trezor's ephemeral CPace public key
+       * </pre>
+       *
+       * <code>required bytes cpace_trezor_public_key = 1;</code>
+       * @param value The cpaceTrezorPublicKey to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCpaceTrezorPublicKey(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        cpaceTrezorPublicKey_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Trezor's ephemeral CPace public key
+       * </pre>
+       *
+       * <code>required bytes cpace_trezor_public_key = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCpaceTrezorPublicKey() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        cpaceTrezorPublicKey_ = getDefaultInstance().getCpaceTrezorPublicKey();
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.thp.ThpCodeEntryCpaceTrezor)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.thp.ThpCodeEntryCpaceTrezor)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ThpCodeEntryCpaceTrezor>
+        PARSER = new com.google.protobuf.AbstractParser<ThpCodeEntryCpaceTrezor>() {
+      @java.lang.Override
+      public ThpCodeEntryCpaceTrezor parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThpCodeEntryCpaceTrezor> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThpCodeEntryCpaceTrezor> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceTrezor getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ThpCodeEntryCpaceHostTagOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.thp.ThpCodeEntryCpaceHostTag)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Host's ephemeral CPace public key
+     * </pre>
+     *
+     * <code>required bytes cpace_host_public_key = 1;</code>
+     * @return Whether the cpaceHostPublicKey field is set.
+     */
+    boolean hasCpaceHostPublicKey();
+    /**
+     * <pre>
+     * Host's ephemeral CPace public key
+     * </pre>
+     *
+     * <code>required bytes cpace_host_public_key = 1;</code>
+     * @return The cpaceHostPublicKey.
+     */
+    com.google.protobuf.ByteString getCpaceHostPublicKey();
+
+    /**
+     * <pre>
+     * SHA-256 of shared secret
+     * </pre>
+     *
+     * <code>required bytes tag = 2;</code>
+     * @return Whether the tag field is set.
+     */
+    boolean hasTag();
+    /**
+     * <pre>
+     * SHA-256 of shared secret
+     * </pre>
+     *
+     * <code>required bytes tag = 2;</code>
+     * @return The tag.
+     */
+    com.google.protobuf.ByteString getTag();
+  }
+  /**
+   * <pre>
+   * *
+   * Request: User selected Code Entry option in Host. Host starts CPACE protocol with Trezor.
+   * &#64;next ThpCodeEntrySecret
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.thp.ThpCodeEntryCpaceHostTag}
+   */
+  public static final class ThpCodeEntryCpaceHostTag extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.thp.ThpCodeEntryCpaceHostTag)
+      ThpCodeEntryCpaceHostTagOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ThpCodeEntryCpaceHostTag.class.getName());
+    }
+    // Use ThpCodeEntryCpaceHostTag.newBuilder() to construct.
+    private ThpCodeEntryCpaceHostTag(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ThpCodeEntryCpaceHostTag() {
+      cpaceHostPublicKey_ = com.google.protobuf.ByteString.EMPTY;
+      tag_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntryCpaceHostTag_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntryCpaceHostTag_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int CPACE_HOST_PUBLIC_KEY_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString cpaceHostPublicKey_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * Host's ephemeral CPace public key
+     * </pre>
+     *
+     * <code>required bytes cpace_host_public_key = 1;</code>
+     * @return Whether the cpaceHostPublicKey field is set.
+     */
+    @java.lang.Override
+    public boolean hasCpaceHostPublicKey() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * Host's ephemeral CPace public key
+     * </pre>
+     *
+     * <code>required bytes cpace_host_public_key = 1;</code>
+     * @return The cpaceHostPublicKey.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getCpaceHostPublicKey() {
+      return cpaceHostPublicKey_;
+    }
+
+    public static final int TAG_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString tag_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * SHA-256 of shared secret
+     * </pre>
+     *
+     * <code>required bytes tag = 2;</code>
+     * @return Whether the tag field is set.
+     */
+    @java.lang.Override
+    public boolean hasTag() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * SHA-256 of shared secret
+     * </pre>
+     *
+     * <code>required bytes tag = 2;</code>
+     * @return The tag.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getTag() {
+      return tag_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasCpaceHostPublicKey()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTag()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeBytes(1, cpaceHostPublicKey_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeBytes(2, tag_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, cpaceHostPublicKey_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, tag_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag) obj;
+
+      if (hasCpaceHostPublicKey() != other.hasCpaceHostPublicKey()) return false;
+      if (hasCpaceHostPublicKey()) {
+        if (!getCpaceHostPublicKey()
+            .equals(other.getCpaceHostPublicKey())) return false;
+      }
+      if (hasTag() != other.hasTag()) return false;
+      if (hasTag()) {
+        if (!getTag()
+            .equals(other.getTag())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasCpaceHostPublicKey()) {
+        hash = (37 * hash) + CPACE_HOST_PUBLIC_KEY_FIELD_NUMBER;
+        hash = (53 * hash) + getCpaceHostPublicKey().hashCode();
+      }
+      if (hasTag()) {
+        hash = (37 * hash) + TAG_FIELD_NUMBER;
+        hash = (53 * hash) + getTag().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Request: User selected Code Entry option in Host. Host starts CPACE protocol with Trezor.
+     * &#64;next ThpCodeEntrySecret
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.thp.ThpCodeEntryCpaceHostTag}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.thp.ThpCodeEntryCpaceHostTag)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTagOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntryCpaceHostTag_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntryCpaceHostTag_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        cpaceHostPublicKey_ = com.google.protobuf.ByteString.EMPTY;
+        tag_ = com.google.protobuf.ByteString.EMPTY;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntryCpaceHostTag_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.cpaceHostPublicKey_ = cpaceHostPublicKey_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.tag_ = tag_;
+          to_bitField0_ |= 0x00000002;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag.getDefaultInstance()) return this;
+        if (other.hasCpaceHostPublicKey()) {
+          setCpaceHostPublicKey(other.getCpaceHostPublicKey());
+        }
+        if (other.hasTag()) {
+          setTag(other.getTag());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasCpaceHostPublicKey()) {
+          return false;
+        }
+        if (!hasTag()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                cpaceHostPublicKey_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                tag_ = input.readBytes();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.ByteString cpaceHostPublicKey_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * Host's ephemeral CPace public key
+       * </pre>
+       *
+       * <code>required bytes cpace_host_public_key = 1;</code>
+       * @return Whether the cpaceHostPublicKey field is set.
+       */
+      @java.lang.Override
+      public boolean hasCpaceHostPublicKey() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * Host's ephemeral CPace public key
+       * </pre>
+       *
+       * <code>required bytes cpace_host_public_key = 1;</code>
+       * @return The cpaceHostPublicKey.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getCpaceHostPublicKey() {
+        return cpaceHostPublicKey_;
+      }
+      /**
+       * <pre>
+       * Host's ephemeral CPace public key
+       * </pre>
+       *
+       * <code>required bytes cpace_host_public_key = 1;</code>
+       * @param value The cpaceHostPublicKey to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCpaceHostPublicKey(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        cpaceHostPublicKey_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Host's ephemeral CPace public key
+       * </pre>
+       *
+       * <code>required bytes cpace_host_public_key = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCpaceHostPublicKey() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        cpaceHostPublicKey_ = getDefaultInstance().getCpaceHostPublicKey();
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString tag_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * SHA-256 of shared secret
+       * </pre>
+       *
+       * <code>required bytes tag = 2;</code>
+       * @return Whether the tag field is set.
+       */
+      @java.lang.Override
+      public boolean hasTag() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * SHA-256 of shared secret
+       * </pre>
+       *
+       * <code>required bytes tag = 2;</code>
+       * @return The tag.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getTag() {
+        return tag_;
+      }
+      /**
+       * <pre>
+       * SHA-256 of shared secret
+       * </pre>
+       *
+       * <code>required bytes tag = 2;</code>
+       * @param value The tag to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTag(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        tag_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * SHA-256 of shared secret
+       * </pre>
+       *
+       * <code>required bytes tag = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTag() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        tag_ = getDefaultInstance().getTag();
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.thp.ThpCodeEntryCpaceHostTag)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.thp.ThpCodeEntryCpaceHostTag)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ThpCodeEntryCpaceHostTag>
+        PARSER = new com.google.protobuf.AbstractParser<ThpCodeEntryCpaceHostTag>() {
+      @java.lang.Override
+      public ThpCodeEntryCpaceHostTag parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThpCodeEntryCpaceHostTag> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThpCodeEntryCpaceHostTag> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntryCpaceHostTag getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ThpCodeEntrySecretOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.thp.ThpCodeEntrySecret)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Trezor's secret
+     * </pre>
+     *
+     * <code>required bytes secret = 1;</code>
+     * @return Whether the secret field is set.
+     */
+    boolean hasSecret();
+    /**
+     * <pre>
+     * Trezor's secret
+     * </pre>
+     *
+     * <code>required bytes secret = 1;</code>
+     * @return The secret.
+     */
+    com.google.protobuf.ByteString getSecret();
+  }
+  /**
+   * <pre>
+   * *
+   * Response: Trezor finishes the CPACE protocol.
+   * &#64;next ThpCredentialRequest
+   * &#64;next ThpEndRequest
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.thp.ThpCodeEntrySecret}
+   */
+  public static final class ThpCodeEntrySecret extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.thp.ThpCodeEntrySecret)
+      ThpCodeEntrySecretOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ThpCodeEntrySecret.class.getName());
+    }
+    // Use ThpCodeEntrySecret.newBuilder() to construct.
+    private ThpCodeEntrySecret(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ThpCodeEntrySecret() {
+      secret_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntrySecret_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntrySecret_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int SECRET_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString secret_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * Trezor's secret
+     * </pre>
+     *
+     * <code>required bytes secret = 1;</code>
+     * @return Whether the secret field is set.
+     */
+    @java.lang.Override
+    public boolean hasSecret() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * Trezor's secret
+     * </pre>
+     *
+     * <code>required bytes secret = 1;</code>
+     * @return The secret.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getSecret() {
+      return secret_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasSecret()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeBytes(1, secret_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, secret_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret) obj;
+
+      if (hasSecret() != other.hasSecret()) return false;
+      if (hasSecret()) {
+        if (!getSecret()
+            .equals(other.getSecret())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasSecret()) {
+        hash = (37 * hash) + SECRET_FIELD_NUMBER;
+        hash = (53 * hash) + getSecret().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Response: Trezor finishes the CPACE protocol.
+     * &#64;next ThpCredentialRequest
+     * &#64;next ThpEndRequest
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.thp.ThpCodeEntrySecret}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.thp.ThpCodeEntrySecret)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecretOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntrySecret_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntrySecret_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        secret_ = com.google.protobuf.ByteString.EMPTY;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCodeEntrySecret_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.secret_ = secret_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret.getDefaultInstance()) return this;
+        if (other.hasSecret()) {
+          setSecret(other.getSecret());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasSecret()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                secret_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.ByteString secret_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * Trezor's secret
+       * </pre>
+       *
+       * <code>required bytes secret = 1;</code>
+       * @return Whether the secret field is set.
+       */
+      @java.lang.Override
+      public boolean hasSecret() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * Trezor's secret
+       * </pre>
+       *
+       * <code>required bytes secret = 1;</code>
+       * @return The secret.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getSecret() {
+        return secret_;
+      }
+      /**
+       * <pre>
+       * Trezor's secret
+       * </pre>
+       *
+       * <code>required bytes secret = 1;</code>
+       * @param value The secret to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSecret(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        secret_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Trezor's secret
+       * </pre>
+       *
+       * <code>required bytes secret = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSecret() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        secret_ = getDefaultInstance().getSecret();
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.thp.ThpCodeEntrySecret)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.thp.ThpCodeEntrySecret)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ThpCodeEntrySecret>
+        PARSER = new com.google.protobuf.AbstractParser<ThpCodeEntrySecret>() {
+      @java.lang.Override
+      public ThpCodeEntrySecret parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThpCodeEntrySecret> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThpCodeEntrySecret> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCodeEntrySecret getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ThpQrCodeTagOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.thp.ThpQrCodeTag)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * SHA-256 of shared secret
+     * </pre>
+     *
+     * <code>required bytes tag = 1;</code>
+     * @return Whether the tag field is set.
+     */
+    boolean hasTag();
+    /**
+     * <pre>
+     * SHA-256 of shared secret
+     * </pre>
+     *
+     * <code>required bytes tag = 1;</code>
+     * @return The tag.
+     */
+    com.google.protobuf.ByteString getTag();
+  }
+  /**
+   * <pre>
+   * *
+   * Request: User selected QR Code pairing option. Host sends a QR Tag.
+   * &#64;next ThpQrCodeSecret
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.thp.ThpQrCodeTag}
+   */
+  public static final class ThpQrCodeTag extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.thp.ThpQrCodeTag)
+      ThpQrCodeTagOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ThpQrCodeTag.class.getName());
+    }
+    // Use ThpQrCodeTag.newBuilder() to construct.
+    private ThpQrCodeTag(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ThpQrCodeTag() {
+      tag_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpQrCodeTag_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpQrCodeTag_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int TAG_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString tag_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * SHA-256 of shared secret
+     * </pre>
+     *
+     * <code>required bytes tag = 1;</code>
+     * @return Whether the tag field is set.
+     */
+    @java.lang.Override
+    public boolean hasTag() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * SHA-256 of shared secret
+     * </pre>
+     *
+     * <code>required bytes tag = 1;</code>
+     * @return The tag.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getTag() {
+      return tag_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasTag()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeBytes(1, tag_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, tag_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag) obj;
+
+      if (hasTag() != other.hasTag()) return false;
+      if (hasTag()) {
+        if (!getTag()
+            .equals(other.getTag())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasTag()) {
+        hash = (37 * hash) + TAG_FIELD_NUMBER;
+        hash = (53 * hash) + getTag().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Request: User selected QR Code pairing option. Host sends a QR Tag.
+     * &#64;next ThpQrCodeSecret
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.thp.ThpQrCodeTag}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.thp.ThpQrCodeTag)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTagOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpQrCodeTag_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpQrCodeTag_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        tag_ = com.google.protobuf.ByteString.EMPTY;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpQrCodeTag_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.tag_ = tag_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag.getDefaultInstance()) return this;
+        if (other.hasTag()) {
+          setTag(other.getTag());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasTag()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                tag_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.ByteString tag_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * SHA-256 of shared secret
+       * </pre>
+       *
+       * <code>required bytes tag = 1;</code>
+       * @return Whether the tag field is set.
+       */
+      @java.lang.Override
+      public boolean hasTag() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * SHA-256 of shared secret
+       * </pre>
+       *
+       * <code>required bytes tag = 1;</code>
+       * @return The tag.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getTag() {
+        return tag_;
+      }
+      /**
+       * <pre>
+       * SHA-256 of shared secret
+       * </pre>
+       *
+       * <code>required bytes tag = 1;</code>
+       * @param value The tag to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTag(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        tag_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * SHA-256 of shared secret
+       * </pre>
+       *
+       * <code>required bytes tag = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTag() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        tag_ = getDefaultInstance().getTag();
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.thp.ThpQrCodeTag)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.thp.ThpQrCodeTag)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ThpQrCodeTag>
+        PARSER = new com.google.protobuf.AbstractParser<ThpQrCodeTag>() {
+      @java.lang.Override
+      public ThpQrCodeTag parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThpQrCodeTag> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThpQrCodeTag> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeTag getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ThpQrCodeSecretOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.thp.ThpQrCodeSecret)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Trezor's secret
+     * </pre>
+     *
+     * <code>required bytes secret = 1;</code>
+     * @return Whether the secret field is set.
+     */
+    boolean hasSecret();
+    /**
+     * <pre>
+     * Trezor's secret
+     * </pre>
+     *
+     * <code>required bytes secret = 1;</code>
+     * @return The secret.
+     */
+    com.google.protobuf.ByteString getSecret();
+  }
+  /**
+   * <pre>
+   * *
+   * Response: Trezor sends the QR secret.
+   * &#64;next ThpCredentialRequest
+   * &#64;next ThpEndRequest
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.thp.ThpQrCodeSecret}
+   */
+  public static final class ThpQrCodeSecret extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.thp.ThpQrCodeSecret)
+      ThpQrCodeSecretOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ThpQrCodeSecret.class.getName());
+    }
+    // Use ThpQrCodeSecret.newBuilder() to construct.
+    private ThpQrCodeSecret(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ThpQrCodeSecret() {
+      secret_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpQrCodeSecret_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpQrCodeSecret_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int SECRET_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString secret_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * Trezor's secret
+     * </pre>
+     *
+     * <code>required bytes secret = 1;</code>
+     * @return Whether the secret field is set.
+     */
+    @java.lang.Override
+    public boolean hasSecret() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * Trezor's secret
+     * </pre>
+     *
+     * <code>required bytes secret = 1;</code>
+     * @return The secret.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getSecret() {
+      return secret_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasSecret()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeBytes(1, secret_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, secret_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret) obj;
+
+      if (hasSecret() != other.hasSecret()) return false;
+      if (hasSecret()) {
+        if (!getSecret()
+            .equals(other.getSecret())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasSecret()) {
+        hash = (37 * hash) + SECRET_FIELD_NUMBER;
+        hash = (53 * hash) + getSecret().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Response: Trezor sends the QR secret.
+     * &#64;next ThpCredentialRequest
+     * &#64;next ThpEndRequest
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.thp.ThpQrCodeSecret}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.thp.ThpQrCodeSecret)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecretOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpQrCodeSecret_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpQrCodeSecret_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        secret_ = com.google.protobuf.ByteString.EMPTY;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpQrCodeSecret_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.secret_ = secret_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret.getDefaultInstance()) return this;
+        if (other.hasSecret()) {
+          setSecret(other.getSecret());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasSecret()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                secret_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.ByteString secret_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * Trezor's secret
+       * </pre>
+       *
+       * <code>required bytes secret = 1;</code>
+       * @return Whether the secret field is set.
+       */
+      @java.lang.Override
+      public boolean hasSecret() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * Trezor's secret
+       * </pre>
+       *
+       * <code>required bytes secret = 1;</code>
+       * @return The secret.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getSecret() {
+        return secret_;
+      }
+      /**
+       * <pre>
+       * Trezor's secret
+       * </pre>
+       *
+       * <code>required bytes secret = 1;</code>
+       * @param value The secret to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSecret(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        secret_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Trezor's secret
+       * </pre>
+       *
+       * <code>required bytes secret = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSecret() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        secret_ = getDefaultInstance().getSecret();
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.thp.ThpQrCodeSecret)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.thp.ThpQrCodeSecret)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ThpQrCodeSecret>
+        PARSER = new com.google.protobuf.AbstractParser<ThpQrCodeSecret>() {
+      @java.lang.Override
+      public ThpQrCodeSecret parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThpQrCodeSecret> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThpQrCodeSecret> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpQrCodeSecret getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ThpNfcTagHostOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.thp.ThpNfcTagHost)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Host's tag
+     * </pre>
+     *
+     * <code>required bytes tag = 1;</code>
+     * @return Whether the tag field is set.
+     */
+    boolean hasTag();
+    /**
+     * <pre>
+     * Host's tag
+     * </pre>
+     *
+     * <code>required bytes tag = 1;</code>
+     * @return The tag.
+     */
+    com.google.protobuf.ByteString getTag();
+  }
+  /**
+   * <pre>
+   * *
+   * Request: User selected Unidirectional NFC pairing option. Host sends an Unidirectional NFC Tag.
+   * &#64;next ThpNfcTagTrezor
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.thp.ThpNfcTagHost}
+   */
+  public static final class ThpNfcTagHost extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.thp.ThpNfcTagHost)
+      ThpNfcTagHostOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ThpNfcTagHost.class.getName());
+    }
+    // Use ThpNfcTagHost.newBuilder() to construct.
+    private ThpNfcTagHost(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ThpNfcTagHost() {
+      tag_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpNfcTagHost_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpNfcTagHost_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int TAG_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString tag_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * Host's tag
+     * </pre>
+     *
+     * <code>required bytes tag = 1;</code>
+     * @return Whether the tag field is set.
+     */
+    @java.lang.Override
+    public boolean hasTag() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * Host's tag
+     * </pre>
+     *
+     * <code>required bytes tag = 1;</code>
+     * @return The tag.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getTag() {
+      return tag_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasTag()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeBytes(1, tag_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, tag_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost) obj;
+
+      if (hasTag() != other.hasTag()) return false;
+      if (hasTag()) {
+        if (!getTag()
+            .equals(other.getTag())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasTag()) {
+        hash = (37 * hash) + TAG_FIELD_NUMBER;
+        hash = (53 * hash) + getTag().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Request: User selected Unidirectional NFC pairing option. Host sends an Unidirectional NFC Tag.
+     * &#64;next ThpNfcTagTrezor
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.thp.ThpNfcTagHost}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.thp.ThpNfcTagHost)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHostOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpNfcTagHost_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpNfcTagHost_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        tag_ = com.google.protobuf.ByteString.EMPTY;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpNfcTagHost_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.tag_ = tag_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost.getDefaultInstance()) return this;
+        if (other.hasTag()) {
+          setTag(other.getTag());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasTag()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                tag_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.ByteString tag_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * Host's tag
+       * </pre>
+       *
+       * <code>required bytes tag = 1;</code>
+       * @return Whether the tag field is set.
+       */
+      @java.lang.Override
+      public boolean hasTag() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * Host's tag
+       * </pre>
+       *
+       * <code>required bytes tag = 1;</code>
+       * @return The tag.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getTag() {
+        return tag_;
+      }
+      /**
+       * <pre>
+       * Host's tag
+       * </pre>
+       *
+       * <code>required bytes tag = 1;</code>
+       * @param value The tag to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTag(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        tag_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Host's tag
+       * </pre>
+       *
+       * <code>required bytes tag = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTag() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        tag_ = getDefaultInstance().getTag();
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.thp.ThpNfcTagHost)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.thp.ThpNfcTagHost)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ThpNfcTagHost>
+        PARSER = new com.google.protobuf.AbstractParser<ThpNfcTagHost>() {
+      @java.lang.Override
+      public ThpNfcTagHost parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThpNfcTagHost> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThpNfcTagHost> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagHost getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ThpNfcTagTrezorOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.thp.ThpNfcTagTrezor)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Trezor's tag
+     * </pre>
+     *
+     * <code>required bytes tag = 1;</code>
+     * @return Whether the tag field is set.
+     */
+    boolean hasTag();
+    /**
+     * <pre>
+     * Trezor's tag
+     * </pre>
+     *
+     * <code>required bytes tag = 1;</code>
+     * @return The tag.
+     */
+    com.google.protobuf.ByteString getTag();
+  }
+  /**
+   * <pre>
+   * *
+   * Response: Trezor sends the Unidirectioal NFC secret.
+   * &#64;next ThpCredentialRequest
+   * &#64;next ThpEndRequest
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.thp.ThpNfcTagTrezor}
+   */
+  public static final class ThpNfcTagTrezor extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.thp.ThpNfcTagTrezor)
+      ThpNfcTagTrezorOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ThpNfcTagTrezor.class.getName());
+    }
+    // Use ThpNfcTagTrezor.newBuilder() to construct.
+    private ThpNfcTagTrezor(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ThpNfcTagTrezor() {
+      tag_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpNfcTagTrezor_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpNfcTagTrezor_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int TAG_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString tag_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * Trezor's tag
+     * </pre>
+     *
+     * <code>required bytes tag = 1;</code>
+     * @return Whether the tag field is set.
+     */
+    @java.lang.Override
+    public boolean hasTag() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * Trezor's tag
+     * </pre>
+     *
+     * <code>required bytes tag = 1;</code>
+     * @return The tag.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getTag() {
+      return tag_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasTag()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeBytes(1, tag_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, tag_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor) obj;
+
+      if (hasTag() != other.hasTag()) return false;
+      if (hasTag()) {
+        if (!getTag()
+            .equals(other.getTag())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasTag()) {
+        hash = (37 * hash) + TAG_FIELD_NUMBER;
+        hash = (53 * hash) + getTag().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Response: Trezor sends the Unidirectioal NFC secret.
+     * &#64;next ThpCredentialRequest
+     * &#64;next ThpEndRequest
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.thp.ThpNfcTagTrezor}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.thp.ThpNfcTagTrezor)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezorOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpNfcTagTrezor_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpNfcTagTrezor_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        tag_ = com.google.protobuf.ByteString.EMPTY;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpNfcTagTrezor_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.tag_ = tag_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor.getDefaultInstance()) return this;
+        if (other.hasTag()) {
+          setTag(other.getTag());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasTag()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                tag_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.ByteString tag_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * Trezor's tag
+       * </pre>
+       *
+       * <code>required bytes tag = 1;</code>
+       * @return Whether the tag field is set.
+       */
+      @java.lang.Override
+      public boolean hasTag() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * Trezor's tag
+       * </pre>
+       *
+       * <code>required bytes tag = 1;</code>
+       * @return The tag.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getTag() {
+        return tag_;
+      }
+      /**
+       * <pre>
+       * Trezor's tag
+       * </pre>
+       *
+       * <code>required bytes tag = 1;</code>
+       * @param value The tag to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTag(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        tag_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Trezor's tag
+       * </pre>
+       *
+       * <code>required bytes tag = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTag() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        tag_ = getDefaultInstance().getTag();
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.thp.ThpNfcTagTrezor)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.thp.ThpNfcTagTrezor)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ThpNfcTagTrezor>
+        PARSER = new com.google.protobuf.AbstractParser<ThpNfcTagTrezor>() {
+      @java.lang.Override
+      public ThpNfcTagTrezor parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThpNfcTagTrezor> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThpNfcTagTrezor> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpNfcTagTrezor getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ThpCredentialRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.thp.ThpCredentialRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Host's static public key identifying the credential.
+     * </pre>
+     *
+     * <code>required bytes host_static_public_key = 1;</code>
+     * @return Whether the hostStaticPublicKey field is set.
+     */
+    boolean hasHostStaticPublicKey();
+    /**
+     * <pre>
+     * Host's static public key identifying the credential.
+     * </pre>
+     *
+     * <code>required bytes host_static_public_key = 1;</code>
+     * @return The hostStaticPublicKey.
+     */
+    com.google.protobuf.ByteString getHostStaticPublicKey();
+
+    /**
+     * <pre>
+     * Whether host wants to autoconnect without user confirmation
+     * </pre>
+     *
+     * <code>optional bool autoconnect = 2 [default = false];</code>
+     * @return Whether the autoconnect field is set.
+     */
+    boolean hasAutoconnect();
+    /**
+     * <pre>
+     * Whether host wants to autoconnect without user confirmation
+     * </pre>
+     *
+     * <code>optional bool autoconnect = 2 [default = false];</code>
+     * @return The autoconnect.
+     */
+    boolean getAutoconnect();
+
+    /**
+     * <pre>
+     * Host's previous credential
+     * </pre>
+     *
+     * <code>optional bytes credential = 3;</code>
+     * @return Whether the credential field is set.
+     */
+    boolean hasCredential();
+    /**
+     * <pre>
+     * Host's previous credential
+     * </pre>
+     *
+     * <code>optional bytes credential = 3;</code>
+     * @return The credential.
+     */
+    com.google.protobuf.ByteString getCredential();
+  }
+  /**
+   * <pre>
+   * *
+   * Request: Host requests issuance of a new pairing credential.
+   * &#64;start
+   * &#64;next ThpCredentialResponse
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.thp.ThpCredentialRequest}
+   */
+  public static final class ThpCredentialRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.thp.ThpCredentialRequest)
+      ThpCredentialRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ThpCredentialRequest.class.getName());
+    }
+    // Use ThpCredentialRequest.newBuilder() to construct.
+    private ThpCredentialRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ThpCredentialRequest() {
+      hostStaticPublicKey_ = com.google.protobuf.ByteString.EMPTY;
+      credential_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCredentialRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCredentialRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int HOST_STATIC_PUBLIC_KEY_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString hostStaticPublicKey_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * Host's static public key identifying the credential.
+     * </pre>
+     *
+     * <code>required bytes host_static_public_key = 1;</code>
+     * @return Whether the hostStaticPublicKey field is set.
+     */
+    @java.lang.Override
+    public boolean hasHostStaticPublicKey() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * Host's static public key identifying the credential.
+     * </pre>
+     *
+     * <code>required bytes host_static_public_key = 1;</code>
+     * @return The hostStaticPublicKey.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getHostStaticPublicKey() {
+      return hostStaticPublicKey_;
+    }
+
+    public static final int AUTOCONNECT_FIELD_NUMBER = 2;
+    private boolean autoconnect_ = false;
+    /**
+     * <pre>
+     * Whether host wants to autoconnect without user confirmation
+     * </pre>
+     *
+     * <code>optional bool autoconnect = 2 [default = false];</code>
+     * @return Whether the autoconnect field is set.
+     */
+    @java.lang.Override
+    public boolean hasAutoconnect() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * Whether host wants to autoconnect without user confirmation
+     * </pre>
+     *
+     * <code>optional bool autoconnect = 2 [default = false];</code>
+     * @return The autoconnect.
+     */
+    @java.lang.Override
+    public boolean getAutoconnect() {
+      return autoconnect_;
+    }
+
+    public static final int CREDENTIAL_FIELD_NUMBER = 3;
+    private com.google.protobuf.ByteString credential_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * Host's previous credential
+     * </pre>
+     *
+     * <code>optional bytes credential = 3;</code>
+     * @return Whether the credential field is set.
+     */
+    @java.lang.Override
+    public boolean hasCredential() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <pre>
+     * Host's previous credential
+     * </pre>
+     *
+     * <code>optional bytes credential = 3;</code>
+     * @return The credential.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getCredential() {
+      return credential_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasHostStaticPublicKey()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeBytes(1, hostStaticPublicKey_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeBool(2, autoconnect_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeBytes(3, credential_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, hostStaticPublicKey_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, autoconnect_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, credential_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest) obj;
+
+      if (hasHostStaticPublicKey() != other.hasHostStaticPublicKey()) return false;
+      if (hasHostStaticPublicKey()) {
+        if (!getHostStaticPublicKey()
+            .equals(other.getHostStaticPublicKey())) return false;
+      }
+      if (hasAutoconnect() != other.hasAutoconnect()) return false;
+      if (hasAutoconnect()) {
+        if (getAutoconnect()
+            != other.getAutoconnect()) return false;
+      }
+      if (hasCredential() != other.hasCredential()) return false;
+      if (hasCredential()) {
+        if (!getCredential()
+            .equals(other.getCredential())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasHostStaticPublicKey()) {
+        hash = (37 * hash) + HOST_STATIC_PUBLIC_KEY_FIELD_NUMBER;
+        hash = (53 * hash) + getHostStaticPublicKey().hashCode();
+      }
+      if (hasAutoconnect()) {
+        hash = (37 * hash) + AUTOCONNECT_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getAutoconnect());
+      }
+      if (hasCredential()) {
+        hash = (37 * hash) + CREDENTIAL_FIELD_NUMBER;
+        hash = (53 * hash) + getCredential().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Request: Host requests issuance of a new pairing credential.
+     * &#64;start
+     * &#64;next ThpCredentialResponse
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.thp.ThpCredentialRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.thp.ThpCredentialRequest)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCredentialRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCredentialRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        hostStaticPublicKey_ = com.google.protobuf.ByteString.EMPTY;
+        autoconnect_ = false;
+        credential_ = com.google.protobuf.ByteString.EMPTY;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCredentialRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.hostStaticPublicKey_ = hostStaticPublicKey_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.autoconnect_ = autoconnect_;
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.credential_ = credential_;
+          to_bitField0_ |= 0x00000004;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest.getDefaultInstance()) return this;
+        if (other.hasHostStaticPublicKey()) {
+          setHostStaticPublicKey(other.getHostStaticPublicKey());
+        }
+        if (other.hasAutoconnect()) {
+          setAutoconnect(other.getAutoconnect());
+        }
+        if (other.hasCredential()) {
+          setCredential(other.getCredential());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasHostStaticPublicKey()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                hostStaticPublicKey_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                autoconnect_ = input.readBool();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 26: {
+                credential_ = input.readBytes();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.ByteString hostStaticPublicKey_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * Host's static public key identifying the credential.
+       * </pre>
+       *
+       * <code>required bytes host_static_public_key = 1;</code>
+       * @return Whether the hostStaticPublicKey field is set.
+       */
+      @java.lang.Override
+      public boolean hasHostStaticPublicKey() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * Host's static public key identifying the credential.
+       * </pre>
+       *
+       * <code>required bytes host_static_public_key = 1;</code>
+       * @return The hostStaticPublicKey.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getHostStaticPublicKey() {
+        return hostStaticPublicKey_;
+      }
+      /**
+       * <pre>
+       * Host's static public key identifying the credential.
+       * </pre>
+       *
+       * <code>required bytes host_static_public_key = 1;</code>
+       * @param value The hostStaticPublicKey to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHostStaticPublicKey(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        hostStaticPublicKey_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Host's static public key identifying the credential.
+       * </pre>
+       *
+       * <code>required bytes host_static_public_key = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearHostStaticPublicKey() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        hostStaticPublicKey_ = getDefaultInstance().getHostStaticPublicKey();
+        onChanged();
+        return this;
+      }
+
+      private boolean autoconnect_ ;
+      /**
+       * <pre>
+       * Whether host wants to autoconnect without user confirmation
+       * </pre>
+       *
+       * <code>optional bool autoconnect = 2 [default = false];</code>
+       * @return Whether the autoconnect field is set.
+       */
+      @java.lang.Override
+      public boolean hasAutoconnect() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * Whether host wants to autoconnect without user confirmation
+       * </pre>
+       *
+       * <code>optional bool autoconnect = 2 [default = false];</code>
+       * @return The autoconnect.
+       */
+      @java.lang.Override
+      public boolean getAutoconnect() {
+        return autoconnect_;
+      }
+      /**
+       * <pre>
+       * Whether host wants to autoconnect without user confirmation
+       * </pre>
+       *
+       * <code>optional bool autoconnect = 2 [default = false];</code>
+       * @param value The autoconnect to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAutoconnect(boolean value) {
+
+        autoconnect_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Whether host wants to autoconnect without user confirmation
+       * </pre>
+       *
+       * <code>optional bool autoconnect = 2 [default = false];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAutoconnect() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        autoconnect_ = false;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString credential_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * Host's previous credential
+       * </pre>
+       *
+       * <code>optional bytes credential = 3;</code>
+       * @return Whether the credential field is set.
+       */
+      @java.lang.Override
+      public boolean hasCredential() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <pre>
+       * Host's previous credential
+       * </pre>
+       *
+       * <code>optional bytes credential = 3;</code>
+       * @return The credential.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getCredential() {
+        return credential_;
+      }
+      /**
+       * <pre>
+       * Host's previous credential
+       * </pre>
+       *
+       * <code>optional bytes credential = 3;</code>
+       * @param value The credential to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCredential(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        credential_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Host's previous credential
+       * </pre>
+       *
+       * <code>optional bytes credential = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCredential() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        credential_ = getDefaultInstance().getCredential();
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.thp.ThpCredentialRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.thp.ThpCredentialRequest)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ThpCredentialRequest>
+        PARSER = new com.google.protobuf.AbstractParser<ThpCredentialRequest>() {
+      @java.lang.Override
+      public ThpCredentialRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThpCredentialRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThpCredentialRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ThpCredentialResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.thp.ThpCredentialResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Trezor's static public key used in the handshake.
+     * </pre>
+     *
+     * <code>required bytes trezor_static_public_key = 1;</code>
+     * @return Whether the trezorStaticPublicKey field is set.
+     */
+    boolean hasTrezorStaticPublicKey();
+    /**
+     * <pre>
+     * Trezor's static public key used in the handshake.
+     * </pre>
+     *
+     * <code>required bytes trezor_static_public_key = 1;</code>
+     * @return The trezorStaticPublicKey.
+     */
+    com.google.protobuf.ByteString getTrezorStaticPublicKey();
+
+    /**
+     * <pre>
+     * The pairing credential issued by the Trezor to the host.
+     * </pre>
+     *
+     * <code>required bytes credential = 2;</code>
+     * @return Whether the credential field is set.
+     */
+    boolean hasCredential();
+    /**
+     * <pre>
+     * The pairing credential issued by the Trezor to the host.
+     * </pre>
+     *
+     * <code>required bytes credential = 2;</code>
+     * @return The credential.
+     */
+    com.google.protobuf.ByteString getCredential();
+  }
+  /**
+   * <pre>
+   * *
+   * Response: Trezor issues a new pairing credential.
+   * &#64;next ThpCredentialRequest
+   * &#64;next ThpEndRequest
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.thp.ThpCredentialResponse}
+   */
+  public static final class ThpCredentialResponse extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.thp.ThpCredentialResponse)
+      ThpCredentialResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ThpCredentialResponse.class.getName());
+    }
+    // Use ThpCredentialResponse.newBuilder() to construct.
+    private ThpCredentialResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ThpCredentialResponse() {
+      trezorStaticPublicKey_ = com.google.protobuf.ByteString.EMPTY;
+      credential_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCredentialResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCredentialResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int TREZOR_STATIC_PUBLIC_KEY_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString trezorStaticPublicKey_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * Trezor's static public key used in the handshake.
+     * </pre>
+     *
+     * <code>required bytes trezor_static_public_key = 1;</code>
+     * @return Whether the trezorStaticPublicKey field is set.
+     */
+    @java.lang.Override
+    public boolean hasTrezorStaticPublicKey() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * Trezor's static public key used in the handshake.
+     * </pre>
+     *
+     * <code>required bytes trezor_static_public_key = 1;</code>
+     * @return The trezorStaticPublicKey.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getTrezorStaticPublicKey() {
+      return trezorStaticPublicKey_;
+    }
+
+    public static final int CREDENTIAL_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString credential_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * The pairing credential issued by the Trezor to the host.
+     * </pre>
+     *
+     * <code>required bytes credential = 2;</code>
+     * @return Whether the credential field is set.
+     */
+    @java.lang.Override
+    public boolean hasCredential() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * The pairing credential issued by the Trezor to the host.
+     * </pre>
+     *
+     * <code>required bytes credential = 2;</code>
+     * @return The credential.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getCredential() {
+      return credential_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasTrezorStaticPublicKey()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCredential()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeBytes(1, trezorStaticPublicKey_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeBytes(2, credential_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, trezorStaticPublicKey_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, credential_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse) obj;
+
+      if (hasTrezorStaticPublicKey() != other.hasTrezorStaticPublicKey()) return false;
+      if (hasTrezorStaticPublicKey()) {
+        if (!getTrezorStaticPublicKey()
+            .equals(other.getTrezorStaticPublicKey())) return false;
+      }
+      if (hasCredential() != other.hasCredential()) return false;
+      if (hasCredential()) {
+        if (!getCredential()
+            .equals(other.getCredential())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasTrezorStaticPublicKey()) {
+        hash = (37 * hash) + TREZOR_STATIC_PUBLIC_KEY_FIELD_NUMBER;
+        hash = (53 * hash) + getTrezorStaticPublicKey().hashCode();
+      }
+      if (hasCredential()) {
+        hash = (37 * hash) + CREDENTIAL_FIELD_NUMBER;
+        hash = (53 * hash) + getCredential().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Response: Trezor issues a new pairing credential.
+     * &#64;next ThpCredentialRequest
+     * &#64;next ThpEndRequest
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.thp.ThpCredentialResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.thp.ThpCredentialResponse)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCredentialResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCredentialResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        trezorStaticPublicKey_ = com.google.protobuf.ByteString.EMPTY;
+        credential_ = com.google.protobuf.ByteString.EMPTY;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpCredentialResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.trezorStaticPublicKey_ = trezorStaticPublicKey_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.credential_ = credential_;
+          to_bitField0_ |= 0x00000002;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse.getDefaultInstance()) return this;
+        if (other.hasTrezorStaticPublicKey()) {
+          setTrezorStaticPublicKey(other.getTrezorStaticPublicKey());
+        }
+        if (other.hasCredential()) {
+          setCredential(other.getCredential());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasTrezorStaticPublicKey()) {
+          return false;
+        }
+        if (!hasCredential()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                trezorStaticPublicKey_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                credential_ = input.readBytes();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.ByteString trezorStaticPublicKey_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * Trezor's static public key used in the handshake.
+       * </pre>
+       *
+       * <code>required bytes trezor_static_public_key = 1;</code>
+       * @return Whether the trezorStaticPublicKey field is set.
+       */
+      @java.lang.Override
+      public boolean hasTrezorStaticPublicKey() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * Trezor's static public key used in the handshake.
+       * </pre>
+       *
+       * <code>required bytes trezor_static_public_key = 1;</code>
+       * @return The trezorStaticPublicKey.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getTrezorStaticPublicKey() {
+        return trezorStaticPublicKey_;
+      }
+      /**
+       * <pre>
+       * Trezor's static public key used in the handshake.
+       * </pre>
+       *
+       * <code>required bytes trezor_static_public_key = 1;</code>
+       * @param value The trezorStaticPublicKey to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTrezorStaticPublicKey(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        trezorStaticPublicKey_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Trezor's static public key used in the handshake.
+       * </pre>
+       *
+       * <code>required bytes trezor_static_public_key = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTrezorStaticPublicKey() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        trezorStaticPublicKey_ = getDefaultInstance().getTrezorStaticPublicKey();
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString credential_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * The pairing credential issued by the Trezor to the host.
+       * </pre>
+       *
+       * <code>required bytes credential = 2;</code>
+       * @return Whether the credential field is set.
+       */
+      @java.lang.Override
+      public boolean hasCredential() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * The pairing credential issued by the Trezor to the host.
+       * </pre>
+       *
+       * <code>required bytes credential = 2;</code>
+       * @return The credential.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getCredential() {
+        return credential_;
+      }
+      /**
+       * <pre>
+       * The pairing credential issued by the Trezor to the host.
+       * </pre>
+       *
+       * <code>required bytes credential = 2;</code>
+       * @param value The credential to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCredential(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        credential_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The pairing credential issued by the Trezor to the host.
+       * </pre>
+       *
+       * <code>required bytes credential = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCredential() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        credential_ = getDefaultInstance().getCredential();
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.thp.ThpCredentialResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.thp.ThpCredentialResponse)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ThpCredentialResponse>
+        PARSER = new com.google.protobuf.AbstractParser<ThpCredentialResponse>() {
+      @java.lang.Override
+      public ThpCredentialResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThpCredentialResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThpCredentialResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ThpEndRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.thp.ThpEndRequest)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * <pre>
+   * *
+   * Request: Host requests transition to the encrypted traffic phase.
+   * &#64;start
+   * &#64;next ThpEndResponse
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.thp.ThpEndRequest}
+   */
+  public static final class ThpEndRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.thp.ThpEndRequest)
+      ThpEndRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ThpEndRequest.class.getName());
+    }
+    // Use ThpEndRequest.newBuilder() to construct.
+    private ThpEndRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ThpEndRequest() {
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpEndRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpEndRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest) obj;
+
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Request: Host requests transition to the encrypted traffic phase.
+     * &#64;start
+     * &#64;next ThpEndResponse
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.thp.ThpEndRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.thp.ThpEndRequest)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpEndRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpEndRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpEndRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest(this);
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.thp.ThpEndRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.thp.ThpEndRequest)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ThpEndRequest>
+        PARSER = new com.google.protobuf.AbstractParser<ThpEndRequest>() {
+      @java.lang.Override
+      public ThpEndRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThpEndRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThpEndRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ThpEndResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.thp.ThpEndResponse)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * <pre>
+   * *
+   * Response: Trezor approves transition to the encrypted traffic phase
+   * &#64;end
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.thp.ThpEndResponse}
+   */
+  public static final class ThpEndResponse extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.thp.ThpEndResponse)
+      ThpEndResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ThpEndResponse.class.getName());
+    }
+    // Use ThpEndResponse.newBuilder() to construct.
+    private ThpEndResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ThpEndResponse() {
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpEndResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpEndResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse) obj;
+
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Response: Trezor approves transition to the encrypted traffic phase
+     * &#64;end
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.thp.ThpEndResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.thp.ThpEndResponse)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpEndResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpEndResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpEndResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse(this);
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.thp.ThpEndResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.thp.ThpEndResponse)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ThpEndResponse>
+        PARSER = new com.google.protobuf.AbstractParser<ThpEndResponse>() {
+      @java.lang.Override
+      public ThpEndResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThpEndResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThpEndResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpEndResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface ThpCredentialMetadataOrBuilder extends
       // @@protoc_insertion_point(interface_extends:hw.trezor.messages.thp.ThpCredentialMetadata)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <pre>
-     * Human-readable host name
+     * Human-readable host name (browser name for web apps)
      * </pre>
      *
-     * <code>optional string host_name = 1;</code>
+     * <code>required string host_name = 1;</code>
      * @return Whether the hostName field is set.
      */
     boolean hasHostName();
     /**
      * <pre>
-     * Human-readable host name
+     * Human-readable host name (browser name for web apps)
      * </pre>
      *
-     * <code>optional string host_name = 1;</code>
+     * <code>required string host_name = 1;</code>
      * @return The hostName.
      */
     java.lang.String getHostName();
     /**
      * <pre>
-     * Human-readable host name
+     * Human-readable host name (browser name for web apps)
      * </pre>
      *
-     * <code>optional string host_name = 1;</code>
+     * <code>required string host_name = 1;</code>
      * @return The bytes for hostName.
      */
     com.google.protobuf.ByteString
         getHostNameBytes();
+
+    /**
+     * <pre>
+     * Whether host is allowed to autoconnect without user confirmation
+     * </pre>
+     *
+     * <code>optional bool autoconnect = 2;</code>
+     * @return Whether the autoconnect field is set.
+     */
+    boolean hasAutoconnect();
+    /**
+     * <pre>
+     * Whether host is allowed to autoconnect without user confirmation
+     * </pre>
+     *
+     * <code>optional bool autoconnect = 2;</code>
+     * @return The autoconnect.
+     */
+    boolean getAutoconnect();
+
+    /**
+     * <pre>
+     * Human-readable application name
+     * </pre>
+     *
+     * <code>required string app_name = 3;</code>
+     * @return Whether the appName field is set.
+     */
+    boolean hasAppName();
+    /**
+     * <pre>
+     * Human-readable application name
+     * </pre>
+     *
+     * <code>required string app_name = 3;</code>
+     * @return The appName.
+     */
+    java.lang.String getAppName();
+    /**
+     * <pre>
+     * Human-readable application name
+     * </pre>
+     *
+     * <code>required string app_name = 3;</code>
+     * @return The bytes for appName.
+     */
+    com.google.protobuf.ByteString
+        getAppNameBytes();
   }
   /**
    * <pre>
@@ -87,6 +12213,7 @@ public final class TrezorMessageThp {
     }
     private ThpCredentialMetadata() {
       hostName_ = "";
+      appName_ = "";
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -108,10 +12235,10 @@ public final class TrezorMessageThp {
     private volatile java.lang.Object hostName_ = "";
     /**
      * <pre>
-     * Human-readable host name
+     * Human-readable host name (browser name for web apps)
      * </pre>
      *
-     * <code>optional string host_name = 1;</code>
+     * <code>required string host_name = 1;</code>
      * @return Whether the hostName field is set.
      */
     @java.lang.Override
@@ -120,10 +12247,10 @@ public final class TrezorMessageThp {
     }
     /**
      * <pre>
-     * Human-readable host name
+     * Human-readable host name (browser name for web apps)
      * </pre>
      *
-     * <code>optional string host_name = 1;</code>
+     * <code>required string host_name = 1;</code>
      * @return The hostName.
      */
     @java.lang.Override
@@ -143,10 +12270,10 @@ public final class TrezorMessageThp {
     }
     /**
      * <pre>
-     * Human-readable host name
+     * Human-readable host name (browser name for web apps)
      * </pre>
      *
-     * <code>optional string host_name = 1;</code>
+     * <code>required string host_name = 1;</code>
      * @return The bytes for hostName.
      */
     @java.lang.Override
@@ -164,6 +12291,94 @@ public final class TrezorMessageThp {
       }
     }
 
+    public static final int AUTOCONNECT_FIELD_NUMBER = 2;
+    private boolean autoconnect_ = false;
+    /**
+     * <pre>
+     * Whether host is allowed to autoconnect without user confirmation
+     * </pre>
+     *
+     * <code>optional bool autoconnect = 2;</code>
+     * @return Whether the autoconnect field is set.
+     */
+    @java.lang.Override
+    public boolean hasAutoconnect() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * Whether host is allowed to autoconnect without user confirmation
+     * </pre>
+     *
+     * <code>optional bool autoconnect = 2;</code>
+     * @return The autoconnect.
+     */
+    @java.lang.Override
+    public boolean getAutoconnect() {
+      return autoconnect_;
+    }
+
+    public static final int APP_NAME_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object appName_ = "";
+    /**
+     * <pre>
+     * Human-readable application name
+     * </pre>
+     *
+     * <code>required string app_name = 3;</code>
+     * @return Whether the appName field is set.
+     */
+    @java.lang.Override
+    public boolean hasAppName() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <pre>
+     * Human-readable application name
+     * </pre>
+     *
+     * <code>required string app_name = 3;</code>
+     * @return The appName.
+     */
+    @java.lang.Override
+    public java.lang.String getAppName() {
+      java.lang.Object ref = appName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          appName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Human-readable application name
+     * </pre>
+     *
+     * <code>required string app_name = 3;</code>
+     * @return The bytes for appName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getAppNameBytes() {
+      java.lang.Object ref = appName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        appName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -171,6 +12386,14 @@ public final class TrezorMessageThp {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      if (!hasHostName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasAppName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -180,6 +12403,12 @@ public final class TrezorMessageThp {
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) != 0)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 1, hostName_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeBool(2, autoconnect_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 3, appName_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -192,6 +12421,13 @@ public final class TrezorMessageThp {
       size = 0;
       if (((bitField0_ & 0x00000001) != 0)) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(1, hostName_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, autoconnect_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, appName_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -213,6 +12449,16 @@ public final class TrezorMessageThp {
         if (!getHostName()
             .equals(other.getHostName())) return false;
       }
+      if (hasAutoconnect() != other.hasAutoconnect()) return false;
+      if (hasAutoconnect()) {
+        if (getAutoconnect()
+            != other.getAutoconnect()) return false;
+      }
+      if (hasAppName() != other.hasAppName()) return false;
+      if (hasAppName()) {
+        if (!getAppName()
+            .equals(other.getAppName())) return false;
+      }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -227,6 +12473,15 @@ public final class TrezorMessageThp {
       if (hasHostName()) {
         hash = (37 * hash) + HOST_NAME_FIELD_NUMBER;
         hash = (53 * hash) + getHostName().hashCode();
+      }
+      if (hasAutoconnect()) {
+        hash = (37 * hash) + AUTOCONNECT_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getAutoconnect());
+      }
+      if (hasAppName()) {
+        hash = (37 * hash) + APP_NAME_FIELD_NUMBER;
+        hash = (53 * hash) + getAppName().hashCode();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -366,6 +12621,8 @@ public final class TrezorMessageThp {
         super.clear();
         bitField0_ = 0;
         hostName_ = "";
+        autoconnect_ = false;
+        appName_ = "";
         return this;
       }
 
@@ -404,6 +12661,14 @@ public final class TrezorMessageThp {
           result.hostName_ = hostName_;
           to_bitField0_ |= 0x00000001;
         }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.autoconnect_ = autoconnect_;
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.appName_ = appName_;
+          to_bitField0_ |= 0x00000004;
+        }
         result.bitField0_ |= to_bitField0_;
       }
 
@@ -424,6 +12689,14 @@ public final class TrezorMessageThp {
           bitField0_ |= 0x00000001;
           onChanged();
         }
+        if (other.hasAutoconnect()) {
+          setAutoconnect(other.getAutoconnect());
+        }
+        if (other.hasAppName()) {
+          appName_ = other.appName_;
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -431,6 +12704,12 @@ public final class TrezorMessageThp {
 
       @java.lang.Override
       public final boolean isInitialized() {
+        if (!hasHostName()) {
+          return false;
+        }
+        if (!hasAppName()) {
+          return false;
+        }
         return true;
       }
 
@@ -455,6 +12734,16 @@ public final class TrezorMessageThp {
                 bitField0_ |= 0x00000001;
                 break;
               } // case 10
+              case 16: {
+                autoconnect_ = input.readBool();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 26: {
+                appName_ = input.readBytes();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -475,10 +12764,10 @@ public final class TrezorMessageThp {
       private java.lang.Object hostName_ = "";
       /**
        * <pre>
-       * Human-readable host name
+       * Human-readable host name (browser name for web apps)
        * </pre>
        *
-       * <code>optional string host_name = 1;</code>
+       * <code>required string host_name = 1;</code>
        * @return Whether the hostName field is set.
        */
       public boolean hasHostName() {
@@ -486,10 +12775,10 @@ public final class TrezorMessageThp {
       }
       /**
        * <pre>
-       * Human-readable host name
+       * Human-readable host name (browser name for web apps)
        * </pre>
        *
-       * <code>optional string host_name = 1;</code>
+       * <code>required string host_name = 1;</code>
        * @return The hostName.
        */
       public java.lang.String getHostName() {
@@ -508,10 +12797,10 @@ public final class TrezorMessageThp {
       }
       /**
        * <pre>
-       * Human-readable host name
+       * Human-readable host name (browser name for web apps)
        * </pre>
        *
-       * <code>optional string host_name = 1;</code>
+       * <code>required string host_name = 1;</code>
        * @return The bytes for hostName.
        */
       public com.google.protobuf.ByteString
@@ -529,10 +12818,10 @@ public final class TrezorMessageThp {
       }
       /**
        * <pre>
-       * Human-readable host name
+       * Human-readable host name (browser name for web apps)
        * </pre>
        *
-       * <code>optional string host_name = 1;</code>
+       * <code>required string host_name = 1;</code>
        * @param value The hostName to set.
        * @return This builder for chaining.
        */
@@ -546,10 +12835,10 @@ public final class TrezorMessageThp {
       }
       /**
        * <pre>
-       * Human-readable host name
+       * Human-readable host name (browser name for web apps)
        * </pre>
        *
-       * <code>optional string host_name = 1;</code>
+       * <code>required string host_name = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearHostName() {
@@ -560,10 +12849,10 @@ public final class TrezorMessageThp {
       }
       /**
        * <pre>
-       * Human-readable host name
+       * Human-readable host name (browser name for web apps)
        * </pre>
        *
-       * <code>optional string host_name = 1;</code>
+       * <code>required string host_name = 1;</code>
        * @param value The bytes for hostName to set.
        * @return This builder for chaining.
        */
@@ -572,6 +12861,166 @@ public final class TrezorMessageThp {
         if (value == null) { throw new NullPointerException(); }
         hostName_ = value;
         bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private boolean autoconnect_ ;
+      /**
+       * <pre>
+       * Whether host is allowed to autoconnect without user confirmation
+       * </pre>
+       *
+       * <code>optional bool autoconnect = 2;</code>
+       * @return Whether the autoconnect field is set.
+       */
+      @java.lang.Override
+      public boolean hasAutoconnect() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * Whether host is allowed to autoconnect without user confirmation
+       * </pre>
+       *
+       * <code>optional bool autoconnect = 2;</code>
+       * @return The autoconnect.
+       */
+      @java.lang.Override
+      public boolean getAutoconnect() {
+        return autoconnect_;
+      }
+      /**
+       * <pre>
+       * Whether host is allowed to autoconnect without user confirmation
+       * </pre>
+       *
+       * <code>optional bool autoconnect = 2;</code>
+       * @param value The autoconnect to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAutoconnect(boolean value) {
+
+        autoconnect_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Whether host is allowed to autoconnect without user confirmation
+       * </pre>
+       *
+       * <code>optional bool autoconnect = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAutoconnect() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        autoconnect_ = false;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object appName_ = "";
+      /**
+       * <pre>
+       * Human-readable application name
+       * </pre>
+       *
+       * <code>required string app_name = 3;</code>
+       * @return Whether the appName field is set.
+       */
+      public boolean hasAppName() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <pre>
+       * Human-readable application name
+       * </pre>
+       *
+       * <code>required string app_name = 3;</code>
+       * @return The appName.
+       */
+      public java.lang.String getAppName() {
+        java.lang.Object ref = appName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            appName_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Human-readable application name
+       * </pre>
+       *
+       * <code>required string app_name = 3;</code>
+       * @return The bytes for appName.
+       */
+      public com.google.protobuf.ByteString
+          getAppNameBytes() {
+        java.lang.Object ref = appName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          appName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Human-readable application name
+       * </pre>
+       *
+       * <code>required string app_name = 3;</code>
+       * @param value The appName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAppName(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        appName_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Human-readable application name
+       * </pre>
+       *
+       * <code>required string app_name = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAppName() {
+        appName_ = getDefaultInstance().getAppName();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Human-readable application name
+       * </pre>
+       *
+       * <code>required string app_name = 3;</code>
+       * @param value The bytes for appName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAppNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        appName_ = value;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -636,7 +13085,7 @@ public final class TrezorMessageThp {
      * Credential metadata
      * </pre>
      *
-     * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
+     * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
      * @return Whether the credMetadata field is set.
      */
     boolean hasCredMetadata();
@@ -645,7 +13094,7 @@ public final class TrezorMessageThp {
      * Credential metadata
      * </pre>
      *
-     * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
+     * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
      * @return The credMetadata.
      */
     com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadata getCredMetadata();
@@ -654,7 +13103,7 @@ public final class TrezorMessageThp {
      * Credential metadata
      * </pre>
      *
-     * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
+     * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
      */
     com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadataOrBuilder getCredMetadataOrBuilder();
 
@@ -663,7 +13112,7 @@ public final class TrezorMessageThp {
      * Message authentication code generated by the Trezor
      * </pre>
      *
-     * <code>optional bytes mac = 2;</code>
+     * <code>required bytes mac = 2;</code>
      * @return Whether the mac field is set.
      */
     boolean hasMac();
@@ -672,7 +13121,7 @@ public final class TrezorMessageThp {
      * Message authentication code generated by the Trezor
      * </pre>
      *
-     * <code>optional bytes mac = 2;</code>
+     * <code>required bytes mac = 2;</code>
      * @return The mac.
      */
     com.google.protobuf.ByteString getMac();
@@ -729,7 +13178,7 @@ public final class TrezorMessageThp {
      * Credential metadata
      * </pre>
      *
-     * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
+     * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
      * @return Whether the credMetadata field is set.
      */
     @java.lang.Override
@@ -741,7 +13190,7 @@ public final class TrezorMessageThp {
      * Credential metadata
      * </pre>
      *
-     * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
+     * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
      * @return The credMetadata.
      */
     @java.lang.Override
@@ -753,7 +13202,7 @@ public final class TrezorMessageThp {
      * Credential metadata
      * </pre>
      *
-     * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
+     * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
      */
     @java.lang.Override
     public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadataOrBuilder getCredMetadataOrBuilder() {
@@ -767,7 +13216,7 @@ public final class TrezorMessageThp {
      * Message authentication code generated by the Trezor
      * </pre>
      *
-     * <code>optional bytes mac = 2;</code>
+     * <code>required bytes mac = 2;</code>
      * @return Whether the mac field is set.
      */
     @java.lang.Override
@@ -779,7 +13228,7 @@ public final class TrezorMessageThp {
      * Message authentication code generated by the Trezor
      * </pre>
      *
-     * <code>optional bytes mac = 2;</code>
+     * <code>required bytes mac = 2;</code>
      * @return The mac.
      */
     @java.lang.Override
@@ -794,6 +13243,18 @@ public final class TrezorMessageThp {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      if (!hasCredMetadata()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMac()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getCredMetadata().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -1089,6 +13550,15 @@ public final class TrezorMessageThp {
 
       @java.lang.Override
       public final boolean isInitialized() {
+        if (!hasCredMetadata()) {
+          return false;
+        }
+        if (!hasMac()) {
+          return false;
+        }
+        if (!getCredMetadata().isInitialized()) {
+          return false;
+        }
         return true;
       }
 
@@ -1145,7 +13615,7 @@ public final class TrezorMessageThp {
        * Credential metadata
        * </pre>
        *
-       * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
+       * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
        * @return Whether the credMetadata field is set.
        */
       public boolean hasCredMetadata() {
@@ -1156,7 +13626,7 @@ public final class TrezorMessageThp {
        * Credential metadata
        * </pre>
        *
-       * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
+       * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
        * @return The credMetadata.
        */
       public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadata getCredMetadata() {
@@ -1171,7 +13641,7 @@ public final class TrezorMessageThp {
        * Credential metadata
        * </pre>
        *
-       * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
+       * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
        */
       public Builder setCredMetadata(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadata value) {
         if (credMetadataBuilder_ == null) {
@@ -1191,7 +13661,7 @@ public final class TrezorMessageThp {
        * Credential metadata
        * </pre>
        *
-       * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
+       * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
        */
       public Builder setCredMetadata(
           com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadata.Builder builderForValue) {
@@ -1209,7 +13679,7 @@ public final class TrezorMessageThp {
        * Credential metadata
        * </pre>
        *
-       * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
+       * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
        */
       public Builder mergeCredMetadata(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadata value) {
         if (credMetadataBuilder_ == null) {
@@ -1234,7 +13704,7 @@ public final class TrezorMessageThp {
        * Credential metadata
        * </pre>
        *
-       * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
+       * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
        */
       public Builder clearCredMetadata() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -1251,7 +13721,7 @@ public final class TrezorMessageThp {
        * Credential metadata
        * </pre>
        *
-       * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
+       * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
        */
       public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadata.Builder getCredMetadataBuilder() {
         bitField0_ |= 0x00000001;
@@ -1263,7 +13733,7 @@ public final class TrezorMessageThp {
        * Credential metadata
        * </pre>
        *
-       * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
+       * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
        */
       public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadataOrBuilder getCredMetadataOrBuilder() {
         if (credMetadataBuilder_ != null) {
@@ -1278,7 +13748,7 @@ public final class TrezorMessageThp {
        * Credential metadata
        * </pre>
        *
-       * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
+       * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
           com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadata, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadata.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadataOrBuilder> 
@@ -1300,7 +13770,7 @@ public final class TrezorMessageThp {
        * Message authentication code generated by the Trezor
        * </pre>
        *
-       * <code>optional bytes mac = 2;</code>
+       * <code>required bytes mac = 2;</code>
        * @return Whether the mac field is set.
        */
       @java.lang.Override
@@ -1312,7 +13782,7 @@ public final class TrezorMessageThp {
        * Message authentication code generated by the Trezor
        * </pre>
        *
-       * <code>optional bytes mac = 2;</code>
+       * <code>required bytes mac = 2;</code>
        * @return The mac.
        */
       @java.lang.Override
@@ -1324,7 +13794,7 @@ public final class TrezorMessageThp {
        * Message authentication code generated by the Trezor
        * </pre>
        *
-       * <code>optional bytes mac = 2;</code>
+       * <code>required bytes mac = 2;</code>
        * @param value The mac to set.
        * @return This builder for chaining.
        */
@@ -1340,7 +13810,7 @@ public final class TrezorMessageThp {
        * Message authentication code generated by the Trezor
        * </pre>
        *
-       * <code>optional bytes mac = 2;</code>
+       * <code>required bytes mac = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearMac() {
@@ -1410,26 +13880,26 @@ public final class TrezorMessageThp {
      * Host's static public key used in the handshake
      * </pre>
      *
-     * <code>optional bytes host_static_pubkey = 1;</code>
-     * @return Whether the hostStaticPubkey field is set.
+     * <code>required bytes host_static_public_key = 1;</code>
+     * @return Whether the hostStaticPublicKey field is set.
      */
-    boolean hasHostStaticPubkey();
+    boolean hasHostStaticPublicKey();
     /**
      * <pre>
      * Host's static public key used in the handshake
      * </pre>
      *
-     * <code>optional bytes host_static_pubkey = 1;</code>
-     * @return The hostStaticPubkey.
+     * <code>required bytes host_static_public_key = 1;</code>
+     * @return The hostStaticPublicKey.
      */
-    com.google.protobuf.ByteString getHostStaticPubkey();
+    com.google.protobuf.ByteString getHostStaticPublicKey();
 
     /**
      * <pre>
      * Credential metadata
      * </pre>
      *
-     * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
+     * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
      * @return Whether the credMetadata field is set.
      */
     boolean hasCredMetadata();
@@ -1438,7 +13908,7 @@ public final class TrezorMessageThp {
      * Credential metadata
      * </pre>
      *
-     * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
+     * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
      * @return The credMetadata.
      */
     com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadata getCredMetadata();
@@ -1447,7 +13917,7 @@ public final class TrezorMessageThp {
      * Credential metadata
      * </pre>
      *
-     * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
+     * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
      */
     com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadataOrBuilder getCredMetadataOrBuilder();
   }
@@ -1479,7 +13949,7 @@ public final class TrezorMessageThp {
       super(builder);
     }
     private ThpAuthenticatedCredentialData() {
-      hostStaticPubkey_ = com.google.protobuf.ByteString.EMPTY;
+      hostStaticPublicKey_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -1496,18 +13966,18 @@ public final class TrezorMessageThp {
     }
 
     private int bitField0_;
-    public static final int HOST_STATIC_PUBKEY_FIELD_NUMBER = 1;
-    private com.google.protobuf.ByteString hostStaticPubkey_ = com.google.protobuf.ByteString.EMPTY;
+    public static final int HOST_STATIC_PUBLIC_KEY_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString hostStaticPublicKey_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <pre>
      * Host's static public key used in the handshake
      * </pre>
      *
-     * <code>optional bytes host_static_pubkey = 1;</code>
-     * @return Whether the hostStaticPubkey field is set.
+     * <code>required bytes host_static_public_key = 1;</code>
+     * @return Whether the hostStaticPublicKey field is set.
      */
     @java.lang.Override
-    public boolean hasHostStaticPubkey() {
+    public boolean hasHostStaticPublicKey() {
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
@@ -1515,12 +13985,12 @@ public final class TrezorMessageThp {
      * Host's static public key used in the handshake
      * </pre>
      *
-     * <code>optional bytes host_static_pubkey = 1;</code>
-     * @return The hostStaticPubkey.
+     * <code>required bytes host_static_public_key = 1;</code>
+     * @return The hostStaticPublicKey.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getHostStaticPubkey() {
-      return hostStaticPubkey_;
+    public com.google.protobuf.ByteString getHostStaticPublicKey() {
+      return hostStaticPublicKey_;
     }
 
     public static final int CRED_METADATA_FIELD_NUMBER = 2;
@@ -1530,7 +14000,7 @@ public final class TrezorMessageThp {
      * Credential metadata
      * </pre>
      *
-     * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
+     * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
      * @return Whether the credMetadata field is set.
      */
     @java.lang.Override
@@ -1542,7 +14012,7 @@ public final class TrezorMessageThp {
      * Credential metadata
      * </pre>
      *
-     * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
+     * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
      * @return The credMetadata.
      */
     @java.lang.Override
@@ -1554,7 +14024,7 @@ public final class TrezorMessageThp {
      * Credential metadata
      * </pre>
      *
-     * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
+     * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
      */
     @java.lang.Override
     public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadataOrBuilder getCredMetadataOrBuilder() {
@@ -1568,6 +14038,18 @@ public final class TrezorMessageThp {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      if (!hasHostStaticPublicKey()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCredMetadata()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getCredMetadata().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -1576,7 +14058,7 @@ public final class TrezorMessageThp {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeBytes(1, hostStaticPubkey_);
+        output.writeBytes(1, hostStaticPublicKey_);
       }
       if (((bitField0_ & 0x00000002) != 0)) {
         output.writeMessage(2, getCredMetadata());
@@ -1592,7 +14074,7 @@ public final class TrezorMessageThp {
       size = 0;
       if (((bitField0_ & 0x00000001) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, hostStaticPubkey_);
+          .computeBytesSize(1, hostStaticPublicKey_);
       }
       if (((bitField0_ & 0x00000002) != 0)) {
         size += com.google.protobuf.CodedOutputStream
@@ -1613,10 +14095,10 @@ public final class TrezorMessageThp {
       }
       com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpAuthenticatedCredentialData other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpAuthenticatedCredentialData) obj;
 
-      if (hasHostStaticPubkey() != other.hasHostStaticPubkey()) return false;
-      if (hasHostStaticPubkey()) {
-        if (!getHostStaticPubkey()
-            .equals(other.getHostStaticPubkey())) return false;
+      if (hasHostStaticPublicKey() != other.hasHostStaticPublicKey()) return false;
+      if (hasHostStaticPublicKey()) {
+        if (!getHostStaticPublicKey()
+            .equals(other.getHostStaticPublicKey())) return false;
       }
       if (hasCredMetadata() != other.hasCredMetadata()) return false;
       if (hasCredMetadata()) {
@@ -1634,9 +14116,9 @@ public final class TrezorMessageThp {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasHostStaticPubkey()) {
-        hash = (37 * hash) + HOST_STATIC_PUBKEY_FIELD_NUMBER;
-        hash = (53 * hash) + getHostStaticPubkey().hashCode();
+      if (hasHostStaticPublicKey()) {
+        hash = (37 * hash) + HOST_STATIC_PUBLIC_KEY_FIELD_NUMBER;
+        hash = (53 * hash) + getHostStaticPublicKey().hashCode();
       }
       if (hasCredMetadata()) {
         hash = (37 * hash) + CRED_METADATA_FIELD_NUMBER;
@@ -1785,7 +14267,7 @@ public final class TrezorMessageThp {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        hostStaticPubkey_ = com.google.protobuf.ByteString.EMPTY;
+        hostStaticPublicKey_ = com.google.protobuf.ByteString.EMPTY;
         credMetadata_ = null;
         if (credMetadataBuilder_ != null) {
           credMetadataBuilder_.dispose();
@@ -1826,7 +14308,7 @@ public final class TrezorMessageThp {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.hostStaticPubkey_ = hostStaticPubkey_;
+          result.hostStaticPublicKey_ = hostStaticPublicKey_;
           to_bitField0_ |= 0x00000001;
         }
         if (((from_bitField0_ & 0x00000002) != 0)) {
@@ -1850,8 +14332,8 @@ public final class TrezorMessageThp {
 
       public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpAuthenticatedCredentialData other) {
         if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpAuthenticatedCredentialData.getDefaultInstance()) return this;
-        if (other.hasHostStaticPubkey()) {
-          setHostStaticPubkey(other.getHostStaticPubkey());
+        if (other.hasHostStaticPublicKey()) {
+          setHostStaticPublicKey(other.getHostStaticPublicKey());
         }
         if (other.hasCredMetadata()) {
           mergeCredMetadata(other.getCredMetadata());
@@ -1863,6 +14345,15 @@ public final class TrezorMessageThp {
 
       @java.lang.Override
       public final boolean isInitialized() {
+        if (!hasHostStaticPublicKey()) {
+          return false;
+        }
+        if (!hasCredMetadata()) {
+          return false;
+        }
+        if (!getCredMetadata().isInitialized()) {
+          return false;
+        }
         return true;
       }
 
@@ -1883,7 +14374,7 @@ public final class TrezorMessageThp {
                 done = true;
                 break;
               case 10: {
-                hostStaticPubkey_ = input.readBytes();
+                hostStaticPublicKey_ = input.readBytes();
                 bitField0_ |= 0x00000001;
                 break;
               } // case 10
@@ -1911,17 +14402,17 @@ public final class TrezorMessageThp {
       }
       private int bitField0_;
 
-      private com.google.protobuf.ByteString hostStaticPubkey_ = com.google.protobuf.ByteString.EMPTY;
+      private com.google.protobuf.ByteString hostStaticPublicKey_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <pre>
        * Host's static public key used in the handshake
        * </pre>
        *
-       * <code>optional bytes host_static_pubkey = 1;</code>
-       * @return Whether the hostStaticPubkey field is set.
+       * <code>required bytes host_static_public_key = 1;</code>
+       * @return Whether the hostStaticPublicKey field is set.
        */
       @java.lang.Override
-      public boolean hasHostStaticPubkey() {
+      public boolean hasHostStaticPublicKey() {
         return ((bitField0_ & 0x00000001) != 0);
       }
       /**
@@ -1929,25 +14420,25 @@ public final class TrezorMessageThp {
        * Host's static public key used in the handshake
        * </pre>
        *
-       * <code>optional bytes host_static_pubkey = 1;</code>
-       * @return The hostStaticPubkey.
+       * <code>required bytes host_static_public_key = 1;</code>
+       * @return The hostStaticPublicKey.
        */
       @java.lang.Override
-      public com.google.protobuf.ByteString getHostStaticPubkey() {
-        return hostStaticPubkey_;
+      public com.google.protobuf.ByteString getHostStaticPublicKey() {
+        return hostStaticPublicKey_;
       }
       /**
        * <pre>
        * Host's static public key used in the handshake
        * </pre>
        *
-       * <code>optional bytes host_static_pubkey = 1;</code>
-       * @param value The hostStaticPubkey to set.
+       * <code>required bytes host_static_public_key = 1;</code>
+       * @param value The hostStaticPublicKey to set.
        * @return This builder for chaining.
        */
-      public Builder setHostStaticPubkey(com.google.protobuf.ByteString value) {
+      public Builder setHostStaticPublicKey(com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
-        hostStaticPubkey_ = value;
+        hostStaticPublicKey_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
@@ -1957,12 +14448,12 @@ public final class TrezorMessageThp {
        * Host's static public key used in the handshake
        * </pre>
        *
-       * <code>optional bytes host_static_pubkey = 1;</code>
+       * <code>required bytes host_static_public_key = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearHostStaticPubkey() {
+      public Builder clearHostStaticPublicKey() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        hostStaticPubkey_ = getDefaultInstance().getHostStaticPubkey();
+        hostStaticPublicKey_ = getDefaultInstance().getHostStaticPublicKey();
         onChanged();
         return this;
       }
@@ -1975,7 +14466,7 @@ public final class TrezorMessageThp {
        * Credential metadata
        * </pre>
        *
-       * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
+       * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
        * @return Whether the credMetadata field is set.
        */
       public boolean hasCredMetadata() {
@@ -1986,7 +14477,7 @@ public final class TrezorMessageThp {
        * Credential metadata
        * </pre>
        *
-       * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
+       * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
        * @return The credMetadata.
        */
       public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadata getCredMetadata() {
@@ -2001,7 +14492,7 @@ public final class TrezorMessageThp {
        * Credential metadata
        * </pre>
        *
-       * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
+       * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
        */
       public Builder setCredMetadata(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadata value) {
         if (credMetadataBuilder_ == null) {
@@ -2021,7 +14512,7 @@ public final class TrezorMessageThp {
        * Credential metadata
        * </pre>
        *
-       * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
+       * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
        */
       public Builder setCredMetadata(
           com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadata.Builder builderForValue) {
@@ -2039,7 +14530,7 @@ public final class TrezorMessageThp {
        * Credential metadata
        * </pre>
        *
-       * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
+       * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
        */
       public Builder mergeCredMetadata(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadata value) {
         if (credMetadataBuilder_ == null) {
@@ -2064,7 +14555,7 @@ public final class TrezorMessageThp {
        * Credential metadata
        * </pre>
        *
-       * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
+       * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
        */
       public Builder clearCredMetadata() {
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -2081,7 +14572,7 @@ public final class TrezorMessageThp {
        * Credential metadata
        * </pre>
        *
-       * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
+       * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
        */
       public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadata.Builder getCredMetadataBuilder() {
         bitField0_ |= 0x00000002;
@@ -2093,7 +14584,7 @@ public final class TrezorMessageThp {
        * Credential metadata
        * </pre>
        *
-       * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
+       * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
        */
       public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadataOrBuilder getCredMetadataOrBuilder() {
         if (credMetadataBuilder_ != null) {
@@ -2108,7 +14599,7 @@ public final class TrezorMessageThp {
        * Credential metadata
        * </pre>
        *
-       * <code>optional .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
+       * <code>required .hw.trezor.messages.thp.ThpCredentialMetadata cred_metadata = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
           com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadata, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadata.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpCredentialMetadataOrBuilder> 
@@ -2175,6 +14666,1851 @@ public final class TrezorMessageThp {
 
   }
 
+  public interface ThpPairedCacheOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.thp.ThpPairedCache)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+     */
+    java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry> 
+        getEntriesList();
+    /**
+     * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+     */
+    com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry getEntries(int index);
+    /**
+     * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+     */
+    int getEntriesCount();
+    /**
+     * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+     */
+    java.util.List<? extends com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntryOrBuilder> 
+        getEntriesOrBuilderList();
+    /**
+     * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+     */
+    com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntryOrBuilder getEntriesOrBuilder(
+        int index);
+  }
+  /**
+   * <pre>
+   * *
+   * Recent THP paired hosts.
+   * Only for internal use.
+   * &#64;embed
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.thp.ThpPairedCache}
+   */
+  public static final class ThpPairedCache extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.thp.ThpPairedCache)
+      ThpPairedCacheOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ThpPairedCache.class.getName());
+    }
+    // Use ThpPairedCache.newBuilder() to construct.
+    private ThpPairedCache(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ThpPairedCache() {
+      entries_ = java.util.Collections.emptyList();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairedCache_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairedCache_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.Builder.class);
+    }
+
+    public interface ThpPairedCacheEntryOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <pre>
+       * 6-byte MAC address
+       * </pre>
+       *
+       * <code>required bytes mac_addr = 1;</code>
+       * @return Whether the macAddr field is set.
+       */
+      boolean hasMacAddr();
+      /**
+       * <pre>
+       * 6-byte MAC address
+       * </pre>
+       *
+       * <code>required bytes mac_addr = 1;</code>
+       * @return The macAddr.
+       */
+      com.google.protobuf.ByteString getMacAddr();
+
+      /**
+       * <pre>
+       * Human-readable host name (≤32 bytes)
+       * </pre>
+       *
+       * <code>required string host_name = 2;</code>
+       * @return Whether the hostName field is set.
+       */
+      boolean hasHostName();
+      /**
+       * <pre>
+       * Human-readable host name (≤32 bytes)
+       * </pre>
+       *
+       * <code>required string host_name = 2;</code>
+       * @return The hostName.
+       */
+      java.lang.String getHostName();
+      /**
+       * <pre>
+       * Human-readable host name (≤32 bytes)
+       * </pre>
+       *
+       * <code>required string host_name = 2;</code>
+       * @return The bytes for hostName.
+       */
+      com.google.protobuf.ByteString
+          getHostNameBytes();
+
+      /**
+       * <pre>
+       * Human-readable application name (≤32 bytes)
+       * </pre>
+       *
+       * <code>required string app_name = 3;</code>
+       * @return Whether the appName field is set.
+       */
+      boolean hasAppName();
+      /**
+       * <pre>
+       * Human-readable application name (≤32 bytes)
+       * </pre>
+       *
+       * <code>required string app_name = 3;</code>
+       * @return The appName.
+       */
+      java.lang.String getAppName();
+      /**
+       * <pre>
+       * Human-readable application name (≤32 bytes)
+       * </pre>
+       *
+       * <code>required string app_name = 3;</code>
+       * @return The bytes for appName.
+       */
+      com.google.protobuf.ByteString
+          getAppNameBytes();
+    }
+    /**
+     * <pre>
+     * *
+     * Only for internal use.
+     * &#64;embed
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry}
+     */
+    public static final class ThpPairedCacheEntry extends
+        com.google.protobuf.GeneratedMessage implements
+        // @@protoc_insertion_point(message_implements:hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry)
+        ThpPairedCacheEntryOrBuilder {
+    private static final long serialVersionUID = 0L;
+      static {
+        com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+          com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+          /* major= */ 4,
+          /* minor= */ 28,
+          /* patch= */ 3,
+          /* suffix= */ "",
+          ThpPairedCacheEntry.class.getName());
+      }
+      // Use ThpPairedCacheEntry.newBuilder() to construct.
+      private ThpPairedCacheEntry(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+        super(builder);
+      }
+      private ThpPairedCacheEntry() {
+        macAddr_ = com.google.protobuf.ByteString.EMPTY;
+        hostName_ = "";
+        appName_ = "";
+      }
+
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairedCache_ThpPairedCacheEntry_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairedCache_ThpPairedCacheEntry_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry.Builder.class);
+      }
+
+      private int bitField0_;
+      public static final int MAC_ADDR_FIELD_NUMBER = 1;
+      private com.google.protobuf.ByteString macAddr_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * 6-byte MAC address
+       * </pre>
+       *
+       * <code>required bytes mac_addr = 1;</code>
+       * @return Whether the macAddr field is set.
+       */
+      @java.lang.Override
+      public boolean hasMacAddr() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * 6-byte MAC address
+       * </pre>
+       *
+       * <code>required bytes mac_addr = 1;</code>
+       * @return The macAddr.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getMacAddr() {
+        return macAddr_;
+      }
+
+      public static final int HOST_NAME_FIELD_NUMBER = 2;
+      @SuppressWarnings("serial")
+      private volatile java.lang.Object hostName_ = "";
+      /**
+       * <pre>
+       * Human-readable host name (≤32 bytes)
+       * </pre>
+       *
+       * <code>required string host_name = 2;</code>
+       * @return Whether the hostName field is set.
+       */
+      @java.lang.Override
+      public boolean hasHostName() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * Human-readable host name (≤32 bytes)
+       * </pre>
+       *
+       * <code>required string host_name = 2;</code>
+       * @return The hostName.
+       */
+      @java.lang.Override
+      public java.lang.String getHostName() {
+        java.lang.Object ref = hostName_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            hostName_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <pre>
+       * Human-readable host name (≤32 bytes)
+       * </pre>
+       *
+       * <code>required string host_name = 2;</code>
+       * @return The bytes for hostName.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getHostNameBytes() {
+        java.lang.Object ref = hostName_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          hostName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int APP_NAME_FIELD_NUMBER = 3;
+      @SuppressWarnings("serial")
+      private volatile java.lang.Object appName_ = "";
+      /**
+       * <pre>
+       * Human-readable application name (≤32 bytes)
+       * </pre>
+       *
+       * <code>required string app_name = 3;</code>
+       * @return Whether the appName field is set.
+       */
+      @java.lang.Override
+      public boolean hasAppName() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <pre>
+       * Human-readable application name (≤32 bytes)
+       * </pre>
+       *
+       * <code>required string app_name = 3;</code>
+       * @return The appName.
+       */
+      @java.lang.Override
+      public java.lang.String getAppName() {
+        java.lang.Object ref = appName_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            appName_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <pre>
+       * Human-readable application name (≤32 bytes)
+       * </pre>
+       *
+       * <code>required string app_name = 3;</code>
+       * @return The bytes for appName.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getAppNameBytes() {
+        java.lang.Object ref = appName_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          appName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        if (!hasMacAddr()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!hasHostName()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!hasAppName()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          output.writeBytes(1, macAddr_);
+        }
+        if (((bitField0_ & 0x00000002) != 0)) {
+          com.google.protobuf.GeneratedMessage.writeString(output, 2, hostName_);
+        }
+        if (((bitField0_ & 0x00000004) != 0)) {
+          com.google.protobuf.GeneratedMessage.writeString(output, 3, appName_);
+        }
+        getUnknownFields().writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBytesSize(1, macAddr_);
+        }
+        if (((bitField0_ & 0x00000002) != 0)) {
+          size += com.google.protobuf.GeneratedMessage.computeStringSize(2, hostName_);
+        }
+        if (((bitField0_ & 0x00000004) != 0)) {
+          size += com.google.protobuf.GeneratedMessage.computeStringSize(3, appName_);
+        }
+        size += getUnknownFields().getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry)) {
+          return super.equals(obj);
+        }
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry) obj;
+
+        if (hasMacAddr() != other.hasMacAddr()) return false;
+        if (hasMacAddr()) {
+          if (!getMacAddr()
+              .equals(other.getMacAddr())) return false;
+        }
+        if (hasHostName() != other.hasHostName()) return false;
+        if (hasHostName()) {
+          if (!getHostName()
+              .equals(other.getHostName())) return false;
+        }
+        if (hasAppName() != other.hasAppName()) return false;
+        if (hasAppName()) {
+          if (!getAppName()
+              .equals(other.getAppName())) return false;
+        }
+        if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        if (hasMacAddr()) {
+          hash = (37 * hash) + MAC_ADDR_FIELD_NUMBER;
+          hash = (53 * hash) + getMacAddr().hashCode();
+        }
+        if (hasHostName()) {
+          hash = (37 * hash) + HOST_NAME_FIELD_NUMBER;
+          hash = (53 * hash) + getHostName().hashCode();
+        }
+        if (hasAppName()) {
+          hash = (37 * hash) + APP_NAME_FIELD_NUMBER;
+          hash = (53 * hash) + getAppName().hashCode();
+        }
+        hash = (29 * hash) + getUnknownFields().hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * <pre>
+       * *
+       * Only for internal use.
+       * &#64;embed
+       * </pre>
+       *
+       * Protobuf type {@code hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry)
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntryOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairedCache_ThpPairedCacheEntry_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairedCache_ThpPairedCacheEntry_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry.Builder.class);
+        }
+
+        // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry.newBuilder()
+        private Builder() {
+
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          super(parent);
+
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          bitField0_ = 0;
+          macAddr_ = com.google.protobuf.ByteString.EMPTY;
+          hostName_ = "";
+          appName_ = "";
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairedCache_ThpPairedCacheEntry_descriptor;
+        }
+
+        @java.lang.Override
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry getDefaultInstanceForType() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry build() {
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry buildPartial() {
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry(this);
+          if (bitField0_ != 0) { buildPartial0(result); }
+          onBuilt();
+          return result;
+        }
+
+        private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry result) {
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) != 0)) {
+            result.macAddr_ = macAddr_;
+            to_bitField0_ |= 0x00000001;
+          }
+          if (((from_bitField0_ & 0x00000002) != 0)) {
+            result.hostName_ = hostName_;
+            to_bitField0_ |= 0x00000002;
+          }
+          if (((from_bitField0_ & 0x00000004) != 0)) {
+            result.appName_ = appName_;
+            to_bitField0_ |= 0x00000004;
+          }
+          result.bitField0_ |= to_bitField0_;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry) {
+            return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry other) {
+          if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry.getDefaultInstance()) return this;
+          if (other.hasMacAddr()) {
+            setMacAddr(other.getMacAddr());
+          }
+          if (other.hasHostName()) {
+            hostName_ = other.hostName_;
+            bitField0_ |= 0x00000002;
+            onChanged();
+          }
+          if (other.hasAppName()) {
+            appName_ = other.appName_;
+            bitField0_ |= 0x00000004;
+            onChanged();
+          }
+          this.mergeUnknownFields(other.getUnknownFields());
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          if (!hasMacAddr()) {
+            return false;
+          }
+          if (!hasHostName()) {
+            return false;
+          }
+          if (!hasAppName()) {
+            return false;
+          }
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          if (extensionRegistry == null) {
+            throw new java.lang.NullPointerException();
+          }
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                case 10: {
+                  macAddr_ = input.readBytes();
+                  bitField0_ |= 0x00000001;
+                  break;
+                } // case 10
+                case 18: {
+                  hostName_ = input.readBytes();
+                  bitField0_ |= 0x00000002;
+                  break;
+                } // case 18
+                case 26: {
+                  appName_ = input.readBytes();
+                  bitField0_ |= 0x00000004;
+                  break;
+                } // case 26
+                default: {
+                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                    done = true; // was an endgroup tag
+                  }
+                  break;
+                } // default:
+              } // switch (tag)
+            } // while (!done)
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.unwrapIOException();
+          } finally {
+            onChanged();
+          } // finally
+          return this;
+        }
+        private int bitField0_;
+
+        private com.google.protobuf.ByteString macAddr_ = com.google.protobuf.ByteString.EMPTY;
+        /**
+         * <pre>
+         * 6-byte MAC address
+         * </pre>
+         *
+         * <code>required bytes mac_addr = 1;</code>
+         * @return Whether the macAddr field is set.
+         */
+        @java.lang.Override
+        public boolean hasMacAddr() {
+          return ((bitField0_ & 0x00000001) != 0);
+        }
+        /**
+         * <pre>
+         * 6-byte MAC address
+         * </pre>
+         *
+         * <code>required bytes mac_addr = 1;</code>
+         * @return The macAddr.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString getMacAddr() {
+          return macAddr_;
+        }
+        /**
+         * <pre>
+         * 6-byte MAC address
+         * </pre>
+         *
+         * <code>required bytes mac_addr = 1;</code>
+         * @param value The macAddr to set.
+         * @return This builder for chaining.
+         */
+        public Builder setMacAddr(com.google.protobuf.ByteString value) {
+          if (value == null) { throw new NullPointerException(); }
+          macAddr_ = value;
+          bitField0_ |= 0x00000001;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * 6-byte MAC address
+         * </pre>
+         *
+         * <code>required bytes mac_addr = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearMacAddr() {
+          bitField0_ = (bitField0_ & ~0x00000001);
+          macAddr_ = getDefaultInstance().getMacAddr();
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object hostName_ = "";
+        /**
+         * <pre>
+         * Human-readable host name (≤32 bytes)
+         * </pre>
+         *
+         * <code>required string host_name = 2;</code>
+         * @return Whether the hostName field is set.
+         */
+        public boolean hasHostName() {
+          return ((bitField0_ & 0x00000002) != 0);
+        }
+        /**
+         * <pre>
+         * Human-readable host name (≤32 bytes)
+         * </pre>
+         *
+         * <code>required string host_name = 2;</code>
+         * @return The hostName.
+         */
+        public java.lang.String getHostName() {
+          java.lang.Object ref = hostName_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              hostName_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <pre>
+         * Human-readable host name (≤32 bytes)
+         * </pre>
+         *
+         * <code>required string host_name = 2;</code>
+         * @return The bytes for hostName.
+         */
+        public com.google.protobuf.ByteString
+            getHostNameBytes() {
+          java.lang.Object ref = hostName_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            hostName_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <pre>
+         * Human-readable host name (≤32 bytes)
+         * </pre>
+         *
+         * <code>required string host_name = 2;</code>
+         * @param value The hostName to set.
+         * @return This builder for chaining.
+         */
+        public Builder setHostName(
+            java.lang.String value) {
+          if (value == null) { throw new NullPointerException(); }
+          hostName_ = value;
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * Human-readable host name (≤32 bytes)
+         * </pre>
+         *
+         * <code>required string host_name = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearHostName() {
+          hostName_ = getDefaultInstance().getHostName();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * Human-readable host name (≤32 bytes)
+         * </pre>
+         *
+         * <code>required string host_name = 2;</code>
+         * @param value The bytes for hostName to set.
+         * @return This builder for chaining.
+         */
+        public Builder setHostNameBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) { throw new NullPointerException(); }
+          hostName_ = value;
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object appName_ = "";
+        /**
+         * <pre>
+         * Human-readable application name (≤32 bytes)
+         * </pre>
+         *
+         * <code>required string app_name = 3;</code>
+         * @return Whether the appName field is set.
+         */
+        public boolean hasAppName() {
+          return ((bitField0_ & 0x00000004) != 0);
+        }
+        /**
+         * <pre>
+         * Human-readable application name (≤32 bytes)
+         * </pre>
+         *
+         * <code>required string app_name = 3;</code>
+         * @return The appName.
+         */
+        public java.lang.String getAppName() {
+          java.lang.Object ref = appName_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              appName_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <pre>
+         * Human-readable application name (≤32 bytes)
+         * </pre>
+         *
+         * <code>required string app_name = 3;</code>
+         * @return The bytes for appName.
+         */
+        public com.google.protobuf.ByteString
+            getAppNameBytes() {
+          java.lang.Object ref = appName_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            appName_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <pre>
+         * Human-readable application name (≤32 bytes)
+         * </pre>
+         *
+         * <code>required string app_name = 3;</code>
+         * @param value The appName to set.
+         * @return This builder for chaining.
+         */
+        public Builder setAppName(
+            java.lang.String value) {
+          if (value == null) { throw new NullPointerException(); }
+          appName_ = value;
+          bitField0_ |= 0x00000004;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * Human-readable application name (≤32 bytes)
+         * </pre>
+         *
+         * <code>required string app_name = 3;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearAppName() {
+          appName_ = getDefaultInstance().getAppName();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * Human-readable application name (≤32 bytes)
+         * </pre>
+         *
+         * <code>required string app_name = 3;</code>
+         * @param value The bytes for appName to set.
+         * @return This builder for chaining.
+         */
+        public Builder setAppNameBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) { throw new NullPointerException(); }
+          appName_ = value;
+          bitField0_ |= 0x00000004;
+          onChanged();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry)
+      }
+
+      // @@protoc_insertion_point(class_scope:hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry)
+      private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry();
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<ThpPairedCacheEntry>
+          PARSER = new com.google.protobuf.AbstractParser<ThpPairedCacheEntry>() {
+        @java.lang.Override
+        public ThpPairedCacheEntry parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
+
+      public static com.google.protobuf.Parser<ThpPairedCacheEntry> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<ThpPairedCacheEntry> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    public static final int ENTRIES_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry> entries_;
+    /**
+     * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry> getEntriesList() {
+      return entries_;
+    }
+    /**
+     * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntryOrBuilder> 
+        getEntriesOrBuilderList() {
+      return entries_;
+    }
+    /**
+     * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+     */
+    @java.lang.Override
+    public int getEntriesCount() {
+      return entries_.size();
+    }
+    /**
+     * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+     */
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry getEntries(int index) {
+      return entries_.get(index);
+    }
+    /**
+     * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+     */
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntryOrBuilder getEntriesOrBuilder(
+        int index) {
+      return entries_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      for (int i = 0; i < getEntriesCount(); i++) {
+        if (!getEntries(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < entries_.size(); i++) {
+        output.writeMessage(1, entries_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < entries_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, entries_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache) obj;
+
+      if (!getEntriesList()
+          .equals(other.getEntriesList())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getEntriesCount() > 0) {
+        hash = (37 * hash) + ENTRIES_FIELD_NUMBER;
+        hash = (53 * hash) + getEntriesList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Recent THP paired hosts.
+     * Only for internal use.
+     * &#64;embed
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.thp.ThpPairedCache}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.thp.ThpPairedCache)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCacheOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairedCache_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairedCache_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        if (entriesBuilder_ == null) {
+          entries_ = java.util.Collections.emptyList();
+        } else {
+          entries_ = null;
+          entriesBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.internal_static_hw_trezor_messages_thp_ThpPairedCache_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache(this);
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache result) {
+        if (entriesBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            entries_ = java.util.Collections.unmodifiableList(entries_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.entries_ = entries_;
+        } else {
+          result.entries_ = entriesBuilder_.build();
+        }
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache result) {
+        int from_bitField0_ = bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.getDefaultInstance()) return this;
+        if (entriesBuilder_ == null) {
+          if (!other.entries_.isEmpty()) {
+            if (entries_.isEmpty()) {
+              entries_ = other.entries_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureEntriesIsMutable();
+              entries_.addAll(other.entries_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.entries_.isEmpty()) {
+            if (entriesBuilder_.isEmpty()) {
+              entriesBuilder_.dispose();
+              entriesBuilder_ = null;
+              entries_ = other.entries_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              entriesBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getEntriesFieldBuilder() : null;
+            } else {
+              entriesBuilder_.addAllMessages(other.entries_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        for (int i = 0; i < getEntriesCount(); i++) {
+          if (!getEntries(i).isInitialized()) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry m =
+                    input.readMessage(
+                        com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry.parser(),
+                        extensionRegistry);
+                if (entriesBuilder_ == null) {
+                  ensureEntriesIsMutable();
+                  entries_.add(m);
+                } else {
+                  entriesBuilder_.addMessage(m);
+                }
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry> entries_ =
+        java.util.Collections.emptyList();
+      private void ensureEntriesIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          entries_ = new java.util.ArrayList<com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry>(entries_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntryOrBuilder> entriesBuilder_;
+
+      /**
+       * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+       */
+      public java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry> getEntriesList() {
+        if (entriesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(entries_);
+        } else {
+          return entriesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+       */
+      public int getEntriesCount() {
+        if (entriesBuilder_ == null) {
+          return entries_.size();
+        } else {
+          return entriesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+       */
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry getEntries(int index) {
+        if (entriesBuilder_ == null) {
+          return entries_.get(index);
+        } else {
+          return entriesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+       */
+      public Builder setEntries(
+          int index, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry value) {
+        if (entriesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEntriesIsMutable();
+          entries_.set(index, value);
+          onChanged();
+        } else {
+          entriesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+       */
+      public Builder setEntries(
+          int index, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry.Builder builderForValue) {
+        if (entriesBuilder_ == null) {
+          ensureEntriesIsMutable();
+          entries_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          entriesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+       */
+      public Builder addEntries(com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry value) {
+        if (entriesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEntriesIsMutable();
+          entries_.add(value);
+          onChanged();
+        } else {
+          entriesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+       */
+      public Builder addEntries(
+          int index, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry value) {
+        if (entriesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEntriesIsMutable();
+          entries_.add(index, value);
+          onChanged();
+        } else {
+          entriesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+       */
+      public Builder addEntries(
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry.Builder builderForValue) {
+        if (entriesBuilder_ == null) {
+          ensureEntriesIsMutable();
+          entries_.add(builderForValue.build());
+          onChanged();
+        } else {
+          entriesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+       */
+      public Builder addEntries(
+          int index, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry.Builder builderForValue) {
+        if (entriesBuilder_ == null) {
+          ensureEntriesIsMutable();
+          entries_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          entriesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+       */
+      public Builder addAllEntries(
+          java.lang.Iterable<? extends com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry> values) {
+        if (entriesBuilder_ == null) {
+          ensureEntriesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, entries_);
+          onChanged();
+        } else {
+          entriesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+       */
+      public Builder clearEntries() {
+        if (entriesBuilder_ == null) {
+          entries_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          entriesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+       */
+      public Builder removeEntries(int index) {
+        if (entriesBuilder_ == null) {
+          ensureEntriesIsMutable();
+          entries_.remove(index);
+          onChanged();
+        } else {
+          entriesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+       */
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry.Builder getEntriesBuilder(
+          int index) {
+        return getEntriesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+       */
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntryOrBuilder getEntriesOrBuilder(
+          int index) {
+        if (entriesBuilder_ == null) {
+          return entries_.get(index);  } else {
+          return entriesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+       */
+      public java.util.List<? extends com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntryOrBuilder> 
+           getEntriesOrBuilderList() {
+        if (entriesBuilder_ != null) {
+          return entriesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(entries_);
+        }
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+       */
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry.Builder addEntriesBuilder() {
+        return getEntriesFieldBuilder().addBuilder(
+            com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+       */
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry.Builder addEntriesBuilder(
+          int index) {
+        return getEntriesFieldBuilder().addBuilder(
+            index, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.thp.ThpPairedCache.ThpPairedCacheEntry entries = 1;</code>
+       */
+      public java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry.Builder> 
+           getEntriesBuilderList() {
+        return getEntriesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntryOrBuilder> 
+          getEntriesFieldBuilder() {
+        if (entriesBuilder_ == null) {
+          entriesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntry.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache.ThpPairedCacheEntryOrBuilder>(
+                  entries_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          entries_ = null;
+        }
+        return entriesBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.thp.ThpPairedCache)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.thp.ThpPairedCache)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ThpPairedCache>
+        PARSER = new com.google.protobuf.AbstractParser<ThpPairedCache>() {
+      @java.lang.Override
+      public ThpPairedCache parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThpPairedCache> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThpPairedCache> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageThp.ThpPairedCache getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_thp_ThpDeviceProperties_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_thp_ThpDeviceProperties_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_thp_ThpHandshakeCompletionReqNoisePayload_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_thp_ThpHandshakeCompletionReqNoisePayload_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_thp_ThpCreateNewSession_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_thp_ThpCreateNewSession_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_thp_ThpPairingRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_thp_ThpPairingRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_thp_ThpPairingRequestApproved_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_thp_ThpPairingRequestApproved_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_thp_ThpSelectMethod_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_thp_ThpSelectMethod_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_thp_ThpPairingPreparationsFinished_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_thp_ThpPairingPreparationsFinished_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_thp_ThpCodeEntryCommitment_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_thp_ThpCodeEntryCommitment_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_thp_ThpCodeEntryChallenge_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_thp_ThpCodeEntryChallenge_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_thp_ThpCodeEntryCpaceTrezor_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_thp_ThpCodeEntryCpaceTrezor_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_thp_ThpCodeEntryCpaceHostTag_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_thp_ThpCodeEntryCpaceHostTag_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_thp_ThpCodeEntrySecret_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_thp_ThpCodeEntrySecret_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_thp_ThpQrCodeTag_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_thp_ThpQrCodeTag_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_thp_ThpQrCodeSecret_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_thp_ThpQrCodeSecret_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_thp_ThpNfcTagHost_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_thp_ThpNfcTagHost_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_thp_ThpNfcTagTrezor_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_thp_ThpNfcTagTrezor_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_thp_ThpCredentialRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_thp_ThpCredentialRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_thp_ThpCredentialResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_thp_ThpCredentialResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_thp_ThpEndRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_thp_ThpEndRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_thp_ThpEndResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_thp_ThpEndResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_hw_trezor_messages_thp_ThpCredentialMetadata_descriptor;
   private static final 
@@ -2190,6 +16526,16 @@ public final class TrezorMessageThp {
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_hw_trezor_messages_thp_ThpAuthenticatedCredentialData_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_thp_ThpPairedCache_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_thp_ThpPairedCache_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_thp_ThpPairedCache_ThpPairedCacheEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_thp_ThpPairedCache_ThpPairedCacheEntry_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2200,46 +16546,239 @@ public final class TrezorMessageThp {
   static {
     java.lang.String[] descriptorData = {
       "\n\022messages-thp.proto\022\026hw.trezor.messages" +
-      ".thp\032\roptions.proto\"0\n\025ThpCredentialMeta" +
-      "data\022\021\n\thost_name\030\001 \001(\t:\004\230\262\031\001\"o\n\024ThpPair" +
-      "ingCredential\022D\n\rcred_metadata\030\001 \001(\0132-.h" +
-      "w.trezor.messages.thp.ThpCredentialMetad" +
-      "ata\022\013\n\003mac\030\002 \001(\014:\004\230\262\031\001\"\210\001\n\036ThpAuthentica" +
-      "tedCredentialData\022\032\n\022host_static_pubkey\030" +
-      "\001 \001(\014\022D\n\rcred_metadata\030\002 \001(\0132-.hw.trezor" +
-      ".messages.thp.ThpCredentialMetadata:\004\230\262\031" +
-      "\001B?\n\'com.sparrowwallet.lark.trezor.gener" +
-      "atedB\020TrezorMessageThp\200\246\035\001"
+      ".thp\032\roptions.proto\"\312\001\n\023ThpDevicePropert" +
+      "ies\022\026\n\016internal_model\030\001 \002(\t\022\030\n\rmodel_var" +
+      "iant\030\002 \001(\r:\0010\022\036\n\026protocol_version_major\030" +
+      "\003 \002(\r\022\036\n\026protocol_version_minor\030\004 \002(\r\022A\n" +
+      "\017pairing_methods\030\005 \003(\0162(.hw.trezor.messa" +
+      "ges.thp.ThpPairingMethod\"H\n%ThpHandshake" +
+      "CompletionReqNoisePayload\022\037\n\027host_pairin" +
+      "g_credential\030\001 \001(\014\"b\n\023ThpCreateNewSessio" +
+      "n\022\022\n\npassphrase\030\001 \001(\t\022\030\n\ton_device\030\002 \001(\010" +
+      ":\005false\022\035\n\016derive_cardano\030\003 \001(\010:\005false\"8" +
+      "\n\021ThpPairingRequest\022\021\n\thost_name\030\001 \002(\t\022\020" +
+      "\n\010app_name\030\002 \002(\t\"\033\n\031ThpPairingRequestApp" +
+      "roved\"\\\n\017ThpSelectMethod\022I\n\027selected_pai" +
+      "ring_method\030\001 \002(\0162(.hw.trezor.messages.t" +
+      "hp.ThpPairingMethod\" \n\036ThpPairingPrepara" +
+      "tionsFinished\",\n\026ThpCodeEntryCommitment\022" +
+      "\022\n\ncommitment\030\001 \002(\014\"*\n\025ThpCodeEntryChall" +
+      "enge\022\021\n\tchallenge\030\001 \002(\014\":\n\027ThpCodeEntryC" +
+      "paceTrezor\022\037\n\027cpace_trezor_public_key\030\001 " +
+      "\002(\014\"F\n\030ThpCodeEntryCpaceHostTag\022\035\n\025cpace" +
+      "_host_public_key\030\001 \002(\014\022\013\n\003tag\030\002 \002(\014\"$\n\022T" +
+      "hpCodeEntrySecret\022\016\n\006secret\030\001 \002(\014\"\033\n\014Thp" +
+      "QrCodeTag\022\013\n\003tag\030\001 \002(\014\"!\n\017ThpQrCodeSecre" +
+      "t\022\016\n\006secret\030\001 \002(\014\"\034\n\rThpNfcTagHost\022\013\n\003ta" +
+      "g\030\001 \002(\014\"\036\n\017ThpNfcTagTrezor\022\013\n\003tag\030\001 \002(\014\"" +
+      "f\n\024ThpCredentialRequest\022\036\n\026host_static_p" +
+      "ublic_key\030\001 \002(\014\022\032\n\013autoconnect\030\002 \001(\010:\005fa" +
+      "lse\022\022\n\ncredential\030\003 \001(\014\"M\n\025ThpCredential" +
+      "Response\022 \n\030trezor_static_public_key\030\001 \002" +
+      "(\014\022\022\n\ncredential\030\002 \002(\014\"\017\n\rThpEndRequest\"" +
+      "\020\n\016ThpEndResponse\"W\n\025ThpCredentialMetada" +
+      "ta\022\021\n\thost_name\030\001 \002(\t\022\023\n\013autoconnect\030\002 \001" +
+      "(\010\022\020\n\010app_name\030\003 \002(\t:\004\230\262\031\001\"o\n\024ThpPairing" +
+      "Credential\022D\n\rcred_metadata\030\001 \002(\0132-.hw.t" +
+      "rezor.messages.thp.ThpCredentialMetadata" +
+      "\022\013\n\003mac\030\002 \002(\014:\004\230\262\031\001\"\214\001\n\036ThpAuthenticated" +
+      "CredentialData\022\036\n\026host_static_public_key" +
+      "\030\001 \002(\014\022D\n\rcred_metadata\030\002 \002(\0132-.hw.trezo" +
+      "r.messages.thp.ThpCredentialMetadata:\004\230\262" +
+      "\031\001\"\267\001\n\016ThpPairedCache\022K\n\007entries\030\001 \003(\0132:" +
+      ".hw.trezor.messages.thp.ThpPairedCache.T" +
+      "hpPairedCacheEntry\032R\n\023ThpPairedCacheEntr" +
+      "y\022\020\n\010mac_addr\030\001 \002(\014\022\021\n\thost_name\030\002 \002(\t\022\020" +
+      "\n\010app_name\030\003 \002(\t:\004\230\262\031\001:\004\230\262\031\001*\373\006\n\016ThpMess" +
+      "ageType\022\031\n\025ThpMessageType_Cancel\020\024\022 \n\034Th" +
+      "pMessageType_ButtonRequest\020\032\022\034\n\030ThpMessa" +
+      "geType_ButtonAck\020\033\022%\n ThpMessageType_Thp" +
+      "PairingRequest\020\360\007\022-\n(ThpMessageType_ThpP" +
+      "airingRequestApproved\020\361\007\022#\n\036ThpMessageTy" +
+      "pe_ThpSelectMethod\020\362\007\0222\n-ThpMessageType_" +
+      "ThpPairingPreparationsFinished\020\363\007\022(\n#Thp" +
+      "MessageType_ThpCredentialRequest\020\370\007\022)\n$T" +
+      "hpMessageType_ThpCredentialResponse\020\371\007\022!" +
+      "\n\034ThpMessageType_ThpEndRequest\020\372\007\022\"\n\035Thp" +
+      "MessageType_ThpEndResponse\020\373\007\022*\n%ThpMess" +
+      "ageType_ThpCodeEntryCommitment\020\200\010\022)\n$Thp" +
+      "MessageType_ThpCodeEntryChallenge\020\201\010\022+\n&" +
+      "ThpMessageType_ThpCodeEntryCpaceTrezor\020\202" +
+      "\010\022,\n\'ThpMessageType_ThpCodeEntryCpaceHos" +
+      "tTag\020\203\010\022&\n!ThpMessageType_ThpCodeEntrySe" +
+      "cret\020\204\010\022 \n\033ThpMessageType_ThpQrCodeTag\020\210" +
+      "\010\022#\n\036ThpMessageType_ThpQrCodeSecret\020\211\010\022!" +
+      "\n\034ThpMessageType_ThpNfcTagHost\020\220\010\022#\n\036Thp" +
+      "MessageType_ThpNfcTagTrezor\020\221\010\032\004\320\363\030\001\"\004\010\000" +
+      "\020\023\"\004\010\025\020\031\"\005\010\034\020\347\007\"\006\010\350\007\020\350\007\"\006\010\351\007\020\357\007\"\006\010\364\007\020\367\007\"" +
+      "\006\010\374\007\020\377\007\"\006\010\205\010\020\207\010\"\006\010\212\010\020\217\010\"\006\010\222\010\020\313\010\"\t\010\314\010\020\377\377\377" +
+      "\377\007*G\n\020ThpPairingMethod\022\017\n\013SkipPairing\020\001\022" +
+      "\r\n\tCodeEntry\020\002\022\n\n\006QrCode\020\003\022\007\n\003NFC\020\004B?\n\'c" +
+      "om.sparrowwallet.lark.trezor.generatedB\020" +
+      "TrezorMessageThp\200\246\035\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.sparrowwallet.lark.trezor.generated.TrezorOptions.getDescriptor(),
         });
-    internal_static_hw_trezor_messages_thp_ThpCredentialMetadata_descriptor =
+    internal_static_hw_trezor_messages_thp_ThpDeviceProperties_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_hw_trezor_messages_thp_ThpDeviceProperties_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_thp_ThpDeviceProperties_descriptor,
+        new java.lang.String[] { "InternalModel", "ModelVariant", "ProtocolVersionMajor", "ProtocolVersionMinor", "PairingMethods", });
+    internal_static_hw_trezor_messages_thp_ThpHandshakeCompletionReqNoisePayload_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_hw_trezor_messages_thp_ThpHandshakeCompletionReqNoisePayload_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_thp_ThpHandshakeCompletionReqNoisePayload_descriptor,
+        new java.lang.String[] { "HostPairingCredential", });
+    internal_static_hw_trezor_messages_thp_ThpCreateNewSession_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_hw_trezor_messages_thp_ThpCreateNewSession_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_thp_ThpCreateNewSession_descriptor,
+        new java.lang.String[] { "Passphrase", "OnDevice", "DeriveCardano", });
+    internal_static_hw_trezor_messages_thp_ThpPairingRequest_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_hw_trezor_messages_thp_ThpPairingRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_thp_ThpPairingRequest_descriptor,
+        new java.lang.String[] { "HostName", "AppName", });
+    internal_static_hw_trezor_messages_thp_ThpPairingRequestApproved_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_hw_trezor_messages_thp_ThpPairingRequestApproved_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_thp_ThpPairingRequestApproved_descriptor,
+        new java.lang.String[] { });
+    internal_static_hw_trezor_messages_thp_ThpSelectMethod_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_hw_trezor_messages_thp_ThpSelectMethod_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_thp_ThpSelectMethod_descriptor,
+        new java.lang.String[] { "SelectedPairingMethod", });
+    internal_static_hw_trezor_messages_thp_ThpPairingPreparationsFinished_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_hw_trezor_messages_thp_ThpPairingPreparationsFinished_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_thp_ThpPairingPreparationsFinished_descriptor,
+        new java.lang.String[] { });
+    internal_static_hw_trezor_messages_thp_ThpCodeEntryCommitment_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_hw_trezor_messages_thp_ThpCodeEntryCommitment_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_thp_ThpCodeEntryCommitment_descriptor,
+        new java.lang.String[] { "Commitment", });
+    internal_static_hw_trezor_messages_thp_ThpCodeEntryChallenge_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_hw_trezor_messages_thp_ThpCodeEntryChallenge_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_thp_ThpCodeEntryChallenge_descriptor,
+        new java.lang.String[] { "Challenge", });
+    internal_static_hw_trezor_messages_thp_ThpCodeEntryCpaceTrezor_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_hw_trezor_messages_thp_ThpCodeEntryCpaceTrezor_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_thp_ThpCodeEntryCpaceTrezor_descriptor,
+        new java.lang.String[] { "CpaceTrezorPublicKey", });
+    internal_static_hw_trezor_messages_thp_ThpCodeEntryCpaceHostTag_descriptor =
+      getDescriptor().getMessageTypes().get(10);
+    internal_static_hw_trezor_messages_thp_ThpCodeEntryCpaceHostTag_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_thp_ThpCodeEntryCpaceHostTag_descriptor,
+        new java.lang.String[] { "CpaceHostPublicKey", "Tag", });
+    internal_static_hw_trezor_messages_thp_ThpCodeEntrySecret_descriptor =
+      getDescriptor().getMessageTypes().get(11);
+    internal_static_hw_trezor_messages_thp_ThpCodeEntrySecret_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_thp_ThpCodeEntrySecret_descriptor,
+        new java.lang.String[] { "Secret", });
+    internal_static_hw_trezor_messages_thp_ThpQrCodeTag_descriptor =
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_hw_trezor_messages_thp_ThpQrCodeTag_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_thp_ThpQrCodeTag_descriptor,
+        new java.lang.String[] { "Tag", });
+    internal_static_hw_trezor_messages_thp_ThpQrCodeSecret_descriptor =
+      getDescriptor().getMessageTypes().get(13);
+    internal_static_hw_trezor_messages_thp_ThpQrCodeSecret_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_thp_ThpQrCodeSecret_descriptor,
+        new java.lang.String[] { "Secret", });
+    internal_static_hw_trezor_messages_thp_ThpNfcTagHost_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_hw_trezor_messages_thp_ThpNfcTagHost_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_thp_ThpNfcTagHost_descriptor,
+        new java.lang.String[] { "Tag", });
+    internal_static_hw_trezor_messages_thp_ThpNfcTagTrezor_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_hw_trezor_messages_thp_ThpNfcTagTrezor_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_thp_ThpNfcTagTrezor_descriptor,
+        new java.lang.String[] { "Tag", });
+    internal_static_hw_trezor_messages_thp_ThpCredentialRequest_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_hw_trezor_messages_thp_ThpCredentialRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_thp_ThpCredentialRequest_descriptor,
+        new java.lang.String[] { "HostStaticPublicKey", "Autoconnect", "Credential", });
+    internal_static_hw_trezor_messages_thp_ThpCredentialResponse_descriptor =
+      getDescriptor().getMessageTypes().get(17);
+    internal_static_hw_trezor_messages_thp_ThpCredentialResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_thp_ThpCredentialResponse_descriptor,
+        new java.lang.String[] { "TrezorStaticPublicKey", "Credential", });
+    internal_static_hw_trezor_messages_thp_ThpEndRequest_descriptor =
+      getDescriptor().getMessageTypes().get(18);
+    internal_static_hw_trezor_messages_thp_ThpEndRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_thp_ThpEndRequest_descriptor,
+        new java.lang.String[] { });
+    internal_static_hw_trezor_messages_thp_ThpEndResponse_descriptor =
+      getDescriptor().getMessageTypes().get(19);
+    internal_static_hw_trezor_messages_thp_ThpEndResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_thp_ThpEndResponse_descriptor,
+        new java.lang.String[] { });
+    internal_static_hw_trezor_messages_thp_ThpCredentialMetadata_descriptor =
+      getDescriptor().getMessageTypes().get(20);
     internal_static_hw_trezor_messages_thp_ThpCredentialMetadata_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_thp_ThpCredentialMetadata_descriptor,
-        new java.lang.String[] { "HostName", });
+        new java.lang.String[] { "HostName", "Autoconnect", "AppName", });
     internal_static_hw_trezor_messages_thp_ThpPairingCredential_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_hw_trezor_messages_thp_ThpPairingCredential_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_thp_ThpPairingCredential_descriptor,
         new java.lang.String[] { "CredMetadata", "Mac", });
     internal_static_hw_trezor_messages_thp_ThpAuthenticatedCredentialData_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(22);
     internal_static_hw_trezor_messages_thp_ThpAuthenticatedCredentialData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_thp_ThpAuthenticatedCredentialData_descriptor,
-        new java.lang.String[] { "HostStaticPubkey", "CredMetadata", });
+        new java.lang.String[] { "HostStaticPublicKey", "CredMetadata", });
+    internal_static_hw_trezor_messages_thp_ThpPairedCache_descriptor =
+      getDescriptor().getMessageTypes().get(23);
+    internal_static_hw_trezor_messages_thp_ThpPairedCache_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_thp_ThpPairedCache_descriptor,
+        new java.lang.String[] { "Entries", });
+    internal_static_hw_trezor_messages_thp_ThpPairedCache_ThpPairedCacheEntry_descriptor =
+      internal_static_hw_trezor_messages_thp_ThpPairedCache_descriptor.getNestedTypes().get(0);
+    internal_static_hw_trezor_messages_thp_ThpPairedCache_ThpPairedCacheEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_thp_ThpPairedCache_ThpPairedCacheEntry_descriptor,
+        new java.lang.String[] { "MacAddr", "HostName", "AppName", });
     descriptor.resolveAllFeaturesImmutable();
     com.sparrowwallet.lark.trezor.generated.TrezorOptions.getDescriptor();
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.includeInBitcoinOnly);
     registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.internalOnly);
+    registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.wireEnum);
     com.google.protobuf.Descriptors.FileDescriptor
         .internalUpdateFileDescriptor(descriptor, registry);
   }

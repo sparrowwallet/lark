@@ -63,19 +63,19 @@ public final class TrezorMessageBenchmark {
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return TrezorMessageBenchmark.internal_static_hw_trezor_messages_bitcoin_BenchmarkListNames_descriptor;
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageBenchmark.internal_static_hw_trezor_messages_bitcoin_BenchmarkListNames_descriptor;
     }
 
-    @Override
-    protected FieldAccessorTable
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return TrezorMessageBenchmark.internal_static_hw_trezor_messages_bitcoin_BenchmarkListNames_fieldAccessorTable
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageBenchmark.internal_static_hw_trezor_messages_bitcoin_BenchmarkListNames_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              BenchmarkListNames.class, Builder.class);
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageBenchmark.BenchmarkListNames.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageBenchmark.BenchmarkListNames.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
-    @Override
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -85,13 +85,13 @@ public final class TrezorMessageBenchmark {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getUnknownFields().writeTo(output);
     }
 
-    @Override
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -102,21 +102,21 @@ public final class TrezorMessageBenchmark {
       return size;
     }
 
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof BenchmarkListNames)) {
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageBenchmark.BenchmarkListNames)) {
         return super.equals(obj);
       }
-      BenchmarkListNames other = (BenchmarkListNames) obj;
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageBenchmark.BenchmarkListNames other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageBenchmark.BenchmarkListNames) obj;
 
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -128,44 +128,44 @@ public final class TrezorMessageBenchmark {
       return hash;
     }
 
-    public static BenchmarkListNames parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBenchmark.BenchmarkListNames parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static BenchmarkListNames parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBenchmark.BenchmarkListNames parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static BenchmarkListNames parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBenchmark.BenchmarkListNames parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static BenchmarkListNames parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBenchmark.BenchmarkListNames parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static BenchmarkListNames parseFrom(byte[] data)
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBenchmark.BenchmarkListNames parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static BenchmarkListNames parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBenchmark.BenchmarkListNames parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static BenchmarkListNames parseFrom(java.io.InputStream input)
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBenchmark.BenchmarkListNames parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
-    public static BenchmarkListNames parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBenchmark.BenchmarkListNames parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -173,26 +173,26 @@ public final class TrezorMessageBenchmark {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static BenchmarkListNames parseDelimitedFrom(java.io.InputStream input)
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBenchmark.BenchmarkListNames parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static BenchmarkListNames parseDelimitedFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBenchmark.BenchmarkListNames parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static BenchmarkListNames parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBenchmark.BenchmarkListNames parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
-    public static BenchmarkListNames parseFrom(
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageBenchmark.BenchmarkListNames parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -200,23 +200,23 @@ public final class TrezorMessageBenchmark {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @Override
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(BenchmarkListNames prototype) {
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageBenchmark.BenchmarkListNames prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @Override
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }

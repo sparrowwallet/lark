@@ -321,7 +321,7 @@ public class TrezorDevice implements Closeable {
     }
 
     public Message applySettings(String label, Boolean usePassphrase, byte[] homeScreen, Boolean passphraseAlwaysOnDevice, Integer autoLockDelayMs,
-                              Integer displayRotation, TrezorMessageManagement.SafetyCheckLevel safetyCheckLevel, Boolean experimentalFeatures) throws DeviceException {
+                              TrezorMessageManagement.DisplayRotation displayRotation, TrezorMessageManagement.SafetyCheckLevel safetyCheckLevel, Boolean experimentalFeatures) throws DeviceException {
         TrezorMessageManagement.ApplySettings.Builder applySettings = TrezorMessageManagement.ApplySettings.newBuilder();
         if(label != null) {
             applySettings.setLabel(label);

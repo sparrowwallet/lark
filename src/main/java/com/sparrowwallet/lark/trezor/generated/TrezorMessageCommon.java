@@ -786,6 +786,22 @@ public final class TrezorMessageCommon {
        */
       Failure_InvalidSession(14),
       /**
+       * <code>Failure_Busy = 15;</code>
+       */
+      Failure_Busy(15),
+      /**
+       * <code>Failure_ThpUnallocatedSession = 16;</code>
+       */
+      Failure_ThpUnallocatedSession(16),
+      /**
+       * <code>Failure_InvalidProtocol = 17;</code>
+       */
+      Failure_InvalidProtocol(17),
+      /**
+       * <code>Failure_BufferError = 18;</code>
+       */
+      Failure_BufferError(18),
+      /**
        * <code>Failure_FirmwareError = 99;</code>
        */
       Failure_FirmwareError(99),
@@ -857,6 +873,22 @@ public final class TrezorMessageCommon {
        */
       public static final int Failure_InvalidSession_VALUE = 14;
       /**
+       * <code>Failure_Busy = 15;</code>
+       */
+      public static final int Failure_Busy_VALUE = 15;
+      /**
+       * <code>Failure_ThpUnallocatedSession = 16;</code>
+       */
+      public static final int Failure_ThpUnallocatedSession_VALUE = 16;
+      /**
+       * <code>Failure_InvalidProtocol = 17;</code>
+       */
+      public static final int Failure_InvalidProtocol_VALUE = 17;
+      /**
+       * <code>Failure_BufferError = 18;</code>
+       */
+      public static final int Failure_BufferError_VALUE = 18;
+      /**
        * <code>Failure_FirmwareError = 99;</code>
        */
       public static final int Failure_FirmwareError_VALUE = 99;
@@ -896,6 +928,10 @@ public final class TrezorMessageCommon {
           case 12: return Failure_PinMismatch;
           case 13: return Failure_WipeCodeMismatch;
           case 14: return Failure_InvalidSession;
+          case 15: return Failure_Busy;
+          case 16: return Failure_ThpUnallocatedSession;
+          case 17: return Failure_InvalidProtocol;
+          case 18: return Failure_BufferError;
           case 99: return Failure_FirmwareError;
           default: return null;
         }
@@ -4347,7 +4383,7 @@ public final class TrezorMessageCommon {
      *
      * <code>optional bool _on_device = 1 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.common.PassphraseRequest._on_device is deprecated.
-     *     See messages-common.proto;l=126
+     *     See messages-common.proto;l=130
      * @return Whether the onDevice field is set.
      */
     @java.lang.Deprecated boolean hasOnDevice();
@@ -4358,7 +4394,7 @@ public final class TrezorMessageCommon {
      *
      * <code>optional bool _on_device = 1 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.common.PassphraseRequest._on_device is deprecated.
-     *     See messages-common.proto;l=126
+     *     See messages-common.proto;l=130
      * @return The onDevice.
      */
     @java.lang.Deprecated boolean getOnDevice();
@@ -4417,7 +4453,7 @@ public final class TrezorMessageCommon {
      *
      * <code>optional bool _on_device = 1 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.common.PassphraseRequest._on_device is deprecated.
-     *     See messages-common.proto;l=126
+     *     See messages-common.proto;l=130
      * @return Whether the onDevice field is set.
      */
     @java.lang.Override
@@ -4431,7 +4467,7 @@ public final class TrezorMessageCommon {
      *
      * <code>optional bool _on_device = 1 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.common.PassphraseRequest._on_device is deprecated.
-     *     See messages-common.proto;l=126
+     *     See messages-common.proto;l=130
      * @return The onDevice.
      */
     @java.lang.Override
@@ -4756,7 +4792,7 @@ public final class TrezorMessageCommon {
        *
        * <code>optional bool _on_device = 1 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.common.PassphraseRequest._on_device is deprecated.
-       *     See messages-common.proto;l=126
+       *     See messages-common.proto;l=130
        * @return Whether the onDevice field is set.
        */
       @java.lang.Override
@@ -4770,7 +4806,7 @@ public final class TrezorMessageCommon {
        *
        * <code>optional bool _on_device = 1 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.common.PassphraseRequest._on_device is deprecated.
-       *     See messages-common.proto;l=126
+       *     See messages-common.proto;l=130
        * @return The onDevice.
        */
       @java.lang.Override
@@ -4784,7 +4820,7 @@ public final class TrezorMessageCommon {
        *
        * <code>optional bool _on_device = 1 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.common.PassphraseRequest._on_device is deprecated.
-       *     See messages-common.proto;l=126
+       *     See messages-common.proto;l=130
        * @param value The onDevice to set.
        * @return This builder for chaining.
        */
@@ -4802,7 +4838,7 @@ public final class TrezorMessageCommon {
        *
        * <code>optional bool _on_device = 1 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.common.PassphraseRequest._on_device is deprecated.
-       *     See messages-common.proto;l=126
+       *     See messages-common.proto;l=130
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearOnDevice() {
@@ -4891,7 +4927,7 @@ public final class TrezorMessageCommon {
      *
      * <code>optional bytes _state = 2 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.common.PassphraseAck._state is deprecated.
-     *     See messages-common.proto;l=135
+     *     See messages-common.proto;l=139
      * @return Whether the state field is set.
      */
     @java.lang.Deprecated boolean hasState();
@@ -4902,7 +4938,7 @@ public final class TrezorMessageCommon {
      *
      * <code>optional bytes _state = 2 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.common.PassphraseAck._state is deprecated.
-     *     See messages-common.proto;l=135
+     *     See messages-common.proto;l=139
      * @return The state.
      */
     @java.lang.Deprecated com.google.protobuf.ByteString getState();
@@ -5030,7 +5066,7 @@ public final class TrezorMessageCommon {
      *
      * <code>optional bytes _state = 2 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.common.PassphraseAck._state is deprecated.
-     *     See messages-common.proto;l=135
+     *     See messages-common.proto;l=139
      * @return Whether the state field is set.
      */
     @java.lang.Override
@@ -5044,7 +5080,7 @@ public final class TrezorMessageCommon {
      *
      * <code>optional bytes _state = 2 [deprecated = true];</code>
      * @deprecated hw.trezor.messages.common.PassphraseAck._state is deprecated.
-     *     See messages-common.proto;l=135
+     *     See messages-common.proto;l=139
      * @return The state.
      */
     @java.lang.Override
@@ -5534,7 +5570,7 @@ public final class TrezorMessageCommon {
        *
        * <code>optional bytes _state = 2 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.common.PassphraseAck._state is deprecated.
-       *     See messages-common.proto;l=135
+       *     See messages-common.proto;l=139
        * @return Whether the state field is set.
        */
       @java.lang.Override
@@ -5548,7 +5584,7 @@ public final class TrezorMessageCommon {
        *
        * <code>optional bytes _state = 2 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.common.PassphraseAck._state is deprecated.
-       *     See messages-common.proto;l=135
+       *     See messages-common.proto;l=139
        * @return The state.
        */
       @java.lang.Override
@@ -5562,7 +5598,7 @@ public final class TrezorMessageCommon {
        *
        * <code>optional bytes _state = 2 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.common.PassphraseAck._state is deprecated.
-       *     See messages-common.proto;l=135
+       *     See messages-common.proto;l=139
        * @param value The state to set.
        * @return This builder for chaining.
        */
@@ -5580,7 +5616,7 @@ public final class TrezorMessageCommon {
        *
        * <code>optional bytes _state = 2 [deprecated = true];</code>
        * @deprecated hw.trezor.messages.common.PassphraseAck._state is deprecated.
-       *     See messages-common.proto;l=135
+       *     See messages-common.proto;l=139
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearState() {
@@ -7588,6 +7624,6467 @@ public final class TrezorMessageCommon {
 
   }
 
+  public interface PaymentRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.common.PaymentRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * the nonce used in the signature computation
+     * </pre>
+     *
+     * <code>optional bytes nonce = 1;</code>
+     * @return Whether the nonce field is set.
+     */
+    boolean hasNonce();
+    /**
+     * <pre>
+     * the nonce used in the signature computation
+     * </pre>
+     *
+     * <code>optional bytes nonce = 1;</code>
+     * @return The nonce.
+     */
+    com.google.protobuf.ByteString getNonce();
+
+    /**
+     * <pre>
+     * merchant's name
+     * </pre>
+     *
+     * <code>required string recipient_name = 2;</code>
+     * @return Whether the recipientName field is set.
+     */
+    boolean hasRecipientName();
+    /**
+     * <pre>
+     * merchant's name
+     * </pre>
+     *
+     * <code>required string recipient_name = 2;</code>
+     * @return The recipientName.
+     */
+    java.lang.String getRecipientName();
+    /**
+     * <pre>
+     * merchant's name
+     * </pre>
+     *
+     * <code>required string recipient_name = 2;</code>
+     * @return The bytes for recipientName.
+     */
+    com.google.protobuf.ByteString
+        getRecipientNameBytes();
+
+    /**
+     * <pre>
+     * any memos that were signed as part of the request
+     * </pre>
+     *
+     * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+     */
+    java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo> 
+        getMemosList();
+    /**
+     * <pre>
+     * any memos that were signed as part of the request
+     * </pre>
+     *
+     * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+     */
+    com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo getMemos(int index);
+    /**
+     * <pre>
+     * any memos that were signed as part of the request
+     * </pre>
+     *
+     * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+     */
+    int getMemosCount();
+    /**
+     * <pre>
+     * any memos that were signed as part of the request
+     * </pre>
+     *
+     * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+     */
+    java.util.List<? extends com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemoOrBuilder> 
+        getMemosOrBuilderList();
+    /**
+     * <pre>
+     * any memos that were signed as part of the request
+     * </pre>
+     *
+     * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+     */
+    com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemoOrBuilder getMemosOrBuilder(
+        int index);
+
+    /**
+     * <pre>
+     * the sum of the external output amounts requested, encoded in little endian on either 8 or 32 bytes
+     * </pre>
+     *
+     * <code>optional bytes amount = 6;</code>
+     * @return Whether the amount field is set.
+     */
+    boolean hasAmount();
+    /**
+     * <pre>
+     * the sum of the external output amounts requested, encoded in little endian on either 8 or 32 bytes
+     * </pre>
+     *
+     * <code>optional bytes amount = 6;</code>
+     * @return The amount.
+     */
+    com.google.protobuf.ByteString getAmount();
+
+    /**
+     * <pre>
+     * required for non-CoinJoin transactions; do not set this for fiat amounts (BUY crypto with fiat)
+     * </pre>
+     *
+     * <code>required bytes signature = 5;</code>
+     * @return Whether the signature field is set.
+     */
+    boolean hasSignature();
+    /**
+     * <pre>
+     * required for non-CoinJoin transactions; do not set this for fiat amounts (BUY crypto with fiat)
+     * </pre>
+     *
+     * <code>required bytes signature = 5;</code>
+     * @return The signature.
+     */
+    com.google.protobuf.ByteString getSignature();
+  }
+  /**
+   * <pre>
+   * *
+   * Structure representing a SLIP-0024 payment request.
+   * &#64;embed
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.common.PaymentRequest}
+   */
+  public static final class PaymentRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.common.PaymentRequest)
+      PaymentRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        PaymentRequest.class.getName());
+    }
+    // Use PaymentRequest.newBuilder() to construct.
+    private PaymentRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private PaymentRequest() {
+      nonce_ = com.google.protobuf.ByteString.EMPTY;
+      recipientName_ = "";
+      memos_ = java.util.Collections.emptyList();
+      amount_ = com.google.protobuf.ByteString.EMPTY;
+      signature_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.Builder.class);
+    }
+
+    public interface PaymentRequestMemoOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.TextMemo text_memo = 1;</code>
+       * @return Whether the textMemo field is set.
+       */
+      boolean hasTextMemo();
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.TextMemo text_memo = 1;</code>
+       * @return The textMemo.
+       */
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo getTextMemo();
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.TextMemo text_memo = 1;</code>
+       */
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemoOrBuilder getTextMemoOrBuilder();
+
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.RefundMemo refund_memo = 2;</code>
+       * @return Whether the refundMemo field is set.
+       */
+      boolean hasRefundMemo();
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.RefundMemo refund_memo = 2;</code>
+       * @return The refundMemo.
+       */
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo getRefundMemo();
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.RefundMemo refund_memo = 2;</code>
+       */
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemoOrBuilder getRefundMemoOrBuilder();
+
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
+       * @return Whether the coinPurchaseMemo field is set.
+       */
+      boolean hasCoinPurchaseMemo();
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
+       * @return The coinPurchaseMemo.
+       */
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo getCoinPurchaseMemo();
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
+       */
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemoOrBuilder getCoinPurchaseMemoOrBuilder();
+
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.TextDetailsMemo text_details_memo = 4;</code>
+       * @return Whether the textDetailsMemo field is set.
+       */
+      boolean hasTextDetailsMemo();
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.TextDetailsMemo text_details_memo = 4;</code>
+       * @return The textDetailsMemo.
+       */
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo getTextDetailsMemo();
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.TextDetailsMemo text_details_memo = 4;</code>
+       */
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemoOrBuilder getTextDetailsMemoOrBuilder();
+    }
+    /**
+     * Protobuf type {@code hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo}
+     */
+    public static final class PaymentRequestMemo extends
+        com.google.protobuf.GeneratedMessage implements
+        // @@protoc_insertion_point(message_implements:hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo)
+        PaymentRequestMemoOrBuilder {
+    private static final long serialVersionUID = 0L;
+      static {
+        com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+          com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+          /* major= */ 4,
+          /* minor= */ 28,
+          /* patch= */ 3,
+          /* suffix= */ "",
+          PaymentRequestMemo.class.getName());
+      }
+      // Use PaymentRequestMemo.newBuilder() to construct.
+      private PaymentRequestMemo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+        super(builder);
+      }
+      private PaymentRequestMemo() {
+      }
+
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_PaymentRequestMemo_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_PaymentRequestMemo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo.Builder.class);
+      }
+
+      private int bitField0_;
+      public static final int TEXT_MEMO_FIELD_NUMBER = 1;
+      private com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo textMemo_;
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.TextMemo text_memo = 1;</code>
+       * @return Whether the textMemo field is set.
+       */
+      @java.lang.Override
+      public boolean hasTextMemo() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.TextMemo text_memo = 1;</code>
+       * @return The textMemo.
+       */
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo getTextMemo() {
+        return textMemo_ == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo.getDefaultInstance() : textMemo_;
+      }
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.TextMemo text_memo = 1;</code>
+       */
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemoOrBuilder getTextMemoOrBuilder() {
+        return textMemo_ == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo.getDefaultInstance() : textMemo_;
+      }
+
+      public static final int REFUND_MEMO_FIELD_NUMBER = 2;
+      private com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo refundMemo_;
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.RefundMemo refund_memo = 2;</code>
+       * @return Whether the refundMemo field is set.
+       */
+      @java.lang.Override
+      public boolean hasRefundMemo() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.RefundMemo refund_memo = 2;</code>
+       * @return The refundMemo.
+       */
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo getRefundMemo() {
+        return refundMemo_ == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo.getDefaultInstance() : refundMemo_;
+      }
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.RefundMemo refund_memo = 2;</code>
+       */
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemoOrBuilder getRefundMemoOrBuilder() {
+        return refundMemo_ == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo.getDefaultInstance() : refundMemo_;
+      }
+
+      public static final int COIN_PURCHASE_MEMO_FIELD_NUMBER = 3;
+      private com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo coinPurchaseMemo_;
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
+       * @return Whether the coinPurchaseMemo field is set.
+       */
+      @java.lang.Override
+      public boolean hasCoinPurchaseMemo() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
+       * @return The coinPurchaseMemo.
+       */
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo getCoinPurchaseMemo() {
+        return coinPurchaseMemo_ == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo.getDefaultInstance() : coinPurchaseMemo_;
+      }
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
+       */
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemoOrBuilder getCoinPurchaseMemoOrBuilder() {
+        return coinPurchaseMemo_ == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo.getDefaultInstance() : coinPurchaseMemo_;
+      }
+
+      public static final int TEXT_DETAILS_MEMO_FIELD_NUMBER = 4;
+      private com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo textDetailsMemo_;
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.TextDetailsMemo text_details_memo = 4;</code>
+       * @return Whether the textDetailsMemo field is set.
+       */
+      @java.lang.Override
+      public boolean hasTextDetailsMemo() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.TextDetailsMemo text_details_memo = 4;</code>
+       * @return The textDetailsMemo.
+       */
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo getTextDetailsMemo() {
+        return textDetailsMemo_ == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo.getDefaultInstance() : textDetailsMemo_;
+      }
+      /**
+       * <code>optional .hw.trezor.messages.common.PaymentRequest.TextDetailsMemo text_details_memo = 4;</code>
+       */
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemoOrBuilder getTextDetailsMemoOrBuilder() {
+        return textDetailsMemo_ == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo.getDefaultInstance() : textDetailsMemo_;
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        if (hasTextMemo()) {
+          if (!getTextMemo().isInitialized()) {
+            memoizedIsInitialized = 0;
+            return false;
+          }
+        }
+        if (hasRefundMemo()) {
+          if (!getRefundMemo().isInitialized()) {
+            memoizedIsInitialized = 0;
+            return false;
+          }
+        }
+        if (hasCoinPurchaseMemo()) {
+          if (!getCoinPurchaseMemo().isInitialized()) {
+            memoizedIsInitialized = 0;
+            return false;
+          }
+        }
+        if (hasTextDetailsMemo()) {
+          if (!getTextDetailsMemo().isInitialized()) {
+            memoizedIsInitialized = 0;
+            return false;
+          }
+        }
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          output.writeMessage(1, getTextMemo());
+        }
+        if (((bitField0_ & 0x00000002) != 0)) {
+          output.writeMessage(2, getRefundMemo());
+        }
+        if (((bitField0_ & 0x00000004) != 0)) {
+          output.writeMessage(3, getCoinPurchaseMemo());
+        }
+        if (((bitField0_ & 0x00000008) != 0)) {
+          output.writeMessage(4, getTextDetailsMemo());
+        }
+        getUnknownFields().writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(1, getTextMemo());
+        }
+        if (((bitField0_ & 0x00000002) != 0)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(2, getRefundMemo());
+        }
+        if (((bitField0_ & 0x00000004) != 0)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(3, getCoinPurchaseMemo());
+        }
+        if (((bitField0_ & 0x00000008) != 0)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(4, getTextDetailsMemo());
+        }
+        size += getUnknownFields().getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo)) {
+          return super.equals(obj);
+        }
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo) obj;
+
+        if (hasTextMemo() != other.hasTextMemo()) return false;
+        if (hasTextMemo()) {
+          if (!getTextMemo()
+              .equals(other.getTextMemo())) return false;
+        }
+        if (hasRefundMemo() != other.hasRefundMemo()) return false;
+        if (hasRefundMemo()) {
+          if (!getRefundMemo()
+              .equals(other.getRefundMemo())) return false;
+        }
+        if (hasCoinPurchaseMemo() != other.hasCoinPurchaseMemo()) return false;
+        if (hasCoinPurchaseMemo()) {
+          if (!getCoinPurchaseMemo()
+              .equals(other.getCoinPurchaseMemo())) return false;
+        }
+        if (hasTextDetailsMemo() != other.hasTextDetailsMemo()) return false;
+        if (hasTextDetailsMemo()) {
+          if (!getTextDetailsMemo()
+              .equals(other.getTextDetailsMemo())) return false;
+        }
+        if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        if (hasTextMemo()) {
+          hash = (37 * hash) + TEXT_MEMO_FIELD_NUMBER;
+          hash = (53 * hash) + getTextMemo().hashCode();
+        }
+        if (hasRefundMemo()) {
+          hash = (37 * hash) + REFUND_MEMO_FIELD_NUMBER;
+          hash = (53 * hash) + getRefundMemo().hashCode();
+        }
+        if (hasCoinPurchaseMemo()) {
+          hash = (37 * hash) + COIN_PURCHASE_MEMO_FIELD_NUMBER;
+          hash = (53 * hash) + getCoinPurchaseMemo().hashCode();
+        }
+        if (hasTextDetailsMemo()) {
+          hash = (37 * hash) + TEXT_DETAILS_MEMO_FIELD_NUMBER;
+          hash = (53 * hash) + getTextDetailsMemo().hashCode();
+        }
+        hash = (29 * hash) + getUnknownFields().hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo)
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemoOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_PaymentRequestMemo_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_PaymentRequestMemo_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo.Builder.class);
+        }
+
+        // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessage
+                  .alwaysUseFieldBuilders) {
+            getTextMemoFieldBuilder();
+            getRefundMemoFieldBuilder();
+            getCoinPurchaseMemoFieldBuilder();
+            getTextDetailsMemoFieldBuilder();
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          bitField0_ = 0;
+          textMemo_ = null;
+          if (textMemoBuilder_ != null) {
+            textMemoBuilder_.dispose();
+            textMemoBuilder_ = null;
+          }
+          refundMemo_ = null;
+          if (refundMemoBuilder_ != null) {
+            refundMemoBuilder_.dispose();
+            refundMemoBuilder_ = null;
+          }
+          coinPurchaseMemo_ = null;
+          if (coinPurchaseMemoBuilder_ != null) {
+            coinPurchaseMemoBuilder_.dispose();
+            coinPurchaseMemoBuilder_ = null;
+          }
+          textDetailsMemo_ = null;
+          if (textDetailsMemoBuilder_ != null) {
+            textDetailsMemoBuilder_.dispose();
+            textDetailsMemoBuilder_ = null;
+          }
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_PaymentRequestMemo_descriptor;
+        }
+
+        @java.lang.Override
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo getDefaultInstanceForType() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo build() {
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo buildPartial() {
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo(this);
+          if (bitField0_ != 0) { buildPartial0(result); }
+          onBuilt();
+          return result;
+        }
+
+        private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo result) {
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) != 0)) {
+            result.textMemo_ = textMemoBuilder_ == null
+                ? textMemo_
+                : textMemoBuilder_.build();
+            to_bitField0_ |= 0x00000001;
+          }
+          if (((from_bitField0_ & 0x00000002) != 0)) {
+            result.refundMemo_ = refundMemoBuilder_ == null
+                ? refundMemo_
+                : refundMemoBuilder_.build();
+            to_bitField0_ |= 0x00000002;
+          }
+          if (((from_bitField0_ & 0x00000004) != 0)) {
+            result.coinPurchaseMemo_ = coinPurchaseMemoBuilder_ == null
+                ? coinPurchaseMemo_
+                : coinPurchaseMemoBuilder_.build();
+            to_bitField0_ |= 0x00000004;
+          }
+          if (((from_bitField0_ & 0x00000008) != 0)) {
+            result.textDetailsMemo_ = textDetailsMemoBuilder_ == null
+                ? textDetailsMemo_
+                : textDetailsMemoBuilder_.build();
+            to_bitField0_ |= 0x00000008;
+          }
+          result.bitField0_ |= to_bitField0_;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo) {
+            return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo other) {
+          if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo.getDefaultInstance()) return this;
+          if (other.hasTextMemo()) {
+            mergeTextMemo(other.getTextMemo());
+          }
+          if (other.hasRefundMemo()) {
+            mergeRefundMemo(other.getRefundMemo());
+          }
+          if (other.hasCoinPurchaseMemo()) {
+            mergeCoinPurchaseMemo(other.getCoinPurchaseMemo());
+          }
+          if (other.hasTextDetailsMemo()) {
+            mergeTextDetailsMemo(other.getTextDetailsMemo());
+          }
+          this.mergeUnknownFields(other.getUnknownFields());
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          if (hasTextMemo()) {
+            if (!getTextMemo().isInitialized()) {
+              return false;
+            }
+          }
+          if (hasRefundMemo()) {
+            if (!getRefundMemo().isInitialized()) {
+              return false;
+            }
+          }
+          if (hasCoinPurchaseMemo()) {
+            if (!getCoinPurchaseMemo().isInitialized()) {
+              return false;
+            }
+          }
+          if (hasTextDetailsMemo()) {
+            if (!getTextDetailsMemo().isInitialized()) {
+              return false;
+            }
+          }
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          if (extensionRegistry == null) {
+            throw new java.lang.NullPointerException();
+          }
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                case 10: {
+                  input.readMessage(
+                      getTextMemoFieldBuilder().getBuilder(),
+                      extensionRegistry);
+                  bitField0_ |= 0x00000001;
+                  break;
+                } // case 10
+                case 18: {
+                  input.readMessage(
+                      getRefundMemoFieldBuilder().getBuilder(),
+                      extensionRegistry);
+                  bitField0_ |= 0x00000002;
+                  break;
+                } // case 18
+                case 26: {
+                  input.readMessage(
+                      getCoinPurchaseMemoFieldBuilder().getBuilder(),
+                      extensionRegistry);
+                  bitField0_ |= 0x00000004;
+                  break;
+                } // case 26
+                case 34: {
+                  input.readMessage(
+                      getTextDetailsMemoFieldBuilder().getBuilder(),
+                      extensionRegistry);
+                  bitField0_ |= 0x00000008;
+                  break;
+                } // case 34
+                default: {
+                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                    done = true; // was an endgroup tag
+                  }
+                  break;
+                } // default:
+              } // switch (tag)
+            } // while (!done)
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.unwrapIOException();
+          } finally {
+            onChanged();
+          } // finally
+          return this;
+        }
+        private int bitField0_;
+
+        private com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo textMemo_;
+        private com.google.protobuf.SingleFieldBuilder<
+            com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemoOrBuilder> textMemoBuilder_;
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.TextMemo text_memo = 1;</code>
+         * @return Whether the textMemo field is set.
+         */
+        public boolean hasTextMemo() {
+          return ((bitField0_ & 0x00000001) != 0);
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.TextMemo text_memo = 1;</code>
+         * @return The textMemo.
+         */
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo getTextMemo() {
+          if (textMemoBuilder_ == null) {
+            return textMemo_ == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo.getDefaultInstance() : textMemo_;
+          } else {
+            return textMemoBuilder_.getMessage();
+          }
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.TextMemo text_memo = 1;</code>
+         */
+        public Builder setTextMemo(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo value) {
+          if (textMemoBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            textMemo_ = value;
+          } else {
+            textMemoBuilder_.setMessage(value);
+          }
+          bitField0_ |= 0x00000001;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.TextMemo text_memo = 1;</code>
+         */
+        public Builder setTextMemo(
+            com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo.Builder builderForValue) {
+          if (textMemoBuilder_ == null) {
+            textMemo_ = builderForValue.build();
+          } else {
+            textMemoBuilder_.setMessage(builderForValue.build());
+          }
+          bitField0_ |= 0x00000001;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.TextMemo text_memo = 1;</code>
+         */
+        public Builder mergeTextMemo(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo value) {
+          if (textMemoBuilder_ == null) {
+            if (((bitField0_ & 0x00000001) != 0) &&
+              textMemo_ != null &&
+              textMemo_ != com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo.getDefaultInstance()) {
+              getTextMemoBuilder().mergeFrom(value);
+            } else {
+              textMemo_ = value;
+            }
+          } else {
+            textMemoBuilder_.mergeFrom(value);
+          }
+          if (textMemo_ != null) {
+            bitField0_ |= 0x00000001;
+            onChanged();
+          }
+          return this;
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.TextMemo text_memo = 1;</code>
+         */
+        public Builder clearTextMemo() {
+          bitField0_ = (bitField0_ & ~0x00000001);
+          textMemo_ = null;
+          if (textMemoBuilder_ != null) {
+            textMemoBuilder_.dispose();
+            textMemoBuilder_ = null;
+          }
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.TextMemo text_memo = 1;</code>
+         */
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo.Builder getTextMemoBuilder() {
+          bitField0_ |= 0x00000001;
+          onChanged();
+          return getTextMemoFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.TextMemo text_memo = 1;</code>
+         */
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemoOrBuilder getTextMemoOrBuilder() {
+          if (textMemoBuilder_ != null) {
+            return textMemoBuilder_.getMessageOrBuilder();
+          } else {
+            return textMemo_ == null ?
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo.getDefaultInstance() : textMemo_;
+          }
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.TextMemo text_memo = 1;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilder<
+            com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemoOrBuilder> 
+            getTextMemoFieldBuilder() {
+          if (textMemoBuilder_ == null) {
+            textMemoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemoOrBuilder>(
+                    getTextMemo(),
+                    getParentForChildren(),
+                    isClean());
+            textMemo_ = null;
+          }
+          return textMemoBuilder_;
+        }
+
+        private com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo refundMemo_;
+        private com.google.protobuf.SingleFieldBuilder<
+            com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemoOrBuilder> refundMemoBuilder_;
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.RefundMemo refund_memo = 2;</code>
+         * @return Whether the refundMemo field is set.
+         */
+        public boolean hasRefundMemo() {
+          return ((bitField0_ & 0x00000002) != 0);
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.RefundMemo refund_memo = 2;</code>
+         * @return The refundMemo.
+         */
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo getRefundMemo() {
+          if (refundMemoBuilder_ == null) {
+            return refundMemo_ == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo.getDefaultInstance() : refundMemo_;
+          } else {
+            return refundMemoBuilder_.getMessage();
+          }
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.RefundMemo refund_memo = 2;</code>
+         */
+        public Builder setRefundMemo(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo value) {
+          if (refundMemoBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            refundMemo_ = value;
+          } else {
+            refundMemoBuilder_.setMessage(value);
+          }
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.RefundMemo refund_memo = 2;</code>
+         */
+        public Builder setRefundMemo(
+            com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo.Builder builderForValue) {
+          if (refundMemoBuilder_ == null) {
+            refundMemo_ = builderForValue.build();
+          } else {
+            refundMemoBuilder_.setMessage(builderForValue.build());
+          }
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.RefundMemo refund_memo = 2;</code>
+         */
+        public Builder mergeRefundMemo(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo value) {
+          if (refundMemoBuilder_ == null) {
+            if (((bitField0_ & 0x00000002) != 0) &&
+              refundMemo_ != null &&
+              refundMemo_ != com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo.getDefaultInstance()) {
+              getRefundMemoBuilder().mergeFrom(value);
+            } else {
+              refundMemo_ = value;
+            }
+          } else {
+            refundMemoBuilder_.mergeFrom(value);
+          }
+          if (refundMemo_ != null) {
+            bitField0_ |= 0x00000002;
+            onChanged();
+          }
+          return this;
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.RefundMemo refund_memo = 2;</code>
+         */
+        public Builder clearRefundMemo() {
+          bitField0_ = (bitField0_ & ~0x00000002);
+          refundMemo_ = null;
+          if (refundMemoBuilder_ != null) {
+            refundMemoBuilder_.dispose();
+            refundMemoBuilder_ = null;
+          }
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.RefundMemo refund_memo = 2;</code>
+         */
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo.Builder getRefundMemoBuilder() {
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return getRefundMemoFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.RefundMemo refund_memo = 2;</code>
+         */
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemoOrBuilder getRefundMemoOrBuilder() {
+          if (refundMemoBuilder_ != null) {
+            return refundMemoBuilder_.getMessageOrBuilder();
+          } else {
+            return refundMemo_ == null ?
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo.getDefaultInstance() : refundMemo_;
+          }
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.RefundMemo refund_memo = 2;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilder<
+            com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemoOrBuilder> 
+            getRefundMemoFieldBuilder() {
+          if (refundMemoBuilder_ == null) {
+            refundMemoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemoOrBuilder>(
+                    getRefundMemo(),
+                    getParentForChildren(),
+                    isClean());
+            refundMemo_ = null;
+          }
+          return refundMemoBuilder_;
+        }
+
+        private com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo coinPurchaseMemo_;
+        private com.google.protobuf.SingleFieldBuilder<
+            com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemoOrBuilder> coinPurchaseMemoBuilder_;
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
+         * @return Whether the coinPurchaseMemo field is set.
+         */
+        public boolean hasCoinPurchaseMemo() {
+          return ((bitField0_ & 0x00000004) != 0);
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
+         * @return The coinPurchaseMemo.
+         */
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo getCoinPurchaseMemo() {
+          if (coinPurchaseMemoBuilder_ == null) {
+            return coinPurchaseMemo_ == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo.getDefaultInstance() : coinPurchaseMemo_;
+          } else {
+            return coinPurchaseMemoBuilder_.getMessage();
+          }
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
+         */
+        public Builder setCoinPurchaseMemo(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo value) {
+          if (coinPurchaseMemoBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            coinPurchaseMemo_ = value;
+          } else {
+            coinPurchaseMemoBuilder_.setMessage(value);
+          }
+          bitField0_ |= 0x00000004;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
+         */
+        public Builder setCoinPurchaseMemo(
+            com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo.Builder builderForValue) {
+          if (coinPurchaseMemoBuilder_ == null) {
+            coinPurchaseMemo_ = builderForValue.build();
+          } else {
+            coinPurchaseMemoBuilder_.setMessage(builderForValue.build());
+          }
+          bitField0_ |= 0x00000004;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
+         */
+        public Builder mergeCoinPurchaseMemo(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo value) {
+          if (coinPurchaseMemoBuilder_ == null) {
+            if (((bitField0_ & 0x00000004) != 0) &&
+              coinPurchaseMemo_ != null &&
+              coinPurchaseMemo_ != com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo.getDefaultInstance()) {
+              getCoinPurchaseMemoBuilder().mergeFrom(value);
+            } else {
+              coinPurchaseMemo_ = value;
+            }
+          } else {
+            coinPurchaseMemoBuilder_.mergeFrom(value);
+          }
+          if (coinPurchaseMemo_ != null) {
+            bitField0_ |= 0x00000004;
+            onChanged();
+          }
+          return this;
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
+         */
+        public Builder clearCoinPurchaseMemo() {
+          bitField0_ = (bitField0_ & ~0x00000004);
+          coinPurchaseMemo_ = null;
+          if (coinPurchaseMemoBuilder_ != null) {
+            coinPurchaseMemoBuilder_.dispose();
+            coinPurchaseMemoBuilder_ = null;
+          }
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
+         */
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo.Builder getCoinPurchaseMemoBuilder() {
+          bitField0_ |= 0x00000004;
+          onChanged();
+          return getCoinPurchaseMemoFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
+         */
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemoOrBuilder getCoinPurchaseMemoOrBuilder() {
+          if (coinPurchaseMemoBuilder_ != null) {
+            return coinPurchaseMemoBuilder_.getMessageOrBuilder();
+          } else {
+            return coinPurchaseMemo_ == null ?
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo.getDefaultInstance() : coinPurchaseMemo_;
+          }
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.CoinPurchaseMemo coin_purchase_memo = 3;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilder<
+            com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemoOrBuilder> 
+            getCoinPurchaseMemoFieldBuilder() {
+          if (coinPurchaseMemoBuilder_ == null) {
+            coinPurchaseMemoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemoOrBuilder>(
+                    getCoinPurchaseMemo(),
+                    getParentForChildren(),
+                    isClean());
+            coinPurchaseMemo_ = null;
+          }
+          return coinPurchaseMemoBuilder_;
+        }
+
+        private com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo textDetailsMemo_;
+        private com.google.protobuf.SingleFieldBuilder<
+            com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemoOrBuilder> textDetailsMemoBuilder_;
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.TextDetailsMemo text_details_memo = 4;</code>
+         * @return Whether the textDetailsMemo field is set.
+         */
+        public boolean hasTextDetailsMemo() {
+          return ((bitField0_ & 0x00000008) != 0);
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.TextDetailsMemo text_details_memo = 4;</code>
+         * @return The textDetailsMemo.
+         */
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo getTextDetailsMemo() {
+          if (textDetailsMemoBuilder_ == null) {
+            return textDetailsMemo_ == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo.getDefaultInstance() : textDetailsMemo_;
+          } else {
+            return textDetailsMemoBuilder_.getMessage();
+          }
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.TextDetailsMemo text_details_memo = 4;</code>
+         */
+        public Builder setTextDetailsMemo(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo value) {
+          if (textDetailsMemoBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            textDetailsMemo_ = value;
+          } else {
+            textDetailsMemoBuilder_.setMessage(value);
+          }
+          bitField0_ |= 0x00000008;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.TextDetailsMemo text_details_memo = 4;</code>
+         */
+        public Builder setTextDetailsMemo(
+            com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo.Builder builderForValue) {
+          if (textDetailsMemoBuilder_ == null) {
+            textDetailsMemo_ = builderForValue.build();
+          } else {
+            textDetailsMemoBuilder_.setMessage(builderForValue.build());
+          }
+          bitField0_ |= 0x00000008;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.TextDetailsMemo text_details_memo = 4;</code>
+         */
+        public Builder mergeTextDetailsMemo(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo value) {
+          if (textDetailsMemoBuilder_ == null) {
+            if (((bitField0_ & 0x00000008) != 0) &&
+              textDetailsMemo_ != null &&
+              textDetailsMemo_ != com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo.getDefaultInstance()) {
+              getTextDetailsMemoBuilder().mergeFrom(value);
+            } else {
+              textDetailsMemo_ = value;
+            }
+          } else {
+            textDetailsMemoBuilder_.mergeFrom(value);
+          }
+          if (textDetailsMemo_ != null) {
+            bitField0_ |= 0x00000008;
+            onChanged();
+          }
+          return this;
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.TextDetailsMemo text_details_memo = 4;</code>
+         */
+        public Builder clearTextDetailsMemo() {
+          bitField0_ = (bitField0_ & ~0x00000008);
+          textDetailsMemo_ = null;
+          if (textDetailsMemoBuilder_ != null) {
+            textDetailsMemoBuilder_.dispose();
+            textDetailsMemoBuilder_ = null;
+          }
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.TextDetailsMemo text_details_memo = 4;</code>
+         */
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo.Builder getTextDetailsMemoBuilder() {
+          bitField0_ |= 0x00000008;
+          onChanged();
+          return getTextDetailsMemoFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.TextDetailsMemo text_details_memo = 4;</code>
+         */
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemoOrBuilder getTextDetailsMemoOrBuilder() {
+          if (textDetailsMemoBuilder_ != null) {
+            return textDetailsMemoBuilder_.getMessageOrBuilder();
+          } else {
+            return textDetailsMemo_ == null ?
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo.getDefaultInstance() : textDetailsMemo_;
+          }
+        }
+        /**
+         * <code>optional .hw.trezor.messages.common.PaymentRequest.TextDetailsMemo text_details_memo = 4;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilder<
+            com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemoOrBuilder> 
+            getTextDetailsMemoFieldBuilder() {
+          if (textDetailsMemoBuilder_ == null) {
+            textDetailsMemoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemoOrBuilder>(
+                    getTextDetailsMemo(),
+                    getParentForChildren(),
+                    isClean());
+            textDetailsMemo_ = null;
+          }
+          return textDetailsMemoBuilder_;
+        }
+
+        // @@protoc_insertion_point(builder_scope:hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo)
+      }
+
+      // @@protoc_insertion_point(class_scope:hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo)
+      private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo();
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<PaymentRequestMemo>
+          PARSER = new com.google.protobuf.AbstractParser<PaymentRequestMemo>() {
+        @java.lang.Override
+        public PaymentRequestMemo parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
+
+      public static com.google.protobuf.Parser<PaymentRequestMemo> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<PaymentRequestMemo> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    public interface TextMemoOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:hw.trezor.messages.common.PaymentRequest.TextMemo)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <pre>
+       * plain-text note explaining the purpose of the payment request
+       * </pre>
+       *
+       * <code>required string text = 1;</code>
+       * @return Whether the text field is set.
+       */
+      boolean hasText();
+      /**
+       * <pre>
+       * plain-text note explaining the purpose of the payment request
+       * </pre>
+       *
+       * <code>required string text = 1;</code>
+       * @return The text.
+       */
+      java.lang.String getText();
+      /**
+       * <pre>
+       * plain-text note explaining the purpose of the payment request
+       * </pre>
+       *
+       * <code>required string text = 1;</code>
+       * @return The bytes for text.
+       */
+      com.google.protobuf.ByteString
+          getTextBytes();
+    }
+    /**
+     * Protobuf type {@code hw.trezor.messages.common.PaymentRequest.TextMemo}
+     */
+    public static final class TextMemo extends
+        com.google.protobuf.GeneratedMessage implements
+        // @@protoc_insertion_point(message_implements:hw.trezor.messages.common.PaymentRequest.TextMemo)
+        TextMemoOrBuilder {
+    private static final long serialVersionUID = 0L;
+      static {
+        com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+          com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+          /* major= */ 4,
+          /* minor= */ 28,
+          /* patch= */ 3,
+          /* suffix= */ "",
+          TextMemo.class.getName());
+      }
+      // Use TextMemo.newBuilder() to construct.
+      private TextMemo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+        super(builder);
+      }
+      private TextMemo() {
+        text_ = "";
+      }
+
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_TextMemo_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_TextMemo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo.Builder.class);
+      }
+
+      private int bitField0_;
+      public static final int TEXT_FIELD_NUMBER = 1;
+      @SuppressWarnings("serial")
+      private volatile java.lang.Object text_ = "";
+      /**
+       * <pre>
+       * plain-text note explaining the purpose of the payment request
+       * </pre>
+       *
+       * <code>required string text = 1;</code>
+       * @return Whether the text field is set.
+       */
+      @java.lang.Override
+      public boolean hasText() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * plain-text note explaining the purpose of the payment request
+       * </pre>
+       *
+       * <code>required string text = 1;</code>
+       * @return The text.
+       */
+      @java.lang.Override
+      public java.lang.String getText() {
+        java.lang.Object ref = text_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            text_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <pre>
+       * plain-text note explaining the purpose of the payment request
+       * </pre>
+       *
+       * <code>required string text = 1;</code>
+       * @return The bytes for text.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getTextBytes() {
+        java.lang.Object ref = text_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          text_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        if (!hasText()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          com.google.protobuf.GeneratedMessage.writeString(output, 1, text_);
+        }
+        getUnknownFields().writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          size += com.google.protobuf.GeneratedMessage.computeStringSize(1, text_);
+        }
+        size += getUnknownFields().getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo)) {
+          return super.equals(obj);
+        }
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo) obj;
+
+        if (hasText() != other.hasText()) return false;
+        if (hasText()) {
+          if (!getText()
+              .equals(other.getText())) return false;
+        }
+        if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        if (hasText()) {
+          hash = (37 * hash) + TEXT_FIELD_NUMBER;
+          hash = (53 * hash) + getText().hashCode();
+        }
+        hash = (29 * hash) + getUnknownFields().hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code hw.trezor.messages.common.PaymentRequest.TextMemo}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:hw.trezor.messages.common.PaymentRequest.TextMemo)
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemoOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_TextMemo_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_TextMemo_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo.Builder.class);
+        }
+
+        // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo.newBuilder()
+        private Builder() {
+
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          super(parent);
+
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          bitField0_ = 0;
+          text_ = "";
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_TextMemo_descriptor;
+        }
+
+        @java.lang.Override
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo getDefaultInstanceForType() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo build() {
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo buildPartial() {
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo(this);
+          if (bitField0_ != 0) { buildPartial0(result); }
+          onBuilt();
+          return result;
+        }
+
+        private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo result) {
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) != 0)) {
+            result.text_ = text_;
+            to_bitField0_ |= 0x00000001;
+          }
+          result.bitField0_ |= to_bitField0_;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo) {
+            return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo other) {
+          if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo.getDefaultInstance()) return this;
+          if (other.hasText()) {
+            text_ = other.text_;
+            bitField0_ |= 0x00000001;
+            onChanged();
+          }
+          this.mergeUnknownFields(other.getUnknownFields());
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          if (!hasText()) {
+            return false;
+          }
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          if (extensionRegistry == null) {
+            throw new java.lang.NullPointerException();
+          }
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                case 10: {
+                  text_ = input.readBytes();
+                  bitField0_ |= 0x00000001;
+                  break;
+                } // case 10
+                default: {
+                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                    done = true; // was an endgroup tag
+                  }
+                  break;
+                } // default:
+              } // switch (tag)
+            } // while (!done)
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.unwrapIOException();
+          } finally {
+            onChanged();
+          } // finally
+          return this;
+        }
+        private int bitField0_;
+
+        private java.lang.Object text_ = "";
+        /**
+         * <pre>
+         * plain-text note explaining the purpose of the payment request
+         * </pre>
+         *
+         * <code>required string text = 1;</code>
+         * @return Whether the text field is set.
+         */
+        public boolean hasText() {
+          return ((bitField0_ & 0x00000001) != 0);
+        }
+        /**
+         * <pre>
+         * plain-text note explaining the purpose of the payment request
+         * </pre>
+         *
+         * <code>required string text = 1;</code>
+         * @return The text.
+         */
+        public java.lang.String getText() {
+          java.lang.Object ref = text_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              text_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <pre>
+         * plain-text note explaining the purpose of the payment request
+         * </pre>
+         *
+         * <code>required string text = 1;</code>
+         * @return The bytes for text.
+         */
+        public com.google.protobuf.ByteString
+            getTextBytes() {
+          java.lang.Object ref = text_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            text_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <pre>
+         * plain-text note explaining the purpose of the payment request
+         * </pre>
+         *
+         * <code>required string text = 1;</code>
+         * @param value The text to set.
+         * @return This builder for chaining.
+         */
+        public Builder setText(
+            java.lang.String value) {
+          if (value == null) { throw new NullPointerException(); }
+          text_ = value;
+          bitField0_ |= 0x00000001;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * plain-text note explaining the purpose of the payment request
+         * </pre>
+         *
+         * <code>required string text = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearText() {
+          text_ = getDefaultInstance().getText();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * plain-text note explaining the purpose of the payment request
+         * </pre>
+         *
+         * <code>required string text = 1;</code>
+         * @param value The bytes for text to set.
+         * @return This builder for chaining.
+         */
+        public Builder setTextBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) { throw new NullPointerException(); }
+          text_ = value;
+          bitField0_ |= 0x00000001;
+          onChanged();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:hw.trezor.messages.common.PaymentRequest.TextMemo)
+      }
+
+      // @@protoc_insertion_point(class_scope:hw.trezor.messages.common.PaymentRequest.TextMemo)
+      private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo();
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<TextMemo>
+          PARSER = new com.google.protobuf.AbstractParser<TextMemo>() {
+        @java.lang.Override
+        public TextMemo parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
+
+      public static com.google.protobuf.Parser<TextMemo> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<TextMemo> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextMemo getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    public interface TextDetailsMemoOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:hw.trezor.messages.common.PaymentRequest.TextDetailsMemo)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <pre>
+       * plain-text heading
+       * </pre>
+       *
+       * <code>required string title = 1;</code>
+       * @return Whether the title field is set.
+       */
+      boolean hasTitle();
+      /**
+       * <pre>
+       * plain-text heading
+       * </pre>
+       *
+       * <code>required string title = 1;</code>
+       * @return The title.
+       */
+      java.lang.String getTitle();
+      /**
+       * <pre>
+       * plain-text heading
+       * </pre>
+       *
+       * <code>required string title = 1;</code>
+       * @return The bytes for title.
+       */
+      com.google.protobuf.ByteString
+          getTitleBytes();
+
+      /**
+       * <pre>
+       * plain-text note containing additional details about the payment
+       * </pre>
+       *
+       * <code>required string text = 2;</code>
+       * @return Whether the text field is set.
+       */
+      boolean hasText();
+      /**
+       * <pre>
+       * plain-text note containing additional details about the payment
+       * </pre>
+       *
+       * <code>required string text = 2;</code>
+       * @return The text.
+       */
+      java.lang.String getText();
+      /**
+       * <pre>
+       * plain-text note containing additional details about the payment
+       * </pre>
+       *
+       * <code>required string text = 2;</code>
+       * @return The bytes for text.
+       */
+      com.google.protobuf.ByteString
+          getTextBytes();
+    }
+    /**
+     * Protobuf type {@code hw.trezor.messages.common.PaymentRequest.TextDetailsMemo}
+     */
+    public static final class TextDetailsMemo extends
+        com.google.protobuf.GeneratedMessage implements
+        // @@protoc_insertion_point(message_implements:hw.trezor.messages.common.PaymentRequest.TextDetailsMemo)
+        TextDetailsMemoOrBuilder {
+    private static final long serialVersionUID = 0L;
+      static {
+        com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+          com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+          /* major= */ 4,
+          /* minor= */ 28,
+          /* patch= */ 3,
+          /* suffix= */ "",
+          TextDetailsMemo.class.getName());
+      }
+      // Use TextDetailsMemo.newBuilder() to construct.
+      private TextDetailsMemo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+        super(builder);
+      }
+      private TextDetailsMemo() {
+        title_ = "";
+        text_ = "";
+      }
+
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_TextDetailsMemo_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_TextDetailsMemo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo.Builder.class);
+      }
+
+      private int bitField0_;
+      public static final int TITLE_FIELD_NUMBER = 1;
+      @SuppressWarnings("serial")
+      private volatile java.lang.Object title_ = "";
+      /**
+       * <pre>
+       * plain-text heading
+       * </pre>
+       *
+       * <code>required string title = 1;</code>
+       * @return Whether the title field is set.
+       */
+      @java.lang.Override
+      public boolean hasTitle() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * plain-text heading
+       * </pre>
+       *
+       * <code>required string title = 1;</code>
+       * @return The title.
+       */
+      @java.lang.Override
+      public java.lang.String getTitle() {
+        java.lang.Object ref = title_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            title_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <pre>
+       * plain-text heading
+       * </pre>
+       *
+       * <code>required string title = 1;</code>
+       * @return The bytes for title.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getTitleBytes() {
+        java.lang.Object ref = title_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          title_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int TEXT_FIELD_NUMBER = 2;
+      @SuppressWarnings("serial")
+      private volatile java.lang.Object text_ = "";
+      /**
+       * <pre>
+       * plain-text note containing additional details about the payment
+       * </pre>
+       *
+       * <code>required string text = 2;</code>
+       * @return Whether the text field is set.
+       */
+      @java.lang.Override
+      public boolean hasText() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * plain-text note containing additional details about the payment
+       * </pre>
+       *
+       * <code>required string text = 2;</code>
+       * @return The text.
+       */
+      @java.lang.Override
+      public java.lang.String getText() {
+        java.lang.Object ref = text_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            text_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <pre>
+       * plain-text note containing additional details about the payment
+       * </pre>
+       *
+       * <code>required string text = 2;</code>
+       * @return The bytes for text.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getTextBytes() {
+        java.lang.Object ref = text_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          text_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        if (!hasTitle()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!hasText()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          com.google.protobuf.GeneratedMessage.writeString(output, 1, title_);
+        }
+        if (((bitField0_ & 0x00000002) != 0)) {
+          com.google.protobuf.GeneratedMessage.writeString(output, 2, text_);
+        }
+        getUnknownFields().writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          size += com.google.protobuf.GeneratedMessage.computeStringSize(1, title_);
+        }
+        if (((bitField0_ & 0x00000002) != 0)) {
+          size += com.google.protobuf.GeneratedMessage.computeStringSize(2, text_);
+        }
+        size += getUnknownFields().getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo)) {
+          return super.equals(obj);
+        }
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo) obj;
+
+        if (hasTitle() != other.hasTitle()) return false;
+        if (hasTitle()) {
+          if (!getTitle()
+              .equals(other.getTitle())) return false;
+        }
+        if (hasText() != other.hasText()) return false;
+        if (hasText()) {
+          if (!getText()
+              .equals(other.getText())) return false;
+        }
+        if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        if (hasTitle()) {
+          hash = (37 * hash) + TITLE_FIELD_NUMBER;
+          hash = (53 * hash) + getTitle().hashCode();
+        }
+        if (hasText()) {
+          hash = (37 * hash) + TEXT_FIELD_NUMBER;
+          hash = (53 * hash) + getText().hashCode();
+        }
+        hash = (29 * hash) + getUnknownFields().hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code hw.trezor.messages.common.PaymentRequest.TextDetailsMemo}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:hw.trezor.messages.common.PaymentRequest.TextDetailsMemo)
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemoOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_TextDetailsMemo_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_TextDetailsMemo_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo.Builder.class);
+        }
+
+        // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo.newBuilder()
+        private Builder() {
+
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          super(parent);
+
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          bitField0_ = 0;
+          title_ = "";
+          text_ = "";
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_TextDetailsMemo_descriptor;
+        }
+
+        @java.lang.Override
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo getDefaultInstanceForType() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo build() {
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo buildPartial() {
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo(this);
+          if (bitField0_ != 0) { buildPartial0(result); }
+          onBuilt();
+          return result;
+        }
+
+        private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo result) {
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) != 0)) {
+            result.title_ = title_;
+            to_bitField0_ |= 0x00000001;
+          }
+          if (((from_bitField0_ & 0x00000002) != 0)) {
+            result.text_ = text_;
+            to_bitField0_ |= 0x00000002;
+          }
+          result.bitField0_ |= to_bitField0_;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo) {
+            return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo other) {
+          if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo.getDefaultInstance()) return this;
+          if (other.hasTitle()) {
+            title_ = other.title_;
+            bitField0_ |= 0x00000001;
+            onChanged();
+          }
+          if (other.hasText()) {
+            text_ = other.text_;
+            bitField0_ |= 0x00000002;
+            onChanged();
+          }
+          this.mergeUnknownFields(other.getUnknownFields());
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          if (!hasTitle()) {
+            return false;
+          }
+          if (!hasText()) {
+            return false;
+          }
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          if (extensionRegistry == null) {
+            throw new java.lang.NullPointerException();
+          }
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                case 10: {
+                  title_ = input.readBytes();
+                  bitField0_ |= 0x00000001;
+                  break;
+                } // case 10
+                case 18: {
+                  text_ = input.readBytes();
+                  bitField0_ |= 0x00000002;
+                  break;
+                } // case 18
+                default: {
+                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                    done = true; // was an endgroup tag
+                  }
+                  break;
+                } // default:
+              } // switch (tag)
+            } // while (!done)
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.unwrapIOException();
+          } finally {
+            onChanged();
+          } // finally
+          return this;
+        }
+        private int bitField0_;
+
+        private java.lang.Object title_ = "";
+        /**
+         * <pre>
+         * plain-text heading
+         * </pre>
+         *
+         * <code>required string title = 1;</code>
+         * @return Whether the title field is set.
+         */
+        public boolean hasTitle() {
+          return ((bitField0_ & 0x00000001) != 0);
+        }
+        /**
+         * <pre>
+         * plain-text heading
+         * </pre>
+         *
+         * <code>required string title = 1;</code>
+         * @return The title.
+         */
+        public java.lang.String getTitle() {
+          java.lang.Object ref = title_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              title_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <pre>
+         * plain-text heading
+         * </pre>
+         *
+         * <code>required string title = 1;</code>
+         * @return The bytes for title.
+         */
+        public com.google.protobuf.ByteString
+            getTitleBytes() {
+          java.lang.Object ref = title_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            title_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <pre>
+         * plain-text heading
+         * </pre>
+         *
+         * <code>required string title = 1;</code>
+         * @param value The title to set.
+         * @return This builder for chaining.
+         */
+        public Builder setTitle(
+            java.lang.String value) {
+          if (value == null) { throw new NullPointerException(); }
+          title_ = value;
+          bitField0_ |= 0x00000001;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * plain-text heading
+         * </pre>
+         *
+         * <code>required string title = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearTitle() {
+          title_ = getDefaultInstance().getTitle();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * plain-text heading
+         * </pre>
+         *
+         * <code>required string title = 1;</code>
+         * @param value The bytes for title to set.
+         * @return This builder for chaining.
+         */
+        public Builder setTitleBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) { throw new NullPointerException(); }
+          title_ = value;
+          bitField0_ |= 0x00000001;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object text_ = "";
+        /**
+         * <pre>
+         * plain-text note containing additional details about the payment
+         * </pre>
+         *
+         * <code>required string text = 2;</code>
+         * @return Whether the text field is set.
+         */
+        public boolean hasText() {
+          return ((bitField0_ & 0x00000002) != 0);
+        }
+        /**
+         * <pre>
+         * plain-text note containing additional details about the payment
+         * </pre>
+         *
+         * <code>required string text = 2;</code>
+         * @return The text.
+         */
+        public java.lang.String getText() {
+          java.lang.Object ref = text_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              text_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <pre>
+         * plain-text note containing additional details about the payment
+         * </pre>
+         *
+         * <code>required string text = 2;</code>
+         * @return The bytes for text.
+         */
+        public com.google.protobuf.ByteString
+            getTextBytes() {
+          java.lang.Object ref = text_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            text_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <pre>
+         * plain-text note containing additional details about the payment
+         * </pre>
+         *
+         * <code>required string text = 2;</code>
+         * @param value The text to set.
+         * @return This builder for chaining.
+         */
+        public Builder setText(
+            java.lang.String value) {
+          if (value == null) { throw new NullPointerException(); }
+          text_ = value;
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * plain-text note containing additional details about the payment
+         * </pre>
+         *
+         * <code>required string text = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearText() {
+          text_ = getDefaultInstance().getText();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * plain-text note containing additional details about the payment
+         * </pre>
+         *
+         * <code>required string text = 2;</code>
+         * @param value The bytes for text to set.
+         * @return This builder for chaining.
+         */
+        public Builder setTextBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) { throw new NullPointerException(); }
+          text_ = value;
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:hw.trezor.messages.common.PaymentRequest.TextDetailsMemo)
+      }
+
+      // @@protoc_insertion_point(class_scope:hw.trezor.messages.common.PaymentRequest.TextDetailsMemo)
+      private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo();
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<TextDetailsMemo>
+          PARSER = new com.google.protobuf.AbstractParser<TextDetailsMemo>() {
+        @java.lang.Override
+        public TextDetailsMemo parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
+
+      public static com.google.protobuf.Parser<TextDetailsMemo> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<TextDetailsMemo> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.TextDetailsMemo getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    public interface RefundMemoOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:hw.trezor.messages.common.PaymentRequest.RefundMemo)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <pre>
+       * the address where the payment should be refunded if necessary
+       * </pre>
+       *
+       * <code>required string address = 1;</code>
+       * @return Whether the address field is set.
+       */
+      boolean hasAddress();
+      /**
+       * <pre>
+       * the address where the payment should be refunded if necessary
+       * </pre>
+       *
+       * <code>required string address = 1;</code>
+       * @return The address.
+       */
+      java.lang.String getAddress();
+      /**
+       * <pre>
+       * the address where the payment should be refunded if necessary
+       * </pre>
+       *
+       * <code>required string address = 1;</code>
+       * @return The bytes for address.
+       */
+      com.google.protobuf.ByteString
+          getAddressBytes();
+
+      /**
+       * <pre>
+       * BIP-32 path to derive the key from the master node
+       * </pre>
+       *
+       * <code>repeated uint32 address_n = 2;</code>
+       * @return A list containing the addressN.
+       */
+      java.util.List<java.lang.Integer> getAddressNList();
+      /**
+       * <pre>
+       * BIP-32 path to derive the key from the master node
+       * </pre>
+       *
+       * <code>repeated uint32 address_n = 2;</code>
+       * @return The count of addressN.
+       */
+      int getAddressNCount();
+      /**
+       * <pre>
+       * BIP-32 path to derive the key from the master node
+       * </pre>
+       *
+       * <code>repeated uint32 address_n = 2;</code>
+       * @param index The index of the element to return.
+       * @return The addressN at the given index.
+       */
+      int getAddressN(int index);
+
+      /**
+       * <pre>
+       * the MAC returned by GetAddress
+       * </pre>
+       *
+       * <code>required bytes mac = 3;</code>
+       * @return Whether the mac field is set.
+       */
+      boolean hasMac();
+      /**
+       * <pre>
+       * the MAC returned by GetAddress
+       * </pre>
+       *
+       * <code>required bytes mac = 3;</code>
+       * @return The mac.
+       */
+      com.google.protobuf.ByteString getMac();
+    }
+    /**
+     * Protobuf type {@code hw.trezor.messages.common.PaymentRequest.RefundMemo}
+     */
+    public static final class RefundMemo extends
+        com.google.protobuf.GeneratedMessage implements
+        // @@protoc_insertion_point(message_implements:hw.trezor.messages.common.PaymentRequest.RefundMemo)
+        RefundMemoOrBuilder {
+    private static final long serialVersionUID = 0L;
+      static {
+        com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+          com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+          /* major= */ 4,
+          /* minor= */ 28,
+          /* patch= */ 3,
+          /* suffix= */ "",
+          RefundMemo.class.getName());
+      }
+      // Use RefundMemo.newBuilder() to construct.
+      private RefundMemo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+        super(builder);
+      }
+      private RefundMemo() {
+        address_ = "";
+        addressN_ = emptyIntList();
+        mac_ = com.google.protobuf.ByteString.EMPTY;
+      }
+
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_RefundMemo_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_RefundMemo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo.Builder.class);
+      }
+
+      private int bitField0_;
+      public static final int ADDRESS_FIELD_NUMBER = 1;
+      @SuppressWarnings("serial")
+      private volatile java.lang.Object address_ = "";
+      /**
+       * <pre>
+       * the address where the payment should be refunded if necessary
+       * </pre>
+       *
+       * <code>required string address = 1;</code>
+       * @return Whether the address field is set.
+       */
+      @java.lang.Override
+      public boolean hasAddress() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * the address where the payment should be refunded if necessary
+       * </pre>
+       *
+       * <code>required string address = 1;</code>
+       * @return The address.
+       */
+      @java.lang.Override
+      public java.lang.String getAddress() {
+        java.lang.Object ref = address_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            address_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <pre>
+       * the address where the payment should be refunded if necessary
+       * </pre>
+       *
+       * <code>required string address = 1;</code>
+       * @return The bytes for address.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getAddressBytes() {
+        java.lang.Object ref = address_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          address_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int ADDRESS_N_FIELD_NUMBER = 2;
+      @SuppressWarnings("serial")
+      private com.google.protobuf.Internal.IntList addressN_ =
+          emptyIntList();
+      /**
+       * <pre>
+       * BIP-32 path to derive the key from the master node
+       * </pre>
+       *
+       * <code>repeated uint32 address_n = 2;</code>
+       * @return A list containing the addressN.
+       */
+      @java.lang.Override
+      public java.util.List<java.lang.Integer>
+          getAddressNList() {
+        return addressN_;
+      }
+      /**
+       * <pre>
+       * BIP-32 path to derive the key from the master node
+       * </pre>
+       *
+       * <code>repeated uint32 address_n = 2;</code>
+       * @return The count of addressN.
+       */
+      public int getAddressNCount() {
+        return addressN_.size();
+      }
+      /**
+       * <pre>
+       * BIP-32 path to derive the key from the master node
+       * </pre>
+       *
+       * <code>repeated uint32 address_n = 2;</code>
+       * @param index The index of the element to return.
+       * @return The addressN at the given index.
+       */
+      public int getAddressN(int index) {
+        return addressN_.getInt(index);
+      }
+
+      public static final int MAC_FIELD_NUMBER = 3;
+      private com.google.protobuf.ByteString mac_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * the MAC returned by GetAddress
+       * </pre>
+       *
+       * <code>required bytes mac = 3;</code>
+       * @return Whether the mac field is set.
+       */
+      @java.lang.Override
+      public boolean hasMac() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * the MAC returned by GetAddress
+       * </pre>
+       *
+       * <code>required bytes mac = 3;</code>
+       * @return The mac.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getMac() {
+        return mac_;
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        if (!hasAddress()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!hasMac()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          com.google.protobuf.GeneratedMessage.writeString(output, 1, address_);
+        }
+        for (int i = 0; i < addressN_.size(); i++) {
+          output.writeUInt32(2, addressN_.getInt(i));
+        }
+        if (((bitField0_ & 0x00000002) != 0)) {
+          output.writeBytes(3, mac_);
+        }
+        getUnknownFields().writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          size += com.google.protobuf.GeneratedMessage.computeStringSize(1, address_);
+        }
+        {
+          int dataSize = 0;
+          for (int i = 0; i < addressN_.size(); i++) {
+            dataSize += com.google.protobuf.CodedOutputStream
+              .computeUInt32SizeNoTag(addressN_.getInt(i));
+          }
+          size += dataSize;
+          size += 1 * getAddressNList().size();
+        }
+        if (((bitField0_ & 0x00000002) != 0)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBytesSize(3, mac_);
+        }
+        size += getUnknownFields().getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo)) {
+          return super.equals(obj);
+        }
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo) obj;
+
+        if (hasAddress() != other.hasAddress()) return false;
+        if (hasAddress()) {
+          if (!getAddress()
+              .equals(other.getAddress())) return false;
+        }
+        if (!getAddressNList()
+            .equals(other.getAddressNList())) return false;
+        if (hasMac() != other.hasMac()) return false;
+        if (hasMac()) {
+          if (!getMac()
+              .equals(other.getMac())) return false;
+        }
+        if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        if (hasAddress()) {
+          hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
+          hash = (53 * hash) + getAddress().hashCode();
+        }
+        if (getAddressNCount() > 0) {
+          hash = (37 * hash) + ADDRESS_N_FIELD_NUMBER;
+          hash = (53 * hash) + getAddressNList().hashCode();
+        }
+        if (hasMac()) {
+          hash = (37 * hash) + MAC_FIELD_NUMBER;
+          hash = (53 * hash) + getMac().hashCode();
+        }
+        hash = (29 * hash) + getUnknownFields().hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code hw.trezor.messages.common.PaymentRequest.RefundMemo}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:hw.trezor.messages.common.PaymentRequest.RefundMemo)
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemoOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_RefundMemo_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_RefundMemo_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo.Builder.class);
+        }
+
+        // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo.newBuilder()
+        private Builder() {
+
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          super(parent);
+
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          bitField0_ = 0;
+          address_ = "";
+          addressN_ = emptyIntList();
+          mac_ = com.google.protobuf.ByteString.EMPTY;
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_RefundMemo_descriptor;
+        }
+
+        @java.lang.Override
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo getDefaultInstanceForType() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo build() {
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo buildPartial() {
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo(this);
+          if (bitField0_ != 0) { buildPartial0(result); }
+          onBuilt();
+          return result;
+        }
+
+        private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo result) {
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) != 0)) {
+            result.address_ = address_;
+            to_bitField0_ |= 0x00000001;
+          }
+          if (((from_bitField0_ & 0x00000002) != 0)) {
+            addressN_.makeImmutable();
+            result.addressN_ = addressN_;
+          }
+          if (((from_bitField0_ & 0x00000004) != 0)) {
+            result.mac_ = mac_;
+            to_bitField0_ |= 0x00000002;
+          }
+          result.bitField0_ |= to_bitField0_;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo) {
+            return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo other) {
+          if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo.getDefaultInstance()) return this;
+          if (other.hasAddress()) {
+            address_ = other.address_;
+            bitField0_ |= 0x00000001;
+            onChanged();
+          }
+          if (!other.addressN_.isEmpty()) {
+            if (addressN_.isEmpty()) {
+              addressN_ = other.addressN_;
+              addressN_.makeImmutable();
+              bitField0_ |= 0x00000002;
+            } else {
+              ensureAddressNIsMutable();
+              addressN_.addAll(other.addressN_);
+            }
+            onChanged();
+          }
+          if (other.hasMac()) {
+            setMac(other.getMac());
+          }
+          this.mergeUnknownFields(other.getUnknownFields());
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          if (!hasAddress()) {
+            return false;
+          }
+          if (!hasMac()) {
+            return false;
+          }
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          if (extensionRegistry == null) {
+            throw new java.lang.NullPointerException();
+          }
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                case 10: {
+                  address_ = input.readBytes();
+                  bitField0_ |= 0x00000001;
+                  break;
+                } // case 10
+                case 16: {
+                  int v = input.readUInt32();
+                  ensureAddressNIsMutable();
+                  addressN_.addInt(v);
+                  break;
+                } // case 16
+                case 18: {
+                  int length = input.readRawVarint32();
+                  int limit = input.pushLimit(length);
+                  ensureAddressNIsMutable();
+                  while (input.getBytesUntilLimit() > 0) {
+                    addressN_.addInt(input.readUInt32());
+                  }
+                  input.popLimit(limit);
+                  break;
+                } // case 18
+                case 26: {
+                  mac_ = input.readBytes();
+                  bitField0_ |= 0x00000004;
+                  break;
+                } // case 26
+                default: {
+                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                    done = true; // was an endgroup tag
+                  }
+                  break;
+                } // default:
+              } // switch (tag)
+            } // while (!done)
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.unwrapIOException();
+          } finally {
+            onChanged();
+          } // finally
+          return this;
+        }
+        private int bitField0_;
+
+        private java.lang.Object address_ = "";
+        /**
+         * <pre>
+         * the address where the payment should be refunded if necessary
+         * </pre>
+         *
+         * <code>required string address = 1;</code>
+         * @return Whether the address field is set.
+         */
+        public boolean hasAddress() {
+          return ((bitField0_ & 0x00000001) != 0);
+        }
+        /**
+         * <pre>
+         * the address where the payment should be refunded if necessary
+         * </pre>
+         *
+         * <code>required string address = 1;</code>
+         * @return The address.
+         */
+        public java.lang.String getAddress() {
+          java.lang.Object ref = address_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              address_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <pre>
+         * the address where the payment should be refunded if necessary
+         * </pre>
+         *
+         * <code>required string address = 1;</code>
+         * @return The bytes for address.
+         */
+        public com.google.protobuf.ByteString
+            getAddressBytes() {
+          java.lang.Object ref = address_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            address_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <pre>
+         * the address where the payment should be refunded if necessary
+         * </pre>
+         *
+         * <code>required string address = 1;</code>
+         * @param value The address to set.
+         * @return This builder for chaining.
+         */
+        public Builder setAddress(
+            java.lang.String value) {
+          if (value == null) { throw new NullPointerException(); }
+          address_ = value;
+          bitField0_ |= 0x00000001;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * the address where the payment should be refunded if necessary
+         * </pre>
+         *
+         * <code>required string address = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearAddress() {
+          address_ = getDefaultInstance().getAddress();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * the address where the payment should be refunded if necessary
+         * </pre>
+         *
+         * <code>required string address = 1;</code>
+         * @param value The bytes for address to set.
+         * @return This builder for chaining.
+         */
+        public Builder setAddressBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) { throw new NullPointerException(); }
+          address_ = value;
+          bitField0_ |= 0x00000001;
+          onChanged();
+          return this;
+        }
+
+        private com.google.protobuf.Internal.IntList addressN_ = emptyIntList();
+        private void ensureAddressNIsMutable() {
+          if (!addressN_.isModifiable()) {
+            addressN_ = makeMutableCopy(addressN_);
+          }
+          bitField0_ |= 0x00000002;
+        }
+        /**
+         * <pre>
+         * BIP-32 path to derive the key from the master node
+         * </pre>
+         *
+         * <code>repeated uint32 address_n = 2;</code>
+         * @return A list containing the addressN.
+         */
+        public java.util.List<java.lang.Integer>
+            getAddressNList() {
+          addressN_.makeImmutable();
+          return addressN_;
+        }
+        /**
+         * <pre>
+         * BIP-32 path to derive the key from the master node
+         * </pre>
+         *
+         * <code>repeated uint32 address_n = 2;</code>
+         * @return The count of addressN.
+         */
+        public int getAddressNCount() {
+          return addressN_.size();
+        }
+        /**
+         * <pre>
+         * BIP-32 path to derive the key from the master node
+         * </pre>
+         *
+         * <code>repeated uint32 address_n = 2;</code>
+         * @param index The index of the element to return.
+         * @return The addressN at the given index.
+         */
+        public int getAddressN(int index) {
+          return addressN_.getInt(index);
+        }
+        /**
+         * <pre>
+         * BIP-32 path to derive the key from the master node
+         * </pre>
+         *
+         * <code>repeated uint32 address_n = 2;</code>
+         * @param index The index to set the value at.
+         * @param value The addressN to set.
+         * @return This builder for chaining.
+         */
+        public Builder setAddressN(
+            int index, int value) {
+
+          ensureAddressNIsMutable();
+          addressN_.setInt(index, value);
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * BIP-32 path to derive the key from the master node
+         * </pre>
+         *
+         * <code>repeated uint32 address_n = 2;</code>
+         * @param value The addressN to add.
+         * @return This builder for chaining.
+         */
+        public Builder addAddressN(int value) {
+
+          ensureAddressNIsMutable();
+          addressN_.addInt(value);
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * BIP-32 path to derive the key from the master node
+         * </pre>
+         *
+         * <code>repeated uint32 address_n = 2;</code>
+         * @param values The addressN to add.
+         * @return This builder for chaining.
+         */
+        public Builder addAllAddressN(
+            java.lang.Iterable<? extends java.lang.Integer> values) {
+          ensureAddressNIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, addressN_);
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * BIP-32 path to derive the key from the master node
+         * </pre>
+         *
+         * <code>repeated uint32 address_n = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearAddressN() {
+          addressN_ = emptyIntList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+          return this;
+        }
+
+        private com.google.protobuf.ByteString mac_ = com.google.protobuf.ByteString.EMPTY;
+        /**
+         * <pre>
+         * the MAC returned by GetAddress
+         * </pre>
+         *
+         * <code>required bytes mac = 3;</code>
+         * @return Whether the mac field is set.
+         */
+        @java.lang.Override
+        public boolean hasMac() {
+          return ((bitField0_ & 0x00000004) != 0);
+        }
+        /**
+         * <pre>
+         * the MAC returned by GetAddress
+         * </pre>
+         *
+         * <code>required bytes mac = 3;</code>
+         * @return The mac.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString getMac() {
+          return mac_;
+        }
+        /**
+         * <pre>
+         * the MAC returned by GetAddress
+         * </pre>
+         *
+         * <code>required bytes mac = 3;</code>
+         * @param value The mac to set.
+         * @return This builder for chaining.
+         */
+        public Builder setMac(com.google.protobuf.ByteString value) {
+          if (value == null) { throw new NullPointerException(); }
+          mac_ = value;
+          bitField0_ |= 0x00000004;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * the MAC returned by GetAddress
+         * </pre>
+         *
+         * <code>required bytes mac = 3;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearMac() {
+          bitField0_ = (bitField0_ & ~0x00000004);
+          mac_ = getDefaultInstance().getMac();
+          onChanged();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:hw.trezor.messages.common.PaymentRequest.RefundMemo)
+      }
+
+      // @@protoc_insertion_point(class_scope:hw.trezor.messages.common.PaymentRequest.RefundMemo)
+      private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo();
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<RefundMemo>
+          PARSER = new com.google.protobuf.AbstractParser<RefundMemo>() {
+        @java.lang.Override
+        public RefundMemo parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
+
+      public static com.google.protobuf.Parser<RefundMemo> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<RefundMemo> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.RefundMemo getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    public interface CoinPurchaseMemoOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:hw.trezor.messages.common.PaymentRequest.CoinPurchaseMemo)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <pre>
+       * the SLIP-0044 coin type of the address
+       * </pre>
+       *
+       * <code>required uint32 coin_type = 1;</code>
+       * @return Whether the coinType field is set.
+       */
+      boolean hasCoinType();
+      /**
+       * <pre>
+       * the SLIP-0044 coin type of the address
+       * </pre>
+       *
+       * <code>required uint32 coin_type = 1;</code>
+       * @return The coinType.
+       */
+      int getCoinType();
+
+      /**
+       * <pre>
+       * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
+       * </pre>
+       *
+       * <code>required string amount = 2;</code>
+       * @return Whether the amount field is set.
+       */
+      boolean hasAmount();
+      /**
+       * <pre>
+       * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
+       * </pre>
+       *
+       * <code>required string amount = 2;</code>
+       * @return The amount.
+       */
+      java.lang.String getAmount();
+      /**
+       * <pre>
+       * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
+       * </pre>
+       *
+       * <code>required string amount = 2;</code>
+       * @return The bytes for amount.
+       */
+      com.google.protobuf.ByteString
+          getAmountBytes();
+
+      /**
+       * <pre>
+       * the address where the coin purchase will be delivered
+       * </pre>
+       *
+       * <code>required string address = 3;</code>
+       * @return Whether the address field is set.
+       */
+      boolean hasAddress();
+      /**
+       * <pre>
+       * the address where the coin purchase will be delivered
+       * </pre>
+       *
+       * <code>required string address = 3;</code>
+       * @return The address.
+       */
+      java.lang.String getAddress();
+      /**
+       * <pre>
+       * the address where the coin purchase will be delivered
+       * </pre>
+       *
+       * <code>required string address = 3;</code>
+       * @return The bytes for address.
+       */
+      com.google.protobuf.ByteString
+          getAddressBytes();
+
+      /**
+       * <pre>
+       * BIP-32 path to derive the key from the master node
+       * </pre>
+       *
+       * <code>repeated uint32 address_n = 4;</code>
+       * @return A list containing the addressN.
+       */
+      java.util.List<java.lang.Integer> getAddressNList();
+      /**
+       * <pre>
+       * BIP-32 path to derive the key from the master node
+       * </pre>
+       *
+       * <code>repeated uint32 address_n = 4;</code>
+       * @return The count of addressN.
+       */
+      int getAddressNCount();
+      /**
+       * <pre>
+       * BIP-32 path to derive the key from the master node
+       * </pre>
+       *
+       * <code>repeated uint32 address_n = 4;</code>
+       * @param index The index of the element to return.
+       * @return The addressN at the given index.
+       */
+      int getAddressN(int index);
+
+      /**
+       * <pre>
+       * the MAC returned by GetAddress
+       * </pre>
+       *
+       * <code>required bytes mac = 5;</code>
+       * @return Whether the mac field is set.
+       */
+      boolean hasMac();
+      /**
+       * <pre>
+       * the MAC returned by GetAddress
+       * </pre>
+       *
+       * <code>required bytes mac = 5;</code>
+       * @return The mac.
+       */
+      com.google.protobuf.ByteString getMac();
+    }
+    /**
+     * Protobuf type {@code hw.trezor.messages.common.PaymentRequest.CoinPurchaseMemo}
+     */
+    public static final class CoinPurchaseMemo extends
+        com.google.protobuf.GeneratedMessage implements
+        // @@protoc_insertion_point(message_implements:hw.trezor.messages.common.PaymentRequest.CoinPurchaseMemo)
+        CoinPurchaseMemoOrBuilder {
+    private static final long serialVersionUID = 0L;
+      static {
+        com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+          com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+          /* major= */ 4,
+          /* minor= */ 28,
+          /* patch= */ 3,
+          /* suffix= */ "",
+          CoinPurchaseMemo.class.getName());
+      }
+      // Use CoinPurchaseMemo.newBuilder() to construct.
+      private CoinPurchaseMemo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+        super(builder);
+      }
+      private CoinPurchaseMemo() {
+        amount_ = "";
+        address_ = "";
+        addressN_ = emptyIntList();
+        mac_ = com.google.protobuf.ByteString.EMPTY;
+      }
+
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_CoinPurchaseMemo_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_CoinPurchaseMemo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo.Builder.class);
+      }
+
+      private int bitField0_;
+      public static final int COIN_TYPE_FIELD_NUMBER = 1;
+      private int coinType_ = 0;
+      /**
+       * <pre>
+       * the SLIP-0044 coin type of the address
+       * </pre>
+       *
+       * <code>required uint32 coin_type = 1;</code>
+       * @return Whether the coinType field is set.
+       */
+      @java.lang.Override
+      public boolean hasCoinType() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * the SLIP-0044 coin type of the address
+       * </pre>
+       *
+       * <code>required uint32 coin_type = 1;</code>
+       * @return The coinType.
+       */
+      @java.lang.Override
+      public int getCoinType() {
+        return coinType_;
+      }
+
+      public static final int AMOUNT_FIELD_NUMBER = 2;
+      @SuppressWarnings("serial")
+      private volatile java.lang.Object amount_ = "";
+      /**
+       * <pre>
+       * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
+       * </pre>
+       *
+       * <code>required string amount = 2;</code>
+       * @return Whether the amount field is set.
+       */
+      @java.lang.Override
+      public boolean hasAmount() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
+       * </pre>
+       *
+       * <code>required string amount = 2;</code>
+       * @return The amount.
+       */
+      @java.lang.Override
+      public java.lang.String getAmount() {
+        java.lang.Object ref = amount_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            amount_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <pre>
+       * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
+       * </pre>
+       *
+       * <code>required string amount = 2;</code>
+       * @return The bytes for amount.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getAmountBytes() {
+        java.lang.Object ref = amount_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          amount_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int ADDRESS_FIELD_NUMBER = 3;
+      @SuppressWarnings("serial")
+      private volatile java.lang.Object address_ = "";
+      /**
+       * <pre>
+       * the address where the coin purchase will be delivered
+       * </pre>
+       *
+       * <code>required string address = 3;</code>
+       * @return Whether the address field is set.
+       */
+      @java.lang.Override
+      public boolean hasAddress() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <pre>
+       * the address where the coin purchase will be delivered
+       * </pre>
+       *
+       * <code>required string address = 3;</code>
+       * @return The address.
+       */
+      @java.lang.Override
+      public java.lang.String getAddress() {
+        java.lang.Object ref = address_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            address_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <pre>
+       * the address where the coin purchase will be delivered
+       * </pre>
+       *
+       * <code>required string address = 3;</code>
+       * @return The bytes for address.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getAddressBytes() {
+        java.lang.Object ref = address_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          address_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int ADDRESS_N_FIELD_NUMBER = 4;
+      @SuppressWarnings("serial")
+      private com.google.protobuf.Internal.IntList addressN_ =
+          emptyIntList();
+      /**
+       * <pre>
+       * BIP-32 path to derive the key from the master node
+       * </pre>
+       *
+       * <code>repeated uint32 address_n = 4;</code>
+       * @return A list containing the addressN.
+       */
+      @java.lang.Override
+      public java.util.List<java.lang.Integer>
+          getAddressNList() {
+        return addressN_;
+      }
+      /**
+       * <pre>
+       * BIP-32 path to derive the key from the master node
+       * </pre>
+       *
+       * <code>repeated uint32 address_n = 4;</code>
+       * @return The count of addressN.
+       */
+      public int getAddressNCount() {
+        return addressN_.size();
+      }
+      /**
+       * <pre>
+       * BIP-32 path to derive the key from the master node
+       * </pre>
+       *
+       * <code>repeated uint32 address_n = 4;</code>
+       * @param index The index of the element to return.
+       * @return The addressN at the given index.
+       */
+      public int getAddressN(int index) {
+        return addressN_.getInt(index);
+      }
+
+      public static final int MAC_FIELD_NUMBER = 5;
+      private com.google.protobuf.ByteString mac_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * the MAC returned by GetAddress
+       * </pre>
+       *
+       * <code>required bytes mac = 5;</code>
+       * @return Whether the mac field is set.
+       */
+      @java.lang.Override
+      public boolean hasMac() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <pre>
+       * the MAC returned by GetAddress
+       * </pre>
+       *
+       * <code>required bytes mac = 5;</code>
+       * @return The mac.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getMac() {
+        return mac_;
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        if (!hasCoinType()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!hasAmount()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!hasAddress()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!hasMac()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          output.writeUInt32(1, coinType_);
+        }
+        if (((bitField0_ & 0x00000002) != 0)) {
+          com.google.protobuf.GeneratedMessage.writeString(output, 2, amount_);
+        }
+        if (((bitField0_ & 0x00000004) != 0)) {
+          com.google.protobuf.GeneratedMessage.writeString(output, 3, address_);
+        }
+        for (int i = 0; i < addressN_.size(); i++) {
+          output.writeUInt32(4, addressN_.getInt(i));
+        }
+        if (((bitField0_ & 0x00000008) != 0)) {
+          output.writeBytes(5, mac_);
+        }
+        getUnknownFields().writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(1, coinType_);
+        }
+        if (((bitField0_ & 0x00000002) != 0)) {
+          size += com.google.protobuf.GeneratedMessage.computeStringSize(2, amount_);
+        }
+        if (((bitField0_ & 0x00000004) != 0)) {
+          size += com.google.protobuf.GeneratedMessage.computeStringSize(3, address_);
+        }
+        {
+          int dataSize = 0;
+          for (int i = 0; i < addressN_.size(); i++) {
+            dataSize += com.google.protobuf.CodedOutputStream
+              .computeUInt32SizeNoTag(addressN_.getInt(i));
+          }
+          size += dataSize;
+          size += 1 * getAddressNList().size();
+        }
+        if (((bitField0_ & 0x00000008) != 0)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBytesSize(5, mac_);
+        }
+        size += getUnknownFields().getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo)) {
+          return super.equals(obj);
+        }
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo) obj;
+
+        if (hasCoinType() != other.hasCoinType()) return false;
+        if (hasCoinType()) {
+          if (getCoinType()
+              != other.getCoinType()) return false;
+        }
+        if (hasAmount() != other.hasAmount()) return false;
+        if (hasAmount()) {
+          if (!getAmount()
+              .equals(other.getAmount())) return false;
+        }
+        if (hasAddress() != other.hasAddress()) return false;
+        if (hasAddress()) {
+          if (!getAddress()
+              .equals(other.getAddress())) return false;
+        }
+        if (!getAddressNList()
+            .equals(other.getAddressNList())) return false;
+        if (hasMac() != other.hasMac()) return false;
+        if (hasMac()) {
+          if (!getMac()
+              .equals(other.getMac())) return false;
+        }
+        if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        if (hasCoinType()) {
+          hash = (37 * hash) + COIN_TYPE_FIELD_NUMBER;
+          hash = (53 * hash) + getCoinType();
+        }
+        if (hasAmount()) {
+          hash = (37 * hash) + AMOUNT_FIELD_NUMBER;
+          hash = (53 * hash) + getAmount().hashCode();
+        }
+        if (hasAddress()) {
+          hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
+          hash = (53 * hash) + getAddress().hashCode();
+        }
+        if (getAddressNCount() > 0) {
+          hash = (37 * hash) + ADDRESS_N_FIELD_NUMBER;
+          hash = (53 * hash) + getAddressNList().hashCode();
+        }
+        if (hasMac()) {
+          hash = (37 * hash) + MAC_FIELD_NUMBER;
+          hash = (53 * hash) + getMac().hashCode();
+        }
+        hash = (29 * hash) + getUnknownFields().hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code hw.trezor.messages.common.PaymentRequest.CoinPurchaseMemo}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:hw.trezor.messages.common.PaymentRequest.CoinPurchaseMemo)
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemoOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_CoinPurchaseMemo_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_CoinPurchaseMemo_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo.Builder.class);
+        }
+
+        // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo.newBuilder()
+        private Builder() {
+
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          super(parent);
+
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          bitField0_ = 0;
+          coinType_ = 0;
+          amount_ = "";
+          address_ = "";
+          addressN_ = emptyIntList();
+          mac_ = com.google.protobuf.ByteString.EMPTY;
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_CoinPurchaseMemo_descriptor;
+        }
+
+        @java.lang.Override
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo getDefaultInstanceForType() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo build() {
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo buildPartial() {
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo(this);
+          if (bitField0_ != 0) { buildPartial0(result); }
+          onBuilt();
+          return result;
+        }
+
+        private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo result) {
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) != 0)) {
+            result.coinType_ = coinType_;
+            to_bitField0_ |= 0x00000001;
+          }
+          if (((from_bitField0_ & 0x00000002) != 0)) {
+            result.amount_ = amount_;
+            to_bitField0_ |= 0x00000002;
+          }
+          if (((from_bitField0_ & 0x00000004) != 0)) {
+            result.address_ = address_;
+            to_bitField0_ |= 0x00000004;
+          }
+          if (((from_bitField0_ & 0x00000008) != 0)) {
+            addressN_.makeImmutable();
+            result.addressN_ = addressN_;
+          }
+          if (((from_bitField0_ & 0x00000010) != 0)) {
+            result.mac_ = mac_;
+            to_bitField0_ |= 0x00000008;
+          }
+          result.bitField0_ |= to_bitField0_;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo) {
+            return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo other) {
+          if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo.getDefaultInstance()) return this;
+          if (other.hasCoinType()) {
+            setCoinType(other.getCoinType());
+          }
+          if (other.hasAmount()) {
+            amount_ = other.amount_;
+            bitField0_ |= 0x00000002;
+            onChanged();
+          }
+          if (other.hasAddress()) {
+            address_ = other.address_;
+            bitField0_ |= 0x00000004;
+            onChanged();
+          }
+          if (!other.addressN_.isEmpty()) {
+            if (addressN_.isEmpty()) {
+              addressN_ = other.addressN_;
+              addressN_.makeImmutable();
+              bitField0_ |= 0x00000008;
+            } else {
+              ensureAddressNIsMutable();
+              addressN_.addAll(other.addressN_);
+            }
+            onChanged();
+          }
+          if (other.hasMac()) {
+            setMac(other.getMac());
+          }
+          this.mergeUnknownFields(other.getUnknownFields());
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          if (!hasCoinType()) {
+            return false;
+          }
+          if (!hasAmount()) {
+            return false;
+          }
+          if (!hasAddress()) {
+            return false;
+          }
+          if (!hasMac()) {
+            return false;
+          }
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          if (extensionRegistry == null) {
+            throw new java.lang.NullPointerException();
+          }
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                case 8: {
+                  coinType_ = input.readUInt32();
+                  bitField0_ |= 0x00000001;
+                  break;
+                } // case 8
+                case 18: {
+                  amount_ = input.readBytes();
+                  bitField0_ |= 0x00000002;
+                  break;
+                } // case 18
+                case 26: {
+                  address_ = input.readBytes();
+                  bitField0_ |= 0x00000004;
+                  break;
+                } // case 26
+                case 32: {
+                  int v = input.readUInt32();
+                  ensureAddressNIsMutable();
+                  addressN_.addInt(v);
+                  break;
+                } // case 32
+                case 34: {
+                  int length = input.readRawVarint32();
+                  int limit = input.pushLimit(length);
+                  ensureAddressNIsMutable();
+                  while (input.getBytesUntilLimit() > 0) {
+                    addressN_.addInt(input.readUInt32());
+                  }
+                  input.popLimit(limit);
+                  break;
+                } // case 34
+                case 42: {
+                  mac_ = input.readBytes();
+                  bitField0_ |= 0x00000010;
+                  break;
+                } // case 42
+                default: {
+                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                    done = true; // was an endgroup tag
+                  }
+                  break;
+                } // default:
+              } // switch (tag)
+            } // while (!done)
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.unwrapIOException();
+          } finally {
+            onChanged();
+          } // finally
+          return this;
+        }
+        private int bitField0_;
+
+        private int coinType_ ;
+        /**
+         * <pre>
+         * the SLIP-0044 coin type of the address
+         * </pre>
+         *
+         * <code>required uint32 coin_type = 1;</code>
+         * @return Whether the coinType field is set.
+         */
+        @java.lang.Override
+        public boolean hasCoinType() {
+          return ((bitField0_ & 0x00000001) != 0);
+        }
+        /**
+         * <pre>
+         * the SLIP-0044 coin type of the address
+         * </pre>
+         *
+         * <code>required uint32 coin_type = 1;</code>
+         * @return The coinType.
+         */
+        @java.lang.Override
+        public int getCoinType() {
+          return coinType_;
+        }
+        /**
+         * <pre>
+         * the SLIP-0044 coin type of the address
+         * </pre>
+         *
+         * <code>required uint32 coin_type = 1;</code>
+         * @param value The coinType to set.
+         * @return This builder for chaining.
+         */
+        public Builder setCoinType(int value) {
+
+          coinType_ = value;
+          bitField0_ |= 0x00000001;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * the SLIP-0044 coin type of the address
+         * </pre>
+         *
+         * <code>required uint32 coin_type = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearCoinType() {
+          bitField0_ = (bitField0_ & ~0x00000001);
+          coinType_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object amount_ = "";
+        /**
+         * <pre>
+         * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
+         * </pre>
+         *
+         * <code>required string amount = 2;</code>
+         * @return Whether the amount field is set.
+         */
+        public boolean hasAmount() {
+          return ((bitField0_ & 0x00000002) != 0);
+        }
+        /**
+         * <pre>
+         * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
+         * </pre>
+         *
+         * <code>required string amount = 2;</code>
+         * @return The amount.
+         */
+        public java.lang.String getAmount() {
+          java.lang.Object ref = amount_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              amount_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <pre>
+         * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
+         * </pre>
+         *
+         * <code>required string amount = 2;</code>
+         * @return The bytes for amount.
+         */
+        public com.google.protobuf.ByteString
+            getAmountBytes() {
+          java.lang.Object ref = amount_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            amount_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <pre>
+         * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
+         * </pre>
+         *
+         * <code>required string amount = 2;</code>
+         * @param value The amount to set.
+         * @return This builder for chaining.
+         */
+        public Builder setAmount(
+            java.lang.String value) {
+          if (value == null) { throw new NullPointerException(); }
+          amount_ = value;
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
+         * </pre>
+         *
+         * <code>required string amount = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearAmount() {
+          amount_ = getDefaultInstance().getAmount();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * the amount the address will receive as a human-readable string including units, e.g. "0.025 BTC"
+         * </pre>
+         *
+         * <code>required string amount = 2;</code>
+         * @param value The bytes for amount to set.
+         * @return This builder for chaining.
+         */
+        public Builder setAmountBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) { throw new NullPointerException(); }
+          amount_ = value;
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object address_ = "";
+        /**
+         * <pre>
+         * the address where the coin purchase will be delivered
+         * </pre>
+         *
+         * <code>required string address = 3;</code>
+         * @return Whether the address field is set.
+         */
+        public boolean hasAddress() {
+          return ((bitField0_ & 0x00000004) != 0);
+        }
+        /**
+         * <pre>
+         * the address where the coin purchase will be delivered
+         * </pre>
+         *
+         * <code>required string address = 3;</code>
+         * @return The address.
+         */
+        public java.lang.String getAddress() {
+          java.lang.Object ref = address_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              address_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <pre>
+         * the address where the coin purchase will be delivered
+         * </pre>
+         *
+         * <code>required string address = 3;</code>
+         * @return The bytes for address.
+         */
+        public com.google.protobuf.ByteString
+            getAddressBytes() {
+          java.lang.Object ref = address_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            address_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <pre>
+         * the address where the coin purchase will be delivered
+         * </pre>
+         *
+         * <code>required string address = 3;</code>
+         * @param value The address to set.
+         * @return This builder for chaining.
+         */
+        public Builder setAddress(
+            java.lang.String value) {
+          if (value == null) { throw new NullPointerException(); }
+          address_ = value;
+          bitField0_ |= 0x00000004;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * the address where the coin purchase will be delivered
+         * </pre>
+         *
+         * <code>required string address = 3;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearAddress() {
+          address_ = getDefaultInstance().getAddress();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * the address where the coin purchase will be delivered
+         * </pre>
+         *
+         * <code>required string address = 3;</code>
+         * @param value The bytes for address to set.
+         * @return This builder for chaining.
+         */
+        public Builder setAddressBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) { throw new NullPointerException(); }
+          address_ = value;
+          bitField0_ |= 0x00000004;
+          onChanged();
+          return this;
+        }
+
+        private com.google.protobuf.Internal.IntList addressN_ = emptyIntList();
+        private void ensureAddressNIsMutable() {
+          if (!addressN_.isModifiable()) {
+            addressN_ = makeMutableCopy(addressN_);
+          }
+          bitField0_ |= 0x00000008;
+        }
+        /**
+         * <pre>
+         * BIP-32 path to derive the key from the master node
+         * </pre>
+         *
+         * <code>repeated uint32 address_n = 4;</code>
+         * @return A list containing the addressN.
+         */
+        public java.util.List<java.lang.Integer>
+            getAddressNList() {
+          addressN_.makeImmutable();
+          return addressN_;
+        }
+        /**
+         * <pre>
+         * BIP-32 path to derive the key from the master node
+         * </pre>
+         *
+         * <code>repeated uint32 address_n = 4;</code>
+         * @return The count of addressN.
+         */
+        public int getAddressNCount() {
+          return addressN_.size();
+        }
+        /**
+         * <pre>
+         * BIP-32 path to derive the key from the master node
+         * </pre>
+         *
+         * <code>repeated uint32 address_n = 4;</code>
+         * @param index The index of the element to return.
+         * @return The addressN at the given index.
+         */
+        public int getAddressN(int index) {
+          return addressN_.getInt(index);
+        }
+        /**
+         * <pre>
+         * BIP-32 path to derive the key from the master node
+         * </pre>
+         *
+         * <code>repeated uint32 address_n = 4;</code>
+         * @param index The index to set the value at.
+         * @param value The addressN to set.
+         * @return This builder for chaining.
+         */
+        public Builder setAddressN(
+            int index, int value) {
+
+          ensureAddressNIsMutable();
+          addressN_.setInt(index, value);
+          bitField0_ |= 0x00000008;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * BIP-32 path to derive the key from the master node
+         * </pre>
+         *
+         * <code>repeated uint32 address_n = 4;</code>
+         * @param value The addressN to add.
+         * @return This builder for chaining.
+         */
+        public Builder addAddressN(int value) {
+
+          ensureAddressNIsMutable();
+          addressN_.addInt(value);
+          bitField0_ |= 0x00000008;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * BIP-32 path to derive the key from the master node
+         * </pre>
+         *
+         * <code>repeated uint32 address_n = 4;</code>
+         * @param values The addressN to add.
+         * @return This builder for chaining.
+         */
+        public Builder addAllAddressN(
+            java.lang.Iterable<? extends java.lang.Integer> values) {
+          ensureAddressNIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, addressN_);
+          bitField0_ |= 0x00000008;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * BIP-32 path to derive the key from the master node
+         * </pre>
+         *
+         * <code>repeated uint32 address_n = 4;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearAddressN() {
+          addressN_ = emptyIntList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+          onChanged();
+          return this;
+        }
+
+        private com.google.protobuf.ByteString mac_ = com.google.protobuf.ByteString.EMPTY;
+        /**
+         * <pre>
+         * the MAC returned by GetAddress
+         * </pre>
+         *
+         * <code>required bytes mac = 5;</code>
+         * @return Whether the mac field is set.
+         */
+        @java.lang.Override
+        public boolean hasMac() {
+          return ((bitField0_ & 0x00000010) != 0);
+        }
+        /**
+         * <pre>
+         * the MAC returned by GetAddress
+         * </pre>
+         *
+         * <code>required bytes mac = 5;</code>
+         * @return The mac.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString getMac() {
+          return mac_;
+        }
+        /**
+         * <pre>
+         * the MAC returned by GetAddress
+         * </pre>
+         *
+         * <code>required bytes mac = 5;</code>
+         * @param value The mac to set.
+         * @return This builder for chaining.
+         */
+        public Builder setMac(com.google.protobuf.ByteString value) {
+          if (value == null) { throw new NullPointerException(); }
+          mac_ = value;
+          bitField0_ |= 0x00000010;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * the MAC returned by GetAddress
+         * </pre>
+         *
+         * <code>required bytes mac = 5;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearMac() {
+          bitField0_ = (bitField0_ & ~0x00000010);
+          mac_ = getDefaultInstance().getMac();
+          onChanged();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:hw.trezor.messages.common.PaymentRequest.CoinPurchaseMemo)
+      }
+
+      // @@protoc_insertion_point(class_scope:hw.trezor.messages.common.PaymentRequest.CoinPurchaseMemo)
+      private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo();
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<CoinPurchaseMemo>
+          PARSER = new com.google.protobuf.AbstractParser<CoinPurchaseMemo>() {
+        @java.lang.Override
+        public CoinPurchaseMemo parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
+
+      public static com.google.protobuf.Parser<CoinPurchaseMemo> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<CoinPurchaseMemo> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.CoinPurchaseMemo getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    private int bitField0_;
+    public static final int NONCE_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString nonce_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * the nonce used in the signature computation
+     * </pre>
+     *
+     * <code>optional bytes nonce = 1;</code>
+     * @return Whether the nonce field is set.
+     */
+    @java.lang.Override
+    public boolean hasNonce() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * the nonce used in the signature computation
+     * </pre>
+     *
+     * <code>optional bytes nonce = 1;</code>
+     * @return The nonce.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getNonce() {
+      return nonce_;
+    }
+
+    public static final int RECIPIENT_NAME_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object recipientName_ = "";
+    /**
+     * <pre>
+     * merchant's name
+     * </pre>
+     *
+     * <code>required string recipient_name = 2;</code>
+     * @return Whether the recipientName field is set.
+     */
+    @java.lang.Override
+    public boolean hasRecipientName() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * merchant's name
+     * </pre>
+     *
+     * <code>required string recipient_name = 2;</code>
+     * @return The recipientName.
+     */
+    @java.lang.Override
+    public java.lang.String getRecipientName() {
+      java.lang.Object ref = recipientName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          recipientName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * merchant's name
+     * </pre>
+     *
+     * <code>required string recipient_name = 2;</code>
+     * @return The bytes for recipientName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getRecipientNameBytes() {
+      java.lang.Object ref = recipientName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        recipientName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int MEMOS_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo> memos_;
+    /**
+     * <pre>
+     * any memos that were signed as part of the request
+     * </pre>
+     *
+     * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+     */
+    @java.lang.Override
+    public java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo> getMemosList() {
+      return memos_;
+    }
+    /**
+     * <pre>
+     * any memos that were signed as part of the request
+     * </pre>
+     *
+     * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemoOrBuilder> 
+        getMemosOrBuilderList() {
+      return memos_;
+    }
+    /**
+     * <pre>
+     * any memos that were signed as part of the request
+     * </pre>
+     *
+     * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+     */
+    @java.lang.Override
+    public int getMemosCount() {
+      return memos_.size();
+    }
+    /**
+     * <pre>
+     * any memos that were signed as part of the request
+     * </pre>
+     *
+     * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+     */
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo getMemos(int index) {
+      return memos_.get(index);
+    }
+    /**
+     * <pre>
+     * any memos that were signed as part of the request
+     * </pre>
+     *
+     * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+     */
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemoOrBuilder getMemosOrBuilder(
+        int index) {
+      return memos_.get(index);
+    }
+
+    public static final int AMOUNT_FIELD_NUMBER = 6;
+    private com.google.protobuf.ByteString amount_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * the sum of the external output amounts requested, encoded in little endian on either 8 or 32 bytes
+     * </pre>
+     *
+     * <code>optional bytes amount = 6;</code>
+     * @return Whether the amount field is set.
+     */
+    @java.lang.Override
+    public boolean hasAmount() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <pre>
+     * the sum of the external output amounts requested, encoded in little endian on either 8 or 32 bytes
+     * </pre>
+     *
+     * <code>optional bytes amount = 6;</code>
+     * @return The amount.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getAmount() {
+      return amount_;
+    }
+
+    public static final int SIGNATURE_FIELD_NUMBER = 5;
+    private com.google.protobuf.ByteString signature_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * required for non-CoinJoin transactions; do not set this for fiat amounts (BUY crypto with fiat)
+     * </pre>
+     *
+     * <code>required bytes signature = 5;</code>
+     * @return Whether the signature field is set.
+     */
+    @java.lang.Override
+    public boolean hasSignature() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <pre>
+     * required for non-CoinJoin transactions; do not set this for fiat amounts (BUY crypto with fiat)
+     * </pre>
+     *
+     * <code>required bytes signature = 5;</code>
+     * @return The signature.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getSignature() {
+      return signature_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasRecipientName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSignature()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      for (int i = 0; i < getMemosCount(); i++) {
+        if (!getMemos(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeBytes(1, nonce_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, recipientName_);
+      }
+      for (int i = 0; i < memos_.size(); i++) {
+        output.writeMessage(3, memos_.get(i));
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        output.writeBytes(5, signature_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeBytes(6, amount_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, nonce_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, recipientName_);
+      }
+      for (int i = 0; i < memos_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, memos_.get(i));
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, signature_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(6, amount_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest) obj;
+
+      if (hasNonce() != other.hasNonce()) return false;
+      if (hasNonce()) {
+        if (!getNonce()
+            .equals(other.getNonce())) return false;
+      }
+      if (hasRecipientName() != other.hasRecipientName()) return false;
+      if (hasRecipientName()) {
+        if (!getRecipientName()
+            .equals(other.getRecipientName())) return false;
+      }
+      if (!getMemosList()
+          .equals(other.getMemosList())) return false;
+      if (hasAmount() != other.hasAmount()) return false;
+      if (hasAmount()) {
+        if (!getAmount()
+            .equals(other.getAmount())) return false;
+      }
+      if (hasSignature() != other.hasSignature()) return false;
+      if (hasSignature()) {
+        if (!getSignature()
+            .equals(other.getSignature())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasNonce()) {
+        hash = (37 * hash) + NONCE_FIELD_NUMBER;
+        hash = (53 * hash) + getNonce().hashCode();
+      }
+      if (hasRecipientName()) {
+        hash = (37 * hash) + RECIPIENT_NAME_FIELD_NUMBER;
+        hash = (53 * hash) + getRecipientName().hashCode();
+      }
+      if (getMemosCount() > 0) {
+        hash = (37 * hash) + MEMOS_FIELD_NUMBER;
+        hash = (53 * hash) + getMemosList().hashCode();
+      }
+      if (hasAmount()) {
+        hash = (37 * hash) + AMOUNT_FIELD_NUMBER;
+        hash = (53 * hash) + getAmount().hashCode();
+      }
+      if (hasSignature()) {
+        hash = (37 * hash) + SIGNATURE_FIELD_NUMBER;
+        hash = (53 * hash) + getSignature().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Structure representing a SLIP-0024 payment request.
+     * &#64;embed
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.common.PaymentRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.common.PaymentRequest)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        nonce_ = com.google.protobuf.ByteString.EMPTY;
+        recipientName_ = "";
+        if (memosBuilder_ == null) {
+          memos_ = java.util.Collections.emptyList();
+        } else {
+          memos_ = null;
+          memosBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        amount_ = com.google.protobuf.ByteString.EMPTY;
+        signature_ = com.google.protobuf.ByteString.EMPTY;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.internal_static_hw_trezor_messages_common_PaymentRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest(this);
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest result) {
+        if (memosBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) != 0)) {
+            memos_ = java.util.Collections.unmodifiableList(memos_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.memos_ = memos_;
+        } else {
+          result.memos_ = memosBuilder_.build();
+        }
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.nonce_ = nonce_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.recipientName_ = recipientName_;
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.amount_ = amount_;
+          to_bitField0_ |= 0x00000004;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.signature_ = signature_;
+          to_bitField0_ |= 0x00000008;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.getDefaultInstance()) return this;
+        if (other.hasNonce()) {
+          setNonce(other.getNonce());
+        }
+        if (other.hasRecipientName()) {
+          recipientName_ = other.recipientName_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        if (memosBuilder_ == null) {
+          if (!other.memos_.isEmpty()) {
+            if (memos_.isEmpty()) {
+              memos_ = other.memos_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureMemosIsMutable();
+              memos_.addAll(other.memos_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.memos_.isEmpty()) {
+            if (memosBuilder_.isEmpty()) {
+              memosBuilder_.dispose();
+              memosBuilder_ = null;
+              memos_ = other.memos_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              memosBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getMemosFieldBuilder() : null;
+            } else {
+              memosBuilder_.addAllMessages(other.memos_);
+            }
+          }
+        }
+        if (other.hasAmount()) {
+          setAmount(other.getAmount());
+        }
+        if (other.hasSignature()) {
+          setSignature(other.getSignature());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasRecipientName()) {
+          return false;
+        }
+        if (!hasSignature()) {
+          return false;
+        }
+        for (int i = 0; i < getMemosCount(); i++) {
+          if (!getMemos(i).isInitialized()) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                nonce_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                recipientName_ = input.readBytes();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo m =
+                    input.readMessage(
+                        com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo.parser(),
+                        extensionRegistry);
+                if (memosBuilder_ == null) {
+                  ensureMemosIsMutable();
+                  memos_.add(m);
+                } else {
+                  memosBuilder_.addMessage(m);
+                }
+                break;
+              } // case 26
+              case 42: {
+                signature_ = input.readBytes();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+              case 50: {
+                amount_ = input.readBytes();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 50
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.ByteString nonce_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * the nonce used in the signature computation
+       * </pre>
+       *
+       * <code>optional bytes nonce = 1;</code>
+       * @return Whether the nonce field is set.
+       */
+      @java.lang.Override
+      public boolean hasNonce() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * the nonce used in the signature computation
+       * </pre>
+       *
+       * <code>optional bytes nonce = 1;</code>
+       * @return The nonce.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getNonce() {
+        return nonce_;
+      }
+      /**
+       * <pre>
+       * the nonce used in the signature computation
+       * </pre>
+       *
+       * <code>optional bytes nonce = 1;</code>
+       * @param value The nonce to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNonce(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        nonce_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * the nonce used in the signature computation
+       * </pre>
+       *
+       * <code>optional bytes nonce = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNonce() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        nonce_ = getDefaultInstance().getNonce();
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object recipientName_ = "";
+      /**
+       * <pre>
+       * merchant's name
+       * </pre>
+       *
+       * <code>required string recipient_name = 2;</code>
+       * @return Whether the recipientName field is set.
+       */
+      public boolean hasRecipientName() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * merchant's name
+       * </pre>
+       *
+       * <code>required string recipient_name = 2;</code>
+       * @return The recipientName.
+       */
+      public java.lang.String getRecipientName() {
+        java.lang.Object ref = recipientName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            recipientName_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * merchant's name
+       * </pre>
+       *
+       * <code>required string recipient_name = 2;</code>
+       * @return The bytes for recipientName.
+       */
+      public com.google.protobuf.ByteString
+          getRecipientNameBytes() {
+        java.lang.Object ref = recipientName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          recipientName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * merchant's name
+       * </pre>
+       *
+       * <code>required string recipient_name = 2;</code>
+       * @param value The recipientName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRecipientName(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        recipientName_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * merchant's name
+       * </pre>
+       *
+       * <code>required string recipient_name = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRecipientName() {
+        recipientName_ = getDefaultInstance().getRecipientName();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * merchant's name
+       * </pre>
+       *
+       * <code>required string recipient_name = 2;</code>
+       * @param value The bytes for recipientName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRecipientNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        recipientName_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo> memos_ =
+        java.util.Collections.emptyList();
+      private void ensureMemosIsMutable() {
+        if (!((bitField0_ & 0x00000004) != 0)) {
+          memos_ = new java.util.ArrayList<com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo>(memos_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemoOrBuilder> memosBuilder_;
+
+      /**
+       * <pre>
+       * any memos that were signed as part of the request
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+       */
+      public java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo> getMemosList() {
+        if (memosBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(memos_);
+        } else {
+          return memosBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       * any memos that were signed as part of the request
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+       */
+      public int getMemosCount() {
+        if (memosBuilder_ == null) {
+          return memos_.size();
+        } else {
+          return memosBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * any memos that were signed as part of the request
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+       */
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo getMemos(int index) {
+        if (memosBuilder_ == null) {
+          return memos_.get(index);
+        } else {
+          return memosBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * any memos that were signed as part of the request
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+       */
+      public Builder setMemos(
+          int index, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo value) {
+        if (memosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMemosIsMutable();
+          memos_.set(index, value);
+          onChanged();
+        } else {
+          memosBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * any memos that were signed as part of the request
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+       */
+      public Builder setMemos(
+          int index, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo.Builder builderForValue) {
+        if (memosBuilder_ == null) {
+          ensureMemosIsMutable();
+          memos_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          memosBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * any memos that were signed as part of the request
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+       */
+      public Builder addMemos(com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo value) {
+        if (memosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMemosIsMutable();
+          memos_.add(value);
+          onChanged();
+        } else {
+          memosBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * any memos that were signed as part of the request
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+       */
+      public Builder addMemos(
+          int index, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo value) {
+        if (memosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMemosIsMutable();
+          memos_.add(index, value);
+          onChanged();
+        } else {
+          memosBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * any memos that were signed as part of the request
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+       */
+      public Builder addMemos(
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo.Builder builderForValue) {
+        if (memosBuilder_ == null) {
+          ensureMemosIsMutable();
+          memos_.add(builderForValue.build());
+          onChanged();
+        } else {
+          memosBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * any memos that were signed as part of the request
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+       */
+      public Builder addMemos(
+          int index, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo.Builder builderForValue) {
+        if (memosBuilder_ == null) {
+          ensureMemosIsMutable();
+          memos_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          memosBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * any memos that were signed as part of the request
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+       */
+      public Builder addAllMemos(
+          java.lang.Iterable<? extends com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo> values) {
+        if (memosBuilder_ == null) {
+          ensureMemosIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, memos_);
+          onChanged();
+        } else {
+          memosBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * any memos that were signed as part of the request
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+       */
+      public Builder clearMemos() {
+        if (memosBuilder_ == null) {
+          memos_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          memosBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * any memos that were signed as part of the request
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+       */
+      public Builder removeMemos(int index) {
+        if (memosBuilder_ == null) {
+          ensureMemosIsMutable();
+          memos_.remove(index);
+          onChanged();
+        } else {
+          memosBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * any memos that were signed as part of the request
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+       */
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo.Builder getMemosBuilder(
+          int index) {
+        return getMemosFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * any memos that were signed as part of the request
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+       */
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemoOrBuilder getMemosOrBuilder(
+          int index) {
+        if (memosBuilder_ == null) {
+          return memos_.get(index);  } else {
+          return memosBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       * any memos that were signed as part of the request
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+       */
+      public java.util.List<? extends com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemoOrBuilder> 
+           getMemosOrBuilderList() {
+        if (memosBuilder_ != null) {
+          return memosBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(memos_);
+        }
+      }
+      /**
+       * <pre>
+       * any memos that were signed as part of the request
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+       */
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo.Builder addMemosBuilder() {
+        return getMemosFieldBuilder().addBuilder(
+            com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * any memos that were signed as part of the request
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+       */
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo.Builder addMemosBuilder(
+          int index) {
+        return getMemosFieldBuilder().addBuilder(
+            index, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * any memos that were signed as part of the request
+       * </pre>
+       *
+       * <code>repeated .hw.trezor.messages.common.PaymentRequest.PaymentRequestMemo memos = 3;</code>
+       */
+      public java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo.Builder> 
+           getMemosBuilderList() {
+        return getMemosFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemoOrBuilder> 
+          getMemosFieldBuilder() {
+        if (memosBuilder_ == null) {
+          memosBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemo.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest.PaymentRequestMemoOrBuilder>(
+                  memos_,
+                  ((bitField0_ & 0x00000004) != 0),
+                  getParentForChildren(),
+                  isClean());
+          memos_ = null;
+        }
+        return memosBuilder_;
+      }
+
+      private com.google.protobuf.ByteString amount_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * the sum of the external output amounts requested, encoded in little endian on either 8 or 32 bytes
+       * </pre>
+       *
+       * <code>optional bytes amount = 6;</code>
+       * @return Whether the amount field is set.
+       */
+      @java.lang.Override
+      public boolean hasAmount() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <pre>
+       * the sum of the external output amounts requested, encoded in little endian on either 8 or 32 bytes
+       * </pre>
+       *
+       * <code>optional bytes amount = 6;</code>
+       * @return The amount.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getAmount() {
+        return amount_;
+      }
+      /**
+       * <pre>
+       * the sum of the external output amounts requested, encoded in little endian on either 8 or 32 bytes
+       * </pre>
+       *
+       * <code>optional bytes amount = 6;</code>
+       * @param value The amount to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAmount(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        amount_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * the sum of the external output amounts requested, encoded in little endian on either 8 or 32 bytes
+       * </pre>
+       *
+       * <code>optional bytes amount = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAmount() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        amount_ = getDefaultInstance().getAmount();
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString signature_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * required for non-CoinJoin transactions; do not set this for fiat amounts (BUY crypto with fiat)
+       * </pre>
+       *
+       * <code>required bytes signature = 5;</code>
+       * @return Whether the signature field is set.
+       */
+      @java.lang.Override
+      public boolean hasSignature() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <pre>
+       * required for non-CoinJoin transactions; do not set this for fiat amounts (BUY crypto with fiat)
+       * </pre>
+       *
+       * <code>required bytes signature = 5;</code>
+       * @return The signature.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getSignature() {
+        return signature_;
+      }
+      /**
+       * <pre>
+       * required for non-CoinJoin transactions; do not set this for fiat amounts (BUY crypto with fiat)
+       * </pre>
+       *
+       * <code>required bytes signature = 5;</code>
+       * @param value The signature to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSignature(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        signature_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * required for non-CoinJoin transactions; do not set this for fiat amounts (BUY crypto with fiat)
+       * </pre>
+       *
+       * <code>required bytes signature = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSignature() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        signature_ = getDefaultInstance().getSignature();
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.common.PaymentRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.common.PaymentRequest)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PaymentRequest>
+        PARSER = new com.google.protobuf.AbstractParser<PaymentRequest>() {
+      @java.lang.Override
+      public PaymentRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<PaymentRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PaymentRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.PaymentRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_hw_trezor_messages_common_Success_descriptor;
   private static final 
@@ -7643,6 +14140,36 @@ public final class TrezorMessageCommon {
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_hw_trezor_messages_common_HDNodeType_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_common_PaymentRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_common_PaymentRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_common_PaymentRequest_PaymentRequestMemo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_common_PaymentRequest_PaymentRequestMemo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_common_PaymentRequest_TextMemo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_common_PaymentRequest_TextMemo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_common_PaymentRequest_TextDetailsMemo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_common_PaymentRequest_TextDetailsMemo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_common_PaymentRequest_RefundMemo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_common_PaymentRequest_RefundMemo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_common_PaymentRequest_CoinPurchaseMemo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_common_PaymentRequest_CoinPurchaseMemo_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -7654,9 +14181,9 @@ public final class TrezorMessageCommon {
     java.lang.String[] descriptorData = {
       "\n\025messages-common.proto\022\031hw.trezor.messa" +
       "ges.common\032\roptions.proto\"\034\n\007Success\022\021\n\007" +
-      "message\030\001 \001(\t:\000\"\200\004\n\007Failure\022<\n\004code\030\001 \001(" +
+      "message\030\001 \001(\t:\000\"\353\004\n\007Failure\022<\n\004code\030\001 \001(" +
       "\0162..hw.trezor.messages.common.Failure.Fa" +
-      "ilureType\022\017\n\007message\030\002 \001(\t\"\245\003\n\013FailureTy" +
+      "ilureType\022\017\n\007message\030\002 \001(\t\"\220\004\n\013FailureTy" +
       "pe\022\035\n\031Failure_UnexpectedMessage\020\001\022\032\n\026Fai" +
       "lure_ButtonExpected\020\002\022\025\n\021Failure_DataErr" +
       "or\020\003\022\033\n\027Failure_ActionCancelled\020\004\022\027\n\023Fai" +
@@ -7666,47 +14193,68 @@ public final class TrezorMessageCommon {
       "or\020\t\022\032\n\026Failure_NotEnoughFunds\020\n\022\032\n\026Fail" +
       "ure_NotInitialized\020\013\022\027\n\023Failure_PinMisma" +
       "tch\020\014\022\034\n\030Failure_WipeCodeMismatch\020\r\022\032\n\026F" +
-      "ailure_InvalidSession\020\016\022\031\n\025Failure_Firmw" +
-      "areError\020c\"\230\006\n\rButtonRequest\022H\n\004code\030\001 \001" +
-      "(\0162:.hw.trezor.messages.common.ButtonReq" +
-      "uest.ButtonRequestType\022\r\n\005pages\030\002 \001(\r\022\014\n" +
-      "\004name\030\004 \001(\t\"\231\005\n\021ButtonRequestType\022\027\n\023But" +
-      "tonRequest_Other\020\001\022\"\n\036ButtonRequest_FeeO" +
-      "verThreshold\020\002\022\037\n\033ButtonRequest_ConfirmO" +
-      "utput\020\003\022\035\n\031ButtonRequest_ResetDevice\020\004\022\035" +
-      "\n\031ButtonRequest_ConfirmWord\020\005\022\034\n\030ButtonR" +
-      "equest_WipeDevice\020\006\022\035\n\031ButtonRequest_Pro" +
-      "tectCall\020\007\022\030\n\024ButtonRequest_SignTx\020\010\022\037\n\033" +
-      "ButtonRequest_FirmwareCheck\020\t\022\031\n\025ButtonR" +
-      "equest_Address\020\n\022\033\n\027ButtonRequest_Public" +
-      "Key\020\013\022#\n\037ButtonRequest_MnemonicWordCount" +
-      "\020\014\022\037\n\033ButtonRequest_MnemonicInput\020\r\0220\n(_" +
-      "Deprecated_ButtonRequest_PassphraseType\020" +
-      "\016\032\002\010\001\022\'\n#ButtonRequest_UnknownDerivation" +
-      "Path\020\017\022\"\n\036ButtonRequest_RecoveryHomepage" +
-      "\020\020\022\031\n\025ButtonRequest_Success\020\021\022\031\n\025ButtonR" +
-      "equest_Warning\020\022\022!\n\035ButtonRequest_Passph" +
-      "raseEntry\020\023\022\032\n\026ButtonRequest_PinEntry\020\024J" +
-      "\004\010\003\020\004\"\013\n\tButtonAck\"\265\002\n\020PinMatrixRequest\022" +
-      "N\n\004type\030\001 \001(\0162@.hw.trezor.messages.commo" +
-      "n.PinMatrixRequest.PinMatrixRequestType\"" +
-      "\320\001\n\024PinMatrixRequestType\022 \n\034PinMatrixReq" +
-      "uestType_Current\020\001\022!\n\035PinMatrixRequestTy" +
-      "pe_NewFirst\020\002\022\"\n\036PinMatrixRequestType_Ne" +
-      "wSecond\020\003\022&\n\"PinMatrixRequestType_WipeCo" +
-      "deFirst\020\004\022\'\n#PinMatrixRequestType_WipeCo" +
-      "deSecond\020\005\"\033\n\014PinMatrixAck\022\013\n\003pin\030\001 \002(\t\"" +
-      "+\n\021PassphraseRequest\022\026\n\n_on_device\030\001 \001(\010" +
-      "B\002\030\001\"J\n\rPassphraseAck\022\022\n\npassphrase\030\001 \001(" +
-      "\t\022\022\n\006_state\030\002 \001(\014B\002\030\001\022\021\n\ton_device\030\003 \001(\010" +
-      "\"6\n!Deprecated_PassphraseStateRequest\022\r\n" +
-      "\005state\030\001 \001(\014:\002\030\001\"#\n\035Deprecated_Passphras" +
-      "eStateAck:\002\030\001\"\200\001\n\nHDNodeType\022\r\n\005depth\030\001 " +
-      "\002(\r\022\023\n\013fingerprint\030\002 \002(\r\022\021\n\tchild_num\030\003 " +
-      "\002(\r\022\022\n\nchain_code\030\004 \002(\014\022\023\n\013private_key\030\005" +
-      " \001(\014\022\022\n\npublic_key\030\006 \002(\014BB\n\'com.sparroww" +
-      "allet.lark.trezor.generatedB\023TrezorMessa" +
-      "geCommon\200\246\035\001"
+      "ailure_InvalidSession\020\016\022\020\n\014Failure_Busy\020" +
+      "\017\022!\n\035Failure_ThpUnallocatedSession\020\020\022\033\n\027" +
+      "Failure_InvalidProtocol\020\021\022\027\n\023Failure_Buf" +
+      "ferError\020\022\022\031\n\025Failure_FirmwareError\020c\"\230\006" +
+      "\n\rButtonRequest\022H\n\004code\030\001 \001(\0162:.hw.trezo" +
+      "r.messages.common.ButtonRequest.ButtonRe" +
+      "questType\022\r\n\005pages\030\002 \001(\r\022\014\n\004name\030\004 \001(\t\"\231" +
+      "\005\n\021ButtonRequestType\022\027\n\023ButtonRequest_Ot" +
+      "her\020\001\022\"\n\036ButtonRequest_FeeOverThreshold\020" +
+      "\002\022\037\n\033ButtonRequest_ConfirmOutput\020\003\022\035\n\031Bu" +
+      "ttonRequest_ResetDevice\020\004\022\035\n\031ButtonReque" +
+      "st_ConfirmWord\020\005\022\034\n\030ButtonRequest_WipeDe" +
+      "vice\020\006\022\035\n\031ButtonRequest_ProtectCall\020\007\022\030\n" +
+      "\024ButtonRequest_SignTx\020\010\022\037\n\033ButtonRequest" +
+      "_FirmwareCheck\020\t\022\031\n\025ButtonRequest_Addres" +
+      "s\020\n\022\033\n\027ButtonRequest_PublicKey\020\013\022#\n\037Butt" +
+      "onRequest_MnemonicWordCount\020\014\022\037\n\033ButtonR" +
+      "equest_MnemonicInput\020\r\0220\n(_Deprecated_Bu" +
+      "ttonRequest_PassphraseType\020\016\032\002\010\001\022\'\n#Butt" +
+      "onRequest_UnknownDerivationPath\020\017\022\"\n\036But" +
+      "tonRequest_RecoveryHomepage\020\020\022\031\n\025ButtonR" +
+      "equest_Success\020\021\022\031\n\025ButtonRequest_Warnin" +
+      "g\020\022\022!\n\035ButtonRequest_PassphraseEntry\020\023\022\032" +
+      "\n\026ButtonRequest_PinEntry\020\024J\004\010\003\020\004\"\013\n\tButt" +
+      "onAck\"\265\002\n\020PinMatrixRequest\022N\n\004type\030\001 \001(\016" +
+      "2@.hw.trezor.messages.common.PinMatrixRe" +
+      "quest.PinMatrixRequestType\"\320\001\n\024PinMatrix" +
+      "RequestType\022 \n\034PinMatrixRequestType_Curr" +
+      "ent\020\001\022!\n\035PinMatrixRequestType_NewFirst\020\002" +
+      "\022\"\n\036PinMatrixRequestType_NewSecond\020\003\022&\n\"" +
+      "PinMatrixRequestType_WipeCodeFirst\020\004\022\'\n#" +
+      "PinMatrixRequestType_WipeCodeSecond\020\005\"\033\n" +
+      "\014PinMatrixAck\022\013\n\003pin\030\001 \002(\t\"+\n\021Passphrase" +
+      "Request\022\026\n\n_on_device\030\001 \001(\010B\002\030\001\"J\n\rPassp" +
+      "hraseAck\022\022\n\npassphrase\030\001 \001(\t\022\022\n\006_state\030\002" +
+      " \001(\014B\002\030\001\022\021\n\ton_device\030\003 \001(\010\"6\n!Deprecate" +
+      "d_PassphraseStateRequest\022\r\n\005state\030\001 \001(\014:" +
+      "\002\030\001\"#\n\035Deprecated_PassphraseStateAck:\002\030\001" +
+      "\"\200\001\n\nHDNodeType\022\r\n\005depth\030\001 \002(\r\022\023\n\013finger" +
+      "print\030\002 \002(\r\022\021\n\tchild_num\030\003 \002(\r\022\022\n\nchain_" +
+      "code\030\004 \002(\014\022\023\n\013private_key\030\005 \001(\014\022\022\n\npubli" +
+      "c_key\030\006 \002(\014\"\365\005\n\016PaymentRequest\022\r\n\005nonce\030" +
+      "\001 \001(\014\022\026\n\016recipient_name\030\002 \002(\t\022K\n\005memos\030\003" +
+      " \003(\0132<.hw.trezor.messages.common.Payment" +
+      "Request.PaymentRequestMemo\022\016\n\006amount\030\006 \001" +
+      "(\014\022\021\n\tsignature\030\005 \002(\014\032\324\002\n\022PaymentRequest" +
+      "Memo\022E\n\ttext_memo\030\001 \001(\01322.hw.trezor.mess" +
+      "ages.common.PaymentRequest.TextMemo\022I\n\013r" +
+      "efund_memo\030\002 \001(\01324.hw.trezor.messages.co" +
+      "mmon.PaymentRequest.RefundMemo\022V\n\022coin_p" +
+      "urchase_memo\030\003 \001(\0132:.hw.trezor.messages." +
+      "common.PaymentRequest.CoinPurchaseMemo\022T" +
+      "\n\021text_details_memo\030\004 \001(\01329.hw.trezor.me" +
+      "ssages.common.PaymentRequest.TextDetails" +
+      "Memo\032\030\n\010TextMemo\022\014\n\004text\030\001 \002(\t\032.\n\017TextDe" +
+      "tailsMemo\022\r\n\005title\030\001 \002(\t\022\014\n\004text\030\002 \002(\t\032=" +
+      "\n\nRefundMemo\022\017\n\007address\030\001 \002(\t\022\021\n\taddress" +
+      "_n\030\002 \003(\r\022\013\n\003mac\030\003 \002(\014\032f\n\020CoinPurchaseMem" +
+      "o\022\021\n\tcoin_type\030\001 \002(\r\022\016\n\006amount\030\002 \002(\t\022\017\n\007" +
+      "address\030\003 \002(\t\022\021\n\taddress_n\030\004 \003(\r\022\013\n\003mac\030" +
+      "\005 \002(\014J\004\010\004\020\005BB\n\'com.sparrowwallet.lark.tr" +
+      "ezor.generatedB\023TrezorMessageCommon\200\246\035\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -7779,6 +14327,42 @@ public final class TrezorMessageCommon {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_common_HDNodeType_descriptor,
         new java.lang.String[] { "Depth", "Fingerprint", "ChildNum", "ChainCode", "PrivateKey", "PublicKey", });
+    internal_static_hw_trezor_messages_common_PaymentRequest_descriptor =
+      getDescriptor().getMessageTypes().get(11);
+    internal_static_hw_trezor_messages_common_PaymentRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_common_PaymentRequest_descriptor,
+        new java.lang.String[] { "Nonce", "RecipientName", "Memos", "Amount", "Signature", });
+    internal_static_hw_trezor_messages_common_PaymentRequest_PaymentRequestMemo_descriptor =
+      internal_static_hw_trezor_messages_common_PaymentRequest_descriptor.getNestedTypes().get(0);
+    internal_static_hw_trezor_messages_common_PaymentRequest_PaymentRequestMemo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_common_PaymentRequest_PaymentRequestMemo_descriptor,
+        new java.lang.String[] { "TextMemo", "RefundMemo", "CoinPurchaseMemo", "TextDetailsMemo", });
+    internal_static_hw_trezor_messages_common_PaymentRequest_TextMemo_descriptor =
+      internal_static_hw_trezor_messages_common_PaymentRequest_descriptor.getNestedTypes().get(1);
+    internal_static_hw_trezor_messages_common_PaymentRequest_TextMemo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_common_PaymentRequest_TextMemo_descriptor,
+        new java.lang.String[] { "Text", });
+    internal_static_hw_trezor_messages_common_PaymentRequest_TextDetailsMemo_descriptor =
+      internal_static_hw_trezor_messages_common_PaymentRequest_descriptor.getNestedTypes().get(2);
+    internal_static_hw_trezor_messages_common_PaymentRequest_TextDetailsMemo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_common_PaymentRequest_TextDetailsMemo_descriptor,
+        new java.lang.String[] { "Title", "Text", });
+    internal_static_hw_trezor_messages_common_PaymentRequest_RefundMemo_descriptor =
+      internal_static_hw_trezor_messages_common_PaymentRequest_descriptor.getNestedTypes().get(3);
+    internal_static_hw_trezor_messages_common_PaymentRequest_RefundMemo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_common_PaymentRequest_RefundMemo_descriptor,
+        new java.lang.String[] { "Address", "AddressN", "Mac", });
+    internal_static_hw_trezor_messages_common_PaymentRequest_CoinPurchaseMemo_descriptor =
+      internal_static_hw_trezor_messages_common_PaymentRequest_descriptor.getNestedTypes().get(4);
+    internal_static_hw_trezor_messages_common_PaymentRequest_CoinPurchaseMemo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_common_PaymentRequest_CoinPurchaseMemo_descriptor,
+        new java.lang.String[] { "CoinType", "Amount", "Address", "AddressN", "Mac", });
     descriptor.resolveAllFeaturesImmutable();
     com.sparrowwallet.lark.trezor.generated.TrezorOptions.getDescriptor();
     com.google.protobuf.ExtensionRegistry registry =

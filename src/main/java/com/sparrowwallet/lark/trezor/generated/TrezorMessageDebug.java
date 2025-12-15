@@ -139,19 +139,23 @@ public final class TrezorMessageDebug {
      * wait for layout change
      * </pre>
      *
-     * <code>optional bool wait = 6;</code>
+     * <code>optional bool wait = 6 [deprecated = true];</code>
+     * @deprecated hw.trezor.messages.debug.DebugLinkDecision.wait is deprecated.
+     *     See messages-debug.proto;l=53
      * @return Whether the wait field is set.
      */
-    boolean hasWait();
+    @java.lang.Deprecated boolean hasWait();
     /**
      * <pre>
      * wait for layout change
      * </pre>
      *
-     * <code>optional bool wait = 6;</code>
+     * <code>optional bool wait = 6 [deprecated = true];</code>
+     * @deprecated hw.trezor.messages.debug.DebugLinkDecision.wait is deprecated.
+     *     See messages-debug.proto;l=53
      * @return The wait.
      */
-    boolean getWait();
+    @java.lang.Deprecated boolean getWait();
 
     /**
      * <pre>
@@ -190,6 +194,17 @@ public final class TrezorMessageDebug {
      * @return The physicalButton.
      */
     com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkDecision.DebugPhysicalButton getPhysicalButton();
+
+    /**
+     * <code>optional .hw.trezor.messages.debug.DebugLinkDecision.DebugTouchEventType touch_event_type = 9;</code>
+     * @return Whether the touchEventType field is set.
+     */
+    boolean hasTouchEventType();
+    /**
+     * <code>optional .hw.trezor.messages.debug.DebugLinkDecision.DebugTouchEventType touch_event_type = 9;</code>
+     * @return The touchEventType.
+     */
+    com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkDecision.DebugTouchEventType getTouchEventType();
   }
   /**
    * <pre>
@@ -224,6 +239,7 @@ public final class TrezorMessageDebug {
       swipe_ = 0;
       input_ = "";
       physicalButton_ = 0;
+      touchEventType_ = 0;
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -604,6 +620,126 @@ public final class TrezorMessageDebug {
       // @@protoc_insertion_point(enum_scope:hw.trezor.messages.debug.DebugLinkDecision.DebugPhysicalButton)
     }
 
+    /**
+     * <pre>
+     * *
+     * Explicit touch event type, used to separate TOUCH_START and TOUCH_END
+     * If not set, defaults to full click behavior (TOUCH_START + optional hold + TOUCH_END)
+     * </pre>
+     *
+     * Protobuf enum {@code hw.trezor.messages.debug.DebugLinkDecision.DebugTouchEventType}
+     */
+    public enum DebugTouchEventType
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>TOUCH_FULL_CLICK = 0;</code>
+       */
+      TOUCH_FULL_CLICK(0),
+      /**
+       * <code>TOUCH_START = 1;</code>
+       */
+      TOUCH_START(1),
+      /**
+       * <code>TOUCH_END = 2;</code>
+       */
+      TOUCH_END(2),
+      ;
+
+      static {
+        com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+          com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+          /* major= */ 4,
+          /* minor= */ 28,
+          /* patch= */ 3,
+          /* suffix= */ "",
+          DebugTouchEventType.class.getName());
+      }
+      /**
+       * <code>TOUCH_FULL_CLICK = 0;</code>
+       */
+      public static final int TOUCH_FULL_CLICK_VALUE = 0;
+      /**
+       * <code>TOUCH_START = 1;</code>
+       */
+      public static final int TOUCH_START_VALUE = 1;
+      /**
+       * <code>TOUCH_END = 2;</code>
+       */
+      public static final int TOUCH_END_VALUE = 2;
+
+
+      public final int getNumber() {
+        return value;
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static DebugTouchEventType valueOf(int value) {
+        return forNumber(value);
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       */
+      public static DebugTouchEventType forNumber(int value) {
+        switch (value) {
+          case 0: return TOUCH_FULL_CLICK;
+          case 1: return TOUCH_START;
+          case 2: return TOUCH_END;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<DebugTouchEventType>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          DebugTouchEventType> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<DebugTouchEventType>() {
+              public DebugTouchEventType findValueByNumber(int number) {
+                return DebugTouchEventType.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkDecision.getDescriptor().getEnumTypes().get(3);
+      }
+
+      private static final DebugTouchEventType[] VALUES = values();
+
+      public static DebugTouchEventType valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private DebugTouchEventType(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:hw.trezor.messages.debug.DebugLinkDecision.DebugTouchEventType)
+    }
+
     private int bitField0_;
     public static final int BUTTON_FIELD_NUMBER = 1;
     private int button_ = 0;
@@ -779,11 +915,13 @@ public final class TrezorMessageDebug {
      * wait for layout change
      * </pre>
      *
-     * <code>optional bool wait = 6;</code>
+     * <code>optional bool wait = 6 [deprecated = true];</code>
+     * @deprecated hw.trezor.messages.debug.DebugLinkDecision.wait is deprecated.
+     *     See messages-debug.proto;l=53
      * @return Whether the wait field is set.
      */
     @java.lang.Override
-    public boolean hasWait() {
+    @java.lang.Deprecated public boolean hasWait() {
       return ((bitField0_ & 0x00000020) != 0);
     }
     /**
@@ -791,11 +929,13 @@ public final class TrezorMessageDebug {
      * wait for layout change
      * </pre>
      *
-     * <code>optional bool wait = 6;</code>
+     * <code>optional bool wait = 6 [deprecated = true];</code>
+     * @deprecated hw.trezor.messages.debug.DebugLinkDecision.wait is deprecated.
+     *     See messages-debug.proto;l=53
      * @return The wait.
      */
     @java.lang.Override
-    public boolean getWait() {
+    @java.lang.Deprecated public boolean getWait() {
       return wait_;
     }
 
@@ -852,6 +992,24 @@ public final class TrezorMessageDebug {
       return result == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkDecision.DebugPhysicalButton.LEFT_BTN : result;
     }
 
+    public static final int TOUCH_EVENT_TYPE_FIELD_NUMBER = 9;
+    private int touchEventType_ = 0;
+    /**
+     * <code>optional .hw.trezor.messages.debug.DebugLinkDecision.DebugTouchEventType touch_event_type = 9;</code>
+     * @return Whether the touchEventType field is set.
+     */
+    @java.lang.Override public boolean hasTouchEventType() {
+      return ((bitField0_ & 0x00000100) != 0);
+    }
+    /**
+     * <code>optional .hw.trezor.messages.debug.DebugLinkDecision.DebugTouchEventType touch_event_type = 9;</code>
+     * @return The touchEventType.
+     */
+    @java.lang.Override public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkDecision.DebugTouchEventType getTouchEventType() {
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkDecision.DebugTouchEventType result = com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkDecision.DebugTouchEventType.forNumber(touchEventType_);
+      return result == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkDecision.DebugTouchEventType.TOUCH_FULL_CLICK : result;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -889,6 +1047,9 @@ public final class TrezorMessageDebug {
       }
       if (((bitField0_ & 0x00000080) != 0)) {
         output.writeEnum(8, physicalButton_);
+      }
+      if (((bitField0_ & 0x00000100) != 0)) {
+        output.writeEnum(9, touchEventType_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -929,6 +1090,10 @@ public final class TrezorMessageDebug {
       if (((bitField0_ & 0x00000080) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(8, physicalButton_);
+      }
+      if (((bitField0_ & 0x00000100) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(9, touchEventType_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -982,6 +1147,10 @@ public final class TrezorMessageDebug {
       if (hasPhysicalButton()) {
         if (physicalButton_ != other.physicalButton_) return false;
       }
+      if (hasTouchEventType() != other.hasTouchEventType()) return false;
+      if (hasTouchEventType()) {
+        if (touchEventType_ != other.touchEventType_) return false;
+      }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -1025,6 +1194,10 @@ public final class TrezorMessageDebug {
       if (hasPhysicalButton()) {
         hash = (37 * hash) + PHYSICAL_BUTTON_FIELD_NUMBER;
         hash = (53 * hash) + physicalButton_;
+      }
+      if (hasTouchEventType()) {
+        hash = (37 * hash) + TOUCH_EVENT_TYPE_FIELD_NUMBER;
+        hash = (53 * hash) + touchEventType_;
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -1172,6 +1345,7 @@ public final class TrezorMessageDebug {
         wait_ = false;
         holdMs_ = 0;
         physicalButton_ = 0;
+        touchEventType_ = 0;
         return this;
       }
 
@@ -1238,6 +1412,10 @@ public final class TrezorMessageDebug {
           result.physicalButton_ = physicalButton_;
           to_bitField0_ |= 0x00000080;
         }
+        if (((from_bitField0_ & 0x00000100) != 0)) {
+          result.touchEventType_ = touchEventType_;
+          to_bitField0_ |= 0x00000100;
+        }
         result.bitField0_ |= to_bitField0_;
       }
 
@@ -1278,6 +1456,9 @@ public final class TrezorMessageDebug {
         }
         if (other.hasPhysicalButton()) {
           setPhysicalButton(other.getPhysicalButton());
+        }
+        if (other.hasTouchEventType()) {
+          setTouchEventType(other.getTouchEventType());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -1366,6 +1547,18 @@ public final class TrezorMessageDebug {
                 }
                 break;
               } // case 64
+              case 72: {
+                int tmpRaw = input.readEnum();
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkDecision.DebugTouchEventType tmpValue =
+                    com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkDecision.DebugTouchEventType.forNumber(tmpRaw);
+                if (tmpValue == null) {
+                  mergeUnknownVarintField(9, tmpRaw);
+                } else {
+                  touchEventType_ = tmpRaw;
+                  bitField0_ |= 0x00000100;
+                }
+                break;
+              } // case 72
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -1721,11 +1914,13 @@ public final class TrezorMessageDebug {
        * wait for layout change
        * </pre>
        *
-       * <code>optional bool wait = 6;</code>
+       * <code>optional bool wait = 6 [deprecated = true];</code>
+       * @deprecated hw.trezor.messages.debug.DebugLinkDecision.wait is deprecated.
+       *     See messages-debug.proto;l=53
        * @return Whether the wait field is set.
        */
       @java.lang.Override
-      public boolean hasWait() {
+      @java.lang.Deprecated public boolean hasWait() {
         return ((bitField0_ & 0x00000020) != 0);
       }
       /**
@@ -1733,11 +1928,13 @@ public final class TrezorMessageDebug {
        * wait for layout change
        * </pre>
        *
-       * <code>optional bool wait = 6;</code>
+       * <code>optional bool wait = 6 [deprecated = true];</code>
+       * @deprecated hw.trezor.messages.debug.DebugLinkDecision.wait is deprecated.
+       *     See messages-debug.proto;l=53
        * @return The wait.
        */
       @java.lang.Override
-      public boolean getWait() {
+      @java.lang.Deprecated public boolean getWait() {
         return wait_;
       }
       /**
@@ -1745,11 +1942,13 @@ public final class TrezorMessageDebug {
        * wait for layout change
        * </pre>
        *
-       * <code>optional bool wait = 6;</code>
+       * <code>optional bool wait = 6 [deprecated = true];</code>
+       * @deprecated hw.trezor.messages.debug.DebugLinkDecision.wait is deprecated.
+       *     See messages-debug.proto;l=53
        * @param value The wait to set.
        * @return This builder for chaining.
        */
-      public Builder setWait(boolean value) {
+      @java.lang.Deprecated public Builder setWait(boolean value) {
 
         wait_ = value;
         bitField0_ |= 0x00000020;
@@ -1761,10 +1960,12 @@ public final class TrezorMessageDebug {
        * wait for layout change
        * </pre>
        *
-       * <code>optional bool wait = 6;</code>
+       * <code>optional bool wait = 6 [deprecated = true];</code>
+       * @deprecated hw.trezor.messages.debug.DebugLinkDecision.wait is deprecated.
+       *     See messages-debug.proto;l=53
        * @return This builder for chaining.
        */
-      public Builder clearWait() {
+      @java.lang.Deprecated public Builder clearWait() {
         bitField0_ = (bitField0_ & ~0x00000020);
         wait_ = false;
         onChanged();
@@ -1885,6 +2086,48 @@ public final class TrezorMessageDebug {
         return this;
       }
 
+      private int touchEventType_ = 0;
+      /**
+       * <code>optional .hw.trezor.messages.debug.DebugLinkDecision.DebugTouchEventType touch_event_type = 9;</code>
+       * @return Whether the touchEventType field is set.
+       */
+      @java.lang.Override public boolean hasTouchEventType() {
+        return ((bitField0_ & 0x00000100) != 0);
+      }
+      /**
+       * <code>optional .hw.trezor.messages.debug.DebugLinkDecision.DebugTouchEventType touch_event_type = 9;</code>
+       * @return The touchEventType.
+       */
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkDecision.DebugTouchEventType getTouchEventType() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkDecision.DebugTouchEventType result = com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkDecision.DebugTouchEventType.forNumber(touchEventType_);
+        return result == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkDecision.DebugTouchEventType.TOUCH_FULL_CLICK : result;
+      }
+      /**
+       * <code>optional .hw.trezor.messages.debug.DebugLinkDecision.DebugTouchEventType touch_event_type = 9;</code>
+       * @param value The touchEventType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTouchEventType(com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkDecision.DebugTouchEventType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000100;
+        touchEventType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .hw.trezor.messages.debug.DebugLinkDecision.DebugTouchEventType touch_event_type = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTouchEventType() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        touchEventType_ = 0;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:hw.trezor.messages.debug.DebugLinkDecision)
     }
 
@@ -1936,7 +2179,7 @@ public final class TrezorMessageDebug {
 
   }
 
-  public interface DebugLinkLayoutOrBuilder extends
+  @java.lang.Deprecated public interface DebugLinkLayoutOrBuilder extends
       // @@protoc_insertion_point(interface_extends:hw.trezor.messages.debug.DebugLinkLayout)
       com.google.protobuf.MessageOrBuilder {
 
@@ -1974,7 +2217,7 @@ public final class TrezorMessageDebug {
    *
    * Protobuf type {@code hw.trezor.messages.debug.DebugLinkLayout}
    */
-  public static final class DebugLinkLayout extends
+  @java.lang.Deprecated public static final class DebugLinkLayout extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:hw.trezor.messages.debug.DebugLinkLayout)
       DebugLinkLayoutOrBuilder {
@@ -3742,65 +3985,94 @@ public final class TrezorMessageDebug {
 
     /**
      * <pre>
-     * Trezor T only - wait until mnemonic words are shown
+     * Trezor T &lt; 2.6.0 only - wait until mnemonic words are shown
      * </pre>
      *
-     * <code>optional bool wait_word_list = 1;</code>
+     * <code>optional bool wait_word_list = 1 [deprecated = true];</code>
+     * @deprecated hw.trezor.messages.debug.DebugLinkGetState.wait_word_list is deprecated.
+     *     See messages-debug.proto;l=118
      * @return Whether the waitWordList field is set.
      */
-    boolean hasWaitWordList();
+    @java.lang.Deprecated boolean hasWaitWordList();
     /**
      * <pre>
-     * Trezor T only - wait until mnemonic words are shown
+     * Trezor T &lt; 2.6.0 only - wait until mnemonic words are shown
      * </pre>
      *
-     * <code>optional bool wait_word_list = 1;</code>
+     * <code>optional bool wait_word_list = 1 [deprecated = true];</code>
+     * @deprecated hw.trezor.messages.debug.DebugLinkGetState.wait_word_list is deprecated.
+     *     See messages-debug.proto;l=118
      * @return The waitWordList.
      */
-    boolean getWaitWordList();
+    @java.lang.Deprecated boolean getWaitWordList();
 
     /**
      * <pre>
-     * Trezor T only - wait until reset word position is requested
+     * Trezor T &lt; 2.6.0 only - wait until reset word position is requested
      * </pre>
      *
-     * <code>optional bool wait_word_pos = 2;</code>
+     * <code>optional bool wait_word_pos = 2 [deprecated = true];</code>
+     * @deprecated hw.trezor.messages.debug.DebugLinkGetState.wait_word_pos is deprecated.
+     *     See messages-debug.proto;l=120
      * @return Whether the waitWordPos field is set.
      */
-    boolean hasWaitWordPos();
+    @java.lang.Deprecated boolean hasWaitWordPos();
     /**
      * <pre>
-     * Trezor T only - wait until reset word position is requested
+     * Trezor T &lt; 2.6.0 only - wait until reset word position is requested
      * </pre>
      *
-     * <code>optional bool wait_word_pos = 2;</code>
+     * <code>optional bool wait_word_pos = 2 [deprecated = true];</code>
+     * @deprecated hw.trezor.messages.debug.DebugLinkGetState.wait_word_pos is deprecated.
+     *     See messages-debug.proto;l=120
      * @return The waitWordPos.
      */
-    boolean getWaitWordPos();
+    @java.lang.Deprecated boolean getWaitWordPos();
 
     /**
      * <pre>
-     * wait until current layout changes
+     * trezor-core only - wait until current layout changes
+     * changed in 2.6.4: multiple wait types instead of true/false.
      * </pre>
      *
-     * <code>optional bool wait_layout = 3;</code>
+     * <code>optional .hw.trezor.messages.debug.DebugLinkGetState.DebugWaitType wait_layout = 3 [default = IMMEDIATE];</code>
      * @return Whether the waitLayout field is set.
      */
     boolean hasWaitLayout();
     /**
      * <pre>
-     * wait until current layout changes
+     * trezor-core only - wait until current layout changes
+     * changed in 2.6.4: multiple wait types instead of true/false.
      * </pre>
      *
-     * <code>optional bool wait_layout = 3;</code>
+     * <code>optional .hw.trezor.messages.debug.DebugLinkGetState.DebugWaitType wait_layout = 3 [default = IMMEDIATE];</code>
      * @return The waitLayout.
      */
-    boolean getWaitLayout();
+    com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetState.DebugWaitType getWaitLayout();
+
+    /**
+     * <pre>
+     * Responds immediately with an empty `DebugLinkState` (used for client-side synchronization).
+     * </pre>
+     *
+     * <code>optional bool return_empty_state = 4 [default = false];</code>
+     * @return Whether the returnEmptyState field is set.
+     */
+    boolean hasReturnEmptyState();
+    /**
+     * <pre>
+     * Responds immediately with an empty `DebugLinkState` (used for client-side synchronization).
+     * </pre>
+     *
+     * <code>optional bool return_empty_state = 4 [default = false];</code>
+     * @return The returnEmptyState.
+     */
+    boolean getReturnEmptyState();
   }
   /**
    * <pre>
    * *
-   * Request: Computer asks for device state
+   * Request: Host asks for device state
    * &#64;start
    * &#64;next DebugLinkState
    * </pre>
@@ -3826,6 +4098,7 @@ public final class TrezorMessageDebug {
       super(builder);
     }
     private DebugLinkGetState() {
+      waitLayout_ = 0;
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -3841,31 +4114,183 @@ public final class TrezorMessageDebug {
               com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetState.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetState.Builder.class);
     }
 
+    /**
+     * <pre>
+     * &#47; Wait behavior of the call.
+     * </pre>
+     *
+     * Protobuf enum {@code hw.trezor.messages.debug.DebugLinkGetState.DebugWaitType}
+     */
+    public enum DebugWaitType
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <pre>
+       * &#47; Respond immediately. If no layout is currently displayed, the layout
+       * / response will be empty.
+       * </pre>
+       *
+       * <code>IMMEDIATE = 0;</code>
+       */
+      IMMEDIATE(0),
+      /**
+       * <pre>
+       * &#47; Wait for next layout. If a layout is displayed, waits for it to change.
+       * / If no layout is displayed, waits for one to come up.
+       * </pre>
+       *
+       * <code>NEXT_LAYOUT = 1;</code>
+       */
+      NEXT_LAYOUT(1),
+      /**
+       * <pre>
+       * &#47; Return current layout. If no layout is currently displayed, waits for
+       * / one to come up.
+       * </pre>
+       *
+       * <code>CURRENT_LAYOUT = 2;</code>
+       */
+      CURRENT_LAYOUT(2),
+      ;
+
+      static {
+        com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+          com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+          /* major= */ 4,
+          /* minor= */ 28,
+          /* patch= */ 3,
+          /* suffix= */ "",
+          DebugWaitType.class.getName());
+      }
+      /**
+       * <pre>
+       * &#47; Respond immediately. If no layout is currently displayed, the layout
+       * / response will be empty.
+       * </pre>
+       *
+       * <code>IMMEDIATE = 0;</code>
+       */
+      public static final int IMMEDIATE_VALUE = 0;
+      /**
+       * <pre>
+       * &#47; Wait for next layout. If a layout is displayed, waits for it to change.
+       * / If no layout is displayed, waits for one to come up.
+       * </pre>
+       *
+       * <code>NEXT_LAYOUT = 1;</code>
+       */
+      public static final int NEXT_LAYOUT_VALUE = 1;
+      /**
+       * <pre>
+       * &#47; Return current layout. If no layout is currently displayed, waits for
+       * / one to come up.
+       * </pre>
+       *
+       * <code>CURRENT_LAYOUT = 2;</code>
+       */
+      public static final int CURRENT_LAYOUT_VALUE = 2;
+
+
+      public final int getNumber() {
+        return value;
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static DebugWaitType valueOf(int value) {
+        return forNumber(value);
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       */
+      public static DebugWaitType forNumber(int value) {
+        switch (value) {
+          case 0: return IMMEDIATE;
+          case 1: return NEXT_LAYOUT;
+          case 2: return CURRENT_LAYOUT;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<DebugWaitType>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          DebugWaitType> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<DebugWaitType>() {
+              public DebugWaitType findValueByNumber(int number) {
+                return DebugWaitType.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetState.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final DebugWaitType[] VALUES = values();
+
+      public static DebugWaitType valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private DebugWaitType(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:hw.trezor.messages.debug.DebugLinkGetState.DebugWaitType)
+    }
+
     private int bitField0_;
     public static final int WAIT_WORD_LIST_FIELD_NUMBER = 1;
     private boolean waitWordList_ = false;
     /**
      * <pre>
-     * Trezor T only - wait until mnemonic words are shown
+     * Trezor T &lt; 2.6.0 only - wait until mnemonic words are shown
      * </pre>
      *
-     * <code>optional bool wait_word_list = 1;</code>
+     * <code>optional bool wait_word_list = 1 [deprecated = true];</code>
+     * @deprecated hw.trezor.messages.debug.DebugLinkGetState.wait_word_list is deprecated.
+     *     See messages-debug.proto;l=118
      * @return Whether the waitWordList field is set.
      */
     @java.lang.Override
-    public boolean hasWaitWordList() {
+    @java.lang.Deprecated public boolean hasWaitWordList() {
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
      * <pre>
-     * Trezor T only - wait until mnemonic words are shown
+     * Trezor T &lt; 2.6.0 only - wait until mnemonic words are shown
      * </pre>
      *
-     * <code>optional bool wait_word_list = 1;</code>
+     * <code>optional bool wait_word_list = 1 [deprecated = true];</code>
+     * @deprecated hw.trezor.messages.debug.DebugLinkGetState.wait_word_list is deprecated.
+     *     See messages-debug.proto;l=118
      * @return The waitWordList.
      */
     @java.lang.Override
-    public boolean getWaitWordList() {
+    @java.lang.Deprecated public boolean getWaitWordList() {
       return waitWordList_;
     }
 
@@ -3873,54 +4298,86 @@ public final class TrezorMessageDebug {
     private boolean waitWordPos_ = false;
     /**
      * <pre>
-     * Trezor T only - wait until reset word position is requested
+     * Trezor T &lt; 2.6.0 only - wait until reset word position is requested
      * </pre>
      *
-     * <code>optional bool wait_word_pos = 2;</code>
+     * <code>optional bool wait_word_pos = 2 [deprecated = true];</code>
+     * @deprecated hw.trezor.messages.debug.DebugLinkGetState.wait_word_pos is deprecated.
+     *     See messages-debug.proto;l=120
      * @return Whether the waitWordPos field is set.
      */
     @java.lang.Override
-    public boolean hasWaitWordPos() {
+    @java.lang.Deprecated public boolean hasWaitWordPos() {
       return ((bitField0_ & 0x00000002) != 0);
     }
     /**
      * <pre>
-     * Trezor T only - wait until reset word position is requested
+     * Trezor T &lt; 2.6.0 only - wait until reset word position is requested
      * </pre>
      *
-     * <code>optional bool wait_word_pos = 2;</code>
+     * <code>optional bool wait_word_pos = 2 [deprecated = true];</code>
+     * @deprecated hw.trezor.messages.debug.DebugLinkGetState.wait_word_pos is deprecated.
+     *     See messages-debug.proto;l=120
      * @return The waitWordPos.
      */
     @java.lang.Override
-    public boolean getWaitWordPos() {
+    @java.lang.Deprecated public boolean getWaitWordPos() {
       return waitWordPos_;
     }
 
     public static final int WAIT_LAYOUT_FIELD_NUMBER = 3;
-    private boolean waitLayout_ = false;
+    private int waitLayout_ = 0;
     /**
      * <pre>
-     * wait until current layout changes
+     * trezor-core only - wait until current layout changes
+     * changed in 2.6.4: multiple wait types instead of true/false.
      * </pre>
      *
-     * <code>optional bool wait_layout = 3;</code>
+     * <code>optional .hw.trezor.messages.debug.DebugLinkGetState.DebugWaitType wait_layout = 3 [default = IMMEDIATE];</code>
      * @return Whether the waitLayout field is set.
      */
-    @java.lang.Override
-    public boolean hasWaitLayout() {
+    @java.lang.Override public boolean hasWaitLayout() {
       return ((bitField0_ & 0x00000004) != 0);
     }
     /**
      * <pre>
-     * wait until current layout changes
+     * trezor-core only - wait until current layout changes
+     * changed in 2.6.4: multiple wait types instead of true/false.
      * </pre>
      *
-     * <code>optional bool wait_layout = 3;</code>
+     * <code>optional .hw.trezor.messages.debug.DebugLinkGetState.DebugWaitType wait_layout = 3 [default = IMMEDIATE];</code>
      * @return The waitLayout.
      */
+    @java.lang.Override public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetState.DebugWaitType getWaitLayout() {
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetState.DebugWaitType result = com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetState.DebugWaitType.forNumber(waitLayout_);
+      return result == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetState.DebugWaitType.IMMEDIATE : result;
+    }
+
+    public static final int RETURN_EMPTY_STATE_FIELD_NUMBER = 4;
+    private boolean returnEmptyState_ = false;
+    /**
+     * <pre>
+     * Responds immediately with an empty `DebugLinkState` (used for client-side synchronization).
+     * </pre>
+     *
+     * <code>optional bool return_empty_state = 4 [default = false];</code>
+     * @return Whether the returnEmptyState field is set.
+     */
     @java.lang.Override
-    public boolean getWaitLayout() {
-      return waitLayout_;
+    public boolean hasReturnEmptyState() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <pre>
+     * Responds immediately with an empty `DebugLinkState` (used for client-side synchronization).
+     * </pre>
+     *
+     * <code>optional bool return_empty_state = 4 [default = false];</code>
+     * @return The returnEmptyState.
+     */
+    @java.lang.Override
+    public boolean getReturnEmptyState() {
+      return returnEmptyState_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -3944,7 +4401,10 @@ public final class TrezorMessageDebug {
         output.writeBool(2, waitWordPos_);
       }
       if (((bitField0_ & 0x00000004) != 0)) {
-        output.writeBool(3, waitLayout_);
+        output.writeEnum(3, waitLayout_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        output.writeBool(4, returnEmptyState_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -3965,7 +4425,11 @@ public final class TrezorMessageDebug {
       }
       if (((bitField0_ & 0x00000004) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(3, waitLayout_);
+          .computeEnumSize(3, waitLayout_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, returnEmptyState_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -3994,8 +4458,12 @@ public final class TrezorMessageDebug {
       }
       if (hasWaitLayout() != other.hasWaitLayout()) return false;
       if (hasWaitLayout()) {
-        if (getWaitLayout()
-            != other.getWaitLayout()) return false;
+        if (waitLayout_ != other.waitLayout_) return false;
+      }
+      if (hasReturnEmptyState() != other.hasReturnEmptyState()) return false;
+      if (hasReturnEmptyState()) {
+        if (getReturnEmptyState()
+            != other.getReturnEmptyState()) return false;
       }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
@@ -4020,8 +4488,12 @@ public final class TrezorMessageDebug {
       }
       if (hasWaitLayout()) {
         hash = (37 * hash) + WAIT_LAYOUT_FIELD_NUMBER;
+        hash = (53 * hash) + waitLayout_;
+      }
+      if (hasReturnEmptyState()) {
+        hash = (37 * hash) + RETURN_EMPTY_STATE_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-            getWaitLayout());
+            getReturnEmptyState());
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -4123,7 +4595,7 @@ public final class TrezorMessageDebug {
     /**
      * <pre>
      * *
-     * Request: Computer asks for device state
+     * Request: Host asks for device state
      * &#64;start
      * &#64;next DebugLinkState
      * </pre>
@@ -4163,7 +4635,8 @@ public final class TrezorMessageDebug {
         bitField0_ = 0;
         waitWordList_ = false;
         waitWordPos_ = false;
-        waitLayout_ = false;
+        waitLayout_ = 0;
+        returnEmptyState_ = false;
         return this;
       }
 
@@ -4210,6 +4683,10 @@ public final class TrezorMessageDebug {
           result.waitLayout_ = waitLayout_;
           to_bitField0_ |= 0x00000004;
         }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.returnEmptyState_ = returnEmptyState_;
+          to_bitField0_ |= 0x00000008;
+        }
         result.bitField0_ |= to_bitField0_;
       }
 
@@ -4233,6 +4710,9 @@ public final class TrezorMessageDebug {
         }
         if (other.hasWaitLayout()) {
           setWaitLayout(other.getWaitLayout());
+        }
+        if (other.hasReturnEmptyState()) {
+          setReturnEmptyState(other.getReturnEmptyState());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -4271,10 +4751,22 @@ public final class TrezorMessageDebug {
                 break;
               } // case 16
               case 24: {
-                waitLayout_ = input.readBool();
-                bitField0_ |= 0x00000004;
+                int tmpRaw = input.readEnum();
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetState.DebugWaitType tmpValue =
+                    com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetState.DebugWaitType.forNumber(tmpRaw);
+                if (tmpValue == null) {
+                  mergeUnknownVarintField(3, tmpRaw);
+                } else {
+                  waitLayout_ = tmpRaw;
+                  bitField0_ |= 0x00000004;
+                }
                 break;
               } // case 24
+              case 32: {
+                returnEmptyState_ = input.readBool();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -4295,38 +4787,44 @@ public final class TrezorMessageDebug {
       private boolean waitWordList_ ;
       /**
        * <pre>
-       * Trezor T only - wait until mnemonic words are shown
+       * Trezor T &lt; 2.6.0 only - wait until mnemonic words are shown
        * </pre>
        *
-       * <code>optional bool wait_word_list = 1;</code>
+       * <code>optional bool wait_word_list = 1 [deprecated = true];</code>
+       * @deprecated hw.trezor.messages.debug.DebugLinkGetState.wait_word_list is deprecated.
+       *     See messages-debug.proto;l=118
        * @return Whether the waitWordList field is set.
        */
       @java.lang.Override
-      public boolean hasWaitWordList() {
+      @java.lang.Deprecated public boolean hasWaitWordList() {
         return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <pre>
-       * Trezor T only - wait until mnemonic words are shown
+       * Trezor T &lt; 2.6.0 only - wait until mnemonic words are shown
        * </pre>
        *
-       * <code>optional bool wait_word_list = 1;</code>
+       * <code>optional bool wait_word_list = 1 [deprecated = true];</code>
+       * @deprecated hw.trezor.messages.debug.DebugLinkGetState.wait_word_list is deprecated.
+       *     See messages-debug.proto;l=118
        * @return The waitWordList.
        */
       @java.lang.Override
-      public boolean getWaitWordList() {
+      @java.lang.Deprecated public boolean getWaitWordList() {
         return waitWordList_;
       }
       /**
        * <pre>
-       * Trezor T only - wait until mnemonic words are shown
+       * Trezor T &lt; 2.6.0 only - wait until mnemonic words are shown
        * </pre>
        *
-       * <code>optional bool wait_word_list = 1;</code>
+       * <code>optional bool wait_word_list = 1 [deprecated = true];</code>
+       * @deprecated hw.trezor.messages.debug.DebugLinkGetState.wait_word_list is deprecated.
+       *     See messages-debug.proto;l=118
        * @param value The waitWordList to set.
        * @return This builder for chaining.
        */
-      public Builder setWaitWordList(boolean value) {
+      @java.lang.Deprecated public Builder setWaitWordList(boolean value) {
 
         waitWordList_ = value;
         bitField0_ |= 0x00000001;
@@ -4335,13 +4833,15 @@ public final class TrezorMessageDebug {
       }
       /**
        * <pre>
-       * Trezor T only - wait until mnemonic words are shown
+       * Trezor T &lt; 2.6.0 only - wait until mnemonic words are shown
        * </pre>
        *
-       * <code>optional bool wait_word_list = 1;</code>
+       * <code>optional bool wait_word_list = 1 [deprecated = true];</code>
+       * @deprecated hw.trezor.messages.debug.DebugLinkGetState.wait_word_list is deprecated.
+       *     See messages-debug.proto;l=118
        * @return This builder for chaining.
        */
-      public Builder clearWaitWordList() {
+      @java.lang.Deprecated public Builder clearWaitWordList() {
         bitField0_ = (bitField0_ & ~0x00000001);
         waitWordList_ = false;
         onChanged();
@@ -4351,38 +4851,44 @@ public final class TrezorMessageDebug {
       private boolean waitWordPos_ ;
       /**
        * <pre>
-       * Trezor T only - wait until reset word position is requested
+       * Trezor T &lt; 2.6.0 only - wait until reset word position is requested
        * </pre>
        *
-       * <code>optional bool wait_word_pos = 2;</code>
+       * <code>optional bool wait_word_pos = 2 [deprecated = true];</code>
+       * @deprecated hw.trezor.messages.debug.DebugLinkGetState.wait_word_pos is deprecated.
+       *     See messages-debug.proto;l=120
        * @return Whether the waitWordPos field is set.
        */
       @java.lang.Override
-      public boolean hasWaitWordPos() {
+      @java.lang.Deprecated public boolean hasWaitWordPos() {
         return ((bitField0_ & 0x00000002) != 0);
       }
       /**
        * <pre>
-       * Trezor T only - wait until reset word position is requested
+       * Trezor T &lt; 2.6.0 only - wait until reset word position is requested
        * </pre>
        *
-       * <code>optional bool wait_word_pos = 2;</code>
+       * <code>optional bool wait_word_pos = 2 [deprecated = true];</code>
+       * @deprecated hw.trezor.messages.debug.DebugLinkGetState.wait_word_pos is deprecated.
+       *     See messages-debug.proto;l=120
        * @return The waitWordPos.
        */
       @java.lang.Override
-      public boolean getWaitWordPos() {
+      @java.lang.Deprecated public boolean getWaitWordPos() {
         return waitWordPos_;
       }
       /**
        * <pre>
-       * Trezor T only - wait until reset word position is requested
+       * Trezor T &lt; 2.6.0 only - wait until reset word position is requested
        * </pre>
        *
-       * <code>optional bool wait_word_pos = 2;</code>
+       * <code>optional bool wait_word_pos = 2 [deprecated = true];</code>
+       * @deprecated hw.trezor.messages.debug.DebugLinkGetState.wait_word_pos is deprecated.
+       *     See messages-debug.proto;l=120
        * @param value The waitWordPos to set.
        * @return This builder for chaining.
        */
-      public Builder setWaitWordPos(boolean value) {
+      @java.lang.Deprecated public Builder setWaitWordPos(boolean value) {
 
         waitWordPos_ = value;
         bitField0_ |= 0x00000002;
@@ -4391,71 +4897,135 @@ public final class TrezorMessageDebug {
       }
       /**
        * <pre>
-       * Trezor T only - wait until reset word position is requested
+       * Trezor T &lt; 2.6.0 only - wait until reset word position is requested
        * </pre>
        *
-       * <code>optional bool wait_word_pos = 2;</code>
+       * <code>optional bool wait_word_pos = 2 [deprecated = true];</code>
+       * @deprecated hw.trezor.messages.debug.DebugLinkGetState.wait_word_pos is deprecated.
+       *     See messages-debug.proto;l=120
        * @return This builder for chaining.
        */
-      public Builder clearWaitWordPos() {
+      @java.lang.Deprecated public Builder clearWaitWordPos() {
         bitField0_ = (bitField0_ & ~0x00000002);
         waitWordPos_ = false;
         onChanged();
         return this;
       }
 
-      private boolean waitLayout_ ;
+      private int waitLayout_ = 0;
       /**
        * <pre>
-       * wait until current layout changes
+       * trezor-core only - wait until current layout changes
+       * changed in 2.6.4: multiple wait types instead of true/false.
        * </pre>
        *
-       * <code>optional bool wait_layout = 3;</code>
+       * <code>optional .hw.trezor.messages.debug.DebugLinkGetState.DebugWaitType wait_layout = 3 [default = IMMEDIATE];</code>
        * @return Whether the waitLayout field is set.
        */
-      @java.lang.Override
-      public boolean hasWaitLayout() {
+      @java.lang.Override public boolean hasWaitLayout() {
         return ((bitField0_ & 0x00000004) != 0);
       }
       /**
        * <pre>
-       * wait until current layout changes
+       * trezor-core only - wait until current layout changes
+       * changed in 2.6.4: multiple wait types instead of true/false.
        * </pre>
        *
-       * <code>optional bool wait_layout = 3;</code>
+       * <code>optional .hw.trezor.messages.debug.DebugLinkGetState.DebugWaitType wait_layout = 3 [default = IMMEDIATE];</code>
        * @return The waitLayout.
        */
       @java.lang.Override
-      public boolean getWaitLayout() {
-        return waitLayout_;
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetState.DebugWaitType getWaitLayout() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetState.DebugWaitType result = com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetState.DebugWaitType.forNumber(waitLayout_);
+        return result == null ? com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetState.DebugWaitType.IMMEDIATE : result;
       }
       /**
        * <pre>
-       * wait until current layout changes
+       * trezor-core only - wait until current layout changes
+       * changed in 2.6.4: multiple wait types instead of true/false.
        * </pre>
        *
-       * <code>optional bool wait_layout = 3;</code>
+       * <code>optional .hw.trezor.messages.debug.DebugLinkGetState.DebugWaitType wait_layout = 3 [default = IMMEDIATE];</code>
        * @param value The waitLayout to set.
        * @return This builder for chaining.
        */
-      public Builder setWaitLayout(boolean value) {
-
-        waitLayout_ = value;
+      public Builder setWaitLayout(com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetState.DebugWaitType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
         bitField0_ |= 0x00000004;
+        waitLayout_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * wait until current layout changes
+       * trezor-core only - wait until current layout changes
+       * changed in 2.6.4: multiple wait types instead of true/false.
        * </pre>
        *
-       * <code>optional bool wait_layout = 3;</code>
+       * <code>optional .hw.trezor.messages.debug.DebugLinkGetState.DebugWaitType wait_layout = 3 [default = IMMEDIATE];</code>
        * @return This builder for chaining.
        */
       public Builder clearWaitLayout() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        waitLayout_ = false;
+        waitLayout_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean returnEmptyState_ ;
+      /**
+       * <pre>
+       * Responds immediately with an empty `DebugLinkState` (used for client-side synchronization).
+       * </pre>
+       *
+       * <code>optional bool return_empty_state = 4 [default = false];</code>
+       * @return Whether the returnEmptyState field is set.
+       */
+      @java.lang.Override
+      public boolean hasReturnEmptyState() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <pre>
+       * Responds immediately with an empty `DebugLinkState` (used for client-side synchronization).
+       * </pre>
+       *
+       * <code>optional bool return_empty_state = 4 [default = false];</code>
+       * @return The returnEmptyState.
+       */
+      @java.lang.Override
+      public boolean getReturnEmptyState() {
+        return returnEmptyState_;
+      }
+      /**
+       * <pre>
+       * Responds immediately with an empty `DebugLinkState` (used for client-side synchronization).
+       * </pre>
+       *
+       * <code>optional bool return_empty_state = 4 [default = false];</code>
+       * @param value The returnEmptyState to set.
+       * @return This builder for chaining.
+       */
+      public Builder setReturnEmptyState(boolean value) {
+
+        returnEmptyState_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Responds immediately with an empty `DebugLinkState` (used for client-side synchronization).
+       * </pre>
+       *
+       * <code>optional bool return_empty_state = 4 [default = false];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearReturnEmptyState() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        returnEmptyState_ = false;
         onChanged();
         return this;
       }
@@ -7269,6 +7839,1817 @@ public final class TrezorMessageDebug {
 
     @java.lang.Override
     public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkState getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface DebugLinkGetPairingInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.debug.DebugLinkGetPairingInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * ID of the THP channel to get pairing info from
+     * </pre>
+     *
+     * <code>optional bytes channel_id = 1;</code>
+     * @return Whether the channelId field is set.
+     */
+    boolean hasChannelId();
+    /**
+     * <pre>
+     * ID of the THP channel to get pairing info from
+     * </pre>
+     *
+     * <code>optional bytes channel_id = 1;</code>
+     * @return The channelId.
+     */
+    com.google.protobuf.ByteString getChannelId();
+
+    /**
+     * <pre>
+     * handshake hash of the THP channel
+     * </pre>
+     *
+     * <code>optional bytes handshake_hash = 2;</code>
+     * @return Whether the handshakeHash field is set.
+     */
+    boolean hasHandshakeHash();
+    /**
+     * <pre>
+     * handshake hash of the THP channel
+     * </pre>
+     *
+     * <code>optional bytes handshake_hash = 2;</code>
+     * @return The handshakeHash.
+     */
+    com.google.protobuf.ByteString getHandshakeHash();
+
+    /**
+     * <pre>
+     * host's NFC secret (In case of NFC pairing)
+     * </pre>
+     *
+     * <code>optional bytes nfc_secret_host = 3;</code>
+     * @return Whether the nfcSecretHost field is set.
+     */
+    boolean hasNfcSecretHost();
+    /**
+     * <pre>
+     * host's NFC secret (In case of NFC pairing)
+     * </pre>
+     *
+     * <code>optional bytes nfc_secret_host = 3;</code>
+     * @return The nfcSecretHost.
+     */
+    com.google.protobuf.ByteString getNfcSecretHost();
+  }
+  /**
+   * <pre>
+   * *
+   * Request: Host asks for device pairing info
+   * &#64;start
+   * &#64;next DebugLinkPairingInfo
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.debug.DebugLinkGetPairingInfo}
+   */
+  public static final class DebugLinkGetPairingInfo extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.debug.DebugLinkGetPairingInfo)
+      DebugLinkGetPairingInfoOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        DebugLinkGetPairingInfo.class.getName());
+    }
+    // Use DebugLinkGetPairingInfo.newBuilder() to construct.
+    private DebugLinkGetPairingInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private DebugLinkGetPairingInfo() {
+      channelId_ = com.google.protobuf.ByteString.EMPTY;
+      handshakeHash_ = com.google.protobuf.ByteString.EMPTY;
+      nfcSecretHost_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkGetPairingInfo_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkGetPairingInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int CHANNEL_ID_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString channelId_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * ID of the THP channel to get pairing info from
+     * </pre>
+     *
+     * <code>optional bytes channel_id = 1;</code>
+     * @return Whether the channelId field is set.
+     */
+    @java.lang.Override
+    public boolean hasChannelId() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * ID of the THP channel to get pairing info from
+     * </pre>
+     *
+     * <code>optional bytes channel_id = 1;</code>
+     * @return The channelId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getChannelId() {
+      return channelId_;
+    }
+
+    public static final int HANDSHAKE_HASH_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString handshakeHash_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * handshake hash of the THP channel
+     * </pre>
+     *
+     * <code>optional bytes handshake_hash = 2;</code>
+     * @return Whether the handshakeHash field is set.
+     */
+    @java.lang.Override
+    public boolean hasHandshakeHash() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * handshake hash of the THP channel
+     * </pre>
+     *
+     * <code>optional bytes handshake_hash = 2;</code>
+     * @return The handshakeHash.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getHandshakeHash() {
+      return handshakeHash_;
+    }
+
+    public static final int NFC_SECRET_HOST_FIELD_NUMBER = 3;
+    private com.google.protobuf.ByteString nfcSecretHost_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * host's NFC secret (In case of NFC pairing)
+     * </pre>
+     *
+     * <code>optional bytes nfc_secret_host = 3;</code>
+     * @return Whether the nfcSecretHost field is set.
+     */
+    @java.lang.Override
+    public boolean hasNfcSecretHost() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <pre>
+     * host's NFC secret (In case of NFC pairing)
+     * </pre>
+     *
+     * <code>optional bytes nfc_secret_host = 3;</code>
+     * @return The nfcSecretHost.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getNfcSecretHost() {
+      return nfcSecretHost_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeBytes(1, channelId_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeBytes(2, handshakeHash_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeBytes(3, nfcSecretHost_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, channelId_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, handshakeHash_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, nfcSecretHost_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo) obj;
+
+      if (hasChannelId() != other.hasChannelId()) return false;
+      if (hasChannelId()) {
+        if (!getChannelId()
+            .equals(other.getChannelId())) return false;
+      }
+      if (hasHandshakeHash() != other.hasHandshakeHash()) return false;
+      if (hasHandshakeHash()) {
+        if (!getHandshakeHash()
+            .equals(other.getHandshakeHash())) return false;
+      }
+      if (hasNfcSecretHost() != other.hasNfcSecretHost()) return false;
+      if (hasNfcSecretHost()) {
+        if (!getNfcSecretHost()
+            .equals(other.getNfcSecretHost())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasChannelId()) {
+        hash = (37 * hash) + CHANNEL_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getChannelId().hashCode();
+      }
+      if (hasHandshakeHash()) {
+        hash = (37 * hash) + HANDSHAKE_HASH_FIELD_NUMBER;
+        hash = (53 * hash) + getHandshakeHash().hashCode();
+      }
+      if (hasNfcSecretHost()) {
+        hash = (37 * hash) + NFC_SECRET_HOST_FIELD_NUMBER;
+        hash = (53 * hash) + getNfcSecretHost().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Request: Host asks for device pairing info
+     * &#64;start
+     * &#64;next DebugLinkPairingInfo
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.debug.DebugLinkGetPairingInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.debug.DebugLinkGetPairingInfo)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkGetPairingInfo_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkGetPairingInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        channelId_ = com.google.protobuf.ByteString.EMPTY;
+        handshakeHash_ = com.google.protobuf.ByteString.EMPTY;
+        nfcSecretHost_ = com.google.protobuf.ByteString.EMPTY;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkGetPairingInfo_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.channelId_ = channelId_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.handshakeHash_ = handshakeHash_;
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.nfcSecretHost_ = nfcSecretHost_;
+          to_bitField0_ |= 0x00000004;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo.getDefaultInstance()) return this;
+        if (other.hasChannelId()) {
+          setChannelId(other.getChannelId());
+        }
+        if (other.hasHandshakeHash()) {
+          setHandshakeHash(other.getHandshakeHash());
+        }
+        if (other.hasNfcSecretHost()) {
+          setNfcSecretHost(other.getNfcSecretHost());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                channelId_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                handshakeHash_ = input.readBytes();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                nfcSecretHost_ = input.readBytes();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.ByteString channelId_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * ID of the THP channel to get pairing info from
+       * </pre>
+       *
+       * <code>optional bytes channel_id = 1;</code>
+       * @return Whether the channelId field is set.
+       */
+      @java.lang.Override
+      public boolean hasChannelId() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * ID of the THP channel to get pairing info from
+       * </pre>
+       *
+       * <code>optional bytes channel_id = 1;</code>
+       * @return The channelId.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getChannelId() {
+        return channelId_;
+      }
+      /**
+       * <pre>
+       * ID of the THP channel to get pairing info from
+       * </pre>
+       *
+       * <code>optional bytes channel_id = 1;</code>
+       * @param value The channelId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setChannelId(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        channelId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * ID of the THP channel to get pairing info from
+       * </pre>
+       *
+       * <code>optional bytes channel_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearChannelId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        channelId_ = getDefaultInstance().getChannelId();
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString handshakeHash_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * handshake hash of the THP channel
+       * </pre>
+       *
+       * <code>optional bytes handshake_hash = 2;</code>
+       * @return Whether the handshakeHash field is set.
+       */
+      @java.lang.Override
+      public boolean hasHandshakeHash() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * handshake hash of the THP channel
+       * </pre>
+       *
+       * <code>optional bytes handshake_hash = 2;</code>
+       * @return The handshakeHash.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getHandshakeHash() {
+        return handshakeHash_;
+      }
+      /**
+       * <pre>
+       * handshake hash of the THP channel
+       * </pre>
+       *
+       * <code>optional bytes handshake_hash = 2;</code>
+       * @param value The handshakeHash to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHandshakeHash(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        handshakeHash_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * handshake hash of the THP channel
+       * </pre>
+       *
+       * <code>optional bytes handshake_hash = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearHandshakeHash() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        handshakeHash_ = getDefaultInstance().getHandshakeHash();
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString nfcSecretHost_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * host's NFC secret (In case of NFC pairing)
+       * </pre>
+       *
+       * <code>optional bytes nfc_secret_host = 3;</code>
+       * @return Whether the nfcSecretHost field is set.
+       */
+      @java.lang.Override
+      public boolean hasNfcSecretHost() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <pre>
+       * host's NFC secret (In case of NFC pairing)
+       * </pre>
+       *
+       * <code>optional bytes nfc_secret_host = 3;</code>
+       * @return The nfcSecretHost.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getNfcSecretHost() {
+        return nfcSecretHost_;
+      }
+      /**
+       * <pre>
+       * host's NFC secret (In case of NFC pairing)
+       * </pre>
+       *
+       * <code>optional bytes nfc_secret_host = 3;</code>
+       * @param value The nfcSecretHost to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNfcSecretHost(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        nfcSecretHost_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * host's NFC secret (In case of NFC pairing)
+       * </pre>
+       *
+       * <code>optional bytes nfc_secret_host = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNfcSecretHost() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        nfcSecretHost_ = getDefaultInstance().getNfcSecretHost();
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.debug.DebugLinkGetPairingInfo)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.debug.DebugLinkGetPairingInfo)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DebugLinkGetPairingInfo>
+        PARSER = new com.google.protobuf.AbstractParser<DebugLinkGetPairingInfo>() {
+      @java.lang.Override
+      public DebugLinkGetPairingInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<DebugLinkGetPairingInfo> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DebugLinkGetPairingInfo> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetPairingInfo getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface DebugLinkPairingInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.debug.DebugLinkPairingInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * ID of the THP channel the pairing info is from
+     * </pre>
+     *
+     * <code>optional bytes channel_id = 1;</code>
+     * @return Whether the channelId field is set.
+     */
+    boolean hasChannelId();
+    /**
+     * <pre>
+     * ID of the THP channel the pairing info is from
+     * </pre>
+     *
+     * <code>optional bytes channel_id = 1;</code>
+     * @return The channelId.
+     */
+    com.google.protobuf.ByteString getChannelId();
+
+    /**
+     * <pre>
+     * handshake hash of the THP channel
+     * </pre>
+     *
+     * <code>optional bytes handshake_hash = 2;</code>
+     * @return Whether the handshakeHash field is set.
+     */
+    boolean hasHandshakeHash();
+    /**
+     * <pre>
+     * handshake hash of the THP channel
+     * </pre>
+     *
+     * <code>optional bytes handshake_hash = 2;</code>
+     * @return The handshakeHash.
+     */
+    com.google.protobuf.ByteString getHandshakeHash();
+
+    /**
+     * <pre>
+     * CodeEntry pairing code
+     * </pre>
+     *
+     * <code>optional uint32 code_entry_code = 3;</code>
+     * @return Whether the codeEntryCode field is set.
+     */
+    boolean hasCodeEntryCode();
+    /**
+     * <pre>
+     * CodeEntry pairing code
+     * </pre>
+     *
+     * <code>optional uint32 code_entry_code = 3;</code>
+     * @return The codeEntryCode.
+     */
+    int getCodeEntryCode();
+
+    /**
+     * <pre>
+     * QrCode pairing code
+     * </pre>
+     *
+     * <code>optional bytes code_qr_code = 4;</code>
+     * @return Whether the codeQrCode field is set.
+     */
+    boolean hasCodeQrCode();
+    /**
+     * <pre>
+     * QrCode pairing code
+     * </pre>
+     *
+     * <code>optional bytes code_qr_code = 4;</code>
+     * @return The codeQrCode.
+     */
+    com.google.protobuf.ByteString getCodeQrCode();
+
+    /**
+     * <pre>
+     * NFC secret used in NFC pairing
+     * </pre>
+     *
+     * <code>optional bytes nfc_secret_trezor = 5;</code>
+     * @return Whether the nfcSecretTrezor field is set.
+     */
+    boolean hasNfcSecretTrezor();
+    /**
+     * <pre>
+     * NFC secret used in NFC pairing
+     * </pre>
+     *
+     * <code>optional bytes nfc_secret_trezor = 5;</code>
+     * @return The nfcSecretTrezor.
+     */
+    com.google.protobuf.ByteString getNfcSecretTrezor();
+  }
+  /**
+   * <pre>
+   * *
+   * Response: Device pairing info
+   * &#64;end
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.debug.DebugLinkPairingInfo}
+   */
+  public static final class DebugLinkPairingInfo extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.debug.DebugLinkPairingInfo)
+      DebugLinkPairingInfoOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        DebugLinkPairingInfo.class.getName());
+    }
+    // Use DebugLinkPairingInfo.newBuilder() to construct.
+    private DebugLinkPairingInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private DebugLinkPairingInfo() {
+      channelId_ = com.google.protobuf.ByteString.EMPTY;
+      handshakeHash_ = com.google.protobuf.ByteString.EMPTY;
+      codeQrCode_ = com.google.protobuf.ByteString.EMPTY;
+      nfcSecretTrezor_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkPairingInfo_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkPairingInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int CHANNEL_ID_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString channelId_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * ID of the THP channel the pairing info is from
+     * </pre>
+     *
+     * <code>optional bytes channel_id = 1;</code>
+     * @return Whether the channelId field is set.
+     */
+    @java.lang.Override
+    public boolean hasChannelId() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * ID of the THP channel the pairing info is from
+     * </pre>
+     *
+     * <code>optional bytes channel_id = 1;</code>
+     * @return The channelId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getChannelId() {
+      return channelId_;
+    }
+
+    public static final int HANDSHAKE_HASH_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString handshakeHash_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * handshake hash of the THP channel
+     * </pre>
+     *
+     * <code>optional bytes handshake_hash = 2;</code>
+     * @return Whether the handshakeHash field is set.
+     */
+    @java.lang.Override
+    public boolean hasHandshakeHash() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * handshake hash of the THP channel
+     * </pre>
+     *
+     * <code>optional bytes handshake_hash = 2;</code>
+     * @return The handshakeHash.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getHandshakeHash() {
+      return handshakeHash_;
+    }
+
+    public static final int CODE_ENTRY_CODE_FIELD_NUMBER = 3;
+    private int codeEntryCode_ = 0;
+    /**
+     * <pre>
+     * CodeEntry pairing code
+     * </pre>
+     *
+     * <code>optional uint32 code_entry_code = 3;</code>
+     * @return Whether the codeEntryCode field is set.
+     */
+    @java.lang.Override
+    public boolean hasCodeEntryCode() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <pre>
+     * CodeEntry pairing code
+     * </pre>
+     *
+     * <code>optional uint32 code_entry_code = 3;</code>
+     * @return The codeEntryCode.
+     */
+    @java.lang.Override
+    public int getCodeEntryCode() {
+      return codeEntryCode_;
+    }
+
+    public static final int CODE_QR_CODE_FIELD_NUMBER = 4;
+    private com.google.protobuf.ByteString codeQrCode_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * QrCode pairing code
+     * </pre>
+     *
+     * <code>optional bytes code_qr_code = 4;</code>
+     * @return Whether the codeQrCode field is set.
+     */
+    @java.lang.Override
+    public boolean hasCodeQrCode() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <pre>
+     * QrCode pairing code
+     * </pre>
+     *
+     * <code>optional bytes code_qr_code = 4;</code>
+     * @return The codeQrCode.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getCodeQrCode() {
+      return codeQrCode_;
+    }
+
+    public static final int NFC_SECRET_TREZOR_FIELD_NUMBER = 5;
+    private com.google.protobuf.ByteString nfcSecretTrezor_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * NFC secret used in NFC pairing
+     * </pre>
+     *
+     * <code>optional bytes nfc_secret_trezor = 5;</code>
+     * @return Whether the nfcSecretTrezor field is set.
+     */
+    @java.lang.Override
+    public boolean hasNfcSecretTrezor() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <pre>
+     * NFC secret used in NFC pairing
+     * </pre>
+     *
+     * <code>optional bytes nfc_secret_trezor = 5;</code>
+     * @return The nfcSecretTrezor.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getNfcSecretTrezor() {
+      return nfcSecretTrezor_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeBytes(1, channelId_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeBytes(2, handshakeHash_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeUInt32(3, codeEntryCode_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        output.writeBytes(4, codeQrCode_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        output.writeBytes(5, nfcSecretTrezor_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, channelId_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, handshakeHash_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, codeEntryCode_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, codeQrCode_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, nfcSecretTrezor_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo) obj;
+
+      if (hasChannelId() != other.hasChannelId()) return false;
+      if (hasChannelId()) {
+        if (!getChannelId()
+            .equals(other.getChannelId())) return false;
+      }
+      if (hasHandshakeHash() != other.hasHandshakeHash()) return false;
+      if (hasHandshakeHash()) {
+        if (!getHandshakeHash()
+            .equals(other.getHandshakeHash())) return false;
+      }
+      if (hasCodeEntryCode() != other.hasCodeEntryCode()) return false;
+      if (hasCodeEntryCode()) {
+        if (getCodeEntryCode()
+            != other.getCodeEntryCode()) return false;
+      }
+      if (hasCodeQrCode() != other.hasCodeQrCode()) return false;
+      if (hasCodeQrCode()) {
+        if (!getCodeQrCode()
+            .equals(other.getCodeQrCode())) return false;
+      }
+      if (hasNfcSecretTrezor() != other.hasNfcSecretTrezor()) return false;
+      if (hasNfcSecretTrezor()) {
+        if (!getNfcSecretTrezor()
+            .equals(other.getNfcSecretTrezor())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasChannelId()) {
+        hash = (37 * hash) + CHANNEL_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getChannelId().hashCode();
+      }
+      if (hasHandshakeHash()) {
+        hash = (37 * hash) + HANDSHAKE_HASH_FIELD_NUMBER;
+        hash = (53 * hash) + getHandshakeHash().hashCode();
+      }
+      if (hasCodeEntryCode()) {
+        hash = (37 * hash) + CODE_ENTRY_CODE_FIELD_NUMBER;
+        hash = (53 * hash) + getCodeEntryCode();
+      }
+      if (hasCodeQrCode()) {
+        hash = (37 * hash) + CODE_QR_CODE_FIELD_NUMBER;
+        hash = (53 * hash) + getCodeQrCode().hashCode();
+      }
+      if (hasNfcSecretTrezor()) {
+        hash = (37 * hash) + NFC_SECRET_TREZOR_FIELD_NUMBER;
+        hash = (53 * hash) + getNfcSecretTrezor().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Response: Device pairing info
+     * &#64;end
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.debug.DebugLinkPairingInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.debug.DebugLinkPairingInfo)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkPairingInfo_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkPairingInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        channelId_ = com.google.protobuf.ByteString.EMPTY;
+        handshakeHash_ = com.google.protobuf.ByteString.EMPTY;
+        codeEntryCode_ = 0;
+        codeQrCode_ = com.google.protobuf.ByteString.EMPTY;
+        nfcSecretTrezor_ = com.google.protobuf.ByteString.EMPTY;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkPairingInfo_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.channelId_ = channelId_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.handshakeHash_ = handshakeHash_;
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.codeEntryCode_ = codeEntryCode_;
+          to_bitField0_ |= 0x00000004;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.codeQrCode_ = codeQrCode_;
+          to_bitField0_ |= 0x00000008;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.nfcSecretTrezor_ = nfcSecretTrezor_;
+          to_bitField0_ |= 0x00000010;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo.getDefaultInstance()) return this;
+        if (other.hasChannelId()) {
+          setChannelId(other.getChannelId());
+        }
+        if (other.hasHandshakeHash()) {
+          setHandshakeHash(other.getHandshakeHash());
+        }
+        if (other.hasCodeEntryCode()) {
+          setCodeEntryCode(other.getCodeEntryCode());
+        }
+        if (other.hasCodeQrCode()) {
+          setCodeQrCode(other.getCodeQrCode());
+        }
+        if (other.hasNfcSecretTrezor()) {
+          setNfcSecretTrezor(other.getNfcSecretTrezor());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                channelId_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                handshakeHash_ = input.readBytes();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 24: {
+                codeEntryCode_ = input.readUInt32();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              case 34: {
+                codeQrCode_ = input.readBytes();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
+              case 42: {
+                nfcSecretTrezor_ = input.readBytes();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.ByteString channelId_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * ID of the THP channel the pairing info is from
+       * </pre>
+       *
+       * <code>optional bytes channel_id = 1;</code>
+       * @return Whether the channelId field is set.
+       */
+      @java.lang.Override
+      public boolean hasChannelId() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * ID of the THP channel the pairing info is from
+       * </pre>
+       *
+       * <code>optional bytes channel_id = 1;</code>
+       * @return The channelId.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getChannelId() {
+        return channelId_;
+      }
+      /**
+       * <pre>
+       * ID of the THP channel the pairing info is from
+       * </pre>
+       *
+       * <code>optional bytes channel_id = 1;</code>
+       * @param value The channelId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setChannelId(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        channelId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * ID of the THP channel the pairing info is from
+       * </pre>
+       *
+       * <code>optional bytes channel_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearChannelId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        channelId_ = getDefaultInstance().getChannelId();
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString handshakeHash_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * handshake hash of the THP channel
+       * </pre>
+       *
+       * <code>optional bytes handshake_hash = 2;</code>
+       * @return Whether the handshakeHash field is set.
+       */
+      @java.lang.Override
+      public boolean hasHandshakeHash() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * handshake hash of the THP channel
+       * </pre>
+       *
+       * <code>optional bytes handshake_hash = 2;</code>
+       * @return The handshakeHash.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getHandshakeHash() {
+        return handshakeHash_;
+      }
+      /**
+       * <pre>
+       * handshake hash of the THP channel
+       * </pre>
+       *
+       * <code>optional bytes handshake_hash = 2;</code>
+       * @param value The handshakeHash to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHandshakeHash(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        handshakeHash_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * handshake hash of the THP channel
+       * </pre>
+       *
+       * <code>optional bytes handshake_hash = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearHandshakeHash() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        handshakeHash_ = getDefaultInstance().getHandshakeHash();
+        onChanged();
+        return this;
+      }
+
+      private int codeEntryCode_ ;
+      /**
+       * <pre>
+       * CodeEntry pairing code
+       * </pre>
+       *
+       * <code>optional uint32 code_entry_code = 3;</code>
+       * @return Whether the codeEntryCode field is set.
+       */
+      @java.lang.Override
+      public boolean hasCodeEntryCode() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <pre>
+       * CodeEntry pairing code
+       * </pre>
+       *
+       * <code>optional uint32 code_entry_code = 3;</code>
+       * @return The codeEntryCode.
+       */
+      @java.lang.Override
+      public int getCodeEntryCode() {
+        return codeEntryCode_;
+      }
+      /**
+       * <pre>
+       * CodeEntry pairing code
+       * </pre>
+       *
+       * <code>optional uint32 code_entry_code = 3;</code>
+       * @param value The codeEntryCode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCodeEntryCode(int value) {
+
+        codeEntryCode_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * CodeEntry pairing code
+       * </pre>
+       *
+       * <code>optional uint32 code_entry_code = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCodeEntryCode() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        codeEntryCode_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString codeQrCode_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * QrCode pairing code
+       * </pre>
+       *
+       * <code>optional bytes code_qr_code = 4;</code>
+       * @return Whether the codeQrCode field is set.
+       */
+      @java.lang.Override
+      public boolean hasCodeQrCode() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <pre>
+       * QrCode pairing code
+       * </pre>
+       *
+       * <code>optional bytes code_qr_code = 4;</code>
+       * @return The codeQrCode.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getCodeQrCode() {
+        return codeQrCode_;
+      }
+      /**
+       * <pre>
+       * QrCode pairing code
+       * </pre>
+       *
+       * <code>optional bytes code_qr_code = 4;</code>
+       * @param value The codeQrCode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCodeQrCode(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        codeQrCode_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * QrCode pairing code
+       * </pre>
+       *
+       * <code>optional bytes code_qr_code = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCodeQrCode() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        codeQrCode_ = getDefaultInstance().getCodeQrCode();
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString nfcSecretTrezor_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * NFC secret used in NFC pairing
+       * </pre>
+       *
+       * <code>optional bytes nfc_secret_trezor = 5;</code>
+       * @return Whether the nfcSecretTrezor field is set.
+       */
+      @java.lang.Override
+      public boolean hasNfcSecretTrezor() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <pre>
+       * NFC secret used in NFC pairing
+       * </pre>
+       *
+       * <code>optional bytes nfc_secret_trezor = 5;</code>
+       * @return The nfcSecretTrezor.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getNfcSecretTrezor() {
+        return nfcSecretTrezor_;
+      }
+      /**
+       * <pre>
+       * NFC secret used in NFC pairing
+       * </pre>
+       *
+       * <code>optional bytes nfc_secret_trezor = 5;</code>
+       * @param value The nfcSecretTrezor to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNfcSecretTrezor(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        nfcSecretTrezor_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * NFC secret used in NFC pairing
+       * </pre>
+       *
+       * <code>optional bytes nfc_secret_trezor = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNfcSecretTrezor() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        nfcSecretTrezor_ = getDefaultInstance().getNfcSecretTrezor();
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.debug.DebugLinkPairingInfo)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.debug.DebugLinkPairingInfo)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DebugLinkPairingInfo>
+        PARSER = new com.google.protobuf.AbstractParser<DebugLinkPairingInfo>() {
+      @java.lang.Override
+      public DebugLinkPairingInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<DebugLinkPairingInfo> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DebugLinkPairingInfo> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkPairingInfo getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -11202,7 +13583,7 @@ public final class TrezorMessageDebug {
 
   }
 
-  public interface DebugLinkWatchLayoutOrBuilder extends
+  @java.lang.Deprecated public interface DebugLinkWatchLayoutOrBuilder extends
       // @@protoc_insertion_point(interface_extends:hw.trezor.messages.debug.DebugLinkWatchLayout)
       com.google.protobuf.MessageOrBuilder {
 
@@ -11235,7 +13616,7 @@ public final class TrezorMessageDebug {
    *
    * Protobuf type {@code hw.trezor.messages.debug.DebugLinkWatchLayout}
    */
-  public static final class DebugLinkWatchLayout extends
+  @java.lang.Deprecated public static final class DebugLinkWatchLayout extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:hw.trezor.messages.debug.DebugLinkWatchLayout)
       DebugLinkWatchLayoutOrBuilder {
@@ -11713,7 +14094,7 @@ public final class TrezorMessageDebug {
 
   }
 
-  public interface DebugLinkResetDebugEventsOrBuilder extends
+  @java.lang.Deprecated public interface DebugLinkResetDebugEventsOrBuilder extends
       // @@protoc_insertion_point(interface_extends:hw.trezor.messages.debug.DebugLinkResetDebugEvents)
       com.google.protobuf.MessageOrBuilder {
   }
@@ -11727,7 +14108,7 @@ public final class TrezorMessageDebug {
    *
    * Protobuf type {@code hw.trezor.messages.debug.DebugLinkResetDebugEvents}
    */
-  public static final class DebugLinkResetDebugEvents extends
+  @java.lang.Deprecated public static final class DebugLinkResetDebugEvents extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:hw.trezor.messages.debug.DebugLinkResetDebugEvents)
       DebugLinkResetDebugEventsOrBuilder {
@@ -12451,6 +14832,2406 @@ public final class TrezorMessageDebug {
 
   }
 
+  public interface DebugLinkGetGcInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.debug.DebugLinkGetGcInfo)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * <pre>
+   * *
+   * Request: Get GC heap information.
+   * &#64;start
+   * &#64;next DebugLinkGcInfo
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.debug.DebugLinkGetGcInfo}
+   */
+  public static final class DebugLinkGetGcInfo extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.debug.DebugLinkGetGcInfo)
+      DebugLinkGetGcInfoOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        DebugLinkGetGcInfo.class.getName());
+    }
+    // Use DebugLinkGetGcInfo.newBuilder() to construct.
+    private DebugLinkGetGcInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private DebugLinkGetGcInfo() {
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkGetGcInfo_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkGetGcInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo) obj;
+
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Request: Get GC heap information.
+     * &#64;start
+     * &#64;next DebugLinkGcInfo
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.debug.DebugLinkGetGcInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.debug.DebugLinkGetGcInfo)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkGetGcInfo_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkGetGcInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkGetGcInfo_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo(this);
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.debug.DebugLinkGetGcInfo)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.debug.DebugLinkGetGcInfo)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DebugLinkGetGcInfo>
+        PARSER = new com.google.protobuf.AbstractParser<DebugLinkGetGcInfo>() {
+      @java.lang.Override
+      public DebugLinkGetGcInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<DebugLinkGetGcInfo> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DebugLinkGetGcInfo> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGetGcInfo getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface DebugLinkGcInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.debug.DebugLinkGcInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+     */
+    java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem> 
+        getItemsList();
+    /**
+     * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+     */
+    com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem getItems(int index);
+    /**
+     * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+     */
+    int getItemsCount();
+    /**
+     * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+     */
+    java.util.List<? extends com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItemOrBuilder> 
+        getItemsOrBuilderList();
+    /**
+     * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+     */
+    com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItemOrBuilder getItemsOrBuilder(
+        int index);
+  }
+  /**
+   * <pre>
+   * *
+   * Response: GC heap information details.
+   * &#64;end
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.debug.DebugLinkGcInfo}
+   */
+  public static final class DebugLinkGcInfo extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.debug.DebugLinkGcInfo)
+      DebugLinkGcInfoOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        DebugLinkGcInfo.class.getName());
+    }
+    // Use DebugLinkGcInfo.newBuilder() to construct.
+    private DebugLinkGcInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private DebugLinkGcInfo() {
+      items_ = java.util.Collections.emptyList();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkGcInfo_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkGcInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.Builder.class);
+    }
+
+    public interface DebugLinkGcInfoItemOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>required string name = 1;</code>
+       * @return Whether the name field is set.
+       */
+      boolean hasName();
+      /**
+       * <code>required string name = 1;</code>
+       * @return The name.
+       */
+      java.lang.String getName();
+      /**
+       * <code>required string name = 1;</code>
+       * @return The bytes for name.
+       */
+      com.google.protobuf.ByteString
+          getNameBytes();
+
+      /**
+       * <code>required uint64 value = 2;</code>
+       * @return Whether the value field is set.
+       */
+      boolean hasValue();
+      /**
+       * <code>required uint64 value = 2;</code>
+       * @return The value.
+       */
+      long getValue();
+    }
+    /**
+     * <pre>
+     * *
+     * Key-value pair.
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem}
+     */
+    public static final class DebugLinkGcInfoItem extends
+        com.google.protobuf.GeneratedMessage implements
+        // @@protoc_insertion_point(message_implements:hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem)
+        DebugLinkGcInfoItemOrBuilder {
+    private static final long serialVersionUID = 0L;
+      static {
+        com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+          com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+          /* major= */ 4,
+          /* minor= */ 28,
+          /* patch= */ 3,
+          /* suffix= */ "",
+          DebugLinkGcInfoItem.class.getName());
+      }
+      // Use DebugLinkGcInfoItem.newBuilder() to construct.
+      private DebugLinkGcInfoItem(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+        super(builder);
+      }
+      private DebugLinkGcInfoItem() {
+        name_ = "";
+      }
+
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkGcInfo_DebugLinkGcInfoItem_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkGcInfo_DebugLinkGcInfoItem_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem.Builder.class);
+      }
+
+      private int bitField0_;
+      public static final int NAME_FIELD_NUMBER = 1;
+      @SuppressWarnings("serial")
+      private volatile java.lang.Object name_ = "";
+      /**
+       * <code>required string name = 1;</code>
+       * @return Whether the name field is set.
+       */
+      @java.lang.Override
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>required string name = 1;</code>
+       * @return The name.
+       */
+      @java.lang.Override
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            name_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <code>required string name = 1;</code>
+       * @return The bytes for name.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int VALUE_FIELD_NUMBER = 2;
+      private long value_ = 0L;
+      /**
+       * <code>required uint64 value = 2;</code>
+       * @return Whether the value field is set.
+       */
+      @java.lang.Override
+      public boolean hasValue() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>required uint64 value = 2;</code>
+       * @return The value.
+       */
+      @java.lang.Override
+      public long getValue() {
+        return value_;
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        if (!hasName()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!hasValue()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          com.google.protobuf.GeneratedMessage.writeString(output, 1, name_);
+        }
+        if (((bitField0_ & 0x00000002) != 0)) {
+          output.writeUInt64(2, value_);
+        }
+        getUnknownFields().writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          size += com.google.protobuf.GeneratedMessage.computeStringSize(1, name_);
+        }
+        if (((bitField0_ & 0x00000002) != 0)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt64Size(2, value_);
+        }
+        size += getUnknownFields().getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem)) {
+          return super.equals(obj);
+        }
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem) obj;
+
+        if (hasName() != other.hasName()) return false;
+        if (hasName()) {
+          if (!getName()
+              .equals(other.getName())) return false;
+        }
+        if (hasValue() != other.hasValue()) return false;
+        if (hasValue()) {
+          if (getValue()
+              != other.getValue()) return false;
+        }
+        if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        if (hasName()) {
+          hash = (37 * hash) + NAME_FIELD_NUMBER;
+          hash = (53 * hash) + getName().hashCode();
+        }
+        if (hasValue()) {
+          hash = (37 * hash) + VALUE_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+              getValue());
+        }
+        hash = (29 * hash) + getUnknownFields().hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * <pre>
+       * *
+       * Key-value pair.
+       * </pre>
+       *
+       * Protobuf type {@code hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem)
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItemOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkGcInfo_DebugLinkGcInfoItem_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkGcInfo_DebugLinkGcInfoItem_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem.Builder.class);
+        }
+
+        // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem.newBuilder()
+        private Builder() {
+
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          super(parent);
+
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          bitField0_ = 0;
+          name_ = "";
+          value_ = 0L;
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkGcInfo_DebugLinkGcInfoItem_descriptor;
+        }
+
+        @java.lang.Override
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem getDefaultInstanceForType() {
+          return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem build() {
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem buildPartial() {
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem(this);
+          if (bitField0_ != 0) { buildPartial0(result); }
+          onBuilt();
+          return result;
+        }
+
+        private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem result) {
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) != 0)) {
+            result.name_ = name_;
+            to_bitField0_ |= 0x00000001;
+          }
+          if (((from_bitField0_ & 0x00000002) != 0)) {
+            result.value_ = value_;
+            to_bitField0_ |= 0x00000002;
+          }
+          result.bitField0_ |= to_bitField0_;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem) {
+            return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem other) {
+          if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem.getDefaultInstance()) return this;
+          if (other.hasName()) {
+            name_ = other.name_;
+            bitField0_ |= 0x00000001;
+            onChanged();
+          }
+          if (other.hasValue()) {
+            setValue(other.getValue());
+          }
+          this.mergeUnknownFields(other.getUnknownFields());
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          if (!hasName()) {
+            return false;
+          }
+          if (!hasValue()) {
+            return false;
+          }
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          if (extensionRegistry == null) {
+            throw new java.lang.NullPointerException();
+          }
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                case 10: {
+                  name_ = input.readBytes();
+                  bitField0_ |= 0x00000001;
+                  break;
+                } // case 10
+                case 16: {
+                  value_ = input.readUInt64();
+                  bitField0_ |= 0x00000002;
+                  break;
+                } // case 16
+                default: {
+                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                    done = true; // was an endgroup tag
+                  }
+                  break;
+                } // default:
+              } // switch (tag)
+            } // while (!done)
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.unwrapIOException();
+          } finally {
+            onChanged();
+          } // finally
+          return this;
+        }
+        private int bitField0_;
+
+        private java.lang.Object name_ = "";
+        /**
+         * <code>required string name = 1;</code>
+         * @return Whether the name field is set.
+         */
+        public boolean hasName() {
+          return ((bitField0_ & 0x00000001) != 0);
+        }
+        /**
+         * <code>required string name = 1;</code>
+         * @return The name.
+         */
+        public java.lang.String getName() {
+          java.lang.Object ref = name_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              name_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>required string name = 1;</code>
+         * @return The bytes for name.
+         */
+        public com.google.protobuf.ByteString
+            getNameBytes() {
+          java.lang.Object ref = name_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            name_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>required string name = 1;</code>
+         * @param value The name to set.
+         * @return This builder for chaining.
+         */
+        public Builder setName(
+            java.lang.String value) {
+          if (value == null) { throw new NullPointerException(); }
+          name_ = value;
+          bitField0_ |= 0x00000001;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>required string name = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearName() {
+          name_ = getDefaultInstance().getName();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>required string name = 1;</code>
+         * @param value The bytes for name to set.
+         * @return This builder for chaining.
+         */
+        public Builder setNameBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) { throw new NullPointerException(); }
+          name_ = value;
+          bitField0_ |= 0x00000001;
+          onChanged();
+          return this;
+        }
+
+        private long value_ ;
+        /**
+         * <code>required uint64 value = 2;</code>
+         * @return Whether the value field is set.
+         */
+        @java.lang.Override
+        public boolean hasValue() {
+          return ((bitField0_ & 0x00000002) != 0);
+        }
+        /**
+         * <code>required uint64 value = 2;</code>
+         * @return The value.
+         */
+        @java.lang.Override
+        public long getValue() {
+          return value_;
+        }
+        /**
+         * <code>required uint64 value = 2;</code>
+         * @param value The value to set.
+         * @return This builder for chaining.
+         */
+        public Builder setValue(long value) {
+
+          value_ = value;
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>required uint64 value = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearValue() {
+          bitField0_ = (bitField0_ & ~0x00000002);
+          value_ = 0L;
+          onChanged();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem)
+      }
+
+      // @@protoc_insertion_point(class_scope:hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem)
+      private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem();
+      }
+
+      public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<DebugLinkGcInfoItem>
+          PARSER = new com.google.protobuf.AbstractParser<DebugLinkGcInfoItem>() {
+        @java.lang.Override
+        public DebugLinkGcInfoItem parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
+
+      public static com.google.protobuf.Parser<DebugLinkGcInfoItem> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<DebugLinkGcInfoItem> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    public static final int ITEMS_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem> items_;
+    /**
+     * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem> getItemsList() {
+      return items_;
+    }
+    /**
+     * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItemOrBuilder> 
+        getItemsOrBuilderList() {
+      return items_;
+    }
+    /**
+     * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+     */
+    @java.lang.Override
+    public int getItemsCount() {
+      return items_.size();
+    }
+    /**
+     * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+     */
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem getItems(int index) {
+      return items_.get(index);
+    }
+    /**
+     * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+     */
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItemOrBuilder getItemsOrBuilder(
+        int index) {
+      return items_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      for (int i = 0; i < getItemsCount(); i++) {
+        if (!getItems(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < items_.size(); i++) {
+        output.writeMessage(1, items_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < items_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, items_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo) obj;
+
+      if (!getItemsList()
+          .equals(other.getItemsList())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getItemsCount() > 0) {
+        hash = (37 * hash) + ITEMS_FIELD_NUMBER;
+        hash = (53 * hash) + getItemsList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Response: GC heap information details.
+     * &#64;end
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.debug.DebugLinkGcInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.debug.DebugLinkGcInfo)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkGcInfo_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkGcInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        if (itemsBuilder_ == null) {
+          items_ = java.util.Collections.emptyList();
+        } else {
+          items_ = null;
+          itemsBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkGcInfo_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo(this);
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo result) {
+        if (itemsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            items_ = java.util.Collections.unmodifiableList(items_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.items_ = items_;
+        } else {
+          result.items_ = itemsBuilder_.build();
+        }
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo result) {
+        int from_bitField0_ = bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.getDefaultInstance()) return this;
+        if (itemsBuilder_ == null) {
+          if (!other.items_.isEmpty()) {
+            if (items_.isEmpty()) {
+              items_ = other.items_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureItemsIsMutable();
+              items_.addAll(other.items_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.items_.isEmpty()) {
+            if (itemsBuilder_.isEmpty()) {
+              itemsBuilder_.dispose();
+              itemsBuilder_ = null;
+              items_ = other.items_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              itemsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getItemsFieldBuilder() : null;
+            } else {
+              itemsBuilder_.addAllMessages(other.items_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        for (int i = 0; i < getItemsCount(); i++) {
+          if (!getItems(i).isInitialized()) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem m =
+                    input.readMessage(
+                        com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem.parser(),
+                        extensionRegistry);
+                if (itemsBuilder_ == null) {
+                  ensureItemsIsMutable();
+                  items_.add(m);
+                } else {
+                  itemsBuilder_.addMessage(m);
+                }
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem> items_ =
+        java.util.Collections.emptyList();
+      private void ensureItemsIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          items_ = new java.util.ArrayList<com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem>(items_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItemOrBuilder> itemsBuilder_;
+
+      /**
+       * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+       */
+      public java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem> getItemsList() {
+        if (itemsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(items_);
+        } else {
+          return itemsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+       */
+      public int getItemsCount() {
+        if (itemsBuilder_ == null) {
+          return items_.size();
+        } else {
+          return itemsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+       */
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem getItems(int index) {
+        if (itemsBuilder_ == null) {
+          return items_.get(index);
+        } else {
+          return itemsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+       */
+      public Builder setItems(
+          int index, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem value) {
+        if (itemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemsIsMutable();
+          items_.set(index, value);
+          onChanged();
+        } else {
+          itemsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+       */
+      public Builder setItems(
+          int index, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem.Builder builderForValue) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          itemsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+       */
+      public Builder addItems(com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem value) {
+        if (itemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemsIsMutable();
+          items_.add(value);
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+       */
+      public Builder addItems(
+          int index, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem value) {
+        if (itemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemsIsMutable();
+          items_.add(index, value);
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+       */
+      public Builder addItems(
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem.Builder builderForValue) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.add(builderForValue.build());
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+       */
+      public Builder addItems(
+          int index, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem.Builder builderForValue) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+       */
+      public Builder addAllItems(
+          java.lang.Iterable<? extends com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem> values) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, items_);
+          onChanged();
+        } else {
+          itemsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+       */
+      public Builder clearItems() {
+        if (itemsBuilder_ == null) {
+          items_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          itemsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+       */
+      public Builder removeItems(int index) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.remove(index);
+          onChanged();
+        } else {
+          itemsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+       */
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem.Builder getItemsBuilder(
+          int index) {
+        return getItemsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+       */
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItemOrBuilder getItemsOrBuilder(
+          int index) {
+        if (itemsBuilder_ == null) {
+          return items_.get(index);  } else {
+          return itemsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+       */
+      public java.util.List<? extends com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItemOrBuilder> 
+           getItemsOrBuilderList() {
+        if (itemsBuilder_ != null) {
+          return itemsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(items_);
+        }
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+       */
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem.Builder addItemsBuilder() {
+        return getItemsFieldBuilder().addBuilder(
+            com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+       */
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem.Builder addItemsBuilder(
+          int index) {
+        return getItemsFieldBuilder().addBuilder(
+            index, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .hw.trezor.messages.debug.DebugLinkGcInfo.DebugLinkGcInfoItem items = 1;</code>
+       */
+      public java.util.List<com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem.Builder> 
+           getItemsBuilderList() {
+        return getItemsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItemOrBuilder> 
+          getItemsFieldBuilder() {
+        if (itemsBuilder_ == null) {
+          itemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItem.Builder, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo.DebugLinkGcInfoItemOrBuilder>(
+                  items_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          items_ = null;
+        }
+        return itemsBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.debug.DebugLinkGcInfo)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.debug.DebugLinkGcInfo)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DebugLinkGcInfo>
+        PARSER = new com.google.protobuf.AbstractParser<DebugLinkGcInfo>() {
+      @java.lang.Override
+      public DebugLinkGcInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<DebugLinkGcInfo> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DebugLinkGcInfo> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkGcInfo getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface DebugLinkSetLogFilterOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:hw.trezor.messages.debug.DebugLinkSetLogFilter)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * filter string
+     * </pre>
+     *
+     * <code>optional string filter = 1;</code>
+     * @return Whether the filter field is set.
+     */
+    boolean hasFilter();
+    /**
+     * <pre>
+     * filter string
+     * </pre>
+     *
+     * <code>optional string filter = 1;</code>
+     * @return The filter.
+     */
+    java.lang.String getFilter();
+    /**
+     * <pre>
+     * filter string
+     * </pre>
+     *
+     * <code>optional string filter = 1;</code>
+     * @return The bytes for filter.
+     */
+    com.google.protobuf.ByteString
+        getFilterBytes();
+  }
+  /**
+   * <pre>
+   * *
+   * Request: Set logging filter string.
+   * &#64;end
+   * </pre>
+   *
+   * Protobuf type {@code hw.trezor.messages.debug.DebugLinkSetLogFilter}
+   */
+  public static final class DebugLinkSetLogFilter extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:hw.trezor.messages.debug.DebugLinkSetLogFilter)
+      DebugLinkSetLogFilterOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        DebugLinkSetLogFilter.class.getName());
+    }
+    // Use DebugLinkSetLogFilter.newBuilder() to construct.
+    private DebugLinkSetLogFilter(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private DebugLinkSetLogFilter() {
+      filter_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkSetLogFilter_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkSetLogFilter_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int FILTER_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object filter_ = "";
+    /**
+     * <pre>
+     * filter string
+     * </pre>
+     *
+     * <code>optional string filter = 1;</code>
+     * @return Whether the filter field is set.
+     */
+    @java.lang.Override
+    public boolean hasFilter() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * filter string
+     * </pre>
+     *
+     * <code>optional string filter = 1;</code>
+     * @return The filter.
+     */
+    @java.lang.Override
+    public java.lang.String getFilter() {
+      java.lang.Object ref = filter_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          filter_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * filter string
+     * </pre>
+     *
+     * <code>optional string filter = 1;</code>
+     * @return The bytes for filter.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getFilterBytes() {
+      java.lang.Object ref = filter_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        filter_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, filter_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, filter_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter)) {
+        return super.equals(obj);
+      }
+      com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter other = (com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter) obj;
+
+      if (hasFilter() != other.hasFilter()) return false;
+      if (hasFilter()) {
+        if (!getFilter()
+            .equals(other.getFilter())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasFilter()) {
+        hash = (37 * hash) + FILTER_FIELD_NUMBER;
+        hash = (53 * hash) + getFilter().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * *
+     * Request: Set logging filter string.
+     * &#64;end
+     * </pre>
+     *
+     * Protobuf type {@code hw.trezor.messages.debug.DebugLinkSetLogFilter}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:hw.trezor.messages.debug.DebugLinkSetLogFilter)
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilterOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkSetLogFilter_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkSetLogFilter_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter.class, com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter.Builder.class);
+      }
+
+      // Construct using com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        filter_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.internal_static_hw_trezor_messages_debug_DebugLinkSetLogFilter_descriptor;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter getDefaultInstanceForType() {
+        return com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter build() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter buildPartial() {
+        com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter result = new com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.filter_ = filter_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter) {
+          return mergeFrom((com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter other) {
+        if (other == com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter.getDefaultInstance()) return this;
+        if (other.hasFilter()) {
+          filter_ = other.filter_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                filter_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object filter_ = "";
+      /**
+       * <pre>
+       * filter string
+       * </pre>
+       *
+       * <code>optional string filter = 1;</code>
+       * @return Whether the filter field is set.
+       */
+      public boolean hasFilter() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * filter string
+       * </pre>
+       *
+       * <code>optional string filter = 1;</code>
+       * @return The filter.
+       */
+      public java.lang.String getFilter() {
+        java.lang.Object ref = filter_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            filter_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * filter string
+       * </pre>
+       *
+       * <code>optional string filter = 1;</code>
+       * @return The bytes for filter.
+       */
+      public com.google.protobuf.ByteString
+          getFilterBytes() {
+        java.lang.Object ref = filter_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          filter_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * filter string
+       * </pre>
+       *
+       * <code>optional string filter = 1;</code>
+       * @param value The filter to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFilter(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        filter_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * filter string
+       * </pre>
+       *
+       * <code>optional string filter = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFilter() {
+        filter_ = getDefaultInstance().getFilter();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * filter string
+       * </pre>
+       *
+       * <code>optional string filter = 1;</code>
+       * @param value The bytes for filter to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFilterBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        filter_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:hw.trezor.messages.debug.DebugLinkSetLogFilter)
+    }
+
+    // @@protoc_insertion_point(class_scope:hw.trezor.messages.debug.DebugLinkSetLogFilter)
+    private static final com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter();
+    }
+
+    public static com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DebugLinkSetLogFilter>
+        PARSER = new com.google.protobuf.AbstractParser<DebugLinkSetLogFilter>() {
+      @java.lang.Override
+      public DebugLinkSetLogFilter parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<DebugLinkSetLogFilter> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DebugLinkSetLogFilter> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sparrowwallet.lark.trezor.generated.TrezorMessageDebug.DebugLinkSetLogFilter getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_hw_trezor_messages_debug_DebugLinkDecision_descriptor;
   private static final 
@@ -12481,6 +17262,16 @@ public final class TrezorMessageDebug {
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_hw_trezor_messages_debug_DebugLinkState_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_debug_DebugLinkGetPairingInfo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_debug_DebugLinkGetPairingInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_debug_DebugLinkPairingInfo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_debug_DebugLinkPairingInfo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_hw_trezor_messages_debug_DebugLinkStop_descriptor;
   private static final 
@@ -12531,6 +17322,26 @@ public final class TrezorMessageDebug {
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_hw_trezor_messages_debug_DebugLinkOptigaSetSecMax_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_debug_DebugLinkGetGcInfo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_debug_DebugLinkGetGcInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_debug_DebugLinkGcInfo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_debug_DebugLinkGcInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_debug_DebugLinkGcInfo_DebugLinkGcInfoItem_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_debug_DebugLinkGcInfo_DebugLinkGcInfoItem_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_hw_trezor_messages_debug_DebugLinkSetLogFilter_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_hw_trezor_messages_debug_DebugLinkSetLogFilter_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -12542,47 +17353,68 @@ public final class TrezorMessageDebug {
     java.lang.String[] descriptorData = {
       "\n\024messages-debug.proto\022\030hw.trezor.messag" +
       "es.debug\032\025messages-common.proto\032\031message" +
-      "s-management.proto\032\roptions.proto\"\366\003\n\021De" +
+      "s-management.proto\032\roptions.proto\"\242\005\n\021De" +
       "bugLinkDecision\022G\n\006button\030\001 \001(\01627.hw.tre" +
       "zor.messages.debug.DebugLinkDecision.Deb" +
       "ugButton\022N\n\005swipe\030\002 \001(\0162?.hw.trezor.mess" +
       "ages.debug.DebugLinkDecision.DebugSwipeD" +
       "irection\022\r\n\005input\030\003 \001(\t\022\t\n\001x\030\004 \001(\r\022\t\n\001y\030" +
-      "\005 \001(\r\022\014\n\004wait\030\006 \001(\010\022\017\n\007hold_ms\030\007 \001(\r\022X\n\017" +
-      "physical_button\030\010 \001(\0162?.hw.trezor.messag" +
-      "es.debug.DebugLinkDecision.DebugPhysical" +
-      "Button\"<\n\023DebugSwipeDirection\022\006\n\002UP\020\000\022\010\n" +
-      "\004DOWN\020\001\022\010\n\004LEFT\020\002\022\t\n\005RIGHT\020\003\"(\n\013DebugBut" +
-      "ton\022\006\n\002NO\020\000\022\007\n\003YES\020\001\022\010\n\004INFO\020\002\"B\n\023DebugP" +
-      "hysicalButton\022\014\n\010LEFT_BTN\020\000\022\016\n\nMIDDLE_BT" +
-      "N\020\001\022\r\n\tRIGHT_BTN\020\002\"!\n\017DebugLinkLayout\022\016\n" +
-      "\006tokens\030\001 \003(\t\"&\n\025DebugLinkReseedRandom\022\r" +
-      "\n\005value\030\001 \001(\r\"K\n\025DebugLinkRecordScreen\022\030" +
-      "\n\020target_directory\030\001 \001(\t\022\030\n\rrefresh_inde" +
-      "x\030\002 \001(\r:\0010\"W\n\021DebugLinkGetState\022\026\n\016wait_" +
-      "word_list\030\001 \001(\010\022\025\n\rwait_word_pos\030\002 \001(\010\022\023" +
-      "\n\013wait_layout\030\003 \001(\010\"\366\002\n\016DebugLinkState\022\016" +
-      "\n\006layout\030\001 \001(\014\022\013\n\003pin\030\002 \001(\t\022\016\n\006matrix\030\003 " +
-      "\001(\t\022\027\n\017mnemonic_secret\030\004 \001(\014\0223\n\004node\030\005 \001" +
-      "(\0132%.hw.trezor.messages.common.HDNodeTyp" +
-      "e\022\035\n\025passphrase_protection\030\006 \001(\010\022\022\n\nrese" +
-      "t_word\030\007 \001(\t\022\025\n\rreset_entropy\030\010 \001(\014\022\032\n\022r" +
-      "ecovery_fake_word\030\t \001(\t\022\031\n\021recovery_word" +
-      "_pos\030\n \001(\r\022\026\n\016reset_word_pos\030\013 \001(\r\022@\n\rmn" +
-      "emonic_type\030\014 \001(\0162).hw.trezor.messages.m" +
-      "anagement.BackupType\022\016\n\006tokens\030\r \003(\t\"\017\n\r" +
-      "DebugLinkStop\";\n\014DebugLinkLog\022\r\n\005level\030\001" +
-      " \001(\r\022\016\n\006bucket\030\002 \001(\t\022\014\n\004text\030\003 \001(\t\"6\n\023De" +
-      "bugLinkMemoryRead\022\017\n\007address\030\001 \001(\r\022\016\n\006le" +
-      "ngth\030\002 \001(\r\"!\n\017DebugLinkMemory\022\016\n\006memory\030" +
-      "\001 \001(\014\"F\n\024DebugLinkMemoryWrite\022\017\n\007address" +
-      "\030\001 \001(\r\022\016\n\006memory\030\002 \001(\014\022\r\n\005flash\030\003 \001(\010\"%\n" +
-      "\023DebugLinkFlashErase\022\016\n\006sector\030\001 \001(\r\"&\n\024" +
-      "DebugLinkEraseSdCard\022\016\n\006format\030\001 \001(\010\"%\n\024" +
-      "DebugLinkWatchLayout\022\r\n\005watch\030\001 \001(\010\"\033\n\031D" +
-      "ebugLinkResetDebugEvents\"\032\n\030DebugLinkOpt" +
-      "igaSetSecMaxBA\n\'com.sparrowwallet.lark.t" +
-      "rezor.generatedB\022TrezorMessageDebug\200\246\035\001"
+      "\005 \001(\r\022\020\n\004wait\030\006 \001(\010B\002\030\001\022\017\n\007hold_ms\030\007 \001(\r" +
+      "\022X\n\017physical_button\030\010 \001(\0162?.hw.trezor.me" +
+      "ssages.debug.DebugLinkDecision.DebugPhys" +
+      "icalButton\022Y\n\020touch_event_type\030\t \001(\0162?.h" +
+      "w.trezor.messages.debug.DebugLinkDecisio" +
+      "n.DebugTouchEventType\"<\n\023DebugSwipeDirec" +
+      "tion\022\006\n\002UP\020\000\022\010\n\004DOWN\020\001\022\010\n\004LEFT\020\002\022\t\n\005RIGH" +
+      "T\020\003\"(\n\013DebugButton\022\006\n\002NO\020\000\022\007\n\003YES\020\001\022\010\n\004I" +
+      "NFO\020\002\"B\n\023DebugPhysicalButton\022\014\n\010LEFT_BTN" +
+      "\020\000\022\016\n\nMIDDLE_BTN\020\001\022\r\n\tRIGHT_BTN\020\002\"K\n\023Deb" +
+      "ugTouchEventType\022\024\n\020TOUCH_FULL_CLICK\020\000\022\017" +
+      "\n\013TOUCH_START\020\001\022\r\n\tTOUCH_END\020\002\"%\n\017DebugL" +
+      "inkLayout\022\016\n\006tokens\030\001 \003(\t:\002\030\001\"&\n\025DebugLi" +
+      "nkReseedRandom\022\r\n\005value\030\001 \001(\r\"K\n\025DebugLi" +
+      "nkRecordScreen\022\030\n\020target_directory\030\001 \001(\t" +
+      "\022\030\n\rrefresh_index\030\002 \001(\r:\0010\"\215\002\n\021DebugLink" +
+      "GetState\022\032\n\016wait_word_list\030\001 \001(\010B\002\030\001\022\031\n\r" +
+      "wait_word_pos\030\002 \001(\010B\002\030\001\022Y\n\013wait_layout\030\003" +
+      " \001(\01629.hw.trezor.messages.debug.DebugLin" +
+      "kGetState.DebugWaitType:\tIMMEDIATE\022!\n\022re" +
+      "turn_empty_state\030\004 \001(\010:\005false\"C\n\rDebugWa" +
+      "itType\022\r\n\tIMMEDIATE\020\000\022\017\n\013NEXT_LAYOUT\020\001\022\022" +
+      "\n\016CURRENT_LAYOUT\020\002\"\366\002\n\016DebugLinkState\022\016\n" +
+      "\006layout\030\001 \001(\014\022\013\n\003pin\030\002 \001(\t\022\016\n\006matrix\030\003 \001" +
+      "(\t\022\027\n\017mnemonic_secret\030\004 \001(\014\0223\n\004node\030\005 \001(" +
+      "\0132%.hw.trezor.messages.common.HDNodeType" +
+      "\022\035\n\025passphrase_protection\030\006 \001(\010\022\022\n\nreset" +
+      "_word\030\007 \001(\t\022\025\n\rreset_entropy\030\010 \001(\014\022\032\n\022re" +
+      "covery_fake_word\030\t \001(\t\022\031\n\021recovery_word_" +
+      "pos\030\n \001(\r\022\026\n\016reset_word_pos\030\013 \001(\r\022@\n\rmne" +
+      "monic_type\030\014 \001(\0162).hw.trezor.messages.ma" +
+      "nagement.BackupType\022\016\n\006tokens\030\r \003(\t\"^\n\027D" +
+      "ebugLinkGetPairingInfo\022\022\n\nchannel_id\030\001 \001" +
+      "(\014\022\026\n\016handshake_hash\030\002 \001(\014\022\027\n\017nfc_secret" +
+      "_host\030\003 \001(\014\"\214\001\n\024DebugLinkPairingInfo\022\022\n\n" +
+      "channel_id\030\001 \001(\014\022\026\n\016handshake_hash\030\002 \001(\014" +
+      "\022\027\n\017code_entry_code\030\003 \001(\r\022\024\n\014code_qr_cod" +
+      "e\030\004 \001(\014\022\031\n\021nfc_secret_trezor\030\005 \001(\014\"\017\n\rDe" +
+      "bugLinkStop\";\n\014DebugLinkLog\022\r\n\005level\030\001 \001" +
+      "(\r\022\016\n\006bucket\030\002 \001(\t\022\014\n\004text\030\003 \001(\t\"6\n\023Debu" +
+      "gLinkMemoryRead\022\017\n\007address\030\001 \001(\r\022\016\n\006leng" +
+      "th\030\002 \001(\r\"!\n\017DebugLinkMemory\022\016\n\006memory\030\001 " +
+      "\001(\014\"F\n\024DebugLinkMemoryWrite\022\017\n\007address\030\001" +
+      " \001(\r\022\016\n\006memory\030\002 \001(\014\022\r\n\005flash\030\003 \001(\010\"%\n\023D" +
+      "ebugLinkFlashErase\022\016\n\006sector\030\001 \001(\r\"&\n\024De" +
+      "bugLinkEraseSdCard\022\016\n\006format\030\001 \001(\010\")\n\024De" +
+      "bugLinkWatchLayout\022\r\n\005watch\030\001 \001(\010:\002\030\001\"\037\n" +
+      "\031DebugLinkResetDebugEvents:\002\030\001\"\032\n\030DebugL" +
+      "inkOptigaSetSecMax\"\024\n\022DebugLinkGetGcInfo" +
+      "\"\223\001\n\017DebugLinkGcInfo\022L\n\005items\030\001 \003(\0132=.hw" +
+      ".trezor.messages.debug.DebugLinkGcInfo.D" +
+      "ebugLinkGcInfoItem\0322\n\023DebugLinkGcInfoIte" +
+      "m\022\014\n\004name\030\001 \002(\t\022\r\n\005value\030\002 \002(\004\"\'\n\025DebugL" +
+      "inkSetLogFilter\022\016\n\006filter\030\001 \001(\tBA\n\'com.s" +
+      "parrowwallet.lark.trezor.generatedB\022Trez" +
+      "orMessageDebug\200\246\035\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -12596,7 +17428,7 @@ public final class TrezorMessageDebug {
     internal_static_hw_trezor_messages_debug_DebugLinkDecision_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_debug_DebugLinkDecision_descriptor,
-        new java.lang.String[] { "Button", "Swipe", "Input", "X", "Y", "Wait", "HoldMs", "PhysicalButton", });
+        new java.lang.String[] { "Button", "Swipe", "Input", "X", "Y", "Wait", "HoldMs", "PhysicalButton", "TouchEventType", });
     internal_static_hw_trezor_messages_debug_DebugLinkLayout_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_hw_trezor_messages_debug_DebugLinkLayout_fieldAccessorTable = new
@@ -12620,73 +17452,109 @@ public final class TrezorMessageDebug {
     internal_static_hw_trezor_messages_debug_DebugLinkGetState_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_debug_DebugLinkGetState_descriptor,
-        new java.lang.String[] { "WaitWordList", "WaitWordPos", "WaitLayout", });
+        new java.lang.String[] { "WaitWordList", "WaitWordPos", "WaitLayout", "ReturnEmptyState", });
     internal_static_hw_trezor_messages_debug_DebugLinkState_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_hw_trezor_messages_debug_DebugLinkState_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_debug_DebugLinkState_descriptor,
         new java.lang.String[] { "Layout", "Pin", "Matrix", "MnemonicSecret", "Node", "PassphraseProtection", "ResetWord", "ResetEntropy", "RecoveryFakeWord", "RecoveryWordPos", "ResetWordPos", "MnemonicType", "Tokens", });
-    internal_static_hw_trezor_messages_debug_DebugLinkStop_descriptor =
+    internal_static_hw_trezor_messages_debug_DebugLinkGetPairingInfo_descriptor =
       getDescriptor().getMessageTypes().get(6);
+    internal_static_hw_trezor_messages_debug_DebugLinkGetPairingInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_debug_DebugLinkGetPairingInfo_descriptor,
+        new java.lang.String[] { "ChannelId", "HandshakeHash", "NfcSecretHost", });
+    internal_static_hw_trezor_messages_debug_DebugLinkPairingInfo_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_hw_trezor_messages_debug_DebugLinkPairingInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_debug_DebugLinkPairingInfo_descriptor,
+        new java.lang.String[] { "ChannelId", "HandshakeHash", "CodeEntryCode", "CodeQrCode", "NfcSecretTrezor", });
+    internal_static_hw_trezor_messages_debug_DebugLinkStop_descriptor =
+      getDescriptor().getMessageTypes().get(8);
     internal_static_hw_trezor_messages_debug_DebugLinkStop_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_debug_DebugLinkStop_descriptor,
         new java.lang.String[] { });
     internal_static_hw_trezor_messages_debug_DebugLinkLog_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_hw_trezor_messages_debug_DebugLinkLog_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_debug_DebugLinkLog_descriptor,
         new java.lang.String[] { "Level", "Bucket", "Text", });
     internal_static_hw_trezor_messages_debug_DebugLinkMemoryRead_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_hw_trezor_messages_debug_DebugLinkMemoryRead_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_debug_DebugLinkMemoryRead_descriptor,
         new java.lang.String[] { "Address", "Length", });
     internal_static_hw_trezor_messages_debug_DebugLinkMemory_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_hw_trezor_messages_debug_DebugLinkMemory_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_debug_DebugLinkMemory_descriptor,
         new java.lang.String[] { "Memory", });
     internal_static_hw_trezor_messages_debug_DebugLinkMemoryWrite_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_hw_trezor_messages_debug_DebugLinkMemoryWrite_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_debug_DebugLinkMemoryWrite_descriptor,
         new java.lang.String[] { "Address", "Memory", "Flash", });
     internal_static_hw_trezor_messages_debug_DebugLinkFlashErase_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_hw_trezor_messages_debug_DebugLinkFlashErase_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_debug_DebugLinkFlashErase_descriptor,
         new java.lang.String[] { "Sector", });
     internal_static_hw_trezor_messages_debug_DebugLinkEraseSdCard_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_hw_trezor_messages_debug_DebugLinkEraseSdCard_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_debug_DebugLinkEraseSdCard_descriptor,
         new java.lang.String[] { "Format", });
     internal_static_hw_trezor_messages_debug_DebugLinkWatchLayout_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_hw_trezor_messages_debug_DebugLinkWatchLayout_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_debug_DebugLinkWatchLayout_descriptor,
         new java.lang.String[] { "Watch", });
     internal_static_hw_trezor_messages_debug_DebugLinkResetDebugEvents_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_hw_trezor_messages_debug_DebugLinkResetDebugEvents_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_debug_DebugLinkResetDebugEvents_descriptor,
         new java.lang.String[] { });
     internal_static_hw_trezor_messages_debug_DebugLinkOptigaSetSecMax_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_hw_trezor_messages_debug_DebugLinkOptigaSetSecMax_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_hw_trezor_messages_debug_DebugLinkOptigaSetSecMax_descriptor,
         new java.lang.String[] { });
+    internal_static_hw_trezor_messages_debug_DebugLinkGetGcInfo_descriptor =
+      getDescriptor().getMessageTypes().get(18);
+    internal_static_hw_trezor_messages_debug_DebugLinkGetGcInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_debug_DebugLinkGetGcInfo_descriptor,
+        new java.lang.String[] { });
+    internal_static_hw_trezor_messages_debug_DebugLinkGcInfo_descriptor =
+      getDescriptor().getMessageTypes().get(19);
+    internal_static_hw_trezor_messages_debug_DebugLinkGcInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_debug_DebugLinkGcInfo_descriptor,
+        new java.lang.String[] { "Items", });
+    internal_static_hw_trezor_messages_debug_DebugLinkGcInfo_DebugLinkGcInfoItem_descriptor =
+      internal_static_hw_trezor_messages_debug_DebugLinkGcInfo_descriptor.getNestedTypes().get(0);
+    internal_static_hw_trezor_messages_debug_DebugLinkGcInfo_DebugLinkGcInfoItem_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_debug_DebugLinkGcInfo_DebugLinkGcInfoItem_descriptor,
+        new java.lang.String[] { "Name", "Value", });
+    internal_static_hw_trezor_messages_debug_DebugLinkSetLogFilter_descriptor =
+      getDescriptor().getMessageTypes().get(20);
+    internal_static_hw_trezor_messages_debug_DebugLinkSetLogFilter_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_hw_trezor_messages_debug_DebugLinkSetLogFilter_descriptor,
+        new java.lang.String[] { "Filter", });
     descriptor.resolveAllFeaturesImmutable();
     com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon.getDescriptor();
     com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement.getDescriptor();

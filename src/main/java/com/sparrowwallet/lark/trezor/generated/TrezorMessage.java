@@ -140,6 +140,18 @@ public final class TrezorMessage {
      */
     MessageType_EntropyAck(36),
     /**
+     * <code>MessageType_PaymentRequest = 37 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    MessageType_PaymentRequest(37),
+    /**
+     * <code>MessageType_EntropyCheckReady = 994 [(.hw.trezor.messages.wire_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    MessageType_EntropyCheckReady(994),
+    /**
+     * <code>MessageType_EntropyCheckContinue = 995 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    MessageType_EntropyCheckContinue(995),
+    /**
      * <code>MessageType_PassphraseRequest = 41 [(.hw.trezor.messages.wire_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
      */
     MessageType_PassphraseRequest(41),
@@ -228,17 +240,25 @@ public final class TrezorMessage {
      */
     MessageType_ChangeLanguage(990),
     /**
-     * <code>MessageType_TranslationDataRequest = 991 [(.hw.trezor.messages.wire_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     * <code>MessageType_DataChunkRequest = 991 [(.hw.trezor.messages.wire_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
      */
-    MessageType_TranslationDataRequest(991),
+    MessageType_DataChunkRequest(991),
     /**
-     * <code>MessageType_TranslationDataAck = 992 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     * <code>MessageType_DataChunkAck = 992 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
      */
-    MessageType_TranslationDataAck(992),
+    MessageType_DataChunkAck(992),
     /**
      * <code>MessageType_SetBrightness = 993 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
      */
     MessageType_SetBrightness(993),
+    /**
+     * <code>MessageType_GetSerialNumber = 996 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    MessageType_GetSerialNumber(996),
+    /**
+     * <code>MessageType_SerialNumber = 997 [(.hw.trezor.messages.wire_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    MessageType_SerialNumber(997),
     /**
      * <code>MessageType_SetU2FCounter = 63 [(.hw.trezor.messages.wire_in) = true];</code>
      */
@@ -254,17 +274,16 @@ public final class TrezorMessage {
     /**
      * <pre>
      * Deprecated messages, kept for protobuf compatibility.
-     * Both are marked wire_out so that we don't need to implement incoming handler for legacy
      * </pre>
      *
      * <code>MessageType_Deprecated_PassphraseStateRequest = 77 [deprecated = true];</code>
      */
-    @Deprecated
+    @java.lang.Deprecated
     MessageType_Deprecated_PassphraseStateRequest(77),
     /**
      * <code>MessageType_Deprecated_PassphraseStateAck = 78 [deprecated = true];</code>
      */
-    @Deprecated
+    @java.lang.Deprecated
     MessageType_Deprecated_PassphraseStateAck(78),
     /**
      * <pre>
@@ -286,6 +305,14 @@ public final class TrezorMessage {
      * <code>MessageType_ProdTestT1 = 32 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.wire_bootloader) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
      */
     MessageType_ProdTestT1(32),
+    /**
+     * <pre>
+     * BLE
+     * </pre>
+     *
+     * <code>MessageType_BleUnpair = 8001 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    MessageType_BleUnpair(8001),
     /**
      * <pre>
      * Bitcoin
@@ -318,10 +345,6 @@ public final class TrezorMessage {
      * <code>MessageType_Address = 30 [(.hw.trezor.messages.wire_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
      */
     MessageType_Address(30),
-    /**
-     * <code>MessageType_TxAckPaymentRequest = 37 [(.hw.trezor.messages.wire_in) = true];</code>
-     */
-    MessageType_TxAckPaymentRequest(37),
     /**
      * <code>MessageType_SignMessage = 38 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
      */
@@ -382,6 +405,14 @@ public final class TrezorMessage {
      * <code>MessageType_ECDHSessionKey = 62 [(.hw.trezor.messages.wire_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
      */
     MessageType_ECDHSessionKey(62),
+    /**
+     * <pre>
+     * dropped: CosiCommit, CosiCommitment, CosiSign, CosiSignature
+     * </pre>
+     *
+     * <code>MessageType_PaymentNotification = 52 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    MessageType_PaymentNotification(52),
     /**
      * <pre>
      * Debug
@@ -450,6 +481,26 @@ public final class TrezorMessage {
      * <code>MessageType_DebugLinkOptigaSetSecMax = 9008 [(.hw.trezor.messages.wire_debug_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
      */
     MessageType_DebugLinkOptigaSetSecMax(9008),
+    /**
+     * <code>MessageType_DebugLinkGetGcInfo = 9009 [(.hw.trezor.messages.wire_debug_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    MessageType_DebugLinkGetGcInfo(9009),
+    /**
+     * <code>MessageType_DebugLinkGcInfo = 9010 [(.hw.trezor.messages.wire_debug_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    MessageType_DebugLinkGcInfo(9010),
+    /**
+     * <code>MessageType_DebugLinkGetPairingInfo = 9011 [(.hw.trezor.messages.wire_debug_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    MessageType_DebugLinkGetPairingInfo(9011),
+    /**
+     * <code>MessageType_DebugLinkPairingInfo = 9012 [(.hw.trezor.messages.wire_debug_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    MessageType_DebugLinkPairingInfo(9012),
+    /**
+     * <code>MessageType_DebugLinkSetLogFilter = 9013 [(.hw.trezor.messages.wire_debug_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    MessageType_DebugLinkSetLogFilter(9013),
     /**
      * <pre>
      * Ethereum
@@ -779,6 +830,22 @@ public final class TrezorMessage {
      */
     MessageType_CardanoTxReferenceInput(337),
     /**
+     * <code>MessageType_CardanoSignMessageInit = 338 [(.hw.trezor.messages.wire_in) = true];</code>
+     */
+    MessageType_CardanoSignMessageInit(338),
+    /**
+     * <code>MessageType_CardanoMessageDataRequest = 339 [(.hw.trezor.messages.wire_out) = true];</code>
+     */
+    MessageType_CardanoMessageDataRequest(339),
+    /**
+     * <code>MessageType_CardanoMessageDataResponse = 340 [(.hw.trezor.messages.wire_in) = true];</code>
+     */
+    MessageType_CardanoMessageDataResponse(340),
+    /**
+     * <code>MessageType_CardanoMessageSignature = 341 [(.hw.trezor.messages.wire_out) = true];</code>
+     */
+    MessageType_CardanoMessageSignature(341),
+    /**
      * <pre>
      * Ripple
      * </pre>
@@ -976,50 +1043,6 @@ public final class TrezorMessage {
     MessageType_EosSignedTx(605),
     /**
      * <pre>
-     * Binance
-     * </pre>
-     *
-     * <code>MessageType_BinanceGetAddress = 700 [(.hw.trezor.messages.wire_in) = true];</code>
-     */
-    MessageType_BinanceGetAddress(700),
-    /**
-     * <code>MessageType_BinanceAddress = 701 [(.hw.trezor.messages.wire_out) = true];</code>
-     */
-    MessageType_BinanceAddress(701),
-    /**
-     * <code>MessageType_BinanceGetPublicKey = 702 [(.hw.trezor.messages.wire_in) = true];</code>
-     */
-    MessageType_BinanceGetPublicKey(702),
-    /**
-     * <code>MessageType_BinancePublicKey = 703 [(.hw.trezor.messages.wire_out) = true];</code>
-     */
-    MessageType_BinancePublicKey(703),
-    /**
-     * <code>MessageType_BinanceSignTx = 704 [(.hw.trezor.messages.wire_in) = true];</code>
-     */
-    MessageType_BinanceSignTx(704),
-    /**
-     * <code>MessageType_BinanceTxRequest = 705 [(.hw.trezor.messages.wire_out) = true];</code>
-     */
-    MessageType_BinanceTxRequest(705),
-    /**
-     * <code>MessageType_BinanceTransferMsg = 706 [(.hw.trezor.messages.wire_in) = true];</code>
-     */
-    MessageType_BinanceTransferMsg(706),
-    /**
-     * <code>MessageType_BinanceOrderMsg = 707 [(.hw.trezor.messages.wire_in) = true];</code>
-     */
-    MessageType_BinanceOrderMsg(707),
-    /**
-     * <code>MessageType_BinanceCancelMsg = 708 [(.hw.trezor.messages.wire_in) = true];</code>
-     */
-    MessageType_BinanceCancelMsg(708),
-    /**
-     * <code>MessageType_BinanceSignedTx = 709 [(.hw.trezor.messages.wire_out) = true];</code>
-     */
-    MessageType_BinanceSignedTx(709),
-    /**
-     * <pre>
      * WebAuthn
      * </pre>
      *
@@ -1066,6 +1089,82 @@ public final class TrezorMessage {
      * <code>MessageType_SolanaTxSignature = 905 [(.hw.trezor.messages.wire_out) = true];</code>
      */
     MessageType_SolanaTxSignature(905),
+    /**
+     * <pre>
+     * THP
+     * </pre>
+     *
+     * <code>MessageType_ThpCreateNewSession = 1000 [(.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    MessageType_ThpCreateNewSession(1000),
+    /**
+     * <code>MessageType_ThpCredentialRequest = 1016 [(.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    MessageType_ThpCredentialRequest(1016),
+    /**
+     * <code>MessageType_ThpCredentialResponse = 1017 [(.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    MessageType_ThpCredentialResponse(1017),
+    /**
+     * <pre>
+     * Nostr
+     * </pre>
+     *
+     * <code>MessageType_NostrGetPubkey = 2001 [(.hw.trezor.messages.wire_in) = true];</code>
+     */
+    MessageType_NostrGetPubkey(2001),
+    /**
+     * <code>MessageType_NostrPubkey = 2002 [(.hw.trezor.messages.wire_out) = true];</code>
+     */
+    MessageType_NostrPubkey(2002),
+    /**
+     * <code>MessageType_NostrSignEvent = 2003 [(.hw.trezor.messages.wire_in) = true];</code>
+     */
+    MessageType_NostrSignEvent(2003),
+    /**
+     * <code>MessageType_NostrEventSignature = 2004 [(.hw.trezor.messages.wire_out) = true];</code>
+     */
+    MessageType_NostrEventSignature(2004),
+    /**
+     * <pre>
+     * Evolu
+     * </pre>
+     *
+     * <code>MessageType_EvoluGetNode = 2100 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    MessageType_EvoluGetNode(2100),
+    /**
+     * <code>MessageType_EvoluNode = 2101 [(.hw.trezor.messages.wire_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    MessageType_EvoluNode(2101),
+    /**
+     * <code>MessageType_EvoluSignRegistrationRequest = 2102 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    MessageType_EvoluSignRegistrationRequest(2102),
+    /**
+     * <code>MessageType_EvoluRegistrationRequest = 2103 [(.hw.trezor.messages.wire_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    MessageType_EvoluRegistrationRequest(2103),
+    /**
+     * <code>MessageType_EvoluGetDelegatedIdentityKey = 2104 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    MessageType_EvoluGetDelegatedIdentityKey(2104),
+    /**
+     * <code>MessageType_EvoluDelegatedIdentityKey = 2105 [(.hw.trezor.messages.wire_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    MessageType_EvoluDelegatedIdentityKey(2105),
+    /**
+     * <pre>
+     * Tron
+     * </pre>
+     *
+     * <code>MessageType_TronGetAddress = 2200 [(.hw.trezor.messages.wire_in) = true];</code>
+     */
+    MessageType_TronGetAddress(2200),
+    /**
+     * <code>MessageType_TronAddress = 2201 [(.hw.trezor.messages.wire_out) = true];</code>
+     */
+    MessageType_TronAddress(2201),
     /**
      * <pre>
      * Benchmark
@@ -1202,6 +1301,18 @@ public final class TrezorMessage {
      */
     public static final int MessageType_EntropyAck_VALUE = 36;
     /**
+     * <code>MessageType_PaymentRequest = 37 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    public static final int MessageType_PaymentRequest_VALUE = 37;
+    /**
+     * <code>MessageType_EntropyCheckReady = 994 [(.hw.trezor.messages.wire_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    public static final int MessageType_EntropyCheckReady_VALUE = 994;
+    /**
+     * <code>MessageType_EntropyCheckContinue = 995 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    public static final int MessageType_EntropyCheckContinue_VALUE = 995;
+    /**
      * <code>MessageType_PassphraseRequest = 41 [(.hw.trezor.messages.wire_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
      */
     public static final int MessageType_PassphraseRequest_VALUE = 41;
@@ -1290,17 +1401,25 @@ public final class TrezorMessage {
      */
     public static final int MessageType_ChangeLanguage_VALUE = 990;
     /**
-     * <code>MessageType_TranslationDataRequest = 991 [(.hw.trezor.messages.wire_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     * <code>MessageType_DataChunkRequest = 991 [(.hw.trezor.messages.wire_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
      */
-    public static final int MessageType_TranslationDataRequest_VALUE = 991;
+    public static final int MessageType_DataChunkRequest_VALUE = 991;
     /**
-     * <code>MessageType_TranslationDataAck = 992 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     * <code>MessageType_DataChunkAck = 992 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
      */
-    public static final int MessageType_TranslationDataAck_VALUE = 992;
+    public static final int MessageType_DataChunkAck_VALUE = 992;
     /**
      * <code>MessageType_SetBrightness = 993 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
      */
     public static final int MessageType_SetBrightness_VALUE = 993;
+    /**
+     * <code>MessageType_GetSerialNumber = 996 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    public static final int MessageType_GetSerialNumber_VALUE = 996;
+    /**
+     * <code>MessageType_SerialNumber = 997 [(.hw.trezor.messages.wire_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    public static final int MessageType_SerialNumber_VALUE = 997;
     /**
      * <code>MessageType_SetU2FCounter = 63 [(.hw.trezor.messages.wire_in) = true];</code>
      */
@@ -1316,16 +1435,15 @@ public final class TrezorMessage {
     /**
      * <pre>
      * Deprecated messages, kept for protobuf compatibility.
-     * Both are marked wire_out so that we don't need to implement incoming handler for legacy
      * </pre>
      *
      * <code>MessageType_Deprecated_PassphraseStateRequest = 77 [deprecated = true];</code>
      */
-    @Deprecated public static final int MessageType_Deprecated_PassphraseStateRequest_VALUE = 77;
+    @java.lang.Deprecated public static final int MessageType_Deprecated_PassphraseStateRequest_VALUE = 77;
     /**
      * <code>MessageType_Deprecated_PassphraseStateAck = 78 [deprecated = true];</code>
      */
-    @Deprecated public static final int MessageType_Deprecated_PassphraseStateAck_VALUE = 78;
+    @java.lang.Deprecated public static final int MessageType_Deprecated_PassphraseStateAck_VALUE = 78;
     /**
      * <pre>
      * Bootloader
@@ -1346,6 +1464,14 @@ public final class TrezorMessage {
      * <code>MessageType_ProdTestT1 = 32 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.wire_bootloader) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
      */
     public static final int MessageType_ProdTestT1_VALUE = 32;
+    /**
+     * <pre>
+     * BLE
+     * </pre>
+     *
+     * <code>MessageType_BleUnpair = 8001 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    public static final int MessageType_BleUnpair_VALUE = 8001;
     /**
      * <pre>
      * Bitcoin
@@ -1378,10 +1504,6 @@ public final class TrezorMessage {
      * <code>MessageType_Address = 30 [(.hw.trezor.messages.wire_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
      */
     public static final int MessageType_Address_VALUE = 30;
-    /**
-     * <code>MessageType_TxAckPaymentRequest = 37 [(.hw.trezor.messages.wire_in) = true];</code>
-     */
-    public static final int MessageType_TxAckPaymentRequest_VALUE = 37;
     /**
      * <code>MessageType_SignMessage = 38 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
      */
@@ -1442,6 +1564,14 @@ public final class TrezorMessage {
      * <code>MessageType_ECDHSessionKey = 62 [(.hw.trezor.messages.wire_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
      */
     public static final int MessageType_ECDHSessionKey_VALUE = 62;
+    /**
+     * <pre>
+     * dropped: CosiCommit, CosiCommitment, CosiSign, CosiSignature
+     * </pre>
+     *
+     * <code>MessageType_PaymentNotification = 52 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    public static final int MessageType_PaymentNotification_VALUE = 52;
     /**
      * <pre>
      * Debug
@@ -1510,6 +1640,26 @@ public final class TrezorMessage {
      * <code>MessageType_DebugLinkOptigaSetSecMax = 9008 [(.hw.trezor.messages.wire_debug_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
      */
     public static final int MessageType_DebugLinkOptigaSetSecMax_VALUE = 9008;
+    /**
+     * <code>MessageType_DebugLinkGetGcInfo = 9009 [(.hw.trezor.messages.wire_debug_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    public static final int MessageType_DebugLinkGetGcInfo_VALUE = 9009;
+    /**
+     * <code>MessageType_DebugLinkGcInfo = 9010 [(.hw.trezor.messages.wire_debug_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    public static final int MessageType_DebugLinkGcInfo_VALUE = 9010;
+    /**
+     * <code>MessageType_DebugLinkGetPairingInfo = 9011 [(.hw.trezor.messages.wire_debug_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    public static final int MessageType_DebugLinkGetPairingInfo_VALUE = 9011;
+    /**
+     * <code>MessageType_DebugLinkPairingInfo = 9012 [(.hw.trezor.messages.wire_debug_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    public static final int MessageType_DebugLinkPairingInfo_VALUE = 9012;
+    /**
+     * <code>MessageType_DebugLinkSetLogFilter = 9013 [(.hw.trezor.messages.wire_debug_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    public static final int MessageType_DebugLinkSetLogFilter_VALUE = 9013;
     /**
      * <pre>
      * Ethereum
@@ -1839,6 +1989,22 @@ public final class TrezorMessage {
      */
     public static final int MessageType_CardanoTxReferenceInput_VALUE = 337;
     /**
+     * <code>MessageType_CardanoSignMessageInit = 338 [(.hw.trezor.messages.wire_in) = true];</code>
+     */
+    public static final int MessageType_CardanoSignMessageInit_VALUE = 338;
+    /**
+     * <code>MessageType_CardanoMessageDataRequest = 339 [(.hw.trezor.messages.wire_out) = true];</code>
+     */
+    public static final int MessageType_CardanoMessageDataRequest_VALUE = 339;
+    /**
+     * <code>MessageType_CardanoMessageDataResponse = 340 [(.hw.trezor.messages.wire_in) = true];</code>
+     */
+    public static final int MessageType_CardanoMessageDataResponse_VALUE = 340;
+    /**
+     * <code>MessageType_CardanoMessageSignature = 341 [(.hw.trezor.messages.wire_out) = true];</code>
+     */
+    public static final int MessageType_CardanoMessageSignature_VALUE = 341;
+    /**
      * <pre>
      * Ripple
      * </pre>
@@ -2036,50 +2202,6 @@ public final class TrezorMessage {
     public static final int MessageType_EosSignedTx_VALUE = 605;
     /**
      * <pre>
-     * Binance
-     * </pre>
-     *
-     * <code>MessageType_BinanceGetAddress = 700 [(.hw.trezor.messages.wire_in) = true];</code>
-     */
-    public static final int MessageType_BinanceGetAddress_VALUE = 700;
-    /**
-     * <code>MessageType_BinanceAddress = 701 [(.hw.trezor.messages.wire_out) = true];</code>
-     */
-    public static final int MessageType_BinanceAddress_VALUE = 701;
-    /**
-     * <code>MessageType_BinanceGetPublicKey = 702 [(.hw.trezor.messages.wire_in) = true];</code>
-     */
-    public static final int MessageType_BinanceGetPublicKey_VALUE = 702;
-    /**
-     * <code>MessageType_BinancePublicKey = 703 [(.hw.trezor.messages.wire_out) = true];</code>
-     */
-    public static final int MessageType_BinancePublicKey_VALUE = 703;
-    /**
-     * <code>MessageType_BinanceSignTx = 704 [(.hw.trezor.messages.wire_in) = true];</code>
-     */
-    public static final int MessageType_BinanceSignTx_VALUE = 704;
-    /**
-     * <code>MessageType_BinanceTxRequest = 705 [(.hw.trezor.messages.wire_out) = true];</code>
-     */
-    public static final int MessageType_BinanceTxRequest_VALUE = 705;
-    /**
-     * <code>MessageType_BinanceTransferMsg = 706 [(.hw.trezor.messages.wire_in) = true];</code>
-     */
-    public static final int MessageType_BinanceTransferMsg_VALUE = 706;
-    /**
-     * <code>MessageType_BinanceOrderMsg = 707 [(.hw.trezor.messages.wire_in) = true];</code>
-     */
-    public static final int MessageType_BinanceOrderMsg_VALUE = 707;
-    /**
-     * <code>MessageType_BinanceCancelMsg = 708 [(.hw.trezor.messages.wire_in) = true];</code>
-     */
-    public static final int MessageType_BinanceCancelMsg_VALUE = 708;
-    /**
-     * <code>MessageType_BinanceSignedTx = 709 [(.hw.trezor.messages.wire_out) = true];</code>
-     */
-    public static final int MessageType_BinanceSignedTx_VALUE = 709;
-    /**
-     * <pre>
      * WebAuthn
      * </pre>
      *
@@ -2128,6 +2250,82 @@ public final class TrezorMessage {
     public static final int MessageType_SolanaTxSignature_VALUE = 905;
     /**
      * <pre>
+     * THP
+     * </pre>
+     *
+     * <code>MessageType_ThpCreateNewSession = 1000 [(.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    public static final int MessageType_ThpCreateNewSession_VALUE = 1000;
+    /**
+     * <code>MessageType_ThpCredentialRequest = 1016 [(.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    public static final int MessageType_ThpCredentialRequest_VALUE = 1016;
+    /**
+     * <code>MessageType_ThpCredentialResponse = 1017 [(.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    public static final int MessageType_ThpCredentialResponse_VALUE = 1017;
+    /**
+     * <pre>
+     * Nostr
+     * </pre>
+     *
+     * <code>MessageType_NostrGetPubkey = 2001 [(.hw.trezor.messages.wire_in) = true];</code>
+     */
+    public static final int MessageType_NostrGetPubkey_VALUE = 2001;
+    /**
+     * <code>MessageType_NostrPubkey = 2002 [(.hw.trezor.messages.wire_out) = true];</code>
+     */
+    public static final int MessageType_NostrPubkey_VALUE = 2002;
+    /**
+     * <code>MessageType_NostrSignEvent = 2003 [(.hw.trezor.messages.wire_in) = true];</code>
+     */
+    public static final int MessageType_NostrSignEvent_VALUE = 2003;
+    /**
+     * <code>MessageType_NostrEventSignature = 2004 [(.hw.trezor.messages.wire_out) = true];</code>
+     */
+    public static final int MessageType_NostrEventSignature_VALUE = 2004;
+    /**
+     * <pre>
+     * Evolu
+     * </pre>
+     *
+     * <code>MessageType_EvoluGetNode = 2100 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    public static final int MessageType_EvoluGetNode_VALUE = 2100;
+    /**
+     * <code>MessageType_EvoluNode = 2101 [(.hw.trezor.messages.wire_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    public static final int MessageType_EvoluNode_VALUE = 2101;
+    /**
+     * <code>MessageType_EvoluSignRegistrationRequest = 2102 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    public static final int MessageType_EvoluSignRegistrationRequest_VALUE = 2102;
+    /**
+     * <code>MessageType_EvoluRegistrationRequest = 2103 [(.hw.trezor.messages.wire_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    public static final int MessageType_EvoluRegistrationRequest_VALUE = 2103;
+    /**
+     * <code>MessageType_EvoluGetDelegatedIdentityKey = 2104 [(.hw.trezor.messages.wire_in) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    public static final int MessageType_EvoluGetDelegatedIdentityKey_VALUE = 2104;
+    /**
+     * <code>MessageType_EvoluDelegatedIdentityKey = 2105 [(.hw.trezor.messages.wire_out) = true, (.hw.trezor.messages.bitcoin_only) = true];</code>
+     */
+    public static final int MessageType_EvoluDelegatedIdentityKey_VALUE = 2105;
+    /**
+     * <pre>
+     * Tron
+     * </pre>
+     *
+     * <code>MessageType_TronGetAddress = 2200 [(.hw.trezor.messages.wire_in) = true];</code>
+     */
+    public static final int MessageType_TronGetAddress_VALUE = 2200;
+    /**
+     * <code>MessageType_TronAddress = 2201 [(.hw.trezor.messages.wire_out) = true];</code>
+     */
+    public static final int MessageType_TronAddress_VALUE = 2201;
+    /**
+     * <pre>
      * Benchmark
      * </pre>
      *
@@ -2157,7 +2355,7 @@ public final class TrezorMessage {
      * @return The enum associated with the given numeric wire value.
      * @deprecated Use {@link #forNumber(int)} instead.
      */
-    @Deprecated
+    @java.lang.Deprecated
     public static MessageType valueOf(int value) {
       return forNumber(value);
     }
@@ -2193,6 +2391,9 @@ public final class TrezorMessage {
         case 34: return MessageType_BackupDevice;
         case 35: return MessageType_EntropyRequest;
         case 36: return MessageType_EntropyAck;
+        case 37: return MessageType_PaymentRequest;
+        case 994: return MessageType_EntropyCheckReady;
+        case 995: return MessageType_EntropyCheckContinue;
         case 41: return MessageType_PassphraseRequest;
         case 42: return MessageType_PassphraseAck;
         case 45: return MessageType_RecoveryDevice;
@@ -2215,9 +2416,11 @@ public final class TrezorMessage {
         case 97: return MessageType_AuthenticateDevice;
         case 98: return MessageType_AuthenticityProof;
         case 990: return MessageType_ChangeLanguage;
-        case 991: return MessageType_TranslationDataRequest;
-        case 992: return MessageType_TranslationDataAck;
+        case 991: return MessageType_DataChunkRequest;
+        case 992: return MessageType_DataChunkAck;
         case 993: return MessageType_SetBrightness;
+        case 996: return MessageType_GetSerialNumber;
+        case 997: return MessageType_SerialNumber;
         case 63: return MessageType_SetU2FCounter;
         case 80: return MessageType_GetNextU2FCounter;
         case 81: return MessageType_NextU2FCounter;
@@ -2227,6 +2430,7 @@ public final class TrezorMessage {
         case 7: return MessageType_FirmwareUpload;
         case 8: return MessageType_FirmwareRequest;
         case 32: return MessageType_ProdTestT1;
+        case 8001: return MessageType_BleUnpair;
         case 11: return MessageType_GetPublicKey;
         case 12: return MessageType_PublicKey;
         case 15: return MessageType_SignTx;
@@ -2234,7 +2438,6 @@ public final class TrezorMessage {
         case 22: return MessageType_TxAck;
         case 29: return MessageType_GetAddress;
         case 30: return MessageType_Address;
-        case 37: return MessageType_TxAckPaymentRequest;
         case 38: return MessageType_SignMessage;
         case 39: return MessageType_VerifyMessage;
         case 40: return MessageType_MessageSignature;
@@ -2249,6 +2452,7 @@ public final class TrezorMessage {
         case 54: return MessageType_SignedIdentity;
         case 61: return MessageType_GetECDHSessionKey;
         case 62: return MessageType_ECDHSessionKey;
+        case 52: return MessageType_PaymentNotification;
         case 100: return MessageType_DebugLinkDecision;
         case 101: return MessageType_DebugLinkGetState;
         case 102: return MessageType_DebugLinkState;
@@ -2265,6 +2469,11 @@ public final class TrezorMessage {
         case 9006: return MessageType_DebugLinkWatchLayout;
         case 9007: return MessageType_DebugLinkResetDebugEvents;
         case 9008: return MessageType_DebugLinkOptigaSetSecMax;
+        case 9009: return MessageType_DebugLinkGetGcInfo;
+        case 9010: return MessageType_DebugLinkGcInfo;
+        case 9011: return MessageType_DebugLinkGetPairingInfo;
+        case 9012: return MessageType_DebugLinkPairingInfo;
+        case 9013: return MessageType_DebugLinkSetLogFilter;
         case 450: return MessageType_EthereumGetPublicKey;
         case 451: return MessageType_EthereumPublicKey;
         case 56: return MessageType_EthereumGetAddress;
@@ -2343,6 +2552,10 @@ public final class TrezorMessage {
         case 335: return MessageType_CardanoTxInlineDatumChunk;
         case 336: return MessageType_CardanoTxReferenceScriptChunk;
         case 337: return MessageType_CardanoTxReferenceInput;
+        case 338: return MessageType_CardanoSignMessageInit;
+        case 339: return MessageType_CardanoMessageDataRequest;
+        case 340: return MessageType_CardanoMessageDataResponse;
+        case 341: return MessageType_CardanoMessageSignature;
         case 400: return MessageType_RippleGetAddress;
         case 401: return MessageType_RippleAddress;
         case 402: return MessageType_RippleSignTx;
@@ -2389,16 +2602,6 @@ public final class TrezorMessage {
         case 603: return MessageType_EosTxActionRequest;
         case 604: return MessageType_EosTxActionAck;
         case 605: return MessageType_EosSignedTx;
-        case 700: return MessageType_BinanceGetAddress;
-        case 701: return MessageType_BinanceAddress;
-        case 702: return MessageType_BinanceGetPublicKey;
-        case 703: return MessageType_BinancePublicKey;
-        case 704: return MessageType_BinanceSignTx;
-        case 705: return MessageType_BinanceTxRequest;
-        case 706: return MessageType_BinanceTransferMsg;
-        case 707: return MessageType_BinanceOrderMsg;
-        case 708: return MessageType_BinanceCancelMsg;
-        case 709: return MessageType_BinanceSignedTx;
         case 800: return MessageType_WebAuthnListResidentCredentials;
         case 801: return MessageType_WebAuthnCredentials;
         case 802: return MessageType_WebAuthnAddResidentCredential;
@@ -2409,6 +2612,21 @@ public final class TrezorMessage {
         case 903: return MessageType_SolanaAddress;
         case 904: return MessageType_SolanaSignTx;
         case 905: return MessageType_SolanaTxSignature;
+        case 1000: return MessageType_ThpCreateNewSession;
+        case 1016: return MessageType_ThpCredentialRequest;
+        case 1017: return MessageType_ThpCredentialResponse;
+        case 2001: return MessageType_NostrGetPubkey;
+        case 2002: return MessageType_NostrPubkey;
+        case 2003: return MessageType_NostrSignEvent;
+        case 2004: return MessageType_NostrEventSignature;
+        case 2100: return MessageType_EvoluGetNode;
+        case 2101: return MessageType_EvoluNode;
+        case 2102: return MessageType_EvoluSignRegistrationRequest;
+        case 2103: return MessageType_EvoluRegistrationRequest;
+        case 2104: return MessageType_EvoluGetDelegatedIdentityKey;
+        case 2105: return MessageType_EvoluDelegatedIdentityKey;
+        case 2200: return MessageType_TronGetAddress;
+        case 2201: return MessageType_TronAddress;
         case 9100: return MessageType_BenchmarkListNames;
         case 9101: return MessageType_BenchmarkNames;
         case 9102: return MessageType_BenchmarkRun;
@@ -2439,7 +2657,7 @@ public final class TrezorMessage {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return TrezorMessage.getDescriptor().getEnumTypes().get(0);
+      return com.sparrowwallet.lark.trezor.generated.TrezorMessage.getDescriptor().getEnumTypes().get(0);
     }
 
     private static final MessageType[] VALUES = values();
@@ -2447,7 +2665,7 @@ public final class TrezorMessage {
     public static MessageType valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
-        throw new IllegalArgumentException(
+        throw new java.lang.IllegalArgumentException(
           "EnumValueDescriptor is not for this type.");
       }
       return VALUES[desc.getIndex()];
@@ -2470,9 +2688,9 @@ public final class TrezorMessage {
   private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
-    String[] descriptorData = {
+    java.lang.String[] descriptorData = {
       "\n\016messages.proto\022\022hw.trezor.messages\032\rop" +
-      "tions.proto*\201U\n\013MessageType\022(\n\026MessageTy" +
+      "tions.proto*\331\\\n\013MessageType\022(\n\026MessageTy" +
       "pe_Initialize\020\000\032\014\220\265\030\001\260\265\030\001\200\246\035\001\022\036\n\020Message" +
       "Type_Ping\020\001\032\010\220\265\030\001\200\246\035\001\022%\n\023MessageType_Suc" +
       "cess\020\002\032\014\230\265\030\001\250\265\030\001\200\246\035\001\022%\n\023MessageType_Fail" +
@@ -2496,276 +2714,302 @@ public final class TrezorMessage {
       "\200\246\035\001\022\037\n\021MessageType_Nonce\020!\032\010\230\265\030\001\200\246\035\001\022&\n" +
       "\030MessageType_BackupDevice\020\"\032\010\220\265\030\001\200\246\035\001\022(\n" +
       "\032MessageType_EntropyRequest\020#\032\010\230\265\030\001\200\246\035\001\022" +
-      "$\n\026MessageType_EntropyAck\020$\032\010\220\265\030\001\200\246\035\001\022+\n" +
-      "\035MessageType_PassphraseRequest\020)\032\010\230\265\030\001\200\246" +
-      "\035\001\022/\n\031MessageType_PassphraseAck\020*\032\020\220\265\030\001\260" +
-      "\265\030\001\300\265\030\001\200\246\035\001\022(\n\032MessageType_RecoveryDevic" +
-      "e\020-\032\010\220\265\030\001\200\246\035\001\022%\n\027MessageType_WordRequest" +
-      "\020.\032\010\230\265\030\001\200\246\035\001\022!\n\023MessageType_WordAck\020/\032\010\220" +
-      "\265\030\001\200\246\035\001\022%\n\027MessageType_GetFeatures\0207\032\010\220\265" +
-      "\030\001\200\246\035\001\022#\n\025MessageType_SdProtect\020O\032\010\220\265\030\001\200" +
-      "\246\035\001\022(\n\032MessageType_ChangeWipeCode\020R\032\010\220\265\030" +
-      "\001\200\246\035\001\022$\n\026MessageType_EndSession\020S\032\010\220\265\030\001\200" +
-      "\246\035\001\022)\n\033MessageType_DoPreauthorized\020T\032\010\220\265" +
-      "\030\001\200\246\035\001\022.\n MessageType_PreauthorizedReque" +
-      "st\020U\032\010\230\265\030\001\200\246\035\001\022-\n\037MessageType_CancelAuth" +
-      "orization\020V\032\010\220\265\030\001\200\246\035\001\022,\n\036MessageType_Reb" +
-      "ootToBootloader\020W\032\010\220\265\030\001\200\246\035\001\022)\n\033MessageTy" +
-      "pe_GetFirmwareHash\020X\032\010\220\265\030\001\200\246\035\001\022&\n\030Messag" +
-      "eType_FirmwareHash\020Y\032\010\230\265\030\001\200\246\035\001\022$\n\026Messag" +
-      "eType_UnlockPath\020]\032\010\220\265\030\001\200\246\035\001\022-\n\037MessageT" +
-      "ype_UnlockedPathRequest\020^\032\010\230\265\030\001\200\246\035\001\022,\n\036M" +
-      "essageType_ShowDeviceTutorial\020_\032\010\220\265\030\001\200\246\035" +
-      "\001\022*\n\034MessageType_UnlockBootloader\020`\032\010\220\265\030" +
-      "\001\200\246\035\001\022,\n\036MessageType_AuthenticateDevice\020" +
-      "a\032\010\230\265\030\001\200\246\035\001\022+\n\035MessageType_AuthenticityP" +
-      "roof\020b\032\010\220\265\030\001\200\246\035\001\022)\n\032MessageType_ChangeLa" +
-      "nguage\020\336\007\032\010\220\265\030\001\200\246\035\001\0221\n\"MessageType_Trans" +
-      "lationDataRequest\020\337\007\032\010\230\265\030\001\200\246\035\001\022-\n\036Messag" +
-      "eType_TranslationDataAck\020\340\007\032\010\220\265\030\001\200\246\035\001\022(\n" +
-      "\031MessageType_SetBrightness\020\341\007\032\010\220\265\030\001\200\246\035\001\022" +
-      "#\n\031MessageType_SetU2FCounter\020?\032\004\220\265\030\001\022\'\n\035" +
-      "MessageType_GetNextU2FCounter\020P\032\004\220\265\030\001\022$\n" +
-      "\032MessageType_NextU2FCounter\020Q\032\004\230\265\030\001\0225\n-M" +
-      "essageType_Deprecated_PassphraseStateReq" +
-      "uest\020M\032\002\010\001\0221\n)MessageType_Deprecated_Pas" +
-      "sphraseStateAck\020N\032\002\010\001\022+\n\031MessageType_Fir" +
-      "mwareErase\020\006\032\014\220\265\030\001\270\265\030\001\200\246\035\001\022,\n\032MessageTyp" +
-      "e_FirmwareUpload\020\007\032\014\220\265\030\001\270\265\030\001\200\246\035\001\022-\n\033Mess" +
-      "ageType_FirmwareRequest\020\010\032\014\230\265\030\001\270\265\030\001\200\246\035\001\022" +
-      "(\n\026MessageType_ProdTestT1\020 \032\014\220\265\030\001\270\265\030\001\200\246\035" +
-      "\001\022&\n\030MessageType_GetPublicKey\020\013\032\010\220\265\030\001\200\246\035" +
-      "\001\022#\n\025MessageType_PublicKey\020\014\032\010\230\265\030\001\200\246\035\001\022 " +
-      "\n\022MessageType_SignTx\020\017\032\010\220\265\030\001\200\246\035\001\022#\n\025Mess" +
-      "ageType_TxRequest\020\025\032\010\230\265\030\001\200\246\035\001\022\037\n\021Message" +
-      "Type_TxAck\020\026\032\010\220\265\030\001\200\246\035\001\022$\n\026MessageType_Ge" +
-      "tAddress\020\035\032\010\220\265\030\001\200\246\035\001\022!\n\023MessageType_Addr" +
-      "ess\020\036\032\010\230\265\030\001\200\246\035\001\022)\n\037MessageType_TxAckPaym" +
-      "entRequest\020%\032\004\220\265\030\001\022%\n\027MessageType_SignMe" +
-      "ssage\020&\032\010\220\265\030\001\200\246\035\001\022\'\n\031MessageType_VerifyM" +
-      "essage\020\'\032\010\220\265\030\001\200\246\035\001\022*\n\034MessageType_Messag" +
-      "eSignature\020(\032\010\230\265\030\001\200\246\035\001\022(\n\032MessageType_Ge" +
-      "tOwnershipId\020+\032\010\220\265\030\001\200\246\035\001\022%\n\027MessageType_" +
-      "OwnershipId\020,\032\010\230\265\030\001\200\246\035\001\022+\n\035MessageType_G" +
-      "etOwnershipProof\0201\032\010\220\265\030\001\200\246\035\001\022(\n\032MessageT" +
-      "ype_OwnershipProof\0202\032\010\230\265\030\001\200\246\035\001\022+\n\035Messag" +
-      "eType_AuthorizeCoinJoin\0203\032\010\220\265\030\001\200\246\035\001\022(\n\032M" +
-      "essageType_CipherKeyValue\020\027\032\010\220\265\030\001\200\246\035\001\022*\n" +
-      "\034MessageType_CipheredKeyValue\0200\032\010\230\265\030\001\200\246\035" +
-      "\001\022&\n\030MessageType_SignIdentity\0205\032\010\220\265\030\001\200\246\035" +
-      "\001\022(\n\032MessageType_SignedIdentity\0206\032\010\230\265\030\001\200" +
-      "\246\035\001\022+\n\035MessageType_GetECDHSessionKey\020=\032\010" +
-      "\220\265\030\001\200\246\035\001\022(\n\032MessageType_ECDHSessionKey\020>" +
-      "\032\010\230\265\030\001\200\246\035\001\0223\n\035MessageType_DebugLinkDecis" +
-      "ion\020d\032\020\240\265\030\001\260\265\030\001\300\265\030\001\200\246\035\001\022/\n\035MessageType_D" +
-      "ebugLinkGetState\020e\032\014\240\265\030\001\260\265\030\001\200\246\035\001\022(\n\032Mess" +
-      "ageType_DebugLinkState\020f\032\010\250\265\030\001\200\246\035\001\022\'\n\031Me" +
-      "ssageType_DebugLinkStop\020g\032\010\240\265\030\001\200\246\035\001\022&\n\030M" +
-      "essageType_DebugLinkLog\020h\032\010\250\265\030\001\200\246\035\001\022-\n\037M" +
-      "essageType_DebugLinkMemoryRead\020n\032\010\240\265\030\001\200\246" +
-      "\035\001\022)\n\033MessageType_DebugLinkMemory\020o\032\010\250\265\030" +
-      "\001\200\246\035\001\022.\n MessageType_DebugLinkMemoryWrit" +
-      "e\020p\032\010\240\265\030\001\200\246\035\001\022-\n\037MessageType_DebugLinkFl" +
-      "ashErase\020q\032\010\240\265\030\001\200\246\035\001\022*\n\033MessageType_Debu" +
-      "gLinkLayout\020\251F\032\010\250\265\030\001\200\246\035\001\0220\n!MessageType_" +
-      "DebugLinkReseedRandom\020\252F\032\010\240\265\030\001\200\246\035\001\0220\n!Me" +
-      "ssageType_DebugLinkRecordScreen\020\253F\032\010\240\265\030\001" +
-      "\200\246\035\001\022/\n MessageType_DebugLinkEraseSdCard" +
-      "\020\255F\032\010\240\265\030\001\200\246\035\001\022/\n MessageType_DebugLinkWa" +
-      "tchLayout\020\256F\032\010\240\265\030\001\200\246\035\001\0224\n%MessageType_De" +
-      "bugLinkResetDebugEvents\020\257F\032\010\240\265\030\001\200\246\035\001\0223\n$" +
-      "MessageType_DebugLinkOptigaSetSecMax\020\260F\032" +
-      "\010\240\265\030\001\200\246\035\001\022+\n MessageType_EthereumGetPubl" +
-      "icKey\020\302\003\032\004\220\265\030\001\022(\n\035MessageType_EthereumPu" +
-      "blicKey\020\303\003\032\004\230\265\030\001\022(\n\036MessageType_Ethereum" +
-      "GetAddress\0208\032\004\220\265\030\001\022%\n\033MessageType_Ethere" +
-      "umAddress\0209\032\004\230\265\030\001\022$\n\032MessageType_Ethereu" +
-      "mSignTx\020:\032\004\220\265\030\001\022,\n!MessageType_EthereumS" +
-      "ignTxEIP1559\020\304\003\032\004\220\265\030\001\022\'\n\035MessageType_Eth" +
-      "ereumTxRequest\020;\032\004\230\265\030\001\022#\n\031MessageType_Et" +
-      "hereumTxAck\020<\032\004\220\265\030\001\022)\n\037MessageType_Ether" +
-      "eumSignMessage\020@\032\004\220\265\030\001\022+\n!MessageType_Et" +
-      "hereumVerifyMessage\020A\032\004\220\265\030\001\022.\n$MessageTy" +
-      "pe_EthereumMessageSignature\020B\032\004\230\265\030\001\022,\n!M" +
-      "essageType_EthereumSignTypedData\020\320\003\032\004\220\265\030" +
-      "\001\0225\n*MessageType_EthereumTypedDataStruct" +
-      "Request\020\321\003\032\004\230\265\030\001\0221\n&MessageType_Ethereum" +
-      "TypedDataStructAck\020\322\003\032\004\220\265\030\001\0224\n)MessageTy" +
-      "pe_EthereumTypedDataValueRequest\020\323\003\032\004\230\265\030" +
-      "\001\0220\n%MessageType_EthereumTypedDataValueA" +
-      "ck\020\324\003\032\004\220\265\030\001\0221\n&MessageType_EthereumTyped" +
-      "DataSignature\020\325\003\032\004\230\265\030\001\022,\n!MessageType_Et" +
-      "hereumSignTypedHash\020\326\003\032\004\220\265\030\001\022#\n\031MessageT" +
-      "ype_NEMGetAddress\020C\032\004\220\265\030\001\022 \n\026MessageType" +
-      "_NEMAddress\020D\032\004\230\265\030\001\022\037\n\025MessageType_NEMSi" +
-      "gnTx\020E\032\004\220\265\030\001\022!\n\027MessageType_NEMSignedTx\020" +
-      "F\032\004\230\265\030\001\022\'\n\035MessageType_NEMDecryptMessage" +
-      "\020K\032\004\220\265\030\001\022)\n\037MessageType_NEMDecryptedMess" +
-      "age\020L\032\004\230\265\030\001\022&\n\033MessageType_TezosGetAddre" +
-      "ss\020\226\001\032\004\220\265\030\001\022#\n\030MessageType_TezosAddress\020" +
-      "\227\001\032\004\230\265\030\001\022\"\n\027MessageType_TezosSignTx\020\230\001\032\004" +
-      "\220\265\030\001\022$\n\031MessageType_TezosSignedTx\020\231\001\032\004\230\265" +
-      "\030\001\022(\n\035MessageType_TezosGetPublicKey\020\232\001\032\004" +
-      "\220\265\030\001\022%\n\032MessageType_TezosPublicKey\020\233\001\032\004\230" +
-      "\265\030\001\022$\n\031MessageType_StellarSignTx\020\312\001\032\004\220\265\030" +
-      "\001\022)\n\036MessageType_StellarTxOpRequest\020\313\001\032\004" +
-      "\230\265\030\001\022(\n\035MessageType_StellarGetAddress\020\317\001" +
-      "\032\004\220\265\030\001\022%\n\032MessageType_StellarAddress\020\320\001\032" +
-      "\004\230\265\030\001\022-\n\"MessageType_StellarCreateAccoun" +
-      "tOp\020\322\001\032\004\220\265\030\001\022\'\n\034MessageType_StellarPayme" +
-      "ntOp\020\323\001\032\004\220\265\030\001\0228\n-MessageType_StellarPath" +
-      "PaymentStrictReceiveOp\020\324\001\032\004\220\265\030\001\022/\n$Messa" +
-      "geType_StellarManageSellOfferOp\020\325\001\032\004\220\265\030\001" +
-      "\0226\n+MessageType_StellarCreatePassiveSell" +
-      "OfferOp\020\326\001\032\004\220\265\030\001\022*\n\037MessageType_StellarS" +
-      "etOptionsOp\020\327\001\032\004\220\265\030\001\022+\n MessageType_Stel" +
-      "larChangeTrustOp\020\330\001\032\004\220\265\030\001\022*\n\037MessageType" +
-      "_StellarAllowTrustOp\020\331\001\032\004\220\265\030\001\022,\n!Message" +
-      "Type_StellarAccountMergeOp\020\332\001\032\004\220\265\030\001\022*\n\037M" +
-      "essageType_StellarManageDataOp\020\334\001\032\004\220\265\030\001\022" +
-      ",\n!MessageType_StellarBumpSequenceOp\020\335\001\032" +
-      "\004\220\265\030\001\022.\n#MessageType_StellarManageBuyOff" +
-      "erOp\020\336\001\032\004\220\265\030\001\0225\n*MessageType_StellarPath" +
-      "PaymentStrictSendOp\020\337\001\032\004\220\265\030\001\0225\n*MessageT" +
-      "ype_StellarClaimClaimableBalanceOp\020\341\001\032\004\220" +
-      "\265\030\001\022&\n\033MessageType_StellarSignedTx\020\346\001\032\004\230" +
-      "\265\030\001\022*\n\037MessageType_CardanoGetPublicKey\020\261" +
-      "\002\032\004\220\265\030\001\022\'\n\034MessageType_CardanoPublicKey\020" +
-      "\262\002\032\004\230\265\030\001\022(\n\035MessageType_CardanoGetAddres" +
-      "s\020\263\002\032\004\220\265\030\001\022%\n\032MessageType_CardanoAddress" +
-      "\020\264\002\032\004\230\265\030\001\022\'\n\034MessageType_CardanoTxItemAc" +
-      "k\020\271\002\032\004\230\265\030\001\0227\n,MessageType_CardanoTxAuxil" +
-      "iaryDataSupplement\020\272\002\032\004\230\265\030\001\022.\n#MessageTy" +
-      "pe_CardanoTxWitnessRequest\020\273\002\032\004\220\265\030\001\022/\n$M" +
-      "essageType_CardanoTxWitnessResponse\020\274\002\032\004" +
-      "\230\265\030\001\022\'\n\034MessageType_CardanoTxHostAck\020\275\002\032" +
-      "\004\220\265\030\001\022(\n\035MessageType_CardanoTxBodyHash\020\276" +
-      "\002\032\004\230\265\030\001\022,\n!MessageType_CardanoSignTxFini" +
-      "shed\020\277\002\032\004\230\265\030\001\022(\n\035MessageType_CardanoSign" +
-      "TxInit\020\300\002\032\004\220\265\030\001\022%\n\032MessageType_CardanoTx" +
-      "Input\020\301\002\032\004\220\265\030\001\022&\n\033MessageType_CardanoTxO" +
-      "utput\020\302\002\032\004\220\265\030\001\022(\n\035MessageType_CardanoAss" +
-      "etGroup\020\303\002\032\004\220\265\030\001\022#\n\030MessageType_CardanoT" +
-      "oken\020\304\002\032\004\220\265\030\001\022+\n MessageType_CardanoTxCe" +
-      "rtificate\020\305\002\032\004\220\265\030\001\022*\n\037MessageType_Cardan" +
-      "oTxWithdrawal\020\306\002\032\004\220\265\030\001\022-\n\"MessageType_Ca" +
-      "rdanoTxAuxiliaryData\020\307\002\032\004\220\265\030\001\022\'\n\034Message" +
-      "Type_CardanoPoolOwner\020\310\002\032\004\220\265\030\001\0221\n&Messag" +
-      "eType_CardanoPoolRelayParameters\020\311\002\032\004\220\265\030" +
-      "\001\0221\n&MessageType_CardanoGetNativeScriptH" +
-      "ash\020\312\002\032\004\220\265\030\001\022.\n#MessageType_CardanoNativ" +
-      "eScriptHash\020\313\002\032\004\230\265\030\001\022$\n\031MessageType_Card" +
-      "anoTxMint\020\314\002\032\004\220\265\030\001\022/\n$MessageType_Cardan" +
-      "oTxCollateralInput\020\315\002\032\004\220\265\030\001\022.\n#MessageTy" +
-      "pe_CardanoTxRequiredSigner\020\316\002\032\004\220\265\030\001\0220\n%M" +
-      "essageType_CardanoTxInlineDatumChunk\020\317\002\032" +
-      "\004\220\265\030\001\0224\n)MessageType_CardanoTxReferenceS" +
-      "criptChunk\020\320\002\032\004\220\265\030\001\022.\n#MessageType_Carda" +
-      "noTxReferenceInput\020\321\002\032\004\220\265\030\001\022\'\n\034MessageTy" +
-      "pe_RippleGetAddress\020\220\003\032\004\220\265\030\001\022$\n\031MessageT" +
-      "ype_RippleAddress\020\221\003\032\004\230\265\030\001\022#\n\030MessageTyp" +
-      "e_RippleSignTx\020\222\003\032\004\220\265\030\001\022%\n\032MessageType_R" +
-      "ippleSignedTx\020\223\003\032\004\220\265\030\001\0223\n(MessageType_Mo" +
-      "neroTransactionInitRequest\020\365\003\032\004\230\265\030\001\022/\n$M" +
-      "essageType_MoneroTransactionInitAck\020\366\003\032\004" +
-      "\230\265\030\001\0227\n,MessageType_MoneroTransactionSet" +
-      "InputRequest\020\367\003\032\004\230\265\030\001\0223\n(MessageType_Mon" +
-      "eroTransactionSetInputAck\020\370\003\032\004\230\265\030\001\0228\n-Me" +
-      "ssageType_MoneroTransactionInputViniRequ" +
-      "est\020\373\003\032\004\230\265\030\001\0224\n)MessageType_MoneroTransa" +
-      "ctionInputViniAck\020\374\003\032\004\230\265\030\001\022;\n0MessageTyp" +
-      "e_MoneroTransactionAllInputsSetRequest\020\375" +
-      "\003\032\004\230\265\030\001\0227\n,MessageType_MoneroTransaction" +
-      "AllInputsSetAck\020\376\003\032\004\230\265\030\001\0228\n-MessageType_" +
-      "MoneroTransactionSetOutputRequest\020\377\003\032\004\230\265" +
-      "\030\001\0224\n)MessageType_MoneroTransactionSetOu" +
-      "tputAck\020\200\004\032\004\230\265\030\001\0228\n-MessageType_MoneroTr" +
-      "ansactionAllOutSetRequest\020\201\004\032\004\230\265\030\001\0224\n)Me" +
-      "ssageType_MoneroTransactionAllOutSetAck\020" +
-      "\202\004\032\004\230\265\030\001\0228\n-MessageType_MoneroTransactio" +
-      "nSignInputRequest\020\203\004\032\004\230\265\030\001\0224\n)MessageTyp" +
-      "e_MoneroTransactionSignInputAck\020\204\004\032\004\230\265\030\001" +
-      "\0224\n)MessageType_MoneroTransactionFinalRe" +
-      "quest\020\205\004\032\004\230\265\030\001\0220\n%MessageType_MoneroTran" +
-      "sactionFinalAck\020\206\004\032\004\230\265\030\001\0226\n+MessageType_" +
-      "MoneroKeyImageExportInitRequest\020\222\004\032\004\230\265\030\001" +
-      "\0222\n\'MessageType_MoneroKeyImageExportInit" +
-      "Ack\020\223\004\032\004\230\265\030\001\0224\n)MessageType_MoneroKeyIma" +
-      "geSyncStepRequest\020\224\004\032\004\230\265\030\001\0220\n%MessageTyp" +
-      "e_MoneroKeyImageSyncStepAck\020\225\004\032\004\230\265\030\001\0225\n*" +
-      "MessageType_MoneroKeyImageSyncFinalReque" +
-      "st\020\226\004\032\004\230\265\030\001\0221\n&MessageType_MoneroKeyImag" +
-      "eSyncFinalAck\020\227\004\032\004\230\265\030\001\022\'\n\034MessageType_Mo" +
-      "neroGetAddress\020\234\004\032\004\220\265\030\001\022$\n\031MessageType_M" +
-      "oneroAddress\020\235\004\032\004\230\265\030\001\022(\n\035MessageType_Mon" +
-      "eroGetWatchKey\020\236\004\032\004\220\265\030\001\022%\n\032MessageType_M" +
-      "oneroWatchKey\020\237\004\032\004\230\265\030\001\022-\n\"MessageType_De" +
-      "bugMoneroDiagRequest\020\242\004\032\004\220\265\030\001\022)\n\036Message" +
-      "Type_DebugMoneroDiagAck\020\243\004\032\004\230\265\030\001\022,\n!Mess" +
-      "ageType_MoneroGetTxKeyRequest\020\246\004\032\004\220\265\030\001\022(" +
-      "\n\035MessageType_MoneroGetTxKeyAck\020\247\004\032\004\230\265\030\001" +
-      "\0224\n)MessageType_MoneroLiveRefreshStartRe" +
-      "quest\020\250\004\032\004\220\265\030\001\0220\n%MessageType_MoneroLive" +
-      "RefreshStartAck\020\251\004\032\004\230\265\030\001\0223\n(MessageType_" +
-      "MoneroLiveRefreshStepRequest\020\252\004\032\004\220\265\030\001\022/\n" +
-      "$MessageType_MoneroLiveRefreshStepAck\020\253\004" +
-      "\032\004\230\265\030\001\0224\n)MessageType_MoneroLiveRefreshF" +
-      "inalRequest\020\254\004\032\004\220\265\030\001\0220\n%MessageType_Mone" +
-      "roLiveRefreshFinalAck\020\255\004\032\004\230\265\030\001\022&\n\033Messag" +
-      "eType_EosGetPublicKey\020\330\004\032\004\220\265\030\001\022#\n\030Messag" +
-      "eType_EosPublicKey\020\331\004\032\004\230\265\030\001\022 \n\025MessageTy" +
-      "pe_EosSignTx\020\332\004\032\004\220\265\030\001\022)\n\036MessageType_Eos" +
-      "TxActionRequest\020\333\004\032\004\230\265\030\001\022%\n\032MessageType_" +
-      "EosTxActionAck\020\334\004\032\004\220\265\030\001\022\"\n\027MessageType_E" +
-      "osSignedTx\020\335\004\032\004\230\265\030\001\022(\n\035MessageType_Binan" +
-      "ceGetAddress\020\274\005\032\004\220\265\030\001\022%\n\032MessageType_Bin" +
-      "anceAddress\020\275\005\032\004\230\265\030\001\022*\n\037MessageType_Bina" +
-      "nceGetPublicKey\020\276\005\032\004\220\265\030\001\022\'\n\034MessageType_" +
-      "BinancePublicKey\020\277\005\032\004\230\265\030\001\022$\n\031MessageType" +
-      "_BinanceSignTx\020\300\005\032\004\220\265\030\001\022\'\n\034MessageType_B" +
-      "inanceTxRequest\020\301\005\032\004\230\265\030\001\022)\n\036MessageType_" +
-      "BinanceTransferMsg\020\302\005\032\004\220\265\030\001\022&\n\033MessageTy" +
-      "pe_BinanceOrderMsg\020\303\005\032\004\220\265\030\001\022\'\n\034MessageTy" +
-      "pe_BinanceCancelMsg\020\304\005\032\004\220\265\030\001\022&\n\033MessageT" +
-      "ype_BinanceSignedTx\020\305\005\032\004\230\265\030\001\0226\n+MessageT" +
-      "ype_WebAuthnListResidentCredentials\020\240\006\032\004" +
-      "\220\265\030\001\022*\n\037MessageType_WebAuthnCredentials\020" +
-      "\241\006\032\004\230\265\030\001\0224\n)MessageType_WebAuthnAddResid" +
-      "entCredential\020\242\006\032\004\220\265\030\001\0227\n,MessageType_We" +
-      "bAuthnRemoveResidentCredential\020\243\006\032\004\220\265\030\001\022" +
-      ")\n\036MessageType_SolanaGetPublicKey\020\204\007\032\004\220\265" +
-      "\030\001\022&\n\033MessageType_SolanaPublicKey\020\205\007\032\004\230\265" +
-      "\030\001\022\'\n\034MessageType_SolanaGetAddress\020\206\007\032\004\220" +
-      "\265\030\001\022$\n\031MessageType_SolanaAddress\020\207\007\032\004\230\265\030" +
-      "\001\022#\n\030MessageType_SolanaSignTx\020\210\007\032\004\220\265\030\001\022(" +
-      "\n\035MessageType_SolanaTxSignature\020\211\007\032\004\230\265\030\001" +
-      "\022)\n\036MessageType_BenchmarkListNames\020\214G\032\004\200" +
-      "\246\035\001\022%\n\032MessageType_BenchmarkNames\020\215G\032\004\200\246" +
-      "\035\001\022#\n\030MessageType_BenchmarkRun\020\216G\032\004\200\246\035\001\022" +
-      "&\n\033MessageType_BenchmarkResult\020\217G\032\004\200\246\035\001\032" +
-      "\004\310\363\030\001\"\004\010Z\020\\\"\004\010G\020J\"\004\010r\020z\"\006\010\333\001\020\333\001\"\006\010\340\001\020\340\001\"" +
-      "\006\010\254\002\020\260\002\"\006\010\265\002\020\270\002B<\n\'com.sparrowwallet.lar" +
-      "k.trezor.generatedB\rTrezorMessage\200\246\035\001"
+      "$\n\026MessageType_EntropyAck\020$\032\010\220\265\030\001\200\246\035\001\022(\n" +
+      "\032MessageType_PaymentRequest\020%\032\010\220\265\030\001\200\246\035\001\022" +
+      ",\n\035MessageType_EntropyCheckReady\020\342\007\032\010\230\265\030" +
+      "\001\200\246\035\001\022/\n MessageType_EntropyCheckContinu" +
+      "e\020\343\007\032\010\220\265\030\001\200\246\035\001\022+\n\035MessageType_Passphrase" +
+      "Request\020)\032\010\230\265\030\001\200\246\035\001\022/\n\031MessageType_Passp" +
+      "hraseAck\020*\032\020\220\265\030\001\260\265\030\001\300\265\030\001\200\246\035\001\022(\n\032MessageT" +
+      "ype_RecoveryDevice\020-\032\010\220\265\030\001\200\246\035\001\022%\n\027Messag" +
+      "eType_WordRequest\020.\032\010\230\265\030\001\200\246\035\001\022!\n\023Message" +
+      "Type_WordAck\020/\032\010\220\265\030\001\200\246\035\001\022%\n\027MessageType_" +
+      "GetFeatures\0207\032\010\220\265\030\001\200\246\035\001\022#\n\025MessageType_S" +
+      "dProtect\020O\032\010\220\265\030\001\200\246\035\001\022(\n\032MessageType_Chan" +
+      "geWipeCode\020R\032\010\220\265\030\001\200\246\035\001\022$\n\026MessageType_En" +
+      "dSession\020S\032\010\220\265\030\001\200\246\035\001\022)\n\033MessageType_DoPr" +
+      "eauthorized\020T\032\010\220\265\030\001\200\246\035\001\022.\n MessageType_P" +
+      "reauthorizedRequest\020U\032\010\230\265\030\001\200\246\035\001\022-\n\037Messa" +
+      "geType_CancelAuthorization\020V\032\010\220\265\030\001\200\246\035\001\022," +
+      "\n\036MessageType_RebootToBootloader\020W\032\010\220\265\030\001" +
+      "\200\246\035\001\022)\n\033MessageType_GetFirmwareHash\020X\032\010\220" +
+      "\265\030\001\200\246\035\001\022&\n\030MessageType_FirmwareHash\020Y\032\010\230" +
+      "\265\030\001\200\246\035\001\022$\n\026MessageType_UnlockPath\020]\032\010\220\265\030" +
+      "\001\200\246\035\001\022-\n\037MessageType_UnlockedPathRequest" +
+      "\020^\032\010\230\265\030\001\200\246\035\001\022,\n\036MessageType_ShowDeviceTu" +
+      "torial\020_\032\010\220\265\030\001\200\246\035\001\022*\n\034MessageType_Unlock" +
+      "Bootloader\020`\032\010\220\265\030\001\200\246\035\001\022,\n\036MessageType_Au" +
+      "thenticateDevice\020a\032\010\230\265\030\001\200\246\035\001\022+\n\035MessageT" +
+      "ype_AuthenticityProof\020b\032\010\220\265\030\001\200\246\035\001\022)\n\032Mes" +
+      "sageType_ChangeLanguage\020\336\007\032\010\220\265\030\001\200\246\035\001\022+\n\034" +
+      "MessageType_DataChunkRequest\020\337\007\032\010\230\265\030\001\200\246\035" +
+      "\001\022\'\n\030MessageType_DataChunkAck\020\340\007\032\010\220\265\030\001\200\246" +
+      "\035\001\022(\n\031MessageType_SetBrightness\020\341\007\032\010\220\265\030\001" +
+      "\200\246\035\001\022*\n\033MessageType_GetSerialNumber\020\344\007\032\010" +
+      "\220\265\030\001\200\246\035\001\022\'\n\030MessageType_SerialNumber\020\345\007\032" +
+      "\010\230\265\030\001\200\246\035\001\022#\n\031MessageType_SetU2FCounter\020?" +
+      "\032\004\220\265\030\001\022\'\n\035MessageType_GetNextU2FCounter\020" +
+      "P\032\004\220\265\030\001\022$\n\032MessageType_NextU2FCounter\020Q\032" +
+      "\004\230\265\030\001\0225\n-MessageType_Deprecated_Passphra" +
+      "seStateRequest\020M\032\002\010\001\0221\n)MessageType_Depr" +
+      "ecated_PassphraseStateAck\020N\032\002\010\001\022+\n\031Messa" +
+      "geType_FirmwareErase\020\006\032\014\220\265\030\001\270\265\030\001\200\246\035\001\022,\n\032" +
+      "MessageType_FirmwareUpload\020\007\032\014\220\265\030\001\270\265\030\001\200\246" +
+      "\035\001\022-\n\033MessageType_FirmwareRequest\020\010\032\014\230\265\030" +
+      "\001\270\265\030\001\200\246\035\001\022(\n\026MessageType_ProdTestT1\020 \032\014\220" +
+      "\265\030\001\270\265\030\001\200\246\035\001\022$\n\025MessageType_BleUnpair\020\301>\032" +
+      "\010\220\265\030\001\200\246\035\001\022&\n\030MessageType_GetPublicKey\020\013\032" +
+      "\010\220\265\030\001\200\246\035\001\022#\n\025MessageType_PublicKey\020\014\032\010\230\265" +
+      "\030\001\200\246\035\001\022 \n\022MessageType_SignTx\020\017\032\010\220\265\030\001\200\246\035\001" +
+      "\022#\n\025MessageType_TxRequest\020\025\032\010\230\265\030\001\200\246\035\001\022\037\n" +
+      "\021MessageType_TxAck\020\026\032\010\220\265\030\001\200\246\035\001\022$\n\026Messag" +
+      "eType_GetAddress\020\035\032\010\220\265\030\001\200\246\035\001\022!\n\023MessageT" +
+      "ype_Address\020\036\032\010\230\265\030\001\200\246\035\001\022%\n\027MessageType_S" +
+      "ignMessage\020&\032\010\220\265\030\001\200\246\035\001\022\'\n\031MessageType_Ve" +
+      "rifyMessage\020\'\032\010\220\265\030\001\200\246\035\001\022*\n\034MessageType_M" +
+      "essageSignature\020(\032\010\230\265\030\001\200\246\035\001\022(\n\032MessageTy" +
+      "pe_GetOwnershipId\020+\032\010\220\265\030\001\200\246\035\001\022%\n\027Message" +
+      "Type_OwnershipId\020,\032\010\230\265\030\001\200\246\035\001\022+\n\035MessageT" +
+      "ype_GetOwnershipProof\0201\032\010\220\265\030\001\200\246\035\001\022(\n\032Mes" +
+      "sageType_OwnershipProof\0202\032\010\230\265\030\001\200\246\035\001\022+\n\035M" +
+      "essageType_AuthorizeCoinJoin\0203\032\010\220\265\030\001\200\246\035\001" +
+      "\022(\n\032MessageType_CipherKeyValue\020\027\032\010\220\265\030\001\200\246" +
+      "\035\001\022*\n\034MessageType_CipheredKeyValue\0200\032\010\230\265" +
+      "\030\001\200\246\035\001\022&\n\030MessageType_SignIdentity\0205\032\010\220\265" +
+      "\030\001\200\246\035\001\022(\n\032MessageType_SignedIdentity\0206\032\010" +
+      "\230\265\030\001\200\246\035\001\022+\n\035MessageType_GetECDHSessionKe" +
+      "y\020=\032\010\220\265\030\001\200\246\035\001\022(\n\032MessageType_ECDHSession" +
+      "Key\020>\032\010\230\265\030\001\200\246\035\001\022-\n\037MessageType_PaymentNo" +
+      "tification\0204\032\010\220\265\030\001\200\246\035\001\0223\n\035MessageType_De" +
+      "bugLinkDecision\020d\032\020\240\265\030\001\260\265\030\001\300\265\030\001\200\246\035\001\022/\n\035M" +
+      "essageType_DebugLinkGetState\020e\032\014\240\265\030\001\260\265\030\001" +
+      "\200\246\035\001\022(\n\032MessageType_DebugLinkState\020f\032\010\250\265" +
+      "\030\001\200\246\035\001\022\'\n\031MessageType_DebugLinkStop\020g\032\010\240" +
+      "\265\030\001\200\246\035\001\022&\n\030MessageType_DebugLinkLog\020h\032\010\250" +
+      "\265\030\001\200\246\035\001\022-\n\037MessageType_DebugLinkMemoryRe" +
+      "ad\020n\032\010\240\265\030\001\200\246\035\001\022)\n\033MessageType_DebugLinkM" +
+      "emory\020o\032\010\250\265\030\001\200\246\035\001\022.\n MessageType_DebugLi" +
+      "nkMemoryWrite\020p\032\010\240\265\030\001\200\246\035\001\022-\n\037MessageType" +
+      "_DebugLinkFlashErase\020q\032\010\240\265\030\001\200\246\035\001\022*\n\033Mess" +
+      "ageType_DebugLinkLayout\020\251F\032\010\250\265\030\001\200\246\035\001\0220\n!" +
+      "MessageType_DebugLinkReseedRandom\020\252F\032\010\240\265" +
+      "\030\001\200\246\035\001\0220\n!MessageType_DebugLinkRecordScr" +
+      "een\020\253F\032\010\240\265\030\001\200\246\035\001\022/\n MessageType_DebugLin" +
+      "kEraseSdCard\020\255F\032\010\240\265\030\001\200\246\035\001\022/\n MessageType" +
+      "_DebugLinkWatchLayout\020\256F\032\010\240\265\030\001\200\246\035\001\0224\n%Me" +
+      "ssageType_DebugLinkResetDebugEvents\020\257F\032\010" +
+      "\240\265\030\001\200\246\035\001\0223\n$MessageType_DebugLinkOptigaS" +
+      "etSecMax\020\260F\032\010\240\265\030\001\200\246\035\001\022-\n\036MessageType_Deb" +
+      "ugLinkGetGcInfo\020\261F\032\010\240\265\030\001\200\246\035\001\022*\n\033MessageT" +
+      "ype_DebugLinkGcInfo\020\262F\032\010\250\265\030\001\200\246\035\001\0222\n#Mess" +
+      "ageType_DebugLinkGetPairingInfo\020\263F\032\010\240\265\030\001" +
+      "\200\246\035\001\022/\n MessageType_DebugLinkPairingInfo" +
+      "\020\264F\032\010\250\265\030\001\200\246\035\001\0220\n!MessageType_DebugLinkSe" +
+      "tLogFilter\020\265F\032\010\240\265\030\001\200\246\035\001\022+\n MessageType_E" +
+      "thereumGetPublicKey\020\302\003\032\004\220\265\030\001\022(\n\035MessageT" +
+      "ype_EthereumPublicKey\020\303\003\032\004\230\265\030\001\022(\n\036Messag" +
+      "eType_EthereumGetAddress\0208\032\004\220\265\030\001\022%\n\033Mess" +
+      "ageType_EthereumAddress\0209\032\004\230\265\030\001\022$\n\032Messa" +
+      "geType_EthereumSignTx\020:\032\004\220\265\030\001\022,\n!Message" +
+      "Type_EthereumSignTxEIP1559\020\304\003\032\004\220\265\030\001\022\'\n\035M" +
+      "essageType_EthereumTxRequest\020;\032\004\230\265\030\001\022#\n\031" +
+      "MessageType_EthereumTxAck\020<\032\004\220\265\030\001\022)\n\037Mes" +
+      "sageType_EthereumSignMessage\020@\032\004\220\265\030\001\022+\n!" +
+      "MessageType_EthereumVerifyMessage\020A\032\004\220\265\030" +
+      "\001\022.\n$MessageType_EthereumMessageSignatur" +
+      "e\020B\032\004\230\265\030\001\022,\n!MessageType_EthereumSignTyp" +
+      "edData\020\320\003\032\004\220\265\030\001\0225\n*MessageType_EthereumT" +
+      "ypedDataStructRequest\020\321\003\032\004\230\265\030\001\0221\n&Messag" +
+      "eType_EthereumTypedDataStructAck\020\322\003\032\004\220\265\030" +
+      "\001\0224\n)MessageType_EthereumTypedDataValueR" +
+      "equest\020\323\003\032\004\230\265\030\001\0220\n%MessageType_EthereumT" +
+      "ypedDataValueAck\020\324\003\032\004\220\265\030\001\0221\n&MessageType" +
+      "_EthereumTypedDataSignature\020\325\003\032\004\230\265\030\001\022,\n!" +
+      "MessageType_EthereumSignTypedHash\020\326\003\032\004\220\265" +
+      "\030\001\022#\n\031MessageType_NEMGetAddress\020C\032\004\220\265\030\001\022" +
+      " \n\026MessageType_NEMAddress\020D\032\004\230\265\030\001\022\037\n\025Mes" +
+      "sageType_NEMSignTx\020E\032\004\220\265\030\001\022!\n\027MessageTyp" +
+      "e_NEMSignedTx\020F\032\004\230\265\030\001\022\'\n\035MessageType_NEM" +
+      "DecryptMessage\020K\032\004\220\265\030\001\022)\n\037MessageType_NE" +
+      "MDecryptedMessage\020L\032\004\230\265\030\001\022&\n\033MessageType" +
+      "_TezosGetAddress\020\226\001\032\004\220\265\030\001\022#\n\030MessageType" +
+      "_TezosAddress\020\227\001\032\004\230\265\030\001\022\"\n\027MessageType_Te" +
+      "zosSignTx\020\230\001\032\004\220\265\030\001\022$\n\031MessageType_TezosS" +
+      "ignedTx\020\231\001\032\004\230\265\030\001\022(\n\035MessageType_TezosGet" +
+      "PublicKey\020\232\001\032\004\220\265\030\001\022%\n\032MessageType_TezosP" +
+      "ublicKey\020\233\001\032\004\230\265\030\001\022$\n\031MessageType_Stellar" +
+      "SignTx\020\312\001\032\004\220\265\030\001\022)\n\036MessageType_StellarTx" +
+      "OpRequest\020\313\001\032\004\230\265\030\001\022(\n\035MessageType_Stella" +
+      "rGetAddress\020\317\001\032\004\220\265\030\001\022%\n\032MessageType_Stel" +
+      "larAddress\020\320\001\032\004\230\265\030\001\022-\n\"MessageType_Stell" +
+      "arCreateAccountOp\020\322\001\032\004\220\265\030\001\022\'\n\034MessageTyp" +
+      "e_StellarPaymentOp\020\323\001\032\004\220\265\030\001\0228\n-MessageTy" +
+      "pe_StellarPathPaymentStrictReceiveOp\020\324\001\032" +
+      "\004\220\265\030\001\022/\n$MessageType_StellarManageSellOf" +
+      "ferOp\020\325\001\032\004\220\265\030\001\0226\n+MessageType_StellarCre" +
+      "atePassiveSellOfferOp\020\326\001\032\004\220\265\030\001\022*\n\037Messag" +
+      "eType_StellarSetOptionsOp\020\327\001\032\004\220\265\030\001\022+\n Me" +
+      "ssageType_StellarChangeTrustOp\020\330\001\032\004\220\265\030\001\022" +
+      "*\n\037MessageType_StellarAllowTrustOp\020\331\001\032\004\220" +
+      "\265\030\001\022,\n!MessageType_StellarAccountMergeOp" +
+      "\020\332\001\032\004\220\265\030\001\022*\n\037MessageType_StellarManageDa" +
+      "taOp\020\334\001\032\004\220\265\030\001\022,\n!MessageType_StellarBump" +
+      "SequenceOp\020\335\001\032\004\220\265\030\001\022.\n#MessageType_Stell" +
+      "arManageBuyOfferOp\020\336\001\032\004\220\265\030\001\0225\n*MessageTy" +
+      "pe_StellarPathPaymentStrictSendOp\020\337\001\032\004\220\265" +
+      "\030\001\0225\n*MessageType_StellarClaimClaimableB" +
+      "alanceOp\020\341\001\032\004\220\265\030\001\022&\n\033MessageType_Stellar" +
+      "SignedTx\020\346\001\032\004\230\265\030\001\022*\n\037MessageType_Cardano" +
+      "GetPublicKey\020\261\002\032\004\220\265\030\001\022\'\n\034MessageType_Car" +
+      "danoPublicKey\020\262\002\032\004\230\265\030\001\022(\n\035MessageType_Ca" +
+      "rdanoGetAddress\020\263\002\032\004\220\265\030\001\022%\n\032MessageType_" +
+      "CardanoAddress\020\264\002\032\004\230\265\030\001\022\'\n\034MessageType_C" +
+      "ardanoTxItemAck\020\271\002\032\004\230\265\030\001\0227\n,MessageType_" +
+      "CardanoTxAuxiliaryDataSupplement\020\272\002\032\004\230\265\030" +
+      "\001\022.\n#MessageType_CardanoTxWitnessRequest" +
+      "\020\273\002\032\004\220\265\030\001\022/\n$MessageType_CardanoTxWitnes" +
+      "sResponse\020\274\002\032\004\230\265\030\001\022\'\n\034MessageType_Cardan" +
+      "oTxHostAck\020\275\002\032\004\220\265\030\001\022(\n\035MessageType_Carda" +
+      "noTxBodyHash\020\276\002\032\004\230\265\030\001\022,\n!MessageType_Car" +
+      "danoSignTxFinished\020\277\002\032\004\230\265\030\001\022(\n\035MessageTy" +
+      "pe_CardanoSignTxInit\020\300\002\032\004\220\265\030\001\022%\n\032Message" +
+      "Type_CardanoTxInput\020\301\002\032\004\220\265\030\001\022&\n\033MessageT" +
+      "ype_CardanoTxOutput\020\302\002\032\004\220\265\030\001\022(\n\035MessageT" +
+      "ype_CardanoAssetGroup\020\303\002\032\004\220\265\030\001\022#\n\030Messag" +
+      "eType_CardanoToken\020\304\002\032\004\220\265\030\001\022+\n MessageTy" +
+      "pe_CardanoTxCertificate\020\305\002\032\004\220\265\030\001\022*\n\037Mess" +
+      "ageType_CardanoTxWithdrawal\020\306\002\032\004\220\265\030\001\022-\n\"" +
+      "MessageType_CardanoTxAuxiliaryData\020\307\002\032\004\220" +
+      "\265\030\001\022\'\n\034MessageType_CardanoPoolOwner\020\310\002\032\004" +
+      "\220\265\030\001\0221\n&MessageType_CardanoPoolRelayPara" +
+      "meters\020\311\002\032\004\220\265\030\001\0221\n&MessageType_CardanoGe" +
+      "tNativeScriptHash\020\312\002\032\004\220\265\030\001\022.\n#MessageTyp" +
+      "e_CardanoNativeScriptHash\020\313\002\032\004\230\265\030\001\022$\n\031Me" +
+      "ssageType_CardanoTxMint\020\314\002\032\004\220\265\030\001\022/\n$Mess" +
+      "ageType_CardanoTxCollateralInput\020\315\002\032\004\220\265\030" +
+      "\001\022.\n#MessageType_CardanoTxRequiredSigner" +
+      "\020\316\002\032\004\220\265\030\001\0220\n%MessageType_CardanoTxInline" +
+      "DatumChunk\020\317\002\032\004\220\265\030\001\0224\n)MessageType_Carda" +
+      "noTxReferenceScriptChunk\020\320\002\032\004\220\265\030\001\022.\n#Mes" +
+      "sageType_CardanoTxReferenceInput\020\321\002\032\004\220\265\030" +
+      "\001\022-\n\"MessageType_CardanoSignMessageInit\020" +
+      "\322\002\032\004\220\265\030\001\0220\n%MessageType_CardanoMessageDa" +
+      "taRequest\020\323\002\032\004\230\265\030\001\0221\n&MessageType_Cardan" +
+      "oMessageDataResponse\020\324\002\032\004\220\265\030\001\022.\n#Message" +
+      "Type_CardanoMessageSignature\020\325\002\032\004\230\265\030\001\022\'\n" +
+      "\034MessageType_RippleGetAddress\020\220\003\032\004\220\265\030\001\022$" +
+      "\n\031MessageType_RippleAddress\020\221\003\032\004\230\265\030\001\022#\n\030" +
+      "MessageType_RippleSignTx\020\222\003\032\004\220\265\030\001\022%\n\032Mes" +
+      "sageType_RippleSignedTx\020\223\003\032\004\220\265\030\001\0223\n(Mess" +
+      "ageType_MoneroTransactionInitRequest\020\365\003\032" +
+      "\004\230\265\030\001\022/\n$MessageType_MoneroTransactionIn" +
+      "itAck\020\366\003\032\004\230\265\030\001\0227\n,MessageType_MoneroTran" +
+      "sactionSetInputRequest\020\367\003\032\004\230\265\030\001\0223\n(Messa" +
+      "geType_MoneroTransactionSetInputAck\020\370\003\032\004" +
+      "\230\265\030\001\0228\n-MessageType_MoneroTransactionInp" +
+      "utViniRequest\020\373\003\032\004\230\265\030\001\0224\n)MessageType_Mo" +
+      "neroTransactionInputViniAck\020\374\003\032\004\230\265\030\001\022;\n0" +
+      "MessageType_MoneroTransactionAllInputsSe" +
+      "tRequest\020\375\003\032\004\230\265\030\001\0227\n,MessageType_MoneroT" +
+      "ransactionAllInputsSetAck\020\376\003\032\004\230\265\030\001\0228\n-Me" +
+      "ssageType_MoneroTransactionSetOutputRequ" +
+      "est\020\377\003\032\004\230\265\030\001\0224\n)MessageType_MoneroTransa" +
+      "ctionSetOutputAck\020\200\004\032\004\230\265\030\001\0228\n-MessageTyp" +
+      "e_MoneroTransactionAllOutSetRequest\020\201\004\032\004" +
+      "\230\265\030\001\0224\n)MessageType_MoneroTransactionAll" +
+      "OutSetAck\020\202\004\032\004\230\265\030\001\0228\n-MessageType_Monero" +
+      "TransactionSignInputRequest\020\203\004\032\004\230\265\030\001\0224\n)" +
+      "MessageType_MoneroTransactionSignInputAc" +
+      "k\020\204\004\032\004\230\265\030\001\0224\n)MessageType_MoneroTransact" +
+      "ionFinalRequest\020\205\004\032\004\230\265\030\001\0220\n%MessageType_" +
+      "MoneroTransactionFinalAck\020\206\004\032\004\230\265\030\001\0226\n+Me" +
+      "ssageType_MoneroKeyImageExportInitReques" +
+      "t\020\222\004\032\004\230\265\030\001\0222\n\'MessageType_MoneroKeyImage" +
+      "ExportInitAck\020\223\004\032\004\230\265\030\001\0224\n)MessageType_Mo" +
+      "neroKeyImageSyncStepRequest\020\224\004\032\004\230\265\030\001\0220\n%" +
+      "MessageType_MoneroKeyImageSyncStepAck\020\225\004" +
+      "\032\004\230\265\030\001\0225\n*MessageType_MoneroKeyImageSync" +
+      "FinalRequest\020\226\004\032\004\230\265\030\001\0221\n&MessageType_Mon" +
+      "eroKeyImageSyncFinalAck\020\227\004\032\004\230\265\030\001\022\'\n\034Mess" +
+      "ageType_MoneroGetAddress\020\234\004\032\004\220\265\030\001\022$\n\031Mes" +
+      "sageType_MoneroAddress\020\235\004\032\004\230\265\030\001\022(\n\035Messa" +
+      "geType_MoneroGetWatchKey\020\236\004\032\004\220\265\030\001\022%\n\032Mes" +
+      "sageType_MoneroWatchKey\020\237\004\032\004\230\265\030\001\022-\n\"Mess" +
+      "ageType_DebugMoneroDiagRequest\020\242\004\032\004\220\265\030\001\022" +
+      ")\n\036MessageType_DebugMoneroDiagAck\020\243\004\032\004\230\265" +
+      "\030\001\022,\n!MessageType_MoneroGetTxKeyRequest\020" +
+      "\246\004\032\004\220\265\030\001\022(\n\035MessageType_MoneroGetTxKeyAc" +
+      "k\020\247\004\032\004\230\265\030\001\0224\n)MessageType_MoneroLiveRefr" +
+      "eshStartRequest\020\250\004\032\004\220\265\030\001\0220\n%MessageType_" +
+      "MoneroLiveRefreshStartAck\020\251\004\032\004\230\265\030\001\0223\n(Me" +
+      "ssageType_MoneroLiveRefreshStepRequest\020\252" +
+      "\004\032\004\220\265\030\001\022/\n$MessageType_MoneroLiveRefresh" +
+      "StepAck\020\253\004\032\004\230\265\030\001\0224\n)MessageType_MoneroLi" +
+      "veRefreshFinalRequest\020\254\004\032\004\220\265\030\001\0220\n%Messag" +
+      "eType_MoneroLiveRefreshFinalAck\020\255\004\032\004\230\265\030\001" +
+      "\022&\n\033MessageType_EosGetPublicKey\020\330\004\032\004\220\265\030\001" +
+      "\022#\n\030MessageType_EosPublicKey\020\331\004\032\004\230\265\030\001\022 \n" +
+      "\025MessageType_EosSignTx\020\332\004\032\004\220\265\030\001\022)\n\036Messa" +
+      "geType_EosTxActionRequest\020\333\004\032\004\230\265\030\001\022%\n\032Me" +
+      "ssageType_EosTxActionAck\020\334\004\032\004\220\265\030\001\022\"\n\027Mes" +
+      "sageType_EosSignedTx\020\335\004\032\004\230\265\030\001\0226\n+Message" +
+      "Type_WebAuthnListResidentCredentials\020\240\006\032" +
+      "\004\220\265\030\001\022*\n\037MessageType_WebAuthnCredentials" +
+      "\020\241\006\032\004\230\265\030\001\0224\n)MessageType_WebAuthnAddResi" +
+      "dentCredential\020\242\006\032\004\220\265\030\001\0227\n,MessageType_W" +
+      "ebAuthnRemoveResidentCredential\020\243\006\032\004\220\265\030\001" +
+      "\022)\n\036MessageType_SolanaGetPublicKey\020\204\007\032\004\220" +
+      "\265\030\001\022&\n\033MessageType_SolanaPublicKey\020\205\007\032\004\230" +
+      "\265\030\001\022\'\n\034MessageType_SolanaGetAddress\020\206\007\032\004" +
+      "\220\265\030\001\022$\n\031MessageType_SolanaAddress\020\207\007\032\004\230\265" +
+      "\030\001\022#\n\030MessageType_SolanaSignTx\020\210\007\032\004\220\265\030\001\022" +
+      "(\n\035MessageType_SolanaTxSignature\020\211\007\032\004\230\265\030" +
+      "\001\022*\n\037MessageType_ThpCreateNewSession\020\350\007\032" +
+      "\004\200\246\035\001\022+\n MessageType_ThpCredentialReques" +
+      "t\020\370\007\032\004\200\246\035\001\022,\n!MessageType_ThpCredentialR" +
+      "esponse\020\371\007\032\004\200\246\035\001\022%\n\032MessageType_NostrGet" +
+      "Pubkey\020\321\017\032\004\220\265\030\001\022\"\n\027MessageType_NostrPubk" +
+      "ey\020\322\017\032\004\230\265\030\001\022%\n\032MessageType_NostrSignEven" +
+      "t\020\323\017\032\004\220\265\030\001\022*\n\037MessageType_NostrEventSign" +
+      "ature\020\324\017\032\004\230\265\030\001\022\'\n\030MessageType_EvoluGetNo" +
+      "de\020\264\020\032\010\220\265\030\001\200\246\035\001\022$\n\025MessageType_EvoluNode" +
+      "\020\265\020\032\010\230\265\030\001\200\246\035\001\0227\n(MessageType_EvoluSignRe" +
+      "gistrationRequest\020\266\020\032\010\220\265\030\001\200\246\035\001\0223\n$Messag" +
+      "eType_EvoluRegistrationRequest\020\267\020\032\010\230\265\030\001\200" +
+      "\246\035\001\0227\n(MessageType_EvoluGetDelegatedIden" +
+      "tityKey\020\270\020\032\010\220\265\030\001\200\246\035\001\0224\n%MessageType_Evol" +
+      "uDelegatedIdentityKey\020\271\020\032\010\230\265\030\001\200\246\035\001\022%\n\032Me" +
+      "ssageType_TronGetAddress\020\230\021\032\004\220\265\030\001\022\"\n\027Mes" +
+      "sageType_TronAddress\020\231\021\032\004\230\265\030\001\022)\n\036Message" +
+      "Type_BenchmarkListNames\020\214G\032\004\200\246\035\001\022%\n\032Mess" +
+      "ageType_BenchmarkNames\020\215G\032\004\200\246\035\001\022#\n\030Messa" +
+      "geType_BenchmarkRun\020\216G\032\004\200\246\035\001\022&\n\033MessageT" +
+      "ype_BenchmarkResult\020\217G\032\004\200\246\035\001\032\010\310\363\030\001\320\363\030\001\"\004" +
+      "\010Z\020\\\"\004\010G\020J\"\004\010r\020z\"\005\010{\020\225\001\"\006\010\333\001\020\333\001\"\006\010\340\001\020\340\001\"" +
+      "\006\010\254\002\020\260\002\"\006\010\265\002\020\270\002\"\006\010\274\005\020\305\005\"\006\010\351\007\020\367\007\"\006\010\372\007\020\313\010B" +
+      "<\n\'com.sparrowwallet.lark.trezor.generat" +
+      "edB\rTrezorMessage\200\246\035\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          TrezorOptions.getDescriptor(),
+          com.sparrowwallet.lark.trezor.generated.TrezorOptions.getDescriptor(),
         });
     descriptor.resolveAllFeaturesImmutable();
-    TrezorOptions.getDescriptor();
+    com.sparrowwallet.lark.trezor.generated.TrezorOptions.getDescriptor();
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
-    registry.add(TrezorOptions.bitcoinOnly);
-    registry.add(TrezorOptions.hasBitcoinOnlyValues);
-    registry.add(TrezorOptions.includeInBitcoinOnly);
-    registry.add(TrezorOptions.wireBootloader);
-    registry.add(TrezorOptions.wireDebugIn);
-    registry.add(TrezorOptions.wireDebugOut);
-    registry.add(TrezorOptions.wireIn);
-    registry.add(TrezorOptions.wireNoFsm);
-    registry.add(TrezorOptions.wireOut);
-    registry.add(TrezorOptions.wireTiny);
+    registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.bitcoinOnly);
+    registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.hasBitcoinOnlyValues);
+    registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.includeInBitcoinOnly);
+    registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.wireBootloader);
+    registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.wireDebugIn);
+    registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.wireDebugOut);
+    registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.wireEnum);
+    registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.wireIn);
+    registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.wireNoFsm);
+    registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.wireOut);
+    registry.add(com.sparrowwallet.lark.trezor.generated.TrezorOptions.wireTiny);
     com.google.protobuf.Descriptors.FileDescriptor
         .internalUpdateFileDescriptor(descriptor, registry);
   }

@@ -811,7 +811,7 @@ class V2Protocol implements Protocol {
         }
 
         // Identify the expected inner class name
-        String innerClassName = messageTypeName.replace("MessageType_", "").replace("ThpMessageType_", "");
+        String innerClassName = messageTypeName.replace("ThpMessageType_", "").replace("MessageType_", "");
 
         // Identify enclosing class by name
         String className;

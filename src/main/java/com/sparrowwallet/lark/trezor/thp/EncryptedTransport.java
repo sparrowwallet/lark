@@ -164,14 +164,29 @@ public class EncryptedTransport {
                 throw new DeviceException("Too many packets received (possible protocol error)");
             }
 
-            byte[] packet = transport.read();
+            byte[] packet;
+            while(true) {
+                try {
+                    packet = transport.read();
+                    break;
+                } catch(DeviceTimeoutException e) {
+                    // Continue polling for continuation packets
+                    if(log.isTraceEnabled()) {
+                        log.trace("Timeout reading continuation packet {}/{}, continuing to poll", i, requiredPackets);
+                    }
+                    continue;
+                }
+            }
+
             if(packet == null || packet.length != 64) {
                 throw new DeviceException("Invalid continuation packet received");
             }
 
             // Verify it's a continuation packet
             if(!ControlByte.isContinuation(packet[0])) {
-                throw new DeviceException("Expected continuation packet");
+                throw new DeviceException(String.format(
+                    "Expected continuation packet %d/%d, got control byte 0x%02X",
+                    i, requiredPackets, packet[0] & 0xFF));
             }
 
             // Verify channel ID matches

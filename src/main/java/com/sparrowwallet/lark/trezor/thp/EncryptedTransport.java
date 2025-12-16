@@ -152,11 +152,11 @@ public class EncryptedTransport {
         List<byte[]> packets = new ArrayList<>();
         packets.add(firstPacket);
 
-        // Get application data length from first packet
-        int totalLength = PacketCodec.getLength(firstPacket);
+        // Get transport payload length from first packet (includes CRC)
+        int transportPayloadLength = PacketCodec.getLength(firstPacket);
 
         // Calculate required number of packets
-        int requiredPackets = calculateRequiredPackets(totalLength);
+        int requiredPackets = calculateRequiredPackets(transportPayloadLength);
 
         // Read remaining packets
         for(int i = 1; i < requiredPackets; i++) {
@@ -225,12 +225,11 @@ public class EncryptedTransport {
     /**
      * Calculate number of packets required for a message.
      *
-     * @param applicationDataLength Length of application data (without CRC)
+     * @param transportPayloadLength Length of transport payload (includes 4-byte CRC)
      * @return Number of packets needed
      */
-    private int calculateRequiredPackets(int applicationDataLength) {
-        // Transport payload = application data + 4-byte CRC
-        int transportPayloadLength = applicationDataLength + 4;
+    private int calculateRequiredPackets(int transportPayloadLength) {
+        // Transport payload length already includes CRC from PacketCodec.getLength()
 
         // First packet: 5-byte header + 59 bytes payload
         int firstPacketPayload = 59;

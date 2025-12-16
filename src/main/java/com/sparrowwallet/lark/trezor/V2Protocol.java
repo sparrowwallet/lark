@@ -438,12 +438,16 @@ class V2Protocol implements Protocol {
                 call(credRequest, TrezorMessageThp.ThpCredentialResponse.class);
 
         byte[] credentialBlob = credResponse.getCredential().toByteArray();
+        byte[] trezorPubkeyFromResponse = credResponse.getTrezorStaticPublicKey().toByteArray();
+
         if(log.isDebugEnabled()) {
             log.debug("Received credential ({} bytes): {}", credentialBlob.length, Utils.bytesToHex(credentialBlob));
+            log.debug("Trezor pubkey from response: {}", Utils.bytesToHex(trezorPubkeyFromResponse));
         }
 
-        // Store credential
-        credentialStore.addCredential(trezorStaticPubkey, credentialBlob);
+        // Store credential using Trezor pubkey from CredentialResponse (not from handshake!)
+        // This is the key used for credential matching during reconnection
+        credentialStore.addCredential(trezorPubkeyFromResponse, credentialBlob);
         if(log.isDebugEnabled()) {
             log.debug("Credential stored for device");
         }

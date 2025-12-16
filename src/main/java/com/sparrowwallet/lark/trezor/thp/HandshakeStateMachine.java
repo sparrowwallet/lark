@@ -2,6 +2,7 @@ package com.sparrowwallet.lark.trezor.thp;
 
 import com.sparrowwallet.lark.DeviceException;
 import com.sparrowwallet.lark.bitbox02.noise.NoiseTransport;
+import com.sparrowwallet.lark.trezor.CredentialMatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -68,6 +69,16 @@ public class HandshakeStateMachine {
          * @throws DeviceException if communication fails
          */
         byte[] exchangeInitiation(byte[] request) throws DeviceException;
+
+        /**
+         * Find matching credential from available credentials.
+         * Called after receiving initiation response, before sending completion request.
+         *
+         * @param trezorKeys Trezor's ephemeral and static public keys from handshake
+         * @return Matching credential blob, or null if no match
+         * @throws DeviceException if credential search fails
+         */
+        byte[] findCredential(CredentialMatcher.TrezorPublicKeys trezorKeys) throws DeviceException;
 
         /**
          * Send handshake completion request and receive response.
@@ -149,11 +160,18 @@ public class HandshakeStateMachine {
         }
         noiseAdapter.readHandshakeResponse(noiseResponse);
 
+        // After receiving 2nd message, extract Trezor's public keys and find matching credential
+        CredentialMatcher.TrezorPublicKeys trezorKeys = noiseAdapter.getTrezorPublicKeys();
+        byte[] matchedCredential = exchange.findCredential(trezorKeys);
+
+        // Use matched credential if found, otherwise use the one provided to constructor (may be null)
+        byte[] credentialToUse = (matchedCredential != null) ? matchedCredential : credential;
+
         // Determine next state based on credential availability
-        state = (credential != null) ? State.HH2 : State.HH3;
+        state = (credentialToUse != null) ? State.HH2 : State.HH3;
 
         // HH2/HH3 → Complete: Send completion request
-        byte[] completionPayload = HandshakeMessages.buildHandshakeCompletionPayload(credential);
+        byte[] completionPayload = HandshakeMessages.buildHandshakeCompletionPayload(credentialToUse);
         byte[] noiseCompletion = noiseAdapter.writeHandshakeCompletion(completionPayload);
         byte[] completionRequest = HandshakeMessages.buildHandshakeCompletion(noiseCompletion);
 

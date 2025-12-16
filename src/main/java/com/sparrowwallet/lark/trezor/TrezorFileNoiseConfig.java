@@ -87,6 +87,31 @@ public class TrezorFileNoiseConfig implements TrezorNoiseConfig {
     }
 
     @Override
+    public List<CredentialMatcher.StoredCredential> getAllCredentials() {
+        ThpCredentialConfig config = read();
+        byte[] hostPrivkey = getHostStaticPrivateKey().orElse(null);
+        if(hostPrivkey == null) {
+            return Collections.emptyList();
+        }
+
+        List<CredentialMatcher.StoredCredential> result = new ArrayList<>();
+        for(Map.Entry<String, StoredCredential> entry : config.credentials.entrySet()) {
+            try {
+                byte[] trezorPubkey = Base64.getDecoder().decode(entry.getKey());
+                byte[] credentialBlob = Base64.getDecoder().decode(entry.getValue().credentialBlob);
+                result.add(new CredentialMatcher.StoredCredential(
+                    trezorPubkey,
+                    hostPrivkey,
+                    credentialBlob
+                ));
+            } catch(IllegalArgumentException e) {
+                log.error("Invalid Base64 in stored credential", e);
+            }
+        }
+        return result;
+    }
+
+    @Override
     public Optional<byte[]> getHostStaticPrivateKey() {
         ThpCredentialConfig config = read();
         if(config.hostStaticKeypair == null || config.hostStaticKeypair.privateKey == null) {

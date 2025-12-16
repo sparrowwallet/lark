@@ -48,6 +48,14 @@ public interface TrezorNoiseConfig {
     Optional<byte[]> getCredential(byte[] trezorPublicKey);
 
     /**
+     * Get all stored credentials for credential matching.
+     * Used to find which credential matches the current device during handshake.
+     *
+     * @return List of all stored credentials
+     */
+    List<CredentialMatcher.StoredCredential> getAllCredentials();
+
+    /**
      * Get the host's static private key.
      *
      * @return The host's static private key (32 bytes), or empty if not set

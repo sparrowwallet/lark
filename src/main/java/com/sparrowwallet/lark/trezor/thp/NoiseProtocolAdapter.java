@@ -5,11 +5,9 @@ import com.sparrowwallet.lark.bitbox02.noise.NamedProtocolHandshakeBuilder;
 import com.sparrowwallet.lark.bitbox02.noise.NoiseHandshake;
 import com.sparrowwallet.lark.bitbox02.noise.NoSuchPatternException;
 import com.sparrowwallet.lark.bitbox02.noise.NoiseTransport;
+import com.sparrowwallet.lark.trezor.CredentialMatcher;
 
 import javax.crypto.AEADBadTagException;
-import javax.crypto.ShortBufferException;
-import java.nio.ByteBuffer;
-import java.security.GeneralSecurityException;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
@@ -174,6 +172,37 @@ public class NoiseProtocolAdapter {
     }
 
     /**
+     * Get Trezor's public keys for credential matching.
+     * Only available after reading the 2nd handshake message (handshake initiation response).
+     *
+     * @return Trezor's ephemeral and static public keys
+     * @throws DeviceException if keys are not available
+     */
+    public CredentialMatcher.TrezorPublicKeys getTrezorPublicKeys() throws DeviceException {
+        try {
+            // Get remote ephemeral public key (re)
+            java.lang.reflect.Field reField = handshake.getClass().getDeclaredField("remoteEphemeralPublicKey");
+            reField.setAccessible(true);
+            java.security.PublicKey remoteEphemeral = (java.security.PublicKey) reField.get(handshake);
+
+            // Get remote static public key (rs)
+            java.security.PublicKey remoteStatic = handshake.getRemoteStaticPublicKey();
+
+            if(remoteEphemeral == null || remoteStatic == null) {
+                throw new DeviceException("Trezor public keys not yet available from handshake");
+            }
+
+            // Extract raw 32-byte keys
+            byte[] ephemeralRaw = extractRawPublicKey(remoteEphemeral);
+            byte[] staticRaw = extractRawPublicKey(remoteStatic);
+
+            return new CredentialMatcher.TrezorPublicKeys(ephemeralRaw, staticRaw);
+        } catch(Exception e) {
+            throw new DeviceException("Failed to extract Trezor public keys: " + e.getMessage(), e);
+        }
+    }
+
+    /**
      * Get the remote (Trezor's) static public key.
      * Only available after handshake is complete.
      *
@@ -190,8 +219,14 @@ public class NoiseProtocolAdapter {
             throw new DeviceException("Remote static public key not available");
         }
 
-        // Extract raw 32-byte key from X.509 encoding
-        byte[] encoded = remotePublicKey.getEncoded();
+        return extractRawPublicKey(remotePublicKey);
+    }
+
+    /**
+     * Extract raw 32-byte public key from X.509 encoded key.
+     */
+    private byte[] extractRawPublicKey(java.security.PublicKey publicKey) {
+        byte[] encoded = publicKey.getEncoded();
         // X.509 encoding: prefix (12 bytes) + raw key (32 bytes)
         byte[] rawKey = new byte[32];
         System.arraycopy(encoded, 12, rawKey, 0, 32);

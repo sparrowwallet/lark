@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Method;
 import java.security.KeyPair;
+import java.util.List;
 import java.text.Normalizer;
 
 /**
@@ -130,35 +131,18 @@ class V2Protocol implements Protocol {
         // Step 2: Load or generate host static key pair
         this.hostStaticKeyPair = loadOrGenerateHostStaticKey();
 
-        // Step 3: Perform initial handshake without credential to get Trezor's static pubkey
+        // Step 3: Perform handshake (credential matching happens inside)
         HandshakeStateMachine.Result handshakeResult = performHandshake(
                 allocationResponse.channelId,
                 allocationResponse.devicePropertiesBytes,
-                null // no credential for initial handshake
+                null // credentials will be searched during handshake
         );
 
         // Step 4: Extract Trezor's static public key and handshake hash from handshake result
         this.trezorStaticPubkey = handshakeResult.trezorStaticPubkey;
         this.handshakeHash = handshakeResult.handshakeHash;
 
-        // Step 5: Check if we have an existing credential for this device
-        java.util.Optional<byte[]> existingCredential = credentialStore.getCredential(trezorStaticPubkey);
-
-        if(existingCredential.isPresent()) {
-            if(log.isDebugEnabled()) {
-                log.debug("Found existing credential, re-performing handshake with credential");
-            }
-
-            // Re-allocate channel and perform handshake with credential
-            allocationResponse = allocator.allocateChannel(ChannelAllocationMessages.PROTOCOL_VERSION_V1);
-            handshakeResult = performHandshake(
-                    allocationResponse.channelId,
-                    allocationResponse.devicePropertiesBytes,
-                    existingCredential.get()
-            );
-        }
-
-        // Step 6: Create encrypted transport
+        // Step 5: Create encrypted transport
         this.encryptedTransport = new EncryptedTransport(
                 transport,
                 handshakeResult.transport,
@@ -485,6 +469,34 @@ class V2Protocol implements Protocol {
                 // Handshake uses the allocated channel, not broadcast
                 return sendAndReceiveHandshake(request, channelId,
                         ControlByte.PacketType.HANDSHAKE_INIT_RESP);
+            }
+
+            @Override
+            public byte[] findCredential(CredentialMatcher.TrezorPublicKeys trezorKeys) throws DeviceException {
+                // Get all stored credentials
+                List<CredentialMatcher.StoredCredential> credentials = credentialStore.getAllCredentials();
+
+                if(credentials.isEmpty()) {
+                    if(log.isDebugEnabled()) {
+                        log.debug("No stored credentials to search");
+                    }
+                    return null;
+                }
+
+                // Find matching credential
+                CredentialMatcher.StoredCredential match = CredentialMatcher.findCredential(credentials, trezorKeys);
+
+                if(match != null) {
+                    if(log.isDebugEnabled()) {
+                        log.debug("Found matching credential for device");
+                    }
+                    return match.credentialBlob;
+                } else {
+                    if(log.isDebugEnabled()) {
+                        log.debug("No matching credential found for device");
+                    }
+                    return null;
+                }
             }
 
             @Override

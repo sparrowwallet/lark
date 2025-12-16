@@ -19,10 +19,9 @@ import java.util.Arrays;
  */
 public class CPace {
 
-    // CPace prefix for X25519-SHA512 (as per THP spec)
-    private static final byte[] CPACE_PREFIX = {
-        0x08, 0x43, 0x50, 0x61, 0x63, 0x65, 0x32, 0x35, 0x35, 0x06
-    };
+    // CPace DSI (Domain Separation Identifier) for CPace255
+    private static final byte[] DSI = "CPace255".getBytes(StandardCharsets.US_ASCII);
+    private static final int HASH_BLOCK_SIZE = 128; // SHA-512 block size
 
     /**
      * Result of CPace calculation.
@@ -51,8 +50,11 @@ public class CPace {
     public static Result calculate(String pairingCode, byte[] handshakeHash, byte[] trezorPublicKey)
             throws GeneralSecurityException {
 
+        // Convert pairing code to bytes (prs = password/passphrase)
+        byte[] prs = pairingCode.getBytes(StandardCharsets.US_ASCII);
+
         // Step 1: Compute generator point from pairing code
-        byte[] generator = computeGenerator(pairingCode, handshakeHash);
+        byte[] generator = computeGenerator(prs, handshakeHash);
 
         // Step 2: Generate ephemeral key pair
         KeyPairGenerator keyGen = KeyPairGenerator.getInstance("X25519");
@@ -86,7 +88,7 @@ public class CPace {
         byte[] codeInput = new byte[1 + handshakeHash.length + secret.length + challenge.length];
         int offset = 0;
 
-        codeInput[offset++] = 0x01; // PairingMethod.CodeEntry = 1
+        codeInput[offset++] = 0x02; // PairingMethod.CodeEntry = 2
 
         System.arraycopy(handshakeHash, 0, codeInput, offset, handshakeHash.length);
         offset += handshakeHash.length;
@@ -105,46 +107,78 @@ public class CPace {
 
     /**
      * Compute generator point from pairing code and handshake hash.
+     * Implements CPace _generator function.
      *
-     * @param pairingCode 6-digit pairing code
-     * @param handshakeHash Noise handshake hash
+     * @param prs Password/passphrase (6-digit pairing code as ASCII bytes)
+     * @param ci Channel identifier (handshake hash)
      * @return Generator point (32 bytes)
      */
-    private static byte[] computeGenerator(String pairingCode, byte[] handshakeHash)
-            throws NoSuchAlgorithmException {
+    private static byte[] computeGenerator(byte[] prs, byte[] ci) throws NoSuchAlgorithmException {
+        // Build generator string according to CPace spec
+        byte[] genStr = buildGeneratorString(prs, ci);
 
-        // Padding: 0x6f + 111 zero bytes + 0x20
-        byte[] padding = new byte[113];
-        padding[0] = 0x6f;
-        padding[112] = 0x20;
-
-        // Build pregenInput: prefix || code || padding || handshakeHash || 0x00
-        byte[] codeBytes = pairingCode.getBytes(StandardCharsets.US_ASCII);
-        byte[] pregenInput = new byte[CPACE_PREFIX.length + codeBytes.length + padding.length +
-                                       handshakeHash.length + 1];
-        int offset = 0;
-
-        System.arraycopy(CPACE_PREFIX, 0, pregenInput, offset, CPACE_PREFIX.length);
-        offset += CPACE_PREFIX.length;
-
-        System.arraycopy(codeBytes, 0, pregenInput, offset, codeBytes.length);
-        offset += codeBytes.length;
-
-        System.arraycopy(padding, 0, pregenInput, offset, padding.length);
-        offset += padding.length;
-
-        System.arraycopy(handshakeHash, 0, pregenInput, offset, handshakeHash.length);
-        offset += handshakeHash.length;
-
-        pregenInput[offset] = 0x00;
-
-        // Compute SHA-512 and take first 32 bytes
+        // Hash with SHA-512 and take first 32 bytes
         MessageDigest sha512 = MessageDigest.getInstance("SHA-512");
-        byte[] hash = sha512.digest(pregenInput);
+        byte[] hash = sha512.digest(genStr);
         byte[] preGenerator = Arrays.copyOf(hash, 32);
 
         // Map to curve point using Elligator2
         return Elligator2.map(preGenerator);
+    }
+
+    /**
+     * Build generator string according to CPace spec.
+     * Format: LV(DSI) || LV(prs) || LV(padding) || LV(ci) || LV(sid)
+     * where LV = length-value encoding (LEB128 length prefix)
+     */
+    private static byte[] buildGeneratorString(byte[] prs, byte[] ci) {
+        // Calculate DSI and prs with length prefixes
+        byte[] dsiLV = prependLength(DSI);
+        byte[] prsLV = prependLength(prs);
+
+        // Calculate padding length
+        int lenZpad = Math.max(0, HASH_BLOCK_SIZE - (dsiLV.length + prsLV.length + 1));
+        byte[] padding = new byte[lenZpad];
+        byte[] paddingLV = prependLength(padding);
+
+        // Build: LV(DSI) || LV(prs) || LV(padding) || LV(ci) || LV(sid)
+        // sid is empty (b"")
+        byte[] ciLV = prependLength(ci);
+        byte[] sidLV = prependLength(new byte[0]);
+
+        // Concatenate all parts
+        int totalLen = dsiLV.length + prsLV.length + paddingLV.length + ciLV.length + sidLV.length;
+        byte[] result = new byte[totalLen];
+        int offset = 0;
+
+        System.arraycopy(dsiLV, 0, result, offset, dsiLV.length);
+        offset += dsiLV.length;
+
+        System.arraycopy(prsLV, 0, result, offset, prsLV.length);
+        offset += prsLV.length;
+
+        System.arraycopy(paddingLV, 0, result, offset, paddingLV.length);
+        offset += paddingLV.length;
+
+        System.arraycopy(ciLV, 0, result, offset, ciLV.length);
+        offset += ciLV.length;
+
+        System.arraycopy(sidLV, 0, result, offset, sidLV.length);
+
+        return result;
+    }
+
+    /**
+     * Prepend LEB128 length encoding (simplified for values < 128).
+     */
+    private static byte[] prependLength(byte[] data) {
+        if(data.length > 127) {
+            throw new IllegalArgumentException("Data too long for simple LEB128 encoding");
+        }
+        byte[] result = new byte[1 + data.length];
+        result[0] = (byte) data.length;
+        System.arraycopy(data, 0, result, 1, data.length);
+        return result;
     }
 
     /**

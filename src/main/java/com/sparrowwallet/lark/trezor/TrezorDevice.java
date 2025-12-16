@@ -40,7 +40,11 @@ public class TrezorDevice implements Closeable, ProtocolCallbacks {
     private boolean outdatedFirmware;
 
     /**
-     * Create TrezorDevice with V1 protocol (public constructor for backward compatibility).
+     * Create TrezorDevice with automatic protocol detection.
+     *
+     * Uses ProtocolFactory to probe the device and select the appropriate protocol (V1 or V2/THP).
+     * V2-only devices (e.g. T3W1) will automatically use THP protocol.
+     * Dual-protocol devices will use V1 protocol by default.
      *
      * @param device LibUsb device from enumeration
      * @param trezorUI User interaction callbacks
@@ -54,8 +58,8 @@ public class TrezorDevice implements Closeable, ProtocolCallbacks {
         // Create USB transport
         UsbTransport transport = new UsbTransport(device);
 
-        // Create V1 protocol
-        this.protocol = new V1Protocol(transport, trezorUI, this);
+        // Use factory to create appropriate protocol (V1 or V2)
+        this.protocol = ProtocolFactory.createProtocol(transport, trezorUI, this);
     }
 
     /**

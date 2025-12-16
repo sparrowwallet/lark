@@ -32,7 +32,7 @@ class V2Protocol implements Protocol {
     private final Transport transport;
     private final TrezorUI ui;
     private final ProtocolCallbacks callbacks;
-    private final TrezorCredentialStore credentialStore;
+    private final TrezorNoiseConfig credentialStore;
 
     // THP session state
     private EncryptedTransport encryptedTransport;
@@ -52,23 +52,12 @@ class V2Protocol implements Protocol {
      * @param callbacks Protocol callbacks for device communication
      * @param credentialStore Credential storage for pairing persistence
      */
-    V2Protocol(Transport transport, TrezorUI ui, ProtocolCallbacks callbacks, TrezorCredentialStore credentialStore) {
+    V2Protocol(Transport transport, TrezorUI ui, ProtocolCallbacks callbacks, TrezorNoiseConfig credentialStore) {
         this.transport = transport;
         this.ui = ui;
         this.callbacks = callbacks;
-        this.credentialStore = credentialStore != null ? credentialStore : new TrezorFileCredentialStore();
+        this.credentialStore = credentialStore != null ? credentialStore : new TrezorFileNoiseConfig();
         this.initialized = false;
-    }
-
-    /**
-     * Create V2 protocol instance with default file-based credential store.
-     *
-     * @param transport The underlying transport (USB, etc.)
-     * @param ui User interaction callbacks
-     * @param callbacks Protocol callbacks for device communication
-     */
-    V2Protocol(Transport transport, TrezorUI ui, ProtocolCallbacks callbacks) {
-        this(transport, ui, callbacks, new TrezorFileCredentialStore());
     }
 
     @Override

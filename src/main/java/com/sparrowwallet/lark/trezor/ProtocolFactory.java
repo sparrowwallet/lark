@@ -5,7 +5,6 @@ import com.sparrowwallet.lark.DeviceException;
 import com.sparrowwallet.lark.trezor.generated.TrezorMessage;
 import com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon;
 import com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement;
-import com.sparrowwallet.lark.trezor.thp.TrezorCredentialStore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,36 +27,6 @@ class ProtocolFactory {
     private static final int PROBE_TIMEOUT_MS = 2000;
 
     /**
-     * Create Protocol with automatic version detection.
-     *
-     * @param transport The transport for packet I/O
-     * @param ui User interaction callbacks
-     * @param callbacks Protocol callbacks for device communication
-     * @return Appropriate Protocol implementation (V1 or V2)
-     * @throws DeviceException if protocol creation fails
-     */
-    static Protocol createProtocol(Transport transport, TrezorUI ui, ProtocolCallbacks callbacks) throws DeviceException {
-        // Probe for V1 protocol support
-        boolean supportsV1 = probeV1Protocol(transport);
-
-        if(supportsV1) {
-            if(log.isDebugEnabled()) {
-                log.debug("Device supports V1 protocol");
-            }
-
-            // Create V1 protocol instance
-            return new V1Protocol(transport, ui, callbacks);
-        } else {
-            if(log.isDebugEnabled()) {
-                log.debug("Device is V2-only (THP) - likely T3W1");
-            }
-
-            // Device is V2-only - create with default credential store
-            return new V2Protocol(transport, ui, callbacks);
-        }
-    }
-
-    /**
      * Create Protocol with automatic version detection and custom credential store.
      *
      * @param transport The transport for packet I/O
@@ -67,7 +36,7 @@ class ProtocolFactory {
      * @return Appropriate Protocol implementation (V1 or V2)
      * @throws DeviceException if protocol creation fails
      */
-    static Protocol createProtocol(Transport transport, TrezorUI ui, ProtocolCallbacks callbacks, TrezorCredentialStore credentialStore) throws DeviceException {
+    static Protocol createProtocol(Transport transport, TrezorUI ui, ProtocolCallbacks callbacks, TrezorNoiseConfig credentialStore) throws DeviceException {
         // Probe for V1 protocol support
         boolean supportsV1 = probeV1Protocol(transport);
 

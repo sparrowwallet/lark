@@ -1,4 +1,4 @@
-package com.sparrowwallet.lark.trezor.thp;
+package com.sparrowwallet.lark.trezor;
 
 import com.sparrowwallet.lark.DeviceException;
 
@@ -19,7 +19,7 @@ import java.util.Optional;
  *
  * Implementations may use file-based, database, or OS keychain storage.
  */
-public interface TrezorCredentialStore {
+public interface TrezorNoiseConfig {
 
     // ===== Credential Storage Methods =====
 

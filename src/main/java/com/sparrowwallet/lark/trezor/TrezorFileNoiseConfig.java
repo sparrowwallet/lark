@@ -1,4 +1,4 @@
-package com.sparrowwallet.lark.trezor.thp;
+package com.sparrowwallet.lark.trezor;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -18,8 +18,8 @@ import java.util.stream.Collectors;
  *
  * Default location: ~/.lark/trezor_thp_credentials.json
  */
-public class TrezorFileCredentialStore implements TrezorCredentialStore {
-    private static final Logger log = LoggerFactory.getLogger(TrezorFileCredentialStore.class);
+public class TrezorFileNoiseConfig implements TrezorNoiseConfig {
+    private static final Logger log = LoggerFactory.getLogger(TrezorFileNoiseConfig.class);
 
     private final ObjectMapper mapper = new ObjectMapper();
     private final File configFile;
@@ -29,7 +29,7 @@ public class TrezorFileCredentialStore implements TrezorCredentialStore {
      *
      * @param configFile The file to store credentials (typically ~/.lark/trezor_thp_credentials.json)
      */
-    public TrezorFileCredentialStore(File configFile) {
+    public TrezorFileNoiseConfig(File configFile) {
         this.configFile = configFile;
     }
 
@@ -37,7 +37,7 @@ public class TrezorFileCredentialStore implements TrezorCredentialStore {
      * Create a credential store with default location.
      * Default: ~/.lark/trezor_thp_credentials.json
      */
-    public TrezorFileCredentialStore() {
+    public TrezorFileNoiseConfig() {
         this(getDefaultConfigFile());
     }
 

@@ -7,6 +7,7 @@ import com.sparrowwallet.drongo.protocol.ScriptType;
 import com.sparrowwallet.drongo.psbt.PSBT;
 import com.sparrowwallet.drongo.wallet.WalletModel;
 import com.sparrowwallet.lark.bitbox02.BitBoxNoiseConfig;
+import com.sparrowwallet.lark.trezor.TrezorNoiseConfig;
 import com.sparrowwallet.tern.http.client.HttpClientService;
 import org.hid4java.HidDevice;
 import org.hid4java.HidManager;
@@ -30,6 +31,7 @@ public class Lark {
     private final HttpClientService httpClientService;
     private String passphrase;
     private BitBoxNoiseConfig bitBoxNoiseConfig;
+    private TrezorNoiseConfig trezorNoiseConfig;
     private final Map<OutputDescriptor, String> walletNames = new HashMap<>();
     private final Map<OutputDescriptor, byte[]> walletRegistrations = new HashMap<>();
 
@@ -197,6 +199,9 @@ public class Lark {
                     hardwareClient.setWalletNames(walletNames);
                     if(hardwareClient instanceof TrezorClient trezorClient) {
                         trezorClient.setPassphrase(passphrase);
+                    }
+                    if(hardwareClient instanceof TrezorClient trezorClient && trezorNoiseConfig != null) {
+                        trezorClient.setNoiseConfig(trezorNoiseConfig);
                     }
                     if(foundClients.add(hardwareClient) && clientOperation != null && clientOperation.matches(hardwareClient)) {
                         clientOperation.apply(hardwareClient);
@@ -644,6 +649,16 @@ public class Lark {
      */
     public void setBitBoxNoiseConfig(BitBoxNoiseConfig bitBoxNoiseConfig) {
         this.bitBoxNoiseConfig = bitBoxNoiseConfig;
+    }
+
+    /**
+     * Sets the noise configuration for the Trezor client.
+     * This includes methods to complete pairing a device to this client if necessary.
+     *
+     * @param trezorNoiseConfig the noise configuration
+     */
+    public void setTrezorNoiseConfig(TrezorNoiseConfig trezorNoiseConfig) {
+        this.trezorNoiseConfig = trezorNoiseConfig;
     }
 
     /**

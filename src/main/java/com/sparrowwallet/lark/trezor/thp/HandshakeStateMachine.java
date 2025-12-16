@@ -44,13 +44,15 @@ public class HandshakeStateMachine {
         public final NoiseTransport transport;
         public final KeyPair hostStaticKeyPair;
         public final byte[] trezorStaticPubkey;
+        public final byte[] handshakeHash;
 
-        public Result(int channelId, HandshakeMessages.PairingState pairingState, NoiseTransport transport, KeyPair hostStaticKeyPair, byte[] trezorStaticPubkey) {
+        public Result(int channelId, HandshakeMessages.PairingState pairingState, NoiseTransport transport, KeyPair hostStaticKeyPair, byte[] trezorStaticPubkey, byte[] handshakeHash) {
             this.channelId = channelId;
             this.pairingState = pairingState;
             this.transport = transport;
             this.hostStaticKeyPair = hostStaticKeyPair;
             this.trezorStaticPubkey = trezorStaticPubkey;
+            this.handshakeHash = handshakeHash;
         }
     }
 
@@ -161,6 +163,9 @@ public class HandshakeStateMachine {
         // Split handshake into transport AFTER 3rd message (Noise XX pattern complete)
         NoiseTransport transport = noiseAdapter.split();
 
+        // Extract handshake hash AFTER split (used for CPace pairing verification)
+        byte[] handshakeHash = noiseAdapter.getHandshakeHash();
+
         // Receive completion response with channel ID
         // NOTE: This 4th THP message is NOT part of Noise handshake - it's encrypted with transport cipher
         CompletionResponse completionResponse = exchange.exchangeCompletion(completionRequest);
@@ -184,7 +189,8 @@ public class HandshakeStateMachine {
             pairingState,
             transport,
             noiseAdapter.getHostStaticKeyPair(),
-            trezorStaticPubkey
+            trezorStaticPubkey,
+            handshakeHash
         );
     }
 

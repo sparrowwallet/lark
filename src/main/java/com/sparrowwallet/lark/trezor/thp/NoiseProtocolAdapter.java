@@ -197,4 +197,20 @@ public class NoiseProtocolAdapter {
         System.arraycopy(encoded, 12, rawKey, 0, 32);
         return rawKey;
     }
+
+    /**
+     * Get the Noise handshake hash.
+     * Only available after handshake is complete.
+     * Used for CPace pairing verification.
+     *
+     * @return Handshake hash (32 bytes)
+     * @throws DeviceException if handshake is not complete
+     */
+    public byte[] getHandshakeHash() throws DeviceException {
+        if(!handshake.isDone()) {
+            throw new DeviceException("Cannot get handshake hash: handshake not complete");
+        }
+
+        return handshake.getHash();
+    }
 }

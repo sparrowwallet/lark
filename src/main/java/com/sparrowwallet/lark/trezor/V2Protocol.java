@@ -3,13 +3,16 @@ package com.sparrowwallet.lark.trezor;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.sparrowwallet.drongo.Utils;
+import com.sparrowwallet.drongo.protocol.Sha256Hash;
 import com.sparrowwallet.lark.DeviceException;
 import com.sparrowwallet.lark.UserRefusedException;
 import com.sparrowwallet.lark.trezor.generated.TrezorMessage;
 import com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin;
 import com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon;
 import com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement;
+import com.sparrowwallet.lark.trezor.generated.TrezorMessageThp;
 import com.sparrowwallet.lark.trezor.thp.*;
+import com.sparrowwallet.lark.trezor.thp.cpace.CPace;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,6 +42,7 @@ class V2Protocol implements Protocol {
     private HandshakeMessages.PairingState pairingState;
     private KeyPair hostStaticKeyPair;
     private byte[] trezorStaticPubkey;
+    private byte[] handshakeHash;
     private boolean initialized;
 
     /**
@@ -126,19 +130,35 @@ class V2Protocol implements Protocol {
         // Step 2: Load or generate host static key pair
         this.hostStaticKeyPair = loadOrGenerateHostStaticKey();
 
-        // Step 3: Perform handshake (will get Trezor's static pubkey during handshake)
-        // Note: We perform handshake without credential first
-        // TODO: Implement credential lookup and re-handshake if we have existing pairing
+        // Step 3: Perform initial handshake without credential to get Trezor's static pubkey
         HandshakeStateMachine.Result handshakeResult = performHandshake(
                 allocationResponse.channelId,
                 allocationResponse.devicePropertiesBytes,
-                null // credential - pairing phase not yet implemented
+                null // no credential for initial handshake
         );
 
-        // Step 4: Extract Trezor's static public key from handshake result
+        // Step 4: Extract Trezor's static public key and handshake hash from handshake result
         this.trezorStaticPubkey = handshakeResult.trezorStaticPubkey;
+        this.handshakeHash = handshakeResult.handshakeHash;
 
-        // Step 5: Create encrypted transport
+        // Step 5: Check if we have an existing credential for this device
+        java.util.Optional<byte[]> existingCredential = credentialStore.getCredential(trezorStaticPubkey);
+
+        if(existingCredential.isPresent()) {
+            if(log.isDebugEnabled()) {
+                log.debug("Found existing credential, re-performing handshake with credential");
+            }
+
+            // Re-allocate channel and perform handshake with credential
+            allocationResponse = allocator.allocateChannel(ChannelAllocationMessages.PROTOCOL_VERSION_V1);
+            handshakeResult = performHandshake(
+                    allocationResponse.channelId,
+                    allocationResponse.devicePropertiesBytes,
+                    existingCredential.get()
+            );
+        }
+
+        // Step 6: Create encrypted transport
         this.encryptedTransport = new EncryptedTransport(
                 transport,
                 handshakeResult.transport,
@@ -146,17 +166,22 @@ class V2Protocol implements Protocol {
         );
         this.pairingState = handshakeResult.pairingState;
 
-        // Step 6: Save host static key
+        // Step 7: Save host static key
         saveHostStaticKey();
 
-        // Step 7: Handle pairing state
+        // Step 8: Handle pairing state
         if(pairingState == HandshakeMessages.PairingState.UNPAIRED) {
-            // TODO: Implement pairing flow to obtain credential
             if(log.isDebugEnabled()) {
-                log.debug("Device is UNPAIRED - pairing flow not yet implemented");
+                log.debug("Device is UNPAIRED - initiating pairing flow");
+            }
+
+            // Perform pairing and obtain credential
+            performPairing();
+
+            if(log.isDebugEnabled()) {
+                log.debug("Pairing completed successfully");
             }
         } else {
-            // Device is paired, credential exchange happens during pairing phase
             if(log.isDebugEnabled()) {
                 log.debug("Device pairing state: {}", pairingState);
             }
@@ -243,6 +268,224 @@ class V2Protocol implements Protocol {
     }
 
     /**
+     * Perform pairing flow to obtain credential.
+     * Must be called with an active encrypted transport.
+     */
+    private void performPairing() throws DeviceException {
+        try {
+            // Get device info for UI
+            String deviceInfo = "Trezor device"; // TODO: Extract from Features message
+
+            // Step 1: Ask user to confirm pairing
+            boolean confirmed = credentialStore.confirmPairing(deviceInfo);
+            if(!confirmed) {
+                throw new UserRefusedException("User declined pairing request");
+            }
+
+            // Step 2: Send PairingRequest
+            if(log.isDebugEnabled()) {
+                log.debug("Sending ThpPairingRequest");
+            }
+
+            TrezorMessageThp.ThpPairingRequest pairingRequest =
+                    TrezorMessageThp.ThpPairingRequest.newBuilder()
+                            .setHostName(credentialStore.getHostName())
+                            .setAppName("Lark")
+                            .build();
+
+            Message response = callRaw(pairingRequest);
+
+            // Step 3: Expect PairingRequestApproved
+            if(!(response instanceof TrezorMessageThp.ThpPairingRequestApproved)) {
+                throw new DeviceException("Expected ThpPairingRequestApproved, got " + response.getClass().getSimpleName());
+            }
+
+            if(log.isDebugEnabled()) {
+                log.debug("Received ThpPairingRequestApproved");
+            }
+
+            // Step 4: Select pairing method (Code Entry)
+            // TODO: Allow user to select method if multiple are available
+            TrezorMessageThp.ThpSelectMethod selectMethod =
+                    TrezorMessageThp.ThpSelectMethod.newBuilder()
+                            .setSelectedPairingMethod(TrezorMessageThp.ThpPairingMethod.CodeEntry)
+                            .build();
+
+            response = callRaw(selectMethod);
+
+            // Step 5: Perform Code Entry pairing
+            performCodeEntryPairing(response);
+
+            // Step 6: Request credential
+            requestAndStoreCredential();
+
+            // Step 7: End session
+            TrezorMessageThp.ThpEndRequest endRequest =
+                    TrezorMessageThp.ThpEndRequest.newBuilder()
+                            .build();
+
+            response = callRaw(endRequest);
+
+            if(!(response instanceof TrezorMessageThp.ThpEndResponse)) {
+                throw new DeviceException("Expected ThpEndResponse, got " + response.getClass().getSimpleName());
+            }
+
+            // Notify success
+            credentialStore.pairingSuccessful(deviceInfo);
+
+        } catch(DeviceException e) {
+            credentialStore.pairingFailed(e.getMessage());
+            throw e;
+        }
+    }
+
+    /**
+     * Perform Code Entry pairing method.
+     */
+    private void performCodeEntryPairing(Message initialResponse) throws DeviceException {
+        // Step 1: Expect CodeEntryCommitment
+        if(!(initialResponse instanceof TrezorMessageThp.ThpCodeEntryCommitment commitment)) {
+            throw new DeviceException("Expected ThpCodeEntryCommitment, got " + initialResponse.getClass().getSimpleName());
+        }
+
+        byte[] commitmentBytes = commitment.getCommitment().toByteArray();
+        if(log.isDebugEnabled()) {
+            log.debug("Received CodeEntryCommitment: {}", Utils.bytesToHex(commitmentBytes));
+        }
+
+        // Step 2: Generate random challenge (16 bytes)
+        byte[] challenge = new byte[16];
+        new java.security.SecureRandom().nextBytes(challenge);
+
+        if(log.isDebugEnabled()) {
+            log.debug("Sending CodeEntryChallenge: {}", Utils.bytesToHex(challenge));
+        }
+
+        TrezorMessageThp.ThpCodeEntryChallenge challengeMsg =
+                TrezorMessageThp.ThpCodeEntryChallenge.newBuilder()
+                        .setChallenge(com.google.protobuf.ByteString.copyFrom(challenge))
+                        .build();
+
+        Message response = callRaw(challengeMsg);
+
+        // Step 3: Expect CodeEntryCpaceTrezor
+        if(!(response instanceof TrezorMessageThp.ThpCodeEntryCpaceTrezor cpaceTrezor)) {
+            throw new DeviceException("Expected ThpCodeEntryCpaceTrezor, got " + response.getClass().getSimpleName());
+        }
+
+        byte[] trezorPublicKey = cpaceTrezor.getCpaceTrezorPublicKey().toByteArray();
+        if(log.isDebugEnabled()) {
+            log.debug("Received CodeEntryCpaceTrezor public key: {}", Utils.bytesToHex(trezorPublicKey));
+        }
+
+        // Step 4: Prompt user for pairing code
+        String pairingCode = credentialStore.promptForPairingCode();
+        if(log.isDebugEnabled()) {
+            log.debug("User entered pairing code: {}", pairingCode);
+        }
+
+        // Step 5: Perform CPace calculation
+        CPace.Result cpaceResult;
+        try {
+            cpaceResult = CPace.calculate(pairingCode, handshakeHash, trezorPublicKey);
+            if(log.isDebugEnabled()) {
+                log.debug("CPace calculation complete");
+            }
+        } catch(Exception e) {
+            throw new DeviceException("CPace calculation failed: " + e.getMessage(), e);
+        }
+
+        byte[] hostPublicKey = cpaceResult.hostPublicKey;
+        byte[] tag = cpaceResult.tag;
+
+        if(log.isDebugEnabled()) {
+            log.debug("Sending CodeEntryCpaceHostTag");
+        }
+
+        TrezorMessageThp.ThpCodeEntryCpaceHostTag hostTag =
+                TrezorMessageThp.ThpCodeEntryCpaceHostTag.newBuilder()
+                        .setCpaceHostPublicKey(com.google.protobuf.ByteString.copyFrom(hostPublicKey))
+                        .setTag(com.google.protobuf.ByteString.copyFrom(tag))
+                        .build();
+
+        response = callRaw(hostTag);
+
+        // Step 6: Expect CodeEntrySecret
+        if(!(response instanceof TrezorMessageThp.ThpCodeEntrySecret secret)) {
+            throw new DeviceException("Expected ThpCodeEntrySecret, got " + response.getClass().getSimpleName());
+        }
+
+        byte[] secretBytes = secret.getSecret().toByteArray();
+        if(log.isDebugEnabled()) {
+            log.debug("Received CodeEntrySecret: {}", Utils.bytesToHex(secretBytes));
+        }
+
+        // Step 7: Verify commitment using Sha256Hash
+        byte[] computedCommitment = Sha256Hash.hash(secretBytes);
+        if(!java.util.Arrays.equals(computedCommitment, commitmentBytes)) {
+            throw new DeviceException("Commitment verification failed - possible MITM attack");
+        }
+
+        if(log.isDebugEnabled()) {
+            log.debug("Commitment verified successfully");
+        }
+
+        // Step 8: Verify pairing code matches derived value
+        String derivedCode = CPace.deriveCode(secretBytes, handshakeHash, challenge);
+        if(!derivedCode.equals(pairingCode)) {
+            throw new DeviceException("Pairing code mismatch - expected " + derivedCode +
+                                    " but user entered " + pairingCode);
+        }
+
+        if(log.isDebugEnabled()) {
+            log.debug("Pairing code verified successfully");
+        }
+
+        // Expect PairingPreparationsFinished
+        response = receiveMessage();
+        if(!(response instanceof TrezorMessageThp.ThpPairingPreparationsFinished)) {
+            throw new DeviceException("Expected ThpPairingPreparationsFinished, got " + response.getClass().getSimpleName());
+        }
+    }
+
+    /**
+     * Request credential from device and store it.
+     */
+    private void requestAndStoreCredential() throws DeviceException {
+        // Get host static public key
+        byte[] hostStaticPubkey = hostStaticKeyPair.getPublic().getEncoded();
+        // Remove X.509 header (12 bytes for X25519) to get raw 32-byte public key
+        byte[] rawHostPubkey = new byte[32];
+        System.arraycopy(hostStaticPubkey, hostStaticPubkey.length - 32, rawHostPubkey, 0, 32);
+
+        if(log.isDebugEnabled()) {
+            log.debug("Requesting credential with host public key: {}", Utils.bytesToHex(rawHostPubkey));
+        }
+
+        TrezorMessageThp.ThpCredentialRequest credRequest =
+                TrezorMessageThp.ThpCredentialRequest.newBuilder()
+                        .setHostStaticPublicKey(com.google.protobuf.ByteString.copyFrom(rawHostPubkey))
+                        .build();
+
+        Message response = callRaw(credRequest);
+
+        if(!(response instanceof TrezorMessageThp.ThpCredentialResponse credResponse)) {
+            throw new DeviceException("Expected ThpCredentialResponse, got " + response.getClass().getSimpleName());
+        }
+
+        byte[] credentialBlob = credResponse.getCredential().toByteArray();
+        if(log.isDebugEnabled()) {
+            log.debug("Received credential ({} bytes): {}", credentialBlob.length, Utils.bytesToHex(credentialBlob));
+        }
+
+        // Store credential
+        credentialStore.addCredential(trezorStaticPubkey, credentialBlob);
+        if(log.isDebugEnabled()) {
+            log.debug("Credential stored for device");
+        }
+    }
+
+    /**
      * Perform THP handshake on allocated channel.
      */
     private HandshakeStateMachine.Result performHandshake(int channelId, byte[] prologue, byte[] credential)
@@ -309,6 +552,14 @@ class V2Protocol implements Protocol {
             log.debug("Received after sending request: type={}, seq={}, ack={}, control_byte=0x{}",
                     ackType, seqBit, ackBit, String.format("%02X", ackPacket[0] & 0xFF));
         }
+
+        // Check if device sent TRANSPORT_ERROR instead of ACK
+        if(ackType == ControlByte.PacketType.TRANSPORT_ERROR) {
+            int errorCode = ackPacket[5] & 0xFF;
+            String errorName = getTransportErrorName(errorCode);
+            throw new DeviceException("Transport error on channel 0x" + String.format("%04X", channelId) + ": " + errorName + " (code " + errorCode + ")");
+        }
+
         if(ackType != ControlByte.PacketType.ACK) {
             throw new DeviceException("Expected ACK for sent message, got " + ackType +
                     " (control_byte=0x" + String.format("%02X", ackPacket[0] & 0xFF) + ")");
@@ -585,6 +836,9 @@ class V2Protocol implements Protocol {
                 || innerClassName.equals("MessageSignature")
         ) {
             className = TrezorMessageBitcoin.class.getName() + "$" + innerClassName;
+        } else if(innerClassName.startsWith("Thp")) {
+            // THP messages (ThpPairingRequest, ThpCredentialResponse, etc.)
+            className = TrezorMessageThp.class.getName() + "$" + innerClassName;
         } else {
             // Use management class as default
             className = TrezorMessageManagement.class.getName() + "$" + innerClassName;

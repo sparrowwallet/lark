@@ -733,7 +733,16 @@ class V2Protocol implements Protocol {
         if(msgName.startsWith("TxAck")) {
             msgName = "TxAck";
         }
-        int messageType = TrezorMessage.MessageType.valueOf("MessageType_" + msgName).getNumber();
+
+        // Determine message type from appropriate enum
+        int messageType;
+        if(msgName.startsWith("Thp")) {
+            // THP messages use TrezorMessageThp.ThpMessageType enum
+            messageType = TrezorMessageThp.ThpMessageType.valueOf("ThpMessageType_" + msgName).getNumber();
+        } else {
+            // Regular messages use TrezorMessage.MessageType enum
+            messageType = TrezorMessage.MessageType.valueOf("MessageType_" + msgName).getNumber();
+        }
 
         // Encode message: session_id (1 byte) + type (2 bytes BE) + protobuf payload
         byte[] protobufBytes = message.toByteArray();
@@ -770,14 +779,25 @@ class V2Protocol implements Protocol {
 
             int sessionId = messageBytes[0] & 0xFF;
             int msgId = (((int) messageBytes[1] & 0xFF) << 8) + ((int) messageBytes[2] & 0xFF);
-            TrezorMessage.MessageType messageType = TrezorMessage.MessageType.forNumber(msgId);
 
-            if(messageType == null) {
-                throw new InvalidProtocolBufferException("Unknown message type: " + msgId);
+            // Try to find message type in either enum
+            TrezorMessage.MessageType messageType = TrezorMessage.MessageType.forNumber(msgId);
+            TrezorMessageThp.ThpMessageType thpMessageType = null;
+
+            String messageTypeName;
+            if(messageType != null) {
+                messageTypeName = messageType.name();
+            } else {
+                // Try THP message type
+                thpMessageType = TrezorMessageThp.ThpMessageType.forNumber(msgId);
+                if(thpMessageType == null) {
+                    throw new InvalidProtocolBufferException("Unknown message type: " + msgId);
+                }
+                messageTypeName = thpMessageType.name();
             }
 
             if(log.isDebugEnabled()) {
-                log.debug("< Session {} message type {}", sessionId, msgId);
+                log.debug("< Session {} message type {} ({})", sessionId, msgId, messageTypeName);
             }
 
             // Extract payload (skip 3-byte header)
@@ -785,7 +805,7 @@ class V2Protocol implements Protocol {
             System.arraycopy(messageBytes, 3, payload, 0, payload.length);
 
             // Parse protobuf message
-            Method method = extractParserMethod(messageType);
+            Method method = extractParserMethod(messageTypeName);
             Message message = (Message) method.invoke(null, payload);
 
             if(log.isDebugEnabled()) {
@@ -802,13 +822,13 @@ class V2Protocol implements Protocol {
         }
     }
 
-    private Method extractParserMethod(TrezorMessage.MessageType messageType) throws ClassNotFoundException, NoSuchMethodException {
+    private Method extractParserMethod(String messageTypeName) throws ClassNotFoundException, NoSuchMethodException {
         if(log.isTraceEnabled()) {
-            log.trace("Parsing type {}", messageType);
+            log.trace("Parsing type {}", messageTypeName);
         }
 
         // Identify the expected inner class name
-        String innerClassName = messageType.name().replace("MessageType_", "");
+        String innerClassName = messageTypeName.replace("MessageType_", "").replace("ThpMessageType_", "");
 
         // Identify enclosing class by name
         String className;

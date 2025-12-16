@@ -295,12 +295,8 @@ class V2Protocol implements Protocol {
                             .setAppName("Lark")
                             .build();
 
-            Message response = callRaw(pairingRequest);
-
             // Step 3: Expect PairingRequestApproved
-            if(!(response instanceof TrezorMessageThp.ThpPairingRequestApproved)) {
-                throw new DeviceException("Expected ThpPairingRequestApproved, got " + response.getClass().getSimpleName());
-            }
+            TrezorMessageThp.ThpPairingRequestApproved pairingApproved = call(pairingRequest, TrezorMessageThp.ThpPairingRequestApproved.class);
 
             if(log.isDebugEnabled()) {
                 log.debug("Received ThpPairingRequestApproved");
@@ -313,7 +309,7 @@ class V2Protocol implements Protocol {
                             .setSelectedPairingMethod(TrezorMessageThp.ThpPairingMethod.CodeEntry)
                             .build();
 
-            response = callRaw(selectMethod);
+            Message response = call(selectMethod, Message.class);
 
             // Step 5: Perform Code Entry pairing
             performCodeEntryPairing(response);
@@ -326,11 +322,7 @@ class V2Protocol implements Protocol {
                     TrezorMessageThp.ThpEndRequest.newBuilder()
                             .build();
 
-            response = callRaw(endRequest);
-
-            if(!(response instanceof TrezorMessageThp.ThpEndResponse)) {
-                throw new DeviceException("Expected ThpEndResponse, got " + response.getClass().getSimpleName());
-            }
+            call(endRequest, TrezorMessageThp.ThpEndResponse.class);
 
             // Notify success
             credentialStore.pairingSuccessful(deviceInfo);
@@ -368,12 +360,9 @@ class V2Protocol implements Protocol {
                         .setChallenge(com.google.protobuf.ByteString.copyFrom(challenge))
                         .build();
 
-        Message response = callRaw(challengeMsg);
-
         // Step 3: Expect CodeEntryCpaceTrezor
-        if(!(response instanceof TrezorMessageThp.ThpCodeEntryCpaceTrezor cpaceTrezor)) {
-            throw new DeviceException("Expected ThpCodeEntryCpaceTrezor, got " + response.getClass().getSimpleName());
-        }
+        TrezorMessageThp.ThpCodeEntryCpaceTrezor cpaceTrezor =
+                call(challengeMsg, TrezorMessageThp.ThpCodeEntryCpaceTrezor.class);
 
         byte[] trezorPublicKey = cpaceTrezor.getCpaceTrezorPublicKey().toByteArray();
         if(log.isDebugEnabled()) {
@@ -410,12 +399,9 @@ class V2Protocol implements Protocol {
                         .setTag(com.google.protobuf.ByteString.copyFrom(tag))
                         .build();
 
-        response = callRaw(hostTag);
-
         // Step 6: Expect CodeEntrySecret
-        if(!(response instanceof TrezorMessageThp.ThpCodeEntrySecret secret)) {
-            throw new DeviceException("Expected ThpCodeEntrySecret, got " + response.getClass().getSimpleName());
-        }
+        TrezorMessageThp.ThpCodeEntrySecret secret =
+                call(hostTag, TrezorMessageThp.ThpCodeEntrySecret.class);
 
         byte[] secretBytes = secret.getSecret().toByteArray();
         if(log.isDebugEnabled()) {
@@ -444,7 +430,7 @@ class V2Protocol implements Protocol {
         }
 
         // Expect PairingPreparationsFinished
-        response = receiveMessage();
+        Message response = receiveMessage();
         if(!(response instanceof TrezorMessageThp.ThpPairingPreparationsFinished)) {
             throw new DeviceException("Expected ThpPairingPreparationsFinished, got " + response.getClass().getSimpleName());
         }
@@ -469,11 +455,8 @@ class V2Protocol implements Protocol {
                         .setHostStaticPublicKey(com.google.protobuf.ByteString.copyFrom(rawHostPubkey))
                         .build();
 
-        Message response = callRaw(credRequest);
-
-        if(!(response instanceof TrezorMessageThp.ThpCredentialResponse credResponse)) {
-            throw new DeviceException("Expected ThpCredentialResponse, got " + response.getClass().getSimpleName());
-        }
+        TrezorMessageThp.ThpCredentialResponse credResponse =
+                call(credRequest, TrezorMessageThp.ThpCredentialResponse.class);
 
         byte[] credentialBlob = credResponse.getCredential().toByteArray();
         if(log.isDebugEnabled()) {

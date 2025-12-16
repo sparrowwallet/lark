@@ -2,7 +2,10 @@ package com.sparrowwallet.lark.trezor.thp;
 
 import com.sparrowwallet.lark.DeviceException;
 import com.sparrowwallet.lark.bitbox02.noise.NoiseTransport;
+import com.sparrowwallet.lark.trezor.DeviceTimeoutException;
 import com.sparrowwallet.lark.trezor.Transport;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.crypto.AEADBadTagException;
 import java.util.ArrayList;
@@ -21,6 +24,7 @@ import java.util.List;
  * 4. Received packets are reassembled, verified, and decrypted
  */
 public class EncryptedTransport {
+    private static final Logger log = LoggerFactory.getLogger(EncryptedTransport.class);
 
     private static final int MAX_PACKETS = 1000; // Safety limit for reassembly
 
@@ -103,7 +107,22 @@ public class EncryptedTransport {
      */
     public byte[] receiveMessage() throws DeviceException {
         // Read first packet to determine message type and length
-        byte[] firstPacket = transport.read();
+        // Poll indefinitely on timeout (e.g., waiting for user button press)
+        byte[] firstPacket;
+        while(true) {
+            try {
+                firstPacket = transport.read();
+                break; // Successfully read packet
+            } catch(DeviceTimeoutException e) {
+                // Timeout waiting for response - continue polling
+                // This is expected when waiting for user interaction (button press, etc.)
+                if(log.isTraceEnabled()) {
+                    log.trace("Read timeout, continuing to poll for response");
+                }
+                continue;
+            }
+        }
+
         if(firstPacket == null || firstPacket.length != 64) {
             throw new DeviceException("Invalid first packet received");
         }

@@ -169,7 +169,11 @@ class V2Protocol implements Protocol {
         // Step 7: Save host static key
         saveHostStaticKey();
 
-        // Step 8: Handle pairing state
+        // Step 8: Mark as initialized BEFORE pairing
+        // (pairing will call callRaw which needs initialized=true to avoid infinite loop)
+        this.initialized = true;
+
+        // Step 9: Handle pairing state
         if(pairingState == HandshakeMessages.PairingState.UNPAIRED) {
             if(log.isDebugEnabled()) {
                 log.debug("Device is UNPAIRED - initiating pairing flow");
@@ -190,8 +194,6 @@ class V2Protocol implements Protocol {
         if(log.isDebugEnabled()) {
             log.debug("THP session initialized (pairing state: {})", pairingState);
         }
-
-        this.initialized = true;
     }
 
     /**

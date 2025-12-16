@@ -428,12 +428,6 @@ class V2Protocol implements Protocol {
         if(log.isDebugEnabled()) {
             log.debug("Pairing code verified successfully");
         }
-
-        // Expect PairingPreparationsFinished
-        Message response = receiveMessage();
-        if(!(response instanceof TrezorMessageThp.ThpPairingPreparationsFinished)) {
-            throw new DeviceException("Expected ThpPairingPreparationsFinished, got " + response.getClass().getSimpleName());
-        }
     }
 
     /**
@@ -453,6 +447,7 @@ class V2Protocol implements Protocol {
         TrezorMessageThp.ThpCredentialRequest credRequest =
                 TrezorMessageThp.ThpCredentialRequest.newBuilder()
                         .setHostStaticPublicKey(com.google.protobuf.ByteString.copyFrom(rawHostPubkey))
+                        .setAutoconnect(false)
                         .build();
 
         TrezorMessageThp.ThpCredentialResponse credResponse =

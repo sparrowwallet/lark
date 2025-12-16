@@ -1,7 +1,6 @@
 package com.sparrowwallet.lark.trezor;
 
 import com.google.protobuf.ByteString;
-import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.sparrowwallet.drongo.*;
 import com.sparrowwallet.drongo.Version;
@@ -12,41 +11,26 @@ import com.sparrowwallet.drongo.protocol.Sha256Hash;
 import com.sparrowwallet.drongo.protocol.SigHash;
 import com.sparrowwallet.drongo.protocol.TransactionSignature;
 import com.sparrowwallet.lark.DeviceException;
-import com.sparrowwallet.lark.UserRefusedException;
-import com.sparrowwallet.lark.trezor.generated.TrezorMessage;
 import com.sparrowwallet.lark.trezor.generated.TrezorMessageBitcoin;
 import com.sparrowwallet.lark.trezor.generated.TrezorMessageCommon;
 import com.sparrowwallet.lark.trezor.generated.TrezorMessageManagement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.usb4java.*;
+import org.usb4java.Device;
 
 import java.io.Closeable;
-import java.lang.reflect.Method;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.IntBuffer;
 import java.nio.charset.StandardCharsets;
 import java.text.Normalizer;
 import java.util.*;
 import java.util.stream.IntStream;
 
-public class TrezorDevice implements Closeable {
+public class TrezorDevice implements Closeable, ProtocolCallbacks {
     private static final Logger log = LoggerFactory.getLogger(TrezorDevice.class);
-
-    private static final byte IN_ENDPOINT = (byte) 0x81;
-    private static final byte OUT_ENDPOINT = (byte) 0x01;
-    private static final int TIMEOUT = 2000;
-    private static final int TREZOR_INTERFACE = 0;
-    private static final int REPLEN = 64;
-
-    private static final int MAX_PASSPHRASE_LENGTH = 50;
-    private static final int MAX_PIN_LENGTH = 50;
 
     public static final Object PASSPHRASE_ON_DEVICE = new Object();
     private static final String PASSPHRASE_TEST_PATH = "44h/1h/0h/0/0";
 
-    private final DeviceHandle deviceHandle;
+    private final Protocol protocol;
     private final TrezorUI trezorUI;
 
     private byte[] sessionId;
@@ -55,27 +39,42 @@ public class TrezorDevice implements Closeable {
     private TrezorMessageManagement.Features features;
     private boolean outdatedFirmware;
 
+    /**
+     * Create TrezorDevice with V1 protocol (public constructor for backward compatibility).
+     *
+     * @param device LibUsb device from enumeration
+     * @param trezorUI User interaction callbacks
+     * @param trezorModel The Trezor model (may be null, will be detected from features)
+     * @throws DeviceException if device cannot be opened
+     */
     public TrezorDevice(Device device, TrezorUI trezorUI, TrezorModel trezorModel) throws DeviceException {
         this.trezorUI = trezorUI;
-        this.deviceHandle = new DeviceHandle();
         this.model = trezorModel;
-        int result = LibUsb.open(device, deviceHandle);
-        if(result != LibUsb.SUCCESS) {
-            if(result == LibUsb.ERROR_ACCESS && OsType.getCurrent() == OsType.WINDOWS) {
-                throw new DeviceException("Could not open Trezor at " + deviceHandle + ", invalid device driver");
-            }
-            throw new DeviceException("Could not open Trezor at " + deviceHandle + ", returned " + result);
-        }
 
-        result = LibUsb.claimInterface(deviceHandle, TREZOR_INTERFACE);
-        if(result != LibUsb.SUCCESS) {
-            throw new DeviceException("Could not claim interface " + TREZOR_INTERFACE + " on Trezor at " + deviceHandle + ", returned " + result);
-        }
+        // Create USB transport
+        UsbTransport transport = new UsbTransport(device);
+
+        // Create V1 protocol
+        this.protocol = new V1Protocol(transport, trezorUI, this);
+    }
+
+    /**
+     * Create TrezorDevice with specified protocol.
+     * Package-private constructor for factory use.
+     *
+     * @param protocol The protocol implementation (V1Protocol or V2Protocol)
+     * @param trezorUI User interaction callbacks
+     * @param trezorModel The Trezor model (may be null, will be detected from features)
+     */
+    TrezorDevice(Protocol protocol, TrezorUI trezorUI, TrezorModel trezorModel) {
+        this.protocol = protocol;
+        this.trezorUI = trezorUI;
+        this.model = trezorModel;
     }
 
     public void initDevice() throws DeviceException {
         TrezorMessageManagement.Initialize initialize = TrezorMessageManagement.Initialize.newBuilder().build();
-        Message response = callRaw(initialize);
+        Message response = protocol.callRaw(initialize);
         if(response instanceof TrezorMessageManagement.Features msgFeatures) {
             this.sessionId = msgFeatures.getSessionId().toByteArray();
             refreshFeatures(msgFeatures);
@@ -88,7 +87,7 @@ public class TrezorDevice implements Closeable {
 
     public TrezorMessageManagement.Features refreshFeatures() throws DeviceException {
         TrezorMessageManagement.GetFeatures getFeatures = TrezorMessageManagement.GetFeatures.newBuilder().build();
-        Message response = callRaw(getFeatures);
+        Message response = protocol.callRaw(getFeatures);
         if(response instanceof TrezorMessageManagement.Features msgFeatures) {
             refreshFeatures(msgFeatures);
             return msgFeatures;
@@ -383,446 +382,37 @@ public class TrezorDevice implements Closeable {
         return network == Network.MAINNET ? "Bitcoin" : "Testnet";
     }
 
-    public <T> T call(Message message, Class<T> toValueType) throws DeviceException {
-        Message response = callRaw(message);
-
-        while(true) {
-            if(response instanceof TrezorMessageCommon.PinMatrixRequest pinMatrixRequest) {
-                response = callbackPin(pinMatrixRequest);
-            } else if(response instanceof TrezorMessageCommon.PassphraseRequest passphraseRequest) {
-                response = callbackPassphrase(passphraseRequest);
-            } else if(response instanceof TrezorMessageCommon.ButtonRequest buttonRequest) {
-                response = callbackButton(buttonRequest);
-            } else if(response instanceof TrezorMessageCommon.Failure failure) {
-                if(failure.getCode() == TrezorMessageCommon.Failure.FailureType.Failure_ActionCancelled) {
-                    throw new UserRefusedException(failure.getMessage());
-                }
-                throw new DeviceException(failure.getMessage());
-            } else {
-                return toValueType.cast(response);
-            }
-        }
+    public <T extends Message> T call(Message message, Class<T> toValueType) throws DeviceException {
+        return protocol.call(message, toValueType);
     }
 
-    private Message callbackPin(TrezorMessageCommon.PinMatrixRequest pinMatrixRequest) throws DeviceException {
-        String pin;
-        try {
-            pin = getUI().getPin(pinMatrixRequest.getType().getNumber());
-        } catch(UserRefusedException e) {
-            callRaw(TrezorMessageManagement.Cancel.newBuilder().build());
-            throw e;
-        }
-
-        if(!pin.matches("\\d+") || pin.isEmpty() || pin.length() > MAX_PASSPHRASE_LENGTH) {
-            callRaw(TrezorMessageManagement.Cancel.newBuilder().build());
-            throw new IllegalArgumentException("Invalid pin provided");
-        }
-
-        Message response = callRaw(TrezorMessageCommon.PinMatrixAck.newBuilder().setPin(pin).build());
-        if(response instanceof TrezorMessageCommon.Failure failure && (failure.getCode() == TrezorMessageCommon.Failure.FailureType.Failure_PinInvalid ||
-                        failure.getCode() == TrezorMessageCommon.Failure.FailureType.Failure_PinCancelled ||
-                        failure.getCode() == TrezorMessageCommon.Failure.FailureType.Failure_PinExpected)) {
-            throw new DeviceException(failure.getMessage());
-        } else {
-            return response;
-        }
+    public Message callRaw(Message request) throws DeviceException {
+        return protocol.callRaw(request);
     }
 
-    @SuppressWarnings("deprecation")
-    private Message callbackPassphrase(TrezorMessageCommon.PassphraseRequest passphraseRequest) throws DeviceException {
-        boolean availableOnDevice = features.getCapabilitiesList().contains(TrezorMessageManagement.Features.Capability.Capability_PassphraseEntry);
+    // ===== ProtocolCallbacks Implementation =====
 
-        if(passphraseRequest.getOnDevice()) {
-            return sendPassphrase(null, null);
+    @Override
+    public boolean isPassphraseEntryAvailable() {
+        if(features == null) {
+            return false;
         }
 
-        Object passphrase;
-        try {
-            passphrase = getUI().getPassphrase(availableOnDevice);
-        } catch(UserRefusedException e) {
-            callRaw(TrezorMessageManagement.Cancel.newBuilder().build());
-            throw e;
-        }
-
-        if(PASSPHRASE_ON_DEVICE.equals(passphrase)) {
-            if(!availableOnDevice) {
-                callRaw(TrezorMessageManagement.Cancel.newBuilder().build());
-                throw new DeviceException("Device is not capable of entering passphrase");
-            } else {
-                return sendPassphrase(null, Boolean.TRUE);
-            }
-        }
-
-        if(passphrase instanceof String strPassphrase) {
-            strPassphrase = Normalizer.normalize(strPassphrase, Normalizer.Form.NFKD);
-            if(strPassphrase.length() > MAX_PASSPHRASE_LENGTH) {
-                callRaw(TrezorMessageManagement.Cancel.newBuilder().build());
-                throw new IllegalArgumentException("Passphrase exceeds maximum length");
-            }
-
-            return sendPassphrase(strPassphrase, Boolean.FALSE);
-        } else {
-            throw new IllegalArgumentException("Passphrase must be a String");
-        }
+        return features.getCapabilitiesList().contains(TrezorMessageManagement.Features.Capability.Capability_PassphraseEntry);
     }
 
-    @SuppressWarnings("deprecation")
-    private Message sendPassphrase(String passphrase, Boolean onDevice) throws DeviceException {
-        TrezorMessageCommon.PassphraseAck.Builder passphraseAck = TrezorMessageCommon.PassphraseAck.newBuilder();
-        if(passphrase != null) {
-            passphraseAck.setPassphrase(passphrase);
-        }
-        if(onDevice != null) {
-            passphraseAck.setOnDevice(onDevice);
-        }
-        Message response = callRaw(passphraseAck.build());
-        if(response instanceof TrezorMessageCommon.Deprecated_PassphraseStateRequest deprecatedPassphraseStateRequest) {
-            this.sessionId = deprecatedPassphraseStateRequest.getState().toByteArray();
-            response = callRaw(TrezorMessageCommon.Deprecated_PassphraseStateAck.newBuilder().build());
-        }
-        return response;
+    @Override
+    public void onSessionIdChanged(byte[] sessionId) {
+        this.sessionId = sessionId;
     }
 
-    private Message callbackButton(TrezorMessageCommon.ButtonRequest buttonRequest) throws DeviceException {
-        sendMessage(TrezorMessageCommon.ButtonAck.newBuilder().build());
-        getUI().buttonRequest(buttonRequest.getCode().getNumber());
-        return receiveMessage();
-    }
-
-    public Message callRaw(Message message) throws DeviceException {
-        sendMessage(message);
-        return receiveMessage();
-    }
-
-    /**
-     * Send a message to the device. The response will be contained in an asynchronous read
-     * operation and delivered via the TrezorEvents mechanism.
-     *
-     * @param message The protobuf message to send.
-     */
-    private void sendMessage(Message message) throws DeviceException {
-        if(deviceHandle == null) {
-            throw new IllegalStateException("sendMessage: usbConnection already closed, cannot send message");
-        }
-
-        // Write the message
-        messageWrite(message);
-    }
-
-    /**
-     * Check the device data buffer using a blocking approach. It is expected that the upstream
-     * caller will handle event distribution.
-     *
-     * @return The protobuf message that was read or null if nothing is present/timeout.
-     */
-    private Message receiveMessage() throws DeviceException {
-        if(deviceHandle == null) {
-            throw new IllegalStateException("receiveMessage: usbConnection already closed, cannot receive message");
-        }
-
-        try {
-            return messageRead();
-        } catch(InvalidProtocolBufferException e) {
-            throw new DeviceException("Error reading from Trezor", e);
-        }
-    }
+    // ===== Cleanup =====
 
     /**
      * Release the interface and close this device.
      */
     public void close() {
-        if(deviceHandle != null && deviceHandle.getPointer() != 0) {
-            int result = LibUsb.releaseInterface(deviceHandle, TREZOR_INTERFACE);
-            if(result != LibUsb.SUCCESS) {
-                log.error("Unable to release interface, returned " + result);
-            }
-
-            LibUsb.close(deviceHandle);
-        }
-    }
-
-    /**
-     * Write a message to the Trezor including a suitable header inferred from the protobuf structure.
-     *
-     * @param message The protobuf message to write to the USB device.
-     */
-    private void messageWrite(Message message) throws DeviceException {
-        // Message parameters
-        int msgSize = message.getSerializedSize();
-        String msgName = message.getClass().getSimpleName();
-        if(log.isDebugEnabled()) {
-            log.debug("> " + msgName);
-        }
-        if(msgName.startsWith("TxAck")) {
-            msgName = "TxAck";
-        }
-        int messageType = TrezorMessage.MessageType.valueOf("MessageType_" + msgName).getNumber();
-        byte[] messageBytes = message.toByteArray();
-        if(log.isDebugEnabled()) {
-            log.debug("Type " + messageType + " (" + messageBytes.length + " bytes):" + Utils.bytesToHex(messageBytes));
-        }
-        messageWrite(messageType, messageBytes);
-    }
-
-    private void messageWrite(int messageType, byte[] messageData) throws DeviceException {
-        // Step 1: Create a header with ">HL" (big-endian short and int)
-        ByteBuffer headerBuffer = ByteBuffer.allocate(6);
-        headerBuffer.putShort((short) messageType);
-        headerBuffer.putInt(messageData.length);
-
-        // Step 2: Combine "##", header, and message data into a single ByteBuffer
-        ByteBuffer buffer = ByteBuffer.allocate(2 + headerBuffer.capacity() + messageData.length);
-        buffer.put("##".getBytes(StandardCharsets.UTF_8));
-        buffer.put(headerBuffer.array());
-        buffer.put(messageData);
-
-        buffer.flip(); // Prepare buffer for reading
-
-        // Step 3: Write buffer in chunks, prepending '?' and padding to 63 bytes
-        byte[] tempBuffer = new byte[REPLEN];
-        while(buffer.hasRemaining()) {
-            int chunkSize = Math.min(buffer.remaining(), REPLEN - 1);
-
-            // Set Report ID and copy data
-            tempBuffer[0] = (byte) '?';
-            buffer.get(tempBuffer, 1, chunkSize);
-
-            // Pad remaining bytes with zeroes if needed
-            for(int i = chunkSize + 1; i < REPLEN; i++) {
-                tempBuffer[i] = 0;
-            }
-
-            // Send chunk
-            writeChunk(tempBuffer);
-        }
-    }
-
-    private void writeChunk(byte[] chunkBytes) throws DeviceException {
-        ByteBuffer chunkBuffer = BufferUtils.allocateByteBuffer(64);
-        chunkBuffer.put(chunkBytes);
-        IntBuffer transferred = BufferUtils.allocateIntBuffer();
-
-        // Send to device
-        int result = LibUsb.bulkTransfer(
-                deviceHandle,
-                OUT_ENDPOINT,
-                chunkBuffer,
-                transferred,
-                TIMEOUT
-        );
-        // Error checking
-        if(result != LibUsb.SUCCESS) {
-            if(result == LibUsb.ERROR_TIMEOUT) {
-                throw new DeviceException("Timed out sending data");
-            }
-
-            throw new DeviceException("Unable to send data: " + result);
-        }
-    }
-
-    /**
-     * Read a message from the device.
-     *
-     * @return A protobuf message from the device.
-     * @throws InvalidProtocolBufferException If something goes wrong.
-     */
-    @SuppressWarnings("unchecked")
-    private Message messageRead() throws InvalidProtocolBufferException {
-        ByteBuffer messageBuffer;
-        TrezorMessage.MessageType messageType;
-        int invalidChunksCounter = 0;
-
-        int msgId;
-        int msgSize;
-
-        // Start by attempting to read the first chunk
-        // with the assumption that the read buffer initially
-        // contains random data and needs to be synch'd up
-        for(; ; ) {
-            ByteBuffer chunkBuffer = BufferUtils
-                    .allocateByteBuffer(64)
-                    .order(ByteOrder.LITTLE_ENDIAN);
-            IntBuffer transferred = BufferUtils.allocateIntBuffer();
-
-            int result = LibUsb.bulkTransfer(
-                    deviceHandle,
-                    IN_ENDPOINT,
-                    chunkBuffer,
-                    transferred,
-                    TIMEOUT
-            );
-            // Allow polling to timeout when there is no data
-            if(result == LibUsb.ERROR_TIMEOUT) {
-                continue;
-            }
-            if(result != LibUsb.SUCCESS) {
-                throw new LibUsbException("Unable to read data", result);
-            }
-
-            // Extract the chunk
-            byte[] readBytes = new byte[chunkBuffer.remaining()];
-            chunkBuffer.get(readBytes);
-
-            // Check for invalid header length
-            if(readBytes.length < 9) {
-                if(invalidChunksCounter++ > 5) {
-                    if(log.isTraceEnabled()) {
-                        log.trace("< Header{}", Utils.bytesToHex(readBytes));
-                    }
-                    throw new InvalidProtocolBufferException("Header too short after multiple chunks");
-                }
-                // Restart the loop
-                continue;
-            }
-
-            // Check for invalid header sync pattern
-            if(readBytes[0] != (byte) '?'
-                    || readBytes[1] != (byte) '#'
-                    || readBytes[2] != (byte) '#') {
-                if(invalidChunksCounter++ > 5) {
-                    if(log.isTraceEnabled()) {
-                        log.trace("< Header{}", Utils.bytesToHex(readBytes));
-                    }
-                    throw new InvalidProtocolBufferException("Header invalid after multiple chunks");
-                }
-                // Restart the loop
-                continue;
-            }
-
-            // Must be OK to be here
-            if(log.isTraceEnabled()) {
-                log.trace("< Header{}", Utils.bytesToHex(readBytes));
-            }
-
-            msgId = (((int) readBytes[3] & 0xFF) << 8) + ((int) readBytes[4] & 0xFF);
-            msgSize = (((int) readBytes[5] & 0xFF) << 24)
-                    + (((int) readBytes[6] & 0xFF) << 16)
-                    + (((int) readBytes[7] & 0xFF) << 8)
-                    + ((int) readBytes[8] & 0xFF);
-
-            // Allocate the message payload buffer
-            messageBuffer = ByteBuffer.allocate(msgSize + 1024);
-            messageBuffer.put(readBytes, 9, readBytes.length - 9);
-            messageType = TrezorMessage.MessageType.forNumber(msgId);
-            break;
-        }
-
-        // Read in the remaining payload data
-        invalidChunksCounter = 0;
-
-        while(messageBuffer.position() < msgSize) {
-            ByteBuffer chunkBuffer = BufferUtils
-                    .allocateByteBuffer(64)
-                    .order(ByteOrder.LITTLE_ENDIAN);
-            IntBuffer transferred = BufferUtils.allocateIntBuffer();
-
-            int result = LibUsb.bulkTransfer(
-                    deviceHandle,
-                    IN_ENDPOINT,
-                    chunkBuffer,
-                    transferred,
-                    TIMEOUT
-            );
-            if(result == LibUsb.ERROR_TIMEOUT) {
-                throw new LibUsbException("Timed out waiting to read remaining data after " + TIMEOUT + "ms", result);
-            }
-            if(result != LibUsb.SUCCESS) {
-                throw new LibUsbException("Unable to read data", result);
-            }
-
-            // Extract the chunk
-            byte[] readBytes = new byte[chunkBuffer.remaining()];
-            chunkBuffer.get(readBytes);
-
-            // Sanity check on the chunk
-            if(readBytes[0] != (byte) '?') {
-                // Unexpected value in the first position - should be 63
-                if(invalidChunksCounter++ > 5) {
-                    throw new InvalidProtocolBufferException("Chunk invalid in payload");
-                }
-                continue;
-            }
-            messageBuffer.put(readBytes, 1, readBytes.length - 1);
-        }
-
-        byte[] msgData = Arrays.copyOfRange(messageBuffer.array(), 0, msgSize);
-
-        if(log.isTraceEnabled()) {
-            log.trace("< Message{}", Utils.bytesToHex(msgData));
-        }
-
-        try {
-            Method method = extractParserMethod(messageType);
-            //noinspection PrimitiveArrayArgumentToVariableArgMethod
-            Message message = (Message) method.invoke(null, msgData);
-            if(log.isDebugEnabled()) {
-                String msgName = message.getClass().getSimpleName();
-                log.debug("< " + msgName);
-            }
-            if(log.isDebugEnabled()) {
-                log.debug("Type " + messageType.getNumber() + " (" + msgData.length + " bytes):" + Utils.bytesToHex(msgData));
-            }
-            return message;
-        } catch(Exception ex) {
-            throw new InvalidProtocolBufferException("Exception while calling: parseMessageFromBytes for MessageType: " + messageType.name());
-        }
-    }
-
-    /**
-     * Identify a suitable parsing method from the message type name.
-     *
-     * @param messageType The abstract message type identifying the inner class and group.
-     * @return A parsing method than can be invoked to convert the bytes into a message.
-     * @throws ClassNotFoundException If the class could not be found (unknown message prefix).
-     * @throws NoSuchMethodException  If the class was not a correctly formed protobuf message.
-     */
-    private Method extractParserMethod(TrezorMessage.MessageType messageType) throws ClassNotFoundException, NoSuchMethodException {
-        if(log.isTraceEnabled()) {
-            log.trace("Parsing type {}", messageType);
-        }
-
-        // Identify the expected inner class name
-        String innerClassName = messageType.name().replace("MessageType_", "");
-
-        // Identify enclosing class by name
-        String className;
-        if(innerClassName.equals("ButtonAck")
-                || innerClassName.equals("ButtonRequest")
-                || innerClassName.equals("Failure")
-                || innerClassName.equals("HDNodeType")
-                || innerClassName.equals("PassphraseAck")
-                || innerClassName.equals("PassphraseRequest")
-                || innerClassName.equals("PassphraseStateAck")
-                || innerClassName.equals("PassphraseStateRequest")
-                || innerClassName.equals("PinMatrixAck")
-                || innerClassName.equals("PinMatrixRequest")
-                || innerClassName.equals("Success")
-        ) {
-            // Use common classes
-            className = TrezorMessageCommon.class.getName() + "$" + innerClassName;
-        } else if(innerClassName.equals("PublicKey")
-                || innerClassName.equals("Address")
-                || innerClassName.equals("TxRequest")
-                || innerClassName.equals("TxAckMeta")
-                || innerClassName.equals("TxAckInput")
-                || innerClassName.equals("TxAckOutput")
-                || innerClassName.equals("TxAckPrevMeta")
-                || innerClassName.equals("TxAckPrevInput")
-                || innerClassName.equals("TxAckPrevOuput")
-                || innerClassName.equals("MessageSignature")
-        ) {
-            className = TrezorMessageBitcoin.class.getName() + "$" + innerClassName;
-        } else {
-            // Use management class as default then check if inner class indicates another
-            className = TrezorMessageManagement.class.getName() + "$" + innerClassName;
-        }
-
-        if(log.isTraceEnabled()) {
-            log.trace("Expected class name: {}", className);
-        }
-        Class<?> cls = Class.forName(className);
-
-        return cls.getDeclaredMethod("parseFrom", byte[].class);
+        protocol.close();
     }
 
     public record PrevTx(TrezorMessageBitcoin.PrevTx prevTx, List<TrezorMessageBitcoin.PrevInput> prevInputs, List<TrezorMessageBitcoin.PrevOutput> prevOutputs) {}

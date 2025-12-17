@@ -301,7 +301,7 @@ class V2Protocol implements Protocol {
             TrezorMessageThp.ThpPairingRequest pairingRequest =
                     TrezorMessageThp.ThpPairingRequest.newBuilder()
                             .setHostName(credentialStore.getHostName())
-                            .setAppName("Lark")
+                            .setAppName(credentialStore.getAppName())
                             .build();
 
             // Step 3: Expect PairingRequestApproved

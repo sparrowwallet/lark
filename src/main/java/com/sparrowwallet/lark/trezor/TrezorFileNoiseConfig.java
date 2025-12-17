@@ -167,6 +167,11 @@ public class TrezorFileNoiseConfig implements TrezorNoiseConfig {
         }
     }
 
+    @Override
+    public String getAppName() {
+        return "Lark";
+    }
+
     private ThpCredentialConfig read() {
         try {
             if(!configFile.exists()) {

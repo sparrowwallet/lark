@@ -167,6 +167,14 @@ public interface TrezorNoiseConfig {
     String getHostName();
 
     /**
+     * Get the application name to use for pairing.
+     * This name will be displayed on the Trezor device during pairing.
+     *
+     * @return Application name
+     */
+    String getAppName();
+
+    /**
      * Pairing method enumeration for THP pairing.
      */
     enum PairingMethod {

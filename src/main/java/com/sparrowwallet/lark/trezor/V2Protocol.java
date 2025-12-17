@@ -354,8 +354,16 @@ class V2Protocol implements Protocol {
                 log.debug("Pairing state updated to PAIRED");
             }
 
+            // Get device model from Features message
+            TrezorMessageManagement.Features features = call(
+                    TrezorMessageManagement.GetFeatures.newBuilder().build(),
+                    TrezorMessageManagement.Features.class
+            );
+
+            String modelInfo = features.hasModel() ? features.getModel() : "Trezor";
+
             // Notify success
-            credentialStore.pairingSuccessful(deviceInfo);
+            credentialStore.pairingSuccessful(modelInfo);
 
         } catch(DeviceException e) {
             credentialStore.pairingFailed(e.getMessage());

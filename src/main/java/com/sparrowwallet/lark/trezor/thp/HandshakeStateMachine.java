@@ -75,10 +75,10 @@ public class HandshakeStateMachine {
          * Called after receiving initiation response, before sending completion request.
          *
          * @param trezorKeys Trezor's ephemeral and static public keys from handshake
-         * @return Matching credential blob, or null if no match
+         * @return Matching credential, or null if no match
          * @throws DeviceException if credential search fails
          */
-        byte[] findCredential(CredentialMatcher.TrezorPublicKeys trezorKeys) throws DeviceException;
+        CredentialMatcher.StoredCredential findCredential(CredentialMatcher.TrezorPublicKeys trezorKeys) throws DeviceException;
 
         /**
          * Send handshake completion request and receive response.
@@ -162,10 +162,66 @@ public class HandshakeStateMachine {
 
         // After receiving 2nd message, extract Trezor's public keys and find matching credential
         CredentialMatcher.TrezorPublicKeys trezorKeys = noiseAdapter.getTrezorPublicKeys();
-        byte[] matchedCredential = exchange.findCredential(trezorKeys);
+        CredentialMatcher.StoredCredential matchedCred = exchange.findCredential(trezorKeys);
 
-        // Use matched credential if found, otherwise use the one provided to constructor (may be null)
-        byte[] credentialToUse = (matchedCredential != null) ? matchedCredential : credential;
+        byte[] credentialToUse;
+        if(matchedCred != null) {
+            // Found a matching credential - use its credential blob and host private key
+            credentialToUse = matchedCred.credentialBlob;
+
+            if(log.isDebugEnabled()) {
+                log.debug("Using matched credential blob ({} bytes)", credentialToUse.length);
+            }
+
+            // Update the Noise handshake to use the matched credential's host key
+            // (The host key must match the one that was paired with this credential)
+            try {
+                java.security.KeyFactory keyFactory = java.security.KeyFactory.getInstance("X25519");
+
+                // Convert raw 32-byte private key to PrivateKey
+                byte[] pkcs8 = new byte[48];
+                byte[] header = {
+                    0x30, 0x2e, 0x02, 0x01, 0x00, 0x30, 0x05, 0x06, 0x03, 0x2b, 0x65, 0x6e, 0x04, 0x22, 0x04, 0x20
+                };
+                System.arraycopy(header, 0, pkcs8, 0, 16);
+                System.arraycopy(matchedCred.hostPrivateKey, 0, pkcs8, 16, 32);
+
+                java.security.spec.PKCS8EncodedKeySpec privateKeySpec =
+                    new java.security.spec.PKCS8EncodedKeySpec(pkcs8);
+                java.security.PrivateKey privateKey = keyFactory.generatePrivate(privateKeySpec);
+
+                // Derive public key from private key using scalar multiplication with base point
+                // X25519 base point (generator)
+                byte[] basepoint = new byte[32];
+                basepoint[0] = 9;
+
+                byte[] publicKeyRaw = x25519ScalarMult(matchedCred.hostPrivateKey, basepoint);
+
+                // Convert raw public key to PublicKey
+                byte[] x509 = new byte[44];
+                byte[] pubHeader = {
+                    0x30, 0x2a, 0x30, 0x05, 0x06, 0x03, 0x2b, 0x65, 0x6e, 0x03, 0x21, 0x00
+                };
+                System.arraycopy(pubHeader, 0, x509, 0, 12);
+                System.arraycopy(publicKeyRaw, 0, x509, 12, 32);
+
+                java.security.PublicKey publicKey = keyFactory.generatePublic(
+                    new java.security.spec.X509EncodedKeySpec(x509)
+                );
+
+                KeyPair matchedKeyPair = new KeyPair(publicKey, privateKey);
+                noiseAdapter.updateHostStaticKeyPair(matchedKeyPair);
+
+                if(log.isDebugEnabled()) {
+                    log.debug("Updated handshake to use matched credential's host key");
+                }
+            } catch(Exception e) {
+                throw new DeviceException("Failed to update host key for matched credential: " + e.getMessage(), e);
+            }
+        } else {
+            // No matching credential - use the one provided to constructor (may be null)
+            credentialToUse = credential;
+        }
 
         // Determine next state based on credential availability
         state = (credentialToUse != null) ? State.HH2 : State.HH3;
@@ -224,5 +280,40 @@ public class HandshakeStateMachine {
      */
     public boolean isComplete() {
         return state == State.COMPLETE;
+    }
+
+    /**
+     * Perform X25519 scalar multiplication: scalar * point.
+     */
+    private byte[] x25519ScalarMult(byte[] scalar, byte[] point) throws java.security.GeneralSecurityException {
+        javax.crypto.KeyAgreement keyAgreement = javax.crypto.KeyAgreement.getInstance("X25519");
+        java.security.KeyFactory keyFactory = java.security.KeyFactory.getInstance("X25519");
+
+        // Create PrivateKey from scalar
+        byte[] pkcs8 = new byte[48];
+        byte[] header = {
+            0x30, 0x2e, 0x02, 0x01, 0x00, 0x30, 0x05, 0x06, 0x03, 0x2b, 0x65, 0x6e, 0x04, 0x22, 0x04, 0x20
+        };
+        System.arraycopy(header, 0, pkcs8, 0, 16);
+        System.arraycopy(scalar, 0, pkcs8, 16, 32);
+        java.security.PrivateKey privateKey = keyFactory.generatePrivate(
+            new java.security.spec.PKCS8EncodedKeySpec(pkcs8)
+        );
+
+        // Create PublicKey from point
+        byte[] x509 = new byte[44];
+        byte[] pubHeader = {
+            0x30, 0x2a, 0x30, 0x05, 0x06, 0x03, 0x2b, 0x65, 0x6e, 0x03, 0x21, 0x00
+        };
+        System.arraycopy(pubHeader, 0, x509, 0, 12);
+        System.arraycopy(point, 0, x509, 12, 32);
+        java.security.PublicKey publicKey = keyFactory.generatePublic(
+            new java.security.spec.X509EncodedKeySpec(x509)
+        );
+
+        // Perform key agreement
+        keyAgreement.init(privateKey);
+        keyAgreement.doPhase(publicKey, true);
+        return keyAgreement.generateSecret();
     }
 }

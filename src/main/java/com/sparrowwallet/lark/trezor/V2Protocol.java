@@ -476,7 +476,7 @@ class V2Protocol implements Protocol {
             }
 
             @Override
-            public byte[] findCredential(CredentialMatcher.TrezorPublicKeys trezorKeys) throws DeviceException {
+            public CredentialMatcher.StoredCredential findCredential(CredentialMatcher.TrezorPublicKeys trezorKeys) throws DeviceException {
                 // Get all stored credentials
                 List<CredentialMatcher.StoredCredential> credentials = credentialStore.getAllCredentials();
 
@@ -487,6 +487,10 @@ class V2Protocol implements Protocol {
                     return null;
                 }
 
+                if(log.isDebugEnabled()) {
+                    log.debug("Searching {} stored credential(s) for match", credentials.size());
+                }
+
                 // Find matching credential
                 CredentialMatcher.StoredCredential match = CredentialMatcher.findCredential(credentials, trezorKeys);
 
@@ -494,7 +498,7 @@ class V2Protocol implements Protocol {
                     if(log.isDebugEnabled()) {
                         log.debug("Found matching credential for device");
                     }
-                    return match.credentialBlob;
+                    return match;
                 } else {
                     if(log.isDebugEnabled()) {
                         log.debug("No matching credential found for device");

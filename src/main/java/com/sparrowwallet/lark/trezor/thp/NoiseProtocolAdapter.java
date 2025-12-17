@@ -165,6 +165,17 @@ public class NoiseProtocolAdapter {
     }
 
     /**
+     * Update the host's static key pair mid-handshake.
+     * Must be called after readHandshakeResponse() but before writeHandshakeCompletion().
+     * Used when a matching credential is found with a different host key.
+     *
+     * @param newKeyPair The new host static key pair to use
+     */
+    public void updateHostStaticKeyPair(KeyPair newKeyPair) {
+        handshake.setLocalStaticKeyPair(newKeyPair);
+    }
+
+    /**
      * Get the transport (only available after split()).
      */
     public NoiseTransport getTransport() {
@@ -179,27 +190,21 @@ public class NoiseProtocolAdapter {
      * @throws DeviceException if keys are not available
      */
     public CredentialMatcher.TrezorPublicKeys getTrezorPublicKeys() throws DeviceException {
-        try {
-            // Get remote ephemeral public key (re)
-            java.lang.reflect.Field reField = handshake.getClass().getDeclaredField("remoteEphemeralPublicKey");
-            reField.setAccessible(true);
-            java.security.PublicKey remoteEphemeral = (java.security.PublicKey) reField.get(handshake);
+        // Get remote ephemeral public key (re)
+        java.security.PublicKey remoteEphemeral = handshake.getRemoteEphemeralPublicKey();
 
-            // Get remote static public key (rs)
-            java.security.PublicKey remoteStatic = handshake.getRemoteStaticPublicKey();
+        // Get remote static public key (rs)
+        java.security.PublicKey remoteStatic = handshake.getRemoteStaticPublicKey();
 
-            if(remoteEphemeral == null || remoteStatic == null) {
-                throw new DeviceException("Trezor public keys not yet available from handshake");
-            }
-
-            // Extract raw 32-byte keys
-            byte[] ephemeralRaw = extractRawPublicKey(remoteEphemeral);
-            byte[] staticRaw = extractRawPublicKey(remoteStatic);
-
-            return new CredentialMatcher.TrezorPublicKeys(ephemeralRaw, staticRaw);
-        } catch(Exception e) {
-            throw new DeviceException("Failed to extract Trezor public keys: " + e.getMessage(), e);
+        if(remoteEphemeral == null || remoteStatic == null) {
+            throw new DeviceException("Trezor public keys not yet available from handshake");
         }
+
+        // Extract raw 32-byte keys
+        byte[] ephemeralRaw = extractRawPublicKey(remoteEphemeral);
+        byte[] staticRaw = extractRawPublicKey(remoteStatic);
+
+        return new CredentialMatcher.TrezorPublicKeys(ephemeralRaw, staticRaw);
     }
 
     /**

@@ -150,7 +150,7 @@ public class NoiseHandshake {
 
   private PublicKey remoteEphemeralPublicKey;
 
-  private final KeyPair localStaticKeyPair;
+  private KeyPair localStaticKeyPair;
 
   private PublicKey remoteStaticPublicKey;
 
@@ -1458,5 +1458,25 @@ public class NoiseHandshake {
 
     public PublicKey getRemoteStaticPublicKey() {
         return remoteStaticPublicKey;
+    }
+
+    /**
+     * Get the remote ephemeral public key.
+     * Used for THP credential matching.
+     *
+     * @return The remote ephemeral public key
+     */
+    public PublicKey getRemoteEphemeralPublicKey() {
+        return remoteEphemeralPublicKey;
+    }
+
+    /**
+     * Set the local static key pair.
+     * Used for THP credential matching where the host key must be updated mid-handshake.
+     *
+     * @param keyPair The new local static key pair
+     */
+    public void setLocalStaticKeyPair(final KeyPair keyPair) {
+        this.localStaticKeyPair = keyPair;
     }
 }

@@ -164,15 +164,26 @@ class V2Protocol implements Protocol {
             }
 
             // Perform pairing and obtain credential
+            // This will also send ThpEndRequest and ThpCreateNewSession
             performPairing();
 
             if(log.isDebugEnabled()) {
                 log.debug("Pairing completed successfully");
             }
         } else {
+            // Device is already paired (PAIRED or PAIRED_AUTOCONNECT)
             if(log.isDebugEnabled()) {
                 log.debug("Device pairing state: {}", pairingState);
             }
+
+            // Create session for normal operations
+            if(log.isDebugEnabled()) {
+                log.debug("Creating new session for normal operations");
+            }
+            TrezorMessageThp.ThpCreateNewSession createSession =
+                    TrezorMessageThp.ThpCreateNewSession.newBuilder()
+                            .build();
+            call(createSession, TrezorMessageCommon.Success.class);
         }
 
         if(log.isDebugEnabled()) {

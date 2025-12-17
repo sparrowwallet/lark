@@ -301,6 +301,14 @@ class V2Protocol implements Protocol {
             // Step 6: Request credential
             requestAndStoreCredential();
 
+            // Step 7: Update pairing state to reflect successful pairing
+            // The device is now paired, even though initial handshake showed UNPAIRED
+            this.pairingState = HandshakeMessages.PairingState.PAIRED;
+
+            if(log.isDebugEnabled()) {
+                log.debug("Pairing state updated to PAIRED");
+            }
+
             // Notify success
             credentialStore.pairingSuccessful(deviceInfo);
 

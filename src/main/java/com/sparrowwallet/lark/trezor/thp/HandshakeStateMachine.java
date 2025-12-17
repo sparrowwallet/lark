@@ -256,6 +256,10 @@ public class HandshakeStateMachine {
         // Parse pairing state
         HandshakeMessages.PairingState pairingState = HandshakeMessages.parsePairingState(pairingStateBytes);
 
+        if(log.isDebugEnabled()) {
+            log.debug("Handshake complete - pairing state: {}", pairingState);
+        }
+
         state = State.COMPLETE;
 
         return new Result(

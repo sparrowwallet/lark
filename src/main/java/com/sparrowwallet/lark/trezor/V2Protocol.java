@@ -301,13 +301,6 @@ class V2Protocol implements Protocol {
             // Step 6: Request credential
             requestAndStoreCredential();
 
-            // Step 7: End session
-            TrezorMessageThp.ThpEndRequest endRequest =
-                    TrezorMessageThp.ThpEndRequest.newBuilder()
-                            .build();
-
-            call(endRequest, TrezorMessageThp.ThpEndResponse.class);
-
             // Notify success
             credentialStore.pairingSuccessful(deviceInfo);
 

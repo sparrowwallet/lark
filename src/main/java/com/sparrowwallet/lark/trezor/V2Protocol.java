@@ -311,7 +311,17 @@ class V2Protocol implements Protocol {
                             .build();
             call(endRequest, TrezorMessageThp.ThpEndResponse.class);
 
-            // Step 8: Update pairing state to reflect successful pairing
+            // Step 8: Create new session for normal operations
+            // After ThpEndRequest closed the pairing session, we need to establish session 0 for operations
+            if(log.isDebugEnabled()) {
+                log.debug("Creating new session for normal operations");
+            }
+            TrezorMessageThp.ThpCreateNewSession createSession =
+                    TrezorMessageThp.ThpCreateNewSession.newBuilder()
+                            .build();
+            call(createSession, TrezorMessageCommon.Success.class);
+
+            // Step 9: Update pairing state to reflect successful pairing
             // The device is now paired, even though initial handshake showed UNPAIRED
             this.pairingState = HandshakeMessages.PairingState.PAIRED;
 

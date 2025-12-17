@@ -172,18 +172,10 @@ class V2Protocol implements Protocol {
             }
         } else {
             // Device is already paired (PAIRED or PAIRED_AUTOCONNECT)
+            // Session 0 is already active after paired handshake - no need to create new session
             if(log.isDebugEnabled()) {
-                log.debug("Device pairing state: {}", pairingState);
+                log.debug("Device pairing state: {} - session 0 ready", pairingState);
             }
-
-            // Create session for normal operations
-            if(log.isDebugEnabled()) {
-                log.debug("Creating new session for normal operations");
-            }
-            TrezorMessageThp.ThpCreateNewSession createSession =
-                    TrezorMessageThp.ThpCreateNewSession.newBuilder()
-                            .build();
-            call(createSession, TrezorMessageCommon.Success.class);
         }
 
         if(log.isDebugEnabled()) {

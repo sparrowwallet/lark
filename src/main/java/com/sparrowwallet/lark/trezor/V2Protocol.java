@@ -164,7 +164,7 @@ class V2Protocol implements Protocol {
             }
 
             // Perform pairing and obtain credential
-            // This will also send ThpEndRequest and ThpCreateNewSession
+            // This will send ThpEndRequest at the end
             performPairing();
 
             if(log.isDebugEnabled()) {
@@ -172,10 +172,19 @@ class V2Protocol implements Protocol {
             }
         } else {
             // Device is already paired (PAIRED or PAIRED_AUTOCONNECT)
-            // Session 0 is already active after paired handshake - no need to create new session
             if(log.isDebugEnabled()) {
-                log.debug("Device pairing state: {} - session 0 ready", pairingState);
+                log.debug("Device pairing state: {}", pairingState);
             }
+
+            // Send ThpEndRequest to close the handshake session
+            // This is required even for PAIRED_AUTOCONNECT (Python ref does this)
+            if(log.isDebugEnabled()) {
+                log.debug("Ending handshake session");
+            }
+            TrezorMessageThp.ThpEndRequest endRequest =
+                    TrezorMessageThp.ThpEndRequest.newBuilder()
+                            .build();
+            call(endRequest, TrezorMessageThp.ThpEndResponse.class);
         }
 
         if(log.isDebugEnabled()) {

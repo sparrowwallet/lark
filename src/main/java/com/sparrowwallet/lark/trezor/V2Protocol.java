@@ -755,12 +755,12 @@ class V2Protocol implements Protocol {
 
         // Determine message type from appropriate enum
         int messageType;
-        if(msgName.startsWith("Thp")) {
-            // THP messages use TrezorMessageThp.ThpMessageType enum
-            messageType = TrezorMessageThp.ThpMessageType.valueOf("ThpMessageType_" + msgName).getNumber();
-        } else {
-            // Regular messages use TrezorMessage.MessageType enum
+        try {
+            // Try regular MessageType enum first (includes most messages including ThpCreateNewSession)
             messageType = TrezorMessage.MessageType.valueOf("MessageType_" + msgName).getNumber();
+        } catch(IllegalArgumentException e) {
+            // Fall back to THP-specific MessageType enum for pairing messages
+            messageType = TrezorMessageThp.ThpMessageType.valueOf("ThpMessageType_" + msgName).getNumber();
         }
 
         // Encode message: session_id (1 byte) + type (2 bytes BE) + protobuf payload

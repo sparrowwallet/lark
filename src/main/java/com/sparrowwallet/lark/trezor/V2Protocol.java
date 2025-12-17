@@ -219,12 +219,25 @@ class V2Protocol implements Protocol {
                     new java.security.spec.PKCS8EncodedKeySpec(encoded);
                 java.security.PrivateKey privateKey = keyFactory.generatePrivate(privateKeySpec);
 
-                // Derive public key from private key
-                java.security.KeyPairGenerator keyGen = java.security.KeyPairGenerator.getInstance("X25519");
-                // Note: We can't easily derive public from private in standard Java
-                // We'll need to store and load the public key as well, or regenerate
-                // For now, just generate a new key pair
-                return keyGen.generateKeyPair();
+                // Derive public key from private key using X25519 scalar multiplication with base point
+                byte[] basepoint = new byte[32];
+                basepoint[0] = 9; // X25519 base point (generator)
+
+                byte[] publicKeyRaw = x25519ScalarMult(privateKeyBytes, basepoint);
+
+                // Convert raw public key to PublicKey object
+                byte[] x509 = new byte[44];
+                byte[] pubHeader = {
+                    0x30, 0x2a, 0x30, 0x05, 0x06, 0x03, 0x2b, 0x65, 0x6e, 0x03, 0x21, 0x00
+                };
+                System.arraycopy(pubHeader, 0, x509, 0, 12);
+                System.arraycopy(publicKeyRaw, 0, x509, 12, 32);
+
+                java.security.PublicKey publicKey = keyFactory.generatePublic(
+                    new java.security.spec.X509EncodedKeySpec(x509)
+                );
+
+                return new KeyPair(publicKey, privateKey);
             }
 
             // Generate new key pair
@@ -464,7 +477,7 @@ class V2Protocol implements Protocol {
         TrezorMessageThp.ThpCredentialRequest credRequest =
                 TrezorMessageThp.ThpCredentialRequest.newBuilder()
                         .setHostStaticPublicKey(com.google.protobuf.ByteString.copyFrom(rawHostPubkey))
-                        .setAutoconnect(true)  // Enable autoconnect for seamless reconnection
+                        .setAutoconnect(false)  // Initial pairing requires false; device transitions to autoconnect later
                         .build();
 
         TrezorMessageThp.ThpCredentialResponse credResponse =
@@ -919,5 +932,40 @@ class V2Protocol implements Protocol {
      */
     public KeyPair getHostStaticKeyPair() {
         return hostStaticKeyPair;
+    }
+
+    /**
+     * Perform X25519 scalar multiplication: scalar * point.
+     */
+    private byte[] x25519ScalarMult(byte[] scalar, byte[] point) throws java.security.GeneralSecurityException {
+        javax.crypto.KeyAgreement keyAgreement = javax.crypto.KeyAgreement.getInstance("X25519");
+        java.security.KeyFactory keyFactory = java.security.KeyFactory.getInstance("X25519");
+
+        // Create PrivateKey from scalar
+        byte[] pkcs8 = new byte[48];
+        byte[] header = {
+            0x30, 0x2e, 0x02, 0x01, 0x00, 0x30, 0x05, 0x06, 0x03, 0x2b, 0x65, 0x6e, 0x04, 0x22, 0x04, 0x20
+        };
+        System.arraycopy(header, 0, pkcs8, 0, 16);
+        System.arraycopy(scalar, 0, pkcs8, 16, 32);
+        java.security.PrivateKey privateKey = keyFactory.generatePrivate(
+            new java.security.spec.PKCS8EncodedKeySpec(pkcs8)
+        );
+
+        // Create PublicKey from point
+        byte[] x509 = new byte[44];
+        byte[] pubHeader = {
+            0x30, 0x2a, 0x30, 0x05, 0x06, 0x03, 0x2b, 0x65, 0x6e, 0x03, 0x21, 0x00
+        };
+        System.arraycopy(pubHeader, 0, x509, 0, 12);
+        System.arraycopy(point, 0, x509, 12, 32);
+        java.security.PublicKey publicKey = keyFactory.generatePublic(
+            new java.security.spec.X509EncodedKeySpec(x509)
+        );
+
+        // Perform key agreement
+        keyAgreement.init(privateKey);
+        keyAgreement.doPhase(publicKey, true);
+        return keyAgreement.generateSecret();
     }
 }

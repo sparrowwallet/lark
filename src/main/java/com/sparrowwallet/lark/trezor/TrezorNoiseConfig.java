@@ -164,9 +164,7 @@ public interface TrezorNoiseConfig {
      *
      * @return Host name
      */
-    default String getHostName() {
-        return "Lark";
-    }
+    String getHostName();
 
     /**
      * Pairing method enumeration for THP pairing.

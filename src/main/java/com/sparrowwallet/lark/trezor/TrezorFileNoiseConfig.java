@@ -157,6 +157,16 @@ public class TrezorFileNoiseConfig implements TrezorNoiseConfig {
         write(config);
     }
 
+    @Override
+    public String getHostName() {
+        try {
+            return java.net.InetAddress.getLocalHost().getHostName();
+        } catch(Exception e) {
+            log.warn("Failed to get system hostname, using default", e);
+            return "localhost";
+        }
+    }
+
     private ThpCredentialConfig read() {
         try {
             if(!configFile.exists()) {

@@ -323,7 +323,17 @@ class V2Protocol implements Protocol {
                             .build();
             call(endRequest, TrezorMessageThp.ThpEndResponse.class);
 
-            // Step 8: Update pairing state to reflect successful pairing
+            // Step 8: Create session 0 for normal operations
+            // After pairing + ThpEndRequest, we need to establish session 0
+            if(log.isDebugEnabled()) {
+                log.debug("Creating session 0 after pairing");
+            }
+            TrezorMessageThp.ThpCreateNewSession createSession =
+                    TrezorMessageThp.ThpCreateNewSession.newBuilder()
+                            .build();
+            call(createSession, TrezorMessageCommon.Success.class);
+
+            // Step 9: Update pairing state to reflect successful pairing
             // The device is now paired, even though initial handshake showed UNPAIRED
             this.pairingState = HandshakeMessages.PairingState.PAIRED;
 
@@ -454,7 +464,7 @@ class V2Protocol implements Protocol {
         TrezorMessageThp.ThpCredentialRequest credRequest =
                 TrezorMessageThp.ThpCredentialRequest.newBuilder()
                         .setHostStaticPublicKey(com.google.protobuf.ByteString.copyFrom(rawHostPubkey))
-                        .setAutoconnect(false)
+                        .setAutoconnect(true)  // Enable autoconnect for seamless reconnection
                         .build();
 
         TrezorMessageThp.ThpCredentialResponse credResponse =

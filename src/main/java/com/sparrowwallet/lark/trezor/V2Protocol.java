@@ -45,6 +45,7 @@ class V2Protocol implements Protocol {
     private byte[] trezorStaticPubkey;
     private byte[] handshakeHash;
     private boolean initialized;
+    private int currentSessionId;
 
     /**
      * Create V2 protocol instance with credential store.
@@ -186,21 +187,72 @@ class V2Protocol implements Protocol {
                             .build();
             call(endRequest, TrezorMessageThp.ThpEndResponse.class);
 
-            // For PAIRED (not PAIRED_AUTOCONNECT), we need to create session 0 explicitly
-            // PAIRED_AUTOCONNECT has session 0 already active after ThpEndRequest
-            if(pairingState == HandshakeMessages.PairingState.PAIRED) {
-                if(log.isDebugEnabled()) {
-                    log.debug("Creating session 0 for PAIRED device");
-                }
-                TrezorMessageThp.ThpCreateNewSession createSession =
-                        TrezorMessageThp.ThpCreateNewSession.newBuilder()
-                                .build();
-                call(createSession, TrezorMessageCommon.Success.class);
-            }
+            // Session creation will be handled by derivePassphraseSessionIfEnabled()
+            // which will create either session 0 (no passphrase) or session 1 (passphrase)
         }
 
         if(log.isDebugEnabled()) {
             log.debug("THP session initialized (pairing state: {})", pairingState);
+        }
+
+        // Check if passphrase is enabled and derive session if needed
+        derivePassphraseSessionIfEnabled();
+    }
+
+    /**
+     * Check if passphrase is enabled in Features and create the appropriate session.
+     * This is called at the end of ensureInitialized() to set up the correct session.
+     *
+     * Session creation rules:
+     * - PAIRED_AUTOCONNECT: Session 0 already active after ThpEndRequest (no creation needed)
+     * - PAIRED: Session 0 must be created with ThpCreateNewSession
+     * - Passphrase enabled: Create session 1 with passphrase entry on device
+     */
+    private void derivePassphraseSessionIfEnabled() throws DeviceException {
+        // Get device features to check passphrase setting
+        TrezorMessageManagement.Features features = call(
+            TrezorMessageManagement.GetFeatures.newBuilder().build(),
+            TrezorMessageManagement.Features.class
+        );
+
+        // Check if passphrase protection is enabled
+        if(features.hasPassphraseProtection() && features.getPassphraseProtection()) {
+            if(log.isDebugEnabled()) {
+                log.debug("Passphrase protection enabled - deriving passphrase session");
+            }
+
+            // Derive a new session with passphrase entry on device
+            currentSessionId = 1;
+            TrezorMessageThp.ThpCreateNewSession createSession =
+                TrezorMessageThp.ThpCreateNewSession.newBuilder()
+                    .setOnDevice(true)
+                    .setDeriveCardano(false)
+                    .build();
+
+            call(createSession, TrezorMessageCommon.Success.class);
+
+            if(log.isDebugEnabled()) {
+                log.debug("Passphrase session derived (session ID: {})", currentSessionId);
+            }
+        } else {
+            // No passphrase - use session 0
+            currentSessionId = 0;
+
+            // For PAIRED (not PAIRED_AUTOCONNECT), session 0 must be created explicitly
+            // PAIRED_AUTOCONNECT already has session 0 active after ThpEndRequest
+            if(pairingState == HandshakeMessages.PairingState.PAIRED) {
+                if(log.isDebugEnabled()) {
+                    log.debug("Creating session 0 for PAIRED device (no passphrase)");
+                }
+                TrezorMessageThp.ThpCreateNewSession createSession =
+                    TrezorMessageThp.ThpCreateNewSession.newBuilder()
+                        .build();
+                call(createSession, TrezorMessageCommon.Success.class);
+            } else {
+                if(log.isDebugEnabled()) {
+                    log.debug("Using session 0 for PAIRED_AUTOCONNECT device (no passphrase)");
+                }
+            }
         }
     }
 
@@ -811,7 +863,7 @@ class V2Protocol implements Protocol {
         // Encode message: session_id (1 byte) + type (2 bytes BE) + protobuf payload
         byte[] protobufBytes = message.toByteArray();
         byte[] applicationData = new byte[3 + protobufBytes.length];
-        applicationData[0] = 0;  // Session ID = 0 for pairing/initial session
+        applicationData[0] = (byte)currentSessionId;  // Use current session ID
         applicationData[1] = (byte)((messageType >> 8) & 0xFF);
         applicationData[2] = (byte)(messageType & 0xFF);
         System.arraycopy(protobufBytes, 0, applicationData, 3, protobufBytes.length);

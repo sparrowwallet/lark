@@ -1,10 +1,10 @@
 package com.sparrowwallet.lark.trezor.thp;
 
 import com.sparrowwallet.lark.DeviceException;
-import com.sparrowwallet.lark.bitbox02.noise.NamedProtocolHandshakeBuilder;
-import com.sparrowwallet.lark.bitbox02.noise.NoiseHandshake;
-import com.sparrowwallet.lark.bitbox02.noise.NoSuchPatternException;
-import com.sparrowwallet.lark.bitbox02.noise.NoiseTransport;
+import com.sparrowwallet.lark.noise.NamedProtocolHandshakeBuilder;
+import com.sparrowwallet.lark.noise.NoiseHandshake;
+import com.sparrowwallet.lark.noise.NoSuchPatternException;
+import com.sparrowwallet.lark.noise.NoiseTransport;
 import com.sparrowwallet.lark.trezor.CredentialMatcher;
 
 import javax.crypto.AEADBadTagException;

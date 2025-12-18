@@ -1,7 +1,7 @@
 package com.sparrowwallet.lark.trezor.thp;
 
 import com.sparrowwallet.lark.DeviceException;
-import com.sparrowwallet.lark.bitbox02.noise.NoiseTransport;
+import com.sparrowwallet.lark.noise.NoiseTransport;
 import com.sparrowwallet.lark.trezor.CredentialMatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

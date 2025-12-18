@@ -4,17 +4,16 @@ import com.sparrowwallet.drongo.Utils;
 import com.sparrowwallet.drongo.crypto.X25519Key;
 import com.sparrowwallet.lark.DeviceException;
 import com.sparrowwallet.lark.UserRefusedException;
-import com.sparrowwallet.lark.bitbox02.noise.NamedProtocolHandshakeBuilder;
-import com.sparrowwallet.lark.bitbox02.noise.NoSuchPatternException;
-import com.sparrowwallet.lark.bitbox02.noise.NoiseHandshake;
-import com.sparrowwallet.lark.bitbox02.noise.NoiseTransport;
+import com.sparrowwallet.lark.noise.NamedProtocolHandshakeBuilder;
+import com.sparrowwallet.lark.noise.NoSuchPatternException;
+import com.sparrowwallet.lark.noise.NoiseHandshake;
+import com.sparrowwallet.lark.noise.NoiseTransport;
 import org.apache.commons.codec.binary.Base32;
 
 import javax.crypto.AEADBadTagException;
 import java.nio.charset.StandardCharsets;
 import java.security.NoSuchAlgorithmException;
 import java.security.PublicKey;
-import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Optional;
 

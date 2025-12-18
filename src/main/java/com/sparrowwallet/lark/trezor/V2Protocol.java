@@ -200,26 +200,16 @@ class V2Protocol implements Protocol {
     }
 
     /**
-     * Check if passphrase is enabled in Features and create the appropriate session.
+     * Check if passphrase is enabled in Features and set up the appropriate session.
      * This is called at the end of ensureInitialized() to set up the correct session.
      *
-     * Session creation rules:
-     * - PAIRED_AUTOCONNECT: Session 0 already active (no creation needed, passphrase in credential)
-     * - PAIRED: Must create session, with or without passphrase
-     * - After initial pairing: Must derive passphrase session if enabled
+     * Session usage rules:
+     * - PAIRED_AUTOCONNECT with passphrase: Use session 1 (already exists)
+     * - PAIRED_AUTOCONNECT without passphrase: Use session 0 (already exists)
+     * - PAIRED or after pairing: Create session (0 or 1) as needed
      */
     private void derivePassphraseSessionIfEnabled() throws DeviceException {
-        // For PAIRED_AUTOCONNECT, session 0 is already active with the right context
-        // (passphrase context is in the stored credential)
-        if(pairingState == HandshakeMessages.PairingState.PAIRED_AUTOCONNECT) {
-            currentSessionId = 0;
-            if(log.isDebugEnabled()) {
-                log.debug("Using session 0 for PAIRED_AUTOCONNECT");
-            }
-            return;
-        }
-
-        // For PAIRED or after initial pairing, check if passphrase is enabled
+        // Check if passphrase is enabled
         TrezorMessageManagement.Features features = call(
             TrezorMessageManagement.GetFeatures.newBuilder().build(),
             TrezorMessageManagement.Features.class
@@ -227,6 +217,17 @@ class V2Protocol implements Protocol {
 
         boolean passphraseEnabled = features.hasPassphraseProtection() && features.getPassphraseProtection();
 
+        // For PAIRED_AUTOCONNECT, sessions already exist - just use the right session ID
+        if(pairingState == HandshakeMessages.PairingState.PAIRED_AUTOCONNECT) {
+            currentSessionId = passphraseEnabled ? 1 : 0;
+            if(log.isDebugEnabled()) {
+                log.debug("Using session {} for PAIRED_AUTOCONNECT (passphrase: {})",
+                    currentSessionId, passphraseEnabled);
+            }
+            return;
+        }
+
+        // For PAIRED or after initial pairing, create the appropriate session
         if(passphraseEnabled) {
             if(log.isDebugEnabled()) {
                 log.debug("Passphrase protection enabled - deriving passphrase session");

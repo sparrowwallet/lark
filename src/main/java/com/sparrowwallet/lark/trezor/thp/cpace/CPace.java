@@ -75,9 +75,8 @@ public class CPace {
         // Step 3: Extract raw private key (32 bytes)
         byte[] hostPrivateKeyRaw = extractRawPrivateKey(hostEphemeral.getPrivate());
 
-        // Step 3b: Clamp private key per RFC 7748 (required for X25519)
-        // This ensures the private key is in the correct form for X25519 operations
-        clampPrivateKey(hostPrivateKeyRaw);
+        // Note: Do NOT manually clamp the private key - Java's KeyAgreement
+        // clamps internally per RFC 7748. Double-clamping produces wrong results.
 
         // Step 4: Compute host public key = hostPrivate * generator
         // (x25519Multiply will clamp the coordinate internally)
@@ -92,7 +91,7 @@ public class CPace {
 
         if(log.isDebugEnabled()) {
             log.debug("CPace outputs:");
-            log.debug("  Host private (clamped): {}", Utils.bytesToHex(hostPrivateKeyRaw));
+            log.debug("  Host private (raw): {}", Utils.bytesToHex(hostPrivateKeyRaw));
             log.debug("  Host pubkey: {}", Utils.bytesToHex(hostPublicKey));
             log.debug("  Shared secret: {}", Utils.bytesToHex(sharedSecret));
             log.debug("  Tag: {}", Utils.bytesToHex(tag));

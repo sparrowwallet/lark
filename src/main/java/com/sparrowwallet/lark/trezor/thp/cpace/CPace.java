@@ -63,6 +63,10 @@ public class CPace {
         // Step 3: Extract raw private key (32 bytes)
         byte[] hostPrivateKeyRaw = extractRawPrivateKey(hostEphemeral.getPrivate());
 
+        // Step 3b: Clamp private key per RFC 7748 (required for X25519)
+        // This ensures the private key is in the correct form for X25519 operations
+        clampPrivateKey(hostPrivateKeyRaw);
+
         // Step 4: Compute host public key = hostPrivate * generator
         byte[] hostPublicKey = x25519Multiply(hostPrivateKeyRaw, generator);
 
@@ -190,6 +194,22 @@ public class CPace {
         byte[] raw = new byte[32];
         System.arraycopy(encoded, 16, raw, 0, 32);
         return raw;
+    }
+
+    /**
+     * Clamp X25519 private key per RFC 7748 Section 5.
+     * This is required for proper X25519 operations.
+     *
+     * - Clear bits 0, 1, 2 of the first byte (make divisible by 8)
+     * - Clear bit 7 of the last byte (ensure < 2^255)
+     * - Set bit 6 of the last byte (ensure >= 2^254)
+     *
+     * @param privateKey 32-byte private key to clamp (modified in-place)
+     */
+    private static void clampPrivateKey(byte[] privateKey) {
+        privateKey[0] &= (byte) 0xF8;   // Clear bits 0, 1, 2
+        privateKey[31] &= (byte) 0x7F;  // Clear bit 7
+        privateKey[31] |= (byte) 0x40;  // Set bit 6
     }
 
     /**

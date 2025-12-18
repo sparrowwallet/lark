@@ -352,8 +352,8 @@ class V2Protocol implements Protocol {
      */
     private void performPairing() throws DeviceException {
         try {
-            // Get device info for UI
-            String deviceInfo = "Trezor device"; // TODO: Extract from Features message
+            // Note: Cannot call GetFeatures before pairing, so device info is generic
+            String deviceInfo = "Trezor device";
 
             // Step 1: Ask user to confirm pairing
             boolean confirmed = credentialStore.confirmPairing(deviceInfo);
@@ -379,8 +379,7 @@ class V2Protocol implements Protocol {
                 log.debug("Received ThpPairingRequestApproved");
             }
 
-            // Step 4: Select pairing method (Code Entry)
-            // TODO: Allow user to select method if multiple are available
+            // Step 4: Select pairing method (Code Entry only - other methods not yet supported by device)
             TrezorMessageThp.ThpSelectMethod selectMethod =
                     TrezorMessageThp.ThpSelectMethod.newBuilder()
                             .setSelectedPairingMethod(TrezorMessageThp.ThpPairingMethod.CodeEntry)

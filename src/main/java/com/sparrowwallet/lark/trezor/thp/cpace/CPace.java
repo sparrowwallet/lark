@@ -68,9 +68,11 @@ public class CPace {
         clampPrivateKey(hostPrivateKeyRaw);
 
         // Step 4: Compute host public key = hostPrivate * generator
+        // (x25519Multiply will clamp the coordinate internally)
         byte[] hostPublicKey = x25519Multiply(hostPrivateKeyRaw, generator);
 
         // Step 5: Compute shared secret = hostPrivate * trezorPublicKey
+        // (x25519Multiply will clamp the coordinate internally)
         byte[] sharedSecret = x25519Multiply(hostPrivateKeyRaw, trezorPublicKey);
 
         // Step 6: Compute tag = SHA256(sharedSecret)
@@ -213,13 +215,28 @@ public class CPace {
     }
 
     /**
+     * Clamp X25519 coordinate (public point) per RFC 7748 Section 5.
+     * Public coordinates must have bit 7 cleared to ensure they are in range [0, 2^255-19).
+     *
+     * @param coordinate 32-byte coordinate to clamp (modified in-place)
+     */
+    private static void clampCoordinate(byte[] coordinate) {
+        coordinate[31] &= (byte) 0x7F;  // Clear bit 7
+    }
+
+    /**
      * Perform X25519 scalar multiplication: scalar * point.
      *
-     * @param scalar 32-byte scalar (private key)
-     * @param point 32-byte curve point (public key)
+     * @param scalar 32-byte scalar (private key, assumed already clamped)
+     * @param point 32-byte curve point (public key, will be clamped internally)
      * @return 32-byte result point
      */
     private static byte[] x25519Multiply(byte[] scalar, byte[] point) throws GeneralSecurityException {
+        // Clamp the coordinate per RFC 7748 (clear bit 7)
+        // Create a copy to avoid modifying caller's data
+        byte[] clampedPoint = Arrays.copyOf(point, 32);
+        clampCoordinate(clampedPoint);
+
         // Create a temporary KeyPair from the scalar
         byte[] pkcs8 = new byte[48];
         // PKCS#8 header for X25519
@@ -232,14 +249,14 @@ public class CPace {
         KeyFactory keyFactory = KeyFactory.getInstance("X25519");
         PrivateKey privateKey = keyFactory.generatePrivate(new java.security.spec.PKCS8EncodedKeySpec(pkcs8));
 
-        // Create PublicKey from point
+        // Create PublicKey from clamped point
         byte[] x509 = new byte[44];
         // X.509 header for X25519
         byte[] pubHeader = {
             0x30, 0x2a, 0x30, 0x05, 0x06, 0x03, 0x2b, 0x65, 0x6e, 0x03, 0x21, 0x00
         };
         System.arraycopy(pubHeader, 0, x509, 0, 12);
-        System.arraycopy(point, 0, x509, 12, 32);
+        System.arraycopy(clampedPoint, 0, x509, 12, 32);
 
         PublicKey publicKey = keyFactory.generatePublic(new X509EncodedKeySpec(x509));
 

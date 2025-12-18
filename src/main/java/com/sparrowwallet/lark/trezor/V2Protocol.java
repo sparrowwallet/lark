@@ -394,7 +394,7 @@ class V2Protocol implements Protocol {
             requestAndStoreCredential();
 
             // Step 7: End pairing session
-            // This properly closes the pairing session so session 0 can be reused normally
+            // This properly closes the pairing session
             if(log.isDebugEnabled()) {
                 log.debug("Ending pairing session");
             }
@@ -403,18 +403,9 @@ class V2Protocol implements Protocol {
                             .build();
             call(endRequest, TrezorMessageThp.ThpEndResponse.class);
 
-            // Step 8: Create session 0 for normal operations
-            // After pairing + ThpEndRequest, we need to establish session 0
-            if(log.isDebugEnabled()) {
-                log.debug("Creating session 0 after pairing");
-            }
-            TrezorMessageThp.ThpCreateNewSession createSession =
-                    TrezorMessageThp.ThpCreateNewSession.newBuilder()
-                            .build();
-            call(createSession, TrezorMessageCommon.Success.class);
-
-            // Step 9: Update pairing state to reflect successful pairing
+            // Step 8: Update pairing state to reflect successful pairing
             // The device is now paired, even though initial handshake showed UNPAIRED
+            // Session creation will be handled by derivePassphraseSessionIfEnabled()
             this.pairingState = HandshakeMessages.PairingState.PAIRED;
 
             if(log.isDebugEnabled()) {

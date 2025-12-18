@@ -68,15 +68,15 @@ public class CPace {
             log.debug("  Trezor pubkey: {}", Utils.bytesToHex(trezorPublicKey));
         }
 
-        // Step 2: Generate ephemeral key pair
-        KeyPairGenerator keyGen = KeyPairGenerator.getInstance("X25519");
-        KeyPair hostEphemeral = keyGen.generateKeyPair();
+        // Step 2: Generate random private key (32 bytes) like Python does
+        // Python uses: a_privkey = secrets.token_bytes(FIELD_SIZE_BYTES)
+        byte[] hostPrivateKeyRaw = new byte[32];
+        new SecureRandom().nextBytes(hostPrivateKeyRaw);
 
-        // Step 3: Extract raw private key (32 bytes)
-        byte[] hostPrivateKeyRaw = extractRawPrivateKey(hostEphemeral.getPrivate());
-
-        // Note: Do NOT manually clamp the private key - Java's KeyAgreement
-        // clamps internally per RFC 7748. Double-clamping produces wrong results.
+        // Step 3: Clamp private key per RFC 7748
+        // Python's decode_scalar does this before every multiply operation
+        // We must do this explicitly since we're using raw bytes, not KeyPairGenerator
+        clampPrivateKey(hostPrivateKeyRaw);
 
         // Step 4: Compute host public key = hostPrivate * generator
         // (x25519Multiply will clamp the coordinate internally)
@@ -91,13 +91,29 @@ public class CPace {
 
         if(log.isDebugEnabled()) {
             log.debug("CPace outputs:");
-            log.debug("  Host private (raw): {}", Utils.bytesToHex(hostPrivateKeyRaw));
+            log.debug("  Host private (clamped): {}", Utils.bytesToHex(hostPrivateKeyRaw));
             log.debug("  Host pubkey: {}", Utils.bytesToHex(hostPublicKey));
             log.debug("  Shared secret: {}", Utils.bytesToHex(sharedSecret));
             log.debug("  Tag: {}", Utils.bytesToHex(tag));
         }
 
-        return new Result(hostPublicKey, tag, hostEphemeral.getPrivate());
+        // Convert raw private key back to PrivateKey object for return value
+        PrivateKey privateKeyObj;
+        try {
+            byte[] pkcs8 = new byte[48];
+            byte[] header = {
+                0x30, 0x2e, 0x02, 0x01, 0x00, 0x30, 0x05, 0x06, 0x03, 0x2b, 0x65, 0x6e, 0x04, 0x22, 0x04, 0x20
+            };
+            System.arraycopy(header, 0, pkcs8, 0, 16);
+            System.arraycopy(hostPrivateKeyRaw, 0, pkcs8, 16, 32);
+
+            KeyFactory keyFactory = KeyFactory.getInstance("X25519");
+            privateKeyObj = keyFactory.generatePrivate(new java.security.spec.PKCS8EncodedKeySpec(pkcs8));
+        } catch(Exception e) {
+            throw new GeneralSecurityException("Failed to create PrivateKey object", e);
+        }
+
+        return new Result(hostPublicKey, tag, privateKeyObj);
     }
 
     /**

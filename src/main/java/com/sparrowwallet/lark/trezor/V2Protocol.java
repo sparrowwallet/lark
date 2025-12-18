@@ -185,6 +185,18 @@ class V2Protocol implements Protocol {
                     TrezorMessageThp.ThpEndRequest.newBuilder()
                             .build();
             call(endRequest, TrezorMessageThp.ThpEndResponse.class);
+
+            // For PAIRED (not PAIRED_AUTOCONNECT), we need to create session 0 explicitly
+            // PAIRED_AUTOCONNECT has session 0 already active after ThpEndRequest
+            if(pairingState == HandshakeMessages.PairingState.PAIRED) {
+                if(log.isDebugEnabled()) {
+                    log.debug("Creating session 0 for PAIRED device");
+                }
+                TrezorMessageThp.ThpCreateNewSession createSession =
+                        TrezorMessageThp.ThpCreateNewSession.newBuilder()
+                                .build();
+                call(createSession, TrezorMessageCommon.Success.class);
+            }
         }
 
         if(log.isDebugEnabled()) {

@@ -1,6 +1,9 @@
 package com.sparrowwallet.lark.trezor.thp.cpace;
 
+import com.sparrowwallet.drongo.Utils;
 import com.sparrowwallet.drongo.protocol.Sha256Hash;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.crypto.KeyAgreement;
 import java.math.BigInteger;
@@ -18,6 +21,7 @@ import java.util.Arrays;
  * Reference: https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-cpace
  */
 public class CPace {
+    private static final Logger log = LoggerFactory.getLogger(CPace.class);
 
     // CPace DSI (Domain Separation Identifier) for CPace255
     private static final byte[] DSI = "CPace255".getBytes(StandardCharsets.US_ASCII);
@@ -56,6 +60,14 @@ public class CPace {
         // Step 1: Compute generator point from pairing code
         byte[] generator = computeGenerator(prs, handshakeHash);
 
+        if(log.isDebugEnabled()) {
+            log.debug("CPace inputs:");
+            log.debug("  Pairing code: {}", pairingCode);
+            log.debug("  Handshake hash: {}", Utils.bytesToHex(handshakeHash));
+            log.debug("  Generator: {}", Utils.bytesToHex(generator));
+            log.debug("  Trezor pubkey: {}", Utils.bytesToHex(trezorPublicKey));
+        }
+
         // Step 2: Generate ephemeral key pair
         KeyPairGenerator keyGen = KeyPairGenerator.getInstance("X25519");
         KeyPair hostEphemeral = keyGen.generateKeyPair();
@@ -77,6 +89,14 @@ public class CPace {
 
         // Step 6: Compute tag = SHA256(sharedSecret)
         byte[] tag = Sha256Hash.hash(sharedSecret);
+
+        if(log.isDebugEnabled()) {
+            log.debug("CPace outputs:");
+            log.debug("  Host private (clamped): {}", Utils.bytesToHex(hostPrivateKeyRaw));
+            log.debug("  Host pubkey: {}", Utils.bytesToHex(hostPublicKey));
+            log.debug("  Shared secret: {}", Utils.bytesToHex(sharedSecret));
+            log.debug("  Tag: {}", Utils.bytesToHex(tag));
+        }
 
         return new Result(hostPublicKey, tag, hostEphemeral.getPrivate());
     }

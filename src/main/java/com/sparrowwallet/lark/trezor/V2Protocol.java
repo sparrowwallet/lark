@@ -204,19 +204,30 @@ class V2Protocol implements Protocol {
      * This is called at the end of ensureInitialized() to set up the correct session.
      *
      * Session creation rules:
-     * - PAIRED_AUTOCONNECT: Session 0 already active after ThpEndRequest (no creation needed)
-     * - PAIRED: Session 0 must be created with ThpCreateNewSession
-     * - Passphrase enabled: Create session 1 with passphrase entry on device
+     * - PAIRED_AUTOCONNECT: Session 0 already active (no creation needed, passphrase in credential)
+     * - PAIRED: Must create session, with or without passphrase
+     * - After initial pairing: Must derive passphrase session if enabled
      */
     private void derivePassphraseSessionIfEnabled() throws DeviceException {
-        // Get device features to check passphrase setting
+        // For PAIRED_AUTOCONNECT, session 0 is already active with the right context
+        // (passphrase context is in the stored credential)
+        if(pairingState == HandshakeMessages.PairingState.PAIRED_AUTOCONNECT) {
+            currentSessionId = 0;
+            if(log.isDebugEnabled()) {
+                log.debug("Using session 0 for PAIRED_AUTOCONNECT");
+            }
+            return;
+        }
+
+        // For PAIRED or after initial pairing, check if passphrase is enabled
         TrezorMessageManagement.Features features = call(
             TrezorMessageManagement.GetFeatures.newBuilder().build(),
             TrezorMessageManagement.Features.class
         );
 
-        // Check if passphrase protection is enabled
-        if(features.hasPassphraseProtection() && features.getPassphraseProtection()) {
+        boolean passphraseEnabled = features.hasPassphraseProtection() && features.getPassphraseProtection();
+
+        if(passphraseEnabled) {
             if(log.isDebugEnabled()) {
                 log.debug("Passphrase protection enabled - deriving passphrase session");
             }
@@ -235,24 +246,16 @@ class V2Protocol implements Protocol {
                 log.debug("Passphrase session derived (session ID: {})", currentSessionId);
             }
         } else {
-            // No passphrase - use session 0
+            // No passphrase - create session 0
             currentSessionId = 0;
 
-            // For PAIRED (not PAIRED_AUTOCONNECT), session 0 must be created explicitly
-            // PAIRED_AUTOCONNECT already has session 0 active after ThpEndRequest
-            if(pairingState == HandshakeMessages.PairingState.PAIRED) {
-                if(log.isDebugEnabled()) {
-                    log.debug("Creating session 0 for PAIRED device (no passphrase)");
-                }
-                TrezorMessageThp.ThpCreateNewSession createSession =
-                    TrezorMessageThp.ThpCreateNewSession.newBuilder()
-                        .build();
-                call(createSession, TrezorMessageCommon.Success.class);
-            } else {
-                if(log.isDebugEnabled()) {
-                    log.debug("Using session 0 for PAIRED_AUTOCONNECT device (no passphrase)");
-                }
+            if(log.isDebugEnabled()) {
+                log.debug("Creating session 0 for PAIRED device (no passphrase)");
             }
+            TrezorMessageThp.ThpCreateNewSession createSession =
+                TrezorMessageThp.ThpCreateNewSession.newBuilder()
+                    .build();
+            call(createSession, TrezorMessageCommon.Success.class);
         }
     }
 

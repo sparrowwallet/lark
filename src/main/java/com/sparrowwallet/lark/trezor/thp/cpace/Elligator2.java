@@ -7,23 +7,24 @@ import java.util.Arrays;
  * Elligator2 mapping for Curve25519.
  *
  * Maps uniform random bytes to Curve25519 points for CPace protocol.
- * Based on draft-irtf-cfrg-hash-to-curve and Trezor firmware implementation.
+ * Implements RFC 9380 optimized map_to_curve_elligator2_curve25519.
  *
- * Reference: https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-hash-to-curve
+ * Reference: https://www.rfc-editor.org/rfc/rfc9380.html#ell2-opt
  */
 public class Elligator2 {
 
     // Curve25519 parameters
     private static final BigInteger P = BigInteger.valueOf(2).pow(255).subtract(BigInteger.valueOf(19));
-    private static final BigInteger A = BigInteger.valueOf(486662);
-    private static final BigInteger TWO = BigInteger.valueOf(2);
+    private static final BigInteger J = BigInteger.valueOf(486662);  // Montgomery curve constant
 
     // Precomputed constants
-    private static final BigInteger P_MINUS_2 = P.subtract(TWO);
-    private static final BigInteger A_MINUS_2_DIV_4 = A.subtract(TWO).divide(BigInteger.valueOf(4));
+    private static final BigInteger C3 = new BigInteger("19681161376707505956807079304988542015446066515923890162744021073123829784752");  // sqrt(-1)
+    private static final BigInteger C4 = new BigInteger("7237005577332262213973186563042994240829374041602535252466099000494570602493");  // (p - 5) // 8
+    private static final BigInteger P_MINUS_2 = P.subtract(BigInteger.TWO);
 
     /**
      * Maps a 32-byte uniform random input to a Curve25519 point.
+     * Implements map_to_curve_elligator2_curve25519 from RFC 9380.
      *
      * @param input 32-byte uniform random input (typically from SHA-512 hash)
      * @return 32-byte Curve25519 point in little-endian format
@@ -33,64 +34,82 @@ public class Elligator2 {
             throw new IllegalArgumentException("Input must be 32 bytes");
         }
 
-        // Convert input to field element (little-endian)
-        byte[] inputCopy = Arrays.copyOf(input, 32);
-        // Clear high bit and second-highest bit to ensure value is in field
-        inputCopy[31] &= 0x3f;
+        // Decode coordinate (clear bit 7, convert to BigInteger mod p)
+        BigInteger u = decodeCoordinate(input);
 
-        BigInteger r = new BigInteger(1, reverseBytes(inputCopy));
-        r = r.mod(P);
+        // map_to_curve_elligator2_curve25519 from RFC 9380
+        BigInteger tv1 = u.multiply(u).mod(P);
+        tv1 = BigInteger.TWO.multiply(tv1).mod(P);
+        BigInteger xd = tv1.add(BigInteger.ONE).mod(P);
+        BigInteger x1n = J.negate().mod(P);
+        BigInteger tv2 = xd.multiply(xd).mod(P);
+        BigInteger gxd = tv2.multiply(xd).mod(P);
+        BigInteger gx1 = J.multiply(tv1).mod(P);
+        gx1 = gx1.multiply(x1n).mod(P);
+        gx1 = gx1.add(tv2).mod(P);
+        gx1 = gx1.multiply(x1n).mod(P);
+        BigInteger tv3 = gxd.multiply(gxd).mod(P);
+        tv2 = tv3.multiply(tv3).mod(P);
+        tv3 = tv3.multiply(gxd).mod(P);
+        tv3 = tv3.multiply(gx1).mod(P);
+        tv2 = tv2.multiply(tv3).mod(P);
+        BigInteger y11 = tv2.modPow(C4, P);
+        y11 = y11.multiply(tv3).mod(P);
+        BigInteger y12 = y11.multiply(C3).mod(P);
+        tv2 = y11.multiply(y11).mod(P);
+        tv2 = tv2.multiply(gxd).mod(P);
+        boolean e1 = tv2.equals(gx1);
+        BigInteger y1 = conditionalMove(y12, y11, e1);
+        BigInteger x2n = x1n.multiply(tv1).mod(P);
+        tv2 = y1.multiply(y1).mod(P);
+        tv2 = tv2.multiply(gxd).mod(P);
+        boolean e3 = tv2.equals(gx1);
+        BigInteger xn = conditionalMove(x2n, x1n, e3);
+        BigInteger x = xn.multiply(xd.modPow(P_MINUS_2, P)).mod(P);
 
-        // Elligator2 mapping
-        BigInteger rSquared = r.multiply(r).mod(P);
+        return encodeCoordinate(x);
+    }
 
-        // u = -A / (1 + 2*r^2)
-        BigInteger denominator = BigInteger.ONE.add(TWO.multiply(rSquared)).mod(P);
-        BigInteger denominatorInv = denominator.modPow(P_MINUS_2, P); // Fermat's little theorem for inversion
-        BigInteger u = A.negate().multiply(denominatorInv).mod(P);
+    /**
+     * Decode coordinate from bytes (clear bit 7, little-endian).
+     */
+    private static BigInteger decodeCoordinate(byte[] coordinate) {
+        byte[] copy = Arrays.copyOf(coordinate, 32);
+        copy[31] &= 0x7F;  // Clear bit 7
+        return new BigInteger(1, reverseBytes(copy)).mod(P);
+    }
 
-        // v^2 = u^3 + A*u^2 + u
-        BigInteger uSquared = u.multiply(u).mod(P);
-        BigInteger uCubed = uSquared.multiply(u).mod(P);
-        BigInteger vSquared = uCubed.add(A.multiply(uSquared)).add(u).mod(P);
-
-        // Check if v^2 is a quadratic residue
-        BigInteger legendreSymbol = vSquared.modPow(P.subtract(BigInteger.ONE).divide(TWO), P);
-        boolean isQR = legendreSymbol.equals(BigInteger.ONE);
-
-        BigInteger x;
-        if (isQR) {
-            x = u;
-        } else {
-            // x = -A - u
-            x = A.negate().subtract(u).mod(P);
-        }
-
-        // Ensure x is positive
-        if (x.compareTo(BigInteger.ZERO) < 0) {
-            x = x.add(P);
-        }
-
-        // Convert to 32-byte little-endian array
+    /**
+     * Encode coordinate to bytes (little-endian).
+     */
+    private static byte[] encodeCoordinate(BigInteger coordinate) {
+        byte[] bigEndian = coordinate.toByteArray();
         byte[] result = new byte[32];
-        byte[] xBytes = x.toByteArray();
 
-        // Handle BigInteger's sign byte and convert to little-endian
+        // Handle sign byte from BigInteger
         int srcPos = 0;
-        int length = xBytes.length;
-
-        // Skip sign byte if present
-        if (xBytes.length > 32 || (xBytes.length == 32 && xBytes[0] == 0)) {
+        int length = bigEndian.length;
+        if (bigEndian.length > 32 || (bigEndian.length == 32 && bigEndian[0] == 0)) {
             srcPos = 1;
             length--;
         }
 
-        // Copy and reverse to little-endian
+        // Convert to little-endian
         for (int i = 0; i < length && i < 32; i++) {
-            result[i] = xBytes[srcPos + length - 1 - i];
+            result[i] = bigEndian[srcPos + length - 1 - i];
         }
 
         return result;
+    }
+
+    /**
+     * Constant-time conditional move.
+     * Returns second if condition is true, first otherwise.
+     */
+    private static BigInteger conditionalMove(BigInteger first, BigInteger second, boolean condition) {
+        // For non-constant-time Java implementation, just use condition
+        // (In real crypto, this should be constant-time)
+        return condition ? second : first;
     }
 
     /**

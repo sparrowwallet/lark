@@ -127,11 +127,21 @@ class ProtocolFactory {
 
             // Any other response means V1 is supported
             return true;
+        } catch(DeviceTimeoutException e) {
+            // Timeout during probe - could be:
+            // 1. V1 device busy (e.g., waiting for PIN)
+            // 2. V2-only device ignoring V1 messages
+            // We can't distinguish these cases reliably.
+            // Default to V1 for backward compatibility with older devices.
+            if(log.isDebugEnabled()) {
+                log.debug("Timeout during V1 protocol probe - assuming V1 device (may be busy waiting for PIN)", e);
+            }
+            return true;
         } catch(Exception e) {
             if(log.isDebugEnabled()) {
-                log.debug("Error during V1 protocol probe", e);
+                log.debug("Error during V1 protocol probe - assuming V2-only device", e);
             }
-            // On error, assume V1 not supported
+            // On other errors (e.g., invalid response), assume V2-only
             return false;
         }
     }

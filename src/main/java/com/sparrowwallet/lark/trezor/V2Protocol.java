@@ -471,6 +471,10 @@ class V2Protocol implements Protocol {
             log.debug("User entered pairing code: {}", pairingCode);
         }
 
+        if(pairingCode == null) {
+            throw new UserRefusedException("User declined pairing code entry");
+        }
+
         // Step 5: Perform CPace calculation
         CPace.Result cpaceResult;
         try {

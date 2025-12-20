@@ -262,15 +262,14 @@ public class CPace {
     /**
      * Perform X25519 scalar multiplication: scalar * point.
      *
-     * @param scalar 32-byte scalar (private key, assumed already clamped)
-     * @param point 32-byte curve point (public key, will be clamped internally)
+     * @param scalar 32-byte scalar (private key, must be pre-clamped)
+     * @param point 32-byte curve point (public key, raw bytes)
      * @return 32-byte result point
      */
     private static byte[] x25519Multiply(byte[] scalar, byte[] point) throws GeneralSecurityException {
-        // Clamp the coordinate per RFC 7748 (clear bit 7)
-        // Create a copy to avoid modifying caller's data
-        byte[] clampedPoint = Arrays.copyOf(point, 32);
-        clampCoordinate(clampedPoint);
+        // Note: Do NOT clamp coordinates - Java's KeyFactory/KeyAgreement handles
+        // RFC 7748 coordinate validation internally. Pre-clamping is unnecessary
+        // and may cause issues.
 
         // Create a temporary KeyPair from the scalar
         byte[] pkcs8 = new byte[48];
@@ -284,14 +283,14 @@ public class CPace {
         KeyFactory keyFactory = KeyFactory.getInstance("X25519");
         PrivateKey privateKey = keyFactory.generatePrivate(new java.security.spec.PKCS8EncodedKeySpec(pkcs8));
 
-        // Create PublicKey from clamped point
+        // Create PublicKey from raw point (Java handles coordinate validation)
         byte[] x509 = new byte[44];
         // X.509 header for X25519
         byte[] pubHeader = {
             0x30, 0x2a, 0x30, 0x05, 0x06, 0x03, 0x2b, 0x65, 0x6e, 0x03, 0x21, 0x00
         };
         System.arraycopy(pubHeader, 0, x509, 0, 12);
-        System.arraycopy(clampedPoint, 0, x509, 12, 32);
+        System.arraycopy(point, 0, x509, 12, 32);
 
         PublicKey publicKey = keyFactory.generatePublic(new X509EncodedKeySpec(x509));
 

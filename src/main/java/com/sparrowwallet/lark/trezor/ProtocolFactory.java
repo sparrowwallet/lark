@@ -134,7 +134,7 @@ class ProtocolFactory {
             // We can't distinguish these cases reliably.
             // Default to V1 for backward compatibility with older devices.
             if(log.isDebugEnabled()) {
-                log.debug("Timeout during V1 protocol probe - assuming V1 device (may be busy waiting for PIN)", e);
+                log.debug("Timeout during V1 protocol probe - assuming V1 device (may be busy waiting for PIN)");
             }
             return true;
         } catch(Exception e) {
@@ -219,6 +219,8 @@ class ProtocolFactory {
             }
 
             return new MessageResponse(msgType, dataStream.toByteArray());
+        } catch(DeviceTimeoutException e) {
+            throw e;
         } catch(Exception e) {
             throw new DeviceException("Error reading V1 message during probe", e);
         }

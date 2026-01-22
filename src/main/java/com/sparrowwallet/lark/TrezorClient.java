@@ -516,10 +516,22 @@ public class TrezorClient extends HardwareClient {
             }
         }
 
+        TrezorMessageBitcoin.MultisigPubkeysOrder pubkeysOrder = TrezorMessageBitcoin.MultisigPubkeysOrder.LEXICOGRAPHIC;
+        if(keys.length > 1) {
+            Utils.LexicographicByteArrayComparator comparator = new Utils.LexicographicByteArrayComparator();
+            for(int i = 1; i < keys.length; i++) {
+                if(comparator.compare(keys[i-1].getPubKey(), keys[i].getPubKey()) > 0) {
+                    pubkeysOrder = TrezorMessageBitcoin.MultisigPubkeysOrder.PRESERVED;
+                    break;
+                }
+            }
+        }
+
         return Optional.of(TrezorMessageBitcoin.MultisigRedeemScriptType.newBuilder()
                 .setM(ScriptType.MULTISIG.getThreshold(script))
                 .addAllSignatures(IntStream.range(0, keys.length).mapToObj(i -> ByteString.empty()).toList())
-                .addAllPubkeys(pubkeys.stream().map(TrezorMessageBitcoin.MultisigRedeemScriptType.HDNodePathType.Builder::build).toList()).build());
+                .addAllPubkeys(pubkeys.stream().map(TrezorMessageBitcoin.MultisigRedeemScriptType.HDNodePathType.Builder::build).toList())
+                .setPubkeysOrder(pubkeysOrder).build());
     }
 
     @Override
@@ -584,7 +596,8 @@ public class TrezorClient extends HardwareClient {
             TrezorMessageBitcoin.MultisigRedeemScriptType multisig = TrezorMessageBitcoin.MultisigRedeemScriptType.newBuilder()
                     .setM(outputDescriptor.getMultisigThreshold())
                     .addAllSignatures(IntStream.range(0, pubkeys.size()).mapToObj(i -> ByteString.empty()).toList())
-                    .addAllPubkeys(pubkeys).build();
+                    .addAllPubkeys(pubkeys)
+                    .setPubkeysOrder(TrezorMessageBitcoin.MultisigPubkeysOrder.LEXICOGRAPHIC).build();
 
             TrezorMessageBitcoin.InputScriptType inputScriptType = switch(outputDescriptor.getScriptType()) {
                 case P2SH_P2WSH -> TrezorMessageBitcoin.InputScriptType.SPENDP2SHWITNESS;

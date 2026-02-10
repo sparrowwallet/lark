@@ -78,8 +78,15 @@ public class TrezorDevice implements Closeable, ProtocolCallbacks {
     }
 
     public void initDevice() throws DeviceException {
-        TrezorMessageManagement.Initialize initialize = TrezorMessageManagement.Initialize.newBuilder().build();
-        Message response = protocol.callRaw(initialize);
+        initDevice(null);
+    }
+
+    public void initDevice(byte[] previousSessionId) throws DeviceException {
+        TrezorMessageManagement.Initialize.Builder builder = TrezorMessageManagement.Initialize.newBuilder();
+        if(previousSessionId != null && previousSessionId.length > 0) {
+            builder.setSessionId(ByteString.copyFrom(previousSessionId));
+        }
+        Message response = protocol.callRaw(builder.build());
         if(response instanceof TrezorMessageManagement.Features msgFeatures) {
             this.sessionId = msgFeatures.getSessionId().toByteArray();
             refreshFeatures(msgFeatures);
@@ -404,6 +411,10 @@ public class TrezorDevice implements Closeable, ProtocolCallbacks {
         }
 
         return features.getCapabilitiesList().contains(TrezorMessageManagement.Features.Capability.Capability_PassphraseEntry);
+    }
+
+    public byte[] getSessionId() {
+        return sessionId;
     }
 
     @Override

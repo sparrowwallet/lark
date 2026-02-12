@@ -96,7 +96,7 @@ public class TrezorClient extends HardwareClient {
         this.model = trezorDevice.getModel().getWalletModel();
         this.label = trezorDevice.getFeatures().getLabel();
         this.needsPinSent = trezorDevice.getFeatures().getPinProtection() && !trezorDevice.getFeatures().getUnlocked();
-        if(trezorDevice.getModel().equals(TrezorModel.T1B1) || trezorDevice.getModel().equals(TrezorModel.ONEKEY_CLASSIC_1S)) {
+        if(trezorDevice.getModel().equals(TrezorModel.T1B1) || trezorDevice.getModel().equals(TrezorModel.KEEPKEY) || trezorDevice.getModel().equals(TrezorModel.ONEKEY_CLASSIC_1S)) {
             this.needsPassphraseSent = trezorDevice.getFeatures().getPassphraseProtection();
         } else {
             this.needsPassphraseSent = false;

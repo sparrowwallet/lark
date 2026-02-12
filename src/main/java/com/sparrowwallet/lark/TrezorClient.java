@@ -56,7 +56,6 @@ public class TrezorClient extends HardwareClient {
     private final ByteBuffer portNumbers = ByteBuffer.allocateDirect(7);
     private String passphrase = "";
     private TrezorNoiseConfig noiseConfig;
-    private byte[] sessionId;
 
     private WalletModel model;
     private TrezorModel trezorModel;
@@ -84,12 +83,12 @@ public class TrezorClient extends HardwareClient {
     private void prepareDevice(TrezorDevice trezorDevice) throws DeviceException {
         trezorDevice.refreshFeatures();
         if(trezorDevice.getModel() == TrezorModel.T1B1 || trezorDevice.getModel() == TrezorModel.KEEPKEY || trezorDevice.getModel() == TrezorModel.ONEKEY_CLASSIC_1S) {
-            trezorDevice.initDevice(this.sessionId);
+            trezorDevice.initDevice();
         } else {
             try {
                 trezorDevice.ensureUnlocked();
             } catch(DeviceException e) {
-                trezorDevice.initDevice(this.sessionId);
+                trezorDevice.initDevice();
             }
         }
 
@@ -111,10 +110,7 @@ public class TrezorClient extends HardwareClient {
         }
         if(trezorDevice.getFeatures().getInitialized()) {
             initializeMasterFingerprint(trezorDevice);
-            this.sessionId = trezorDevice.getSessionId();
-            if(passphrase != null && !passphrase.isEmpty()) {
-                this.needsPassphraseSent = false; //Passphrase was provided by the user, so it's already sent
-            }
+            this.needsPassphraseSent = false; //Passphrase is always needed for the above to have worked, so it's already sent
         } else {
             throw new DeviceNotReadyException(getHardwareType().getDisplayName() + " is not initialized.");
         }

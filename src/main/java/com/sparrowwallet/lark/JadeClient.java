@@ -117,6 +117,9 @@ public class JadeClient extends HardwareClient {
 
     private void initialize(JadeDevice jadeDevice) throws DeviceException {
         JadeVersion jadeVersion = jadeDevice.getVersionInfo();
+        if(jadeVersion == null || jadeVersion.JADE_VERSION() == null) {
+            throw new DeviceException("Not a Jade: no version info returned");
+        }
         if(jadeVersion.JADE_VERSION().compareTo(MIN_SUPPORTED_VERSION) < 0) {
             throw new DeviceException("Jade fw version: " + jadeVersion.JADE_VERSION() + " < minimum required version: " + MIN_SUPPORTED_VERSION);
         }

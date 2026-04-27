@@ -8,6 +8,7 @@ import com.sparrowwallet.drongo.protocol.Script;
 import com.sparrowwallet.drongo.protocol.ScriptType;
 import com.sparrowwallet.drongo.psbt.PSBT;
 import com.sparrowwallet.drongo.psbt.PSBTInput;
+import com.sparrowwallet.drongo.silentpayments.SilentPaymentScanAddress;
 import com.sparrowwallet.drongo.wallet.WalletModel;
 
 import java.math.BigInteger;
@@ -26,6 +27,10 @@ public abstract class HardwareClient {
     abstract String signMessage(String message, String path) throws DeviceException;
     abstract String displaySinglesigAddress(String path, ScriptType scriptType) throws DeviceException;
     abstract String displayMultisigAddress(OutputDescriptor outputDescriptor) throws DeviceException;
+
+    SilentPaymentScanAddress getSpscanAtPath(String path) throws DeviceException {
+        throw new DeviceException(getModel().toDisplayString() + " does not support receiving silent payments");
+    }
 
     public String getType() {
         return getHardwareType().getName();

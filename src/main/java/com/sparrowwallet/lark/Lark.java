@@ -5,6 +5,7 @@ import com.sparrowwallet.drongo.*;
 import com.sparrowwallet.drongo.crypto.ChildNumber;
 import com.sparrowwallet.drongo.protocol.ScriptType;
 import com.sparrowwallet.drongo.psbt.PSBT;
+import com.sparrowwallet.drongo.silentpayments.SilentPaymentScanAddress;
 import com.sparrowwallet.drongo.wallet.WalletModel;
 import com.sparrowwallet.lark.bitbox02.BitBoxNoiseConfig;
 import com.sparrowwallet.lark.trezor.TrezorNoiseConfig;
@@ -267,6 +268,49 @@ public class Lark {
         GetXpubOperation getXpubOperation = new GetXpubOperation(fingerprint, path);
         enumerate(getXpubOperation);
         return getXpubOperation.getXpub();
+    }
+
+    /**
+     * Retrieves the silent payments spscan key at the given path.
+     *
+     * @param deviceType the device type
+     * @param path       the derivation path
+     * @return the silent payments spscan key at the given derivation path
+     * @throws DeviceException if an error occurs
+     */
+    public SilentPaymentScanAddress getSpscanAtPath(String deviceType, String path) throws DeviceException {
+        GetSpscanOperation getSpscanOperation = new GetSpscanOperation(deviceType, path);
+        enumerate(getSpscanOperation);
+        return getSpscanOperation.getSpscan();
+    }
+
+    /**
+     * Retrieves the silent payments spscan key at the given path.
+     *
+     * @param deviceType the device type
+     * @param devicePath the device path
+     * @param path       the derivation path
+     * @return the silent payments spscan key at the given derivation path
+     * @throws DeviceException if an error occurs
+     */
+    public SilentPaymentScanAddress getSpscanAtPath(String deviceType, String devicePath, String path) throws DeviceException {
+        GetSpscanOperation getSpscanOperation = new GetSpscanOperation(deviceType, devicePath, path);
+        enumerate(getSpscanOperation);
+        return getSpscanOperation.getSpscan();
+    }
+
+    /**
+     * Retrieves the silent payments spscan key at the given path.
+     *
+     * @param fingerprint the device master fingerprint
+     * @param path        the derivation path
+     * @return the silent payments spscan key at the given derivation path
+     * @throws DeviceException if an error occurs
+     */
+    public SilentPaymentScanAddress getSpscanAtPath(byte[] fingerprint, String path) throws DeviceException {
+        GetSpscanOperation getSpscanOperation = new GetSpscanOperation(fingerprint, path);
+        enumerate(getSpscanOperation);
+        return getSpscanOperation.getSpscan();
     }
 
     /**

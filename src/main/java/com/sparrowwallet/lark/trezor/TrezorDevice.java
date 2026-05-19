@@ -270,6 +270,9 @@ public class TrezorDevice implements Closeable, ProtocolCallbacks {
     private Message sendResponsePrev(Map<Sha256Hash, PrevTx> prevTxs, TrezorMessageBitcoin.TxRequest.RequestType requestType,
                                      TrezorMessageBitcoin.TxRequest.TxRequestDetailsType details) throws DeviceException {
         PrevTx prevTx = prevTxs.get(Sha256Hash.wrap(details.getTxHash().toByteArray()));
+        if(prevTx == null) {
+            throw new DeviceException("This device requires the full previous transaction for every input, which is omitted from some PSBTs, such as those transferred via QR");
+        }
         if(requestType == TrezorMessageBitcoin.TxRequest.RequestType.TXINPUT) {
             TrezorMessageBitcoin.PrevInput prevInput = prevTx.prevInputs().get(details.getRequestIndex());
             TrezorMessageBitcoin.TxAckPrevInput txAckPrevInput = TrezorMessageBitcoin.TxAckPrevInput.newBuilder()

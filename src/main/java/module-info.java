@@ -12,4 +12,5 @@ open module com.sparrowwallet.lark {
     exports com.sparrowwallet.lark;
     exports com.sparrowwallet.lark.bitbox02;
     exports com.sparrowwallet.lark.trezor;
+    exports com.sparrowwallet.lark.yubikey;
 }

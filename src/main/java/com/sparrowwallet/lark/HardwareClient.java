@@ -29,7 +29,7 @@ public abstract class HardwareClient {
     abstract String displayMultisigAddress(OutputDescriptor outputDescriptor) throws DeviceException;
 
     SilentPaymentScanAddress getSpscanAtPath(String path) throws DeviceException {
-        throw new DeviceException(getModel().toDisplayString() + " does not support receiving silent payments");
+        throw new DeviceException("The " + getHardwareType().getDisplayName() + " does not support receiving silent payments");
     }
 
     public String getType() {

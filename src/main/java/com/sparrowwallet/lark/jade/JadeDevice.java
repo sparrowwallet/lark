@@ -466,10 +466,14 @@ public class JadeDevice implements Closeable {
     private class HttpRequest implements RpcCallback {
         @Override
         public Map<String, Object> call(Map<?, ?> params) {
-            boolean torProxy = httpClientService.getHttpProxySupplier().getHttpProxy(HttpUsage.DEFAULT).isPresent();
+            List<String> urls = getUrls(params.get("urls"));
+            if(urls.isEmpty()) {
+                log.error("No urls provided in http request");
+                return null;
+            }
 
-            List<String> urls = (List<String>)params.get("urls");
-            String url = urls.stream().filter(u -> u.contains(".onion") == torProxy).findFirst().orElse(urls.get(0));
+            boolean torProxy = httpClientService.getHttpProxySupplier().getHttpProxy(HttpUsage.DEFAULT).isPresent();
+            String url = urls.stream().filter(u -> u.contains(".onion") == torProxy).findFirst().orElse(urls.getFirst());
 
             try {
                 IHttpClient httpClient = httpClientService.getHttpClient(HttpUsage.DEFAULT);
@@ -479,6 +483,14 @@ public class JadeDevice implements Closeable {
             }
 
             return null;
+        }
+
+        private List<String> getUrls(Object urls) {
+            if(urls instanceof List<?> urlList) {
+                return urlList.stream().filter(String.class::isInstance).map(String.class::cast).toList();
+            }
+
+            return Collections.emptyList();
         }
     }
 }

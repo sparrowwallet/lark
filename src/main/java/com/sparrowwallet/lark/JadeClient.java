@@ -22,6 +22,7 @@ public class JadeClient extends HardwareClient {
             new DeviceId(0x303a, 0x4001), new DeviceId(0x303a, 0x1001));
     private static final Version MIN_SUPPORTED_VERSION = new Version("0.1.47");
     private static final int MAX_WALLET_NAME_LENGTH = 15;
+    private static final int MAX_AUTH_ATTEMPTS = 3;
 
     private final SerialPort serialPort;
     private final HttpClientService httpClientService;
@@ -127,8 +128,12 @@ public class JadeClient extends HardwareClient {
         jadeDevice.addEntropy();
 
         boolean authenticated = false;
-        while(!authenticated) {
+        for(int i = 0; i < MAX_AUTH_ATTEMPTS && !authenticated; i++) {
             authenticated = jadeDevice.authUser(Network.getCanonical());
+        }
+
+        if(!authenticated) {
+            throw new DeviceException("Could not authenticate Jade device");
         }
     }
 

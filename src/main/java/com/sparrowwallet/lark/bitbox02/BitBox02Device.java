@@ -37,6 +37,10 @@ public class BitBox02Device implements Closeable {
 
     private static final Version MIN_UNSUPPORTED_BITBOX02_FIRMWARE_VERSION = new Version("10.0.0");
 
+    private static final Version MIN_ATTESTATION_BITBOX02_FIRMWARE_VERSION = new Version("2.0.0");
+
+    private static final int ATTESTATION_RESPONSE_LENGTH = 256;
+
     private final Version version;
 
     private final BitBoxProtocol bitBoxProtocol;
@@ -66,9 +70,12 @@ public class BitBox02Device implements Closeable {
             }
 
             try {
-                if(version.compareTo(new Version("2.0.0")) >= 0) {
+                if(version.compareTo(MIN_ATTESTATION_BITBOX02_FIRMWARE_VERSION) >= 0) {
                     bitBoxNoiseConfig.attestationCheck(performAttestation());
                     bitBoxProtocol.unlockQuery();
+                } else {
+                    //The version is taken from the device supplied serial number, and no supported device reports a version this old, so treat it as a failed attestation rather than skipping the check
+                    bitBoxNoiseConfig.attestationCheck(false);
                 }
 
                 bitBoxProtocol.noiseConnect(bitBoxNoiseConfig);
@@ -95,7 +102,7 @@ public class BitBox02Device implements Closeable {
         secureRandom.nextBytes(challenge);
 
         BitBoxProtocol.Response response = bitBoxProtocol.query(BitBoxProtocol.OP_ATTESTATION, challenge);
-        if(!Arrays.equals(response.status, BitBoxProtocol.RESPONSE_SUCCESS)) {
+        if(!Arrays.equals(response.status, BitBoxProtocol.RESPONSE_SUCCESS) || response.data.length < ATTESTATION_RESPONSE_LENGTH) {
             return false;
         }
 

@@ -132,6 +132,7 @@ public class AttestationKeys {
         List<AttestationPubkeyInfo> attestationPubkeys = new ArrayList<>();
 
         for(String key : PUBKEYS) {
+            //No accepted bootloader hashes are published for any of these roots, so the bootloader hash is not pinned
             attestationPubkeys.add(new AttestationPubkeyInfo(Utils.hexToBytes(key), null));
         }
 

@@ -29,6 +29,7 @@ class V1Protocol implements Protocol {
 
     private static final int REPLEN = 64;
     private static final int TIMEOUT = 2000; // ms
+    private static final int MAX_MESSAGE_SIZE = 65536; // matches the 16 bit length field of the v2 (THP) packet header
     private static final int MAX_PASSPHRASE_LENGTH = 50;
     private static final int MAX_PIN_LENGTH = 50;
 
@@ -305,6 +306,15 @@ class V1Protocol implements Protocol {
                     + (((int) readBytes[6] & 0xFF) << 16)
                     + (((int) readBytes[7] & 0xFF) << 8)
                     + ((int) readBytes[8] & 0xFF);
+
+            // Check for an invalid message size before allocating a buffer for it
+            if(msgSize < 0 || msgSize > MAX_MESSAGE_SIZE) {
+                if(invalidChunksCounter++ > 5) {
+                    throw new InvalidProtocolBufferException("Header message size of " + msgSize + " bytes invalid after multiple chunks");
+                }
+                // Restart the loop
+                continue;
+            }
 
             // Allocate the message payload buffer
             messageBuffer = ByteBuffer.allocate(msgSize + 1024);

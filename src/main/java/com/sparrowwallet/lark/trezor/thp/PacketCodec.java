@@ -120,6 +120,9 @@ public class PacketCodec {
 
         int channelId = ((firstPacket[1] & 0xFF) << 8) | (firstPacket[2] & 0xFF);
         int length = ((firstPacket[3] & 0xFF) << 8) | (firstPacket[4] & 0xFF);
+        if(length < CRC_SIZE) {
+            throw new DeviceException("Invalid message length: " + length);
+        }
 
         // Length field already includes CRC (transport payload size)
         int transportPayloadSize = length;

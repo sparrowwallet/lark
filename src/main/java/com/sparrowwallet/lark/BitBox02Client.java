@@ -76,7 +76,7 @@ public class BitBox02Client extends HardwareClient {
      *
      * The BitBox02 has strict keypath validation.
      *
-     * The only accepted keypaths for xpubs are (as of firmware v9.4.0):
+     * The only accepted keypaths for xpubs are (as of firmware v9.19.0):
      *
      * - `m/49'/0'/<account'>` for `p2wpkh-p2sh` (segwit wrapped in P2SH)
      * - `m/84'/0'/<account'>` for `p2wpkh` (native segwit v0)
@@ -84,6 +84,7 @@ public class BitBox02Client extends HardwareClient {
      * - `m/48'/0'/<account'>/2'` for p2wsh multisig (native segwit v0 multisig).
      * - `m/48'/0'/<account'>/1'` for p2wsh-p2sh multisig (p2sh-wrapped segwit v0 multisig).
      * - `m/48'/0'/<account'>` for p2wsh and p2wsh-p2sh multisig.
+     * - `m/45'/0'/<account'>` for p2sh multisig.
      *
      * `account'` can be between `0'` and `99'`.
      *
@@ -92,7 +93,7 @@ public class BitBox02Client extends HardwareClient {
      *
      * In testnet mode, the second element must be `1'` (e.g. `m/49'/1'/...`).
      *
-     * Public keys for the Legacy address type (i.e. P2PKH and P2SH multisig) derivation path are unsupported.
+     * Public keys for the Legacy address type (i.e. P2PKH) derivation path are unsupported.
      *
      * @param path the derivation path
      * @return the xpub at the derivation path
@@ -122,6 +123,10 @@ public class BitBox02Client extends HardwareClient {
         }
 
         if(path.matches("m/48'/[01]'/\\d{1,2}'")) {
+            return true;
+        }
+
+        if(path.matches("m/45'/[01]'/\\d{1,2}'")) {
             return true;
         }
 

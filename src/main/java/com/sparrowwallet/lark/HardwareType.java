@@ -37,6 +37,12 @@ public enum HardwareType {
             return new KeepkeyClient(device, deviceDescriptor);
         }
     },
+    BANSHEE("banshee", Interface.SERIAL) {
+        @Override
+        public HardwareClient createClient(SerialPort serialPort, HttpClientService httpClientService) throws DeviceException {
+            return new BansheeClient(serialPort);
+        }
+    },
     LEDGER("ledger", Interface.HID) {
         @Override
         public HardwareClient createClient(HidDevice hidDevice) throws DeviceException {

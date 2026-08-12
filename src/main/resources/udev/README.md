@@ -8,7 +8,8 @@ These are necessary for the devices to be reachable on linux environments.
  - `51-trezor.rules` (Trezor): https://github.com/trezor/trezor-common/blob/master/udev/51-trezor.rules
  - `51-usb-keepkey.rules` (Keepkey): https://github.com/keepkey/udev-rules/blob/master/51-usb-keepkey.rules
  - `53-hid-bitbox02.rules`, `54-hid-bitbox02.rules` (Bitbox02): https://github.com/BitBoxSwiss/bitbox-wallet-app/blob/master/frontends/qt/resources/deb-afterinstall.sh
- - `55-usb-jade.rules` (Jade) https://github.com/Blockstream/Jade/blob/master/flashing/98-jade-flasher.rules
+ - `55-usb-jade.rules`
+ - `56-usb-banshee.rules` (Banshee): https://github.com/CuseTheJuice/my-banshee-hardware-app (Jade) https://github.com/Blockstream/Jade/blob/master/flashing/98-jade-flasher.rules
 
 # Usage
 

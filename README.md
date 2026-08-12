@@ -9,6 +9,7 @@ The following hardware wallets (for all models, unless specified) are supported:
 - Ledger
 - BitBox02
 - Jade
+- Banshee
 - Keepkey
 - OneKey (Classic 1S and Pro)
 

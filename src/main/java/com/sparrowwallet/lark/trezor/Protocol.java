@@ -3,6 +3,8 @@ package com.sparrowwallet.lark.trezor;
 import com.google.protobuf.Message;
 import com.sparrowwallet.lark.DeviceException;
 
+import java.util.Set;
+
 /**
  * Protocol abstraction for Trezor communication.
  *
@@ -14,6 +16,10 @@ import com.sparrowwallet.lark.DeviceException;
  * - V2Protocol (THP): Encrypted transport (control byte + CID + CRC + Noise)
  */
 interface Protocol {
+    /**
+     * Message types whose serialized payload contains secret material, and must not be written to the log.
+     */
+    Set<String> SECRET_MESSAGE_TYPES = Set.of("PassphraseAck", "PinMatrixAck", "ChangePin", "EntropyAck", "WordAck", "LoadDevice", "RecoveryDevice", "ThpCodeEntrySecret");
 
     /**
      * Send a message and receive a response with automatic callback handling.

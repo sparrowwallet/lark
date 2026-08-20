@@ -211,7 +211,7 @@ class V1Protocol implements Protocol {
         int messageType = TrezorMessage.MessageType.valueOf("MessageType_" + msgName).getNumber();
         byte[] messageBytes = message.toByteArray();
         if(log.isDebugEnabled()) {
-            log.debug("Type " + messageType + " (" + messageBytes.length + " bytes):" + Utils.bytesToHex(messageBytes));
+            log.debug("Type " + messageType + " (" + messageBytes.length + " bytes):" + (SECRET_MESSAGE_TYPES.contains(msgName) ? "<redacted>" : Utils.bytesToHex(messageBytes)));
         }
         messageWrite(messageType, messageBytes);
     }
@@ -353,9 +353,8 @@ class V1Protocol implements Protocol {
             if(log.isDebugEnabled()) {
                 String msgName = message.getClass().getSimpleName();
                 log.debug("< " + msgName);
-            }
-            if(log.isDebugEnabled()) {
-                log.debug("Type " + messageType.getNumber() + " (" + msgData.length + " bytes):" + Utils.bytesToHex(msgData));
+                log.debug("Type " + messageType.getNumber() + " (" + msgData.length + " bytes):" +
+                        (SECRET_MESSAGE_TYPES.contains(msgName) ? "<redacted>" : Utils.bytesToHex(msgData)));
             }
             return message;
         } catch(Exception ex) {

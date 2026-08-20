@@ -467,9 +467,6 @@ class V2Protocol implements Protocol {
 
         // Step 4: Prompt user for pairing code
         String pairingCode = credentialStore.promptForPairingCode();
-        if(log.isDebugEnabled()) {
-            log.debug("User entered pairing code: {}", pairingCode);
-        }
 
         if(pairingCode == null) {
             throw new UserRefusedException("User declined pairing code entry");
@@ -505,7 +502,7 @@ class V2Protocol implements Protocol {
 
         byte[] secretBytes = secret.getSecret().toByteArray();
         if(log.isDebugEnabled()) {
-            log.debug("Received CodeEntrySecret: {}", Utils.bytesToHex(secretBytes));
+            log.debug("Received CodeEntrySecret ({} bytes)", secretBytes.length);
         }
 
         // Step 7: Verify commitment using Sha256Hash
@@ -521,8 +518,7 @@ class V2Protocol implements Protocol {
         // Step 8: Verify pairing code matches derived value
         String derivedCode = CPace.deriveCode(secretBytes, handshakeHash, challenge);
         if(!derivedCode.equals(pairingCode)) {
-            throw new DeviceException("Pairing code mismatch - expected " + derivedCode +
-                                    " but user entered " + pairingCode);
+            throw new DeviceException("Pairing code mismatch - the code entered does not match the code shown on the device");
         }
 
         if(log.isDebugEnabled()) {
@@ -868,7 +864,7 @@ class V2Protocol implements Protocol {
 
         if(log.isDebugEnabled()) {
             log.debug("> {} (type={}, {} bytes): {}", msgName, messageType, protobufBytes.length,
-                    Utils.bytesToHex(protobufBytes));
+                    SECRET_MESSAGE_TYPES.contains(msgName) ? "<redacted>" : Utils.bytesToHex(protobufBytes));
         }
 
         encryptedTransport.sendMessage(applicationData);
@@ -881,10 +877,6 @@ class V2Protocol implements Protocol {
 
         try {
             byte[] messageBytes = encryptedTransport.receiveMessage();
-
-            if(log.isDebugEnabled()) {
-                log.debug("< Message ({} bytes): {}", messageBytes.length, Utils.bytesToHex(messageBytes));
-            }
 
             // Parse THP message: session_id (1 byte) + type (2 bytes BE) + protobuf payload
             if(messageBytes.length < 3) {
@@ -910,10 +902,6 @@ class V2Protocol implements Protocol {
                 messageTypeName = thpMessageType.name();
             }
 
-            if(log.isDebugEnabled()) {
-                log.debug("< Session {} message type {} ({})", sessionId, msgId, messageTypeName);
-            }
-
             // Extract payload (skip 3-byte header)
             byte[] payload = new byte[messageBytes.length - 3];
             System.arraycopy(messageBytes, 3, payload, 0, payload.length);
@@ -925,6 +913,8 @@ class V2Protocol implements Protocol {
             if(log.isDebugEnabled()) {
                 String msgName = message.getClass().getSimpleName();
                 log.debug("< {}", msgName);
+                log.debug("< Session {} message type {} ({}, {} bytes): {}", sessionId, msgId, messageTypeName, messageBytes.length,
+                        SECRET_MESSAGE_TYPES.contains(msgName) ? "<redacted>" : Utils.bytesToHex(messageBytes));
             }
 
             return message;

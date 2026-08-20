@@ -62,9 +62,7 @@ public class CPace {
 
         if(log.isDebugEnabled()) {
             log.debug("CPace inputs:");
-            log.debug("  Pairing code: {}", pairingCode);
             log.debug("  Handshake hash: {}", Utils.bytesToHex(handshakeHash));
-            log.debug("  Generator: {}", Utils.bytesToHex(generator));
             log.debug("  Trezor pubkey: {}", Utils.bytesToHex(trezorPublicKey));
         }
 
@@ -91,9 +89,7 @@ public class CPace {
 
         if(log.isDebugEnabled()) {
             log.debug("CPace outputs:");
-            log.debug("  Host private (clamped): {}", Utils.bytesToHex(hostPrivateKeyRaw));
             log.debug("  Host pubkey: {}", Utils.bytesToHex(hostPublicKey));
-            log.debug("  Shared secret: {}", Utils.bytesToHex(sharedSecret));
             log.debug("  Tag: {}", Utils.bytesToHex(tag));
         }
 

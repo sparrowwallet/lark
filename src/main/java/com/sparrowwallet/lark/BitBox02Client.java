@@ -3,6 +3,7 @@ package com.sparrowwallet.lark;
 import com.google.protobuf.ByteString;
 import com.sparrowwallet.drongo.*;
 import com.sparrowwallet.drongo.crypto.ChildNumber;
+import com.sparrowwallet.drongo.crypto.ECDSASignature;
 import com.sparrowwallet.drongo.crypto.ECKey;
 import com.sparrowwallet.drongo.protocol.*;
 import com.sparrowwallet.drongo.psbt.PSBT;
@@ -357,12 +358,14 @@ public class BitBox02Client extends HardwareClient {
      *
      */
     private List<Signature> btcSign(BitBox02Device bitBox02Device, List<Btc.BTCScriptConfigWithKeypath> scriptConfigs, List<TxInput> inputs, List<Object> outputs, int locktime, int version) throws DeviceException {
+        //Anti-klepto is required rather than gated, since a device reporting an older version would otherwise disable it
+        bitBox02Device.requireAtLeastVersion(new Version("9.4.0"));
+
         if(scriptConfigs.stream().anyMatch(this::isTaproot)) {
             bitBox02Device.requireAtLeastVersion(new Version("9.10.0"));
         }
 
         List<Signature> sigs = new ArrayList<>();
-        boolean supportsAntiKlepto = (bitBox02Device.getVersion().compareTo(new Version("9.4.0")) >= 0);
 
         Hww.Request.Builder request = Hww.Request.newBuilder();
         request.setBtcSignInit(Btc.BTCSignInitRequest.newBuilder()
@@ -391,7 +394,7 @@ public class BitBox02Client extends HardwareClient {
                         .setScriptConfigIndex(input.scriptConfigIndex);
 
                 boolean inputIsSchnorr = isTaproot(scriptConfigs.get(input.scriptConfigIndex));
-                boolean performAntiKlepto = supportsAntiKlepto && isInputsPass2 && !inputIsSchnorr;
+                boolean performAntiKlepto = isInputsPass2 && !inputIsSchnorr;
 
                 ByteString hostNonce = null;
                 if(performAntiKlepto) {
@@ -510,6 +513,69 @@ public class BitBox02Client extends HardwareClient {
     }
 
     /**
+     * Validates a compact ECDSA signature, then verifies the host nonce contribution to it.
+     *
+     * @param hostNonce the host nonce
+     * @param signerCommitment signed message
+     * @param signature the 64 byte compact signature
+     */
+    private void antiKleptoVerify(byte[] hostNonce, byte[] signerCommitment, byte[] signature) throws DeviceException {
+        verifyCompactSignature(signature);
+        verifyHostNonce(hostNonce, signerCommitment, signature);
+    }
+
+    /**
+     * Validates a recoverable ECDSA signature, then verifies the host nonce contribution to it.
+     *
+     * @param hostNonce the host nonce
+     * @param signerCommitment signed message
+     * @param signature the 65 byte recoverable signature
+     */
+    private void antiKleptoVerifyRecoverable(byte[] hostNonce, byte[] signerCommitment, byte[] signature) throws DeviceException {
+        verifyRecoverableSignature(signature);
+        verifyHostNonce(hostNonce, signerCommitment, signature);
+    }
+
+    /**
+     * Validates that a compact ECDSA signature is well formed, with both scalars in range and a low S value.
+     * Verifying the host nonce contribution only constrains R, so a device left free to choose between the low and high
+     * S encodings, or to return an out of range scalar, can still leak key material a bit at a time.
+     *
+     * @param signature the 64 byte compact signature
+     */
+    static void verifyCompactSignature(byte[] signature) throws DeviceException {
+        if(signature.length != 64) {
+            throw new DeviceException("Signature must be 64 bytes, not " + signature.length);
+        }
+
+        BigInteger r = new BigInteger(1, Arrays.copyOfRange(signature, 0, 32));
+        BigInteger s = new BigInteger(1, Arrays.copyOfRange(signature, 32, 64));
+        if(r.signum() <= 0 || r.compareTo(ECKey.CURVE_ORDER) >= 0 || s.signum() <= 0 || s.compareTo(ECKey.CURVE_ORDER) >= 0) {
+            throw new DeviceException("Signature contains a scalar outside the curve order");
+        }
+        if(!new ECDSASignature(r, s).isCanonical()) {
+            throw new DeviceException("Signature contains a high S value");
+        }
+    }
+
+    /**
+     * Validates that a recoverable ECDSA signature is well formed, with a valid compact signature and a recovery id in range.
+     * An unconstrained recovery id is both a further leak of key material and a source of malformed signature headers.
+     *
+     * @param signature the 65 byte recoverable signature
+     */
+    static void verifyRecoverableSignature(byte[] signature) throws DeviceException {
+        if(signature.length != 65) {
+            throw new DeviceException("Recoverable signature must be 65 bytes, not " + signature.length);
+        }
+
+        verifyCompactSignature(Arrays.copyOfRange(signature, 0, 64));
+        if(signature[64] < 0 || signature[64] > 3) {
+            throw new DeviceException("Signature contains an invalid recovery id of " + signature[64]);
+        }
+    }
+
+    /**
      * Verifies that hostNonce was used to tweak the nonce during signature
      * generation according to k' = k + H(signerCommitment, hostNonce) by checking that
      * k'*G = signerCommitment + H(signerCommitment, hostNonce)*G.
@@ -519,7 +585,7 @@ public class BitBox02Client extends HardwareClient {
      * @param signerCommitment signed message
      * @param signature the signature
      */
-    private void antiKleptoVerify(byte[] hostNonce, byte[] signerCommitment, byte[] signature) throws ECDSANonceException {
+    private void verifyHostNonce(byte[] hostNonce, byte[] signerCommitment, byte[] signature) throws ECDSANonceException {
         ECKey signerCommitmentKey = ECKey.fromPublicOnly(signerCommitment);
 
         //Compute R = R1 + H(R1, host_nonce)*G. R1 is the client nonce commitment.
@@ -614,7 +680,8 @@ public class BitBox02Client extends HardwareClient {
     }
 
     private byte[] btcSignMsg(BitBox02Device bitBox02Device, Btc.BTCScriptConfigWithKeypath btcScriptConfigWithKeypath, String message) throws DeviceException {
-        bitBox02Device.requireAtLeastVersion(new Version("9.2.0"));
+        //Message signing itself requires 9.2.0, but anti-klepto is required rather than gated, since a device reporting an older version would otherwise disable it
+        bitBox02Device.requireAtLeastVersion(new Version("9.5.0"));
 
         Btc.BTCSignMessageRequest.Builder signMessage = Btc.BTCSignMessageRequest.newBuilder()
                 .setCoin(getCoin())
@@ -623,34 +690,24 @@ public class BitBox02Client extends HardwareClient {
 
         Btc.BTCRequest.Builder btcRequest = Btc.BTCRequest.newBuilder();
 
-        ByteString signature;
+        byte[] nonce = new byte[32];
+        secureRandom.nextBytes(nonce);
+        signMessage.setHostNonceCommitment(Antiklepto.AntiKleptoHostNonceCommitment.newBuilder()
+                .setCommitment(ByteString.copyFrom(antiKleptoHostCommit(nonce))).build());
+        btcRequest.setSignMessage(signMessage.build());
 
-        boolean supportsAntiKlepto = (bitBox02Device.getVersion().compareTo(new Version("9.5.0")) >= 0);
-        if(supportsAntiKlepto) {
-            byte[] nonce = new byte[32];
-            secureRandom.nextBytes(nonce);
-            signMessage.setHostNonceCommitment(Antiklepto.AntiKleptoHostNonceCommitment.newBuilder()
-                    .setCommitment(ByteString.copyFrom(antiKleptoHostCommit(nonce))).build());
-            btcRequest.setSignMessage(signMessage.build());
+        ByteString signerCommitment = bitBox02Device.btcMsgQuery(btcRequest.build(), Btc.BTCResponse.ResponseCase.ANTIKLEPTO_SIGNER_COMMITMENT)
+                .getAntikleptoSignerCommitment().getCommitment();
 
-            ByteString signerCommitment = bitBox02Device.btcMsgQuery(btcRequest.build(), Btc.BTCResponse.ResponseCase.ANTIKLEPTO_SIGNER_COMMITMENT)
-                    .getAntikleptoSignerCommitment().getCommitment();
+        btcRequest = Btc.BTCRequest.newBuilder().setAntikleptoSignature(Antiklepto.AntiKleptoSignatureRequest.newBuilder()
+                .setHostNonce(ByteString.copyFrom(nonce)));
 
-            btcRequest = Btc.BTCRequest.newBuilder().setAntikleptoSignature(Antiklepto.AntiKleptoSignatureRequest.newBuilder()
-                    .setHostNonce(ByteString.copyFrom(nonce)));
+        byte[] sigBytes = bitBox02Device.btcMsgQuery(btcRequest.build(), Btc.BTCResponse.ResponseCase.SIGN_MESSAGE).getSignMessage().getSignature().toByteArray();
+        antiKleptoVerifyRecoverable(nonce, signerCommitment.toByteArray(), sigBytes);
 
-            signature = bitBox02Device.btcMsgQuery(btcRequest.build(), Btc.BTCResponse.ResponseCase.SIGN_MESSAGE).getSignMessage().getSignature();
-            antiKleptoVerify(nonce, signerCommitment.toByteArray(), signature.toByteArray());
-
-            if(log.isDebugEnabled()) {
-                log.debug("Antiklepto nonce verification PASSED");
-            }
-        } else {
-            btcRequest.setSignMessage(signMessage.build());
-            signature = bitBox02Device.btcMsgQuery(btcRequest.build(), Btc.BTCResponse.ResponseCase.SIGN_MESSAGE).getSignMessage().getSignature();
+        if(log.isDebugEnabled()) {
+            log.debug("Antiklepto nonce verification PASSED");
         }
-
-        byte[] sigBytes = signature.toByteArray();
 
         ByteBuffer buf = ByteBuffer.allocate(65);
         buf.put((byte)(27 + 4 + sigBytes[64]));

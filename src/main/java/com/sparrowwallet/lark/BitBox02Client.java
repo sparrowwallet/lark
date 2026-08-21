@@ -365,6 +365,11 @@ public class BitBox02Client extends HardwareClient {
             bitBox02Device.requireAtLeastVersion(new Version("9.10.0"));
         }
 
+        //Firmware before 9.16.0 rejects any input carrying a relative timelock, as used by the BIP326 anti fee sniping scheme
+        if(inputs.stream().anyMatch(input -> input.sequence < TransactionInput.SEQUENCE_RBF_ENABLED)) {
+            bitBox02Device.requireAtLeastVersion(new Version("9.16.0"));
+        }
+
         List<Signature> sigs = new ArrayList<>();
 
         Hww.Request.Builder request = Hww.Request.newBuilder();

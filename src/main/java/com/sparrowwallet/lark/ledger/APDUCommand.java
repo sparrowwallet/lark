@@ -66,7 +66,7 @@ public class APDUCommand {
     }
 
     public byte getDataByte(int index) {
-        if(index < 0 || index > apdu.length - 5) {
+        if(index < 0 || index >= apdu.length - 5) {
             throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + (apdu.length - 5));
         }
         return apdu[5 + index];

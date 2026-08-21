@@ -47,7 +47,7 @@ public class APDUResponse {
     }
 
     public byte getDataByte(int index) {
-        if(index < 0 || index > getNr()) {
+        if(index < 0 || index >= getNr()) {
             throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + getNr());
         }
         return apdu[index];

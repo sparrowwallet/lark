@@ -23,6 +23,7 @@ import java.security.*;
 import java.util.Arrays;
 
 import static com.sparrowwallet.lark.coldcard.Constants.MAX_MSG_LEN;
+import static com.sparrowwallet.lark.coldcard.Constants.MAX_UPLOAD_LEN;
 
 public class ColdcardDevice implements Closeable {
     private static final Logger log = LoggerFactory.getLogger(ColdcardDevice.class);
@@ -30,6 +31,8 @@ public class ColdcardDevice implements Closeable {
     public static final int COINKITE_VID = 0xd13e;
     public static final int CKCC_PID     = 0xcc10;
     public static final int DEFAULT_TIMEOUT = 3000;
+    //the device answers each poll immediately, whether or not the user has approved yet, so this only bounds a wedged device
+    public static final int POLL_TIMEOUT = 60000;
 
     private HidDevice hidDevice;
     private String serialNumber;
@@ -131,7 +134,9 @@ public class ColdcardDevice implements Closeable {
             log.debug("Tx [" + here + "]: " + Utils.bytesToHex(buf) + " (0x" + Integer.toHexString(buf[0] & 0xFF) + ")");
 
             int rv = hidDevice.write(buf, buf.length, (byte)0);
-            assert rv == buf.length + 1;
+            if(rv < 0) {
+                throw new DeviceException("Error writing to Coldcard: " + hidDevice.getLastErrorMessage());
+            }
 
             offset += here;
             left -= here;
@@ -146,7 +151,9 @@ public class ColdcardDevice implements Closeable {
                 buf = hidDevice.read(64, timeout);
             }
 
-            assert buf.length != 0 : "timeout reading USB EP";
+            if(buf.length == 0) {
+                throw new DeviceException("Timeout reading from Coldcard");
+            }
 
             flag = buf[0];
             byte[] readBuf = new byte[buf.length];
@@ -158,6 +165,11 @@ public class ColdcardDevice implements Closeable {
                 response.write(Arrays.copyOfRange(readBuf, 1, 1 + (flag & 0x3F)));
             } catch(IOException e) {
                 throw new DeviceProtocolException("Error reading from Coldcard");
+            }
+
+            //the final frame flag is set by the device, so bound the reassembly rather than accumulating indefinitely
+            if(response.size() > MAX_MSG_LEN) {
+                throw new DeviceProtocolException("Response from Coldcard exceeded " + MAX_MSG_LEN + " bytes");
             }
         } while((flag & 0x80) == 0);
 
@@ -270,12 +282,20 @@ public class ColdcardDevice implements Closeable {
     }
 
     public byte[] downloadFile(long length, Sha256Hash checksum, int blkSize, int fileNumber) throws DeviceException {
+        if(length < 0 || length > MAX_UPLOAD_LEN) {
+            throw new DeviceProtocolException("Coldcard declared a file length of " + length + " bytes");
+        }
+
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         MessageDigest digest = Sha256Hash.newDigest();
 
         long pos = 0;
         while(pos < length) {
-            byte[] here = (byte[])sendRecv(ProtocolPacker.download(pos, Math.min(blkSize, length-pos), fileNumber));
+            Object result = sendRecv(ProtocolPacker.download(pos, Math.min(blkSize, length-pos), fileNumber));
+            if(!(result instanceof byte[] here) || here.length == 0) {
+                throw new DeviceProtocolException("Invalid response of " + result + " downloading file from Coldcard");
+            }
+
             baos.write(here, 0, here.length);
             pos += here.length;
             digest.update(here);

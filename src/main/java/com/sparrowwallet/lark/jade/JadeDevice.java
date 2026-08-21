@@ -382,12 +382,11 @@ public class JadeDevice implements Closeable {
                         String logLevel = logResponse.getString();
                         if(logLevel.length() > 1 && logLevel.charAt(1) == ' ') {
                             switch(logLevel.charAt(0)) {
-                                case 'E': log.error(logLevel);
-                                case 'W': log.warn(logLevel);
-                                case 'I': log.info(logLevel);
-                                case 'D': log.debug(logLevel);
-                                case 'V': log.trace(logLevel);
-                                default: log.error(logLevel);
+                                case 'W' -> log.warn(logLevel);
+                                case 'I' -> log.info(logLevel);
+                                case 'D' -> log.debug(logLevel);
+                                case 'V' -> log.trace(logLevel);
+                                default -> log.error(logLevel);
                             }
                         } else {
                             log.error(logLevel);

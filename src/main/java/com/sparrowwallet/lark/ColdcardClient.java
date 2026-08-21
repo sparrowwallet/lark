@@ -118,7 +118,7 @@ public class ColdcardClient extends HardwareClient {
                         //ignore
                     }
 
-                    signResp = coldcardDevice.sendRecv(ProtocolPacker.getSignedTxn(), true, -1);
+                    signResp = coldcardDevice.sendRecv(ProtocolPacker.getSignedTxn(), true, ColdcardDevice.POLL_TIMEOUT);
                 }
 
                 if(signResp instanceof SignedTransaction signedTx) {
@@ -152,7 +152,7 @@ public class ColdcardClient extends HardwareClient {
             String rewrittenPath = path.replaceAll("[hH]", "'");
             byte[] msgBytes = message.getBytes(StandardCharsets.UTF_8);
 
-            Object resp = coldcardDevice.sendRecv(ProtocolPacker.signMessage(msgBytes, rewrittenPath, addressFormat), true, -1);
+            Object resp = coldcardDevice.sendRecv(ProtocolPacker.signMessage(msgBytes, rewrittenPath, addressFormat), true, ColdcardDevice.POLL_TIMEOUT);
             if(resp != null) {
                 throw new DeviceException("Received unexpected response of " + resp);
             }
@@ -165,7 +165,7 @@ public class ColdcardClient extends HardwareClient {
                     //ignore
                 }
 
-                result = coldcardDevice.sendRecv(ProtocolPacker.getSignedMessage(), true, -1);
+                result = coldcardDevice.sendRecv(ProtocolPacker.getSignedMessage(), true, ColdcardDevice.POLL_TIMEOUT);
             }
 
             if(result instanceof SignedMessage signedMessage) {

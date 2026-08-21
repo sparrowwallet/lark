@@ -134,6 +134,8 @@ public class Lark {
                     } else {
                         throw e;
                     }
+                } catch(Exception e) {
+                    handleDeviceError(hidDevice.getProduct(), hardwareClient, clientOperation, e);
                 }
             }
         } finally {
@@ -166,6 +168,8 @@ public class Lark {
                 } else {
                     throw e;
                 }
+            } catch(Exception e) {
+                handleDeviceError(serialPort.getDescriptivePortName(), hardwareClient, clientOperation, e);
             }
         }
     }
@@ -217,6 +221,8 @@ public class Lark {
                     } else {
                         throw e;
                     }
+                } catch(Exception e) {
+                    handleDeviceError("webusb device", hardwareClient, clientOperation, e);
                 }
             }
         } finally {
@@ -224,6 +230,21 @@ public class Lark {
             if(context.getPointer() != 0) {
                 LibUsb.exit(context);
             }
+        }
+    }
+
+    /**
+     * Handles an unchecked exception thrown while communicating with a device. A device is free to return any bytes it likes,
+     * so a malformed response can surface as any runtime exception, and one misbehaving device must not abort the enumeration of the others.
+     */
+    private void handleDeviceError(String deviceDescription, HardwareClient hardwareClient, ClientOperation clientOperation, Exception e) throws DeviceException {
+        log.error("Error communicating with " + deviceDescription, e);
+        String message = e.getMessage() == null ? e.getClass().getSimpleName() : e.getMessage();
+
+        if(hardwareClient != null && clientOperation instanceof InitializeFingerprintOperation) {
+            hardwareClient.setError("Error communicating with device: " + message);
+        } else {
+            throw new DeviceException("Error communicating with " + deviceDescription + ": " + message, e);
         }
     }
 

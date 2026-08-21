@@ -91,7 +91,7 @@ public class ProtocolUnpacker extends Protocol {
     public record Smrx(String address, byte[] signature) {
         public static Smrx decode(byte[] response) {
             long aln = Utils.readUint32(response, 4);
-            String address = new String(response, 8, (int)aln + 8, StandardCharsets.US_ASCII);
+            String address = new String(response, 8, (int)aln, StandardCharsets.US_ASCII);
             byte[] signature = Arrays.copyOfRange(response, (int)aln + 8, response.length);
             return new Smrx(address, signature);
         }

@@ -246,6 +246,8 @@ public class TrezorDevice implements Closeable, ProtocolCallbacks {
                 } else {
                     response = sendResponseCurrent(inputs, outputs, txRequest.getRequestType(), details);
                 }
+            } else {
+                throw new DeviceException("Unexpected response while signing transaction: " + response.getClass().getSimpleName());
             }
         }
 

@@ -6,16 +6,20 @@ import com.sparrowwallet.drongo.crypto.ECKey;
 import com.sparrowwallet.drongo.protocol.*;
 import com.sparrowwallet.drongo.psbt.PSBT;
 import com.sparrowwallet.drongo.psbt.PSBTInput;
-import com.sparrowwallet.drongo.psbt.PSBTParseException;
 import com.sparrowwallet.drongo.wallet.WalletModel;
 import com.sparrowwallet.lark.ledger.*;
 import com.sparrowwallet.lark.ledger.wallet.MultisigWalletPolicy;
 import com.sparrowwallet.lark.ledger.wallet.WalletPolicy;
 import org.hid4java.HidDevice;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
 public class LedgerClient extends HardwareClient {
+    private static final Logger log = LoggerFactory.getLogger(LedgerClient.class);
+
+    private static final int SW_SIGNATURE_FAIL = 0xB008;
 
     private final HidDevice hidDevice;
     private final LedgerModel ledgerModel;
@@ -182,7 +186,7 @@ public class LedgerClient extends HardwareClient {
                         Sha256Hash mswpId = mswp.id();
                         if(!wallets.containsKey(mswpId)) {
                             Sha256Hash registeredWalletId = getWalletRegistration(ledgerDevice, walletDescriptor, mswp);
-                            wallets.put(mswpId, new Wallet(SigningPriority.fromScriptType(scriptType), scriptType, mswp, registeredWalletId));
+                            wallets.put(mswpId, new Wallet(SigningPriority.fromScriptType(scriptType), scriptType, walletDescriptor, mswp, registeredWalletId));
                         }
                     } else {
                         for(ECKey key : psbtInput.getDerivedPublicKeys().keySet()) {
@@ -228,7 +232,7 @@ public class LedgerClient extends HardwareClient {
                         }
                     }
 
-                    List<LedgerDevice.Signature> signatures = ledgerDevice.signPsbt(psbt2, wallet.walletPolicy(), wallet.registeredHmac());
+                    List<LedgerDevice.Signature> signatures = signPsbt(ledgerDevice, psbt2, wallet);
 
                     for(LedgerDevice.Signature signature : signatures) {
                         PSBTInput psbtInput = psbt2.getPsbtInputs().get(signature.inputIndex());
@@ -284,6 +288,44 @@ public class LedgerClient extends HardwareClient {
         return registeredWalletId;
     }
 
+    private List<LedgerDevice.Signature> signPsbt(LedgerDevice ledgerDevice, PSBT psbt, Wallet wallet) throws DeviceException {
+        try {
+            return ledgerDevice.signPsbt(psbt, wallet.walletPolicy(), wallet.registeredHmac());
+        } catch(LedgerResponseException e) {
+            return ledgerDevice.signPsbt(psbt, wallet.walletPolicy(), getUpdatedWalletRegistration(e, ledgerDevice, wallet.outputDescriptor(), wallet.walletPolicy(), wallet.registeredHmac()));
+        }
+    }
+
+    private String getWalletAddress(LedgerDevice ledgerDevice, OutputDescriptor outputDescriptor, WalletPolicy walletPolicy, Sha256Hash walletHmac, int change, int addressIndex) throws DeviceException {
+        try {
+            return ledgerDevice.getWalletAddress(walletPolicy, walletHmac, change, addressIndex, true);
+        } catch(LedgerResponseException e) {
+            return ledgerDevice.getWalletAddress(walletPolicy, getUpdatedWalletRegistration(e, ledgerDevice, outputDescriptor, walletPolicy, walletHmac), change, addressIndex, true);
+        }
+    }
+
+    /**
+     * Registers the wallet policy again after the device has rejected the provided registration.
+     * The registration hmac covers the wallet policy name, so a wallet renamed since it was registered fails with SW_SIGNATURE_FAIL before any device interaction.
+     *
+     * @param e                the exception thrown by the device
+     * @param ledgerDevice     the device
+     * @param outputDescriptor output descriptor identifying the wallet
+     * @param walletPolicy     the wallet policy sent to the device
+     * @param walletHmac       the registration hmac the device rejected
+     * @return the hmac from the new registration
+     * @throws DeviceException if the device did not reject the registration, or the wallet could not be registered again
+     */
+    private Sha256Hash getUpdatedWalletRegistration(LedgerResponseException e, LedgerDevice ledgerDevice, OutputDescriptor outputDescriptor, WalletPolicy walletPolicy, Sha256Hash walletHmac) throws DeviceException {
+        if(e.getCode() != SW_SIGNATURE_FAIL || walletHmac == null || outputDescriptor == null) {
+            throw e;
+        }
+
+        log.debug("Registration for wallet policy " + walletPolicy.getName() + " was rejected, registering again");
+        walletRegistrations.remove(outputDescriptor.copy(false));
+        return getWalletRegistration(ledgerDevice, outputDescriptor, walletPolicy);
+    }
+
     private void processOrigin(LedgerDevice ledgerDevice, Map<Sha256Hash, Wallet> wallets, ScriptType scriptType, KeyDerivation origin) throws DeviceException {
         if(!isStandardPath(origin.getDerivation(), scriptType)) {
             //Non default wallets are not currently supported
@@ -291,13 +333,14 @@ public class LedgerClient extends HardwareClient {
         }
 
         WalletPolicy walletPolicy = getSingleSigWalletPolicy(ledgerDevice, scriptType, origin.getDerivation().get(2).num());
+        OutputDescriptor outputDescriptor = null;
         Sha256Hash registeredWalletId = null;
         if(isNonStandard(origin.getDerivationPath())) {
-            OutputDescriptor outputDescriptor = OutputDescriptor.getOutputDescriptor(scriptType.getDescriptor() + walletPolicy.getKeysInfo().getFirst() + scriptType.getCloseDescriptor());
+            outputDescriptor = OutputDescriptor.getOutputDescriptor(scriptType.getDescriptor() + walletPolicy.getKeysInfo().getFirst() + scriptType.getCloseDescriptor());
             registeredWalletId = getWalletRegistration(ledgerDevice, outputDescriptor, walletPolicy);
         }
 
-        wallets.put(walletPolicy.id(), new Wallet(SigningPriority.fromScriptType(scriptType), scriptType, walletPolicy, registeredWalletId));
+        wallets.put(walletPolicy.id(), new Wallet(SigningPriority.fromScriptType(scriptType), scriptType, outputDescriptor, walletPolicy, registeredWalletId));
     }
 
     private boolean isStandardPath(List<ChildNumber> path, ScriptType scriptType) {
@@ -361,6 +404,7 @@ public class LedgerClient extends HardwareClient {
             List<ChildNumber> keyPath = KeyDerivation.parsePath(path);
             getMasterFingerprint(ledgerDevice);
             WalletPolicy walletPolicy;
+            OutputDescriptor outputDescriptor = null;
             Sha256Hash registeredWalletId = null;
             if(ledgerDevice instanceof LegacyLedgerDevice) {
                 String template = switch(scriptType) {
@@ -379,12 +423,12 @@ public class LedgerClient extends HardwareClient {
                 }
                 walletPolicy = getSingleSigWalletPolicy(ledgerDevice, scriptType, keyPath.get(2).num());
                 if(isNonStandard(path)) {
-                    OutputDescriptor outputDescriptor = OutputDescriptor.getOutputDescriptor(scriptType.getDescriptor() + walletPolicy.getKeysInfo().getFirst() + scriptType.getCloseDescriptor());
+                    outputDescriptor = OutputDescriptor.getOutputDescriptor(scriptType.getDescriptor() + walletPolicy.getKeysInfo().getFirst() + scriptType.getCloseDescriptor());
                     registeredWalletId = getWalletRegistration(ledgerDevice, outputDescriptor, walletPolicy);
                 }
             }
 
-            return ledgerDevice.getWalletAddress(walletPolicy, registeredWalletId, keyPath.get(keyPath.size() - 2).num(), keyPath.get(keyPath.size() - 1).num(), true);
+            return getWalletAddress(ledgerDevice, outputDescriptor, walletPolicy, registeredWalletId, keyPath.get(keyPath.size() - 2).num(), keyPath.get(keyPath.size() - 1).num());
         }
     }
 
@@ -410,7 +454,7 @@ public class LedgerClient extends HardwareClient {
             Sha256Hash registeredWalletId = getWalletRegistration(ledgerDevice, outputDescriptor, mswp);
 
             List<ChildNumber> childPath = outputDescriptor.getChildDerivation(outputDescriptor.getExtendedPublicKeys().iterator().next());
-            return ledgerDevice.getWalletAddress(mswp, registeredWalletId, childPath.get(1).num(), childPath.get(2).num(), true);
+            return getWalletAddress(ledgerDevice, outputDescriptor, mswp, registeredWalletId, childPath.get(1).num(), childPath.get(2).num());
         }
     }
 
@@ -480,5 +524,5 @@ public class LedgerClient extends HardwareClient {
         this.walletRegistrations = walletRegistrations;
     }
 
-    private record Wallet(SigningPriority signingPriority, ScriptType scriptType, WalletPolicy walletPolicy, Sha256Hash registeredHmac) {}
+    private record Wallet(SigningPriority signingPriority, ScriptType scriptType, OutputDescriptor outputDescriptor, WalletPolicy walletPolicy, Sha256Hash registeredHmac) {}
 }

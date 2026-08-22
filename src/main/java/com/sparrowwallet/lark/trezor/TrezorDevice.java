@@ -116,6 +116,10 @@ public class TrezorDevice implements Closeable, ProtocolCallbacks {
                 } else if(model == TrezorModel.T2T1) {
                     model = TrezorModel.ONEKEY_PRO;
                 }
+            } else if(features.getLabel().startsWith("UKey")) {
+                if (model == TrezorModel.T2T1) {
+                    model = TrezorModel.UKEY_CORE_26;
+                }
             }
         }
 

@@ -52,7 +52,7 @@ public class GetMerkleLeafProofCommand implements ClientCommand {
             int nLeftoverElements = proof.size() - nResponseElements;
 
             if(nLeftoverElements > 0) {
-                queue.addAll(proof.subList(0, proof.size() - nLeftoverElements));
+                queue.addAll(proof.subList(nResponseElements, proof.size()));
             }
 
             ByteBuffer buf = ByteBuffer.allocate(32 + 1 + 1 + (nResponseElements * 32));

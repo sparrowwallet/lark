@@ -114,7 +114,7 @@ public class BitBox02Client extends HardwareClient {
             }
 
             Hww.Request.Builder request = Hww.Request.newBuilder();
-            request.setBtcPub(Btc.BTCPubRequest.newBuilder().setCoin(getCoin()).addAllKeypath(KeyDerivation.parsePath(path).stream().map(ChildNumber::i).toList())
+            request.setBtcPub(Btc.BTCPubRequest.newBuilder().setCoin(getCoin(bitBox02Device)).addAllKeypath(KeyDerivation.parsePath(path).stream().map(ChildNumber::i).toList())
                     .setXpubType(Network.get() == Network.MAINNET ? Btc.BTCPubRequest.XPubType.XPUB : Btc.BTCPubRequest.XPubType.TPUB).setDisplay(false));
             Hww.Response hwwResponse = bitBox02Device.msgQuery(request.build(), null);
             return ExtendedKey.fromDescriptor(hwwResponse.getPub().getPub());
@@ -389,7 +389,7 @@ public class BitBox02Client extends HardwareClient {
 
         Hww.Request.Builder request = Hww.Request.newBuilder();
         request.setBtcSignInit(Btc.BTCSignInitRequest.newBuilder()
-                .setCoin(getCoin())
+                .setCoin(getCoin(bitBox02Device))
                 .addAllScriptConfigs(scriptConfigs)
                 .setVersion(version)
                 .setNumInputs(inputs.size())
@@ -685,10 +685,6 @@ public class BitBox02Client extends HardwareClient {
             throw new DeviceException("For message signing, the keypath bip44 purpose must be 84' or 49'");
         }
 
-        if(Network.get() != Network.MAINNET) {
-            throw new DeviceException("The BitBox02 only supports signing messages on mainnet");
-        }
-
         Btc.BTCScriptConfigWithKeypath btcScriptConfigWithKeypath = Btc.BTCScriptConfigWithKeypath.newBuilder()
                 .setScriptConfig(Btc.BTCScriptConfig.newBuilder().setSimpleType(btcScriptConfigType).build())
                 .addAllKeypath(fullPath.stream().map(ChildNumber::i).toList()).build();
@@ -703,8 +699,13 @@ public class BitBox02Client extends HardwareClient {
         //Message signing itself requires 9.2.0, but anti-klepto is required rather than gated, since a device reporting an older version would otherwise disable it
         bitBox02Device.requireAtLeastVersion(new Version("9.5.0"));
 
+        //Firmware before 9.23.0 only signs messages on mainnet
+        if(Network.get() != Network.MAINNET) {
+            bitBox02Device.requireAtLeastVersion(new Version("9.23.0"));
+        }
+
         Btc.BTCSignMessageRequest.Builder signMessage = Btc.BTCSignMessageRequest.newBuilder()
-                .setCoin(getCoin())
+                .setCoin(getCoin(bitBox02Device))
                 .setScriptConfig(btcScriptConfigWithKeypath)
                 .setMsg(ByteString.copyFrom(message, StandardCharsets.UTF_8));
 
@@ -787,7 +788,7 @@ public class BitBox02Client extends HardwareClient {
 
     private String displayAddress(BitBox02Device bitBox02Device, Btc.BTCScriptConfig scriptConfig, String path) throws DeviceException {
         Hww.Request.Builder request = Hww.Request.newBuilder();
-        request.setBtcPub(Btc.BTCPubRequest.newBuilder().setCoin(getCoin()).addAllKeypath(KeyDerivation.parsePath(path).stream().map(ChildNumber::i).toList())
+        request.setBtcPub(Btc.BTCPubRequest.newBuilder().setCoin(getCoin(bitBox02Device)).addAllKeypath(KeyDerivation.parsePath(path).stream().map(ChildNumber::i).toList())
                 .setScriptConfig(scriptConfig).setDisplay(true));
         Hww.Response hwwResponse = bitBox02Device.msgQuery(request.build(), null);
         return hwwResponse.getPub().getPub();
@@ -833,7 +834,7 @@ public class BitBox02Client extends HardwareClient {
             }
 
             Btc.BTCScriptConfigRegistration scriptConfigRegistration = Btc.BTCScriptConfigRegistration.newBuilder()
-                    .setCoin(getCoin())
+                    .setCoin(getCoin(bitBox02Device))
                     .setScriptConfig(btcScriptConfig)
                     .addAllKeypath(keypath).build();
 
@@ -860,7 +861,7 @@ public class BitBox02Client extends HardwareClient {
         Btc.BTCRequest.Builder request = Btc.BTCRequest.newBuilder();
         request.setIsScriptConfigRegistered(Btc.BTCIsScriptConfigRegisteredRequest.newBuilder()
                 .setRegistration(Btc.BTCScriptConfigRegistration.newBuilder()
-                        .setCoin(getCoin())
+                        .setCoin(getCoin(bitBox02Device))
                         .setScriptConfig(btcScriptConfig)
                         .addAllKeypath(keypath)).build());
         Btc.BTCResponse response = bitBox02Device.btcMsgQuery(request.build(), Btc.BTCResponse.ResponseCase.IS_SCRIPT_CONFIG_REGISTERED);
@@ -876,8 +877,14 @@ public class BitBox02Client extends HardwareClient {
                 .setDepth(ByteString.copyFrom(ByteBuffer.allocate(1).put((byte)xpub.getKey().getDepth()).array())).build();
     }
 
-    private Btc.BTCCoin getCoin() {
-        return Network.get() == Network.MAINNET ? Btc.BTCCoin.BTC : Btc.BTCCoin.TBTC;
+    private Btc.BTCCoin getCoin(BitBox02Device bitBox02Device) {
+        if(Network.get() == Network.MAINNET) {
+            return Btc.BTCCoin.BTC;
+        } else if(Network.get() == Network.REGTEST && bitBox02Device.getVersion().compareTo(new Version("9.21.0")) >= 0) {
+            return Btc.BTCCoin.RBTC;
+        }
+
+        return Btc.BTCCoin.TBTC;
     }
 
     @Override

@@ -397,11 +397,11 @@ public class JadeDevice implements Closeable {
                 }
             }
         } catch(CborException e) {
-            String recieved = new String(cborMsg, StandardCharsets.UTF_8);
-            if(recieved.chars().allMatch(ch -> ch >= 0 && ch <= 127)) {
-                throw new DeviceException("Error decoding response from device, recieved " + new String(cborMsg, StandardCharsets.UTF_8), e);
+            String received = new String(cborMsg, StandardCharsets.UTF_8);
+            if(received.chars().allMatch(ch -> ch >= 0 && ch <= 127)) {
+                throw new DeviceException("Error decoding response from device, received " + received, e);
             } else {
-                throw new DeviceException("Error decoding response from device, recieved " + cborMsg.length + " bytes of " + Utils.bytesToHex(cborMsg), e);
+                throw new DeviceException("Error decoding response from device, received " + cborMsg.length + " bytes of " + Utils.bytesToHex(cborMsg), e);
             }
         }
 

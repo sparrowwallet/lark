@@ -342,6 +342,10 @@ class V1Protocol implements Protocol {
 
         byte[] msgData = Arrays.copyOfRange(messageBuffer.array(), 0, msgSize);
 
+        if(messageType == null) {
+            throw new InvalidProtocolBufferException("Unknown message type: " + msgId);
+        }
+
         try {
             Method method = extractParserMethod(messageType);
             //noinspection PrimitiveArrayArgumentToVariableArgMethod

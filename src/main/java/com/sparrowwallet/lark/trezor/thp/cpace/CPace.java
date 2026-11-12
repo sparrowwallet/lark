@@ -11,6 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.*;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Arrays;
+import java.util.Locale;
 
 /**
  * CPace (Password-Authenticated Key Exchange) implementation for THP Code Entry pairing.
@@ -139,7 +140,7 @@ public class CPace {
         byte[] hash = Sha256Hash.hash(codeInput);
         BigInteger codeInt = new BigInteger(1, hash).mod(BigInteger.valueOf(1_000_000));
 
-        return String.format("%06d", codeInt.intValue());
+        return String.format(Locale.ROOT, "%06d", codeInt.intValue());
     }
 
     /**

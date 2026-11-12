@@ -713,9 +713,9 @@ public class TrezorClient extends HardwareClient {
     public String getPath() {
         StringJoiner joiner = new StringJoiner(":");
         joiner.add(PATH_PREFIX);
-        joiner.add(String.format("%03d", busNumber));
+        joiner.add(String.format(Locale.ROOT, "%03d", busNumber));
         for(int i = 0; i < portNumbers.capacity(); i++) {
-            joiner.add(String.format("%01x", portNumbers.get(i)));
+            joiner.add(String.format(Locale.ROOT, "%01x", portNumbers.get(i)));
         }
         return joiner.toString();
     }

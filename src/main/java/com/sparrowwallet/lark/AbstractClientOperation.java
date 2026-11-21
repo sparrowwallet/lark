@@ -53,6 +53,9 @@ public abstract class AbstractClientOperation implements ClientOperation {
     }
 
     protected static String getActualType(String type) {
-        return WalletModel.ONEKEY_PRO.getType().equals(type) ? WalletModel.TREZOR_T.getType() : type;
+        if(WalletModel.ONEKEY_PRO.getType().equals(type) || WalletModel.UKEY_CORE_26.getType().equals(type)) {
+            return WalletModel.TREZOR_T.getType();
+        }
+        return type;
     }
 }
